@@ -1072,3 +1072,25 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/littlerootcave/scripts.inc"
+
+	.include "data/maps/Route1/scripts.inc"
+
+	.include "data/maps/HauoliOutskirts/scripts.inc"
+
+
+
+	.include "data/maps/Route1N/scripts.inc"
+
+
+
+	.include "data/maps/Route1NN/scripts.inc"
+
+	.include "data/maps/MelemeleSea/scripts.inc"
+
+	.include "data/maps/MelemeleSea2/scripts.inc"
+
+	.include "data/maps/MelemeleSea3/scripts.inc"
+
+	.include "data/maps/HauoliCityBeachfront/scripts.inc"

@@ -1,0 +1,27 @@
+mapscripts Route1_MapScripts{}
+
+script MomSaysHi{
+    lock
+    faceplayer
+    msgbox(format("Mom: How are you doing, honey?\nYou look a little tired.\pYou should take a rest."))
+    fadescreen(FADE_TO_BLACK)
+    playfanfare(MUS_HEAL)
+    waitfanfare
+    special(HealPlayerParty)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("Mom: Take care, honey!")
+    release
+end
+}
+
+script Mailbox{
+    lock
+    msgbox("{PLAYER}'s House")
+    release
+end
+}
+
+script Route1LittleBoyNPC{
+msgbox("I gotta catch more Pokémon!\nPokémon with cool knees are so neat.", MSGBOX_NPC)
+end    
+}

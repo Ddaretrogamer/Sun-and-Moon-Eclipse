@@ -207,3 +207,15 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+
+const u16 gMetatiles_orangeislands[] = INCBIN_U16("data/tilesets/primary/orangeislands/metatiles.bin");
+const u16 gMetatileAttributes_orangeislands[] = INCBIN_U16("data/tilesets/primary/orangeislands/metatile_attributes.bin");
+
+const u16 gMetatiles_PorytilesPrimaryTest[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_test/metatiles.bin");
+const u16 gMetatileAttributes_PorytilesPrimaryTest[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_test/metatile_attributes.bin");
+
+const u16 gMetatiles_TrainerSchool[] = INCBIN_U16("data/tilesets/secondary/trainer_school/metatiles.bin");
+const u16 gMetatileAttributes_TrainerSchool[] = INCBIN_U16("data/tilesets/secondary/trainer_school/metatile_attributes.bin");
+
+const u16 gMetatiles_HauoliBeachfront[] = INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/metatiles.bin");
+const u16 gMetatileAttributes_HauoliBeachfront[] = INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/metatile_attributes.bin");

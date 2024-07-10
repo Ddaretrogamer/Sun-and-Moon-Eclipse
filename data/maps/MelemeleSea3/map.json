@@ -1,0 +1,44 @@
+{
+  "id": "MAP_MELEMELE_SEA3",
+  "name": "MelemeleSea3",
+  "layout": "LAYOUT_MELEMELE_SEA3",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_MELEMELE_SEA2",
+      "offset": 9,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_HAUOLI_CITY_BEACHFRONT",
+      "offset": -11,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE1N",
+      "offset": 29,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

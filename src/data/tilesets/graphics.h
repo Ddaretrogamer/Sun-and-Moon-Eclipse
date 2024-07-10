@@ -1634,3 +1634,79 @@ const u16 gTilesetPalettes_UnionRoom[][16] =
 };
 
 const u32 gTilesetTiles_UnionRoom[] = INCBIN_U32("data/tilesets/secondary/union_room/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_orangeislands[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orangeislands/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_orangeislands[] = INCBIN_U32("data/tilesets/primary/orangeislands/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_PorytilesPrimaryTest[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/porytiles_primary_test/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_PorytilesPrimaryTest[] = INCBIN_U32("data/tilesets/primary/porytiles_primary_test/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_TrainerSchool[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trainer_school/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_TrainerSchool[] = INCBIN_U32("data/tilesets/secondary/trainer_school/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HauoliBeachfront[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HauoliBeachfront[] = INCBIN_U32("data/tilesets/secondary/hauoli_beachfront/tiles.4bpp.lz");

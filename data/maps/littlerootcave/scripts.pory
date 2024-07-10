@@ -1,0 +1,168 @@
+mapscripts littlerootcave_MapScripts{}
+
+
+script littlerootcave_eventscript_cyndaquil_gift{
+    if(!(flag(FLAG_UNUSED_0x020)|| flag(FLAG_UNUSED_0x021) || flag(FLAG_UNUSED_0x022))){
+        lockall
+        showmonpic(SPECIES_CYNDAQUIL, 10, 3)
+        msgbox("Do you want Cyndaquil?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES){
+            givemon(SPECIES_CYNDAQUIL, 5, ITEM_MASTER_BALL)
+            if(var(VAR_RESULT)==MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Cyndaquil.")
+                removeobject(1)
+                setflag(FLAG_UNUSED_0x020)
+                call(NicknamePartyMon)
+            }
+            elif(var(VAR_RESULT)==MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Cyndaquil.")
+                removeobject(1)
+                setflag(FLAG_UNUSED_0x020)
+                Call(NicknameBoxMon)
+            }
+            else{
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }    
+        else{
+            hidemonpic
+            msgbox(littlerootcave_NotChosen)
+    }        
+    }        
+    else{
+        msgbox("You can only choose one!")
+    }        
+    
+    waitmessage
+    releaseall
+    end
+}        
+
+script littlerootcave_eventscript_totodile_gift{
+    if(!(flag(FLAG_UNUSED_0x020)|| flag(FLAG_UNUSED_0x021) || flag(FLAG_UNUSED_0x022))){
+        lockall
+        showmonpic(SPECIES_TOTODILE, 10, 3)
+        msgbox("Do you want Totodile?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES){
+            givemon(SPECIES_TOTODILE, 5, ITEM_MASTER_BALL)
+            if(var(VAR_RESULT)==MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Totodile.")
+                removeobject(3)
+                setflag(FLAG_UNUSED_0x021)
+                call(NicknamePartyMon)
+            }
+            elif(var(VAR_RESULT)==MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Totodile.")
+                removeobject(3)
+                setflag(FLAG_UNUSED_0x021)
+                Call(NicknameBoxMon)
+            }
+            else{
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }    
+        else{
+            hidemonpic
+            msgbox(littlerootcave_NotChosen)
+    }        
+    }        
+    else{
+        msgbox("You can only choose one!")
+    }        
+    
+    waitmessage
+    releaseall
+    end
+}        
+
+script littlerootcave_eventscript_chikorita_gift{
+    if(!(flag(FLAG_UNUSED_0x020)|| flag(FLAG_UNUSED_0x021) || flag(FLAG_UNUSED_0x022))){
+        lockall
+        showmonpic(SPECIES_CHIKORITA, 10, 3)
+        msgbox("Do you want Chikorita?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES){
+            givemon(SPECIES_CHIKORITA, 5, ITEM_MASTER_BALL)
+            if(var(VAR_RESULT)==MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Chikorita.")
+                removeobject(2)
+                setflag(FLAG_UNUSED_0x022)
+                call(NicknamePartyMon)
+            }
+            elif(var(VAR_RESULT)==MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Received Chikorita.")
+                removeobject(2)
+                setflag(FLAG_UNUSED_0x022)
+                Call(NicknameBoxMon)
+            }
+            else{
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }    
+        else{
+            hidemonpic
+            msgbox(littlerootcave_NotChosen)
+    }        
+    }        
+    else{
+        msgbox("You can only choose one!")
+    }        
+    
+    waitmessage
+    releaseall
+    end
+}        
+
+
+script Give_EXP_Share{
+    lock
+    faceplayer
+    if(!(flag(FLAG_UNUSED_0x264))){
+        msgbox("Would you like the EXP Share?\n" "I've got an extra.", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES){
+            giveitem(ITEM_EXP_SHARE, 1)
+            setflag(FLAG_UNUSED_0x264)
+            msgbox("Now you on easy mode.")
+        }
+        else{
+            msgbox("Alright big dawg.")
+        }
+    }
+    else{
+        msgbox("Dude that was my last one.")
+    }
+    waitmessage
+    release
+    end
+}
+
+script NicknamePartyMon{
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+    hidemonpic
+    if(var(VAR_RESULT)== YES){
+        call(Common_EventScript_GetGiftMonPartySlot)
+        call(Common_EventScript_NameReceivedPartyMon)
+    }
+}
+
+script NicknameBoxMon{
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+    hidemonpic
+    if(var(VAR_RESULT)== YES){
+        call(Common_EventScript_NameReceivedBoxMon)
+    }
+    msgbox("Transferred to PC")
+}
+text littlerootcave_NotChosen{
+    "You did not choose the Pokemon."
+}
+
+

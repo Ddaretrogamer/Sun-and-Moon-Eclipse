@@ -1,0 +1,46 @@
+mapscripts HauoliOutskirts_MapScripts{}
+
+script LabSign{
+    lock
+    msgbox("Pokémon Research Lab")
+    release
+end
+}
+
+script LabOutsideNPC{
+    msgbox("This is Professor Kukui's Lab.", MSGBOX_NPC)
+end
+}
+
+script OutsideTenCarrotHill{
+    lock
+    faceplayer
+    msgbox(format("Wa ha ha!\nYou're a strong Trainer, all right!\lGo on! You take on Ten Carrot Hill, friend! Even stronger Pokémon await you within!"))
+    release
+end
+}
+script TenCarrotHillSign{
+    lock
+    msgbox("Ten Carrot Hill")
+    release
+end
+}
+script HauoliOutskirtLittleGirlNPC{
+    lock
+    faceplayer
+    msgbox(format("The Pokémon I've got with me are all\nGrass-type.\lI'm looking for Water-type Pokémon for\lmy team so I can beat Fire types, too."))
+    release
+end
+}
+
+script HauoliOustkirtsTrainerTipsSign{
+    lock
+    msgbox(format("Trainer Tips\pThe Pokémon that will appear first in battle will be the one you've put in the left position in your Pokémon party."))
+    release
+end
+}
+
+script HauoliOutskirtLassNPC{
+    msgbox("If you see a Pokémon Trainer, you've\ngotta show off the Pokémon you like!",MSGBOX_NPC)
+end
+}

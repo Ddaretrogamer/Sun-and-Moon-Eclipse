@@ -1,0 +1,50 @@
+{
+  "id": "MAP_MELEMELE_SEA2",
+  "name": "MelemeleSea2",
+  "layout": "LAYOUT_MELEMELE_SEA2",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_MELEMELE_SEA",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_HAUOLI_OUTSKIRTS",
+      "offset": 37,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_MELEMELE_SEA3",
+      "offset": -9,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_MELEMELE_SEA2",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
