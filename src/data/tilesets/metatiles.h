@@ -219,3 +219,12 @@ const u16 gMetatileAttributes_TrainerSchool[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_HauoliBeachfront[] = INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/metatiles.bin");
 const u16 gMetatileAttributes_HauoliBeachfront[] = INCBIN_U16("data/tilesets/secondary/hauoli_beachfront/metatile_attributes.bin");
+
+const u16 gMetatiles_maxiesislandtiles[] = INCBIN_U16("data/tilesets/primary/maxiesislandtiles/metatiles.bin");
+const u16 gMetatileAttributes_maxiesislandtiles[] = INCBIN_U16("data/tilesets/primary/maxiesislandtiles/metatile_attributes.bin");
+
+const u16 gMetatiles_IkiTown[] = INCBIN_U16("data/tilesets/secondary/iki_town/metatiles.bin");
+const u16 gMetatileAttributes_IkiTown[] = INCBIN_U16("data/tilesets/secondary/iki_town/metatile_attributes.bin");
+
+const u16 gMetatiles_islandtrial[] = INCBIN_U16("data/tilesets/secondary/islandtrial/metatiles.bin");
+const u16 gMetatileAttributes_islandtrial[] = INCBIN_U16("data/tilesets/secondary/islandtrial/metatile_attributes.bin");

@@ -869,3 +869,36 @@ const struct Tileset gTileset_HauoliBeachfront =
     .metatileAttributes = gMetatileAttributes_HauoliBeachfront,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_maxiesislandtiles =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_maxiesislandtiles,
+    .palettes = gTilesetPalettes_maxiesislandtiles,
+    .metatiles = gMetatiles_maxiesislandtiles,
+    .metatileAttributes = gMetatileAttributes_maxiesislandtiles,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IkiTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IkiTown,
+    .palettes = gTilesetPalettes_IkiTown,
+    .metatiles = gMetatiles_IkiTown,
+    .metatileAttributes = gMetatileAttributes_IkiTown,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_islandtrial =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_islandtrial,
+    .palettes = gTilesetPalettes_islandtrial,
+    .metatiles = gMetatiles_islandtrial,
+    .metatileAttributes = gMetatileAttributes_islandtrial,
+    .callback = NULL,
+};

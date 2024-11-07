@@ -71,6 +71,7 @@
 #define MAP_MELEMELE_SEA2          (62 | (0 << 8))
 #define MAP_MELEMELE_SEA3          (63 | (0 << 8))
 #define MAP_HAUOLI_CITY_BEACHFRONT (64 | (0 << 8))
+#define MAP_IKI_TOWN               (65 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))

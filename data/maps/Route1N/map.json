@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_ROUTE1NN",
-      "offset": 24,
+      "offset": 16,
       "direction": "up"
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "map": "MAP_MELEMELE_SEA3",
-      "offset": -29,
+      "offset": -32,
       "direction": "down"
     }
   ],
@@ -49,6 +49,13 @@
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_OUTSKIRTS",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 35,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_IKI_TOWN",
+      "dest_warp_id": "4"
     }
   ],
   "coord_events": [

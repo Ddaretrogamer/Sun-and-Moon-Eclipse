@@ -4454,10 +4454,10 @@
     {
       "id": "LAYOUT_ROUTE1NN",
       "name": "Route1NN_Layout",
-      "width": 60,
+      "width": 68,
       "height": 35,
       "primary_tileset": "gTileset_orangeislands",
-      "secondary_tileset": "gTileset_TrainerSchool",
+      "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route1NN/border.bin",
       "blockdata_filepath": "data/layouts/Route1NN/map.bin"
     },
@@ -4484,7 +4484,7 @@
     {
       "id": "LAYOUT_MELEMELE_SEA3",
       "name": "MelemeleSea3_Layout",
-      "width": 43,
+      "width": 46,
       "height": 15,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_HauoliBeachfront",
@@ -4500,6 +4500,16 @@
       "secondary_tileset": "gTileset_HauoliBeachfront",
       "border_filepath": "data/layouts/HauoliCityBeachfront/border.bin",
       "blockdata_filepath": "data/layouts/HauoliCityBeachfront/map.bin"
+    },
+    {
+      "id": "LAYOUT_IKI_TOWN",
+      "name": "IkiTown_Layout",
+      "width": 49,
+      "height": 56,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_IkiTown",
+      "border_filepath": "data/layouts/IkiTown/border.bin",
+      "blockdata_filepath": "data/layouts/IkiTown/map.bin"
     }
   ]
 }

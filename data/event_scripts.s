@@ -1096,3 +1096,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MelemeleSea3/scripts.inc"
 
 	.include "data/maps/HauoliCityBeachfront/scripts.inc"
+
+	.include "data/maps/IkiTown/scripts.inc"
