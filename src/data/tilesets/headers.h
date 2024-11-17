@@ -834,7 +834,7 @@ const struct Tileset gTileset_orangeislands =
     .palettes = gTilesetPalettes_orangeislands,
     .metatiles = gMetatiles_orangeislands,
     .metatileAttributes = gMetatileAttributes_orangeislands,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Orangeislands,
 };
 
 const struct Tileset gTileset_PorytilesPrimaryTest =

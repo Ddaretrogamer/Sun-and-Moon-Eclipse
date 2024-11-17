@@ -25,6 +25,7 @@ static void _InitPrimaryTilesetAnimation(void);
 static void _InitSecondaryTilesetAnimation(void);
 static void TilesetAnim_General(u16);
 static void TilesetAnim_Building(u16);
+static void TilesetAnim_Orangeislands(u16);
 static void TilesetAnim_Rustboro(u16);
 static void TilesetAnim_Dewford(u16);
 static void TilesetAnim_Slateport(u16);
@@ -48,6 +49,9 @@ static void QueueAnimTiles_General_Water(u16);
 static void QueueAnimTiles_General_SandWaterEdge(u16);
 static void QueueAnimTiles_General_Waterfall(u16);
 static void QueueAnimTiles_General_LandWaterEdge(u16);
+static void QueueAnimTiles_Orangeislands_Flower(u16);
+static void QueueAnimTiles_Orangeislands_Water(u16);
+static void QueueAnimtiles_Orangeislands_SandWaterEdge(u16);
 static void QueueAnimTiles_Building_TVTurnedOn(u16);
 static void QueueAnimTiles_Rustboro_WindyWater(u16, u8);
 static void QueueAnimTiles_Rustboro_Fountain(u16);
@@ -148,6 +152,62 @@ const u16 *const gTilesetAnims_General_LandWaterEdge[] = {
     gTilesetAnims_General_LandWaterEdge_Frame2,
     gTilesetAnims_General_LandWaterEdge_Frame3
 };
+
+const u16 gTilesetAnims_Orangeislands_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/flower/1.4bpp");
+const u16 gTilesetAnims_Orangeislands_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/flower/0.4bpp");
+const u16 gTilesetAnims_Orangeislands_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/flower/2.4bpp");
+const u16 gTilesetAnims_Orangeislands_Flower_Frame3[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/flower/3.4bpp");
+const u16 gTilesetAnims_Orangeislands_Flower_Frame4[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/flower/4.4bpp");
+
+const u16 *const gTilesetAnims_Orangeislands_Flower[] = {
+    gTilesetAnims_Orangeislands_Flower_Frame0,
+    gTilesetAnims_Orangeislands_Flower_Frame1,
+    gTilesetAnims_Orangeislands_Flower_Frame2,
+    gTilesetAnims_Orangeislands_Flower_Frame3,
+    gTilesetAnims_Orangeislands_Flower_Frame4,
+};
+
+const u16 gTilesetAnims_Orangeislands_Water_Frame0[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/0.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame1[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/1.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame2[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/2.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame3[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/3.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame4[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/4.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame5[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/5.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame6[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/6.4bpp");
+const u16 gTilesetAnims_Orangeislands_Water_Frame7[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/water_current_landwatersedge/7.4bpp");
+
+const u16 *const gTilesetAnims_Orangeislands_Water[] = {
+    gTilesetAnims_Orangeislands_Water_Frame0,
+    gTilesetAnims_Orangeislands_Water_Frame1,
+    gTilesetAnims_Orangeislands_Water_Frame2,
+    gTilesetAnims_Orangeislands_Water_Frame3,
+    gTilesetAnims_Orangeislands_Water_Frame4,
+    gTilesetAnims_Orangeislands_Water_Frame5,
+    gTilesetAnims_Orangeislands_Water_Frame6,
+    gTilesetAnims_Orangeislands_Water_Frame7
+};
+
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame0[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/0.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame1[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/1.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame2[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/2.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame3[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/3.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame4[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/4.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame5[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/5.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame6[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/6.4bpp");
+const u16 gTilesetAnims_Orangeislands_SandWaterEdge_Frame7[] = INCBIN_U16("data/tilesets/primary/orangeislands/anim/sandwatersedge/7.4bpp");
+
+const u16 *const gTilesetAnims_Orangeislands_SandWaterEdge[] = {
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame0,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame1,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame2,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame3,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame4,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame5,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame6,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame7,
+    gTilesetAnims_Orangeislands_SandWaterEdge_Frame0
+};
+
 
 const u16 gTilesetAnims_Lavaridge_Steam_Frame0[] = INCBIN_U16("data/tilesets/secondary/lavaridge/anim/steam/0.4bpp");
 const u16 gTilesetAnims_Lavaridge_Steam_Frame1[] = INCBIN_U16("data/tilesets/secondary/lavaridge/anim/steam/1.4bpp");
@@ -629,6 +689,13 @@ void InitTilesetAnim_Building(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_Building;
 }
 
+void InitTilesetAnim_Orangeislands(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_Orangeislands;
+}
+
 static void TilesetAnim_General(u16 timer)
 {
     if (timer % 16 == 0)
@@ -641,6 +708,16 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_Waterfall(timer / 16);
     if (timer % 16 == 4)
         QueueAnimTiles_General_LandWaterEdge(timer / 16);
+}
+
+static void TilesetAnim_Orangeislands(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_Orangeislands_Flower(timer / 16);
+    if (timer % 16 == 1)
+        QueueAnimTiles_Orangeislands_Water(timer / 16);
+    if (timer % 16 == 2)
+        QueueAnimtiles_Orangeislands_SandWaterEdge(timer / 16);
 }
 
 static void TilesetAnim_Building(u16 timer)
@@ -671,6 +748,24 @@ static void QueueAnimTiles_General_Waterfall(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gTilesetAnims_General_Waterfall);
     AppendTilesetAnimToBuffer(gTilesetAnims_General_Waterfall[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(496)), 6 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Orangeislands_Flower(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Orangeislands_Flower);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Orangeislands_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(508)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Orangeislands_Water(u16 timer)
+{
+    u8 i = timer % ARRAY_COUNT(gTilesetAnims_Orangeislands_Water);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Orangeislands_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(416)), 30 * TILE_SIZE_4BPP); //30
+}
+
+static void QueueAnimtiles_Orangeislands_SandWaterEdge(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Orangeislands_SandWaterEdge);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Orangeislands_SandWaterEdge[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(464)), 10 * TILE_SIZE_4BPP);
 }
 
 void InitTilesetAnim_Petalburg(void)
