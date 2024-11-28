@@ -1,7 +1,7 @@
 {
-  "id": "MAP_HAUOLI_CITY_BEACHFRONT",
-  "name": "HauoliCityBeachfront",
-  "layout": "LAYOUT_HAUOLI_CITY_BEACHFRONT",
+  "id": "MAP_HAUOLI_CITY",
+  "name": "HauoliCity",
+  "layout": "LAYOUT_HAUOLI_CITY",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
@@ -10,23 +10,13 @@
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE1N",
-      "offset": -2,
+      "map": "MAP_HAUOLI_CITY_BEACHFRONT",
+      "offset": -6,
       "direction": "right"
-    },
-    {
-      "map": "MAP_MELEMELE_SEA3",
-      "offset": 8,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_HAUOLI_CITY",
-      "offset": 6,
-      "direction": "left"
     }
   ],
   "object_events": [

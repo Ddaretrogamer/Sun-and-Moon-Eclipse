@@ -4510,6 +4510,16 @@
       "secondary_tileset": "gTileset_IkiTown",
       "border_filepath": "data/layouts/IkiTown/border.bin",
       "blockdata_filepath": "data/layouts/IkiTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAUOLI_CITY",
+      "name": "HauoliCity_Layout",
+      "width": 60,
+      "height": 30,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/HauoliCity/border.bin",
+      "blockdata_filepath": "data/layouts/HauoliCity/map.bin"
     }
   ]
 }

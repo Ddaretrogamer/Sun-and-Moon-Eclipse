@@ -1098,3 +1098,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/HauoliCityBeachfront/scripts.inc"
 
 	.include "data/maps/IkiTown/scripts.inc"
+
+	.include "data/maps/HauoliCity/scripts.inc"
