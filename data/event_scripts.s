@@ -1100,3 +1100,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/IkiTown/scripts.inc"
 
 	.include "data/maps/HauoliCity/scripts.inc"
+
+	.include "data/maps/Route3S/scripts.inc"
+
+	.include "data/maps/Route3SBorder/scripts.inc"
+
+	.include "data/maps/Route3/scripts.inc"

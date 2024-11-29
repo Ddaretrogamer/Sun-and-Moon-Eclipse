@@ -102,7 +102,10 @@
     "MelemeleSea3",
     "HauoliCityBeachfront",
     "IkiTown",
-    "HauoliCity"
+    "HauoliCity",
+    "Route3S",
+    "Route3SBorder",
+    "Route3"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

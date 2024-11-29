@@ -759,7 +759,7 @@ static void QueueAnimTiles_Orangeislands_Flower(u16 timer)
 static void QueueAnimTiles_Orangeislands_Water(u16 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_Orangeislands_Water);
-    AppendTilesetAnimToBuffer(gTilesetAnims_Orangeislands_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(416)), 30 * TILE_SIZE_4BPP); //30
+    AppendTilesetAnimToBuffer(gTilesetAnims_Orangeislands_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(416)), 48 * TILE_SIZE_4BPP); //30
 }
 
 static void QueueAnimtiles_Orangeislands_SandWaterEdge(u16 timer)

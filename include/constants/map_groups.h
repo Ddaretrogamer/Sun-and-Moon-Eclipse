@@ -73,6 +73,9 @@
 #define MAP_HAUOLI_CITY_BEACHFRONT (64 | (0 << 8))
 #define MAP_IKI_TOWN               (65 | (0 << 8))
 #define MAP_HAUOLI_CITY            (66 | (0 << 8))
+#define MAP_ROUTE3S                (67 | (0 << 8))
+#define MAP_ROUTE3SBORDER          (68 | (0 << 8))
+#define MAP_ROUTE3                 (69 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
