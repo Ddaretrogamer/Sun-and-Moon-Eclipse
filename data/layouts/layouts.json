@@ -4524,7 +4524,7 @@
     {
       "id": "LAYOUT_ROUTE3S",
       "name": "Route3S_Layout",
-      "width": 50,
+      "width": 60,
       "height": 45,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
@@ -4544,7 +4544,7 @@
     {
       "id": "LAYOUT_ROUTE3",
       "name": "Route3_Layout",
-      "width": 50,
+      "width": 60,
       "height": 40,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
