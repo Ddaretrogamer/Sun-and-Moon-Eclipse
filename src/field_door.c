@@ -132,6 +132,12 @@ static const u16 sDoorNullPalette48[16] = {};
 static const u8 sDoorAnimTiles_TrainerHillRoofElevator[] = INCBIN_U8("graphics/door_anims/trainer_hill_roof_elevator.4bpp");
 static const u16 sDoorNullPalette49[16] = {};
 static const u8 sDoorAnimTiles_AlolaPokecenter[] = INCBIN_U8("graphics/door_anims/alolapokecenter.4bpp");
+static const u8 sDoorAnimTiles_PlayerHouse[] = INCBIN_U8("graphics/door_anims/playerhouse.4bpp");
+static const u8 sDoorAnimTiles_TrainerSchool[] = INCBIN_U8("graphics/door_anims/trainerschool.4bpp");
+static const u8 sDoorAnimTiles_HauoliLab[] = INCBIN_U8("graphics/door_anims/hauolilab.4bpp");
+static const u8 sDoorAnimTiles_IkiTownHouse[] = INCBIN_U8("graphics/door_anims/ikitownhouse.4bpp");
+static const u8 sDoorAnimTiles_IkiTownSlideRight[] = INCBIN_U8("graphics/door_anims/ikitownslideright.4bpp");
+static const u8 sDoorAnimTiles_IkiTownSlideLeft[] = INCBIN_U8("graphics/door_anims/ikitownslideleft.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -221,6 +227,12 @@ static const u8 sDoorAnimPalettes_BattleTentInterior[] = {9, 9, 9, 9, 9, 9, 9, 9
 static const u8 sDoorAnimPalettes_TrainerHillLobbyElevator[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_TrainerHillRoofElevator[] = {9, 9, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_AlolaPokecenter[] = {2, 2, 2, 2, 2, 2, 2, 2};
+static const u8 sDoorAnimPalettes_PlayerHouse[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_TrainerSchool[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HauliLab[] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_IkiTownHouse[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_IkiTownSlideRight[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_IkiTownSlideLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -280,6 +292,12 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_TrainerHill_Door_Elevator_Lobby,              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillLobbyElevator, sDoorAnimPalettes_TrainerHillLobbyElevator},
     {METATILE_TrainerHill_Door_Elevator_Roof,               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillRoofElevator, sDoorAnimPalettes_TrainerHillRoofElevator},
     {METATILE_AlolaPokecenter_Door,                         DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_AlolaPokecenter, sDoorAnimPalettes_AlolaPokecenter},
+    {METATILE_PlayerHouse_Door,                             DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_PlayerHouse, sDoorAnimPalettes_PlayerHouse},
+    {METATILE_TrainerSchool_Door,                           DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerSchool, sDoorAnimPalettes_TrainerSchool},
+    {METATILE_HauoliLab_Door,                               DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HauoliLab, sDoorAnimPalettes_HauliLab},
+    {METATILE_IkiTownHouse_Door,                            DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_IkiTownHouse, sDoorAnimPalettes_IkiTownHouse},
+    {METATILE_IkiTownSlide_Right,                           DOOR_SOUND_ARENA, 1, sDoorAnimTiles_IkiTownSlideRight, sDoorAnimPalettes_IkiTownSlideRight},
+    {METATILE_IkiTownSlide_Left,                            DOOR_SOUND_ARENA, 1, sDoorAnimTiles_IkiTownSlideLeft, sDoorAnimPalettes_IkiTownSlideLeft},    
     {},
 };
 

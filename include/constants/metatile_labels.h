@@ -736,6 +736,9 @@
 #define METATILE_TrainerHill_Door_Elevator_Roof   0x383
 #define METATILE_TrainerHill_GreenFloorTile       0x307
 
+// gTileset_TrainerSchool
+#define METATILE_TrainerSchool_Door  0x24B
+
 // gTileset_TrickHousePuzzle
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down       0x263
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left       0x261
@@ -781,6 +784,11 @@
 
 // Other
 #define METATILE_AlolaPokecenter_Door          0x05A
+#define METATILE_HauoliLab_Door                0x26D
+#define METATILE_IkiTownHouse_Door             0x222
+#define METATILE_IkiTownSlide_Left             0x25B
+#define METATILE_IkiTownSlide_Right            0x25C
+#define METATILE_PlayerHouse_Door              0x307
 #define METATILE_RSMossdeepGym_RedArrow_Down   0x205
 #define METATILE_RSMossdeepGym_RedArrow_Left   0x20C
 #define METATILE_RSMossdeepGym_RedArrow_Right  0x204
