@@ -4535,7 +4535,7 @@
       "id": "LAYOUT_ROUTE3SBORDER",
       "name": "Route3SBorder_Layout",
       "width": 20,
-      "height": 60,
+      "height": 59,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route3SBorder/border.bin",
@@ -4550,6 +4550,16 @@
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route3/border.bin",
       "blockdata_filepath": "data/layouts/Route3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3N",
+      "name": "Route3N_Layout",
+      "width": 60,
+      "height": 20,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/Route3N/border.bin",
+      "blockdata_filepath": "data/layouts/Route3N/map.bin"
     }
   ]
 }

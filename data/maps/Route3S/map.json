@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_ROUTE3SBORDER",
-      "offset": -41,
+      "offset": -40,
       "direction": "left"
     },
     {
@@ -38,7 +38,13 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 15,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE3SBORDER",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 
