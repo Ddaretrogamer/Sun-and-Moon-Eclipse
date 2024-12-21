@@ -11570,7 +11570,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11595,7 +11595,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11620,7 +11620,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11669,7 +11669,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11694,7 +11694,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11719,7 +11719,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11823,7 +11823,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11833,7 +11833,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_GRIMER_ALOLAN"
+                "species": "SPECIES_GRIMER_ALOLA"
               },
               {
                 "min_level": 5,
@@ -11848,37 +11848,37 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               },
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MEOWTH_ALOLAN"
+                "species": "SPECIES_MEOWTH_ALOLA"
               }
             ]
           }
@@ -11897,7 +11897,7 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 2,
@@ -11961,7 +11961,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_RATTATA_ALOLA"
               },
               {
                 "min_level": 5,
