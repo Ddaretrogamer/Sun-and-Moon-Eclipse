@@ -544,7 +544,7 @@ static void StartPokemonLogoShine(u8 mode)
         gSprites[spriteId].invisible = TRUE;
 
         // Create two faster shine sprites
-        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0); // 68
         gSprites[spriteId].callback = SpriteCB_PokemonLogoShine_Fast;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_WINDOW;
 
@@ -597,7 +597,7 @@ void CB2_InitTitleScreen(void)
     case 1:
         // bg2
         LZ77UnCompVram(gTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(0)));
-        LZ77UnCompVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9)));
+        LZ77UnCompVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9))); 
         LoadPalette(gTitleScreenBgPalettes, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
         // bg3
         LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
@@ -621,10 +621,10 @@ void CB2_InitTitleScreen(void)
     {
         u8 taskId = CreateTask(Task_TitleScreenPhase1, 0);
 
-        gTasks[taskId].tCounter = 256;
+        gTasks[taskId].tCounter = 256; //256
         gTasks[taskId].tSkipToNext = FALSE;
-        gTasks[taskId].tPointless = -16;
-        gTasks[taskId].tBg2Y = -32; //tried modifying this, made the vertical movement animation disappear.
+        gTasks[taskId].tPointless = 0; //-16
+        gTasks[taskId].tBg2Y = 0; // modified to 0 which makes vertical animation disappear. og value -32
         gMain.state = 3;
         break;
     }
@@ -637,8 +637,8 @@ void CB2_InitTitleScreen(void)
         PanFadeAndZoomScreen(DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, 0x100, 0);
         SetGpuReg(REG_OFFSET_BG2X_L, -29 * 256);
         SetGpuReg(REG_OFFSET_BG2X_H, -1);
-        SetGpuReg(REG_OFFSET_BG2Y_L, -32 * 256);
-        SetGpuReg(REG_OFFSET_BG2Y_H, -1); // makes logo disappear from beginning of animation when modified.
+        SetGpuReg(REG_OFFSET_BG2Y_L, -1 * 256); // modified from -32 * 256 to -1, changes the starting position of the animation. removing the -x* results in no logo
+        SetGpuReg(REG_OFFSET_BG2Y_H, -1); // makes logo disappear from beginning of animation when modified. originial value = -1
         SetGpuReg(REG_OFFSET_WIN0H, 0);
         SetGpuReg(REG_OFFSET_WIN0V, 0);
         SetGpuReg(REG_OFFSET_WIN1H, 0);
@@ -690,7 +690,7 @@ static void Task_TitleScreenPhase1(u8 taskId)
         gTasks[taskId].tCounter = 0;
     }
 
-    if (gTasks[taskId].tCounter != 0)
+    if (gTasks[taskId].tCounter != 0)  //commenting out the u16 to shine mode single stops some of the shine animation.
     {
         u16 frameNum = gTasks[taskId].tCounter;
         if (frameNum == 176)
@@ -702,7 +702,7 @@ static void Task_TitleScreenPhase1(u8 taskId)
     }
     else
     {
-        u8 spriteId;
+        /*u8 spriteId;
 
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG2_ON | DISPCNT_OBJ_ON);
         SetGpuReg(REG_OFFSET_WININ, 0);
@@ -718,7 +718,7 @@ static void Task_TitleScreenPhase1(u8 taskId)
 
         // Create right side of version banner
         spriteId = CreateSprite(&sVersionBannerRightSpriteTemplate, VERSION_BANNER_RIGHT_X, VERSION_BANNER_Y, 0);
-        gSprites[spriteId].sParentTaskId = taskId;
+        gSprites[spriteId].sParentTaskId = taskId;*/ // commenting this out to get rid of the emerald banner.
 
         gTasks[taskId].tCounter = 144;
         gTasks[taskId].func = Task_TitleScreenPhase2;
@@ -756,8 +756,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 108);
-        CreateCopyrightBanner(START_BANNER_X, 148);
+        CreatePressStartBanner(START_BANNER_X, 55); // modified to place the press start higher up
+        CreateCopyrightBanner(START_BANNER_X, 152); // modified to make the copyright lower down
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
     }
@@ -770,7 +770,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
     // Slide Pokémon logo up
     yPos = (gTasks[taskId].tBg2Y) * 256; // added 0xFF-gTasks[taskId].tBg2Y, which made logo dissappear then reappear later.
     SetGpuReg(REG_OFFSET_BG2Y_L, yPos);
-    SetGpuReg(REG_OFFSET_BG2Y_H, yPos / 0x10000); //removing the 0x10000 removes sliding animation
+    SetGpuReg(REG_OFFSET_BG2Y_H, yPos / 0x10000 ); //removing the /0x10000 removes sliding animation
 
     gTasks[taskId].data[5] = 15; // Unused
     gTasks[taskId].data[6] = 6;  // Unused
