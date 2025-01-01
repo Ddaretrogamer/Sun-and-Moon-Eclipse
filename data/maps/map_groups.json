@@ -106,7 +106,9 @@
     "Route3S",
     "Route3SBorder",
     "Route3",
-    "Route3N"
+    "Route3N",
+    "Route3W",
+    "Route2NE"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

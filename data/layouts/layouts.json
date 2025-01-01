@@ -4560,6 +4560,26 @@
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route3N/border.bin",
       "blockdata_filepath": "data/layouts/Route3N/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3W",
+      "name": "Route3W_Layout",
+      "width": 16,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/Route3W/border.bin",
+      "blockdata_filepath": "data/layouts/Route3W/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2NE",
+      "name": "Route2NE_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/Route2NE/border.bin",
+      "blockdata_filepath": "data/layouts/Route2NE/map.bin"
     }
   ]
 }
