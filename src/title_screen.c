@@ -318,10 +318,10 @@ static const struct OamData sPokemonLogoShineOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(64x64),
+    .shape = SPRITE_SHAPE(64x64), //original 64x64
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x64),
+    .size = SPRITE_SIZE(64x64), //original 64x64
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -862,7 +862,7 @@ static void UpdateLegendaryMarkingColor(u8 frameNum)
         s32 intensity = Cos(frameNum, 128) + 128;
         s32 r = 24 - (intensity * 15 / 250);
         s32 g = 24 - (intensity * 15 / 250);
-        s32 b = 24 - (intensity * 15 / 250);
+        s32 b = 24 - (intensity * 15 / 250); // modified to make it glow from dark grey to white.
 
         u16 color = RGB(r, g, b);
         LoadPalette(&color, BG_PLTT_ID(14) + 15, sizeof(color));

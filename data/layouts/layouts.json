@@ -4517,7 +4517,7 @@
       "width": 60,
       "height": 30,
       "primary_tileset": "gTileset_orangeislands",
-      "secondary_tileset": "gTileset_Slateport",
+      "secondary_tileset": "gTileset_HauoliCity",
       "border_filepath": "data/layouts/HauoliCity/border.bin",
       "blockdata_filepath": "data/layouts/HauoliCity/map.bin"
     },
@@ -4574,12 +4574,32 @@
     {
       "id": "LAYOUT_ROUTE2NE",
       "name": "Route2NE_Layout",
-      "width": 40,
+      "width": 15,
       "height": 40,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route2NE/border.bin",
       "blockdata_filepath": "data/layouts/Route2NE/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2",
+      "name": "Route2_Layout",
+      "width": 54,
+      "height": 49,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_Route2tiles",
+      "border_filepath": "data/layouts/Route2/border.bin",
+      "blockdata_filepath": "data/layouts/Route2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2S",
+      "name": "Route2S_Layout",
+      "width": 60,
+      "height": 27,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_Route2tiles",
+      "border_filepath": "data/layouts/Route2S/border.bin",
+      "blockdata_filepath": "data/layouts/Route2S/map.bin"
     }
   ]
 }

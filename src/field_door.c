@@ -138,6 +138,9 @@ static const u8 sDoorAnimTiles_HauoliLab[] = INCBIN_U8("graphics/door_anims/hauo
 static const u8 sDoorAnimTiles_IkiTownHouse[] = INCBIN_U8("graphics/door_anims/ikitownhouse.4bpp");
 static const u8 sDoorAnimTiles_IkiTownSlideRight[] = INCBIN_U8("graphics/door_anims/ikitownslideright.4bpp");
 static const u8 sDoorAnimTiles_IkiTownSlideLeft[] = INCBIN_U8("graphics/door_anims/ikitownslideleft.4bpp");
+static const u8 sDoorAnimTiles_Route2Door[] = INCBIN_U8("graphics/door_anims/Route2Door1.4bpp");
+static const u8 sDoorAnimTiles_SlakingDoor1[] = INCBIN_U8("graphics/door_anims/slakinghotel1.4bpp");
+static const u8 sDoorAnimTiles_SlakingDoor2[] = INCBIN_U8("graphics/door_anims/slakinghotel21.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -233,6 +236,9 @@ static const u8 sDoorAnimPalettes_HauliLab[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_IkiTownHouse[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_IkiTownSlideRight[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_IkiTownSlideLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_Route2Door[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_SlakingDoor1[] = {7, 7, 9, 9, 9, 9, 9, 9};
+static const u8 sDoorAnimPalettes_SlakingDoor2[] = {7, 7, 9, 9, 9, 9, 9, 9};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -297,7 +303,10 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_HauoliLab_Door,                               DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HauoliLab, sDoorAnimPalettes_HauliLab},
     {METATILE_IkiTownHouse_Door,                            DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_IkiTownHouse, sDoorAnimPalettes_IkiTownHouse},
     {METATILE_IkiTownSlide_Right,                           DOOR_SOUND_ARENA, 1, sDoorAnimTiles_IkiTownSlideRight, sDoorAnimPalettes_IkiTownSlideRight},
-    {METATILE_IkiTownSlide_Left,                            DOOR_SOUND_ARENA, 1, sDoorAnimTiles_IkiTownSlideLeft, sDoorAnimPalettes_IkiTownSlideLeft},    
+    {METATILE_IkiTownSlide_Left,                            DOOR_SOUND_ARENA, 1, sDoorAnimTiles_IkiTownSlideLeft, sDoorAnimPalettes_IkiTownSlideLeft},
+    {METATILE_Route2_Door,                                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_Route2Door, sDoorAnimPalettes_Route2Door},
+    {METATILE_Slaking_Door1,                                DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SlakingDoor1, sDoorAnimPalettes_SlakingDoor1},
+    {METATILE_Slaking_Door2,                                DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SlakingDoor2, sDoorAnimPalettes_SlakingDoor2},
     {},
 };
 

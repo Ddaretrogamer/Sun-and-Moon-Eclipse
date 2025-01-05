@@ -784,16 +784,19 @@
 
 // Other
 #define METATILE_AlolaPokecenter_Door          0x05A
-#define METATILE_HauoliLab_Door                0x26D
+#define METATILE_HauoliLab_Door                0x26C
 #define METATILE_IkiTownHouse_Door             0x222
 #define METATILE_IkiTownSlide_Left             0x25B
 #define METATILE_IkiTownSlide_Right            0x25C
-#define METATILE_PlayerHouse_Door              0x307
+#define METATILE_PlayerHouse_Door              0x2FD
 #define METATILE_RSMossdeepGym_RedArrow_Down   0x205
 #define METATILE_RSMossdeepGym_RedArrow_Left   0x20C
 #define METATILE_RSMossdeepGym_RedArrow_Right  0x204
 #define METATILE_RSMossdeepGym_RedArrow_Up     0x20D
 #define METATILE_RSMossdeepGym_Switch_Down     0x239
 #define METATILE_RSMossdeepGym_Switch_Up       0x238
+#define METATILE_Route2_Door                   0x2B2
+#define METATILE_Slaking_Door1                 0x2D8
+#define METATILE_Slaking_Door2                 0x2D9
 
 #endif // GUARD_METATILE_LABELS_H

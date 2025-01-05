@@ -902,3 +902,36 @@ const struct Tileset gTileset_islandtrial =
     .metatileAttributes = gMetatileAttributes_islandtrial,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Route2tiles =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route2tiles,
+    .palettes = gTilesetPalettes_Route2tiles,
+    .metatiles = gMetatiles_Route2tiles,
+    .metatileAttributes = gMetatileAttributes_Route2tiles,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_melemeleplayerhouse =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_melemeleplayerhouse,
+    .palettes = gTilesetPalettes_melemeleplayerhouse,
+    .metatiles = gMetatiles_melemeleplayerhouse,
+    .metatileAttributes = gMetatileAttributes_melemeleplayerhouse,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HauoliCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HauoliCity,
+    .palettes = gTilesetPalettes_HauoliCity,
+    .metatiles = gMetatiles_HauoliCity,
+    .metatileAttributes = gMetatileAttributes_HauoliCity,
+    .callback = NULL,
+};

@@ -228,3 +228,12 @@ const u16 gMetatileAttributes_IkiTown[] = INCBIN_U16("data/tilesets/secondary/ik
 
 const u16 gMetatiles_islandtrial[] = INCBIN_U16("data/tilesets/secondary/islandtrial/metatiles.bin");
 const u16 gMetatileAttributes_islandtrial[] = INCBIN_U16("data/tilesets/secondary/islandtrial/metatile_attributes.bin");
+
+const u16 gMetatiles_Route2tiles[] = INCBIN_U16("data/tilesets/secondary/route_2tiles/metatiles.bin");
+const u16 gMetatileAttributes_Route2tiles[] = INCBIN_U16("data/tilesets/secondary/route_2tiles/metatile_attributes.bin");
+
+const u16 gMetatiles_melemeleplayerhouse[] = INCBIN_U16("data/tilesets/secondary/melemeleplayerhouse/metatiles.bin");
+const u16 gMetatileAttributes_melemeleplayerhouse[] = INCBIN_U16("data/tilesets/secondary/melemeleplayerhouse/metatile_attributes.bin");
+
+const u16 gMetatiles_HauoliCity[] = INCBIN_U16("data/tilesets/secondary/hauoli_city/metatiles.bin");
+const u16 gMetatileAttributes_HauoliCity[] = INCBIN_U16("data/tilesets/secondary/hauoli_city/metatile_attributes.bin");

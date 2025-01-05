@@ -15,8 +15,13 @@
   "connections": [
     {
       "map": "MAP_HAUOLI_CITY_BEACHFRONT",
-      "offset": -6,
+      "offset": -10,
       "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE2S",
+      "offset": -8,
+      "direction": "up"
     }
   ],
   "object_events": [
