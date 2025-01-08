@@ -499,7 +499,7 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
              || sprite->x == DISPLAY_WIDTH / 2 + (4 * SHINE_SPEED)
              || sprite->x == DISPLAY_WIDTH / 2 + (5 * SHINE_SPEED)
              || sprite->x == DISPLAY_WIDTH / 2 + (6 * SHINE_SPEED))
-                gPlttBufferFaded[0] = RGB(24, 31, 12);
+                gPlttBufferFaded[0] = backgroundColor; // changed from an RGB value so that it no longer flashes green but just white
             else
                 gPlttBufferFaded[0] = backgroundColor;
         }
@@ -623,8 +623,8 @@ void CB2_InitTitleScreen(void)
 
         gTasks[taskId].tCounter = 256; //256
         gTasks[taskId].tSkipToNext = FALSE;
-        gTasks[taskId].tPointless = 0; //-16
-        gTasks[taskId].tBg2Y = 0; // modified to 0 which makes vertical animation disappear. og value -32
+        gTasks[taskId].tPointless = -16; //-16 
+        gTasks[taskId].tBg2Y = 0; // modified to 0 which makes vertical animation disappear. og value -32, second thought, not sure what this does.
         gMain.state = 3;
         break;
     }
@@ -637,8 +637,8 @@ void CB2_InitTitleScreen(void)
         PanFadeAndZoomScreen(DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, 0x100, 0);
         SetGpuReg(REG_OFFSET_BG2X_L, -29 * 256);
         SetGpuReg(REG_OFFSET_BG2X_H, -1);
-        SetGpuReg(REG_OFFSET_BG2Y_L, -1 * 256); // modified from -32 * 256 to -1, changes the starting position of the animation. removing the -x* results in no logo
-        SetGpuReg(REG_OFFSET_BG2Y_H, -1); // makes logo disappear from beginning of animation when modified. originial value = -1
+        SetGpuReg(REG_OFFSET_BG2Y_L, 32 * 256); // modified from -32 * 256, changes the starting position of the shine into the slide animation. 
+        SetGpuReg(REG_OFFSET_BG2Y_H, 0); // modified from -1 to change starting position of logo (shine animation)
         SetGpuReg(REG_OFFSET_WIN0H, 0);
         SetGpuReg(REG_OFFSET_WIN0V, 0);
         SetGpuReg(REG_OFFSET_WIN1H, 0);
@@ -748,7 +748,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
     {
         gTasks[taskId].tSkipToNext = TRUE;
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
-        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(10, 16)); // (6, 15)
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(10, 16)); // (6, 15) // Opacity of cloud animation, making this (50, 10) makes the sparkles not so opaque and pass in front of necrozma
         SetGpuReg(REG_OFFSET_BLDY, 0);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
                                     | DISPCNT_OBJ_1D_MAP
@@ -764,11 +764,11 @@ static void Task_TitleScreenPhase2(u8 taskId)
 
     if (!(gTasks[taskId].tCounter & 3) && gTasks[taskId].tPointless != 0)
         gTasks[taskId].tPointless++;
-    if (!(gTasks[taskId].tCounter & 1) && gTasks[taskId].tBg2Y != 0)
+    if (!(gTasks[taskId].tCounter & 1) && gTasks[taskId].tBg2Y < 32) // changed from !=0 to <32 so the logo doesn't stop prematurely
         gTasks[taskId].tBg2Y++;
 
     // Slide Pokémon logo up
-    yPos = (gTasks[taskId].tBg2Y) * 256; // added 0xFF-gTasks[taskId].tBg2Y, which made logo dissappear then reappear later.
+    yPos = 32 * 256 - (gTasks[taskId].tBg2Y) * 256; // added 32 * 256 - , this causes the logo to slide down insteed of up
     SetGpuReg(REG_OFFSET_BG2Y_L, yPos);
     SetGpuReg(REG_OFFSET_BG2Y_H, yPos / 0x10000 ); //removing the /0x10000 removes sliding animation
 
