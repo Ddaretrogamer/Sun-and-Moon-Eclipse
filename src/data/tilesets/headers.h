@@ -935,3 +935,36 @@ const struct Tileset gTileset_HauoliCity =
     .metatileAttributes = gMetatileAttributes_HauoliCity,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_HauoliCity_Primary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_HauoliCity_Primary,
+    .palettes = gTilesetPalettes_HauoliCity_Primary,
+    .metatiles = gMetatiles_HauoliCity_Primary,
+    .metatileAttributes = gMetatileAttributes_HauoliCity_Primary,
+    .callback = InitTilesetAnim_HauoliCity_Primary,
+};
+
+const struct Tileset gTileset_HauliCity_South =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HauliCity_South,
+    .palettes = gTilesetPalettes_HauliCity_South,
+    .metatiles = gMetatiles_HauliCity_South,
+    .metatileAttributes = gMetatileAttributes_HauliCity_South,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HauoliCityDock =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HauoliCityDock,
+    .palettes = gTilesetPalettes_HauoliCityDock,
+    .metatiles = gMetatiles_HauoliCityDock,
+    .metatileAttributes = gMetatileAttributes_HauoliCityDock,
+    .callback = NULL,
+};

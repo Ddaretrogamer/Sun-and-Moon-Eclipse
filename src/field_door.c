@@ -141,6 +141,18 @@ static const u8 sDoorAnimTiles_IkiTownSlideLeft[] = INCBIN_U8("graphics/door_ani
 static const u8 sDoorAnimTiles_Route2Door[] = INCBIN_U8("graphics/door_anims/Route2Door1.4bpp");
 static const u8 sDoorAnimTiles_SlakingDoor1[] = INCBIN_U8("graphics/door_anims/slakinghotel1.4bpp");
 static const u8 sDoorAnimTiles_SlakingDoor2[] = INCBIN_U8("graphics/door_anims/slakinghotel21.4bpp");
+static const u8 sDoorAnimTiles_HauoliDeptStoreLeft[] = INCBIN_U8("graphics/door_anims/hauoliskyscraperleft1.4bpp");
+static const u8 sDoorAnimTiles_HauoliDeptStoreRight[] = INCBIN_U8("graphics/door_anims/hauoliskyscraperright1.4bpp");
+static const u8 sDoorAnimTiles_HauoliDeptStoreDoor[] = INCBIN_U8("graphics/door_anims/hauolideptstore1.4bpp");
+static const u8 sDoorAnimTiles_LeavannyDoor[] = INCBIN_U8("graphics/door_anims/leavanny1.4bpp");
+static const u8 sDoorAnimTiles_HaouliWeatherLeft[] = INCBIN_U8("graphics/door_anims/weatherleft1.4bpp");
+static const u8 sDoorAnimTiles_HaouliWeatherRight[] = INCBIN_U8("graphics/door_anims/weatherright1.4bpp");
+static const u8 sDoorAnimTiles_HauoliWhiteHouseDoor[] = INCBIN_U8("graphics/door_anims/hauoliwhitehouse1.4bpp");
+static const u8 sDoorAnimTiles_CandyShopDoor[] = INCBIN_U8("graphics/door_anims/candyshop1.4bpp");
+static const u8 sDoorAnimTiles_PoliceDoorLeft[] = INCBIN_U8("graphics/door_anims/policestationleft1.4bpp");
+static const u8 sDoorAnimTiles_PoliceDoorRight[] = INCBIN_U8("graphics/door_anims/policestationright1.4bpp");
+
+
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -239,6 +251,16 @@ static const u8 sDoorAnimPalettes_IkiTownSlideLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_Route2Door[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_SlakingDoor1[] = {7, 7, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_SlakingDoor2[] = {7, 7, 9, 9, 9, 9, 9, 9};
+static const u8 sDoorAnimPalettes_HauoliDeptStoreLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HauoliDeptStoreRight[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HauoliDeptStoreDoor[] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_LeavannyDoor[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HaouliWeatherLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HaouliWeatherRight[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_HauoliWhiteHouseDoor[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_CandyShopDoor[] = {11, 11, 11, 11, 11, 11, 11, 11};
+static const u8 sDoorAnimPalettes_PoliceDoorLeft[] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_PoliceDoorRight[] = {8, 8, 8, 8, 8, 8, 8, 8};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -307,6 +329,16 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Route2_Door,                                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_Route2Door, sDoorAnimPalettes_Route2Door},
     {METATILE_Slaking_Door1,                                DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SlakingDoor1, sDoorAnimPalettes_SlakingDoor1},
     {METATILE_Slaking_Door2,                                DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SlakingDoor2, sDoorAnimPalettes_SlakingDoor2},
+    {METATILE_DeptStore_Left,                               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_HauoliDeptStoreLeft, sDoorAnimPalettes_HauoliDeptStoreLeft},
+    {METATILE_DeptStore_Right,                              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_HauoliDeptStoreRight, sDoorAnimPalettes_HauoliDeptStoreRight},   
+    {METATILE_Clothing_Door,                                DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HauoliDeptStoreDoor, sDoorAnimPalettes_HauoliDeptStoreDoor},
+    {METATILE_Leavanny_Door, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_LeavannyDoor, sDoorAnimPalettes_LeavannyDoor},
+    {METATILE_Weather_Left, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HaouliWeatherLeft, sDoorAnimPalettes_HaouliWeatherLeft},
+    {METATILE_Weather_Right, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HaouliWeatherRight, sDoorAnimPalettes_HaouliWeatherRight},
+    {METATILE_WhiteHouse_Door, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HauoliWhiteHouseDoor, sDoorAnimPalettes_HauoliWhiteHouseDoor},
+    {METATILE_CandyShop_Door, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CandyShopDoor, sDoorAnimPalettes_CandyShopDoor},
+    {METATILE_Police_Left, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_PoliceDoorLeft, sDoorAnimPalettes_PoliceDoorLeft},
+    {METATILE_Police_Right , DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_PoliceDoorRight, sDoorAnimPalettes_PoliceDoorRight},   
     {},
 };
 

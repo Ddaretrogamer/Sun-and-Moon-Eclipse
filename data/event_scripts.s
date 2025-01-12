@@ -1193,3 +1193,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route2/scripts.inc"
 
 	.include "data/maps/Route2S/scripts.inc"
+
+	.include "data/maps/HauoliCity_South/scripts.inc"
+
+	.include "data/maps/HauoliCityDock/scripts.inc"

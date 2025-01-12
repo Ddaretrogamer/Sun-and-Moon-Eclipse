@@ -15,20 +15,110 @@
   "connections": [
     {
       "map": "MAP_HAUOLI_CITY_BEACHFRONT",
-      "offset": -10,
+      "offset": -3,
       "direction": "right"
     },
     {
-      "map": "MAP_ROUTE2S",
-      "offset": -8,
-      "direction": "up"
+      "map": "MAP_HAUOLI_CITY_SOUTH",
+      "offset": -2,
+      "direction": "down"
     }
   ],
   "object_events": [
 
   ],
   "warp_events": [
-
+    {
+      "x": 56,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_BEACHFRONT",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 56,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_BEACHFRONT",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 56,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_BEACHFRONT",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE2S",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 11,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE2S",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 12,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE2S",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 15,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 23,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 24,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "8"
+    },
+    {
+      "x": 33,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "9"
+    },
+    {
+      "x": 39,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "10"
+    },
+    {
+      "x": 49,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "11"
+    },
+    {
+      "x": 50,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "12"
+    }
   ],
   "coord_events": [
 

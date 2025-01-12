@@ -25,7 +25,12 @@
     },
     {
       "map": "MAP_HAUOLI_CITY",
-      "offset": 10,
+      "offset": 3,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_HAUOLI_CITY_SOUTH",
+      "offset": 27,
       "direction": "left"
     }
   ],
@@ -33,7 +38,27 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 7,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 7,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 7,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY",
+      "dest_warp_id": "2"
+    }
   ],
   "coord_events": [
 

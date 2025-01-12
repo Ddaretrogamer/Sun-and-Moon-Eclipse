@@ -237,3 +237,12 @@ const u16 gMetatileAttributes_melemeleplayerhouse[] = INCBIN_U16("data/tilesets/
 
 const u16 gMetatiles_HauoliCity[] = INCBIN_U16("data/tilesets/secondary/hauoli_city/metatiles.bin");
 const u16 gMetatileAttributes_HauoliCity[] = INCBIN_U16("data/tilesets/secondary/hauoli_city/metatile_attributes.bin");
+
+const u16 gMetatiles_HauoliCity_Primary[] = INCBIN_U16("data/tilesets/primary/hauoli_city_primary/metatiles.bin");
+const u16 gMetatileAttributes_HauoliCity_Primary[] = INCBIN_U16("data/tilesets/primary/hauoli_city_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_HauliCity_South[] = INCBIN_U16("data/tilesets/secondary/hauli_city_south/metatiles.bin");
+const u16 gMetatileAttributes_HauliCity_South[] = INCBIN_U16("data/tilesets/secondary/hauli_city_south/metatile_attributes.bin");
+
+const u16 gMetatiles_HauoliCityDock[] = INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/metatiles.bin");
+const u16 gMetatileAttributes_HauoliCityDock[] = INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/metatile_attributes.bin");

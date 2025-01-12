@@ -1824,3 +1824,60 @@ const u16 gTilesetPalettes_HauoliCity[][16] =
 };
 
 const u32 gTilesetTiles_HauoliCity[] = INCBIN_U32("data/tilesets/secondary/hauoli_city/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HauoliCity_Primary[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hauoli_city_primary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HauoliCity_Primary[] = INCBIN_U32("data/tilesets/primary/hauoli_city_primary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HauliCity_South[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauli_city_south/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HauliCity_South[] = INCBIN_U32("data/tilesets/secondary/hauli_city_south/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HauoliCityDock[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hauoli_city_dock/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HauoliCityDock[] = INCBIN_U32("data/tilesets/secondary/hauoli_city_dock/tiles.4bpp.lz");

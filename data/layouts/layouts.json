@@ -4514,9 +4514,9 @@
     {
       "id": "LAYOUT_HAUOLI_CITY",
       "name": "HauoliCity_Layout",
-      "width": 60,
-      "height": 30,
-      "primary_tileset": "gTileset_orangeislands",
+      "width": 64,
+      "height": 24,
+      "primary_tileset": "gTileset_HauoliCity_Primary",
       "secondary_tileset": "gTileset_HauoliCity",
       "border_filepath": "data/layouts/HauoliCity/border.bin",
       "blockdata_filepath": "data/layouts/HauoliCity/map.bin"
@@ -4595,11 +4595,31 @@
       "id": "LAYOUT_ROUTE2S",
       "name": "Route2S_Layout",
       "width": 60,
-      "height": 27,
+      "height": 34,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_Route2tiles",
       "border_filepath": "data/layouts/Route2S/border.bin",
       "blockdata_filepath": "data/layouts/Route2S/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAUOLI_CITY_SOUTH",
+      "name": "HauoliCity_South_Layout",
+      "width": 66,
+      "height": 30,
+      "primary_tileset": "gTileset_HauoliCity_Primary",
+      "secondary_tileset": "gTileset_HauliCity_South",
+      "border_filepath": "data/layouts/HauoliCity_South/border.bin",
+      "blockdata_filepath": "data/layouts/HauoliCity_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAUOLI_CITY_DOCK",
+      "name": "HauoliCityDock_Layout",
+      "width": 65,
+      "height": 30,
+      "primary_tileset": "gTileset_HauoliCity_Primary",
+      "secondary_tileset": "gTileset_HauoliCityDock",
+      "border_filepath": "data/layouts/HauoliCityDock/border.bin",
+      "blockdata_filepath": "data/layouts/HauoliCityDock/map.bin"
     }
   ]
 }

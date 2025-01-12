@@ -110,7 +110,9 @@
     "Route3W",
     "Route2NE",
     "Route2",
-    "Route2S"
+    "Route2S",
+    "HauoliCity_South",
+    "HauoliCityDock"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

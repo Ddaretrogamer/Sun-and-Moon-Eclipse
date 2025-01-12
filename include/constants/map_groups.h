@@ -81,6 +81,8 @@
 #define MAP_ROUTE2NE               (72 | (0 << 8))
 #define MAP_ROUTE2                 (73 | (0 << 8))
 #define MAP_ROUTE2S                (74 | (0 << 8))
+#define MAP_HAUOLI_CITY_SOUTH      (75 | (0 << 8))
+#define MAP_HAUOLI_CITY_DOCK       (76 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
