@@ -1,6 +1,7 @@
 {
   "group_order": [
     "gMapGroup_TownsAndRoutes",
+    "gMapGrouo_IndoorMelemele",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -112,7 +113,11 @@
     "Route2",
     "Route2S",
     "HauoliCity_South",
-    "HauoliCityDock"
+    "HauoliCityDock",
+    "TapuKokoBridge"
+  ],
+  "gMapGrouo_IndoorMelemele": [
+    "PlayerHouse"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

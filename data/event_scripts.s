@@ -1197,3 +1197,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/HauoliCity_South/scripts.inc"
 
 	.include "data/maps/HauoliCityDock/scripts.inc"
+
+	.include "data/maps/PlayerHouse/scripts.inc"
+
+	.include "data/maps/TapuKokoBridge/scripts.inc"

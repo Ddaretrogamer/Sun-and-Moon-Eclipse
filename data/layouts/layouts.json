@@ -4620,6 +4620,26 @@
       "secondary_tileset": "gTileset_HauoliCityDock",
       "border_filepath": "data/layouts/HauoliCityDock/border.bin",
       "blockdata_filepath": "data/layouts/HauoliCityDock/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLAYER_HOUSE",
+      "name": "PlayerHouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/PlayerHouse/border.bin",
+      "blockdata_filepath": "data/layouts/PlayerHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_TAPU_KOKO_BRIDGE",
+      "name": "TapuKokoBridge_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/TapuKokoBridge/border.bin",
+      "blockdata_filepath": "data/layouts/TapuKokoBridge/map.bin"
     }
   ]
 }

@@ -72,14 +72,14 @@
       "x": 23,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_IKI_TOWN",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
+      "dest_warp_id": "2"
     },
     {
       "x": 24,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_IKI_TOWN",
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
       "dest_warp_id": "2"
     }
   ],
