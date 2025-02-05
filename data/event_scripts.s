@@ -1201,3 +1201,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/PlayerHouse/scripts.inc"
 
 	.include "data/maps/TapuKokoBridge/scripts.inc"
+
+	.include "data/maps/PlayerRoom/scripts.inc"
+
+	.include "data/maps/MelemeleMeadow/scripts.inc"

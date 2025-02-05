@@ -84,9 +84,11 @@
 #define MAP_HAUOLI_CITY_SOUTH      (75 | (0 << 8))
 #define MAP_HAUOLI_CITY_DOCK       (76 | (0 << 8))
 #define MAP_TAPU_KOKO_BRIDGE       (77 | (0 << 8))
+#define MAP_MELEMELE_MEADOW        (78 | (0 << 8))
 
 // gMapGrouo_IndoorMelemele
 #define MAP_PLAYER_HOUSE (0 | (1 << 8))
+#define MAP_PLAYER_ROOM  (1 | (1 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (2 << 8))

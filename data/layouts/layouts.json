@@ -4640,6 +4640,26 @@
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/TapuKokoBridge/border.bin",
       "blockdata_filepath": "data/layouts/TapuKokoBridge/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLAYER_ROOM",
+      "name": "PlayerRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/PlayerRoom/border.bin",
+      "blockdata_filepath": "data/layouts/PlayerRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_MEADOW",
+      "name": "MelemeleMeadow_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_MelemeleMeadow",
+      "border_filepath": "data/layouts/MelemeleMeadow/border.bin",
+      "blockdata_filepath": "data/layouts/MelemeleMeadow/map.bin"
     }
   ]
 }

@@ -114,10 +114,12 @@
     "Route2S",
     "HauoliCity_South",
     "HauoliCityDock",
-    "TapuKokoBridge"
+    "TapuKokoBridge",
+    "MelemeleMeadow"
   ],
   "gMapGrouo_IndoorMelemele": [
-    "PlayerHouse"
+    "PlayerHouse",
+    "PlayerRoom"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

@@ -968,3 +968,14 @@ const struct Tileset gTileset_HauoliCityDock =
     .metatileAttributes = gMetatileAttributes_HauoliCityDock,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_MelemeleMeadow =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MelemeleMeadow,
+    .palettes = gTilesetPalettes_MelemeleMeadow,
+    .metatiles = gMetatiles_MelemeleMeadow,
+    .metatileAttributes = gMetatileAttributes_MelemeleMeadow,
+    .callback = NULL,
+};

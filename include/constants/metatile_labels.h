@@ -782,16 +782,14 @@
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
 
-//gTileset_HaouliCityDock
-#define METATILE_HaouliDock_Right              0x27C
-#define METATILE_HaouliDock_Left               0x27B
-
 // Other
 #define METATILE_AlolaPokecenter_Door          0x05A
 #define METATILE_CandyShop_Door                0x29B
 #define METATILE_Clothing_Door                 0x30B
 #define METATILE_DeptStore_Left                0x254
 #define METATILE_DeptStore_Right               0x255
+#define METATILE_HaouliDock_Left               0x27B
+#define METATILE_HaouliDock_Right              0x27C
 #define METATILE_HauoliLab_Door                0x26C
 #define METATILE_IkiTownHouse_Door             0x222
 #define METATILE_IkiTownSlide_Left             0x25B
@@ -812,6 +810,5 @@
 #define METATILE_Weather_Left                  0x30F
 #define METATILE_Weather_Right                 0x310
 #define METATILE_WhiteHouse_Door               0x3D9
-
 
 #endif // GUARD_METATILE_LABELS_H

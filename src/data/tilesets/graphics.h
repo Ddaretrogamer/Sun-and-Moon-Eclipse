@@ -1881,3 +1881,22 @@ const u16 gTilesetPalettes_HauoliCityDock[][16] =
 };
 
 const u32 gTilesetTiles_HauoliCityDock[] = INCBIN_U32("data/tilesets/secondary/hauoli_city_dock/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_MelemeleMeadow[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/melemele_meadow/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_MelemeleMeadow[] = INCBIN_U32("data/tilesets/secondary/melemele_meadow/tiles.4bpp.lz");
