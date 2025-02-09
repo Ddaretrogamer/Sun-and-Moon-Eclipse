@@ -4594,7 +4594,7 @@
     {
       "id": "LAYOUT_ROUTE2S",
       "name": "Route2S_Layout",
-      "width": 78,
+      "width": 60,
       "height": 34,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_Route2tiles",
