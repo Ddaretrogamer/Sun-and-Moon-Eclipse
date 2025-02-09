@@ -4654,7 +4654,7 @@
     {
       "id": "LAYOUT_MELEMELE_MEADOW",
       "name": "MelemeleMeadow_Layout",
-      "width": 50,
+      "width": 61,
       "height": 50,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_MelemeleMeadow",

@@ -42,8 +42,8 @@
       "x": 15,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE3SBORDER",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_MELEMELE_MEADOW",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
