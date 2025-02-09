@@ -727,8 +727,10 @@
 #define STRINGID_SUPEREFFECTIVETWOFOES                725
 #define STRINGID_NOTVERYEFFECTIVETWOFOES              726
 #define STRINGID_ITDOESNTAFFECTTWOFOES                727
+#define STRINGID_SENDCAUGHTMONPARTYORBOX              728
+#define STRINGID_PKMNSENTTOPCAFTERCATCH               729
 
-#define BATTLESTRINGS_COUNT                           728
+#define BATTLESTRINGS_COUNT                           730
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -784,13 +786,24 @@
 
 // gWeatherEndsStringIds
 #define B_MSG_WEATHER_END_RAIN         0
-#define B_MSG_WEATHER_END_SANDSTORM    1
-#define B_MSG_WEATHER_END_SUN          2
+#define B_MSG_WEATHER_END_SUN          1
+#define B_MSG_WEATHER_END_SANDSTORM    2
 #define B_MSG_WEATHER_END_HAIL         3
-#define B_MSG_WEATHER_END_STRONG_WINDS 4
-#define B_MSG_WEATHER_END_SNOW         5
-#define B_MSG_WEATHER_END_FOG          6
+#define B_MSG_WEATHER_END_SNOW         4
+#define B_MSG_WEATHER_END_FOG          5
+#define B_MSG_WEATHER_END_STRONG_WINDS 6
 #define B_MSG_WEATHER_END_COUNT        7
+
+// gWeatherTurnStringIds
+#define B_MSG_WEATHER_TURN_RAIN         0
+#define B_MSG_WEATHER_TURN_DOWNPOUR     1
+#define B_MSG_WEATHER_TURN_SUN          2
+#define B_MSG_WEATHER_TURN_SANDSTORM    3
+#define B_MSG_WEATHER_TURN_HAIL         4
+#define B_MSG_WEATHER_TURN_SNOW         5
+#define B_MSG_WEATHER_TURN_FOG          6
+#define B_MSG_WEATHER_TURN_STRONG_WINDS 7
+#define B_MSG_WEATHER_TURN_COUNT        8
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0
@@ -881,10 +894,12 @@
 #define B_MSG_WEAKEN_FIRE     1
 
 // gCaughtMonStringIds
-#define B_MSG_SENT_SOMEONES_PC  0
-#define B_MSG_SENT_LANETTES_PC  1
-#define B_MSG_SOMEONES_BOX_FULL 2
-#define B_MSG_LANETTES_BOX_FULL 3
+#define B_MSG_NO_MESSSAGE_SKIP   0
+#define B_MSG_SENT_SOMEONES_PC   1
+#define B_MSG_SENT_LANETTES_PC   2
+#define B_MSG_SOMEONES_BOX_FULL  3
+#define B_MSG_LANETTES_BOX_FULL  4
+#define B_MSG_SWAPPED_INTO_PARTY 5
 
 // gPrimalWeatherBlocksStringIds
 #define B_MSG_PRIMAL_WEATHER_FIZZLED_BY_RAIN    0
@@ -1010,9 +1025,11 @@
 #define B_MSG_SET_TRICK_ROOM        4
 #define B_MSG_SET_MAGIC_ROOM        5
 #define B_MSG_SET_WONDER_ROOM       6
-#define B_MSG_SET_TAILWIND_PLAYER   7
-#define B_MSG_SET_TAILWIND_OPPONENT 8
-#define B_MSG_STARTING_STATUS_COUNT 9
+#define B_MSG_SET_TAILWIND          7
+#define B_MSG_SET_RAINBOW           8
+#define B_MSG_SET_SEA_OF_FIRE       9
+#define B_MSG_SET_SWAMP             10
+#define B_MSG_STARTING_STATUS_COUNT 11
 
 
 // gWrappedStringIds
