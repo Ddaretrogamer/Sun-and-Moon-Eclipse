@@ -4594,7 +4594,7 @@
     {
       "id": "LAYOUT_ROUTE2S",
       "name": "Route2S_Layout",
-      "width": 60,
+      "width": 78,
       "height": 34,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_Route2tiles",
@@ -4660,6 +4660,16 @@
       "secondary_tileset": "gTileset_MelemeleMeadow",
       "border_filepath": "data/layouts/MelemeleMeadow/border.bin",
       "blockdata_filepath": "data/layouts/MelemeleMeadow/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAOULI_CEMETARY",
+      "name": "HaouliCemetary_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_HaouliCemetary",
+      "border_filepath": "data/layouts/HaouliCemetary/border.bin",
+      "blockdata_filepath": "data/layouts/HaouliCemetary/map.bin"
     }
   ]
 }

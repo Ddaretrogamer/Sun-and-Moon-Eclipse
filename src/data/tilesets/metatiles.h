@@ -249,3 +249,6 @@ const u16 gMetatileAttributes_HauoliCityDock[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_MelemeleMeadow[] = INCBIN_U16("data/tilesets/secondary/melemele_meadow/metatiles.bin");
 const u16 gMetatileAttributes_MelemeleMeadow[] = INCBIN_U16("data/tilesets/secondary/melemele_meadow/metatile_attributes.bin");
+
+const u16 gMetatiles_HaouliCemetary[] = INCBIN_U16("data/tilesets/secondary/haouli_cemetary/metatiles.bin");
+const u16 gMetatileAttributes_HaouliCemetary[] = INCBIN_U16("data/tilesets/secondary/haouli_cemetary/metatile_attributes.bin");

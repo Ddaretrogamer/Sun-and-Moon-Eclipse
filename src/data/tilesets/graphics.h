@@ -1900,3 +1900,22 @@ const u16 gTilesetPalettes_MelemeleMeadow[][16] =
 };
 
 const u32 gTilesetTiles_MelemeleMeadow[] = INCBIN_U32("data/tilesets/secondary/melemele_meadow/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HaouliCemetary[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/haouli_cemetary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HaouliCemetary[] = INCBIN_U32("data/tilesets/secondary/haouli_cemetary/tiles.4bpp.lz");
