@@ -1,13 +1,13 @@
 {
-  "id": "MAP_MELEMELE_MEADOW",
-  "name": "MelemeleMeadow",
-  "layout": "LAYOUT_MELEMELE_MEADOW",
+  "id": "MAP_SEAWARD_CAVE",
+  "name": "SeawardCave",
+  "layout": "LAYOUT_SEAWARD_CAVE",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_ROUTE",
-  "allow_cycling": false,
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
@@ -18,17 +18,17 @@
   ],
   "warp_events": [
     {
-      "x": 52,
-      "y": 21,
+      "x": 33,
+      "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE3SBORDER",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_MELEMELE_MEADOW",
+      "dest_warp_id": "1"
     },
     {
-      "x": 12,
-      "y": 31,
+      "x": 7,
+      "y": 36,
       "elevation": 0,
-      "dest_map": "MAP_SEAWARD_CAVE",
+      "dest_map": "MAP_ROUTE3S",
       "dest_warp_id": "0"
     }
   ],

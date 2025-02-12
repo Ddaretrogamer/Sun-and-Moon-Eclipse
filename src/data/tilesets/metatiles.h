@@ -252,3 +252,9 @@ const u16 gMetatileAttributes_MelemeleMeadow[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_HaouliCemetary[] = INCBIN_U16("data/tilesets/secondary/haouli_cemetary/metatiles.bin");
 const u16 gMetatileAttributes_HaouliCemetary[] = INCBIN_U16("data/tilesets/secondary/haouli_cemetary/metatile_attributes.bin");
+
+const u16 gMetatiles_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatiles.bin");
+const u16 gMetatileAttributes_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_beachCaveSecondary2[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/metatiles.bin");
+const u16 gMetatileAttributes_beachCaveSecondary2[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/metatile_attributes.bin");

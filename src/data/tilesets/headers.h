@@ -990,3 +990,25 @@ const struct Tileset gTileset_HaouliCemetary =
     .metatileAttributes = gMetatileAttributes_HaouliCemetary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BeachCaveSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BeachCaveSecondary,
+    .palettes = gTilesetPalettes_BeachCaveSecondary,
+    .metatiles = gMetatiles_BeachCaveSecondary,
+    .metatileAttributes = gMetatileAttributes_BeachCaveSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_beachCaveSecondary2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_beachCaveSecondary2,
+    .palettes = gTilesetPalettes_beachCaveSecondary2,
+    .metatiles = gMetatiles_beachCaveSecondary2,
+    .metatileAttributes = gMetatileAttributes_beachCaveSecondary2,
+    .callback = NULL,
+};

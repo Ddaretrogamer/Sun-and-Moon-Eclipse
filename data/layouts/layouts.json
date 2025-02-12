@@ -4670,6 +4670,16 @@
       "secondary_tileset": "gTileset_HaouliCemetary",
       "border_filepath": "data/layouts/HaouliCemetary/border.bin",
       "blockdata_filepath": "data/layouts/HaouliCemetary/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEAWARD_CAVE",
+      "name": "SeawardCave_Layout",
+      "width": 41,
+      "height": 45,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_BeachCaveSecondary",
+      "border_filepath": "data/layouts/SeawardCave/border.bin",
+      "blockdata_filepath": "data/layouts/SeawardCave/map.bin"
     }
   ]
 }

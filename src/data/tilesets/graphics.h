@@ -1919,3 +1919,41 @@ const u16 gTilesetPalettes_HaouliCemetary[][16] =
 };
 
 const u32 gTilesetTiles_HaouliCemetary[] = INCBIN_U32("data/tilesets/secondary/haouli_cemetary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_BeachCaveSecondary[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_BeachCaveSecondary[] = INCBIN_U32("data/tilesets/secondary/beach_cave_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_beachCaveSecondary2[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_beachCaveSecondary2[] = INCBIN_U32("data/tilesets/secondary/beach_cave_secondary_2/tiles.4bpp.lz");

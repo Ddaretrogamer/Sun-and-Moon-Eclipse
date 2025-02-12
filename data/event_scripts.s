@@ -1210,3 +1210,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MelemeleMeadow/scripts.inc"
 
 	.include "data/maps/HaouliCemetary/scripts.inc"
+
+	.include "data/maps/SeawardCave/scripts.inc"
