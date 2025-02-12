@@ -4677,7 +4677,7 @@
       "width": 41,
       "height": 45,
       "primary_tileset": "gTileset_orangeislands",
-      "secondary_tileset": "gTileset_BeachCaveSecondary",
+      "secondary_tileset": "gTileset_beachCaveSecondary2",
       "border_filepath": "data/layouts/SeawardCave/border.bin",
       "blockdata_filepath": "data/layouts/SeawardCave/map.bin"
     }

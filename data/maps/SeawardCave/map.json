@@ -18,15 +18,15 @@
   ],
   "warp_events": [
     {
-      "x": 33,
+      "x": 32,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_MELEMELE_MEADOW",
       "dest_warp_id": "1"
     },
     {
-      "x": 7,
-      "y": 36,
+      "x": 8,
+      "y": 31,
       "elevation": 0,
       "dest_map": "MAP_ROUTE3S",
       "dest_warp_id": "0"
