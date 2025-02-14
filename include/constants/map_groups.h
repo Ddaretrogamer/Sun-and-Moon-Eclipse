@@ -429,6 +429,7 @@
 #define MAP_ALTERING_CAVE                            (106 | (25 << 8))
 #define MAP_METEOR_FALLS_STEVENS_CAVE                (107 | (25 << 8))
 #define MAP_SEAWARD_CAVE                             (108 | (25 << 8))
+#define MAP_TEN_CARROT_HILL_CAVE                     (109 | (25 << 8))
 
 // gMapGroup_IndoorDynamic
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (26 << 8))

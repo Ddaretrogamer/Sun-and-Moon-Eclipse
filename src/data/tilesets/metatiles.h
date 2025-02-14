@@ -258,3 +258,6 @@ const u16 gMetatileAttributes_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_beachCaveSecondary2[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/metatiles.bin");
 const u16 gMetatileAttributes_beachCaveSecondary2[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary_2/metatile_attributes.bin");
+
+const u16 gMetatiles_Gen4IndoorSecondary[] = INCBIN_U16("data/tilesets/secondary/gen_4indoor_secondary/metatiles.bin");
+const u16 gMetatileAttributes_Gen4IndoorSecondary[] = INCBIN_U16("data/tilesets/secondary/gen_4indoor_secondary/metatile_attributes.bin");

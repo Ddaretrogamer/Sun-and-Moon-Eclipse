@@ -18,8 +18,8 @@
   ],
   "warp_events": [
     {
-      "x": 7,
-      "y": 7,
+      "x": 6,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_PLAYER_HOUSE",
       "dest_warp_id": "2"

@@ -1012,3 +1012,14 @@ const struct Tileset gTileset_beachCaveSecondary2 =
     .metatileAttributes = gMetatileAttributes_beachCaveSecondary2,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Gen4IndoorSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Gen4IndoorSecondary,
+    .palettes = gTilesetPalettes_Gen4IndoorSecondary,
+    .metatiles = gMetatiles_Gen4IndoorSecondary,
+    .metatileAttributes = gMetatileAttributes_Gen4IndoorSecondary,
+    .callback = NULL,
+};

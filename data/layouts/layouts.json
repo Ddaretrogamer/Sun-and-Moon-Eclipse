@@ -4627,7 +4627,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "secondary_tileset": "gTileset_Gen4IndoorSecondary",
       "border_filepath": "data/layouts/PlayerHouse/border.bin",
       "blockdata_filepath": "data/layouts/PlayerHouse/map.bin"
     },
@@ -4647,7 +4647,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "secondary_tileset": "gTileset_Gen4IndoorSecondary",
       "border_filepath": "data/layouts/PlayerRoom/border.bin",
       "blockdata_filepath": "data/layouts/PlayerRoom/map.bin"
     },
@@ -4680,6 +4680,16 @@
       "secondary_tileset": "gTileset_beachCaveSecondary2",
       "border_filepath": "data/layouts/SeawardCave/border.bin",
       "blockdata_filepath": "data/layouts/SeawardCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEN_CARROT_HILL_CAVE",
+      "name": "TenCarrotHillCave_Layout",
+      "width": 60,
+      "height": 20,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_beachCaveSecondary2",
+      "border_filepath": "data/layouts/TenCarrotHillCave/border.bin",
+      "blockdata_filepath": "data/layouts/TenCarrotHillCave/map.bin"
     }
   ]
 }

@@ -459,7 +459,8 @@
     "TerraCave_End",
     "AlteringCave",
     "MeteorFalls_StevensCave",
-    "SeawardCave"
+    "SeawardCave",
+    "TenCarrotHillCave"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

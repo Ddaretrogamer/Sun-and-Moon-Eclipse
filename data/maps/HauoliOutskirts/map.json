@@ -37,7 +37,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 10,
+      "x": 7,
       "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -50,7 +50,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 9,
+      "x": 8,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -86,6 +86,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HauoliOutskirtLassNPC",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 9,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -97,10 +123,10 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 9,
+      "x": 8,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE1N",
+      "dest_map": "MAP_TEN_CARROT_HILL_CAVE",
       "dest_warp_id": "0"
     }
   ],
@@ -110,8 +136,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 11,
-      "y": 13,
+      "x": 10,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "TenCarrotHillSign"
