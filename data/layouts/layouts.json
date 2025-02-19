@@ -4525,7 +4525,7 @@
       "id": "LAYOUT_ROUTE3S",
       "name": "Route3S_Layout",
       "width": 60,
-      "height": 45,
+      "height": 27,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route3S/border.bin",
