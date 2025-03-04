@@ -1,0 +1,55 @@
+{
+  "id": "MAP_TAPU_KOKO_SHRINE",
+  "name": "TapuKokoShrine",
+  "layout": "LAYOUT_TAPU_KOKO_SHRINE",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ROUTE_106",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 14,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 13,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_BRIDGE",
+      "dest_warp_id": "3"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

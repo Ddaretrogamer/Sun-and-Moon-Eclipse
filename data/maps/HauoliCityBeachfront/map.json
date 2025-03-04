@@ -51,21 +51,21 @@
   ],
   "warp_events": [
     {
-      "x": 7,
+      "x": 9,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_CITY",
       "dest_warp_id": "1"
     },
     {
-      "x": 7,
+      "x": 9,
       "y": 23,
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_CITY",
       "dest_warp_id": "1"
     },
     {
-      "x": 7,
+      "x": 9,
       "y": 24,
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_CITY",

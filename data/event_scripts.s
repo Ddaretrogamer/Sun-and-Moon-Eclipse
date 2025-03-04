@@ -1214,3 +1214,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SeawardCave/scripts.inc"
 
 	.include "data/maps/TenCarrotHillCave/scripts.inc"
+
+	.include "data/maps/MomsRoom/scripts.inc"
+
+	.include "data/maps/OceanCave/scripts.inc"
+
+	.include "data/maps/FarthestHallow/scripts.inc"
+
+	.include "data/maps/TapuKokoShrine/scripts.inc"
+
+	.include "data/maps/AetherConservatory/scripts.inc"

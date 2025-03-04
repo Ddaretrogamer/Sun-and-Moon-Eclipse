@@ -1023,3 +1023,25 @@ const struct Tileset gTileset_Gen4IndoorSecondary =
     .metatileAttributes = gMetatileAttributes_Gen4IndoorSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_ConservatoryPory =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ConservatoryPory,
+    .palettes = gTilesetPalettes_ConservatoryPory,
+    .metatiles = gMetatiles_ConservatoryPory,
+    .metatileAttributes = gMetatileAttributes_ConservatoryPory,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_OrangeIslandsPory =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_OrangeIslandsPory,
+    .palettes = gTilesetPalettes_OrangeIslandsPory,
+    .metatiles = gMetatiles_OrangeIslandsPory,
+    .metatileAttributes = gMetatileAttributes_OrangeIslandsPory,
+    .callback = NULL,
+};

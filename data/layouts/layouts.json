@@ -4690,6 +4690,56 @@
       "secondary_tileset": "gTileset_beachCaveSecondary2",
       "border_filepath": "data/layouts/TenCarrotHillCave/border.bin",
       "blockdata_filepath": "data/layouts/TenCarrotHillCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOMS_ROOM",
+      "name": "MomsRoom_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gen4IndoorSecondary",
+      "border_filepath": "data/layouts/MomsRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MomsRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_OCEAN_CAVE",
+      "name": "OceanCave_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_beachCaveSecondary2",
+      "border_filepath": "data/layouts/OceanCave/border.bin",
+      "blockdata_filepath": "data/layouts/OceanCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_FARTHEST_HALLOW",
+      "name": "FarthestHallow_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/FarthestHallow/border.bin",
+      "blockdata_filepath": "data/layouts/FarthestHallow/map.bin"
+    },
+    {
+      "id": "LAYOUT_TAPU_KOKO_SHRINE",
+      "name": "TapuKokoShrine_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/TapuKokoShrine/border.bin",
+      "blockdata_filepath": "data/layouts/TapuKokoShrine/map.bin"
+    },
+    {
+      "id": "LAYOUT_AETHER_CONSERVATORY",
+      "name": "AetherConservatory_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_OrangeIslandsPory",
+      "secondary_tileset": "gTileset_ConservatoryPory",
+      "border_filepath": "data/layouts/AetherConservatory/border.bin",
+      "blockdata_filepath": "data/layouts/AetherConservatory/map.bin"
     }
   ]
 }

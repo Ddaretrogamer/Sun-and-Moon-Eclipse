@@ -116,11 +116,14 @@
     "HauoliCityDock",
     "TapuKokoBridge",
     "MelemeleMeadow",
-    "HaouliCemetary"
+    "HaouliCemetary",
+    "TapuKokoShrine",
+    "AetherConservatory"
   ],
   "gMapGrouo_IndoorMelemele": [
     "PlayerHouse",
-    "PlayerRoom"
+    "PlayerRoom",
+    "MomsRoom"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -460,7 +463,9 @@
     "AlteringCave",
     "MeteorFalls_StevensCave",
     "SeawardCave",
-    "TenCarrotHillCave"
+    "TenCarrotHillCave",
+    "OceanCave",
+    "FarthestHallow"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

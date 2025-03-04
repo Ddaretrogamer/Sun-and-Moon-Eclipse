@@ -1976,3 +1976,41 @@ const u16 gTilesetPalettes_Gen4IndoorSecondary[][16] =
 };
 
 const u32 gTilesetTiles_Gen4IndoorSecondary[] = INCBIN_U32("data/tilesets/secondary/gen_4indoor_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_ConservatoryPory[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/conservatory_pory/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_ConservatoryPory[] = INCBIN_U32("data/tilesets/secondary/conservatory_pory/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_OrangeIslandsPory[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/orange_islands_pory/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_OrangeIslandsPory[] = INCBIN_U32("data/tilesets/primary/orange_islands_pory/tiles.4bpp.lz");

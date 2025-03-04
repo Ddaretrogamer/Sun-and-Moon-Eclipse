@@ -37,6 +37,20 @@
       "elevation": 0,
       "dest_map": "MAP_IKI_TOWN",
       "dest_warp_id": "5"
+    },
+    {
+      "x": 20,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_SHRINE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_TAPU_KOKO_SHRINE",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

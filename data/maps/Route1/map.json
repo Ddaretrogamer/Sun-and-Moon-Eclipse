@@ -62,8 +62,8 @@
       "x": 16,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_LITTLEROOTCAVE",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_PLAYER_HOUSE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
