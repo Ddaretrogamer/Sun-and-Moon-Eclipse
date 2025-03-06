@@ -37,15 +37,15 @@
       "x": 38,
       "y": 25,
       "elevation": 0,
-      "dest_map": "MAP_IKI_TOWN",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_AETHER_CONSERVATORY",
+      "dest_warp_id": "0"
     },
     {
       "x": 25,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_IKI_TOWN",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 12,
