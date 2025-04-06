@@ -248,6 +248,21 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
+//UE sprites
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AlolaAceM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AlolaAceF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gladion;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LillieHat;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lillie;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamSkullGruntM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamSkullGruntF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lusamine;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherGruntM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherGruntF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hakuna;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kiawe;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kukui;
+
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
@@ -490,6 +505,19 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
+    [OBJ_EVENT_GFX_ALOLA_ACE_M] =              &gObjectEventGraphicsInfo_AlolaAceM,
+    [OBJ_EVENT_GFX_ALOLA_ACE_F] =              &gObjectEventGraphicsInfo_AlolaAceF,
+    [OBJ_EVENT_GFX_GLADION] =                  &gObjectEventGraphicsInfo_Gladion,
+    [OBJ_EVENT_GFX_LILLIE_HAT] =               &gObjectEventGraphicsInfo_LillieHat,
+    [OBJ_EVENT_GFX_LILLIE] =                   &gObjectEventGraphicsInfo_Lillie,
+    [OBJ_EVENT_GFX_TEAM_SKULL_GRUNT_M] =       &gObjectEventGraphicsInfo_TeamSkullGruntM,
+    [OBJ_EVENT_GFX_TEAM_SKULL_GRUNT_F] =       &gObjectEventGraphicsInfo_TeamSkullGruntF,
+    [OBJ_EVENT_GFX_LUSAMINE] =                 &gObjectEventGraphicsInfo_Lusamine,
+    [OBJ_EVENT_GFX_AETHER_GRUNT_M] =           &gObjectEventGraphicsInfo_AetherGruntM,
+    [OBJ_EVENT_GFX_AETHER_GRUNT_F] =           &gObjectEventGraphicsInfo_AetherGruntF,
+    [OBJ_EVENT_GFX_HAKUNA] =                   &gObjectEventGraphicsInfo_Hakuna,
+    [OBJ_EVENT_GFX_KIAWE] =                    &gObjectEventGraphicsInfo_Kiawe,
+    [OBJ_EVENT_GFX_KUKUI] =                    &gObjectEventGraphicsInfo_Kukui,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
