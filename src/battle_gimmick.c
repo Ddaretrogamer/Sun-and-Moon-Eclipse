@@ -222,7 +222,7 @@ static void SpriteCb_GimmickTrigger(struct Sprite *sprite)
 
     if (sprite->tHide)
     {
-        if (sprite->x != gSprites[gHealthboxSpriteIds[sprite->tBattler]].x - xSlide - 6)
+        if (sprite->x != gSprites[gHealthboxSpriteIds[sprite->tBattler]].x - xSlide)
             sprite->x++;
 
         if (sprite->x >= gSprites[gHealthboxSpriteIds[sprite->tBattler]].x - xPriority - 6)
@@ -232,7 +232,7 @@ static void SpriteCb_GimmickTrigger(struct Sprite *sprite)
 
         sprite->y = gSprites[gHealthboxSpriteIds[sprite->tBattler]].y - yDiff;
         sprite->y2 = gSprites[gHealthboxSpriteIds[sprite->tBattler]].y2 - yDiff;
-        if (sprite->x == gSprites[gHealthboxSpriteIds[sprite->tBattler]].x - xSlide - 6)
+        if (sprite->x == gSprites[gHealthboxSpriteIds[sprite->tBattler]].x - xSlide)
             DestroyGimmickTriggerSprite();
     }
     else
