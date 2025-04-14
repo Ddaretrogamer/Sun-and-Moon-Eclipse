@@ -193,6 +193,7 @@ static void DoShadowFieldEffect(struct ObjectEvent *);
 static void SetJumpSpriteData(struct Sprite *, u8, u8, u8);
 static void SetWalkSlowSpriteData(struct Sprite *, u8);
 static bool8 UpdateWalkSlowAnim(struct Sprite *);
+static bool8 UpdateWalkSlowStairs(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 static u8 DoJumpSpriteMovement(struct Sprite *);
 static u8 DoJumpSpecialSpriteMovement(struct Sprite *);
 static void CreateLevitateMovementTask(struct ObjectEvent *);
@@ -381,7 +382,7 @@ static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = TRUE,
 };
 
-const u8 gInitialMovementTypeFacingDirections[] = {
+const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_NONE] = DIR_SOUTH,
     [MOVEMENT_TYPE_LOOK_AROUND] = DIR_SOUTH,
     [MOVEMENT_TYPE_WANDER_AROUND] = DIR_SOUTH,
@@ -463,6 +464,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_LEFT] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
+    [MOVEMENT_TYPE_FOLLOW_PLAYER] = DIR_SOUTH,
 };
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -975,6 +977,13 @@ const u8 gFaceDirectionMovementActions[] = {
     [DIR_NORTHWEST] = MOVEMENT_ACTION_FACE_LEFT,
     [DIR_NORTHEAST] = MOVEMENT_ACTION_FACE_RIGHT
 };
+static const u8 gWalkSlowStairsMovementActions[] = {
+    [DIR_NONE]  = MOVEMENT_ACTION_WALK_SLOW_STAIRS_DOWN,
+    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_SLOW_STAIRS_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_WALK_SLOW_STAIRS_UP,
+    [DIR_WEST]  = MOVEMENT_ACTION_WALK_SLOW_STAIRS_LEFT,
+    [DIR_EAST]  = MOVEMENT_ACTION_WALK_SLOW_STAIRS_RIGHT,
+};
 const u8 gWalkSlowMovementActions[] = {
     [DIR_NONE] = MOVEMENT_ACTION_WALK_SLOW_DOWN,
     [DIR_SOUTH] = MOVEMENT_ACTION_WALK_SLOW_DOWN,
@@ -1440,8 +1449,8 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     objectEvent->previousCoords.y = y;
     objectEvent->currentElevation = template->elevation;
     objectEvent->previousElevation = template->elevation;
-    objectEvent->rangeX = template->movementRangeX;
-    objectEvent->rangeY = template->movementRangeY;
+    objectEvent->range.rangeX = template->movementRangeX;
+    objectEvent->range.rangeY = template->movementRangeY;
     objectEvent->trainerType = template->trainerType;
     objectEvent->mapNum = mapNum;
     objectEvent->trainerRange_berryTreeId = template->trainerRange_berryTreeId;
@@ -1449,10 +1458,10 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     SetObjectEventDirection(objectEvent, objectEvent->previousMovementDirection);
     if (sMovementTypeHasRange[objectEvent->movementType])
     {
-        if (objectEvent->rangeX == 0)
-            objectEvent->rangeX++;
-        if (objectEvent->rangeY == 0)
-            objectEvent->rangeY++;
+        if (objectEvent->range.rangeX == 0)
+            objectEvent->range.rangeX++;
+        if (objectEvent->range.rangeY == 0)
+            objectEvent->range.rangeY++;
     }
     return objectEventId;
 }
@@ -1939,6 +1948,14 @@ struct Pokemon *GetFirstLiveMon(void)
     u32 i;
     for (i = 0; i < PARTY_SIZE; i++)
     {
+        struct Pokemon *mon = &gPlayerParty[i];
+        if ((OW_MON_ALLOWED_SPECIES && GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != VarGet(OW_MON_ALLOWED_SPECIES))
+         || (OW_MON_ALLOWED_MET_LVL && GetMonData(mon, MON_DATA_MET_LEVEL) != VarGet(OW_MON_ALLOWED_MET_LVL))
+         || (OW_MON_ALLOWED_MET_LOC && GetMonData(mon, MON_DATA_MET_LOCATION) != VarGet(OW_MON_ALLOWED_MET_LOC)))
+        {
+            continue;
+        }
+
         if (gPlayerParty[i].hp > 0 && !(gPlayerParty[i].box.isEgg || gPlayerParty[i].box.isBadEgg))
             return &gPlayerParty[i];
     }
@@ -2003,8 +2020,10 @@ static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female)
     {
         struct SpritePalette spritePalette;
         u16 palTag = species + OBJ_EVENT_MON + (shiny ? OBJ_EVENT_MON_SHINY : 0);
+    #if P_GENDER_DIFFERENCES
         if (female && gSpeciesInfo[species].overworldShinyPaletteFemale != NULL)
             palTag += OBJ_EVENT_MON_FEMALE;
+    #endif
         // palette already loaded
         if ((paletteNum = IndexOfSpritePaletteTag(palTag)) < 16)
             return paletteNum;
@@ -2191,6 +2210,7 @@ void UpdateFollowingPokemon(void)
     // 3. flag is set
     if (OW_POKEMON_OBJECT_EVENTS == FALSE
      || OW_FOLLOWERS_ENABLED == FALSE
+     || FlagGet(B_FLAG_FOLLOWERS_DISABLED)
      || !GetFollowerInfo(&species, &shiny, &female)
      || SpeciesToGraphicsInfo(species, shiny, female) == NULL
      || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, shiny, female)->oam->size > ST_OAM_SIZE_2)
@@ -5437,6 +5457,7 @@ bool8 MovementType_FollowPlayer_Moving(struct ObjectEvent *objectEvent, struct S
         objectEvent->movementActionId = MOVEMENT_ACTION_NONE;
         sprite->sActionFuncId = 0;
         objectEvent->singleMovementActive = FALSE;
+        objectEvent->facingDirectionLocked = FALSE;
         if (sprite->sTypeFuncId) // restore nonzero state
             sprite->sTypeFuncId = 1;
     }
@@ -5507,7 +5528,8 @@ bool8 FollowablePlayerMovement_Step(struct ObjectEvent *objectEvent, struct Spri
     {
         // Animate exiting pokeball
         // Player is jumping, but follower is invisible
-        if (PlayerGetCopyableMovement() == COPY_MOVE_JUMP2)
+        // don't emerge if player is jumping or moving via script
+        if (PlayerGetCopyableMovement() == COPY_MOVE_JUMP2 || ArePlayerFieldControlsLocked())
         {
             sprite->sTypeFuncId = 0; // return to shadowing state
             return FALSE;
@@ -5528,6 +5550,15 @@ bool8 FollowablePlayerMovement_Step(struct ObjectEvent *objectEvent, struct Spri
 
     // Follow player
     direction = GetDirectionToFace(x, y, targetX, targetY);
+    // During a script, if player sidesteps or backsteps,
+    // mirror player's direction instead
+    if (ArePlayerFieldControlsLocked() &&
+        gObjectEvents[gPlayerAvatar.objectEventId].facingDirection != gObjectEvents[gPlayerAvatar.objectEventId].movementDirection)
+    {
+        direction = gObjectEvents[gPlayerAvatar.objectEventId].movementDirection;
+        objectEvent->facingDirectionLocked = TRUE;
+    }
+    
     MoveCoords(direction, &x, &y);
     GetCollisionAtCoords(objectEvent, x, y, direction); // Sets directionOverwrite for stairs
     if (GetLedgeJumpDirection(x, y, direction) != DIR_NONE)
@@ -5535,53 +5566,28 @@ bool8 FollowablePlayerMovement_Step(struct ObjectEvent *objectEvent, struct Spri
         // InitJumpRegular will set the proper speed
         ObjectEventSetSingleMovement(objectEvent, sprite, GetJump2MovementAction(direction));
     }
-    else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
+    else if (playerAction >= MOVEMENT_ACTION_WALK_SLOW_STAIRS_DOWN && playerAction <= MOVEMENT_ACTION_WALK_SLOW_STAIRS_RIGHT)
     {
-        // Set follow speed according to player's speed
-        if (playerAction >= MOVEMENT_ACTION_RUN_DOWN_SLOW && playerAction <= MOVEMENT_ACTION_RUN_RIGHT_SLOW)
+        if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH)) // on sideways stairs
             objectEvent->movementActionId = GetWalkNormalMovementAction(direction);
         else
-            objectEvent->movementActionId = GetWalkFastMovementAction(direction);
+            ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowStairsMovementAction(direction));
     }
     else if (PlayerGetCopyableMovement() == COPY_MOVE_JUMP2)
     {
         ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(direction));
     }
-    else
+    else if (gSprites[gPlayerAvatar.spriteId].data[4] == MOVE_SPEED_FAST_1)
     {
-        if (playerAction >= MOVEMENT_ACTION_WALK_SLOW_DOWN && playerAction <= MOVEMENT_ACTION_WALK_SLOW_RIGHT)
-        {
-            ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(direction));
-        }
-        else
-        {
-            objectEvent->movementActionId = GetWalkNormalMovementAction(direction);
-            if (OW_FOLLOWERS_BOBBING == TRUE)
-                sprite->y2 = -1;
-        }
-    }
-    sprite->sActionFuncId = 0;
-    if (GetLedgeJumpDirection(x, y, direction) != DIR_NONE)
-    {
-        // InitJumpRegular will set the proper speed
-        ObjectEventSetSingleMovement(objectEvent, sprite, GetJump2MovementAction(direction));
-    }
-    else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
-    {
-        // Set follow speed according to player's speed
-        ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkFastMovementAction(direction));
-    }
-    else if (PlayerGetCopyableMovement() == COPY_MOVE_JUMP2)
-    {
-        // If *player* jumps, make step take twice as long
-        ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(direction));
+        objectEvent->movementActionId = GetWalkFastMovementAction(direction);
     }
     else
     {
-        ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkNormalMovementAction(direction));
+        objectEvent->movementActionId = GetWalkNormalMovementAction(direction);
         if (OW_FOLLOWERS_BOBBING == TRUE)
             sprite->y2 = -1;
     }
+    sprite->sActionFuncId = 0;
     objectEvent->singleMovementActive = TRUE;
     sprite->sTypeFuncId = 2;
     return TRUE;
@@ -6217,18 +6223,18 @@ static bool8 IsCoordOutsideObjectEventMovementRange(struct ObjectEvent *objectEv
     s16 top;
     s16 bottom;
 
-    if (objectEvent->rangeX != 0)
+    if (objectEvent->range.rangeX != 0)
     {
-        left = objectEvent->initialCoords.x - objectEvent->rangeX;
-        right = objectEvent->initialCoords.x + objectEvent->rangeX;
+        left = objectEvent->initialCoords.x - objectEvent->range.rangeX;
+        right = objectEvent->initialCoords.x + objectEvent->range.rangeX;
 
         if (left > x || right < x)
             return TRUE;
     }
-    if (objectEvent->rangeY != 0)
+    if (objectEvent->range.rangeY != 0)
     {
-        top = objectEvent->initialCoords.y - objectEvent->rangeY;
-        bottom = objectEvent->initialCoords.y + objectEvent->rangeY;
+        top = objectEvent->initialCoords.y - objectEvent->range.rangeY;
+        bottom = objectEvent->initialCoords.y + objectEvent->range.rangeY;
 
         if (top > y || bottom < y)
             return TRUE;
@@ -6245,13 +6251,19 @@ static bool8 IsMetatileDirectionallyImpassable(struct ObjectEvent *objectEvent, 
     return FALSE;
 }
 
-static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 x, s16 y)
+u32 GetObjectObjectCollidesWith(struct ObjectEvent *objectEvent, s16 x, s16 y, bool32 addCoords)
 {
     u8 i;
     struct ObjectEvent *curObject;
 
     if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
-        return FALSE; // follower cannot collide with other objects, but they can collide with it
+        return OBJECT_EVENTS_COUNT; // follower cannot collide with other objects, but they can collide with it
+
+    if (addCoords)
+    {
+        x += objectEvent->currentCoords.x;
+        y += objectEvent->currentCoords.y;
+    }
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
@@ -6262,11 +6274,16 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
                 if (AreElevationsCompatible(objectEvent->currentElevation, curObject->currentElevation))
-                    return TRUE;
+                    return i;
             }
         }
     }
-    return FALSE;
+    return OBJECT_EVENTS_COUNT;
+}
+
+static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 x, s16 y)
+{
+    return (GetObjectObjectCollidesWith(objectEvent, x, y, FALSE) < OBJECT_EVENTS_COUNT);
 }
 
 bool8 IsBerryTreeSparkling(u8 localId, u8 mapNum, u8 mapGroup)
@@ -6406,17 +6423,30 @@ static u8 TryUpdateMovementActionOnStairs(struct ObjectEvent *objectEvent, u8 mo
     switch (movementActionId)
     {
         case MOVEMENT_ACTION_WALK_NORMAL_DOWN:
-            return MOVEMENT_ACTION_WALK_SLOW_DOWN;
+            return MOVEMENT_ACTION_WALK_SLOW_STAIRS_DOWN;
         case MOVEMENT_ACTION_WALK_NORMAL_UP:
-            return MOVEMENT_ACTION_WALK_SLOW_UP;
+            return MOVEMENT_ACTION_WALK_SLOW_STAIRS_UP;
         case MOVEMENT_ACTION_WALK_NORMAL_LEFT:
-            return MOVEMENT_ACTION_WALK_SLOW_LEFT;
+            return MOVEMENT_ACTION_WALK_SLOW_STAIRS_LEFT;
         case MOVEMENT_ACTION_WALK_NORMAL_RIGHT:
-            return MOVEMENT_ACTION_WALK_SLOW_RIGHT;
+            return MOVEMENT_ACTION_WALK_SLOW_STAIRS_RIGHT;
         default:
             return movementActionId;
     }
 }
+
+static const u8 sActionIdToCopyableMovement[] = {
+    [MOVEMENT_ACTION_FACE_DOWN ... MOVEMENT_ACTION_FACE_RIGHT] = COPY_MOVE_FACE,
+    [MOVEMENT_ACTION_WALK_SLOW_DOWN ... MOVEMENT_ACTION_WALK_NORMAL_RIGHT] = COPY_MOVE_WALK,
+    [MOVEMENT_ACTION_JUMP_2_DOWN ... MOVEMENT_ACTION_JUMP_2_RIGHT] = COPY_MOVE_JUMP2,
+    [MOVEMENT_ACTION_WALK_FAST_DOWN ... MOVEMENT_ACTION_WALK_FAST_RIGHT] = COPY_MOVE_WALK,
+    [MOVEMENT_ACTION_RIDE_WATER_CURRENT_DOWN ... MOVEMENT_ACTION_PLAYER_RUN_RIGHT] = COPY_MOVE_WALK,
+    // Not a typo; follower needs to take an action with a duration == JUMP's,
+    // and JUMP2 here will lead to WALK_SLOW later
+    [MOVEMENT_ACTION_JUMP_DOWN ... MOVEMENT_ACTION_JUMP_RIGHT] = COPY_MOVE_JUMP2,
+
+    [MOVEMENT_ACTION_NONE] = COPY_MOVE_NONE,
+};
 
 bool8 ObjectEventSetHeldMovement(struct ObjectEvent *objectEvent, u8 movementActionId)
 {
@@ -6430,6 +6460,16 @@ bool8 ObjectEventSetHeldMovement(struct ObjectEvent *objectEvent, u8 movementAct
     objectEvent->heldMovementActive = TRUE;
     objectEvent->heldMovementFinished = FALSE;
     gSprites[objectEvent->spriteId].sActionFuncId = 0;
+
+    // When player is moved via script, set copyable movement
+    // for any followers via a lookup table
+    if (ArePlayerFieldControlsLocked()
+     && objectEvent->isPlayer
+     && FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT))
+    {
+        objectEvent->playerCopyableMovement = sActionIdToCopyableMovement[objectEvent->movementActionId];
+    }
+
     return FALSE;
 }
 
@@ -6453,6 +6493,15 @@ void ObjectEventClearHeldMovement(struct ObjectEvent *objectEvent)
     objectEvent->heldMovementFinished = FALSE;
     gSprites[objectEvent->spriteId].sTypeFuncId = 0;
     gSprites[objectEvent->spriteId].sActionFuncId = 0;
+
+    // When player is moved via script, set copyable movement
+    // for any followers via a lookup table
+    if (ArePlayerFieldControlsLocked()
+     && objectEvent->isPlayer
+     && FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT))
+    {
+        objectEvent->playerCopyableMovement = sActionIdToCopyableMovement[objectEvent->movementActionId];
+    }
 }
 
 u8 ObjectEventCheckHeldMovementStatus(struct ObjectEvent *objectEvent)
@@ -6509,6 +6558,7 @@ u8 name(u32 idx)\
 }
 
 dirn_to_anim(GetFaceDirectionMovementAction, gFaceDirectionMovementActions);
+dirn_to_anim(GetWalkSlowStairsMovementAction, gWalkSlowStairsMovementActions);
 dirn_to_anim(GetWalkSlowMovementAction, gWalkSlowMovementActions);
 dirn_to_anim(GetPlayerRunSlowMovementAction, gRunSlowMovementActions);
 dirn_to_anim(GetWalkNormalMovementAction, gWalkNormalMovementActions);
@@ -10293,6 +10343,22 @@ static bool8 UpdateWalkSlowAnim(struct Sprite *sprite)
         return FALSE;
 }
 
+bool8 UpdateWalkSlowStairsAnim(struct Sprite *sprite)
+{
+    if (++sprite->sTimer < 3)
+    {
+        Step1(sprite, sprite->sDirection);
+        sprite->sNumSteps++;
+    }
+    else
+        sprite->sTimer = 0;
+
+    if (sprite->sNumSteps > 15)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 #undef sTimer
 #undef sNumSteps
 
@@ -11045,6 +11111,88 @@ bool8 MovementActionFunc_RunSlow_Step1(struct ObjectEvent *objectEvent, struct S
     if (UpdateMovementNormal(objectEvent, sprite))
     {
         sprite->sActionFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static bool8 UpdateWalkSlowStairs(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateWalkSlowStairsAnim(sprite))
+    {
+        ShiftStillObjectEventCoords(objectEvent);
+        objectEvent->triggerGroundEffectsOnStop = TRUE;
+        sprite->animPaused = TRUE;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_WalkSlowStairsUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitWalkSlow(objectEvent, sprite, DIR_NORTH);
+    return MovementAction_WalkSlowStairsUp_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkSlowStairsUp_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateWalkSlowStairs(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_WalkSlowStairsDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitWalkSlow(objectEvent, sprite, DIR_SOUTH);
+    return MovementAction_WalkSlowStairsDown_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkSlowStairsDown_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateWalkSlowStairs(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_WalkSlowStairsLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_WEST);
+    return MovementAction_WalkSlowStairsLeft_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkSlowStairsLeft_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateWalkSlowStairs(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_WalkSlowStairsRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_EAST);
+    return MovementAction_WalkSlowStairsRight_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkSlowStairsRight_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateWalkSlowStairs(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
         return TRUE;
     }
     return FALSE;
