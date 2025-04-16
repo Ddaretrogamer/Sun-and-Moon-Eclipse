@@ -222,7 +222,7 @@ static void SpriteCb_GimmickTrigger(struct Sprite *sprite)
         if (sprite->x < xHealthbox - xSlide)
             sprite->x++;
 
-        if (sprite->x >= xHealthbox - xPriority)
+        if (sprite->x >= xHealthbox - xPriority- 6)
             sprite->oam.priority = 2;
         else
             sprite->oam.priority = 1;
@@ -238,10 +238,10 @@ static void SpriteCb_GimmickTrigger(struct Sprite *sprite)
         if (sprite->y != gSprites[gHealthboxSpriteIds[sprite->tBattler]].y - yDiff)
             sprite->x = xHealthbox - xSlide;
 
-        if (sprite->x > xHealthbox - xOptimal)
+        if (sprite->x > xHealthbox - xOptimal -6)
             sprite->x--;
 
-        if (sprite->x >= xHealthbox - xPriority)
+        if (sprite->x >= xHealthbox - xPriority- 6)
             sprite->oam.priority = 2;
         else
             sprite->oam.priority = 1;
