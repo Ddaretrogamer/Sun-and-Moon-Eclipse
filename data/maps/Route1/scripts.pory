@@ -3,13 +3,14 @@ mapscripts Route1_MapScripts{}
 script MomSaysHi{
     lock
     faceplayer
-    msgbox(format("Mom: How are you doing, honey?\nYou look a little tired.\pYou should take a rest."))
+    speakername("Mom")
+    msgbox(format("How are you doing, honey?\nYou look a little tired.\pYou should take a rest."))
     fadescreen(FADE_TO_BLACK)
     playfanfare(MUS_HEAL)
     waitfanfare
     special(HealPlayerParty)
     fadescreen(FADE_FROM_BLACK)
-    msgbox("Mom: Take care, honey!")
+    msgbox("Take care, honey!")
     release
 end
 }

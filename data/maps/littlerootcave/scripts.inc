@@ -252,68 +252,72 @@ Give_EXP_Share::
 	faceplayer
 # 128 "data/maps/littlerootcave/scripts.pory"
 	goto_if_unset FLAG_UNUSED_0x264, Give_EXP_Share_2
-# 140 "data/maps/littlerootcave/scripts.pory"
-	msgbox Give_EXP_Share_Text_3
-Give_EXP_Share_1:
+# 141 "data/maps/littlerootcave/scripts.pory"
+	speakername Give_EXP_Share_Text_0
 # 142 "data/maps/littlerootcave/scripts.pory"
+	msgbox Give_EXP_Share_Text_4
+Give_EXP_Share_1:
+# 144 "data/maps/littlerootcave/scripts.pory"
 	waitmessage
-# 143 "data/maps/littlerootcave/scripts.pory"
+# 145 "data/maps/littlerootcave/scripts.pory"
 	release
 	end
 
 Give_EXP_Share_2:
 # 129 "data/maps/littlerootcave/scripts.pory"
-	msgbox Give_EXP_Share_Text_0, MSGBOX_YESNO
+	speakername Give_EXP_Share_Text_0
 # 130 "data/maps/littlerootcave/scripts.pory"
+	msgbox Give_EXP_Share_Text_1, MSGBOX_YESNO
+# 131 "data/maps/littlerootcave/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq Give_EXP_Share_5
-# 136 "data/maps/littlerootcave/scripts.pory"
-	msgbox Give_EXP_Share_Text_2
+# 137 "data/maps/littlerootcave/scripts.pory"
+	msgbox Give_EXP_Share_Text_3
 	goto Give_EXP_Share_1
 
 Give_EXP_Share_5:
-# 131 "data/maps/littlerootcave/scripts.pory"
-	giveitem ITEM_EXP_SHARE, 1
 # 132 "data/maps/littlerootcave/scripts.pory"
-	setflag FLAG_UNUSED_0x264
+	giveitem ITEM_EXP_SHARE, 1
 # 133 "data/maps/littlerootcave/scripts.pory"
-	msgbox Give_EXP_Share_Text_1
+	setflag FLAG_UNUSED_0x264
+# 134 "data/maps/littlerootcave/scripts.pory"
+	msgbox Give_EXP_Share_Text_2
 	goto Give_EXP_Share_1
 
 
 NicknamePartyMon::
-# 148 "data/maps/littlerootcave/scripts.pory"
-	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
-# 149 "data/maps/littlerootcave/scripts.pory"
-	hidemonpic
 # 150 "data/maps/littlerootcave/scripts.pory"
+	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
+# 151 "data/maps/littlerootcave/scripts.pory"
+	hidemonpic
+# 152 "data/maps/littlerootcave/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq NicknamePartyMon_1
 	return
 
 NicknamePartyMon_1:
-# 151 "data/maps/littlerootcave/scripts.pory"
+# 153 "data/maps/littlerootcave/scripts.pory"
 	call Common_EventScript_GetGiftMonPartySlot
-# 152 "data/maps/littlerootcave/scripts.pory"
+# 154 "data/maps/littlerootcave/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	return
 
 
 NicknameBoxMon::
-# 157 "data/maps/littlerootcave/scripts.pory"
-	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
-# 158 "data/maps/littlerootcave/scripts.pory"
-	hidemonpic
 # 159 "data/maps/littlerootcave/scripts.pory"
+	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
+# 160 "data/maps/littlerootcave/scripts.pory"
+	hidemonpic
+# 161 "data/maps/littlerootcave/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq NicknameBoxMon_2
 NicknameBoxMon_1:
-# 162 "data/maps/littlerootcave/scripts.pory"
+# 164 "data/maps/littlerootcave/scripts.pory"
 	msgbox NicknameBoxMon_Text_0
 	return
 
 NicknameBoxMon_2:
-# 160 "data/maps/littlerootcave/scripts.pory"
+# 162 "data/maps/littlerootcave/scripts.pory"
 	call Common_EventScript_NameReceivedBoxMon
 	goto NicknameBoxMon_1
 
@@ -352,29 +356,33 @@ littlerootcave_eventscript_chikorita_gift_Text_1:
 
 Give_EXP_Share_Text_0:
 # 129 "data/maps/littlerootcave/scripts.pory"
+	.string "Birch$"
+
+Give_EXP_Share_Text_1:
+# 130 "data/maps/littlerootcave/scripts.pory"
 	.string "Would you like the EXP Share?\n"
 	.string "I've got an extra.$"
 
-Give_EXP_Share_Text_1:
-# 133 "data/maps/littlerootcave/scripts.pory"
+Give_EXP_Share_Text_2:
+# 134 "data/maps/littlerootcave/scripts.pory"
 	.string "Now you on easy mode.$"
 
-Give_EXP_Share_Text_2:
-# 136 "data/maps/littlerootcave/scripts.pory"
+Give_EXP_Share_Text_3:
+# 137 "data/maps/littlerootcave/scripts.pory"
 	.string "Alright big dawg.$"
 
-Give_EXP_Share_Text_3:
-# 140 "data/maps/littlerootcave/scripts.pory"
+Give_EXP_Share_Text_4:
+# 142 "data/maps/littlerootcave/scripts.pory"
 	.string "Dude that was my last one.$"
 
 NicknamePartyMon_Text_0:
-# 148 "data/maps/littlerootcave/scripts.pory"
+# 150 "data/maps/littlerootcave/scripts.pory"
 	.string "Give it a nickname?$"
 
 NicknameBoxMon_Text_0:
-# 162 "data/maps/littlerootcave/scripts.pory"
+# 164 "data/maps/littlerootcave/scripts.pory"
 	.string "Transferred to PC$"
 
 littlerootcave_NotChosen::
-# 164 "data/maps/littlerootcave/scripts.pory"
+# 166 "data/maps/littlerootcave/scripts.pory"
 	.string "You did not choose the Pokemon.$"

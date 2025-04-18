@@ -126,6 +126,7 @@ script Give_EXP_Share{
     lock
     faceplayer
     if(!(flag(FLAG_UNUSED_0x264))){
+        speakername("Birch")
         msgbox("Would you like the EXP Share?\n" "I've got an extra.", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
             giveitem(ITEM_EXP_SHARE, 1)
@@ -137,6 +138,7 @@ script Give_EXP_Share{
         }
     }
     else{
+        speakername("Birch")
         msgbox("Dude that was my last one.")
     }
     waitmessage
