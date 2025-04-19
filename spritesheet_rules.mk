@@ -444,9 +444,6 @@ $(OBJEVENTGFXDIR)/people/trial_captains/kukui.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/rivals/lillie.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4	
 
-$(OBJEVENTGFXDIR)/people/rivals/lillie.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 4	
-
 $(OBJEVENTGFXDIR)/people/elio/walking.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
