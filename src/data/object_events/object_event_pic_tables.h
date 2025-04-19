@@ -710,6 +710,13 @@ static const struct SpriteFrameImage sPicTable_Kukui[] = {
     overworld_ascending_frames(gObjectEventPic_Kukui, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_ElioNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_ElioNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SeleneNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_SeleneNormalRunning, 2, 4),
+};
 
 static const struct SpriteFrameImage sPicTable_SSTidal[] = {
     obj_frame_tiles(gObjectEventPic_SSTidal),

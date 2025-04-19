@@ -263,6 +263,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherGrunt
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hakuna;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kiawe;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kukui;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneNormal;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -520,6 +522,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HAKUNA] =                   &gObjectEventGraphicsInfo_Hakuna,
     [OBJ_EVENT_GFX_KIAWE] =                    &gObjectEventGraphicsInfo_Kiawe,
     [OBJ_EVENT_GFX_KUKUI] =                    &gObjectEventGraphicsInfo_Kukui,
+    [OBJ_EVENT_GFX_ELIO_NORMAL] =              &gObjectEventGraphicsInfo_ElioNormal,
+    [OBJ_EVENT_GFX_SELENE_NORMAL] =            &gObjectEventGraphicsInfo_SeleneNormal,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
