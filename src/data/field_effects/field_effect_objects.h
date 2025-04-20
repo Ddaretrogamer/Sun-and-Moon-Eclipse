@@ -777,15 +777,15 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_JumpLongGrass = {
 };
 
 static const struct SpriteFrameImage sPicTable_UnusedGrass[] = {
-    overworld_frame(gFieldEffectObjectPic_JumpLongGrass, 2, 2, 6),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 0),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 1),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 2),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 3),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 4),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 5),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 6),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 7),
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 4),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 5),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 6),
+    overworld_frame(gFieldEffectObjectPic_ShakingTallGrass, 2, 2, 7),
 };
 
 static const union AnimCmd sAnim_UnusedGrass[] =
