@@ -9,6 +9,9 @@ script MomSaysHi{
     playfanfare(MUS_HEAL)
     waitfanfare
     special(HealPlayerParty)
+    setflag(FLAG_DN_FLAG_SEARCHING)
+    setflag(FLAG_DN_FLAG_DEXNAV_GET)
+    setflag(FLAG_DN_FLAG_DETECTOR_MODE)
     fadescreen(FADE_FROM_BLACK)
     msgbox("Take care, honey!")
     release

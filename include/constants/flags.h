@@ -1223,9 +1223,9 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_RUNNING_SHOES_TOGGLE                                   0x493 // changged from unused to running shoes toggle
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
+#define FLAG_DN_FLAG_SEARCHING                                           0x494 // changed from unused to DN_FLAG_SEARCHING
+#define FLAG_DN_FLAG_DEXNAV_GET                                          0x495 // changed from unused to DN_FLAG_DEXNAV_GET
+#define FLAG_DN_FLAG_DETECTOR_MODE                                       0x496 // changed from unused to DN_FLAG_DETECTOR_MODE
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
