@@ -54,8 +54,8 @@
       "x": 35,
       "y": 22,
       "elevation": 0,
-      "dest_map": "MAP_IKI_TOWN",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_HAOULI_POKEMON_CENTER",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

@@ -123,7 +123,8 @@
   "gMapGrouo_IndoorMelemele": [
     "PlayerHouse",
     "PlayerRoom",
-    "MomsRoom"
+    "MomsRoom",
+    "HaouliPokemonCenter"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

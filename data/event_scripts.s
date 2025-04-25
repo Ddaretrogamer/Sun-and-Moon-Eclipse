@@ -1224,3 +1224,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/TapuKokoShrine/scripts.inc"
 
 	.include "data/maps/AetherConservatory/scripts.inc"
+
+	.include "data/maps/HaouliPokemonCenter/scripts.inc"

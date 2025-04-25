@@ -90,9 +90,10 @@
 #define MAP_AETHER_CONSERVATORY    (81 | (0 << 8))
 
 // gMapGrouo_IndoorMelemele
-#define MAP_PLAYER_HOUSE (0 | (1 << 8))
-#define MAP_PLAYER_ROOM  (1 | (1 << 8))
-#define MAP_MOMS_ROOM    (2 | (1 << 8))
+#define MAP_PLAYER_HOUSE          (0 | (1 << 8))
+#define MAP_PLAYER_ROOM           (1 | (1 << 8))
+#define MAP_MOMS_ROOM             (2 | (1 << 8))
+#define MAP_HAOULI_POKEMON_CENTER (3 | (1 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (2 << 8))

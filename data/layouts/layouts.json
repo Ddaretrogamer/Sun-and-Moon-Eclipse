@@ -4740,6 +4740,16 @@
       "secondary_tileset": "gTileset_ConservatoryPory",
       "border_filepath": "data/layouts/AetherConservatory/border.bin",
       "blockdata_filepath": "data/layouts/AetherConservatory/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAOULI_POKEMON_CENTER",
+      "name": "HaouliPokemonCenter_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/HaouliPokemonCenter/border.bin",
+      "blockdata_filepath": "data/layouts/HaouliPokemonCenter/map.bin"
     }
   ]
 }

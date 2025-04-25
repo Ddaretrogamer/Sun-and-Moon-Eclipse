@@ -219,8 +219,8 @@ static const u32 sIconBox_GfxFem[] = INCBIN_U32("graphics/ui_main_menu/icon_shad
 
 static const u16 sBrendanMugshot_Pal[] = INCBIN_U16("graphics/ui_main_menu/elio_mugshot.gbapal");
 static const u32 sBrendanMugshot_Gfx[] = INCBIN_U32("graphics/ui_main_menu/elio_mugshot.4bpp.lz");
-static const u16 sMayMugshot_Pal[] = INCBIN_U16("graphics/ui_main_menu/may_mugshot.gbapal");
-static const u32 sMayMugshot_Gfx[] = INCBIN_U32("graphics/ui_main_menu/may_mugshot.4bpp.lz");
+static const u16 sMayMugshot_Pal[] = INCBIN_U16("graphics/ui_main_menu/selene_mugshot.gbapal");
+static const u32 sMayMugshot_Gfx[] = INCBIN_U32("graphics/ui_main_menu/selene_mugshot.4bpp.lz");
 
 
 static const struct ScanlineEffectParams sScanlineParams_Parallax =
