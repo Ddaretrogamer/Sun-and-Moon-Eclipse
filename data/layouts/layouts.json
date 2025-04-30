@@ -4750,6 +4750,26 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/HaouliPokemonCenter/border.bin",
       "blockdata_filepath": "data/layouts/HaouliPokemonCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALOLA_LABORATORY",
+      "name": "AlolaLaboratory_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/AlolaLaboratory/border.bin",
+      "blockdata_filepath": "data/layouts/AlolaLaboratory/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2POKECENTER",
+      "name": "Route2Pokecenter_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Route2Pokecenter/border.bin",
+      "blockdata_filepath": "data/layouts/Route2Pokecenter/map.bin"
     }
   ]
 }

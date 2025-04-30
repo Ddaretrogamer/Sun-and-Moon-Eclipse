@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -42,7 +42,7 @@
       "x": 6,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE3N",
+      "dest_map": "MAP_ROUTE2POKECENTER",
       "dest_warp_id": "0"
     }
   ],

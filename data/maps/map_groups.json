@@ -124,7 +124,9 @@
     "PlayerHouse",
     "PlayerRoom",
     "MomsRoom",
-    "HaouliPokemonCenter"
+    "HaouliPokemonCenter",
+    "AlolaLaboratory",
+    "Route2Pokecenter"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

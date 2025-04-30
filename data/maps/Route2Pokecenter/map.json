@@ -1,12 +1,12 @@
 {
-  "id": "MAP_HAOULI_POKEMON_CENTER",
-  "name": "HaouliPokemonCenter",
-  "layout": "LAYOUT_HAOULI_POKEMON_CENTER",
+  "id": "MAP_ROUTE2POKECENTER",
+  "name": "Route2Pokecenter",
+  "layout": "LAYOUT_ROUTE2POKECENTER",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": true,
@@ -17,6 +17,19 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
       "x": 10,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_COOK",
+      "x": 2,
       "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -29,34 +42,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
-      "x": 16,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
-      "x": 2,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
       "x": 17,
-      "y": 7,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -67,9 +54,9 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 3,
-      "y": 7,
+      "y": 10,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -80,8 +67,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
-      "x": 6,
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 16,
       "y": 11,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -96,17 +83,17 @@
   "warp_events": [
     {
       "x": 9,
-      "y": 12,
+      "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE1N",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_ROUTE3N",
+      "dest_warp_id": "0"
     },
     {
       "x": 10,
-      "y": 12,
+      "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE1N",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_ROUTE3N",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
