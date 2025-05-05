@@ -1230,3 +1230,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/AlolaLaboratory/scripts.inc"
 
 	.include "data/maps/Route2Pokecenter/scripts.inc"
+
+	.include "data/maps/HauoliCityPokecenter/scripts.inc"

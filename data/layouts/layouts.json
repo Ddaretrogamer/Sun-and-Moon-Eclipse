@@ -4770,6 +4770,16 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/Route2Pokecenter/border.bin",
       "blockdata_filepath": "data/layouts/Route2Pokecenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_HAUOLI_CITY_POKECENTER",
+      "name": "HauoliCityPokecenter_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/HauoliCityPokecenter/border.bin",
+      "blockdata_filepath": "data/layouts/HauoliCityPokecenter/map.bin"
     }
   ]
 }

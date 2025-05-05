@@ -74,8 +74,8 @@
       "x": 15,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_HAUOLI_CITY_POKECENTER",
+      "dest_warp_id": "1"
     },
     {
       "x": 23,
