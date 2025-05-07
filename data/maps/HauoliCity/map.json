@@ -2,7 +2,7 @@
   "id": "MAP_HAUOLI_CITY",
   "name": "HauoliCity",
   "layout": "LAYOUT_HAUOLI_CITY",
-  "music": "MUS_DUMMY",
+  "music": "MUS_USUM_HAUOLI_CITY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

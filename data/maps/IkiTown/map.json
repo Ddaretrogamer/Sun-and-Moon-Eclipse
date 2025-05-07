@@ -2,7 +2,7 @@
   "id": "MAP_IKI_TOWN",
   "name": "IkiTown",
   "layout": "LAYOUT_IKI_TOWN",
-  "music": "MUS_PETALBURG",
+  "music": "MUS_USUM_IKITOWN_DAY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

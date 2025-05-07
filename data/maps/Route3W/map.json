@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE3W",
   "name": "Route3W",
   "layout": "LAYOUT_ROUTE3W",
-  "music": "MUS_DUMMY",
+  "music": "MUS_USUM_ROUTE_2",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

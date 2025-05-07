@@ -556,4 +556,12 @@
 #define PHONEME_ID(song)            ((song) - FIRST_PHONEME_SONG)
 #define PHONEME_ID_NONE             0xFF
 
+// USUM music
+#define MUS_USUM_HAUOLI_CITY        610 // MUS_USUM_HAUOLI_CITY
+#define MUS_USUM_ROUTE_2            611 // MUS_USUM_ROUTE2
+#define MUS_USUM_PO_TOWN            612 // MUS_USUM_PO_TOWN
+#define MUS_USUM_VAST_PONI_CANYON   613 // MUS_USUM_VAST_PONI_CANYON
+#define MUS_USUM_IKITOWN_DAY        614 // MUS_USUM_IKITOWN_DAY
+#define MUS_USUM_IKITOWN            615 // MUS_USUM_IKITOWN
+
 #endif  // GUARD_CONSTANTS_SONGS_H

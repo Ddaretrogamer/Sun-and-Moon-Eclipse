@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE1NN",
   "name": "Route1NN",
   "layout": "LAYOUT_ROUTE1NN",
-  "music": "MUS_ROUTE101",
+  "music": "MUS_USUM_IKITOWN",
   "region_map_section": "MAPSEC_ROUTE_1",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
