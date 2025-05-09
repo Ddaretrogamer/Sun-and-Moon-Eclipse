@@ -9,7 +9,7 @@
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
 #define STD_WINDOW_PALETTE_SIZE PLTT_SIZEOF(10)
-#define STD_WINDOW_BASE_TILE_NUM 0x214
+#define STD_WINDOW_BASE_TILE_NUM 0x21A
 
 #define DLW_WIN_PLATE_SIZE  8
 
@@ -57,7 +57,8 @@ void InitTextBoxGfxAndPrinters(void);
 u16 RunTextPrintersAndIsPrinter0Active(void);
 void LoadMessageBoxAndBorderGfx(void);
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram);
-void DrawDialogueFrameWithNameplate(u8 windowId, bool8 copyToVram);
+void DrawNamePlate(u8 windowId, bool8 copyToVram);
+void DrawNamePlateWithCustomTile(u8 windowId, bool8 copyToVram, u16 tileNum);
 void ClearStdWindowAndFrame(u8 windowId, bool8 copyToVram);
 u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16), u8 fgColor, u8 bgColor, u8 shadowColor);
 void PrintPlayerNameOnWindow(u8, const u8 *, u16, u16);
@@ -138,5 +139,10 @@ u8 AddSecondaryPopUpWindow(void);
 u8 GetSecondaryPopUpWindowId(void);
 void RemoveSecondaryPopUpWindow(void);
 void HBlankCB_DoublePopupWindow(void);
+void DrawDialogFrameWithCustomTile(u8 windowId, bool8 copyToVram, u16 tileNum);
+
+
+void FillDialogFramePlate(u8 windowId);
+int GetDialogFramePlateWidth();
 
 #endif // GUARD_MENU_H
