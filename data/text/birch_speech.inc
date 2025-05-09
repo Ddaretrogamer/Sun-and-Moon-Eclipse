@@ -61,4 +61,4 @@ gText_Birch_AreYouReady::
 	.string "$"
 
 gText_Birch_Nameplate::
-	.string "Prof. Birch$"
+	.string "Kukui$"
