@@ -1612,7 +1612,7 @@ static void Debug_InitializeBattle(u8 taskId)
     }
 
     // Set terrain
-    gBattleEnvironment = sDebugBattleData->battleTerrain;
+    gBattleTerrain = sDebugBattleData->battleTerrain;
 
     // Populate enemy party
     for (i = 0; i < PARTY_SIZE; i++)
@@ -3416,8 +3416,8 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
     SetMonData(&mon, MON_DATA_DYNAMAX_LEVEL, &dmaxLevel);
 
     // tera type
-    if (teraType == TYPE_NONE || teraType == TYPE_MYSTERY || teraType >= NUMBER_OF_MON_TYPES)
-        teraType = GetTeraTypeFromPersonality(&mon);
+    if (teraType >= NUMBER_OF_MON_TYPES)
+        teraType = TYPE_NONE;
     SetMonData(&mon, MON_DATA_TERA_TYPE, &teraType);
 
     //IVs
@@ -3439,7 +3439,7 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
     //Moves
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] == MOVE_NONE || moves[i] >= MOVES_COUNT)
+        if (moves[i] == MOVE_NONE || moves[i] == 0xFF || moves[i] >= MOVES_COUNT)
             continue;
 
         SetMonMoveSlot(&mon, moves[i], i);

@@ -196,6 +196,7 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8);
+static void NewGameBirchSpeech_ShowDialogueWindow(u8, u8);
 static void NewGameBirchSpeech_ClearWindow(u8);
 static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8);
 static void Task_NewGameBirchSpeech_MainSpeech(u8);
@@ -242,7 +243,7 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
-static void NewGameBirchSpeech_PrintDialogue(void);
+static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 
 // .rodata
 
@@ -396,7 +397,7 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 15,
-        .width = 26,
+        .width = 27,
         .height = 4,
         .paletteNum = 15,
         .baseBlock = 1
@@ -418,15 +419,6 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
         .height = 10,
         .paletteNum = 15,
         .baseBlock = 0x85
-    },
-    {
-        .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 13,
-        .width = DLW_WIN_PLATE_SIZE,
-        .height = 2,
-        .paletteNum = 15,
-        .baseBlock = 0x114,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -555,7 +547,6 @@ enum
 };
 
 #define MAIN_MENU_BORDER_TILE   0x1D5
-#define BIRCH_DLG_BASE_TILE_NUM 0xFC
 
 static void CB2_MainMenu(void)
 {
@@ -1358,11 +1349,13 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
         {
             InitWindows(sNewGameBirchSpeechTextWindows);
             LoadMainMenuWindowFrameTiles(0, 0xF3);
-            LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
-            DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
-            DrawNamePlateWithCustomTile(3, TRUE, BIRCH_DLG_BASE_TILE_NUM);
+            LoadMessageBoxGfx(0, 0xFC, BG_PLTT_ID(15));
+            NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+            PutWindowTilemap(0);
+            CopyWindowToVram(0, COPYWIN_GFX);
+            NewGameBirchSpeech_ClearWindow(0);
             StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
-            NewGameBirchSpeech_PrintDialogue();
+            AddTextPrinterForMessage(TRUE);
             gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
         }
     }
@@ -1384,7 +1377,7 @@ static void Task_NewGameBirchSpeech_MainSpeech(u8 taskId)
     if (!RunTextPrintersAndIsPrinter0Active())
     {
         StringExpandPlaceholders(gStringVar4, gText_Birch_MainSpeech);
-        NewGameBirchSpeech_PrintDialogue();
+        AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_AndYouAre;
     }
 }
@@ -1439,7 +1432,7 @@ static void Task_NewGameBirchSpeech_AndYouAre(u8 taskId)
     {
         sStartedPokeBallTask = FALSE;
         StringExpandPlaceholders(gStringVar4, gText_Birch_AndYouAre);
-        NewGameBirchSpeech_PrintDialogue();
+        AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_StartBirchLotadPlatformFade;
     }
 }
@@ -1511,7 +1504,7 @@ static void Task_NewGameBirchSpeech_BoyOrGirl(u8 taskId)
 {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_BoyOrGirl);
-    NewGameBirchSpeech_PrintDialogue();
+    AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowGenderMenu;
 }
 
@@ -1601,7 +1594,7 @@ static void Task_NewGameBirchSpeech_WhatsYourName(u8 taskId)
 {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
-    NewGameBirchSpeech_PrintDialogue();
+    AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;
 }
 
@@ -1636,7 +1629,7 @@ static void Task_NewGameBirchSpeech_SoItsPlayerName(u8 taskId)
 {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_SoItsPlayer);
-    NewGameBirchSpeech_PrintDialogue();
+    AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameBirchSpeech_CreateNameYesNo;
 }
 
@@ -1702,7 +1695,7 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
         NewGameBirchSpeech_ClearWindow(0);
         StringExpandPlaceholders(gStringVar4, gText_Birch_YourePlayer);
-        NewGameBirchSpeech_PrintDialogue();
+        AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForSpriteFadeInAndTextPrinter;
     }
 }
@@ -1750,7 +1743,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
         StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
-        NewGameBirchSpeech_PrintDialogue();
+        AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_ShrinkPlayer;
     }
 }
@@ -1882,7 +1875,7 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     SetMainCallback2(CB2_MainMenu);
     InitWindows(sNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
-    LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
+    LoadMessageBoxGfx(0, 0xFC, BG_PLTT_ID(15));
     PutWindowTilemap(0);
     CopyWindowToVram(0, COPYWIN_FULL);
 }
@@ -2293,42 +2286,40 @@ void CreateYesNoMenuParameterized(u8 x, u8 y, u16 baseTileNum, u16 baseBlock, u8
     CreateYesNoMenu(&template, baseTileNum, yesNoPalNum, 0);
 }
 
+static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
+{
+    CallWindowFunction(windowId, NewGameBirchSpeech_CreateDialogueWindowBorder);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    PutWindowTilemap(windowId);
+    if (copyToVram == TRUE)
+        CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
+{
+    FillBgTilemapBufferRect(bg, 0xFD,  x-2,       y-1, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, 0xFF,  x-1,       y-1, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, 0x100, x,         y-1, width,   1, palNum);
+    FillBgTilemapBufferRect(bg, 0x101, x+width-1, y-1, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, 0x102, x+width,   y-1, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, 0x103, x-2,       y,   1,       5, palNum);
+    FillBgTilemapBufferRect(bg, 0x105, x-1,       y,   width+1, 5, palNum);
+    FillBgTilemapBufferRect(bg, 0x106, x+width,   y,   1,       5, palNum);
+
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(0xFD),  x-2,       y+height, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(0xFF),  x-1,       y+height, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(0x100), x,         y+height, width-1, 1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(0x101), x+width-1, y+height, 1,       1, palNum);
+    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(0x102), x+width,   y+height, 1,       1, palNum);
+}
+
 static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 {
     if (gTasks[taskId].tTimer-- <= 0)
     {
-        DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
-        DrawNamePlateWithCustomTile(3, TRUE, BIRCH_DLG_BASE_TILE_NUM);
+        NewGameBirchSpeech_ShowDialogueWindow(0, 1);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SoItsPlayerName;
     }
 }
 
 #undef tTimer
-
-static void NewGameBirchSpeech_PrintDialogue(void)
-{
-    int strLen;
-    const u8 colors[3] = {0, 1, 14};
-
-    StringExpandPlaceholders(gStringVar1, gText_Birch_Nameplate);
-    strLen = GetStringWidth(FONT_SMALL, gStringVar1, -1);
-
-    if (strLen > 0)
-    {
-        strLen = GetDialogFramePlateWidth() / 2 - strLen / 2;
-        gNamePlateBuffer[0] = EXT_CTRL_CODE_BEGIN;
-        gNamePlateBuffer[1] = EXT_CTRL_CODE_CLEAR_TO;
-        gNamePlateBuffer[2] = strLen;
-        StringExpandPlaceholders(&gNamePlateBuffer[3], gStringVar1);
-    }
-    else
-    {
-        StringExpandPlaceholders(&gNamePlateBuffer[0], gStringVar1);
-    }
-
-    FillDialogFramePlate(3);
-    AddTextPrinterParameterized3(3, FONT_SMALL, 0, 0, colors, 0, gNamePlateBuffer);
-
-    AddTextPrinterForMessage(TRUE);
-}
-

@@ -81,469 +81,469 @@ const struct EasyChatWordInfo gEasyChatGroup_Actions[] = {
     [EC_INDEX(EC_WORD_MEETS)] =
     {
         .text = gEasyChatWord_Meets,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_ALLOW),
+        .alphabeticalOrder = 72,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CONCEDE)] =
     {
         .text = gEasyChatWord_Concede,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_ANGERS),
+        .alphabeticalOrder = 14,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_GIVE)] =
     {
         .text = gEasyChatWord_Give,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_APPEAR),
+        .alphabeticalOrder = 48,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_GIVES)] =
     {
         .text = gEasyChatWord_Gives,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_APPEARS),
+        .alphabeticalOrder = 75,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLAYED)] =
     {
         .text = gEasyChatWord_Played,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_BELIEVE),
+        .alphabeticalOrder = 39,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLAYS)] =
     {
         .text = gEasyChatWord_Plays,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_BRAG),
+        .alphabeticalOrder = 36,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COLLECT)] =
     {
         .text = gEasyChatWord_Collect,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CAME),
+        .alphabeticalOrder = 28,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WALKING)] =
     {
         .text = gEasyChatWord_Walking,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CAPABLE),
+        .alphabeticalOrder = 46,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WALKS)] =
     {
         .text = gEasyChatWord_Walks,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CAUSE),
+        .alphabeticalOrder = 31,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SAYS)] =
     {
         .text = gEasyChatWord_Says,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CHANGE),
+        .alphabeticalOrder = 19,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WENT)] =
     {
         .text = gEasyChatWord_Went,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CHOOSE),
+        .alphabeticalOrder = 26,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SAID)] =
     {
         .text = gEasyChatWord_Said,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_COLLECT),
+        .alphabeticalOrder = 6,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WAKE_UP)] =
     {
         .text = gEasyChatWord_WakeUp,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_COME),
+        .alphabeticalOrder = 27,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WAKES_UP)] =
     {
         .text = gEasyChatWord_WakesUp,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_CONCEDE),
+        .alphabeticalOrder = 1,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ANGERS)] =
     {
         .text = gEasyChatWord_Angers,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_COULDN_T),
+        .alphabeticalOrder = 45,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TEACH)] =
     {
         .text = gEasyChatWord_Teach,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_DISAPPEAR),
+        .alphabeticalOrder = 47,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TEACHES)] =
     {
         .text = gEasyChatWord_Teaches,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_DRINKS),
+        .alphabeticalOrder = 54,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLEASE)] =
     {
         .text = gEasyChatWord_Please,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_EATS),
+        .alphabeticalOrder = 41,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LEARN)] =
     {
         .text = gEasyChatWord_Learn,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_FAINT),
+        .alphabeticalOrder = 76,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CHANGE)] =
     {
         .text = gEasyChatWord_Change,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_FAINTED),
+        .alphabeticalOrder = 77,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_STORY)] =
     {
         .text = gEasyChatWord_Story,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_FORGET),
+        .alphabeticalOrder = 73,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TRUST)] =
     {
         .text = gEasyChatWord_Trust,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_FORGETS),
+        .alphabeticalOrder = 74,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LAVISH)] =
     {
         .text = gEasyChatWord_Lavish,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_GIVE),
+        .alphabeticalOrder = 2,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LISTENS)] =
     {
         .text = gEasyChatWord_Listens,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_GIVES),
+        .alphabeticalOrder = 3,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_HEARING)] =
     {
         .text = gEasyChatWord_Hearing,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_HEARING),
+        .alphabeticalOrder = 24,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TRAINS)] =
     {
         .text = gEasyChatWord_Trains,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_IGNORANT),
+        .alphabeticalOrder = 37,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CHOOSE)] =
     {
         .text = gEasyChatWord_Choose,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_KNOW),
+        .alphabeticalOrder = 32,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COME)] =
     {
         .text = gEasyChatWord_Come,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_KNOWS),
+        .alphabeticalOrder = 33,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAME)] =
     {
         .text = gEasyChatWord_Came,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_LAVISH),
+        .alphabeticalOrder = 22,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEARCH)] =
     {
         .text = gEasyChatWord_Search,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_LEARN),
+        .alphabeticalOrder = 18,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_MAKE)] =
     {
         .text = gEasyChatWord_Make,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_LISTENS),
+        .alphabeticalOrder = 23,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAUSE)] =
     {
         .text = gEasyChatWord_Cause,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_LOOKS),
+        .alphabeticalOrder = 67,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_KNOW)] =
     {
         .text = gEasyChatWord_Know,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_MAKE),
+        .alphabeticalOrder = 30,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_KNOWS)] =
     {
         .text = gEasyChatWord_Knows,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_MEETS),
+        .alphabeticalOrder = 0,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_REFUSE)] =
     {
         .text = gEasyChatWord_Refuse,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_OVERDO),
+        .alphabeticalOrder = 65,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_STORES)] =
     {
         .text = gEasyChatWord_Stores,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_OWN),
+        .alphabeticalOrder = 70,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BRAG)] =
     {
         .text = gEasyChatWord_Brag,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_PLAYED),
+        .alphabeticalOrder = 4,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IGNORANT)] =
     {
         .text = gEasyChatWord_Ignorant,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_PLAYS),
+        .alphabeticalOrder = 5,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THINKS)] =
     {
         .text = gEasyChatWord_Thinks,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_PLEASE),
+        .alphabeticalOrder = 17,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BELIEVE)] =
     {
         .text = gEasyChatWord_Believe,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_PRAISE),
+        .alphabeticalOrder = 64,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLIDE)] =
     {
         .text = gEasyChatWord_Slide,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_PRETEND),
+        .alphabeticalOrder = 63,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_EATS)] =
     {
         .text = gEasyChatWord_Eats,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_REFUSE),
+        .alphabeticalOrder = 34,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USE)] =
     {
         .text = gEasyChatWord_Use,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_RELEASE),
+        .alphabeticalOrder = 53,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USES)] =
     {
         .text = gEasyChatWord_Uses,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_RUN),
+        .alphabeticalOrder = 56,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USING)] =
     {
         .text = gEasyChatWord_Using,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_RUNS),
+        .alphabeticalOrder = 55,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COULDN_T)] =
     {
         .text = gEasyChatWord_Couldnt,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SAID),
+        .alphabeticalOrder = 11,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAPABLE)] =
     {
         .text = gEasyChatWord_Capable,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SAYS),
+        .alphabeticalOrder = 9,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DISAPPEAR)] =
     {
         .text = gEasyChatWord_Disappear,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SEARCH),
+        .alphabeticalOrder = 29,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_APPEAR)] =
     {
         .text = gEasyChatWord_Appear,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SEEK),
+        .alphabeticalOrder = 69,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THROW)] =
     {
         .text = gEasyChatWord_Throw,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SEES),
+        .alphabeticalOrder = 68,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORRY)] =
     {
         .text = gEasyChatWord_Worry,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SHOW),
+        .alphabeticalOrder = 66,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLEPT)] =
     {
         .text = gEasyChatWord_Slept,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SINK),
+        .alphabeticalOrder = 61,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLEEP)] =
     {
         .text = gEasyChatWord_Sleep,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SLEEP),
+        .alphabeticalOrder = 52,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RELEASE)] =
     {
         .text = gEasyChatWord_Release,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SLEPT),
+        .alphabeticalOrder = 51,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DRINKS)] =
     {
         .text = gEasyChatWord_Drinks,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SLIDE),
+        .alphabeticalOrder = 40,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RUNS)] =
     {
         .text = gEasyChatWord_Runs,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_SMACK),
+        .alphabeticalOrder = 62,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RUN)] =
     {
         .text = gEasyChatWord_Run,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_STORES),
+        .alphabeticalOrder = 35,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORKS)] =
     {
         .text = gEasyChatWord_Works,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_STORY),
+        .alphabeticalOrder = 20,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORKING)] =
     {
         .text = gEasyChatWord_Working,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TAKE),
+        .alphabeticalOrder = 71,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TALKING)] =
     {
         .text = gEasyChatWord_Talking,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TALK),
+        .alphabeticalOrder = 60,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TALK)] =
     {
         .text = gEasyChatWord_Talk,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TALKING),
+        .alphabeticalOrder = 59,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SINK)] =
     {
         .text = gEasyChatWord_Sink,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TEACH),
+        .alphabeticalOrder = 15,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SMACK)] =
     {
         .text = gEasyChatWord_Smack,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TEACHES),
+        .alphabeticalOrder = 16,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PRETEND)] =
     {
         .text = gEasyChatWord_Pretend,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_THINKS),
+        .alphabeticalOrder = 38,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PRAISE)] =
     {
         .text = gEasyChatWord_Praise,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_THROW),
+        .alphabeticalOrder = 49,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OVERDO)] =
     {
         .text = gEasyChatWord_Overdo,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TRAINS),
+        .alphabeticalOrder = 25,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SHOW)] =
     {
         .text = gEasyChatWord_Show,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_TRUST),
+        .alphabeticalOrder = 21,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LOOKS)] =
     {
         .text = gEasyChatWord_Looks,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_USE),
+        .alphabeticalOrder = 42,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEES)] =
     {
         .text = gEasyChatWord_Sees,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_USES),
+        .alphabeticalOrder = 43,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEEK)] =
     {
         .text = gEasyChatWord_Seek,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_USING),
+        .alphabeticalOrder = 44,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OWN)] =
     {
         .text = gEasyChatWord_Own,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WAKE_UP),
+        .alphabeticalOrder = 12,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TAKE)] =
     {
         .text = gEasyChatWord_Take,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WAKES_UP),
+        .alphabeticalOrder = 13,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ALLOW)] =
     {
         .text = gEasyChatWord_Allow,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WALKING),
+        .alphabeticalOrder = 7,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FORGET)] =
     {
         .text = gEasyChatWord_Forget,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WALKS),
+        .alphabeticalOrder = 8,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FORGETS)] =
     {
         .text = gEasyChatWord_Forgets,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WENT),
+        .alphabeticalOrder = 10,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_APPEARS)] =
     {
         .text = gEasyChatWord_Appears,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WORKING),
+        .alphabeticalOrder = 58,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FAINT)] =
     {
         .text = gEasyChatWord_Faint,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WORKS),
+        .alphabeticalOrder = 57,
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FAINTED)] =
     {
         .text = gEasyChatWord_Fainted,
-        .alphabeticalOrder = EC_INDEX(EC_WORD_WORRY),
+        .alphabeticalOrder = 50,
         .enabled = TRUE,
     },
 };

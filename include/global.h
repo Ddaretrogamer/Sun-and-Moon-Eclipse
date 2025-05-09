@@ -131,7 +131,7 @@
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
 
-// NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
+#ifndef NDEBUG
 static inline void CycleCountStart()
 {
     REG_TM2CNT_H = 0;
@@ -154,6 +154,7 @@ static inline u32 CycleCountEnd()
     // return result
     return REG_TM2CNT_L | (REG_TM3CNT_L << 16u);
 }
+#endif
 
 struct Coords8
 {

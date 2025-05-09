@@ -606,10 +606,6 @@ const struct SpriteTemplate gSparkBeamSpriteTemplate =
     .callback = AnimToTargetInSinWave,
 };
 
-// args[0] - initial sprite x
-// args[1] - initial sprite y
-// args[2] - attacker or target
-// args[3] - affine anim number
 static void AnimAquaTail(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
@@ -622,8 +618,6 @@ static void AnimAquaTail(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-// args[0] - initial x delta
-// args[1] - initial y delta
 static void AnimKnockOffAquaTail(struct Sprite *sprite)
 {
     if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
@@ -891,7 +885,6 @@ static void AnimToTargetInSinWave_Step(struct Sprite *sprite)
     }
 }
 
-// args[0] - duration
 void AnimTask_StartSinAnimTimer(u8 taskId)
 {
     gTasks[taskId].data[0] = gBattleAnimArgs[0];
@@ -947,7 +940,7 @@ static void AnimHydroCannonBeam(struct Sprite *sprite)
 {
     bool8 animType;
     u8 coordType;
-    if (IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
+    if (GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
     {
         gBattleAnimArgs[0] *= -1;
         if (GetBattlerPosition(gBattleAnimAttacker) == B_POSITION_PLAYER_LEFT || GetBattlerPosition(gBattleAnimAttacker) == B_POSITION_OPPONENT_LEFT)
@@ -982,10 +975,6 @@ static void AnimWaterGunDroplet(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-// args[0] - initial sprite x
-// args[1] - initial sprite y
-// args[2] - counter
-// args[3] - attacker or target
 void AnimSmallBubblePair(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[3] != ANIM_ATTACKER)

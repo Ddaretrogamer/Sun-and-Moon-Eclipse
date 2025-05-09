@@ -1416,10 +1416,10 @@ void BtlController_EmitFaintingCry(u32 battler, u32 bufferId)
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 4);
 }
 
-void BtlController_EmitIntroSlide(u32 battler, u32 bufferId, u8 environmentId)
+void BtlController_EmitIntroSlide(u32 battler, u32 bufferId, u8 terrainId)
 {
     gBattleResources->transferBuffer[0] = CONTROLLER_INTROSLIDE;
-    gBattleResources->transferBuffer[1] = environmentId;
+    gBattleResources->transferBuffer[1] = terrainId;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 2);
 }
 
@@ -2502,8 +2502,6 @@ void BtlController_HandleDrawTrainerPic(u32 battler, u32 trainerPicId, bool32 is
                                                              xPos,
                                                              yPos,
                                                              subpriority);
-            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT)
-                gBattlerSpriteIds[battler] = gBattleStruct->trainerSlideSpriteIds[battler];
 
             gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum = battler;
         }
@@ -2528,8 +2526,6 @@ void BtlController_HandleTrainerSlide(u32 battler, u32 trainerPicId)
                                                          80,
                                                          (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80,
                                                          30);
-        if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT)
-            gBattlerSpriteIds[battler] = gBattleStruct->trainerSlideSpriteIds[battler];
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum = battler;
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].x2 = -96;
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].sSpeedX = 2;

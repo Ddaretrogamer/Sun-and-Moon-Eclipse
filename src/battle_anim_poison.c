@@ -415,15 +415,11 @@ const struct SpriteTemplate gSyrupBombYellowShellBSpriteTemplate =
     .callback = AnimAnimSyrupBomb,
 };
 
-// args[0] - initial x
-// args[1] - initial y
-// args[2] - attacker or target
-// args[3] - affine anim number
 static void AnimGunkShotImpact(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
-        InitSpritePosToAnimAttacker(sprite, TRUE);
+        InitSpritePosToAnimAttacker(sprite, 1);
     else
         InitSpritePosToAnimTarget(sprite, TRUE);
 
@@ -431,10 +427,6 @@ static void AnimGunkShotImpact(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-// args[0] - initial attacker x
-// args[1] - initial attacker y
-// args[2] - ???
-// args[3] - some param
 static void AnimGunkShotParticles(struct Sprite *sprite)
 {
     u16 retArg;

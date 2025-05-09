@@ -40,26 +40,23 @@ DOUBLE_BATTLE_TEST("Tera Starstorm targets both opponents in a double battle if 
     }
 }
 
-SINGLE_BATTLE_TEST("Tera Starstorm becomes a physical move if the user is Terapagos-Stellar, is Terastallized, and has a higher Attack stat")
+SINGLE_BATTLE_TEST("Tera Starstorm becomes a physical move if the user is Terapagos-Stellar, is Terastallized, and has a higher Attack stat", s16 damage)
 {
+    bool32 tera;
+    PARAMETRIZE { tera = GIMMICK_NONE; }
+    PARAMETRIZE { tera = GIMMICK_TERA; }
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_COUNTER) == EFFECT_COUNTER);
-        ASSUME(GetMoveEffect(MOVE_MIRROR_COAT) == EFFECT_MIRROR_COAT);
         ASSUME(GetMoveCategory(MOVE_TERA_STARSTORM) == DAMAGE_CATEGORY_SPECIAL);
         PLAYER(SPECIES_TERAPAGOS_STELLAR) { Attack(100); SpAttack(50); }
         OPPONENT(SPECIES_WOBBUFFET) { Defense(200); SpDefense(200); }
     } WHEN {
-        TURN { MOVE(player, MOVE_TERA_STARSTORM); MOVE(opponent, MOVE_MIRROR_COAT); }
-        TURN { MOVE(player, MOVE_TERA_STARSTORM, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_COUNTER); }
+        TURN { MOVE(player, MOVE_TERA_STARSTORM, gimmick: tera); }
     } SCENE {
         MESSAGE("Terapagos used Tera Starstorm!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_STARSTORM, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_MIRROR_COAT, opponent);
-        HP_BAR(player);
-        MESSAGE("Terapagos used Tera Starstorm!");
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_STARSTORM, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_COUNTER, opponent);
-        HP_BAR(player);
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(2.5), results[1].damage);
     }
 }
 

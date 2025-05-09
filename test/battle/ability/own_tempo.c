@@ -56,8 +56,9 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the user")
     }
 }
 
-SINGLE_BATTLE_TEST("Mold Breaker ignores Own Tempo")
+SINGLE_BATTLE_TEST("Own Tempo is ignored by Mold Breaker")
 {
+    KNOWN_FAILING; // Ideally the func CanBeConfused should be split into AttackerCanBeConfused and TargetCanBeConfused or we do it in the same func but have a check for when battlerAtk == battlerDef
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_CONFUSE_RAY) == EFFECT_CONFUSE);
         PLAYER(SPECIES_PINSIR) { Ability(ABILITY_MOLD_BREAKER); }
@@ -65,13 +66,16 @@ SINGLE_BATTLE_TEST("Mold Breaker ignores Own Tempo")
     } WHEN {
         TURN { MOVE(player, MOVE_CONFUSE_RAY); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        NOT MESSAGE("The opposing Slowpoke's Own Tempo prevents confusion!");
+        NONE_OF {
+            ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
+            MESSAGE("The opposing Slowpoke's Own Tempo prevents confusion!");
+        }
     }
 }
 
-SINGLE_BATTLE_TEST("Mold Breaker does not prevent Own Tempo from curing confusion right after")
+SINGLE_BATTLE_TEST("Own Tempo cures confusion obtained from an opponent with Mold Breaker")
 {
+    KNOWN_FAILING;
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_CONFUSE_RAY) == EFFECT_CONFUSE);
         PLAYER(SPECIES_PINSIR) { Ability(ABILITY_MOLD_BREAKER); };
@@ -99,7 +103,7 @@ SINGLE_BATTLE_TEST("Own Tempo cures confusion if it's obtained via Skill Swap")
     } WHEN {
         TURN { MOVE(player, MOVE_CONFUSE_RAY); }
         TURN { MOVE(player, MOVE_SKILL_SWAP);
-               MOVE(opponent, MOVE_SCRATCH);
+               MOVE(opponent, MOVE_TACKLE);
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
@@ -107,7 +111,7 @@ SINGLE_BATTLE_TEST("Own Tempo cures confusion if it's obtained via Skill Swap")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, player);
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
         MESSAGE("The opposing Wobbuffet's Own Tempo cured its confusion problem!");
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
     }
 }
 
@@ -118,10 +122,10 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from items")
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SLOWPOKE) { Ability(ABILITY_OWN_TEMPO); Item(ITEM_BERSERK_GENE); };
     } WHEN {
-        TURN { MOVE(opponent, MOVE_SCRATCH); }
+        TURN { MOVE(opponent, MOVE_TACKLE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
     }
 }

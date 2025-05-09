@@ -389,7 +389,7 @@ void AnimTranslateStinger(struct Sprite *sprite)
         }
     }
 
-    if (!IsContest() && IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
+    if (!IsContest() && GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
     {
         if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_LEFT
          || GetBattlerPosition(gBattleAnimTarget) == B_POSITION_OPPONENT_LEFT)

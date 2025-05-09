@@ -186,9 +186,13 @@ SINGLE_BATTLE_TEST("Toxic Spikes are removed by grounded Poison-type Pokémon on
     }
 }
 
-//  Tested in Gen 7 on cartridge
-SINGLE_BATTLE_TEST("Toxic Spikes are not removed by Poison-type Pokémon affected by Magnet Rise on switch in")
+// This would test for what I believe to be a bug in the mainline games.
+// A Pokémon that gets passed magnet rise should still remove the Toxic
+// Spikes even though it is airborne.
+// The test currently fails, because we don't incorporate this bug.
+SINGLE_BATTLE_TEST("Toxic Spikes are removed by Poison-type Pokémon affected by Magnet Rise on switch in")
 {
+    KNOWN_FAILING;
     GIVEN {
         ASSUME(gSpeciesInfo[SPECIES_EKANS].types[0] == TYPE_POISON);
         PLAYER(SPECIES_WOBBUFFET);
@@ -199,8 +203,9 @@ SINGLE_BATTLE_TEST("Toxic Spikes are not removed by Poison-type Pokémon affecte
         TURN { MOVE(player, MOVE_TOXIC_SPIKES); MOVE(opponent, MOVE_BATON_PASS); SEND_OUT(opponent, 1); }
         TURN { SWITCH(opponent, 0); }
     } SCENE {
-        NOT MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
-        STATUS_ICON(opponent, poison: TRUE);
+        NOT STATUS_ICON(opponent, poison: TRUE);
+        MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
+        NOT STATUS_ICON(opponent, poison: TRUE);
     }
 }
 

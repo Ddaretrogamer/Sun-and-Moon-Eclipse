@@ -73,8 +73,6 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 
-STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
-
 struct CableClubPlayer
 {
     u8 playerId;
@@ -3014,7 +3012,7 @@ static void ZeroObjectEvent(struct ObjectEvent *objEvent)
 // conflict with the usual Event Object struct, thus the definitions.
 #define linkGender(obj) obj->singleMovementActive
 // not even one can reference *byte* aligned bitfield members...
-#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), range)] // -> rangeX
+#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), fieldEffectSpriteId) - 1] // -> rangeX
 
 static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 gender)
 {
@@ -3348,7 +3346,7 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
     u8 count = 0;
     u8 numLines = 1;
     u8 maxChars = 32;
-    u8 *desc = (u8 *)ItemId_GetDescription(item);
+    u8 *desc = (u8 *)gItemsInfo[item].description;
 
     while (*desc != EOS)
     {
@@ -3417,7 +3415,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     PutWindowTilemap(sHeaderBoxWindowId);
     CopyWindowToVram(sHeaderBoxWindowId, 3);
     SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
-    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
+    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
 
     if (ReformatItemDescription(item, dst) == 1)
         textY = 4;

@@ -6,7 +6,6 @@
 #include "trainer_see.h"
 #include "util.h"
 #include "constants/event_objects.h"
-#include "constants/flags.h"
 #include "constants/map_scripts.h"
 #include "field_message_box.h"
 
@@ -35,7 +34,7 @@ EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
-extern void * const gNullScriptPtr;
+extern void *gNullScriptPtr;
 
 void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTableEnd)
 {
@@ -260,8 +259,6 @@ void ScriptContext_SetupScript(const u8 *ptr)
     InitScriptContext(&sGlobalScriptContext, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sGlobalScriptContext, ptr);
     LockPlayerFieldControls();
-    if (OW_FOLLOWERS_SCRIPT_MOVEMENT)
-        FlagSet(FLAG_SAFE_FOLLOWER_MOVEMENT);
     sGlobalScriptContextStatus = CONTEXT_RUNNING;
 }
 
