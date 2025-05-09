@@ -104,7 +104,9 @@ struct MoveInfo
     bool32 parentalBondBanned:1;
     bool32 skyBattleBanned:1;
     bool32 sketchBanned:1;
-    u32 padding:19;
+    //Other
+    bool32 validApprenticeMove:1;
+    u32 padding:3;
     // end of word
 
     union {
@@ -135,7 +137,7 @@ struct MoveInfo
     const u8 *battleAnimScript;
 };
 
-extern const struct MoveInfo gMovesInfo[];
+extern const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL];
 extern const u8 gNotDoneYetDescription[];
 extern const struct BattleMoveEffect gBattleMoveEffects[];
 
@@ -152,17 +154,17 @@ static inline const u8 *GetMoveName(u32 moveId)
     return gMovesInfo[SanitizeMoveId(moveId)].name;
 }
 
-static inline const u8 *GetMoveDescription(u32 moveId)
-{
-    moveId = SanitizeMoveId(moveId);
-    if (gMovesInfo[moveId].effect == EFFECT_PLACEHOLDER)
-        return gNotDoneYetDescription;
-    return gMovesInfo[moveId].description;
-}
-
 static inline u32 GetMoveEffect(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].effect;
+}
+
+static inline const u8 *GetMoveDescription(u32 moveId)
+{
+    moveId = SanitizeMoveId(moveId);
+    if (GetMoveEffect(moveId) == EFFECT_PLACEHOLDER)
+        return gNotDoneYetDescription;
+    return gMovesInfo[moveId].description;
 }
 
 static inline u32 GetMoveType(u32 moveId)
@@ -435,6 +437,11 @@ static inline bool32 IsMoveSketchBanned(u32 moveId)
     return gMovesInfo[SanitizeMoveId(moveId)].sketchBanned;
 }
 
+static inline bool32 IsValidApprenticeMove(u32 moveId)
+{
+    return gMovesInfo[SanitizeMoveId(moveId)].validApprenticeMove;
+}
+
 static inline u32 GetMoveTwoTurnAttackStringId(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].argument.twoTurnAttack.stringId;
@@ -527,12 +534,12 @@ static inline const u8 *GetMoveAnimationScript(u32 moveId)
 static inline const u8 *GetMoveBattleScript(u32 moveId)
 {
     moveId = SanitizeMoveId(moveId);
-    if (gBattleMoveEffects[gMovesInfo[moveId].effect].battleScript == NULL)
+    if (gBattleMoveEffects[GetMoveEffect(moveId)].battleScript == NULL)
     {
         DebugPrintfLevel(MGBA_LOG_WARN, "No effect for moveId=%u", moveId);
         return gBattleMoveEffects[EFFECT_PLACEHOLDER].battleScript;
     }
-    return gBattleMoveEffects[gMovesInfo[moveId].effect].battleScript;
+    return gBattleMoveEffects[GetMoveEffect(moveId)].battleScript;
 }
 
 #endif // GUARD_MOVES_H
