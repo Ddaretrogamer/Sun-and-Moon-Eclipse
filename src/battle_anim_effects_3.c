@@ -2623,7 +2623,7 @@ void AnimTask_MorningSunLightBeam(u8 taskId)
         }
 
         AnimLoadCompressedBgGfx(animBg.bgId, gBattleAnimMaskImage_LightBeam, animBg.tilesOffset);
-        LoadCompressedPalette(gBattleAnimMaskPalette_LightBeam, BG_PLTT_ID(animBg.paletteId), PLTT_SIZE_4BPP);
+        LoadPalette(gBattleAnimMaskPalette_LightBeam, BG_PLTT_ID(animBg.paletteId), PLTT_SIZE_4BPP);
 
         gTasks[taskId].data[10] = gBattle_BG1_X;
         gTasks[taskId].data[11] = gBattle_BG1_Y;
@@ -2819,7 +2819,7 @@ void AnimTask_DoomDesireLightBeam(u8 taskId)
         }
 
         AnimLoadCompressedBgGfx(animBg.bgId, gBattleAnimMaskImage_LightBeam, animBg.tilesOffset);
-        LoadCompressedPalette(gBattleAnimMaskPalette_LightBeam, BG_PLTT_ID(animBg.paletteId), PLTT_SIZE_4BPP);
+        LoadPalette(gBattleAnimMaskPalette_LightBeam, BG_PLTT_ID(animBg.paletteId), PLTT_SIZE_4BPP);
         gTasks[taskId].data[10] = gBattle_BG1_X;
         gTasks[taskId].data[11] = gBattle_BG1_Y;
         gTasks[taskId].data[0]++;
@@ -3420,7 +3420,7 @@ void AnimTask_RolePlaySilhouette(u8 taskId)
     }
     else
     {
-        struct Pokemon *mon = GetPartyBattlerData(gBattleAnimTarget);
+        struct Pokemon *mon = GetBattlerMon(gBattleAnimTarget);
         if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
             isBackPic = FALSE;
         else
@@ -5304,7 +5304,7 @@ void AnimTask_SnatchOpposingMonMove(u8 taskId)
         }
         else
         {
-            struct Pokemon *mon = GetPartyBattlerData(gBattleAnimAttacker);
+            struct Pokemon *mon = GetBattlerMon(gBattleAnimAttacker);
             personality = GetMonData(mon, MON_DATA_PERSONALITY);
             isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
             if (gBattleSpritesDataPtr->battlerData[gBattleAnimAttacker].transformSpecies == SPECIES_NONE)
