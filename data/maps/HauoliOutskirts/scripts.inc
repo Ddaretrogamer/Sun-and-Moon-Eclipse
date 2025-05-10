@@ -81,8 +81,9 @@ OutsideTenCarrotHill_Text_0:
 	.string "Wa ha ha!\n"
 	.string "You're a strong Trainer, all right!\l"
 	.string "Go on! You take on Ten Carrot Hill,\l"
-	.string "friend! Even stronger Pokémon await\l"
-	.string "you within!$"
+	.string "friend!\p"
+	.string "Even stronger Pokémon await you\n"
+	.string "within!$"
 
 TenCarrotHillSign_Text_0:
 # 24 "data/maps/HauoliOutskirts/scripts.pory"
@@ -91,16 +92,18 @@ TenCarrotHillSign_Text_0:
 HauoliOutskirtLittleGirlNPC_Text_0:
 # 31 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "The Pokémon I've got with me are all\n"
-	.string "Grass-type.\l"
-	.string "I'm looking for Water-type Pokémon for\l"
-	.string "my team so I can beat Fire types, too.$"
+	.string "Grass-type.\p"
+	.string "I'm looking for Water-type Pokémon\l"
+	.string "for my team so I can beat Fire types,\l"
+	.string "too.$"
 
 HauoliOustkirtsTrainerTipsSign_Text_0:
 # 38 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Trainer Tips\p"
 	.string "The Pokémon that will appear first in\n"
-	.string "battle will be the one you've put in the\l"
-	.string "left position in your Pokémon party.$"
+	.string "battle will be the one you've put in\l"
+	.string "the left position in your Pokémon\l"
+	.string "party.$"
 
 HauoliOutskirtLassNPC_Text_0:
 # 44 "data/maps/HauoliOutskirts/scripts.pory"

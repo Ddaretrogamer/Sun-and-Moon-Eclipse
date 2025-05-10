@@ -15,7 +15,7 @@ end
 script OutsideTenCarrotHill{
     lock
     faceplayer
-    msgbox(format("Wa ha ha!\nYou're a strong Trainer, all right!\lGo on! You take on Ten Carrot Hill, friend! Even stronger Pokémon await you within!"))
+    msgbox(format("Wa ha ha!\nYou're a strong Trainer, all right!\lGo on! You take on Ten Carrot Hill, friend!\pEven stronger Pokémon await you within!"))
     release
 end
 }
@@ -28,14 +28,14 @@ end
 script HauoliOutskirtLittleGirlNPC{
     lock
     faceplayer
-    msgbox(format("The Pokémon I've got with me are all\nGrass-type.\lI'm looking for Water-type Pokémon for\lmy team so I can beat Fire types, too."))
+    msgbox(format("The Pokémon I've got with me are all\nGrass-type.\pI'm looking for Water-type Pokémon\lfor my team so I can beat Fire types,\ltoo."))
     release
 end
 }
 
 script HauoliOustkirtsTrainerTipsSign{
     lock
-    msgbox(format("Trainer Tips\pThe Pokémon that will appear first in battle will be the one you've put in the left position in your Pokémon party."))
+    msgbox(format("Trainer Tips\pThe Pokémon that will appear first in battle will be the one you've put in\lthe left position in your Pokémon party."))
     release
 end
 }
