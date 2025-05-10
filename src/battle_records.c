@@ -328,6 +328,7 @@ void ShowLinkBattleRecords(void)
     s32 x, i;
 
     gRecordsWindowId = AddWindow(&sLinkBattleRecordsWindow);
+    LoadMessageBoxAndBorderGfx();
     DrawStdWindowFrame(gRecordsWindowId, FALSE);
     FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
     StringExpandPlaceholders(gStringVar4, gText_PlayersBattleResults);
