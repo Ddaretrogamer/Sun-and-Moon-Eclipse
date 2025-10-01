@@ -515,12 +515,12 @@ u16 CountMyItemsAndEvents(void)
     u16 count = 0;
 
     // Count the contiguous flags
-    count += CountFlagsInRange(FLAG_ITEM_DAYCARE_BASE1, FLAG_ITEM_DAYCARE_MCD2);
+    count += CountFlagsInRange(FLAG_ITEM_DAYCARE_BASE1, FLAG_ITEM_DAYCARE_MCD1);
 
     // Count misc flags
     count += CountSpecificFlags(sMiscellaneousFlags, ARRAY_COUNT(sMiscellaneousFlags));
 
-    // Clitwick gives 2 eggs
+    // tandemaus gives 2 eggs
     if (FlagGet(FLAG_FAM_TWO))
     {
         count += 2;

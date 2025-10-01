@@ -102,7 +102,7 @@ script FamilyofFour{
     {
         speakername("Maushold")
         createfieldmugshot(MUGSHOT_MAUSHOLD4, EMOTE_NORMAL)
-        msgbox("Things in fours just makes sense!\n", MSGBOX_DEFAULT)
+        msgbox("Things in fours just make sense!\n", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         release
@@ -212,7 +212,7 @@ script FamilyofThree{
     {
         speakername("Maushold")
         createfieldmugshot(MUGSHOT_MAUSHOLD3, EMOTE_NORMAL)
-        msgbox("Things in threes just makes sense!\n", MSGBOX_DEFAULT)
+        msgbox("Things in threes just make sense!\n", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         release

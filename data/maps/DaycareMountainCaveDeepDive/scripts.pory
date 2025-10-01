@@ -8,7 +8,7 @@ script GorebyssInCave{
         faceplayer
         speakername("Gorebyss")
         createfieldmugshot(MUGSHOT_GOREBYSS, EMOTE_NORMAL)
-        msgbox("My brother Huntail doesnt care\nfor beauty.\pHe will attack you fiercely!\n", MSGBOX_DEFAULT)
+        msgbox("My brother Huntail doesn't care\nfor beauty.\pHe will attack you fiercely!\n", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         release

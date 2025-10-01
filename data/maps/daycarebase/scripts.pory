@@ -22,7 +22,7 @@ script DaycareIntro{
     waitmovement(VaporeonIntro)
     createfieldmugshot(MUGSHOT_VAPOREON, EMOTE_ANGRY)
     speakername("Vaporeon")
-    msgbox("I don't care what the Daycare Man\nsays, I'm not interested going on\lan Egg hunt.\pJust because Brendan put us in here\ntogether doesn't mean I have to\lhelp you.\pI'm going for a swim.\pYou'll just have to find that Egg\non your own.", MSGBOX_AUTOCLOSE)    waitmessage
+    msgbox("I don't care what the Daycare Man\nsays, I'm not interested in going on\lan Egg hunt.\pJust because Brendan put us in here\ntogether doesn't mean I have to\lhelp you.\pI'm going for a swim.\pYou'll just have to find that Egg\non your own.", MSGBOX_AUTOCLOSE)    waitmessage
     removefieldmugshot
     applymovement(VaporeonIntro, moves(walk_fast_right*8))
     playse(SE_FLEE)
@@ -305,7 +305,7 @@ script MimikyuDialog{
     {
         speakername("Azumarill")
         createfieldmugshot(MUGSHOT_AZUMARILL, EMOTE_ANGRY)
-        msgbox("Oh!\nThank goodness you aren't a Ditto...\pMy trainer keeps putting me in here\nwith Dittos hoping we'll find an\lEgg.\pThey gave me this Sea Incence,\nbut I'm not sure how that would\lhelp us on our hunt...", MSGBOX_DEFAULT)
+        msgbox("Oh!\nThank goodness you aren't a Ditto...\pMy trainer keeps putting me in here\nwith Dittos hoping we'll find an\lEgg.\pThey gave me this Sea Incense,\nbut I'm not sure how that would\lhelp us on our hunt...", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         release
@@ -716,7 +716,7 @@ script RioluDialog{
                 dynmultichoice(0,0,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Arcanine","Chinchou", "Cutiefly", "Dragonair", "Marill", "Machamp", "Noivern","Pikachu", "Rhyhorn","Lurantis", "Weavile")
                 if(var(VAR_RESULT) == 0)
                 {
-                    msgbox("Arcanine can be found deep in the\nVolcano.\pIt can run really fast and scale\nhills that would normally be tooS\lslippery to climb!", MSGBOX_DEFAULT)
+                    msgbox("Arcanine can be found deep in the\nVolcano.\pIt can run really fast and scale\nhills that would normally be too\lslippery to climb!", MSGBOX_DEFAULT)
                     waitmessage
                     removefieldmugshot
                     release
@@ -1002,7 +1002,7 @@ script DaycareBase_Ditto{
     {
         speakername("Ditto")
         createfieldmugshot(MUGSHOT_DITTO, EMOTE_NORMAL)
-        msgbox("Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nthe secret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!", MSGBOX_DEFAULT)
+        msgbox("Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nsecret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!", MSGBOX_DEFAULT)
         waitmessage
         setflag(FLAG_DITTO_INTRO)
         waitmessage
@@ -1026,7 +1026,7 @@ script DaycarebaseDitto_intro_trigger{
         waitmovement(LOCALID_PLAYER)    
         speakername("Ditto")
         createfieldmugshot(MUGSHOT_DITTO, EMOTE_NORMAL)
-        msgbox("Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nthe secret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!", MSGBOX_DEFAULT)
+        msgbox("Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nsecret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         setflag(FLAG_DITTO_INTRO)

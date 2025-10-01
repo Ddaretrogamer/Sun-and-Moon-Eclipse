@@ -577,7 +577,7 @@ FamilyofFour_Text_8:
 
 FamilyofFour_Text_9:
 # 105 "data/maps/DaycareMausholdShrink/scripts.pory"
-	.string "Things in fours just makes sense!\n$"
+	.string "Things in fours just make sense!\n$"
 
 FamilyofThree_Text_0:
 # 159 "data/maps/DaycareMausholdShrink/scripts.pory"
@@ -589,7 +589,7 @@ FamilyofThree_Text_1:
 
 FamilyofThree_Text_2:
 # 215 "data/maps/DaycareMausholdShrink/scripts.pory"
-	.string "Things in threes just makes sense!\n$"
+	.string "Things in threes just make sense!\n$"
 
 Familyoftwo_Text_0:
 # 228 "data/maps/DaycareMausholdShrink/scripts.pory"

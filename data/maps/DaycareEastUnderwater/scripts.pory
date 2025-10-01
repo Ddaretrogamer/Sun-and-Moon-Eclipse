@@ -158,7 +158,7 @@ script SkrelpDialog{
     faceplayer
     speakername("Skrelp")
     createfieldmugshot(MUGSHOT_SKRELP, EMOTE_NORMAL)
-    msgbox("Wait you can see me?\pI need to work on my camoflauge...\n", MSGBOX_DEFAULT)
+    msgbox("Wait you can see me?\pI need to work on my camouflage...\n", MSGBOX_DEFAULT)
     waitmessage
     removefieldmugshot
     release

@@ -41,7 +41,7 @@ script TrapinchDialog{
     {
         speakername("Trapinch")
         createfieldmugshot(MUGSHOT_TRAPINCH, EMOTE_HAPPY)
-        msgbox("Oh, hey Rhyhorn!\pBeautiful weather today isn't it?\pThis fell into my sandtrap the\nthe other day...\pWhy don't you take it?\n", MSGBOX_DEFAULT)
+        msgbox("Oh, hey Rhyhorn!\pBeautiful weather today isn't it?\pThis fell into my sandtrap the\nother day...\pWhy don't you take it?\n", MSGBOX_DEFAULT)
         removefieldmugshot
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         giveitem(ITEM_LUCKY_EGG)
@@ -104,7 +104,7 @@ script BaltoyDialog{
     faceplayer
     speakername("Baltoy")
     createfieldmugshot(MUGSHOT_BALTOY, EMOTE_NORMAL)
-    msgbox("I've heard there is a secret cave\nsomewhere here in the desert.\pRumor has it that it a Pokémon\nneeds to know a move not many\ldesert Pokémon can learn...", MSGBOX_DEFAULT)
+    msgbox("I've heard there is a secret cave\nsomewhere here in the desert.\pRumor has it that a Pokémon\nneeds to know a move not many\ldesert Pokémon can learn...", MSGBOX_DEFAULT)
     waitmessage
     removefieldmugshot
     release
@@ -116,7 +116,7 @@ script SandshrewDialog{
     faceplayer
     speakername("Sandshrew")
     createfieldmugshot(MUGSHOT_SANDSHREW, EMOTE_NORMAL)
-    msgbox("Rhyhorn may have a tough exterior,\nbut he is the nicest Pokémon in\lthe desert!\pHe's a pacifist and doesn't like\nto battle.\pHe's great friends with Trapinch\nwho can be fiesty.", MSGBOX_DEFAULT)
+    msgbox("Rhyhorn may have a tough exterior,\nbut he is the nicest Pokémon in\lthe desert!\pHe's a pacifist and doesn't like\nto battle.\pHe's great friends with Trapinch\nwho can be feisty.", MSGBOX_DEFAULT)
     waitmessage
     removefieldmugshot
     release

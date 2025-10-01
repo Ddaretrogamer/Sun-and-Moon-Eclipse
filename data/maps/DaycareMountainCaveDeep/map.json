@@ -72,7 +72,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Daycaremountaincavedeep_FindSuperPotion",
-      "flag": "FLAG_ITEM_DAYCARE_MCD1"
+      "flag": "FLAG_ITEM_DAYCARE_MCD2"
     },
     {
       "local_id": "mcdegg",
@@ -86,7 +86,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DaycareMCD_FindLuckyEgg",
-      "flag": "FLAG_ITEM_DAYCARE_MCD2"
+      "flag": "FLAG_ITEM_DAYCARE_MCD1"
     },
     {
       "local_id": "NoIce",

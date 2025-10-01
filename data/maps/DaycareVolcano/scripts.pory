@@ -216,7 +216,7 @@ script FuecocoInCave{
     {
         speakername("Fuecoco")
         createfieldmugshot(MUGSHOT_FUECOCO, EMOTE_NORMAL)
-        msgbox("At least it doesnt lag here in\nHoenn...", MSGBOX_DEFAULT)
+        msgbox("At least it doesn't lag here in\nHoenn...", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         release

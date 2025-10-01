@@ -55,7 +55,7 @@ script GengarDialog{
     waitmovement(Gengar)
     speakername("Gengar")
     createfieldmugshot(MUGSHOT_GENGAR, EMOTE_NORMAL)
-    msgbox("Back for more?\pI have nothing left for you\pKekeh!\n", MSGBOX_DEFAULT)
+    msgbox("Back for more?\pI have nothing left for you.\pKekeh!\n", MSGBOX_DEFAULT)
     waitmessage
     removefieldmugshot
     release
@@ -77,6 +77,7 @@ script LitwickDialog {
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
             giveitem(ITEM_LUCKY_EGG)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            setflag(FLAG_LITWICK_EGG)
             speakername("Litwick")
             createfieldmugshot(MUGSHOT_LITWICK, EMOTE_NORMAL)
             msgbox("I know a Chansey will exchange\nit to heal your wounds.", MSGBOX_DEFAULT)
@@ -91,7 +92,7 @@ script LitwickDialog {
             faceplayer
             speakername("Litwick")
             createfieldmugshot(MUGSHOT_LITWICK, EMOTE_NORMAL)
-            msgbox("Careful, that bat is fiesty!\n", MSGBOX_DEFAULT)
+            msgbox("Careful, that bat is feisty!\n", MSGBOX_DEFAULT)
             waitmessage
             removefieldmugshot
             release
@@ -334,7 +335,7 @@ script BattleVsNoivern{
         waitmessage
         speakername("Noivern")
         createfieldmugshot(MUGSHOT_NOIVERN, EMOTE_NORMAL)
-        msgbox("Soar high gooey friend.\pYou'll need my flight to reach your\ndestination\pYou near the end of your quest!", MSGBOX_AUTOCLOSE)
+        msgbox("Soar high gooey friend.\pYou'll need my flight to reach your\ndestination.\pYou near the end of your quest!\pTest out my flight by soaring down\nfrom the cliff rather than taking\lthe waterfall.", MSGBOX_AUTOCLOSE)
         waitmessage
         removefieldmugshot
         applymovement(Noivern, moves(walk_fast_up*4))

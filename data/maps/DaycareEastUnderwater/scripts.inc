@@ -362,4 +362,4 @@ SkrelpDialog_Text_0:
 
 SkrelpDialog_Text_1:
 # 161 "data/maps/DaycareEastUnderwater/scripts.pory"
-	.string "Wait you can see me?\pI need to work on my camoflauge...\n$"
+	.string "Wait you can see me?\pI need to work on my camouflage...\n$"

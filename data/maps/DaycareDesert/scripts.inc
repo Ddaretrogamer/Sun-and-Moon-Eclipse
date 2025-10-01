@@ -329,7 +329,7 @@ TrapinchDialog_Text_2:
 
 TrapinchDialog_Text_3:
 # 44 "data/maps/DaycareDesert/scripts.pory"
-	.string "Oh, hey Rhyhorn!\pBeautiful weather today isn't it?\pThis fell into my sandtrap the\nthe other day...\pWhy don't you take it?\n$"
+	.string "Oh, hey Rhyhorn!\pBeautiful weather today isn't it?\pThis fell into my sandtrap the\nother day...\pWhy don't you take it?\n$"
 
 StunfiskDialog_Text_0:
 # 72 "data/maps/DaycareDesert/scripts.pory"
@@ -349,7 +349,7 @@ BaltoyDialog_Text_0:
 
 BaltoyDialog_Text_1:
 # 107 "data/maps/DaycareDesert/scripts.pory"
-	.string "I've heard there is a secret cave\nsomewhere here in the desert.\pRumor has it that it a Pokémon\nneeds to know a move not many\ldesert Pokémon can learn...$"
+	.string "I've heard there is a secret cave\nsomewhere here in the desert.\pRumor has it that a Pokémon\nneeds to know a move not many\ldesert Pokémon can learn...$"
 
 SandshrewDialog_Text_0:
 # 117 "data/maps/DaycareDesert/scripts.pory"
@@ -357,7 +357,7 @@ SandshrewDialog_Text_0:
 
 SandshrewDialog_Text_1:
 # 119 "data/maps/DaycareDesert/scripts.pory"
-	.string "Rhyhorn may have a tough exterior,\nbut he is the nicest Pokémon in\lthe desert!\pHe's a pacifist and doesn't like\nto battle.\pHe's great friends with Trapinch\nwho can be fiesty.$"
+	.string "Rhyhorn may have a tough exterior,\nbut he is the nicest Pokémon in\lthe desert!\pHe's a pacifist and doesn't like\nto battle.\pHe's great friends with Trapinch\nwho can be feisty.$"
 
 VibravaDialog_Text_0:
 # 129 "data/maps/DaycareDesert/scripts.pory"

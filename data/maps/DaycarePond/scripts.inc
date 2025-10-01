@@ -1683,4 +1683,4 @@ StarmieDialog_Text_0:
 
 StarmieDialog_Text_1:
 # 805 "data/maps/DaycarePond/scripts.pory"
-	.string "Isn't the water so relaxing?\nRealy puts the mind at ease.$"
+	.string "Isn't the water so relaxing?\nReally puts the mind at ease.$"

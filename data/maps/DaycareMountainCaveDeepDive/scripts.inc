@@ -610,7 +610,7 @@ GorebyssInCave_Text_0:
 
 GorebyssInCave_Text_1:
 # 11 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	.string "My brother Huntail doesnt care\nfor beauty.\pHe will attack you fiercely!\n$"
+	.string "My brother Huntail doesn't care\nfor beauty.\pHe will attack you fiercely!\n$"
 
 GorebyssInCave_Text_2:
 # 27 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"

@@ -20,7 +20,7 @@ Daycaremountaincavedeep_FindSuperPotion::
 # 14 "data/maps/DaycareMountainCaveDeep/scripts.pory"
 	waitmessage
 # 15 "data/maps/DaycareMountainCaveDeep/scripts.pory"
-	setflag FLAG_ITEM_DAYCARE_MCD1
+	setflag FLAG_ITEM_DAYCARE_MCD2
 # 16 "data/maps/DaycareMountainCaveDeep/scripts.pory"
 	release
 	end
@@ -36,7 +36,7 @@ DaycareMCD_FindLuckyEgg::
 # 24 "data/maps/DaycareMountainCaveDeep/scripts.pory"
 	waitmessage
 # 25 "data/maps/DaycareMountainCaveDeep/scripts.pory"
-	setflag FLAG_ITEM_DAYCARE_MCD2
+	setflag FLAG_ITEM_DAYCARE_MCD1
 # 26 "data/maps/DaycareMountainCaveDeep/scripts.pory"
 	release
 	end
@@ -513,7 +513,7 @@ DaycareMCDDittoOpenXforms_Text_3:
 
 DaycareMCDDittoOpenXforms_Text_4:
 # 220 "data/maps/DaycareMountainCaveDeep/scripts.pory"
-	.string "Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nthe secret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pDon't forget, you are a Ditto,\nso you can transform into any\lPokémon you defeat in battle!\pThis does only apply to Pokémon\nwho are not already using\lTransform...\pPress the {SELECT_BUTTON} button to\nopen your transformation menu.\pIf you open your Transformation\nParty, you'll see which Pokémon\lyou can transform into!$"
+	.string "Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nsecret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pDon't forget, you are a Ditto,\nso you can transform into any\lPokémon you defeat in battle!\pThis does only apply to Pokémon\nwho are not already using\lTransform...\pPress the {SELECT_BUTTON} button to\nopen your transformation menu.\pIf you open your Transformation\nParty, you'll see which Pokémon\lyou can transform into!$"
 
 ChanseyDaycareMCD_Text_0:
 # 233 "data/maps/DaycareMountainCaveDeep/scripts.pory"

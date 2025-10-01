@@ -1129,7 +1129,7 @@ FuecocoInCave_Text_0:
 
 FuecocoInCave_Text_1:
 # 219 "data/maps/DaycareVolcano/scripts.pory"
-	.string "At least it doesnt lag here in\nHoenn...$"
+	.string "At least it doesn't lag here in\nHoenn...$"
 
 FuecocoInCave_Text_2:
 # 235 "data/maps/DaycareVolcano/scripts.pory"

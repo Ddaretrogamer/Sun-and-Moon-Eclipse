@@ -1956,7 +1956,7 @@ DaycareIntro_Text_2:
 
 DaycareIntro_Text_3:
 # 25 "data/maps/daycarebase/scripts.pory"
-	.string "I don't care what the Daycare Man\nsays, I'm not interested going on\lan Egg hunt.\pJust because Brendan put us in here\ntogether doesn't mean I have to\lhelp you.\pI'm going for a swim.\pYou'll just have to find that Egg\non your own.$"
+	.string "I don't care what the Daycare Man\nsays, I'm not interested in going on\lan Egg hunt.\pJust because Brendan put us in here\ntogether doesn't mean I have to\lhelp you.\pI'm going for a swim.\pYou'll just have to find that Egg\non your own.$"
 
 ShrinkToPikachuCave_Text_0:
 # 47 "data/maps/daycarebase/scripts.pory"
@@ -2016,7 +2016,7 @@ AzumarillDialog_Text_1:
 
 AzumarillDialog_Text_2:
 # 308 "data/maps/daycarebase/scripts.pory"
-	.string "Oh!\nThank goodness you aren't a Ditto...\pMy trainer keeps putting me in here\nwith Dittos hoping we'll find an\lEgg.\pThey gave me this Sea Incence,\nbut I'm not sure how that would\lhelp us on our hunt...$"
+	.string "Oh!\nThank goodness you aren't a Ditto...\pMy trainer keeps putting me in here\nwith Dittos hoping we'll find an\lEgg.\pThey gave me this Sea Incense,\nbut I'm not sure how that would\lhelp us on our hunt...$"
 
 DaycareOldManDialog_Text_0:
 # 326 "data/maps/daycarebase/scripts.pory"
@@ -2208,7 +2208,7 @@ RioluDialog_Text_14:
 
 RioluDialog_Text_15:
 # 719 "data/maps/daycarebase/scripts.pory"
-	.string "Arcanine can be found deep in the\nVolcano.\pIt can run really fast and scale\nhills that would normally be tooS\lslippery to climb!$"
+	.string "Arcanine can be found deep in the\nVolcano.\pIt can run really fast and scale\nhills that would normally be too\lslippery to climb!$"
 
 RioluDialog_Text_16:
 # 727 "data/maps/daycarebase/scripts.pory"
@@ -2324,4 +2324,4 @@ DaycareBase_Ditto_Text_3:
 
 DaycareBase_Ditto_Text_4:
 # 1005 "data/maps/daycarebase/scripts.pory"
-	.string "Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nthe secret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!$"
+	.string "Hello there fellow Ditto!\pDaycare Man asked you to get an Egg\nfor him, did he?\pWell, you're about to learn the\nsecret of how we Dittos are\lalways found holding Eggs.\pIt'll be quite the adventure!\pTalk to any of the Dittos around\nthe Daycare for some control tips,\lincluding me!$"
