@@ -32,8 +32,7 @@ script BlockVolcano{
             applymovement(Volcarona, moves(face_left))
             waitmovement(Volcarona)
             special(SpawnCameraObject)
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 6))
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 6))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             delay(30)
             speakername("Volcarona")
@@ -41,7 +40,7 @@ script BlockVolcano{
             msgbox("You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.\p...\pYou say you are a Water_type?\pI've never seen a Water_type glow\nlike you...\pNo matter.\nYou may not pass.", MSGBOX_AUTOCLOSE)
             waitmessage
             removefieldmugshot
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 6))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 6))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
             applymovement(Volcarona, moves(walk_in_place_down))
@@ -71,8 +70,7 @@ script BlockVolcano{
             applymovement(Volcarona, moves(face_left))
             waitmovement(Volcarona)
             special(SpawnCameraObject)
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 6))
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 6))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             delay(30)
             speakername("Volcarona")
@@ -80,7 +78,7 @@ script BlockVolcano{
             msgbox("You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.", MSGBOX_AUTOCLOSE)
             waitmessage
             removefieldmugshot
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 6))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 6))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
             applymovement(Volcarona, moves(walk_in_place_down))
