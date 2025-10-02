@@ -10,6 +10,45 @@ script DaycareDesertToFire_OnTransition{
 script BlockVolcano{
     if(!flag(FLAG_TRANS_ARCANINE))
     {
+        if(var(VAR_TRANSFORM_MON) == SPECIES_CHINCHOU)
+        {
+            lock
+            delay(15)    
+            setvar(VAR_0x8004, 2)
+            setvar(VAR_0x8005, 6)
+            setvar(VAR_0x8006, 4)
+            setvar(VAR_0x8007, 4)
+            special(ShakeCamera)
+            waitstate            
+            applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+            waitmovement(LOCALID_PLAYER)            
+            applymovement(LOCALID_PLAYER, moves(face_up))
+            waitmovement(LOCALID_PLAYER) 
+            applymovement(LOCALID_PLAYER, moves(lock_facing_direction))
+            waitmovement(LOCALID_PLAYER)
+            applymovement(LOCALID_PLAYER, moves(walk_down))
+            waitmovement(LOCALID_PLAYER)
+            msgbox("Stop!\n", MSGBOX_AUTOCLOSE)
+            applymovement(Volcarona, moves(face_left))
+            waitmovement(Volcarona)
+            special(SpawnCameraObject)
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 6))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+            waitmovement(OBJ_EVENT_ID_CAMERA)
+            delay(30)
+            speakername("Volcarona")
+            createfieldmugshot(MUGSHOT_VOLCARONA, EMOTE_NORMAL)
+            msgbox("You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.\p...\pYou say you are a Water_type?\pI've never seen a Water_type glow\nlike you...\pNo matter.\nYou may not pass.", MSGBOX_AUTOCLOSE)
+            waitmessage
+            removefieldmugshot
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 6))
+            waitmovement(OBJ_EVENT_ID_CAMERA)
+            special(RemoveCameraObject)
+            applymovement(Volcarona, moves(walk_in_place_down))
+            waitmovement(Volcarona)
+            release
+            end
+        }
         if(var(VAR_TRANSFORM_MON) != SPECIES_MARILL)
         {
             lock
