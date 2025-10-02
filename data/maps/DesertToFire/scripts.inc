@@ -17,11 +17,14 @@ BlockVolcano::
 
 BlockVolcano_1:
 # 13 "data/maps/DesertToFire/scripts.pory"
+	compare VAR_TRANSFORM_MON, SPECIES_CHINCHOU
+	goto_if_eq BlockVolcano_4
+# 51 "data/maps/DesertToFire/scripts.pory"
 	compare VAR_TRANSFORM_MON, SPECIES_MARILL
-	goto_if_ne BlockVolcano_3
+	goto_if_ne BlockVolcano_6
 	return
 
-BlockVolcano_3:
+BlockVolcano_4:
 # 15 "data/maps/DesertToFire/scripts.pory"
 	lock
 # 16 "data/maps/DesertToFire/scripts.pory"
@@ -65,32 +68,101 @@ BlockVolcano_3:
 # 35 "data/maps/DesertToFire/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_4
 # 36 "data/maps/DesertToFire/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_5
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 37 "data/maps/DesertToFire/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 38 "data/maps/DesertToFire/scripts.pory"
 	delay 30
-# 39 "data/maps/DesertToFire/scripts.pory"
+# 38 "data/maps/DesertToFire/scripts.pory"
 	speakername BlockVolcano_Text_1
-# 40 "data/maps/DesertToFire/scripts.pory"
+# 39 "data/maps/DesertToFire/scripts.pory"
 	createfieldmugshot MUGSHOT_VOLCARONA, EMOTE_NORMAL
-# 41 "data/maps/DesertToFire/scripts.pory"
+# 40 "data/maps/DesertToFire/scripts.pory"
 	msgbox BlockVolcano_Text_2, MSGBOX_AUTOCLOSE
-# 42 "data/maps/DesertToFire/scripts.pory"
+# 41 "data/maps/DesertToFire/scripts.pory"
 	waitmessage
-# 43 "data/maps/DesertToFire/scripts.pory"
+# 42 "data/maps/DesertToFire/scripts.pory"
 	removefieldmugshot
+# 43 "data/maps/DesertToFire/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_5
 # 44 "data/maps/DesertToFire/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_6
-# 45 "data/maps/DesertToFire/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
-# 46 "data/maps/DesertToFire/scripts.pory"
+# 45 "data/maps/DesertToFire/scripts.pory"
 	special RemoveCameraObject
+# 46 "data/maps/DesertToFire/scripts.pory"
+	applymovement Volcarona, BlockVolcano_Movement_6
 # 47 "data/maps/DesertToFire/scripts.pory"
-	applymovement Volcarona, BlockVolcano_Movement_7
-# 48 "data/maps/DesertToFire/scripts.pory"
 	waitmovement Volcarona
-# 49 "data/maps/DesertToFire/scripts.pory"
+# 48 "data/maps/DesertToFire/scripts.pory"
+	release
+	end
+
+BlockVolcano_6:
+# 53 "data/maps/DesertToFire/scripts.pory"
+	lock
+# 54 "data/maps/DesertToFire/scripts.pory"
+	delay 15
+# 55 "data/maps/DesertToFire/scripts.pory"
+	setvar VAR_0x8004, 2
+# 56 "data/maps/DesertToFire/scripts.pory"
+	setvar VAR_0x8005, 6
+# 57 "data/maps/DesertToFire/scripts.pory"
+	setvar VAR_0x8006, 4
+# 58 "data/maps/DesertToFire/scripts.pory"
+	setvar VAR_0x8007, 4
+# 59 "data/maps/DesertToFire/scripts.pory"
+	special ShakeCamera
+# 60 "data/maps/DesertToFire/scripts.pory"
+	waitstate
+# 61 "data/maps/DesertToFire/scripts.pory"
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+# 62 "data/maps/DesertToFire/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 63 "data/maps/DesertToFire/scripts.pory"
+	applymovement LOCALID_PLAYER, BlockVolcano_Movement_0
+# 64 "data/maps/DesertToFire/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 65 "data/maps/DesertToFire/scripts.pory"
+	applymovement LOCALID_PLAYER, BlockVolcano_Movement_1
+# 66 "data/maps/DesertToFire/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 67 "data/maps/DesertToFire/scripts.pory"
+	applymovement LOCALID_PLAYER, BlockVolcano_Movement_2
+# 68 "data/maps/DesertToFire/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 69 "data/maps/DesertToFire/scripts.pory"
+	msgbox BlockVolcano_Text_0, MSGBOX_AUTOCLOSE
+# 70 "data/maps/DesertToFire/scripts.pory"
+	applymovement Volcarona, BlockVolcano_Movement_3
+# 71 "data/maps/DesertToFire/scripts.pory"
+	waitmovement Volcarona
+# 72 "data/maps/DesertToFire/scripts.pory"
+	special SpawnCameraObject
+# 73 "data/maps/DesertToFire/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_4
+# 74 "data/maps/DesertToFire/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 75 "data/maps/DesertToFire/scripts.pory"
+	delay 30
+# 76 "data/maps/DesertToFire/scripts.pory"
+	speakername BlockVolcano_Text_1
+# 77 "data/maps/DesertToFire/scripts.pory"
+	createfieldmugshot MUGSHOT_VOLCARONA, EMOTE_NORMAL
+# 78 "data/maps/DesertToFire/scripts.pory"
+	msgbox BlockVolcano_Text_3, MSGBOX_AUTOCLOSE
+# 79 "data/maps/DesertToFire/scripts.pory"
+	waitmessage
+# 80 "data/maps/DesertToFire/scripts.pory"
+	removefieldmugshot
+# 81 "data/maps/DesertToFire/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, BlockVolcano_Movement_5
+# 82 "data/maps/DesertToFire/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 83 "data/maps/DesertToFire/scripts.pory"
+	special RemoveCameraObject
+# 84 "data/maps/DesertToFire/scripts.pory"
+	applymovement Volcarona, BlockVolcano_Movement_6
+# 85 "data/maps/DesertToFire/scripts.pory"
+	waitmovement Volcarona
+# 86 "data/maps/DesertToFire/scripts.pory"
 	release
 	end
 
@@ -122,44 +194,38 @@ BlockVolcano_Movement_3:
 # 35 "data/maps/DesertToFire/scripts.pory"
 BlockVolcano_Movement_4:
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 # 35 "data/maps/DesertToFire/scripts.pory"
-	walk_right
+	walk_fast_right
 	step_end
 
-# 36 "data/maps/DesertToFire/scripts.pory"
+# 43 "data/maps/DesertToFire/scripts.pory"
 BlockVolcano_Movement_5:
-# 36 "data/maps/DesertToFire/scripts.pory"
-	walk_up
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
+# 43 "data/maps/DesertToFire/scripts.pory"
+	walk_fast_left
 	step_end
 
-# 44 "data/maps/DesertToFire/scripts.pory"
+# 46 "data/maps/DesertToFire/scripts.pory"
 BlockVolcano_Movement_6:
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-# 44 "data/maps/DesertToFire/scripts.pory"
-	walk_left
-	step_end
-
-# 47 "data/maps/DesertToFire/scripts.pory"
-BlockVolcano_Movement_7:
-# 47 "data/maps/DesertToFire/scripts.pory"
+# 46 "data/maps/DesertToFire/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -168,9 +234,13 @@ BlockVolcano_Text_0:
 	.string "Stop!\n$"
 
 BlockVolcano_Text_1:
-# 39 "data/maps/DesertToFire/scripts.pory"
+# 38 "data/maps/DesertToFire/scripts.pory"
 	.string "Volcarona$"
 
 BlockVolcano_Text_2:
-# 41 "data/maps/DesertToFire/scripts.pory"
+# 40 "data/maps/DesertToFire/scripts.pory"
+	.string "You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.\p...\pYou say you are a Water_type?\pI've never seen a Water_type glow\nlike you...\pNo matter.\nYou may not pass.$"
+
+BlockVolcano_Text_3:
+# 78 "data/maps/DesertToFire/scripts.pory"
 	.string "You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.$"
