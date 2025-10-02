@@ -225,6 +225,23 @@ myscript_Movement_3:
 	step_end	
 
 Debug_EventScript_Script_2::
+	setflag(FLAG_ITEM_DAYCARE_BASE1)
+	setflag(FLAG_ITEM_DAYCARE_BASE2)
+	setflag(FLAG_ITEM_DAYCARE_EAST1)
+	setflag(FLAG_ITEM_EASTTODESERT1)
+	setflag(FLAG_ITEM_DAYCARE_POND1)
+	setflag(FLAG_ITEM_DAYCARE_POND2)
+	setflag(FLAG_ITEM_DAYCARE_MC1)
+	setflag(FLAG_ITEM_DAYCARE_MCD1)
+	setflag(FLAG_TRAPINCH_EGG)
+	setflag(FLAG_SPRIGATITO_EGG)
+	setflag(FLAG_HIDE_EISCUE)
+	setflag(FLAG_GENGAR_EGG)
+	setflag(FLAG_STUNFISK_EGG)
+	setflag(FLAG_HIDE_RUFFLET)
+	setflag(FLAG_LITWICK_EGG)
+	setflag(FLAG_MIMIKYU_LUCKYEGG)
+	setflag(FLAG_FAM_TWO)
 	release
 	end
 

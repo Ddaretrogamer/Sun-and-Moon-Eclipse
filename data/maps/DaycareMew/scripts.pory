@@ -111,7 +111,7 @@ script DittoEndTriggerTwo
                 waitmovement(DittoFinale)
                 speakername("Ditto")
                 createfieldmugshot(MUGSHOT_DITTO, EMOTE_HAPPY)
-                msgbox("Congratulations!\pNow you know how we Dittos\nget our Eggs!\pThis knowledge is sacred amonst\nthe Daycare Dittos, so keep this\lto yourself.\pComplete your obligation and hand\nthat Egg off to the Daycare Man.", MSGBOX_DEFAULT)
+                msgbox("Congratulations!\pNow you know how we Dittos\nget our Eggs!\pThis knowledge is sacred amongst\nthe Daycare Dittos, so keep this\lto yourself.\pComplete your obligation and hand\nthat Egg off to the Daycare Man.", MSGBOX_DEFAULT)
                 waitmessage
                 removefieldmugshot
                 setflag(FLAG_DITTO_END_TRIGGER)

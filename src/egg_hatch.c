@@ -338,7 +338,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     isModernFatefulEncounter = GetMonData(egg, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     ball = GetMonData(egg, MON_DATA_POKEBALL);
 
-    CreateMon(temp, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
+    CreateMonWithShiny(temp, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0,1);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonData(temp, MON_DATA_MOVE1 + i,  &moves[i]);
@@ -575,15 +575,18 @@ static void CB2_LoadEggHatch(void)
     BuildOamBuffer();
     UpdatePaletteFade();
 }
-
+static void CB2_EggHatchExit(void)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+}
 static void EggHatchSetMonNickname(void)
 {
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar3);
     FreeMonSpritesGfx();
     Free(sEggHatchData);
-    SetMainCallback2(CB2_ReturnToField);
+    SetMainCallback2(CB2_EggHatchExit);
 }
-
 #define tTimer data[0]
 
 static void Task_EggHatchPlayBGM(u8 taskId)
@@ -663,7 +666,7 @@ static void CB2_EggHatch(void)
         break;
     case 6:
         if (IsFanfareTaskInactive())
-            sEggHatchData->state++;
+            sEggHatchData->state = 11;
         break;
     case 7: // Twice?
         if (IsFanfareTaskInactive())
@@ -714,7 +717,7 @@ static void CB2_EggHatch(void)
             UnsetBgTilemapBuffer(0);
             UnsetBgTilemapBuffer(1);
             Free(sEggHatchData);
-            SetMainCallback2(CB2_ReturnToField);
+            SetMainCallback2(CB2_EggHatchExit); 
         }
         break;
     }

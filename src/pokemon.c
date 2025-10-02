@@ -1288,6 +1288,22 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     GiveBoxMonInitialMoveset(boxMon);
 }
 
+void CreateMonWithShiny(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId, s8 forceIsShiny)
+{
+    u8 shinyVal;
+
+    // CreateMon does everything as before (fills box data, sets level, stats, etc)
+    CreateMon(mon, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
+
+    // If caller requested an override, set MON_DATA_IS_SHINY accordingly.
+    // SetMonData -> SetBoxMonData will compute/adjust shinyModifier based on current PID/OT.
+    if (forceIsShiny != -1)
+    {
+        shinyVal = (forceIsShiny != 0);
+        SetMonData(mon, MON_DATA_IS_SHINY, &shinyVal);
+    }
+}
+
 void CreateMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 nature)
 {
     u32 personality;

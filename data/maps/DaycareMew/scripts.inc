@@ -173,7 +173,7 @@ DittoEndTriggerTwo_4:
 # 113 "data/maps/DaycareMew/scripts.pory"
 	createfieldmugshot MUGSHOT_DITTO, EMOTE_HAPPY
 # 114 "data/maps/DaycareMew/scripts.pory"
-	msgbox DittoEnd_Text_3, MSGBOX_DEFAULT
+	msgbox DittoEndTriggerTwo_Text_0, MSGBOX_DEFAULT
 # 115 "data/maps/DaycareMew/scripts.pory"
 	waitmessage
 # 116 "data/maps/DaycareMew/scripts.pory"
@@ -316,6 +316,10 @@ DittoEnd_Text_2:
 DittoEnd_Text_3:
 # 50 "data/maps/DaycareMew/scripts.pory"
 	.string "Congratulations!\pNow you know how we Dittos\nget our Eggs!\pThis knowledge is sacred amonst\nthe Daycare Dittos, so keep this\lto yourself.\pComplete your obligation and hand\nthat Egg off to the Daycare Man.$"
+
+DittoEndTriggerTwo_Text_0:
+# 114 "data/maps/DaycareMew/scripts.pory"
+	.string "Congratulations!\pNow you know how we Dittos\nget our Eggs!\pThis knowledge is sacred amongst\nthe Daycare Dittos, so keep this\lto yourself.\pComplete your obligation and hand\nthat Egg off to the Daycare Man.$"
 
 ChanseyHealMew_Text_0:
 # 136 "data/maps/DaycareMew/scripts.pory"

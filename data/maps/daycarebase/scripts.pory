@@ -419,9 +419,17 @@ script DaycareOldManDialog{
             buffernumberstring(STR_VAR_2, VAR_TEMP_1)
             if(var(VAR_WHITEOUT_COUNT) == 0 && var(VAR_LUCKYEGG_COUNT) ==18)    
             {
-                msgbox("Pokémon Transform Stats:\pNumber of Whiteouts: {COLOR BLUE}{SHADOW LIGHT_BLUE}0\n{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Lucky Eggs found: {COLOR BLUE}{SHADOW LIGHT_BLUE}{STR_VAR_2}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}/18\pAmazing!\pYou beat the game with 0 whiteouts\nand found all of the Lucky Eggs!\pCongratulations!\pStart a new game for a reward!", MSGBOX_DEFAULT)
+                msgbox("Pokémon Transform Stats:\pNumber of Whiteouts: {COLOR BLUE}{SHADOW LIGHT_BLUE}0\n{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Lucky Eggs found: {COLOR BLUE}{SHADOW LIGHT_BLUE}{STR_VAR_2}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}/18\pAmazing!\pYou beat the game with 0 whiteouts\nand found all of the Lucky Eggs!\pCongratulations!", MSGBOX_DEFAULT)
                 waitmessage
-                special(ForceShinyDitto)           
+                special(ForceShinyDitto)
+                clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+                clearflag(FLAG_BEAT_MEW)
+                setflag(FLAG_SHOW_BRENDAN_OUTRO)
+                clearflag(FLAG_HIDE_BRENDAN_BIKE)
+                setflag(FLAG_SPAWN_INVISIBLE)
+                warp(MAP_ROUTE117, 14,27)
+                release
+                end   
             }
             elif(var(VAR_WHITEOUT_COUNT) == 0 && var(VAR_LUCKYEGG_COUNT) !=18 && var(VAR_LUCKYEGG_COUNT) >0)
             {
@@ -518,9 +526,17 @@ script DaycareOldManDialog{
             buffernumberstring(STR_VAR_2, VAR_TEMP_1)
             if(var(VAR_WHITEOUT_COUNT) == 0 && var(VAR_LUCKYEGG_COUNT) ==18)    
             {
-                msgbox("Pokémon Transform Stats:\pNumber of Whiteouts: {COLOR BLUE}{SHADOW LIGHT_BLUE}0\n{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Lucky Eggs found: {COLOR BLUE}{SHADOW LIGHT_BLUE}{STR_VAR_2}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}/18\pAmazing!\pYou beat the game with 0 whiteouts\nand found all of the Lucky Eggs!\pCongratulations!\pStart a new game for a reward!", MSGBOX_DEFAULT)
+                msgbox("Pokémon Transform Stats:\pNumber of Whiteouts: {COLOR BLUE}{SHADOW LIGHT_BLUE}0\n{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Lucky Eggs found: {COLOR BLUE}{SHADOW LIGHT_BLUE}{STR_VAR_2}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}/18\pAmazing!\pYou beat the game with 0 whiteouts\nand found all of the Lucky Eggs!\pCongratulations!", MSGBOX_DEFAULT)
                 waitmessage
-                special(ForceShinyDitto)           
+                special(ForceShinyDitto)
+                clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+                clearflag(FLAG_BEAT_MEW)
+                setflag(FLAG_SHOW_BRENDAN_OUTRO)
+                clearflag(FLAG_HIDE_BRENDAN_BIKE)
+                setflag(FLAG_SPAWN_INVISIBLE)
+                warp(MAP_ROUTE117, 14,27)
+                release
+                end   
             }
             elif(var(VAR_WHITEOUT_COUNT) == 0 && var(VAR_LUCKYEGG_COUNT) !=18 && var(VAR_LUCKYEGG_COUNT) >0)
             {
