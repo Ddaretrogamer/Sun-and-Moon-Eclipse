@@ -282,6 +282,8 @@ RhyhornDialog::
 # 180 "data/maps/DaycareDesert/scripts.pory"
 	fadenewbgm MUS_PMD_DESERT
 # 181 "data/maps/DaycareDesert/scripts.pory"
+	delay 30
+# 182 "data/maps/DaycareDesert/scripts.pory"
 	release
 	end
 

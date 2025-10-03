@@ -41,20 +41,22 @@ Route117_secretscript::
 # 20 "data/maps/Route117/scripts.pory"
 	msgbox Route117_secretscript_Text_0
 # 21 "data/maps/Route117/scripts.pory"
-	special EggHatch
+	delay 50
 # 22 "data/maps/Route117/scripts.pory"
-	waitstate
+	playegghatchanim SPECIES_DITTO, TRUE, NULL
 # 23 "data/maps/Route117/scripts.pory"
-	playfanfare MUS_OBTAIN_TMHM
+	waitstate
 # 24 "data/maps/Route117/scripts.pory"
-	msgbox Route117_secretscript_Text_1, MSGBOX_AUTOCLOSE
+	playfanfare MUS_OBTAIN_TMHM
 # 25 "data/maps/Route117/scripts.pory"
-	msgbox Route117_secretscript_Text_2, MSGBOX_AUTOCLOSE
+	msgbox Route117_secretscript_Text_1, MSGBOX_AUTOCLOSE
 # 26 "data/maps/Route117/scripts.pory"
-	fadescreenspeed FADE_TO_BLACK, 24
+	msgbox Route117_secretscript_Text_2, MSGBOX_AUTOCLOSE
 # 27 "data/maps/Route117/scripts.pory"
-	delay 60
+	fadescreenspeed FADE_TO_BLACK, 24
 # 28 "data/maps/Route117/scripts.pory"
+	delay 60
+# 29 "data/maps/Route117/scripts.pory"
 	special GameClear
 	return
 
@@ -112,9 +114,9 @@ Route117_secretscript_Text_0:
 	.string "Huh?$"
 
 Route117_secretscript_Text_1:
-# 24 "data/maps/Route117/scripts.pory"
+# 25 "data/maps/Route117/scripts.pory"
 	.string "You can now play as a shiny Ditto!$"
 
 Route117_secretscript_Text_2:
-# 25 "data/maps/Route117/scripts.pory"
+# 26 "data/maps/Route117/scripts.pory"
 	.string "Start a new save to play through\nthe game completely as a shiny!\pEnjoy the new shiny Ditto themed\nUI elements as well!$"

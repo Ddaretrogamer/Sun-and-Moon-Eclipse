@@ -4,6 +4,7 @@
 void ScriptHatchMon(void);
 bool8 CheckDaycareMonReceivedMail(void);
 void EggHatch(void);
+void EggHatchAnim(u32 speciesId, bool8 isShiny, const u8 *name, bool8 fastDoubleAnim);
 u8 GetEggCyclesToSubtract(void);
 u16 CountPartyAliveNonEggMons(void);
 

@@ -178,6 +178,7 @@ script RhyhornDialog{
         givemon(SPECIES_RHYHORN, 25, move1=MOVE_ROCK_THROW, move2=MOVE_HORN_ATTACK, move3=MOVE_ROCK_POLISH, move4=MOVE_ROCK_SMASH)
         waitmessage
         fadenewbgm(MUS_PMD_DESERT)
+        delay(30)
         release
         end 
     }

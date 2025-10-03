@@ -74,8 +74,12 @@ script ChinchouDialog{
         msgbox("Wow!\pLooking more electric already!", MSGBOX_AUTOCLOSE)
         givemon(SPECIES_CHINCHOU, 25, move1=MOVE_THUNDER_WAVE, move2=MOVE_DISCHARGE, move3=MOVE_DIVE, move4=MOVE_DAZZLING_GLEAM)
         waitmessage
-        removefieldmugshot
         dittotransform(VAR_TEMP_0)
+        createfieldmugshot(MUGSHOT_CHINCHOU, EMOTE_HAPPY)
+        speakername("Chinchou")
+        msgbox("As you near your goal, you\nbest prepare yourself.\pAn opponent much like yourself\nawaits.\pThis blue Pokémon has also\nmastered transformation.", MSGBOX_AUTOCLOSE)
+        waitmessage
+        removefieldmugshot
         fadenewbgm(MUS_PMD_LAKE)
         release
         end 

@@ -412,27 +412,9 @@
     {
       "type": "trigger",
       "x": 33,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_TEMP_1",
-      "var_value": "0",
-      "script": "DragonairHealLocation"
-    },
-    {
-      "type": "trigger",
-      "x": 33,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_TEMP_2",
-      "var_value": "0",
-      "script": "DragonairHealLocation"
-    },
-    {
-      "type": "trigger",
-      "x": 33,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_TEMP_1",
+      "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "DragonairHealLocation"
     },
@@ -444,6 +426,15 @@
       "var": "VAR_TEMP_1",
       "var_value": "0",
       "script": "BuizelInCaveTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "DragonairHealLocation"
     }
   ],
   "bg_events": [

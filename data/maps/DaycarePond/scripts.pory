@@ -30,8 +30,8 @@ script BattleVsMarill{
     speakername("Marill")
     msgbox("Oh!\nA Ditto?\pYou’re gathering powers for your\nquest, right?\pIf you can beat me, you’ll earn the\npower to transform into me!", MSGBOX_AUTOCLOSE)
 	removefieldmugshot
-    setwildbattle(SPECIES_MARILL, 25, move1= MOVE_SURF, move2=MOVE_AQUA_JET, move3=MOVE_COVET, move4=MOVE_RAIN_DANCE)
-	settotemboost(B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 1, 0, 0)
+    setwildbattle(SPECIES_MARILL, 25, move1= MOVE_SURF, move2=MOVE_AQUA_JET, move3=MOVE_COVET, move4=MOVE_RAIN_DANCE,ability = 2)
+	settotemboost(B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 2, 0, 0)
 	dowildbattle
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
@@ -45,7 +45,7 @@ script BattleVsMarill{
         msgbox("You have gained the ability to\ntransform into Marill!", MSGBOX_DEFAULT)
         waitmessage
         dittotransform(VAR_TEMP_0)
-        givemon(SPECIES_MARILL, 25, move1=MOVE_SURF, move2=MOVE_AQUA_JET, move3=MOVE_COVET, move4=MOVE_RAIN_DANCE)
+        givemon(SPECIES_MARILL, 25, move1=MOVE_SURF, move2=MOVE_AQUA_JET, move3=MOVE_COVET, move4=MOVE_RAIN_DANCE, abilityNum=1)
         waitmessage
         speakername("Marill")
         createfieldmugshot(MUGSHOT_MARILL, EMOTE_HAPPY)

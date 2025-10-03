@@ -2068,7 +2068,7 @@ DaycareOldManDialog_Text_4:
 
 DaycareOldManDialog_Text_5:
 # 370 "data/maps/daycarebase/scripts.pory"
-	.string "Thank your for the Egg!\pAs a reward, take this EXP!\n$"
+	.string "Thank you for the Egg!\pAs a reward, take this EXP!\n$"
 
 DaycareOldManDialog_Text_6:
 # 380 "data/maps/daycarebase/scripts.pory"

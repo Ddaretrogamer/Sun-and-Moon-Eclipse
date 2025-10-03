@@ -36,9 +36,9 @@ BattleVsMarill::
 # 32 "data/maps/DaycarePond/scripts.pory"
 	removefieldmugshot
 # 33 "data/maps/DaycarePond/scripts.pory"
-	setwildbattle SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_RAIN_DANCE
+	setwildbattle SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_RAIN_DANCE, ability = 2
 # 34 "data/maps/DaycarePond/scripts.pory"
-	settotemboost B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 1, 0, 0
+	settotemboost B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 2, 0, 0
 # 35 "data/maps/DaycarePond/scripts.pory"
 	dowildbattle
 # 36 "data/maps/DaycarePond/scripts.pory"
@@ -85,7 +85,7 @@ BattleVsMarill_4:
 # 47 "data/maps/DaycarePond/scripts.pory"
 	dittotransform VAR_TEMP_0
 # 48 "data/maps/DaycarePond/scripts.pory"
-	givemon SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_RAIN_DANCE
+	givemon SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_RAIN_DANCE, abilityNum = 1
 # 49 "data/maps/DaycarePond/scripts.pory"
 	waitmessage
 # 50 "data/maps/DaycarePond/scripts.pory"

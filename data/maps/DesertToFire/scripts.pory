@@ -19,7 +19,8 @@ script BlockVolcano{
             setvar(VAR_0x8006, 4)
             setvar(VAR_0x8007, 4)
             special(ShakeCamera)
-            waitstate            
+            waitstate
+            playse(SE_PIN)            
             applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
             waitmovement(LOCALID_PLAYER)            
             applymovement(LOCALID_PLAYER, moves(face_up))
@@ -37,7 +38,14 @@ script BlockVolcano{
             delay(30)
             speakername("Volcarona")
             createfieldmugshot(MUGSHOT_VOLCARONA, EMOTE_NORMAL)
-            msgbox("You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.\p...\pYou say you are a Water_type?\pI've never seen a Water_type glow\nlike you...\pNo matter.\nYou may not pass.", MSGBOX_AUTOCLOSE)
+            msgbox("You are not the one who may pass.\pThe Boss likes a challenge,\nso he only lets Water_types into\lthe Volcano.", MSGBOX_AUTOCLOSE)
+            playse(SE_PIN)
+            applymovement(Volcarona, Common_Movement_ExclamationMark)
+            waitmovement(Volcarona)
+            delay(30)
+            speakername("Volcarona")
+            createfieldmugshot(MUGSHOT_VOLCARONA, EMOTE_NORMAL)
+            msgbox("...\pYou say you are a Water_type?\pI've never seen a Water_type glow\nlike you...\pNo matter.\nYou may not pass.", MSGBOX_AUTOCLOSE)
             waitmessage
             removefieldmugshot
             applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 6))
@@ -57,7 +65,8 @@ script BlockVolcano{
             setvar(VAR_0x8006, 4)
             setvar(VAR_0x8007, 4)
             special(ShakeCamera)
-            waitstate            
+            waitstate
+            playse(SE_PIN)            
             applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
             waitmovement(LOCALID_PLAYER)            
             applymovement(LOCALID_PLAYER, moves(face_up))

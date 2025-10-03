@@ -2687,3 +2687,9 @@
 	callnative RemoveFieldMugshot
 	.endm
 
+    .macro playegghatchanim species:req, isShiny:req, name:req
+    callnative PlayEggHatchAnimation
+    .2byte \species
+    .byte \isShiny
+    .4byte \name
+    .endm

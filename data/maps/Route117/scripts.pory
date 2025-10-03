@@ -18,7 +18,8 @@ script Route117_secretscript {
 	applymovement(SecretEndingBrenden, Common_Movement_ExclamationMark)
 	waitmovement(SecretEndingBrenden)
 	msgbox("Huh?". MSGBOX_AUTOCLOSE)
-	special(EggHatch)
+	delay(50)
+	playegghatchanim(SPECIES_DITTO, TRUE, NULL)
 	waitstate
 	playfanfare(MUS_OBTAIN_TMHM)
 	msgbox("You can now play as a shiny Ditto!", MSGBOX_AUTOCLOSE)

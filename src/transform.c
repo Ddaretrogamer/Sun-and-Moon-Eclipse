@@ -56,6 +56,7 @@
 #include "constants/species.h"
 #include "graphics.h"
 #include "script.h"
+#include "egg_hatch.h"
 
 #include "bike.h"
 #include "data/transformations.h"
@@ -549,4 +550,13 @@ void ForceShinyDitto(void)
 void RemoveForceShinyDitto(void)
 {
     gSaveBlock2Ptr->forceShinyDitto = 0;
+}
+
+
+void PlayEggHatchAnimation(struct ScriptContext *ctx)
+{
+    u32 speciesId = ScriptReadHalfword(ctx);
+    bool8 isShiny = ScriptReadByte(ctx);
+    const u8 *name = (const u8 *) ScriptReadWord(ctx);
+    EggHatchAnim(speciesId, isShiny, name, FALSE);
 }

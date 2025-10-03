@@ -156,7 +156,7 @@ const struct Transformation gTransformations[] =
         .iconPic = gItemIcon_TransformDive,
         .iconPalette = gItemIconPalette_TransformDive,
         .battleSpecies = SPECIES_DITTO_CHINCHOU,
-        .ability = ABILITY_ILLUMINATE,
+        .ability = ABILITY_VOLT_ABSORB,
         .moves = {
             MOVE_THUNDER_WAVE,
             MOVE_DISCHARGE,
@@ -171,7 +171,7 @@ const struct Transformation gTransformations[] =
         .iconPic = gItemIcon_TransformWaterfall,
         .iconPalette = gItemIconPalette_TransformWaterfall,
         .battleSpecies = SPECIES_DITTO_DRAGONAIR,
-        .ability = ABILITY_MARVEL_SCALE,
+        .ability = ABILITY_SHED_SKIN,
         .moves = {
             MOVE_OUTRAGE,
             MOVE_WATERFALL,

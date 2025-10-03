@@ -367,7 +367,7 @@ script DaycareOldManDialog{
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             waitmessage
             speakername("Daycare Man")
-            msgbox("Thank your for the Egg!\pAs a reward, take this EXP!\n", MSGBOX_DEFAULT)
+            msgbox("Thank you for the Egg!\pAs a reward, take this EXP!\n", MSGBOX_DEFAULT)
             waitmessage
             removeobject(BrendanBiking)
             setflag(FLAG_HIDE_BRENDAN_BIKE)
@@ -474,7 +474,7 @@ script DaycareOldManDialog{
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             waitmessage
             speakername("Daycare Man")
-            msgbox("Thank your for the Egg!\pAs a reward, take this EXP!\n", MSGBOX_DEFAULT)
+            msgbox("Thank you for the Egg!\pAs a reward, take this EXP!\n", MSGBOX_DEFAULT)
             removeobject(BrendanBiking)
             setflag(FLAG_HIDE_BRENDAN_BIKE)
             waitmessage
