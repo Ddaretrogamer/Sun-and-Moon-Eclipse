@@ -28,7 +28,7 @@ GorebyssInCave::
 # 28 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	removefieldmugshot
 # 29 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	setwildbattle SPECIES_GOREBYSS, 25
+	setwildbattle SPECIES_GOREBYSS, 25, move1 = MOVE_WATER_PULSE, move2 = MOVE_AQUA_RING, move3 = MOVE_DIVE, move4 = MOVE_WHIRLPOOL
 # 30 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	dowildbattle
 # 31 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"

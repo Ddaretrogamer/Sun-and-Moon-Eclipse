@@ -26,7 +26,7 @@ script GorebyssInCave{
         createfieldmugshot(MUGSHOT_GOREBYSS, EMOTE_NORMAL)
         msgbox("You are glowing!\nShow me how you illuminate\lthe deep with a battle!", MSGBOX_AUTOCLOSE)
         removefieldmugshot
-        setwildbattle(SPECIES_GOREBYSS, 25)
+        setwildbattle(SPECIES_GOREBYSS, 25, move1=MOVE_WATER_PULSE, move2=MOVE_AQUA_RING, move3=MOVE_DIVE, move4=MOVE_WHIRLPOOL)
         dowildbattle
         specialvar(VAR_RESULT, GetBattleOutcome)
         if (var(VAR_RESULT) == B_OUTCOME_WON)
