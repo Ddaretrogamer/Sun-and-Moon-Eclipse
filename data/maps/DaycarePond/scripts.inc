@@ -36,7 +36,7 @@ BattleVsMarill::
 # 32 "data/maps/DaycarePond/scripts.pory"
 	removefieldmugshot
 # 33 "data/maps/DaycarePond/scripts.pory"
-	setwildbattle SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_RAIN_DANCE, ability = 2
+	setwildbattle SPECIES_MARILL, 25, move1 = MOVE_SURF, move2 = MOVE_AQUA_JET, move3 = MOVE_COVET, move4 = MOVE_WATER_PULSE, ability = 2
 # 34 "data/maps/DaycarePond/scripts.pory"
 	settotemboost B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 2, 0, 0
 # 35 "data/maps/DaycarePond/scripts.pory"
