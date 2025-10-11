@@ -3226,8 +3226,7 @@ bool32 TryShinyAnimAfterMonAnimUtil(u32 battler)
 
     gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = FALSE;
     gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
-    FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
-    FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+    FreeShinyStars();
 
     return TRUE;
 }
@@ -3276,8 +3275,7 @@ bool32 SwitchIn_ShowHealthboxUtil(u32 battler)
 
     gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = FALSE;
     gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
-    FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
-    FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+    FreeShinyStars();
 
     if (side == B_SIDE_PLAYER)
     {
@@ -3312,4 +3310,15 @@ bool32 SwitchIn_TryShinyAnimUtil(u32 battler)
         SetBattlerShadowSpriteCallback(battler, GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES));
 
     return TRUE;
+}
+
+void FreeShinyStars(void)
+{
+    for (u32 battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+    {
+        if (gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim)
+            return;
+    }
+    FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
+    FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
 }
