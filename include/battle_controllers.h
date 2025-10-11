@@ -425,4 +425,6 @@ bool32 SwitchIn_HandleSoundAndEndUtil(u32 battler);
 bool32 SwitchIn_ShowHealthboxUtil(u32 battler);
 bool32 SwitchIn_TryShinyAnimUtil(u32 battler);
 
+void FreeShinyStars(void);
+
 #endif // GUARD_BATTLE_CONTROLLERS_H
