@@ -79,6 +79,7 @@
       "flag": "0"
     },
     {
+      "local_id": "vaporeonswimming",
       "graphics_id": "OBJ_EVENT_GFX_VAPOREON",
       "x": 33,
       "y": 42,

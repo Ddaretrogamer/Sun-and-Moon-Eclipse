@@ -591,14 +591,31 @@ script DaycareOldManDialog{
 
 script VaporeonDialog{
     lock
-    faceplayer
-    speakername("Vaporeon")
-    createfieldmugshot(MUGSHOT_VAPOREON, EMOTE_ANGRY)
-    msgbox("Ugh!\nYou again.\pEveryone here keeps asking me to\nhelp them search for Eggs.\pCan't a Vaporeon just relax?", MSGBOX_NPC)   
-    waitmessage
-    removefieldmugshot
-    release
-    end
+    applymovement(vaporeonswimming, moves(face_player))
+    waitmovement(vaporeonswimming)
+    if(!flag(FLAG_BEAT_MEW))
+    {
+        speakername("Vaporeon")
+        createfieldmugshot(MUGSHOT_VAPOREON, EMOTE_ANGRY)
+        msgbox("Ugh!\nYou again.\pEveryone here keeps asking me to\nhelp them search for Eggs.\pCan't a Vaporeon just relax?", MSGBOX_NPC)   
+        waitmessage
+        removefieldmugshot
+        release
+        end
+    }
+    else
+    {
+        speakername("Vaporeon")
+        createfieldmugshot(MUGSHOT_VAPOREON, EMOTE_ANGRY)
+        msgbox("Ugh!\nYou again...", MSGBOX_NPC)
+        playse(SE_PIN)
+        applymovement(vaporeonswimming, Common_Movement_ExclamationMark)
+        waitmovement(vaporeonswimming)
+        msgbox("Wait you found an Egg?!\pHuh. I always thought you needed two\nPokémon to find an Egg...\pWhat will hatch from since you found it alone?", MSGBOX_NPC)
+        waitmessage
+        removefieldmugshot
+        release
+    }
 }
 
 script LaprasDialog{

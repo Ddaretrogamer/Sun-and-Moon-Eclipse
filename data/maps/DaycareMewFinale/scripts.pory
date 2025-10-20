@@ -19,7 +19,7 @@ script MewFinalBattleTrigger{
         msgbox("Welcome Ditto.\pYou've had quite the adventure\nhaven't you?\pI see you've gathered many\ndiverse transformations.\pYou'd have to travel far and wide\nto accomplish such a feat.\pI think you are ready to receive\nyour Egg.\pConsider me your final challenge.\n", MSGBOX_AUTOCLOSE)
         removefieldmugshot
         setwildbattle(SPECIES_MEW, 25, IsShiny=TRUE, move1=MOVE_SOFT_BOILED, move2=MOVE_NASTY_PLOT, move3=MOVE_PSYCHIC, move4=MOVE_FIRE_BLAST)
-        settotemboost(B_POSITION_PLAYER_LEFT, 1, 1, 1, 1, 1, 1, 0)
+        settotemboost(B_POSITION_PLAYER_LEFT, 3, 3, 3, 3, 3, 3, 0)
         dowildbattle
         specialvar(VAR_RESULT, GetBattleOutcome)
         if (var(VAR_RESULT) == B_OUTCOME_WON)
