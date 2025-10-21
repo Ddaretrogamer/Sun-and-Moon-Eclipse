@@ -611,7 +611,9 @@ script VaporeonDialog{
         playse(SE_PIN)
         applymovement(vaporeonswimming, Common_Movement_ExclamationMark)
         waitmovement(vaporeonswimming)
-        msgbox("Wait you found an Egg?!\pHuh. I always thought you needed two\nPokémon to find an Egg...\pWhat will hatch from since you found it alone?", MSGBOX_NPC)
+        speakername("Vaporeon")
+        createfieldmugshot(MUGSHOT_VAPOREON, EMOTE_ANGRY)
+        msgbox("Wait you found an Egg?!\pHuh. I always thought you needed two\nPokémon to find an Egg...\pWhat will hatch from since you found it\nby yourself?", MSGBOX_NPC)
         waitmessage
         removefieldmugshot
         release

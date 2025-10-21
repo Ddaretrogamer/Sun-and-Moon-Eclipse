@@ -767,11 +767,11 @@ BattleVsNoivern_Movement_4:
 
 GastlyDialog_Text_0:
 # 8 "data/maps/DaycareNoivernCave/scripts.pory"
-	.string "Gastly$"
+	.string "Rick$"
 
 GastlyDialog_Text_1:
 # 10 "data/maps/DaycareNoivernCave/scripts.pory"
-	.string "It's no Mt. Pyre, but this cave\ndoes the trick.$"
+	.string "My trainer gave me this nickname...\nI'm not sure what it means.\pMy trainer is confusing...\pThey had just told me the were never\ngoing to give me up before dropping me\loff here.$"
 
 HaunterDialog_Text_0:
 # 23 "data/maps/DaycareNoivernCave/scripts.pory"
