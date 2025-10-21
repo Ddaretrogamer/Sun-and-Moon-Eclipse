@@ -5,9 +5,9 @@ mapscripts DaycareNoivernCave_MapScripts{
 script GastlyDialog{
     lock
     faceplayer
-    speakername("Gastly")
+    speakername("Rick")
     createfieldmugshot(MUGSHOT_GASTLY, EMOTE_NORMAL)
-    msgbox("It's no Mt. Pyre, but this cave\ndoes the trick.", MSGBOX_NPC)
+    msgbox("My trainer gave me this nickname...\nI'm not sure what it means.\pMy trainer is confusing...\pThey had just told me the were never\ngoing to give me up before dropping me\loff here.", MSGBOX_NPC)
     waitmessage
     removefieldmugshot
     release
