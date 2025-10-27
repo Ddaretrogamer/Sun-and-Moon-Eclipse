@@ -280,10 +280,20 @@ RhyhornDialog::
 # 179 "data/maps/DaycareDesert/scripts.pory"
 	waitmessage
 # 180 "data/maps/DaycareDesert/scripts.pory"
-	fadenewbgm MUS_PMD_DESERT
+	speakername RhyhornDialog_Text_0
 # 181 "data/maps/DaycareDesert/scripts.pory"
-	delay 30
+	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_NORMAL
 # 182 "data/maps/DaycareDesert/scripts.pory"
+	msgbox RhyhornDialog_Text_1, MSGBOX_DEFAULT
+# 183 "data/maps/DaycareDesert/scripts.pory"
+	waitmessage
+# 184 "data/maps/DaycareDesert/scripts.pory"
+	removefieldmugshot
+# 185 "data/maps/DaycareDesert/scripts.pory"
+	fadenewbgm MUS_PMD_DESERT
+# 186 "data/maps/DaycareDesert/scripts.pory"
+	delay 30
+# 187 "data/maps/DaycareDesert/scripts.pory"
 	release
 	end
 
