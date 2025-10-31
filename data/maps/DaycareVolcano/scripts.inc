@@ -883,134 +883,148 @@ BattleVsArcanine_2:
 
 BattleVsArcanine_4:
 # 486 "data/maps/DaycareVolcano/scripts.pory"
-	playbgm MUS_PMD_HAPPINESS, FALSE
+	lock
 # 487 "data/maps/DaycareVolcano/scripts.pory"
-	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
+	applymovement Arcanine, Common_Movement_ExclamationMark
 # 488 "data/maps/DaycareVolcano/scripts.pory"
-	setflag FLAG_TRANS_ARCANINE
+	waitmovement Arcanine
 # 489 "data/maps/DaycareVolcano/scripts.pory"
-	delay 15
+	playse SE_PIN
 # 490 "data/maps/DaycareVolcano/scripts.pory"
-	dittotransform SPECIES_ARCANINE
+	playbgm MUS_PMD_HAPPINESS, FALSE
 # 491 "data/maps/DaycareVolcano/scripts.pory"
-	playse MUS_LEVEL_UP
+	lock
 # 492 "data/maps/DaycareVolcano/scripts.pory"
-	msgbox BattleVsArcanine_Text_2, MSGBOX_DEFAULT
+	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
 # 493 "data/maps/DaycareVolcano/scripts.pory"
-	waitmessage
+	setflag FLAG_TRANS_ARCANINE
 # 494 "data/maps/DaycareVolcano/scripts.pory"
-	dittotransform VAR_TEMP_0
+	delay 30
 # 495 "data/maps/DaycareVolcano/scripts.pory"
-	givemon SPECIES_ARCANINE, 25, move1 = MOVE_FIRE_FANG, move2 = MOVE_BITE, move3 = MOVE_AERIAL_ACE, move4 = MOVE_THUNDER_FANG
+	dittotransform SPECIES_ARCANINE
 # 496 "data/maps/DaycareVolcano/scripts.pory"
-	waitmessage
+	playse MUS_LEVEL_UP
 # 497 "data/maps/DaycareVolcano/scripts.pory"
-	speakername BattleVsArcanine_Text_0
+	msgbox BattleVsArcanine_Text_2, MSGBOX_DEFAULT
 # 498 "data/maps/DaycareVolcano/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCANINE, EMOTE_NORMAL
+	waitse
 # 499 "data/maps/DaycareVolcano/scripts.pory"
-	msgbox BattleVsArcanine_Text_3, MSGBOX_AUTOCLOSE
-# 500 "data/maps/DaycareVolcano/scripts.pory"
 	waitmessage
+# 500 "data/maps/DaycareVolcano/scripts.pory"
+	lock
 # 501 "data/maps/DaycareVolcano/scripts.pory"
-	removefieldmugshot
+	dittotransform VAR_TEMP_0
 # 502 "data/maps/DaycareVolcano/scripts.pory"
-	playse SE_LEDGE
+	givemon SPECIES_ARCANINE, 25, move1 = MOVE_FIRE_FANG, move2 = MOVE_BITE, move3 = MOVE_AERIAL_ACE, move4 = MOVE_THUNDER_FANG
 # 503 "data/maps/DaycareVolcano/scripts.pory"
-	playse SE_LEDGE
+	waitmessage
 # 504 "data/maps/DaycareVolcano/scripts.pory"
-	applymovement Arcanine, BattleVsArcanine_Movement_3
+	speakername BattleVsArcanine_Text_0
 # 505 "data/maps/DaycareVolcano/scripts.pory"
-	waitmovement Arcanine
+	createfieldmugshot MUGSHOT_ARCANINE, EMOTE_NORMAL
 # 506 "data/maps/DaycareVolcano/scripts.pory"
-	applymovement Arcanine, BattleVsArcanine_Movement_4
+	msgbox BattleVsArcanine_Text_3, MSGBOX_AUTOCLOSE
 # 507 "data/maps/DaycareVolcano/scripts.pory"
-	waitmovement Arcanine
+	waitmessage
 # 508 "data/maps/DaycareVolcano/scripts.pory"
-	fadenewbgm MUS_PMD_VOLCANO
+	removefieldmugshot
 # 509 "data/maps/DaycareVolcano/scripts.pory"
+	playse SE_LEDGE
+# 510 "data/maps/DaycareVolcano/scripts.pory"
+	playse SE_LEDGE
+# 511 "data/maps/DaycareVolcano/scripts.pory"
+	applymovement Arcanine, BattleVsArcanine_Movement_3
+# 512 "data/maps/DaycareVolcano/scripts.pory"
+	waitmovement Arcanine
+# 513 "data/maps/DaycareVolcano/scripts.pory"
+	applymovement Arcanine, BattleVsArcanine_Movement_4
+# 514 "data/maps/DaycareVolcano/scripts.pory"
+	waitmovement Arcanine
+# 515 "data/maps/DaycareVolcano/scripts.pory"
+	fadenewbgm MUS_PMD_VOLCANO
+# 516 "data/maps/DaycareVolcano/scripts.pory"
 	release
 	end
 
 
 ChanseyDaycareVolcano::
-# 515 "data/maps/DaycareVolcano/scripts.pory"
-	lock
-# 516 "data/maps/DaycareVolcano/scripts.pory"
-	faceplayer
-# 517 "data/maps/DaycareVolcano/scripts.pory"
-	speakername ChanseyDaycareVolcano_Text_0
-# 518 "data/maps/DaycareVolcano/scripts.pory"
-	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 519 "data/maps/DaycareVolcano/scripts.pory"
-	msgbox ChanseyDaycareVolcano_Text_1, MSGBOX_DEFAULT
-# 520 "data/maps/DaycareVolcano/scripts.pory"
-	removefieldmugshot
-# 521 "data/maps/DaycareVolcano/scripts.pory"
-	msgbox ChanseyDaycareVolcano_Text_2, MSGBOX_YESNO
 # 522 "data/maps/DaycareVolcano/scripts.pory"
-	waitmessage
+	lock
 # 523 "data/maps/DaycareVolcano/scripts.pory"
+	faceplayer
+# 524 "data/maps/DaycareVolcano/scripts.pory"
+	speakername ChanseyDaycareVolcano_Text_0
+# 525 "data/maps/DaycareVolcano/scripts.pory"
+	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
+# 526 "data/maps/DaycareVolcano/scripts.pory"
+	msgbox ChanseyDaycareVolcano_Text_1, MSGBOX_DEFAULT
+# 527 "data/maps/DaycareVolcano/scripts.pory"
+	removefieldmugshot
+# 528 "data/maps/DaycareVolcano/scripts.pory"
+	msgbox ChanseyDaycareVolcano_Text_2, MSGBOX_YESNO
+# 529 "data/maps/DaycareVolcano/scripts.pory"
+	waitmessage
+# 530 "data/maps/DaycareVolcano/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ChanseyDaycareVolcano_1
-# 553 "data/maps/DaycareVolcano/scripts.pory"
+# 560 "data/maps/DaycareVolcano/scripts.pory"
 	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 554 "data/maps/DaycareVolcano/scripts.pory"
+# 561 "data/maps/DaycareVolcano/scripts.pory"
 	msgbox ChanseyDaycareVolcano_Text_5, MSGBOX_AUTOCLOSE
-# 555 "data/maps/DaycareVolcano/scripts.pory"
+# 562 "data/maps/DaycareVolcano/scripts.pory"
 	waitmessage
-# 556 "data/maps/DaycareVolcano/scripts.pory"
+# 563 "data/maps/DaycareVolcano/scripts.pory"
 	removefieldmugshot
-# 557 "data/maps/DaycareVolcano/scripts.pory"
+# 564 "data/maps/DaycareVolcano/scripts.pory"
 	release
 	end
 
 ChanseyDaycareVolcano_1:
-# 525 "data/maps/DaycareVolcano/scripts.pory"
+# 532 "data/maps/DaycareVolcano/scripts.pory"
 	checkitem ITEM_LUCKY_EGG
-# 526 "data/maps/DaycareVolcano/scripts.pory"
+# 533 "data/maps/DaycareVolcano/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq ChanseyDaycareVolcano_4
-# 543 "data/maps/DaycareVolcano/scripts.pory"
+# 550 "data/maps/DaycareVolcano/scripts.pory"
 	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 544 "data/maps/DaycareVolcano/scripts.pory"
+# 551 "data/maps/DaycareVolcano/scripts.pory"
 	msgbox ChanseyDaycareVolcano_Text_4, MSGBOX_AUTOCLOSE
-# 545 "data/maps/DaycareVolcano/scripts.pory"
+# 552 "data/maps/DaycareVolcano/scripts.pory"
 	waitmessage
-# 546 "data/maps/DaycareVolcano/scripts.pory"
+# 553 "data/maps/DaycareVolcano/scripts.pory"
 	removefieldmugshot
-# 547 "data/maps/DaycareVolcano/scripts.pory"
+# 554 "data/maps/DaycareVolcano/scripts.pory"
 	release
 	end
 
 ChanseyDaycareVolcano_4:
-# 528 "data/maps/DaycareVolcano/scripts.pory"
-	removeitem ITEM_LUCKY_EGG
-# 529 "data/maps/DaycareVolcano/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 530 "data/maps/DaycareVolcano/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 531 "data/maps/DaycareVolcano/scripts.pory"
-	playfanfare MUS_HEAL
-# 532 "data/maps/DaycareVolcano/scripts.pory"
-	waitfanfare
-# 533 "data/maps/DaycareVolcano/scripts.pory"
-	special HealPlayerParty
-# 534 "data/maps/DaycareVolcano/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
 # 535 "data/maps/DaycareVolcano/scripts.pory"
-	msgbox ChanseyDaycareVolcano_Text_3, MSGBOX_AUTOCLOSE
+	removeitem ITEM_LUCKY_EGG
 # 536 "data/maps/DaycareVolcano/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	fadescreenswapbuffers FADE_TO_BLACK
 # 537 "data/maps/DaycareVolcano/scripts.pory"
-	waitmessage
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 538 "data/maps/DaycareVolcano/scripts.pory"
+	playfanfare MUS_HEAL
+# 539 "data/maps/DaycareVolcano/scripts.pory"
+	waitfanfare
+# 540 "data/maps/DaycareVolcano/scripts.pory"
+	special HealPlayerParty
+# 541 "data/maps/DaycareVolcano/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 542 "data/maps/DaycareVolcano/scripts.pory"
+	msgbox ChanseyDaycareVolcano_Text_3, MSGBOX_AUTOCLOSE
+# 543 "data/maps/DaycareVolcano/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 544 "data/maps/DaycareVolcano/scripts.pory"
+	waitmessage
+# 545 "data/maps/DaycareVolcano/scripts.pory"
 	release
 	end
 
 
 SetArcanineRespawn::
-# 564 "data/maps/DaycareVolcano/scripts.pory"
+# 571 "data/maps/DaycareVolcano/scripts.pory"
 	setrespawn HEAL_LOCATION_DAYCARE_VOLCANO_1
 	end
 
@@ -1081,17 +1095,17 @@ BattleVsArcanine_Movement_2:
 	jump_2_down
 	step_end
 
-# 504 "data/maps/DaycareVolcano/scripts.pory"
+# 511 "data/maps/DaycareVolcano/scripts.pory"
 BattleVsArcanine_Movement_3:
-# 504 "data/maps/DaycareVolcano/scripts.pory"
+# 511 "data/maps/DaycareVolcano/scripts.pory"
 	jump_2_up
-# 504 "data/maps/DaycareVolcano/scripts.pory"
+# 511 "data/maps/DaycareVolcano/scripts.pory"
 	jump_2_up
 	step_end
 
-# 506 "data/maps/DaycareVolcano/scripts.pory"
+# 513 "data/maps/DaycareVolcano/scripts.pory"
 BattleVsArcanine_Movement_4:
-# 506 "data/maps/DaycareVolcano/scripts.pory"
+# 513 "data/maps/DaycareVolcano/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -1164,33 +1178,33 @@ BattleVsArcanine_Text_1:
 	.string "Aha!\pA Water_type challenger.\pYou must be strong if you battled\nyour way through my volcano.\pI see how your spirit burns bright.\pMaybe taking you down will grant me\nthe EXP I am looking for.\pLet me test your flame!\n$"
 
 BattleVsArcanine_Text_2:
-# 492 "data/maps/DaycareVolcano/scripts.pory"
+# 497 "data/maps/DaycareVolcano/scripts.pory"
 	.string "You have gained the ability to\ntransform into Arcanine!$"
 
 BattleVsArcanine_Text_3:
-# 499 "data/maps/DaycareVolcano/scripts.pory"
+# 506 "data/maps/DaycareVolcano/scripts.pory"
 	.string "That was a clever trick you pulled\nby transforming into a Rock_type.\pI lure Water_types into the volcano\nunder the guise that they have\lan advantage.\pThe intense fire here actually\ngives me the advantage.\pThis way I have a greater chance\nto earn EXP.\pMaybe I'm insecure about my\nabilities...\p...\pExcuse me.\pI meant to say...\pCarry yourself with honor.\pDon't soil my good name.\pMaybe you will unlock the secret\nto gain EXP.$"
 
 ChanseyDaycareVolcano_Text_0:
-# 517 "data/maps/DaycareVolcano/scripts.pory"
+# 524 "data/maps/DaycareVolcano/scripts.pory"
 	.string "Chansey$"
 
 ChanseyDaycareVolcano_Text_1:
-# 519 "data/maps/DaycareVolcano/scripts.pory"
+# 526 "data/maps/DaycareVolcano/scripts.pory"
 	.string "Hello there!\pI can heal you in exchange for\na Lucky Egg.$"
 
 ChanseyDaycareVolcano_Text_2:
-# 521 "data/maps/DaycareVolcano/scripts.pory"
+# 528 "data/maps/DaycareVolcano/scripts.pory"
 	.string "Would you like to heal?$"
 
 ChanseyDaycareVolcano_Text_3:
-# 535 "data/maps/DaycareVolcano/scripts.pory"
+# 542 "data/maps/DaycareVolcano/scripts.pory"
 	.string "You have been restored to full health!$"
 
 ChanseyDaycareVolcano_Text_4:
-# 544 "data/maps/DaycareVolcano/scripts.pory"
+# 551 "data/maps/DaycareVolcano/scripts.pory"
 	.string "You don't have a Lucky Egg!\pCome back when you do.$"
 
 ChanseyDaycareVolcano_Text_5:
-# 554 "data/maps/DaycareVolcano/scripts.pory"
+# 561 "data/maps/DaycareVolcano/scripts.pory"
 	.string "Oh, okay then.$"

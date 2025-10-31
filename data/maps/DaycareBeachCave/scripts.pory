@@ -50,6 +50,7 @@ script ChinchouDialog{
     }
     else
     {
+        lock
         playbgm(MUS_PMD_HAPPINESS, FALSE)
         applymovement(Chinchou, moves(face_player))
         waitmovement(Chinchou)
@@ -61,12 +62,14 @@ script ChinchouDialog{
         msgbox("You must be the new Ditto.\pGreat job finding this cave!\pNo need to fear. I am not looking\nfor a fight.\pI think I could help on your\nadventure by lending you my diving\lablities.\pGo on, Ditto, use Transform!\n", MSGBOX_DEFAULT)       
         waitmessage
         removefieldmugshot
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_CHINCHOU)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         dittotransform(SPECIES_CHINCHOU)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Chinchou!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         speakername("Chinchou")
@@ -74,8 +77,14 @@ script ChinchouDialog{
         msgbox("Wow!\pLooking more electric already!", MSGBOX_AUTOCLOSE)
         givemon(SPECIES_CHINCHOU, 25, move1=MOVE_THUNDER_WAVE, move2=MOVE_DISCHARGE, move3=MOVE_DIVE, move4=MOVE_DAZZLING_GLEAM)
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         delay(30)
+        speakername("Chinchou")
+        createfieldmugshot(MUGSHOT_CHINCHOU, EMOTE_HAPPY)
+        msgbox("As you near your goal, you\nbest prepare yourself.\pAn opponent much like yourself\nawaits.\pThis blue Pokémon has also\nmastered transformation.", MSGBOX_DEFAULT)
+        waitmessage
+        removefieldmugshot
         release
         end 
     }

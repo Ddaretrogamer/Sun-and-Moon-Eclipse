@@ -306,519 +306,535 @@ BattleVsLurantis_2:
 
 BattleVsLurantis_4:
 # 196 "data/maps/DaycareMountain/scripts.pory"
-	playbgm MUS_PMD_HAPPINESS, FALSE
+	lock
 # 197 "data/maps/DaycareMountain/scripts.pory"
-	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
+	applymovement Lurantis, Common_Movement_ExclamationMark
 # 198 "data/maps/DaycareMountain/scripts.pory"
-	setflag FLAG_TRANS_LURANTIS
+	waitmovement Lurantis
 # 199 "data/maps/DaycareMountain/scripts.pory"
-	dittotransform SPECIES_LURANTIS
+	playse SE_PIN
 # 200 "data/maps/DaycareMountain/scripts.pory"
-	playse MUS_LEVEL_UP
+	playbgm MUS_PMD_HAPPINESS, FALSE
 # 201 "data/maps/DaycareMountain/scripts.pory"
-	msgbox BattleVsLurantis_Text_3, MSGBOX_DEFAULT
+	lock
 # 202 "data/maps/DaycareMountain/scripts.pory"
-	waitmessage
+	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
 # 203 "data/maps/DaycareMountain/scripts.pory"
-	dittotransform VAR_TEMP_0
+	setflag FLAG_TRANS_LURANTIS
 # 204 "data/maps/DaycareMountain/scripts.pory"
-	givemon SPECIES_LURANTIS, 25, move1 = MOVE_AERIAL_ACE, move2 = MOVE_BUG_BITE, move3 = MOVE_TRAILBLAZE, move4 = MOVE_CUT
+	delay 30
 # 205 "data/maps/DaycareMountain/scripts.pory"
-	speakername BattleVsLurantis_Text_0
+	dittotransform SPECIES_LURANTIS
 # 206 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_LURANTIS, EMOTE_HAPPY
+	playse MUS_LEVEL_UP
 # 207 "data/maps/DaycareMountain/scripts.pory"
-	msgbox BattleVsLurantis_Text_4, MSGBOX_DEFAULT
+	msgbox BattleVsLurantis_Text_3, MSGBOX_DEFAULT
 # 208 "data/maps/DaycareMountain/scripts.pory"
-	waitmessage
+	waitse
 # 209 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
+	waitmessage
 # 210 "data/maps/DaycareMountain/scripts.pory"
-	fadenewbgm MUS_PMD_MOUNTAIN
+	lock
 # 211 "data/maps/DaycareMountain/scripts.pory"
+	dittotransform VAR_TEMP_0
+# 212 "data/maps/DaycareMountain/scripts.pory"
+	givemon SPECIES_LURANTIS, 25, move1 = MOVE_AERIAL_ACE, move2 = MOVE_BUG_BITE, move3 = MOVE_TRAILBLAZE, move4 = MOVE_CUT
+# 213 "data/maps/DaycareMountain/scripts.pory"
+	speakername BattleVsLurantis_Text_0
+# 214 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_LURANTIS, EMOTE_HAPPY
+# 215 "data/maps/DaycareMountain/scripts.pory"
+	msgbox BattleVsLurantis_Text_4, MSGBOX_DEFAULT
+# 216 "data/maps/DaycareMountain/scripts.pory"
+	waitmessage
+# 217 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 218 "data/maps/DaycareMountain/scripts.pory"
+	fadenewbgm MUS_PMD_MOUNTAIN
+# 219 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 OmanyteInCave::
-# 217 "data/maps/DaycareMountain/scripts.pory"
+# 225 "data/maps/DaycareMountain/scripts.pory"
 	lock
-# 219 "data/maps/DaycareMountain/scripts.pory"
+# 227 "data/maps/DaycareMountain/scripts.pory"
 	goto_if_set FLAG_OMANYTE_BATTLE, OmanyteInCave_1
-# 232 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Omanyte, VullabyDialog_Movement_0
-# 233 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Omanyte
-# 234 "data/maps/DaycareMountain/scripts.pory"
-	special PlayTrainerEncounterMusic
-# 235 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Omanyte, Common_Movement_ExclamationMark
-# 236 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Omanyte
-# 237 "data/maps/DaycareMountain/scripts.pory"
-	delay 60
-# 238 "data/maps/DaycareMountain/scripts.pory"
-	speakername OmanyteInCave_Text_0
-# 239 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
 # 240 "data/maps/DaycareMountain/scripts.pory"
-	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
+	applymovement Omanyte, VullabyDialog_Movement_0
 # 241 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
+	waitmovement Omanyte
 # 242 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_OMANYTE, 25
+	special PlayTrainerEncounterMusic
 # 243 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
+	applymovement Omanyte, Common_Movement_ExclamationMark
 # 244 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	waitmovement Omanyte
 # 245 "data/maps/DaycareMountain/scripts.pory"
+	delay 60
+# 246 "data/maps/DaycareMountain/scripts.pory"
+	speakername OmanyteInCave_Text_0
+# 247 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
+# 248 "data/maps/DaycareMountain/scripts.pory"
+	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
+# 249 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 250 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_OMANYTE, 25
+# 251 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 252 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 253 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq OmanyteInCave_4
 	return
 
 OmanyteInCave_1:
-# 221 "data/maps/DaycareMountain/scripts.pory"
+# 229 "data/maps/DaycareMountain/scripts.pory"
 	faceplayer
-# 222 "data/maps/DaycareMountain/scripts.pory"
+# 230 "data/maps/DaycareMountain/scripts.pory"
 	speakername OmanyteInCave_Text_0
-# 223 "data/maps/DaycareMountain/scripts.pory"
+# 231 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 224 "data/maps/DaycareMountain/scripts.pory"
+# 232 "data/maps/DaycareMountain/scripts.pory"
 	msgbox OmanyteInCave_Text_1, MSGBOX_DEFAULT
-# 225 "data/maps/DaycareMountain/scripts.pory"
+# 233 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 226 "data/maps/DaycareMountain/scripts.pory"
+# 234 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 227 "data/maps/DaycareMountain/scripts.pory"
+# 235 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 OmanyteInCave_4:
-# 247 "data/maps/DaycareMountain/scripts.pory"
+# 255 "data/maps/DaycareMountain/scripts.pory"
 	speakername OmanyteInCave_Text_0
-# 248 "data/maps/DaycareMountain/scripts.pory"
+# 256 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 249 "data/maps/DaycareMountain/scripts.pory"
+# 257 "data/maps/DaycareMountain/scripts.pory"
 	msgbox OmanyteInCave_Text_1, MSGBOX_DEFAULT
-# 250 "data/maps/DaycareMountain/scripts.pory"
+# 258 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_OMANYTE_BATTLE
-# 251 "data/maps/DaycareMountain/scripts.pory"
+# 259 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 252 "data/maps/DaycareMountain/scripts.pory"
+# 260 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 253 "data/maps/DaycareMountain/scripts.pory"
+# 261 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 OmanyteInCaveTrigger::
-# 260 "data/maps/DaycareMountain/scripts.pory"
+# 268 "data/maps/DaycareMountain/scripts.pory"
 	goto_if_unset FLAG_OMANYTE_BATTLE, OmanyteInCaveTrigger_1
 	return
 
 OmanyteInCaveTrigger_1:
-# 262 "data/maps/DaycareMountain/scripts.pory"
+# 270 "data/maps/DaycareMountain/scripts.pory"
 	special PlayTrainerEncounterMusic
-# 263 "data/maps/DaycareMountain/scripts.pory"
+# 271 "data/maps/DaycareMountain/scripts.pory"
 	applymovement Omanyte, Common_Movement_ExclamationMark
-# 264 "data/maps/DaycareMountain/scripts.pory"
+# 272 "data/maps/DaycareMountain/scripts.pory"
 	waitmovement Omanyte
-# 265 "data/maps/DaycareMountain/scripts.pory"
+# 273 "data/maps/DaycareMountain/scripts.pory"
 	delay 60
-# 266 "data/maps/DaycareMountain/scripts.pory"
+# 274 "data/maps/DaycareMountain/scripts.pory"
 	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-# 267 "data/maps/DaycareMountain/scripts.pory"
+# 275 "data/maps/DaycareMountain/scripts.pory"
 	switch VAR_TEMP_2
-# 269 "data/maps/DaycareMountain/scripts.pory"
+# 277 "data/maps/DaycareMountain/scripts.pory"
 	case 34, OmanyteInCaveTrigger_4
-# 291 "data/maps/DaycareMountain/scripts.pory"
+# 299 "data/maps/DaycareMountain/scripts.pory"
 	case 33, OmanyteInCaveTrigger_5
 	return
 
 OmanyteInCaveTrigger_4:
-# 270 "data/maps/DaycareMountain/scripts.pory"
-	applymovement LOCALID_PLAYER, OmanyteInCaveTrigger_Movement_0
-# 271 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Omanyte, OmanyteInCaveTrigger_Movement_1
-# 272 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Omanyte
-# 273 "data/maps/DaycareMountain/scripts.pory"
-	speakername OmanyteInCave_Text_0
-# 274 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 275 "data/maps/DaycareMountain/scripts.pory"
-	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
-# 276 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 277 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_OMANYTE, 25
 # 278 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
+	applymovement LOCALID_PLAYER, OmanyteInCaveTrigger_Movement_0
 # 279 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	applymovement Omanyte, OmanyteInCaveTrigger_Movement_1
 # 280 "data/maps/DaycareMountain/scripts.pory"
+	waitmovement Omanyte
+# 281 "data/maps/DaycareMountain/scripts.pory"
+	speakername OmanyteInCave_Text_0
+# 282 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
+# 283 "data/maps/DaycareMountain/scripts.pory"
+	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
+# 284 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 285 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_OMANYTE, 25
+# 286 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 287 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 288 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq OmanyteInCaveTrigger_6
 	return
 
 OmanyteInCaveTrigger_5:
-# 292 "data/maps/DaycareMountain/scripts.pory"
-	applymovement LOCALID_PLAYER, OmanyteInCaveTrigger_Movement_0
-# 293 "data/maps/DaycareMountain/scripts.pory"
-	speakername OmanyteInCave_Text_0
-# 294 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 295 "data/maps/DaycareMountain/scripts.pory"
-	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
-# 296 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 297 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_OMANYTE, 25
-# 298 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
-# 299 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
 # 300 "data/maps/DaycareMountain/scripts.pory"
+	applymovement LOCALID_PLAYER, OmanyteInCaveTrigger_Movement_0
+# 301 "data/maps/DaycareMountain/scripts.pory"
+	speakername OmanyteInCave_Text_0
+# 302 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
+# 303 "data/maps/DaycareMountain/scripts.pory"
+	msgbox OmanyteInCave_Text_2, MSGBOX_AUTOCLOSE
+# 304 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 305 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_OMANYTE, 25
+# 306 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 307 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 308 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq OmanyteInCaveTrigger_8
 	return
 
 OmanyteInCaveTrigger_6:
-# 282 "data/maps/DaycareMountain/scripts.pory"
+# 290 "data/maps/DaycareMountain/scripts.pory"
 	speakername OmanyteInCave_Text_0
-# 283 "data/maps/DaycareMountain/scripts.pory"
+# 291 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 284 "data/maps/DaycareMountain/scripts.pory"
+# 292 "data/maps/DaycareMountain/scripts.pory"
 	msgbox OmanyteInCave_Text_1, MSGBOX_DEFAULT
-# 285 "data/maps/DaycareMountain/scripts.pory"
+# 293 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_OMANYTE_BATTLE
-# 286 "data/maps/DaycareMountain/scripts.pory"
+# 294 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 287 "data/maps/DaycareMountain/scripts.pory"
+# 295 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 288 "data/maps/DaycareMountain/scripts.pory"
+# 296 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 OmanyteInCaveTrigger_8:
-# 302 "data/maps/DaycareMountain/scripts.pory"
+# 310 "data/maps/DaycareMountain/scripts.pory"
 	speakername OmanyteInCave_Text_0
-# 303 "data/maps/DaycareMountain/scripts.pory"
+# 311 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_OMANYTE, EMOTE_NORMAL
-# 304 "data/maps/DaycareMountain/scripts.pory"
+# 312 "data/maps/DaycareMountain/scripts.pory"
 	msgbox OmanyteInCave_Text_1, MSGBOX_DEFAULT
-# 305 "data/maps/DaycareMountain/scripts.pory"
+# 313 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_OMANYTE_BATTLE
-# 306 "data/maps/DaycareMountain/scripts.pory"
+# 314 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 307 "data/maps/DaycareMountain/scripts.pory"
+# 315 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 308 "data/maps/DaycareMountain/scripts.pory"
+# 316 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 KabutoInCave::
-# 316 "data/maps/DaycareMountain/scripts.pory"
+# 324 "data/maps/DaycareMountain/scripts.pory"
 	lock
-# 318 "data/maps/DaycareMountain/scripts.pory"
+# 326 "data/maps/DaycareMountain/scripts.pory"
 	goto_if_set FLAG_KABUTO_BATTLE, KabutoInCave_1
-# 331 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Kabuto, VullabyDialog_Movement_0
-# 332 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Kabuto
-# 333 "data/maps/DaycareMountain/scripts.pory"
-	special PlayTrainerEncounterMusic
-# 334 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Kabuto, Common_Movement_ExclamationMark
-# 335 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Kabuto
-# 336 "data/maps/DaycareMountain/scripts.pory"
-	delay 60
-# 337 "data/maps/DaycareMountain/scripts.pory"
-	speakername KabutoInCave_Text_0
-# 338 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
 # 339 "data/maps/DaycareMountain/scripts.pory"
-	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
+	applymovement Kabuto, VullabyDialog_Movement_0
 # 340 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
+	waitmovement Kabuto
 # 341 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_KABUTO, 25
+	special PlayTrainerEncounterMusic
 # 342 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
+	applymovement Kabuto, Common_Movement_ExclamationMark
 # 343 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	waitmovement Kabuto
 # 344 "data/maps/DaycareMountain/scripts.pory"
+	delay 60
+# 345 "data/maps/DaycareMountain/scripts.pory"
+	speakername KabutoInCave_Text_0
+# 346 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
+# 347 "data/maps/DaycareMountain/scripts.pory"
+	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
+# 348 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 349 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_KABUTO, 25
+# 350 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 351 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 352 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq KabutoInCave_4
 	return
 
 KabutoInCave_1:
-# 320 "data/maps/DaycareMountain/scripts.pory"
+# 328 "data/maps/DaycareMountain/scripts.pory"
 	faceplayer
-# 321 "data/maps/DaycareMountain/scripts.pory"
+# 329 "data/maps/DaycareMountain/scripts.pory"
 	speakername KabutoInCave_Text_0
-# 322 "data/maps/DaycareMountain/scripts.pory"
+# 330 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 323 "data/maps/DaycareMountain/scripts.pory"
+# 331 "data/maps/DaycareMountain/scripts.pory"
 	msgbox KabutoInCave_Text_1, MSGBOX_DEFAULT
-# 324 "data/maps/DaycareMountain/scripts.pory"
+# 332 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 325 "data/maps/DaycareMountain/scripts.pory"
+# 333 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 326 "data/maps/DaycareMountain/scripts.pory"
+# 334 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 KabutoInCave_4:
-# 346 "data/maps/DaycareMountain/scripts.pory"
+# 354 "data/maps/DaycareMountain/scripts.pory"
 	speakername KabutoInCave_Text_0
-# 347 "data/maps/DaycareMountain/scripts.pory"
+# 355 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 348 "data/maps/DaycareMountain/scripts.pory"
+# 356 "data/maps/DaycareMountain/scripts.pory"
 	msgbox KabutoInCave_Text_3, MSGBOX_DEFAULT
-# 349 "data/maps/DaycareMountain/scripts.pory"
+# 357 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_KABUTO_BATTLE
-# 350 "data/maps/DaycareMountain/scripts.pory"
+# 358 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 351 "data/maps/DaycareMountain/scripts.pory"
+# 359 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 352 "data/maps/DaycareMountain/scripts.pory"
+# 360 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 KabutoInCaveTrigger::
-# 360 "data/maps/DaycareMountain/scripts.pory"
+# 368 "data/maps/DaycareMountain/scripts.pory"
 	goto_if_unset FLAG_KABUTO_BATTLE, KabutoInCaveTrigger_1
 	return
 
 KabutoInCaveTrigger_1:
-# 362 "data/maps/DaycareMountain/scripts.pory"
+# 370 "data/maps/DaycareMountain/scripts.pory"
 	special PlayTrainerEncounterMusic
-# 363 "data/maps/DaycareMountain/scripts.pory"
+# 371 "data/maps/DaycareMountain/scripts.pory"
 	applymovement Kabuto, Common_Movement_ExclamationMark
-# 364 "data/maps/DaycareMountain/scripts.pory"
+# 372 "data/maps/DaycareMountain/scripts.pory"
 	waitmovement Kabuto
-# 365 "data/maps/DaycareMountain/scripts.pory"
+# 373 "data/maps/DaycareMountain/scripts.pory"
 	delay 60
-# 366 "data/maps/DaycareMountain/scripts.pory"
+# 374 "data/maps/DaycareMountain/scripts.pory"
 	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-# 367 "data/maps/DaycareMountain/scripts.pory"
+# 375 "data/maps/DaycareMountain/scripts.pory"
 	switch VAR_TEMP_1
-# 369 "data/maps/DaycareMountain/scripts.pory"
+# 377 "data/maps/DaycareMountain/scripts.pory"
 	case 8, KabutoInCaveTrigger_4
-# 389 "data/maps/DaycareMountain/scripts.pory"
+# 397 "data/maps/DaycareMountain/scripts.pory"
 	case 9, KabutoInCaveTrigger_5
 	return
 
 KabutoInCaveTrigger_4:
-# 370 "data/maps/DaycareMountain/scripts.pory"
-	applymovement LOCALID_PLAYER, KabutoInCaveTrigger_Movement_0
-# 371 "data/maps/DaycareMountain/scripts.pory"
-	speakername KabutoInCave_Text_0
-# 372 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 373 "data/maps/DaycareMountain/scripts.pory"
-	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
-# 374 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 375 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_KABUTO, 25
-# 376 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
-# 377 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
 # 378 "data/maps/DaycareMountain/scripts.pory"
+	applymovement LOCALID_PLAYER, KabutoInCaveTrigger_Movement_0
+# 379 "data/maps/DaycareMountain/scripts.pory"
+	speakername KabutoInCave_Text_0
+# 380 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
+# 381 "data/maps/DaycareMountain/scripts.pory"
+	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
+# 382 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 383 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_KABUTO, 25
+# 384 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 385 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 386 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq KabutoInCaveTrigger_6
 	return
 
 KabutoInCaveTrigger_5:
-# 390 "data/maps/DaycareMountain/scripts.pory"
-	applymovement LOCALID_PLAYER, KabutoInCaveTrigger_Movement_0
-# 391 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Kabuto, KabutoInCaveTrigger_Movement_1
-# 392 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Kabuto
-# 393 "data/maps/DaycareMountain/scripts.pory"
-	speakername KabutoInCave_Text_0
-# 394 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 395 "data/maps/DaycareMountain/scripts.pory"
-	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
-# 396 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 397 "data/maps/DaycareMountain/scripts.pory"
-	setwildbattle SPECIES_KABUTO, 25
 # 398 "data/maps/DaycareMountain/scripts.pory"
-	dowildbattle
+	applymovement LOCALID_PLAYER, KabutoInCaveTrigger_Movement_0
 # 399 "data/maps/DaycareMountain/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	applymovement Kabuto, KabutoInCaveTrigger_Movement_1
 # 400 "data/maps/DaycareMountain/scripts.pory"
+	waitmovement Kabuto
+# 401 "data/maps/DaycareMountain/scripts.pory"
+	speakername KabutoInCave_Text_0
+# 402 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
+# 403 "data/maps/DaycareMountain/scripts.pory"
+	msgbox KabutoInCave_Text_2, MSGBOX_AUTOCLOSE
+# 404 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 405 "data/maps/DaycareMountain/scripts.pory"
+	setwildbattle SPECIES_KABUTO, 25
+# 406 "data/maps/DaycareMountain/scripts.pory"
+	dowildbattle
+# 407 "data/maps/DaycareMountain/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 408 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq KabutoInCaveTrigger_8
 	return
 
 KabutoInCaveTrigger_6:
-# 380 "data/maps/DaycareMountain/scripts.pory"
+# 388 "data/maps/DaycareMountain/scripts.pory"
 	speakername KabutoInCave_Text_0
-# 381 "data/maps/DaycareMountain/scripts.pory"
+# 389 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 382 "data/maps/DaycareMountain/scripts.pory"
+# 390 "data/maps/DaycareMountain/scripts.pory"
 	msgbox KabutoInCave_Text_3, MSGBOX_DEFAULT
-# 383 "data/maps/DaycareMountain/scripts.pory"
+# 391 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_KABUTO_BATTLE
-# 384 "data/maps/DaycareMountain/scripts.pory"
+# 392 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 385 "data/maps/DaycareMountain/scripts.pory"
+# 393 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 386 "data/maps/DaycareMountain/scripts.pory"
+# 394 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 KabutoInCaveTrigger_8:
-# 402 "data/maps/DaycareMountain/scripts.pory"
+# 410 "data/maps/DaycareMountain/scripts.pory"
 	speakername KabutoInCave_Text_0
-# 403 "data/maps/DaycareMountain/scripts.pory"
+# 411 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_KABUTO, EMOTE_NORMAL
-# 404 "data/maps/DaycareMountain/scripts.pory"
+# 412 "data/maps/DaycareMountain/scripts.pory"
 	msgbox KabutoInCave_Text_3, MSGBOX_DEFAULT
-# 405 "data/maps/DaycareMountain/scripts.pory"
+# 413 "data/maps/DaycareMountain/scripts.pory"
 	setflag FLAG_KABUTO_BATTLE
-# 406 "data/maps/DaycareMountain/scripts.pory"
+# 414 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 407 "data/maps/DaycareMountain/scripts.pory"
+# 415 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 408 "data/maps/DaycareMountain/scripts.pory"
+# 416 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 VullabyAfterSoar::
-# 416 "data/maps/DaycareMountain/scripts.pory"
+# 424 "data/maps/DaycareMountain/scripts.pory"
 	goto_if_unset FLAG_SOAR_ACROSS, VullabyAfterSoar_1
 	end
 
 VullabyAfterSoar_1:
-# 418 "data/maps/DaycareMountain/scripts.pory"
-	lock
-# 419 "data/maps/DaycareMountain/scripts.pory"
-	setflag FLAG_SHOW_NOICE
-# 420 "data/maps/DaycareMountain/scripts.pory"
-	special SpawnCameraObject
-# 421 "data/maps/DaycareMountain/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, VullabyAfterSoar_Movement_0
-# 422 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 423 "data/maps/DaycareMountain/scripts.pory"
-	delay 30
-# 424 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Vullaby, OmanyteInCaveTrigger_Movement_0
-# 425 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Vullaby
 # 426 "data/maps/DaycareMountain/scripts.pory"
-	playse SE_PIN
+	lock
 # 427 "data/maps/DaycareMountain/scripts.pory"
-	applymovement Vullaby, Common_Movement_ExclamationMark
+	setflag FLAG_SHOW_NOICE
 # 428 "data/maps/DaycareMountain/scripts.pory"
-	waitmovement Vullaby
+	special SpawnCameraObject
 # 429 "data/maps/DaycareMountain/scripts.pory"
-	speakername VullabyDialog_Text_0
+	applymovement OBJ_EVENT_ID_CAMERA, VullabyAfterSoar_Movement_0
 # 430 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_VULLABY, EMOTE_HAPPY
-# 431 "data/maps/DaycareMountain/scripts.pory"
-	msgbox VullabyAfterSoar_Text_0, MSGBOX_AUTOCLOSE
-# 432 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 433 "data/maps/DaycareMountain/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, VullabyAfterSoar_Movement_1
-# 434 "data/maps/DaycareMountain/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
+# 431 "data/maps/DaycareMountain/scripts.pory"
+	delay 30
+# 432 "data/maps/DaycareMountain/scripts.pory"
+	applymovement Vullaby, OmanyteInCaveTrigger_Movement_0
+# 433 "data/maps/DaycareMountain/scripts.pory"
+	waitmovement Vullaby
+# 434 "data/maps/DaycareMountain/scripts.pory"
+	playse SE_PIN
 # 435 "data/maps/DaycareMountain/scripts.pory"
-	special RemoveCameraObject
+	applymovement Vullaby, Common_Movement_ExclamationMark
 # 436 "data/maps/DaycareMountain/scripts.pory"
-	setflag FLAG_SOAR_ACROSS
+	waitmovement Vullaby
 # 437 "data/maps/DaycareMountain/scripts.pory"
-	waitmessage
+	speakername VullabyDialog_Text_0
 # 438 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_VULLABY, EMOTE_HAPPY
+# 439 "data/maps/DaycareMountain/scripts.pory"
+	msgbox VullabyAfterSoar_Text_0, MSGBOX_AUTOCLOSE
+# 440 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 441 "data/maps/DaycareMountain/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, VullabyAfterSoar_Movement_1
+# 442 "data/maps/DaycareMountain/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 443 "data/maps/DaycareMountain/scripts.pory"
+	special RemoveCameraObject
+# 444 "data/maps/DaycareMountain/scripts.pory"
+	setflag FLAG_SOAR_ACROSS
+# 445 "data/maps/DaycareMountain/scripts.pory"
+	waitmessage
+# 446 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 
 ChanseyDaycareMountainHeal::
-# 448 "data/maps/DaycareMountain/scripts.pory"
-	lock
-# 449 "data/maps/DaycareMountain/scripts.pory"
-	faceplayer
-# 450 "data/maps/DaycareMountain/scripts.pory"
-	speakername ChanseyDaycareMountainHeal_Text_0
-# 451 "data/maps/DaycareMountain/scripts.pory"
-	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 452 "data/maps/DaycareMountain/scripts.pory"
-	msgbox ChanseyDaycareMountainHeal_Text_1, MSGBOX_DEFAULT
-# 453 "data/maps/DaycareMountain/scripts.pory"
-	removefieldmugshot
-# 454 "data/maps/DaycareMountain/scripts.pory"
-	msgbox ChanseyDaycareMountainHeal_Text_2, MSGBOX_YESNO
-# 455 "data/maps/DaycareMountain/scripts.pory"
-	waitmessage
 # 456 "data/maps/DaycareMountain/scripts.pory"
+	lock
+# 457 "data/maps/DaycareMountain/scripts.pory"
+	faceplayer
+# 458 "data/maps/DaycareMountain/scripts.pory"
+	speakername ChanseyDaycareMountainHeal_Text_0
+# 459 "data/maps/DaycareMountain/scripts.pory"
+	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
+# 460 "data/maps/DaycareMountain/scripts.pory"
+	msgbox ChanseyDaycareMountainHeal_Text_1, MSGBOX_DEFAULT
+# 461 "data/maps/DaycareMountain/scripts.pory"
+	removefieldmugshot
+# 462 "data/maps/DaycareMountain/scripts.pory"
+	msgbox ChanseyDaycareMountainHeal_Text_2, MSGBOX_YESNO
+# 463 "data/maps/DaycareMountain/scripts.pory"
+	waitmessage
+# 464 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq ChanseyDaycareMountainHeal_1
-# 486 "data/maps/DaycareMountain/scripts.pory"
+# 494 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 487 "data/maps/DaycareMountain/scripts.pory"
+# 495 "data/maps/DaycareMountain/scripts.pory"
 	msgbox ChanseyDaycareMountainHeal_Text_5, MSGBOX_AUTOCLOSE
-# 488 "data/maps/DaycareMountain/scripts.pory"
+# 496 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 489 "data/maps/DaycareMountain/scripts.pory"
+# 497 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 490 "data/maps/DaycareMountain/scripts.pory"
+# 498 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 ChanseyDaycareMountainHeal_1:
-# 458 "data/maps/DaycareMountain/scripts.pory"
+# 466 "data/maps/DaycareMountain/scripts.pory"
 	checkitem ITEM_LUCKY_EGG
-# 459 "data/maps/DaycareMountain/scripts.pory"
+# 467 "data/maps/DaycareMountain/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq ChanseyDaycareMountainHeal_4
-# 476 "data/maps/DaycareMountain/scripts.pory"
+# 484 "data/maps/DaycareMountain/scripts.pory"
 	createfieldmugshot MUGSHOT_CHANSEY, EMOTE_NORMAL
-# 477 "data/maps/DaycareMountain/scripts.pory"
+# 485 "data/maps/DaycareMountain/scripts.pory"
 	msgbox ChanseyDaycareMountainHeal_Text_4, MSGBOX_AUTOCLOSE
-# 478 "data/maps/DaycareMountain/scripts.pory"
+# 486 "data/maps/DaycareMountain/scripts.pory"
 	waitmessage
-# 479 "data/maps/DaycareMountain/scripts.pory"
+# 487 "data/maps/DaycareMountain/scripts.pory"
 	removefieldmugshot
-# 480 "data/maps/DaycareMountain/scripts.pory"
+# 488 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
 ChanseyDaycareMountainHeal_4:
-# 461 "data/maps/DaycareMountain/scripts.pory"
-	removeitem ITEM_LUCKY_EGG
-# 462 "data/maps/DaycareMountain/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 463 "data/maps/DaycareMountain/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 464 "data/maps/DaycareMountain/scripts.pory"
-	playfanfare MUS_HEAL
-# 465 "data/maps/DaycareMountain/scripts.pory"
-	waitfanfare
-# 466 "data/maps/DaycareMountain/scripts.pory"
-	special HealPlayerParty
-# 467 "data/maps/DaycareMountain/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
-# 468 "data/maps/DaycareMountain/scripts.pory"
-	msgbox ChanseyDaycareMountainHeal_Text_3, MSGBOX_AUTOCLOSE
 # 469 "data/maps/DaycareMountain/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	removeitem ITEM_LUCKY_EGG
 # 470 "data/maps/DaycareMountain/scripts.pory"
-	waitmessage
+	fadescreenswapbuffers FADE_TO_BLACK
 # 471 "data/maps/DaycareMountain/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 472 "data/maps/DaycareMountain/scripts.pory"
+	playfanfare MUS_HEAL
+# 473 "data/maps/DaycareMountain/scripts.pory"
+	waitfanfare
+# 474 "data/maps/DaycareMountain/scripts.pory"
+	special HealPlayerParty
+# 475 "data/maps/DaycareMountain/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 476 "data/maps/DaycareMountain/scripts.pory"
+	msgbox ChanseyDaycareMountainHeal_Text_3, MSGBOX_AUTOCLOSE
+# 477 "data/maps/DaycareMountain/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 478 "data/maps/DaycareMountain/scripts.pory"
+	waitmessage
+# 479 "data/maps/DaycareMountain/scripts.pory"
 	release
 	end
 
@@ -853,59 +869,59 @@ VullabyDialog_Movement_0:
 	face_player
 	step_end
 
-# 270 "data/maps/DaycareMountain/scripts.pory"
+# 278 "data/maps/DaycareMountain/scripts.pory"
 OmanyteInCaveTrigger_Movement_0:
-# 270 "data/maps/DaycareMountain/scripts.pory"
+# 278 "data/maps/DaycareMountain/scripts.pory"
 	face_up
 	step_end
 
-# 271 "data/maps/DaycareMountain/scripts.pory"
+# 279 "data/maps/DaycareMountain/scripts.pory"
 OmanyteInCaveTrigger_Movement_1:
-# 271 "data/maps/DaycareMountain/scripts.pory"
+# 279 "data/maps/DaycareMountain/scripts.pory"
 	walk_down
 	step_end
 
-# 370 "data/maps/DaycareMountain/scripts.pory"
+# 378 "data/maps/DaycareMountain/scripts.pory"
 KabutoInCaveTrigger_Movement_0:
-# 370 "data/maps/DaycareMountain/scripts.pory"
+# 378 "data/maps/DaycareMountain/scripts.pory"
 	face_left
 	step_end
 
-# 391 "data/maps/DaycareMountain/scripts.pory"
+# 399 "data/maps/DaycareMountain/scripts.pory"
 KabutoInCaveTrigger_Movement_1:
-# 391 "data/maps/DaycareMountain/scripts.pory"
+# 399 "data/maps/DaycareMountain/scripts.pory"
 	walk_right
 	step_end
 
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 VullabyAfterSoar_Movement_0:
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
-# 421 "data/maps/DaycareMountain/scripts.pory"
+# 429 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_down
 	step_end
 
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 VullabyAfterSoar_Movement_1:
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
-# 433 "data/maps/DaycareMountain/scripts.pory"
+# 441 "data/maps/DaycareMountain/scripts.pory"
 	walk_fast_up
 	step_end
 
@@ -958,65 +974,65 @@ BattleVsLurantis_Text_2:
 	.string "You're out seeking your Egg...\nare you not?\pEvery Ditto comes here in search\nof the Mythical Egg.\pProve your strength to me.\nMy sharp raptorial arms may come\lin handy.$"
 
 BattleVsLurantis_Text_3:
-# 201 "data/maps/DaycareMountain/scripts.pory"
+# 207 "data/maps/DaycareMountain/scripts.pory"
 	.string "You have gained the ability to\ntransform into Lurantis!$"
 
 BattleVsLurantis_Text_4:
-# 207 "data/maps/DaycareMountain/scripts.pory"
+# 215 "data/maps/DaycareMountain/scripts.pory"
 	.string "You are a sharp one!\pUse my abilities to your\nadvantage.\pThe journey ahead is no walk in the\ndaycare.$"
 
 OmanyteInCave_Text_0:
-# 222 "data/maps/DaycareMountain/scripts.pory"
+# 230 "data/maps/DaycareMountain/scripts.pory"
 	.string "Omanyte$"
 
 OmanyteInCave_Text_1:
-# 224 "data/maps/DaycareMountain/scripts.pory"
+# 232 "data/maps/DaycareMountain/scripts.pory"
 	.string "Fine.\nYou've earned your stay.$"
 
 OmanyteInCave_Text_2:
-# 240 "data/maps/DaycareMountain/scripts.pory"
+# 248 "data/maps/DaycareMountain/scripts.pory"
 	.string "You're no fossil!\n$"
 
 KabutoInCave_Text_0:
-# 321 "data/maps/DaycareMountain/scripts.pory"
+# 329 "data/maps/DaycareMountain/scripts.pory"
 	.string "Kabuto$"
 
 KabutoInCave_Text_1:
-# 323 "data/maps/DaycareMountain/scripts.pory"
+# 331 "data/maps/DaycareMountain/scripts.pory"
 	.string "It was only the two of us\nanyways...$"
 
 KabutoInCave_Text_2:
-# 339 "data/maps/DaycareMountain/scripts.pory"
+# 347 "data/maps/DaycareMountain/scripts.pory"
 	.string "Fossils only!\n$"
 
 KabutoInCave_Text_3:
-# 348 "data/maps/DaycareMountain/scripts.pory"
+# 356 "data/maps/DaycareMountain/scripts.pory"
 	.string "Alright.\nWe can make an exception.$"
 
 VullabyAfterSoar_Text_0:
-# 431 "data/maps/DaycareMountain/scripts.pory"
+# 439 "data/maps/DaycareMountain/scripts.pory"
 	.string "Wow!\pYou made it across!\pTransforming into Noivern was\nclever!$"
 
 ChanseyDaycareMountainHeal_Text_0:
-# 450 "data/maps/DaycareMountain/scripts.pory"
+# 458 "data/maps/DaycareMountain/scripts.pory"
 	.string "Chansey$"
 
 ChanseyDaycareMountainHeal_Text_1:
-# 452 "data/maps/DaycareMountain/scripts.pory"
+# 460 "data/maps/DaycareMountain/scripts.pory"
 	.string "Hello there!\pI can heal you in exchange for\na Lucky Egg.$"
 
 ChanseyDaycareMountainHeal_Text_2:
-# 454 "data/maps/DaycareMountain/scripts.pory"
+# 462 "data/maps/DaycareMountain/scripts.pory"
 	.string "Would you like to heal?$"
 
 ChanseyDaycareMountainHeal_Text_3:
-# 468 "data/maps/DaycareMountain/scripts.pory"
+# 476 "data/maps/DaycareMountain/scripts.pory"
 	.string "You have been restored to full health!$"
 
 ChanseyDaycareMountainHeal_Text_4:
-# 477 "data/maps/DaycareMountain/scripts.pory"
+# 485 "data/maps/DaycareMountain/scripts.pory"
 	.string "You don't have a Lucky Egg!\pCome back when you do.$"
 
 ChanseyDaycareMountainHeal_Text_5:
-# 487 "data/maps/DaycareMountain/scripts.pory"
+# 495 "data/maps/DaycareMountain/scripts.pory"
 	.string "Oh, okay then.$"

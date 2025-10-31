@@ -879,7 +879,8 @@ script BattleVsPikachu{
 
     if(flag(FLAG_TRANS_PIKACHU))
     {
-        faceplayer
+        applymovement(Pikachu, moves(face_player))
+        waitmovement(Pikachu)
         speakername("Pikachu")
         createfieldmugshot(MUGSHOT_PIKACHU, EMOTE_NORMAL)
         msgbox("You really lit me up.\pBest of luck on your journey!\n", MSGBOX_DEFAULT)
@@ -905,14 +906,21 @@ script BattleVsPikachu{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Pikachu, Common_Movement_ExclamationMark)
+        waitmovement(Pikachu)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_PIKACHU)
-        delay(15)
+        delay(30)
         dittotransform(SPECIES_PIKACHU)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Pikachu!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_PIKACHU, 25, move1=MOVE_NUZZLE, move2=MOVE_IRON_TAIL, move3=MOVE_SPARK, move4=MOVE_FLASH)
         speakername("Pikachu")

@@ -36,14 +36,22 @@ script BattleVsMarill{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Marill, Common_Movement_ExclamationMark)
+        waitmovement(Marill)
+        lock
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_MARILL)
-        delay(15)
+        lock
         dittotransform(SPECIES_MARILL)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Marill!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_MARILL, 25, move1=MOVE_SURF, move2=MOVE_AQUA_JET, move3=MOVE_COVET, move4=MOVE_RAIN_DANCE, abilityNum=1)
         waitmessage
@@ -707,15 +715,22 @@ script BattleVsDragonair{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Dragonair, Common_Movement_ExclamationMark)
+        waitmovement(Dragonair)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_DRAGONAIR)
         setflag(FLAG_MUDKIP_PICKED_UP)
-        delay(15)
+        delay(30)
         dittotransform(SPECIES_DRAGONAIR)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Dragonair!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_DRAGONAIR, 25, move1=MOVE_OUTRAGE, move2=MOVE_WATERFALL, move3=MOVE_IRON_HEAD, move4=MOVE_SAFEGUARD)
         speakername("Dragonair")

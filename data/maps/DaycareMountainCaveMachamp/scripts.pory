@@ -32,14 +32,21 @@ script BattleVsMachamp{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Machamp, Common_Movement_ExclamationMark)
+        waitmovement(Machamp)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_MACHAMP)
-        delay(15)
+        delay(30)
         dittotransform(SPECIES_MACHAMP)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Machamp!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_MACHAMP, 25, move1=MOVE_STRENGTH, move2=MOVE_FIRE_PUNCH, move3=MOVE_CROSS_CHOP, move4=MOVE_THUNDER_PUNCH)
         waitmessage

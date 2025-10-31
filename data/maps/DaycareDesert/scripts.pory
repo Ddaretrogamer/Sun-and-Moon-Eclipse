@@ -150,6 +150,7 @@ script RhyhornDialog{
     }
     else
     {
+        lock
         playbgm(MUS_PMD_HAPPINESS,FALSE)
         applymovement(Rhyhorn, moves(face_player))
         waitmovement(Rhyhorn)
@@ -161,12 +162,14 @@ script RhyhornDialog{
         msgbox("Hey there little Ditto!\pI'm not much of a fighter, but\nI can see that you're determined!\pYou could probaby get some use out\nof my armor plated exterior...\pTell you what.\pWhy don't you transform into me,\nthat way you make use of my\lstrength!", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_RYHORN)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         dittotransform(SPECIES_RHYHORN)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Rhyhorn!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         speakername("Rhyhorn")
@@ -174,6 +177,7 @@ script RhyhornDialog{
         msgbox("Ho_ho!\pLooking tougher already!\n", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_RHYHORN, 25, move1=MOVE_ROCK_THROW, move2=MOVE_HORN_ATTACK, move3=MOVE_ROCK_POLISH, move4=MOVE_ROCK_SMASH)
         waitmessage

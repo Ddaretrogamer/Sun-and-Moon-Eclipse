@@ -226,74 +226,82 @@ RhyhornDialog::
 # 141 "data/maps/DaycareDesert/scripts.pory"
 	goto_if_set FLAG_TRANS_RYHORN, RhyhornDialog_1
 # 153 "data/maps/DaycareDesert/scripts.pory"
-	playbgm MUS_PMD_HAPPINESS, FALSE
+	lock
 # 154 "data/maps/DaycareDesert/scripts.pory"
-	applymovement Rhyhorn, RhyhornDialog_Movement_0
+	playbgm MUS_PMD_HAPPINESS, FALSE
 # 155 "data/maps/DaycareDesert/scripts.pory"
-	waitmovement Rhyhorn
+	applymovement Rhyhorn, RhyhornDialog_Movement_0
 # 156 "data/maps/DaycareDesert/scripts.pory"
-	playse SE_PIN
-# 157 "data/maps/DaycareDesert/scripts.pory"
-	applymovement Rhyhorn, Common_Movement_ExclamationMark
-# 158 "data/maps/DaycareDesert/scripts.pory"
 	waitmovement Rhyhorn
+# 157 "data/maps/DaycareDesert/scripts.pory"
+	playse SE_PIN
+# 158 "data/maps/DaycareDesert/scripts.pory"
+	applymovement Rhyhorn, Common_Movement_ExclamationMark
 # 159 "data/maps/DaycareDesert/scripts.pory"
-	speakername RhyhornDialog_Text_0
+	waitmovement Rhyhorn
 # 160 "data/maps/DaycareDesert/scripts.pory"
-	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_HAPPY
+	speakername RhyhornDialog_Text_0
 # 161 "data/maps/DaycareDesert/scripts.pory"
-	msgbox RhyhornDialog_Text_2, MSGBOX_DEFAULT
+	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_HAPPY
 # 162 "data/maps/DaycareDesert/scripts.pory"
-	waitmessage
+	msgbox RhyhornDialog_Text_2, MSGBOX_DEFAULT
 # 163 "data/maps/DaycareDesert/scripts.pory"
-	removefieldmugshot
+	waitmessage
 # 164 "data/maps/DaycareDesert/scripts.pory"
-	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
+	removefieldmugshot
 # 165 "data/maps/DaycareDesert/scripts.pory"
-	setflag FLAG_TRANS_RYHORN
+	lock
 # 166 "data/maps/DaycareDesert/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
+	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
 # 167 "data/maps/DaycareDesert/scripts.pory"
-	dittotransform SPECIES_RHYHORN
+	setflag FLAG_TRANS_RYHORN
 # 168 "data/maps/DaycareDesert/scripts.pory"
-	playse MUS_LEVEL_UP
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 169 "data/maps/DaycareDesert/scripts.pory"
-	msgbox RhyhornDialog_Text_3, MSGBOX_DEFAULT
+	dittotransform SPECIES_RHYHORN
 # 170 "data/maps/DaycareDesert/scripts.pory"
-	waitmessage
+	playse MUS_LEVEL_UP
 # 171 "data/maps/DaycareDesert/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	msgbox RhyhornDialog_Text_3, MSGBOX_DEFAULT
 # 172 "data/maps/DaycareDesert/scripts.pory"
-	speakername RhyhornDialog_Text_0
+	waitse
 # 173 "data/maps/DaycareDesert/scripts.pory"
-	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_ELATED
+	waitmessage
 # 174 "data/maps/DaycareDesert/scripts.pory"
-	msgbox RhyhornDialog_Text_4, MSGBOX_DEFAULT
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 175 "data/maps/DaycareDesert/scripts.pory"
-	waitmessage
-# 176 "data/maps/DaycareDesert/scripts.pory"
-	removefieldmugshot
-# 177 "data/maps/DaycareDesert/scripts.pory"
-	dittotransform VAR_TEMP_0
-# 178 "data/maps/DaycareDesert/scripts.pory"
-	givemon SPECIES_RHYHORN, 25, move1 = MOVE_ROCK_THROW, move2 = MOVE_HORN_ATTACK, move3 = MOVE_ROCK_POLISH, move4 = MOVE_ROCK_SMASH
-# 179 "data/maps/DaycareDesert/scripts.pory"
-	waitmessage
-# 180 "data/maps/DaycareDesert/scripts.pory"
-	fadenewbgm MUS_PMD_DESERT
-# 181 "data/maps/DaycareDesert/scripts.pory"
-	delay 30
-# 182 "data/maps/DaycareDesert/scripts.pory"
 	speakername RhyhornDialog_Text_0
-# 183 "data/maps/DaycareDesert/scripts.pory"
-	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_NORMAL
-# 184 "data/maps/DaycareDesert/scripts.pory"
-	msgbox RhyhornDialog_Text_1, MSGBOX_DEFAULT
-# 185 "data/maps/DaycareDesert/scripts.pory"
+# 176 "data/maps/DaycareDesert/scripts.pory"
+	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_ELATED
+# 177 "data/maps/DaycareDesert/scripts.pory"
+	msgbox RhyhornDialog_Text_4, MSGBOX_DEFAULT
+# 178 "data/maps/DaycareDesert/scripts.pory"
 	waitmessage
-# 186 "data/maps/DaycareDesert/scripts.pory"
+# 179 "data/maps/DaycareDesert/scripts.pory"
 	removefieldmugshot
+# 180 "data/maps/DaycareDesert/scripts.pory"
+	lock
+# 181 "data/maps/DaycareDesert/scripts.pory"
+	dittotransform VAR_TEMP_0
+# 182 "data/maps/DaycareDesert/scripts.pory"
+	givemon SPECIES_RHYHORN, 25, move1 = MOVE_ROCK_THROW, move2 = MOVE_HORN_ATTACK, move3 = MOVE_ROCK_POLISH, move4 = MOVE_ROCK_SMASH
+# 183 "data/maps/DaycareDesert/scripts.pory"
+	waitmessage
+# 184 "data/maps/DaycareDesert/scripts.pory"
+	fadenewbgm MUS_PMD_DESERT
+# 185 "data/maps/DaycareDesert/scripts.pory"
+	delay 30
+# 186 "data/maps/DaycareDesert/scripts.pory"
+	speakername RhyhornDialog_Text_0
 # 187 "data/maps/DaycareDesert/scripts.pory"
+	createfieldmugshot MUGSHOT_RHYHORN, EMOTE_NORMAL
+# 188 "data/maps/DaycareDesert/scripts.pory"
+	msgbox RhyhornDialog_Text_1, MSGBOX_DEFAULT
+# 189 "data/maps/DaycareDesert/scripts.pory"
+	waitmessage
+# 190 "data/maps/DaycareDesert/scripts.pory"
+	removefieldmugshot
+# 191 "data/maps/DaycareDesert/scripts.pory"
 	release
 	end
 
@@ -313,9 +321,9 @@ RhyhornDialog_1:
 	end
 
 
-# 154 "data/maps/DaycareDesert/scripts.pory"
+# 155 "data/maps/DaycareDesert/scripts.pory"
 RhyhornDialog_Movement_0:
-# 154 "data/maps/DaycareDesert/scripts.pory"
+# 155 "data/maps/DaycareDesert/scripts.pory"
 	face_player
 	step_end
 
@@ -388,13 +396,13 @@ RhyhornDialog_Text_1:
 	.string "Keep on trucking little Ditto!\pHead over and see my old friend\nCutiefly.\pShe loves flowers.\n$"
 
 RhyhornDialog_Text_2:
-# 161 "data/maps/DaycareDesert/scripts.pory"
+# 162 "data/maps/DaycareDesert/scripts.pory"
 	.string "Hey there little Ditto!\pI'm not much of a fighter, but\nI can see that you're determined!\pYou could probaby get some use out\nof my armor plated exterior...\pTell you what.\pWhy don't you transform into me,\nthat way you make use of my\lstrength!$"
 
 RhyhornDialog_Text_3:
-# 169 "data/maps/DaycareDesert/scripts.pory"
+# 171 "data/maps/DaycareDesert/scripts.pory"
 	.string "You have gained the ability to\ntransform into Rhyhorn!$"
 
 RhyhornDialog_Text_4:
-# 174 "data/maps/DaycareDesert/scripts.pory"
+# 177 "data/maps/DaycareDesert/scripts.pory"
 	.string "Ho_ho!\pLooking tougher already!\n$"

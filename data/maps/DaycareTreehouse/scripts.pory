@@ -115,14 +115,21 @@ script BattleVsWeavile{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Weavile, Common_Movement_ExclamationMark)
+        waitmovement(Weavile)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_WEAVILE)
-        delay(15)
+        delay(30)
         dittotransform(SPECIES_WEAVILE)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Weavile!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_WEAVILE, 25, move1=MOVE_ICE_SHARD, move2=MOVE_ICE_PUNCH, move3=MOVE_SHADOW_CLAW, move4=MOVE_BRICK_BREAK)
         waitmessage

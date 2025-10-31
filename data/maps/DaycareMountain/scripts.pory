@@ -193,13 +193,21 @@ script BattleVsLurantis{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Lurantis, Common_Movement_ExclamationMark)
+        waitmovement(Lurantis)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_LURANTIS)
+        delay(30)
         dittotransform(SPECIES_LURANTIS)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Lurantis!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_LURANTIS, 25, move1=MOVE_AERIAL_ACE, move2=MOVE_BUG_BITE, move3=MOVE_TRAILBLAZE, move4=MOVE_CUT)
         speakername("Lurantis")

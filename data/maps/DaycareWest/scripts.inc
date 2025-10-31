@@ -316,38 +316,52 @@ BattleVsCutiefly_4:
 
 BattleVsCutiefly_8:
 # 201 "data/maps/DaycareWest/scripts.pory"
-	playbgm MUS_PMD_HAPPINESS, FALSE
+	lock
 # 202 "data/maps/DaycareWest/scripts.pory"
-	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
+	applymovement Cutiefly, Common_Movement_ExclamationMark
 # 203 "data/maps/DaycareWest/scripts.pory"
-	setflag FLAG_TRANS_CUTIEFLY
+	waitmovement Cutiefly
 # 204 "data/maps/DaycareWest/scripts.pory"
-	delay 15
+	playse SE_PIN
 # 205 "data/maps/DaycareWest/scripts.pory"
-	dittotransform SPECIES_CUTIEFLY
+	playbgm MUS_PMD_HAPPINESS, FALSE
 # 206 "data/maps/DaycareWest/scripts.pory"
-	playse MUS_LEVEL_UP
+	lock
 # 207 "data/maps/DaycareWest/scripts.pory"
-	msgbox BattleVsCutiefly_Text_4, MSGBOX_DEFAULT
+	copyvar VAR_TEMP_0, VAR_TRANSFORM_MON
 # 208 "data/maps/DaycareWest/scripts.pory"
-	waitmessage
+	setflag FLAG_TRANS_CUTIEFLY
 # 209 "data/maps/DaycareWest/scripts.pory"
-	dittotransform VAR_TEMP_0
+	delay 15
 # 210 "data/maps/DaycareWest/scripts.pory"
-	givemon SPECIES_CUTIEFLY, 25, move1 = MOVE_BUG_BUZZ, move2 = MOVE_DAZZLING_GLEAM, move3 = MOVE_STICKY_WEB, move4 = MOVE_PSYCHIC
+	dittotransform SPECIES_CUTIEFLY
 # 211 "data/maps/DaycareWest/scripts.pory"
-	speakername BattleVsCutiefly_Text_0
+	playse MUS_LEVEL_UP
 # 212 "data/maps/DaycareWest/scripts.pory"
-	createfieldmugshot MUGSHOT_CUTIEFLY, EMOTE_HAPPY
+	msgbox BattleVsCutiefly_Text_4, MSGBOX_DEFAULT
 # 213 "data/maps/DaycareWest/scripts.pory"
-	msgbox BattleVsCutiefly_Text_2, MSGBOX_DEFAULT
+	waitse
 # 214 "data/maps/DaycareWest/scripts.pory"
 	waitmessage
 # 215 "data/maps/DaycareWest/scripts.pory"
-	removefieldmugshot
+	lock
 # 216 "data/maps/DaycareWest/scripts.pory"
-	fadenewbgm MUS_PMD_HEARTWARMING
+	dittotransform VAR_TEMP_0
 # 217 "data/maps/DaycareWest/scripts.pory"
+	givemon SPECIES_CUTIEFLY, 25, move1 = MOVE_BUG_BUZZ, move2 = MOVE_DAZZLING_GLEAM, move3 = MOVE_STICKY_WEB, move4 = MOVE_PSYCHIC
+# 218 "data/maps/DaycareWest/scripts.pory"
+	speakername BattleVsCutiefly_Text_0
+# 219 "data/maps/DaycareWest/scripts.pory"
+	createfieldmugshot MUGSHOT_CUTIEFLY, EMOTE_HAPPY
+# 220 "data/maps/DaycareWest/scripts.pory"
+	msgbox BattleVsCutiefly_Text_2, MSGBOX_DEFAULT
+# 221 "data/maps/DaycareWest/scripts.pory"
+	waitmessage
+# 222 "data/maps/DaycareWest/scripts.pory"
+	removefieldmugshot
+# 223 "data/maps/DaycareWest/scripts.pory"
+	fadenewbgm MUS_PMD_HEARTWARMING
+# 224 "data/maps/DaycareWest/scripts.pory"
 	release
 	end
 
@@ -443,5 +457,5 @@ BattleVsCutiefly_Text_3:
 	.string "Welcome to the flower patch big\nfriend!\pSometimes it pays to be small!\pBeat me here on my home turf\nand you too can transform to be\lminiature.$"
 
 BattleVsCutiefly_Text_4:
-# 207 "data/maps/DaycareWest/scripts.pory"
+# 212 "data/maps/DaycareWest/scripts.pory"
 	.string "You have gained the ability to\ntransform into Cutiefly!$"

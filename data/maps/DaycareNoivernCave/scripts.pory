@@ -322,14 +322,21 @@ script BattleVsNoivern{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Noivern, Common_Movement_ExclamationMark)
+        waitmovement(Noivern)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_NOIVERN)
-        delay(15)
+        delay(30)
         dittotransform(SPECIES_NOIVERN)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Noivern!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_NOIVERN, 25, move1=MOVE_AIR_CUTTER, move2=MOVE_DRAGON_BREATH, move3=MOVE_SUPERSONIC, move4=MOVE_SUPER_FANG)
         waitmessage

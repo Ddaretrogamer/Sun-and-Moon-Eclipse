@@ -198,14 +198,21 @@ script BattleVsCutiefly{
     specialvar(VAR_RESULT, GetBattleOutcome)
     if (var(VAR_RESULT) == B_OUTCOME_WON)
     {
+        lock
+        applymovement(Cutiefly, Common_Movement_ExclamationMark)
+        waitmovement(Cutiefly)
+        playse(SE_PIN)
         playbgm(MUS_PMD_HAPPINESS, FALSE)
+        lock
         copyvar(VAR_TEMP_0, VAR_TRANSFORM_MON)
         setflag(FLAG_TRANS_CUTIEFLY)
         delay(15)
         dittotransform(SPECIES_CUTIEFLY)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Cutiefly!", MSGBOX_DEFAULT)
+        waitse
         waitmessage
+        lock
         dittotransform(VAR_TEMP_0)
         givemon(SPECIES_CUTIEFLY, 25, move1=MOVE_BUG_BUZZ, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STICKY_WEB, move4=MOVE_PSYCHIC)
         speakername("Cutiefly")
