@@ -104,7 +104,7 @@ script WingullDialog {
     faceplayer
     speakername("Wingull")
     createfieldmugshot(MUGSHOT_WINGULL, EMOTE_HAPPY)
-    msgbox("I wish more Pokémon could make\nway up here.\pWe Flying_type Pokémon can just\nfly down this cliffside here.", MSGBOX_DEFAULT)
+    msgbox("I wish more Pokémon could make\nway their up here.\pWe Flying_type Pokémon can just\nfly down this cliffside here.", MSGBOX_DEFAULT)
     waitmessage
     removefieldmugshot
     release
