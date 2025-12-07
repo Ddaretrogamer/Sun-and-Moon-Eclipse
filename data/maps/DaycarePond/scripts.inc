@@ -1305,7 +1305,7 @@ BattleVsDragonair_4:
 # 734 "data/maps/DaycarePond/scripts.pory"
 	dittotransform VAR_TEMP_0
 # 735 "data/maps/DaycarePond/scripts.pory"
-	givemon SPECIES_DRAGONAIR, 25, move1 = MOVE_OUTRAGE, move2 = MOVE_WATERFALL, move3 = MOVE_IRON_HEAD, move4 = MOVE_SAFEGUARD
+	givemon SPECIES_DRAGONAIR, 25, move1 = MOVE_OUTRAGE, move2 = MOVE_WATERFALL, move3 = MOVE_IRON_HEAD, move4 = MOVE_SURF
 # 736 "data/maps/DaycarePond/scripts.pory"
 	speakername BattleVsDragonair_Text_0
 # 737 "data/maps/DaycarePond/scripts.pory"

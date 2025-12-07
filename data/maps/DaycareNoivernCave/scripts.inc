@@ -869,7 +869,7 @@ BattleVsNoivern_Text_2:
 
 BattleVsNoivern_Text_3:
 # 345 "data/maps/DaycareNoivernCave/scripts.pory"
-	.string "Soar high gooey friend.\pYou'll need my flight to reach your\ndestination.\pYou near the end of your quest!\pTest out my flight by soaring down\nfrom the cliff rather than taking\lthe waterfall.$"
+	.string "Soar high gooey friend.\pYou'll need my flight to reach your\ndestination.\pYou near the end of your quest!\pTest out my flight by soaring down\nfrom the cliff near Wingull rather\l than taking the waterfall.$"
 
 ChanseyDaycareNoivern_Text_0:
 # 362 "data/maps/DaycareNoivernCave/scripts.pory"

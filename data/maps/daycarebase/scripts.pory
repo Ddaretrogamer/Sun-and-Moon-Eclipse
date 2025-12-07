@@ -379,6 +379,7 @@ script DaycareOldManDialog{
             playfanfare(MUS_LEVEL_UP)
             msgbox("Ditto grew to level 26.\n", MSGBOX_DEFAULT)
             waitfanfare
+            callnative(Script_GiveFirstMonLevel)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             speakername("Daycare Man")
             msgbox("With this Egg, I can now fulfill\nmy duties.", MSGBOX_AUTOCLOSE)
@@ -486,6 +487,7 @@ script DaycareOldManDialog{
             playfanfare(MUS_LEVEL_UP)
             msgbox("Ditto grew to level 26.\n", MSGBOX_DEFAULT)
             waitfanfare
+            callnative(Script_GiveFirstMonLevel)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             speakername("Daycare Man")
             msgbox("With this Egg, I can now fulfill\nmy duties.", MSGBOX_AUTOCLOSE)
@@ -925,7 +927,7 @@ script BattleVsPikachu{
         givemon(SPECIES_PIKACHU, 25, move1=MOVE_NUZZLE, move2=MOVE_IRON_TAIL, move3=MOVE_SPARK, move4=MOVE_FLASH)
         speakername("Pikachu")
         createfieldmugshot(MUGSHOT_PIKACHU, EMOTE_HAPPY)
-        msgbox("How electrifying!\pElectric_type moves are powerful\nagainst Water_type Pokémon.\pThey typically spend their time in\nthe Lake Biome here.", MSGBOX_DEFAULT)
+        msgbox("How electrifying!\pElectric_type moves are powerful\nagainst Water_type Pokémon.\pThey typically spend their time in\nthe Lake Biome here.\pYou can hop right down off the cliff\nhere to get there faster!", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         fadenewbgm(MUS_PMD_HEARTWARMING)

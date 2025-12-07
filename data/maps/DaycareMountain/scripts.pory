@@ -212,7 +212,7 @@ script BattleVsLurantis{
         givemon(SPECIES_LURANTIS, 25, move1=MOVE_AERIAL_ACE, move2=MOVE_BUG_BITE, move3=MOVE_TRAILBLAZE, move4=MOVE_CUT)
         speakername("Lurantis")
         createfieldmugshot(MUGSHOT_LURANTIS, EMOTE_HAPPY)
-        msgbox("You are a sharp one!\pUse my abilities to your\nadvantage.\pThe journey ahead is no walk in the\ndaycare.", MSGBOX_DEFAULT)
+        msgbox("You are a sharp one!\pUse my abilities to your\nadvantage.\pLook for some small trees to slice!\pThey tend to grow on the top of\ncliffs with crashing waterfalls.\pThe journey ahead is no walk in the\ndaycare.", MSGBOX_DEFAULT)
         waitmessage
         removefieldmugshot
         fadenewbgm(MUS_PMD_MOUNTAIN)

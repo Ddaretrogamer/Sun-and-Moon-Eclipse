@@ -1155,8 +1155,7 @@ bool8 TryDoDiveWarp(struct MapPosition *position, u16 metatileBehavior)
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
             
-            // Add your transformation for emerging here
-            SetPlayerAvatarTransformation(SPECIES_GUMSHOOS,TRUE);
+            SetPlayerAvatarTransformation(SPECIES_YUNGOOS,TRUE);
             PlaySE(SE_M_DIVE);
 
             return TRUE;
@@ -1169,7 +1168,6 @@ bool8 TryDoDiveWarp(struct MapPosition *position, u16 metatileBehavior)
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
             
-            // Add your transformation for submerging here
             SetPlayerAvatarTransformation(SPECIES_CHINCHOU, TRUE);
             PlaySE(SE_M_DIVE);
 

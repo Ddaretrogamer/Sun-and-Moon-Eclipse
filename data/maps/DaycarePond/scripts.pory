@@ -732,7 +732,7 @@ script BattleVsDragonair{
         waitmessage
         lock
         dittotransform(VAR_TEMP_0)
-        givemon(SPECIES_DRAGONAIR, 25, move1=MOVE_OUTRAGE, move2=MOVE_WATERFALL, move3=MOVE_IRON_HEAD, move4=MOVE_SAFEGUARD)
+        givemon(SPECIES_DRAGONAIR, 25, move1=MOVE_OUTRAGE, move2=MOVE_WATERFALL, move3=MOVE_IRON_HEAD, move4=MOVE_SURF)
         speakername("Dragonair")
         createfieldmugshot(MUGSHOT_DRAGONAIR, EMOTE_HAPPY)
         msgbox("Very well Ditto.\nGo on.\pLeave this place calmly, with\nthe power to scale roaring\lwaterfalls.", MSGBOX_DEFAULT)

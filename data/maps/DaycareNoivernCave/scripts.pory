@@ -342,7 +342,7 @@ script BattleVsNoivern{
         waitmessage
         speakername("Noivern")
         createfieldmugshot(MUGSHOT_NOIVERN, EMOTE_NORMAL)
-        msgbox("Soar high gooey friend.\pYou'll need my flight to reach your\ndestination.\pYou near the end of your quest!\pTest out my flight by soaring down\nfrom the cliff rather than taking\lthe waterfall.", MSGBOX_AUTOCLOSE)
+        msgbox("Soar high gooey friend.\pYou'll need my flight to reach your\ndestination.\pYou near the end of your quest!\pTest out my flight by soaring down\nfrom the cliff near Wingull rather\l than taking the waterfall.", MSGBOX_AUTOCLOSE)
         waitmessage
         removefieldmugshot
         applymovement(Noivern, moves(walk_fast_up*4))

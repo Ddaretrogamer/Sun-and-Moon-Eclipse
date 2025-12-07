@@ -979,7 +979,7 @@ BattleVsLurantis_Text_3:
 
 BattleVsLurantis_Text_4:
 # 215 "data/maps/DaycareMountain/scripts.pory"
-	.string "You are a sharp one!\pUse my abilities to your\nadvantage.\pThe journey ahead is no walk in the\ndaycare.$"
+	.string "You are a sharp one!\pUse my abilities to your\nadvantage.\pLook for some small trees to slice!\pThey tend to grow on the top of\ncliffs with crashing waterfalls.\pThe journey ahead is no walk in the\ndaycare.$"
 
 OmanyteInCave_Text_0:
 # 230 "data/maps/DaycareMountain/scripts.pory"

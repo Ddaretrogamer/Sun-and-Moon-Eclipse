@@ -205,6 +205,8 @@ static u8 IsSpeciesValidTransformation(u16 speciesId)
         case SPECIES_MACHAMP:
         case SPECIES_DRAGONAIR:
         case SPECIES_GUMSHOOS:
+        case SPECIES_YUNGOOS:
+        case SPECIES_VOLBEAT:
             DebugPrintfLevel(MGBA_LOG_WARN, "Got valid species %d", speciesId);
             return TRUE;
         default:
@@ -296,8 +298,22 @@ void SetPlayerAvatarTransformation(u16 speciesId, bool8 UnlockPlayerFieldControl
 
 void SetPlayerAvatarSurfTransformation(u16 speciesId, bool8 UnlockPlayerFieldControls)
 {
-    gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_GUMSHOOS;
-    VarSet(VAR_TRANSFORM_MON, SPECIES_GUMSHOOS);
+
+    if (VarGet(VAR_TRANSFORM_MON)==SPECIES_MARILL)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_GUMSHOOS;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_GUMSHOOS);
+    }
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_DRAGONAIR)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_VOLBEAT;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_VOLBEAT);
+    }
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_CHINCHOU)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_YUNGOOS;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_YUNGOOS); 
+    }
     FlagSet(FLAG_DISABLE_XFORM_MENU);
     FlagSet(FLAG_IS_SURFING_MARILL);
     // Start the transformation effect.
@@ -307,8 +323,21 @@ void SetPlayerAvatarSurfTransformation(u16 speciesId, bool8 UnlockPlayerFieldCon
 
 void SetPlayerAvatarStopSurfTransformation(u16 speciesId, bool8 UnlockPlayerFieldControls)
 {
-    gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_MARILL;
-    VarSet(VAR_TRANSFORM_MON, SPECIES_MARILL);
+    if (VarGet(VAR_TRANSFORM_MON)==SPECIES_GUMSHOOS)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_MARILL;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_MARILL);
+    }
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_VOLBEAT)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_DRAGONAIR;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_DRAGONAIR);
+    }
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_YUNGOOS)
+    {
+        gSaveBlock2Ptr->pokemonAvatarSpecies = SPECIES_CHINCHOU;
+        VarSet(VAR_TRANSFORM_MON, SPECIES_CHINCHOU); 
+    }
     FlagClear(FLAG_DISABLE_XFORM_MENU);
     FlagClear(FLAG_IS_SURFING_MARILL);
     
@@ -444,7 +473,12 @@ void Task_MarillSurfSequence2(u8 taskId)
     }
     else
     {
-        SetPlayerAvatarSurfTransformation(SPECIES_GUMSHOOS, TRUE);
+        if (VarGet(VAR_TRANSFORM_MON)==SPECIES_MARILL)
+            SetPlayerAvatarSurfTransformation(SPECIES_GUMSHOOS, TRUE);
+        else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_DRAGONAIR)
+            SetPlayerAvatarSurfTransformation(SPECIES_VOLBEAT, TRUE);
+        else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_CHINCHOU)
+            SetPlayerAvatarSurfTransformation(SPECIES_YUNGOOS, TRUE);   
         PlaySE(SE_M_DIVE);
         UnfreezeObjectEvents();
         DestroyTask(taskId);
@@ -464,9 +498,41 @@ void Task_StartJump(u8 taskId)
     }
 }
 
+extern struct Pokemon gPlayerParty[PARTY_SIZE];
+extern u8 CalculatePlayerPartyCount(void);
+
+static bool8 IsMonInParty(u16 species)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == species)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 void StartMarillSurf(void)
 {
+    if (IsMonInParty(SPECIES_MARILL))
+    {
     TrySetPlayerAvatarTransformation(SPECIES_MARILL, FALSE);
+    }
+    else
+    {
+        if (IsMonInParty(SPECIES_DRAGONAIR))
+        {
+            TrySetPlayerAvatarTransformation(SPECIES_DRAGONAIR, FALSE);
+        }
+        else
+        {
+            if (IsMonInParty(SPECIES_CHINCHOU))
+            {
+                TrySetPlayerAvatarTransformation(SPECIES_CHINCHOU, FALSE);
+            }
+        }
+    }
     CreateTask(Task_StartJump, 0xFF);
 }
 
@@ -559,4 +625,29 @@ void PlayEggHatchAnimation(struct ScriptContext *ctx)
     bool8 isShiny = ScriptReadByte(ctx);
     const u8 *name = (const u8 *) ScriptReadWord(ctx);
     EggHatchAnim(speciesId, isShiny, name, FALSE);
+}
+
+
+bool8 Script_GiveFirstMonLevel(void)
+{
+    if (gPlayerPartyCount == 0)
+        return FALSE;
+
+    struct Pokemon *mon = &gPlayerParty[0];
+
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+    if (level >= MAX_LEVEL)
+        return FALSE;
+
+    u32 growthRate = gSpeciesInfo[species].growthRate;
+
+    // Rare Candy behavior: set EXP to the next level’s exp threshold
+    u32 exp = gExperienceTables[growthRate][level + 1];
+
+    SetMonData(mon, MON_DATA_EXP, &exp);
+    CalculateMonStats(mon);
+
+    return FALSE;
 }

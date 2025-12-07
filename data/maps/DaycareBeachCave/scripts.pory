@@ -67,6 +67,7 @@ script ChinchouDialog{
         setflag(FLAG_TRANS_CHINCHOU)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         dittotransform(SPECIES_CHINCHOU)
+        delay(30)
         playse(MUS_LEVEL_UP)
         msgbox("You have gained the ability to\ntransform into Chinchou!", MSGBOX_DEFAULT)
         waitse
@@ -75,7 +76,7 @@ script ChinchouDialog{
         speakername("Chinchou")
         createfieldmugshot(MUGSHOT_CHINCHOU, EMOTE_ELATED)
         msgbox("Wow!\pLooking more electric already!", MSGBOX_AUTOCLOSE)
-        givemon(SPECIES_CHINCHOU, 25, move1=MOVE_THUNDER_WAVE, move2=MOVE_DISCHARGE, move3=MOVE_DIVE, move4=MOVE_DAZZLING_GLEAM)
+        givemon(SPECIES_CHINCHOU, 25, move1=MOVE_THUNDER_WAVE, move2=MOVE_DISCHARGE, move3=MOVE_DIVE, move4=MOVE_SURF)
         waitmessage
         lock
         dittotransform(VAR_TEMP_0)

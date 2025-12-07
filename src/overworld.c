@@ -388,7 +388,18 @@ void DoWhiteOut(void)
     FlagClear(FLAG_DISABLE_XFORM_MENU);
     if (FlagGet(FLAG_IS_SURFING_MARILL) == TRUE)
     {
-        TrySetPlayerAvatarTransformation(SPECIES_MARILL, FALSE);
+        if(VarGet(VAR_TRANSFORM_MON)== SPECIES_GUMSHOOS)
+        {
+            TrySetPlayerAvatarTransformation(SPECIES_MARILL, FALSE);
+        }
+        else if(VarGet(VAR_TRANSFORM_MON)== SPECIES_VOLBEAT)
+        {
+            TrySetPlayerAvatarTransformation(SPECIES_DRAGONAIR, FALSE);
+        }
+        else if(VarGet(VAR_TRANSFORM_MON)== SPECIES_YUNGOOS)
+        {
+            TrySetPlayerAvatarTransformation(SPECIES_CHINCHOU, FALSE);
+        }
         FlagClear(FLAG_IS_SURFING_MARILL);
     }
     SetWarpDestinationToLastHealLocation();

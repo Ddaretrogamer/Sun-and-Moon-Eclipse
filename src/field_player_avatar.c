@@ -465,16 +465,16 @@ static u8 GetForcedMovementByMetatileBehavior(u16 heldKeys)
         
         if (VarGet(VAR_TRANSFORM_MON)==SPECIES_ARCANINE)
         {
-                    if (((gRunToggleBtnSet || (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) && !FlagGet(FLAG_AUTORUN_MENU_TOGGLE)) || (heldKeys & B_BUTTON)) 
-                 && FlagGet(FLAG_SYS_B_DASH))
-                && (heldKeys & DPAD_UP))
-        {
-            if (PlayerHasFollowerNPC())
+
+            if (((gRunToggleBtnSet || (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) && !FlagGet(FLAG_AUTORUN_MENU_TOGGLE)) || (heldKeys & B_BUTTON)) 
+            && FlagGet(FLAG_SYS_B_DASH)) && (heldKeys & DPAD_UP)&& !MetatileBehavior_IsIce(metatileBehavior))
             {
-                gPlayerAvatar.preventStep = TRUE;
+                if (PlayerHasFollowerNPC())
+                {
+                    gPlayerAvatar.preventStep = TRUE;
+                }
+                return 0;
             }
-            return 0;
-        }
         }
         for (i = 0; i < NUM_FORCED_MOVEMENTS; i++)
         {
@@ -818,7 +818,12 @@ void Task_MarillSurfSequence(u8 taskId)
     }
     else
     {
-        SetPlayerAvatarSurfTransformation(SPECIES_GUMSHOOS, TRUE);
+        if (VarGet(VAR_TRANSFORM_MON)==SPECIES_MARILL)
+             SetPlayerAvatarSurfTransformation(SPECIES_GUMSHOOS, TRUE);
+        else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_DRAGONAIR)
+             SetPlayerAvatarSurfTransformation(SPECIES_VOLBEAT, TRUE);
+        else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_CHINCHOU)
+             SetPlayerAvatarSurfTransformation(SPECIES_YUNGOOS, TRUE);   
         PlaySE(SE_M_DIVE);
         UnfreezeObjectEvents();
         DestroyTask(taskId);
@@ -829,17 +834,20 @@ void Task_MarillSurfSequence(u8 taskId)
 static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 {
     u8 collision = CheckForPlayerAvatarCollision(direction);
-    if (VarGet(VAR_TRANSFORM_MON) == SPECIES_MARILL && collision == COLLISION_START_SWIMMING)
+    u16 species = VarGet(VAR_TRANSFORM_MON);
+    if ((species == SPECIES_MARILL || species == SPECIES_CHINCHOU || species == SPECIES_DRAGONAIR)
+        && collision == COLLISION_START_SWIMMING)
     {
         LockPlayerFieldControls();
         PlayerJump(direction);
         CreateTask(Task_MarillSurfSequence, 0xFF);
-        return; 
+        return;
     }
-    else if (VarGet(VAR_TRANSFORM_MON) == SPECIES_GUMSHOOS && collision == COLLISION_STOP_SWIMMING)
+    else if ((species == SPECIES_GUMSHOOS || species == SPECIES_YUNGOOS || species == SPECIES_VOLBEAT) && collision == COLLISION_STOP_SWIMMING)
     {
         PlayerJump(direction);
-        SetPlayerAvatarStopSurfTransformation(SPECIES_MARILL, TRUE); 
+
+        SetPlayerAvatarStopSurfTransformation(species, TRUE); 
         return;
     }
     else if (collision)
@@ -1082,7 +1090,7 @@ static bool8 CanStartSwimming(s16 x, s16 y, u8 direction, u8 metatileBehavior)
     }
     
     // Original checks
-    if ((VarGet(VAR_TRANSFORM_MON) == SPECIES_MARILL) 
+    if ((VarGet(VAR_TRANSFORM_MON) == SPECIES_MARILL|| VarGet(VAR_TRANSFORM_MON) == SPECIES_CHINCHOU || VarGet(VAR_TRANSFORM_MON) == SPECIES_DRAGONAIR)
         && MetatileBehavior_IsSurfableAndNotWaterfall(metatileBehavior)
         && GetObjectEventIdByPosition(x, y, 3) == OBJECT_EVENTS_COUNT
     )
@@ -1094,7 +1102,7 @@ static bool8 CanStartSwimming(s16 x, s16 y, u8 direction, u8 metatileBehavior)
 
 static bool8 CanStopSwimming(s16 x, s16 y, u8 direction)
 {
-    if ((VarGet(VAR_TRANSFORM_MON) == SPECIES_GUMSHOOS)
+    if ((VarGet(VAR_TRANSFORM_MON) == SPECIES_GUMSHOOS|| VarGet(VAR_TRANSFORM_MON) == SPECIES_YUNGOOS || VarGet(VAR_TRANSFORM_MON) == SPECIES_VOLBEAT)
         && MapGridGetElevationAt(x, y) == 3 
         && GetObjectEventIdByPosition(x, y, 3) == OBJECT_EVENTS_COUNT
     )

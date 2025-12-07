@@ -160,8 +160,8 @@ const struct Transformation gTransformations[] =
         .moves = {
             MOVE_THUNDER_WAVE,
             MOVE_DISCHARGE,
-            MOVE_DIVE,
-            MOVE_DAZZLING_GLEAM,
+            MOVE_V_CREATE,
+            MOVE_SURF,
         },
     },
     [SPECIES_DRAGONAIR] =
@@ -176,7 +176,7 @@ const struct Transformation gTransformations[] =
             MOVE_OUTRAGE,
             MOVE_WATERFALL,
             MOVE_IRON_HEAD,
-            MOVE_SAFEGUARD,
+            MOVE_SURF,
         },
     },
     [SPECIES_MACHAMP] =
@@ -224,5 +224,34 @@ const struct Transformation gTransformations[] =
             MOVE_RAIN_DANCE,
         },
     },
-    
+        [SPECIES_YUNGOOS] =
+    {
+        .name = _("CHINCHOU"),
+        .fieldUseFunc = ItemUseOutOfBattle_SurfStateTransform,
+        .iconPic = gItemIcon_TransformDive,
+        .iconPalette = gItemIconPalette_TransformDive,
+        .battleSpecies = SPECIES_DITTO_CHINCHOU,
+        .ability = ABILITY_VOLT_ABSORB,
+        .moves = {
+            MOVE_THUNDER_WAVE,
+            MOVE_DISCHARGE,
+            MOVE_V_CREATE,
+            MOVE_SURF,
+        },
+    },
+        [SPECIES_VOLBEAT] =
+    {
+        .name = _("Dragonair"),
+        .fieldUseFunc = ItemUseOutOfBattle_SurfStateTransform,
+        .iconPic = gItemIcon_TransformWaterfall,
+        .iconPalette = gItemIconPalette_TransformWaterfall,
+        .battleSpecies = SPECIES_DITTO_DRAGONAIR,
+        .ability = ABILITY_SHED_SKIN,
+        .moves = {
+            MOVE_OUTRAGE,
+            MOVE_WATERFALL,
+            MOVE_IRON_HEAD,
+            MOVE_SURF,
+        },
+    }
 };

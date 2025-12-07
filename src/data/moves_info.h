@@ -14230,30 +14230,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_V_CREATE] =
     {
-        .name = COMPOUND_STRING("V-create"),
+        .name = COMPOUND_STRING("Dive"),
         .description = COMPOUND_STRING(
-            "Very powerful, but lowers\n"
-            "Defense, Sp. Def and Speed."),
-        .effect = EFFECT_HIT,
-        .power = 180,
-        .type = TYPE_FIRE,
-        .accuracy = 95,
-        .pp = 5,
+            "Dives underwater the first\n"
+            "turn and strikes next turn."),
+        .effect = EFFECT_SEMI_INVULNERABLE,
+        .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 80 : 60,
+        .type = TYPE_WATER,
+        .accuracy = 100,
+        .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .zMove = { .powerOverride = 220 },
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_V_CREATE,
-            .self = TRUE,
-        }),
-        .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
-        .contestCategory = CONTEST_CATEGORY_COOL,
-        .contestComboStarterId = 0,
-        .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_VCreate,
+        .sleepTalkBanned = TRUE,
+        .instructBanned = TRUE,
+        .assistBanned = TRUE,
+        .skyBattleBanned = TRUE,
+        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNHIDUNDERWATER, .status = COMPRESS_BITS(STATUS3_UNDERWATER) },
+        .contestEffect = CONTEST_EFFECT_AVOID_STARTLE_ONCE,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = COMBO_STARTER_DIVE,
+        .contestComboMoves = {COMBO_STARTER_RAIN_DANCE, COMBO_STARTER_SURF},
+        .battleAnimScript = gBattleAnimMove_Dive,
+        .validApprenticeMove = TRUE,
     },
 
     [MOVE_FUSION_FLARE] =

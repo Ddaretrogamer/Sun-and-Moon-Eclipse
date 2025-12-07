@@ -475,7 +475,7 @@ HuntailInCaveTrigger_8:
 # 210 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	createfieldmugshot MUGSHOT_HUNTAIL, EMOTE_NORMAL
 # 211 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	msgbox HuntailInCave_Text_3, MSGBOX_DEFAULT
+	msgbox HuntailInCaveTrigger_Text_0, MSGBOX_DEFAULT
 # 212 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	setflag FLAG_HUNTAIL_BATTLE
 # 213 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
@@ -492,7 +492,7 @@ HuntailInCaveTrigger_10:
 # 232 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	createfieldmugshot MUGSHOT_HUNTAIL, EMOTE_NORMAL
 # 233 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	msgbox HuntailInCave_Text_3, MSGBOX_DEFAULT
+	msgbox HuntailInCaveTrigger_Text_0, MSGBOX_DEFAULT
 # 234 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	setflag FLAG_HUNTAIL_BATTLE
 # 235 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
@@ -509,7 +509,7 @@ HuntailInCaveTrigger_12:
 # 254 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	createfieldmugshot MUGSHOT_HUNTAIL, EMOTE_NORMAL
 # 255 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	msgbox HuntailInCave_Text_3, MSGBOX_DEFAULT
+	msgbox HuntailInCaveTrigger_Text_0, MSGBOX_DEFAULT
 # 256 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	setflag FLAG_HUNTAIL_BATTLE
 # 257 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
@@ -526,7 +526,7 @@ HuntailInCaveTrigger_14:
 # 276 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	createfieldmugshot MUGSHOT_HUNTAIL, EMOTE_NORMAL
 # 277 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
-	msgbox HuntailInCave_Text_3, MSGBOX_DEFAULT
+	msgbox HuntailInCaveTrigger_Text_0, MSGBOX_DEFAULT
 # 278 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	setflag FLAG_HUNTAIL_BATTLE
 # 279 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
@@ -634,4 +634,8 @@ HuntailInCave_Text_2:
 
 HuntailInCave_Text_3:
 # 178 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
+	.string "I prefer the seafloor to be dark.$"
+
+HuntailInCaveTrigger_Text_0:
+# 211 "data/maps/DaycareMountainCaveDeepDive/scripts.pory"
 	.string "I prefer the the seafloor to be\ndark.$"

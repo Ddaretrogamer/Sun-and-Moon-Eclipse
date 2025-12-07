@@ -1001,7 +1001,7 @@ WingullDialog_Text_0:
 
 WingullDialog_Text_1:
 # 107 "data/maps/DaycareEast/scripts.pory"
-	.string "I wish more Pokémon could make\nway up here.\pWe Flying_type Pokémon can just\nfly down this cliffside here.$"
+	.string "I wish more Pokémon could make\nway their up here.\pWe Flying_type Pokémon can just\nfly down this cliffside here.$"
 
 RuffletDialog_Text_0:
 # 119 "data/maps/DaycareEast/scripts.pory"

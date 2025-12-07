@@ -2015,7 +2015,7 @@ bool8 WaterfallFieldEffect_ContinueRideOrEnd(struct Task *task, struct ObjectEve
     gPlayerAvatar.preventStep = FALSE;
     RemoveRelevantWaterfallFieldEffect(); // qol_field_moves
 
-    SetPlayerAvatarTransformation(SPECIES_GUMSHOOS, TRUE);
+    SetPlayerAvatarTransformation(SPECIES_VOLBEAT, FALSE);
 
     return FALSE;
 }

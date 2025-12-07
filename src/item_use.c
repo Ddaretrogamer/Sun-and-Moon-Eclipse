@@ -1780,13 +1780,18 @@ void ItemUseOnFieldCB_FlashTransform(u8 taskId)
 
 void ItemUseOutOfBattle_SurfStateTransform(u8 taskId)
 {
-    sItemUseOnFieldCB = ItemUseOnFieldCB_FlashTransform;
+    sItemUseOnFieldCB = ItemUseOnFieldCB_SurfStateTransform;
     SetUpItemUseOnFieldCallback(taskId);
 }
 void ItemUseOnFieldCB_SurfStateTransform(u8 taskId)
 {
     LockPlayerFieldControls();
-    SetPlayerAvatarTransformation(SPECIES_GUMSHOOS, TRUE);
+    if (VarGet(VAR_TRANSFORM_MON)==SPECIES_MARILL)
+        SetPlayerAvatarTransformation(SPECIES_GUMSHOOS, TRUE);
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_DRAGONAIR)
+        SetPlayerAvatarTransformation(SPECIES_DRAGONAIR, TRUE);
+    else if (VarGet(VAR_TRANSFORM_MON)==SPECIES_CHINCHOU)
+        SetPlayerAvatarTransformation(SPECIES_CHINCHOU, TRUE);    
     ScriptUnfreezeObjectEvents();
     DestroyTask(taskId);
 }
