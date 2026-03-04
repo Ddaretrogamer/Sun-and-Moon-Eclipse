@@ -1248,8 +1248,8 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
 {
     struct ObjectEvent *playerObj = &gObjectEvents[sprite->sPlayerObjId];
     struct Sprite *playerSprite = &gSprites[playerObj->spriteId];
-    SynchronizeSurfAnim(playerObj, sprite);
-    SynchronizeSurfPosition(playerObj, sprite);
+    SynchroniseSurfAnim(playerObj, sprite);
+    SynchroniseSurfPosition(playerObj, sprite);
     UpdateBobbingEffect(playerObj, playerSprite, sprite);
     sprite->oam.priority = playerSprite->oam.priority;
 }
@@ -1273,7 +1273,7 @@ void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
         StartSpriteAnimIfDifferent(sprite, surfBlobDirectionAnims[playerObj->movementDirection]);
 }
 
-void SynchronizeSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprite)
+void SynchroniseSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprite)
 {
     u8 i;
     s16 x = playerObj->currentCoords.x;

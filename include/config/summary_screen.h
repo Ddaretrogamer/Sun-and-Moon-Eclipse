@@ -12,7 +12,7 @@
 #define P_SUMMARY_SCREEN_IV_EV_VALUES    TRUE  // If TRUE, will show the actual IV value instead of the letter grade.
 #define P_SUMMARY_SCREEN_IV_HYPERTRAIN   TRUE   // If TRUE, stats that have been hyper trained will show as 31/S when viewing them in the summary screen
 
-LETTER GRADE GUIDE:
+/* LETTER GRADE GUIDE:
 
     F = 0
     D = 1 - 15
