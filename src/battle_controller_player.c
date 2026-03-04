@@ -197,46 +197,36 @@ static void CompleteOnBattlerSpritePosX_0(u32 battler)
 
 static u16 GetPrevBall(u16 ballId)
 {
-    u16 ballPrev;
-    s32 i, j;
-    CompactItemsInBagPocket(POCKET_POKE_BALLS);
-    for (i = 0; i < gBagPockets[POCKET_POKE_BALLS].capacity; i++)
+    s32 i;
+    s32 index = ItemIdToBallId(ballId);
+    u32 newBall = 0;
+     for (i = 0; i < POKEBALL_COUNT; i++)
     {
-        if (ballId == GetBagItemId(POCKET_POKE_BALLS, i))
-        {
-            if (i <= 0)
-            {
-                for (j = gBagPockets[POCKET_POKE_BALLS].capacity - 1; j >= 0; j--)
-                {
-                    ballPrev = GetBagItemId(POCKET_POKE_BALLS, j);
-                    if (ballPrev != ITEM_NONE)
-                        return ballPrev;
-                }
-            }
-            i--;
-            break;
-        }
+        index--;
+        if (index == -1)
+            index = POKEBALL_COUNT - 1;
+        newBall = gBallItemIds[index];
+        if (CheckBagHasItem(newBall, 1))
+            return newBall;
     }
-    return GetBagItemId(POCKET_POKE_BALLS, i);
+    return ballId;
 }
 
 static u32 GetNextBall(u32 ballId)
 {
-    u32 ballNext = ITEM_NONE;
     s32 i;
-    CompactItemsInBagPocket(POCKET_POKE_BALLS);
-    for (i = 1; i < gBagPockets[POCKET_POKE_BALLS].capacity; i++)
+    s32 index = ItemIdToBallId(ballId);
+    u32 newBall = 0;
+    for (i = 0; i < POKEBALL_COUNT; i++)
     {
-        if (ballId == GetBagItemId(POCKET_POKE_BALLS, i-1))
-        {
-            ballNext = GetBagItemId(POCKET_POKE_BALLS, i);
-            break;
-        }
+        index++;
+        if (index == POKEBALL_COUNT)
+            index = 0;
+        newBall = gBallItemIds[index];
+        if (CheckBagHasItem(newBall, 1))
+            return newBall;
     }
-    if (ballNext == ITEM_NONE)
-        return GetBagItemId(POCKET_POKE_BALLS, 0); // Zeroth slot
-    else
-        return ballNext;
+    return ballId;
 }
 
 static void HandleInputChooseAction(u32 battler)
@@ -454,6 +444,13 @@ void HandleInputChooseTarget(u32 battler)
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         gBattlerControllerFuncs[battler] = HandleInputChooseMove;
+        if (gBattleStruct->gimmick.playerSelect == 1 && gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE)
+        {
+            gBattleStruct->gimmick.playerSelect = 0;
+            gBattleStruct->zmove.viewing = TRUE;
+            ReloadMoveNames(battler);
+        }
+        TryToAddMoveInfoWindow();
         DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
         DoBounceEffect(battler, BOUNCE_MON, 7, 1);
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
@@ -1725,6 +1722,14 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
     u16 move = moveInfo->moves[gMoveSelectionCursor[battler]];
     u16 pwr = GetMovePower(move);
     u16 acc = GetMoveAccuracy(move);
+    enum DamageCategory cat = GetBattleMoveCategory(move);
+
+    if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX || IsGimmickSelected(battler, GIMMICK_DYNAMAX))
+    {
+        pwr = GetMaxMovePower(move);
+        move = GetMaxMove(battler, move);
+        acc = 0;
+    }
 
     u8 pwr_num[3], acc_num[3];
     u8 cat_desc[7] = _("CAT: ");
@@ -1758,7 +1763,7 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
     if (gCategoryIconSpriteId == 0xFF)
         gCategoryIconSpriteId = CreateSprite(&gSpriteTemplate_CategoryIcons, 38, 64, 1);
 
-    StartSpriteAnim(&gSprites[gCategoryIconSpriteId], GetBattleMoveCategory(move));
+    StartSpriteAnim(&gSprites[gCategoryIconSpriteId], cat);
 
     CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_FULL);
 }
@@ -2082,6 +2087,8 @@ void PlayerHandleChooseMove(u32 battler)
 
         if (!IsGimmickTriggerSpriteActive())
             gBattleStruct->gimmick.triggerSpriteId = 0xFF;
+        else if (!IsGimmickTriggerSpriteMatchingBattler(battler))
+            DestroyGimmickTriggerSprite();
         if (!(gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE && !gBattleStruct->zmove.viable))
             CreateGimmickTriggerSprite(battler);
 

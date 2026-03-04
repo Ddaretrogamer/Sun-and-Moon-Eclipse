@@ -656,7 +656,8 @@ static void LoadBattleEnvironmentGfx(u16 terrain)
         paletteToLoad = gBattleEnvironmentInfo[terrain].background.palette;
         break;
     }
-    
+    if (terrain >= NELEMS(gBattleEnvironmentInfo))
+        terrain = BATTLE_ENVIRONMENT_PLAIN;  // If higher than the number of entries in gBattleEnvironmentInfo, use the default.
     // Copy to bg3
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[terrain].background.tileset, (void *)(BG_CHAR_ADDR(2)));
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[terrain].background.tilemap, (void *)(BG_SCREEN_ADDR(26)));

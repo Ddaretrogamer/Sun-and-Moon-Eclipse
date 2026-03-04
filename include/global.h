@@ -5,6 +5,7 @@
 #include <limits.h>
 #include "config/general.h" // we need to define config before gba headers as print stuff needs the functions nulled before defines.
 #include "gba/gba.h"
+#include "gametypes.h"
 #include "siirtc.h"
 #include "fpmath.h"
 #include "metaprogram.h"
@@ -1187,6 +1188,8 @@ struct MapPosition
 
 #if T_SHOULD_RUN_MOVE_ANIM
 extern bool32 gLoadFail;
+extern bool32 gCountAllocs;
+extern s32 gSpriteAllocs;
 #endif // T_SHOULD_RUN_MOVE_ANIM
 
 #endif // GUARD_GLOBAL_H

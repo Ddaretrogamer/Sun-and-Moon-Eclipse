@@ -28,6 +28,8 @@
 
 #if T_SHOULD_RUN_MOVE_ANIM
 EWRAM_DATA bool32 gLoadFail = FALSE;
+EWRAM_DATA bool32 gCountAllocs = FALSE;
+EWRAM_DATA s32 gSpriteAllocs = 0;
 #endif // T_SHOULD_RUN_MOVE_ANIM
 
 struct SpriteCopyRequest
@@ -1516,6 +1518,10 @@ void LoadSpriteSheets(const struct SpriteSheet *sheets)
 
 void FreeSpriteTilesByTag(u16 tag)
 {
+#if T_SHOULD_RUN_MOVE_ANIM
+    if (gCountAllocs)
+        gSpriteAllocs--;
+#endif
     u8 index = IndexOfSpriteTileTag(tag);
     if (index != 0xFF)
     {
@@ -1581,6 +1587,10 @@ u16 GetSpriteTileTagByTileStart(u16 start)
 
 void AllocSpriteTileRange(u16 tag, u16 start, u16 count)
 {
+#if T_SHOULD_RUN_MOVE_ANIM
+    if (gCountAllocs)
+        gSpriteAllocs++;
+#endif
     u8 freeIndex = IndexOfSpriteTileTag(TAG_NONE);
     sSpriteTileRangeTags[freeIndex] = tag;
     SET_SPRITE_TILE_RANGE(freeIndex, start, count);
