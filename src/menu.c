@@ -215,6 +215,12 @@ void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
     AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
+void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress)
+{
+    gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+}
+
 void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonPress, u8 speed)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
@@ -697,22 +703,6 @@ void DisplayYesNoMenuDefaultYes(void)
 void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 {
     CreateYesNoMenu(&sYesNo_WindowTemplates, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM, initialCursorPos);
-}
-
-u32 GetPlayerTextSpeed(void)
-{
-    if (gTextFlags.forceMidTextSpeed)
-        return OPTIONS_TEXT_SPEED_MID;
-    return gSaveBlock2Ptr->optionsTextSpeed;
-}
-
-u8 GetPlayerTextSpeedDelay(void)
-{
-    u32 speed;
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FASTER)
-        gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
-    speed = GetPlayerTextSpeed();
-    return sTextSpeedFrameDelays[speed];
 }
 
 u8 AddStartMenuWindow(u8 numActions)

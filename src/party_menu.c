@@ -8229,7 +8229,6 @@ static void CB2_ChooseMonForMoveRelearner(void)
     gSpecialVar_0x8004 = GetCursorSelectionMonId();
     if (gSpecialVar_0x8004 >= SLOT_CONFIRM)
         gSpecialVar_0x8004 = PARTY_NOTHING_CHOSEN;
-    }
     else
     {
         switch(gMoveRelearnerState)

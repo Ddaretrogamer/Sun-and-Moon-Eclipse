@@ -847,6 +847,7 @@ u8 GetRelearnerTMMoves(struct Pokemon *mon, u16 *moves);
 u8 GetRelearnerTutorMoves(struct Pokemon *mon, u16 *moves);
 u8 GetNumberOfLevelUpMoves(struct Pokemon *mon);
 u8 GetNumberOfEggMoves(struct Pokemon *mon);
+u8 GetNumberOfRelearnableMoves(struct Pokemon *mon);
 u8 GetNumberOfTMMoves(struct Pokemon *mon);
 u8 GetNumberOfTutorMoves(struct Pokemon *mon);
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves);

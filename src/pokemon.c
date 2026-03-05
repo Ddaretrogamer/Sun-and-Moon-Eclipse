@@ -69,6 +69,8 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "config/fishing.h"
+#include "wild_encounter.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
 
@@ -6003,6 +6005,50 @@ u8 GetNumberOfEggMoves(struct Pokemon *mon)
         return 0;
 
     return GetRelearnerEggMoves(mon, moves);
+}
+
+u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
+{
+    u16 learnedMoves[MAX_MON_MOVES];
+    u16 moves[MAX_LEVEL_UP_MOVES];
+    u8 numMoves = 0;
+    u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);
+    const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
+    int i, j, k;
+
+    if (species == SPECIES_EGG)
+        return 0;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
+
+    for (i = 0; i < MAX_LEVEL_UP_MOVES; i++)
+    {
+        u16 moveLevel;
+
+        if (learnset[i].move == LEVEL_UP_MOVE_END)
+            break;
+
+        moveLevel = learnset[i].level;
+
+        if (moveLevel <= level)
+        {
+            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != learnset[i].move; j++)
+                ;
+
+            if (j == MAX_MON_MOVES)
+            {
+                for (k = 0; k < numMoves && moves[k] != learnset[i].move; k++)
+                    ;
+
+                if (k == numMoves)
+                    moves[numMoves++] = learnset[i].move;
+            }
+        }
+    }
+
+    return numMoves;
 }
 
 u8 GetNumberOfTMMoves(struct Pokemon *mon)

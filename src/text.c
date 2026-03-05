@@ -305,7 +305,7 @@ static const u8 sTextSpeedFrameDelays[] =
     [OPTIONS_TEXT_SPEED_SLOW]    = 8,
     [OPTIONS_TEXT_SPEED_MID]     = 4,
     [OPTIONS_TEXT_SPEED_FAST]    = 1,
-    [OPTIONS_TEXT_SPEED_INSTANT] = 1,
+    [OPTIONS_TEXT_SPEED_FASTER]  = 1,
 };
 
 static const u8 sTextSpeedModifiers[] =
@@ -313,7 +313,7 @@ static const u8 sTextSpeedModifiers[] =
     [OPTIONS_TEXT_SPEED_SLOW]    = TEXT_SPEED_SLOW_MODIFIER,
     [OPTIONS_TEXT_SPEED_MID]     = TEXT_SPEED_MEDIUM_MODIFIER,
     [OPTIONS_TEXT_SPEED_FAST]    = TEXT_SPEED_FAST_MODIFIER,
-    [OPTIONS_TEXT_SPEED_INSTANT] = TEXT_SPEED_INSTANT_MODIFIER,
+    [OPTIONS_TEXT_SPEED_FASTER]  = TEXT_SPEED_FAST_MODIFIER,
 };
 
 static const u8 sTextScrollSpeeds[] =
@@ -321,7 +321,7 @@ static const u8 sTextScrollSpeeds[] =
     [OPTIONS_TEXT_SPEED_SLOW]    = 1,
     [OPTIONS_TEXT_SPEED_MID]     = 2,
     [OPTIONS_TEXT_SPEED_FAST]    = 4,
-    [OPTIONS_TEXT_SPEED_INSTANT] = 6,
+    [OPTIONS_TEXT_SPEED_FASTER]  = 6,
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");
@@ -336,16 +336,16 @@ u32 GetPlayerTextSpeed(void)
     if (gTextFlags.forceMidTextSpeed)
         return OPTIONS_TEXT_SPEED_MID;
 
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_INSTANT)
+    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FASTER)
         gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
 
     if (FlagGet(FLAG_TEXT_SPEED_INSTANT) || TEXT_SPEED_INSTANT)
-        return OPTIONS_TEXT_SPEED_INSTANT;
+        return OPTIONS_TEXT_SPEED_FASTER;
 
     return gSaveBlock2Ptr->optionsTextSpeed;
 }
 
-u32 GetPlayerTextSpeedDelay(void)
+u8 GetPlayerTextSpeedDelay(void)
 {
     return sTextSpeedFrameDelays[GetPlayerTextSpeed()];
 }
@@ -362,7 +362,7 @@ u32 GetPlayerTextScrollSpeed(void)
 
 bool32 IsPlayerTextSpeedInstant(void)
 {
-    return GetPlayerTextSpeed() == OPTIONS_TEXT_SPEED_INSTANT;
+    return FALSE; // User doesn't have instant text speed, only FASTER
 }
 
 void DeactivateAllTextPrinters(void)

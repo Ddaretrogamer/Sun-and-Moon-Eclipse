@@ -53,6 +53,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "fishing.h"
+#include "wild_encounter.h"
 
 enum TransitionType
 {

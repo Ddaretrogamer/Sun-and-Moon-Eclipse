@@ -168,9 +168,10 @@ struct ProtectStruct
     u16 usedAllySwitch:1;
     // End of 32-bit bitfield
     u16 helpingHand:3;
+    u16 lashOutAffected:1;
     u16 assuranceDoubled:1;
     u16 myceliumMight:1;
-    u16 padding:11;
+    u16 padding:10;
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;

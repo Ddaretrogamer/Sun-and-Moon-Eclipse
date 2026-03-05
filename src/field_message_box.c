@@ -11,7 +11,6 @@
 #include "field_name_box.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
-EWRAM_DATA const u8* gSpeakerName = NULL;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *, bool32);

@@ -186,7 +186,7 @@ u8 *WrapFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width);
 
 // player text speed
 u32 GetPlayerTextSpeed(void);
-u32 GetPlayerTextSpeedDelay(void);
+u8 GetPlayerTextSpeedDelay(void);
 u32 GetPlayerTextSpeedModifier(void);
 u32 GetPlayerTextScrollSpeed(void);
 bool32 IsPlayerTextSpeedInstant(void);

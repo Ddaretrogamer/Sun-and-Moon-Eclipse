@@ -242,6 +242,7 @@ static EWRAM_DATA u8 sMoveSlotToReplace = 0;
 ALIGNED(4) static EWRAM_DATA u8 sAnimDelayTaskId = 0;
 ALIGNED(4) static EWRAM_DATA u8 sShadowAnimDelayTaskId = 0;
 static EWRAM_DATA u8 sStringVar5[8] = {0};
+EWRAM_DATA u8 gOriginSummaryScreenPage = 0;
 
 // forward declarations
 static bool8 LoadGraphics(void);
