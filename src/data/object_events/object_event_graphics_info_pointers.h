@@ -248,6 +248,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
 
 //UE sprites
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AlolaAceM;
@@ -528,7 +529,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SELENE_NORMAL] =            &gObjectEventGraphicsInfo_SeleneNormal,
     [OBJ_EVENT_GFX_ELIO_RIDING] =              &gObjectEventGraphicsInfo_ElioRiding,
     [OBJ_EVENT_GFX_SELENE_RIDING] =            &gObjectEventGraphicsInfo_SeleneRiding,
-    
+    [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

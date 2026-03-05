@@ -91,6 +91,8 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_PlayRockSmashSE           @ FLDEFF_PLAY_ROCK_SMASH_SOUND
 @ End qol_field_moves
     
+	.4byte gFieldEffectScript_ORASDowse                 @ FLDEFF_ORAS_DOWSE
+
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
 	field_eff_end
@@ -393,6 +395,7 @@ gFieldEffectScript_CaveDust::
 gFieldEffectScript_Defog::
     field_eff_callnative FldEff_Defog
     field_eff_end
+
 gFieldEffectScript_UseRockClimb:: @ 82DBC3F
 	field_eff_callnative FldEff_UseRockClimb
 	field_eff_end
@@ -426,3 +429,7 @@ gFieldEffectScript_PlayRockSmashSE::
 
 
 @ End qol_field_moves
+gFieldEffectScript_ORASDowse::
+	field_eff_callnative FldEff_ORASDowsing
+	field_eff_end
+    

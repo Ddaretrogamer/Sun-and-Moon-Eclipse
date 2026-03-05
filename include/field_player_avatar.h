@@ -70,6 +70,7 @@ void StartFishing(u8 rod);
 void PlayerAvatarTransition_Surfing(struct ObjectEvent *); // qol_field_moves
 void ForcePlayerToPerformMovementAction(void); // qol_field_moves
 extern bool8 gRunToggleBtnSet; // added for the run toggle button
+void SetPlayerAvatarFishing(u8 direction);
 bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction);
 //sideways stairs
 u8 GetRightSideStairsDirection(u8 direction);

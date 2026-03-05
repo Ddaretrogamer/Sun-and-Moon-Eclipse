@@ -5554,7 +5554,7 @@ static bool32 TryStartFollowerTransformEffect(struct ObjectEvent *objectEvent, s
 {
     u32 multi;
     struct Pokemon *mon;
-    u32 ability;
+    enum Ability ability;
     if (DoesSpeciesHaveFormChangeMethod(OW_SPECIES(objectEvent), FORM_CHANGE_OVERWORLD_WEATHER)
         && OW_SPECIES(objectEvent) != (multi = GetOverworldWeatherSpecies(OW_SPECIES(objectEvent))))
     {
@@ -11671,6 +11671,10 @@ bool8 MovementAction_FollowMonSpawn(enum FollowMonSpawnAnim spawnAnimType, struc
     gFieldEffectArguments[1] = objEvent->currentCoords.y;
     gFieldEffectArguments[2] = gSprites[objEvent->spriteId].oam.priority + 1;
     gFieldEffectArguments[3] = spawnAnimType;
-    FieldEffectStart(FLDEFF_BUBBLES); // Commandeer this field effect for the spawn anims
+    FieldEffectStart(FLDEFF_SPARKLE); // Commandeer this field effect for the spawn anims
     return TRUE;
+}
+u8 GetObjectEventApricornTreeId(u8 objectEventId)
+{
+    return gObjectEvents[objectEventId].trainerRange_berryTreeId;
 }

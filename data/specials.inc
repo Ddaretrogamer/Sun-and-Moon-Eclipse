@@ -566,3 +566,6 @@ gSpecials::
 	def_special CreateFollowMonEncounter
 	def_special SetHiddenNature
 	def_special TransformToMudsdale
+	def_special SetAbility
+	def_special ObjectEventInteractionGetApricornTreeData
+	def_special ObjectEventInteractionPickApricornTree
