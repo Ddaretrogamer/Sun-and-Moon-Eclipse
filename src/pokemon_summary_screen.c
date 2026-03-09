@@ -2032,7 +2032,7 @@ void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
             return;
         }
         zeroCounter++;
-        
+
     } while (zeroCounter <= MOVE_RELEARNER_COUNT && !hasRelearnableMoves);
 }
 
@@ -2120,7 +2120,7 @@ static void Task_ChangeSummaryMon(u8 taskId)
         }
 
         if (P_SUMMARY_SCREEN_MOVE_RELEARNER
-             && (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES 
+             && (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES
              || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES))
         {
             gMoveRelearnerState = MOVE_RELEARNER_LEVEL_UP_MOVES;
@@ -2293,7 +2293,7 @@ static void ChangePage(u8 taskId, s8 delta)
         TryUpdateRelearnType(TRY_SET_UPDATE);
     }
 
-    // to prevent nothing showing 
+    // to prevent nothing showing
     if (currPageIndex >= PSS_PAGE_BATTLE_MOVES && !sMonSummaryScreen->hasRelearnableMoves)
         TryUpdateRelearnType(TRY_SET_UPDATE);
     else

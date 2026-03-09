@@ -2707,7 +2707,7 @@ static void TeleportWarpOutFieldEffect_End(struct Task *task)
 
         if (BGMusicStopped() == TRUE)
         {
-            SetWarpDestinationToLastHealLocation();
+            SetWarpDestinationForTeleport();
             WarpIntoMap();
             SetMainCallback2(CB2_LoadMap);
             gFieldCallback = FieldCallback_TeleportWarpIn;
