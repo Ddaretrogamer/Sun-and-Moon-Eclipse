@@ -123,43 +123,38 @@ def read_bin(bin_path: str) -> tuple:
     # Calculate sample rate from pitch value
     sample_rate = pitch_value / 1024.0
 
-    # Loop end is stored as (actual_end - 1) in binary format
-    # For the expected number of samples, we add 1
+    # loop_end_stored is the exact value that must appear in the output bin header.
+    # We pass it through unchanged so write_wav can embed it in the 'agbl' chunk,
+    # which wav2agb uses as a direct override (bypassing the smpl round-trip entirely).
     expected_num_samples = loop_end_stored + 1
 
     # Read sample data (8-bit signed)
     compressed_data = bin_data[16:]
 
     if is_compressed:
-        # Decompress the data
-        # Note: delta_decompress may return fewer samples than expected if
-        # the compressed data is shorter (this matches aif2pcm behavior)
         samples = delta_decompress(compressed_data, expected_num_samples)
 
-        # Pad samples to expected length if needed (matching aif2pcm behavior)
-        # This can happen when the compressed data is slightly short
+        # Pad to expected length if the compressed data is slightly short
         if len(samples) < expected_num_samples:
-            # Pad with the last sample value
             last_sample = samples[-1] if len(samples) > 0 else 0
             padding = bytes([last_sample] * (expected_num_samples - len(samples)))
             samples = samples + padding
     else:
-        # For uncompressed data, only read expected_num_samples
-        # (ignore any trailing alignment padding in the .bin file)
-        samples = compressed_data[:expected_num_samples]
+        # Use all audio bytes as-is (trailing alignment padding is harmless)
+        samples = compressed_data
 
-    # For loop_end, use the expected number from the header
-    # This matches aif2pcm's behavior where the COMM chunk has the expected count
-    # even if the actual SSND data is shorter
-    loop_end = expected_num_samples if is_looped else 0
-
-    return sample_rate, is_looped, loop_start, loop_end, samples
+    return sample_rate, is_looped, loop_start, loop_end_stored, samples
 
 
 def write_wav(wav_path: str, sample_rate: float, is_looped: bool,
-              loop_start: int, loop_end: int, samples: bytes):
+              loop_start: int, loop_end_stored: int, samples: bytes):
     """
-    Write a .wav file with smpl chunk.
+    Write a .wav file with smpl, agbp, and (for looped files) agbl chunks.
+
+    loop_end_stored is the raw value from the bin header (i.e. last sample index,
+    same as aif2pcm's off-by-one convention). It is written into a custom 'agbl'
+    chunk which wav2agb reads as a direct loopEnd override, bypassing the smpl
+    round-trip and its associated clamp entirely.
     """
     # WAV uses unsigned 8-bit, GBA bin uses signed 8-bit
     # Convert signed (-128 to +127) to unsigned (0 to 255)
@@ -185,8 +180,6 @@ def write_wav(wav_path: str, sample_rate: float, is_looped: bool,
 
     # Build smpl chunk
     sample_period = int(1000000000.0 / sample_rate)
-
-    # MIDI note: default to 60 (C4) since we don't have this info in the bin
     midi_note = 60
 
     smpl_chunk = struct.pack('<IIIIIIII',
@@ -201,60 +194,48 @@ def write_wav(wav_path: str, sample_rate: float, is_looped: bool,
     )
     smpl_chunk += struct.pack('<I', 0)  # Sampler data
 
-    # Add loop structure if loop exists
     if is_looped:
-        # Loop end in binary is stored as (end - 1), so we already added 1 above
-        loop_end_inclusive = loop_end - 1
+        # smpl loop end is inclusive; loop_end_stored is already the last sample index
         smpl_chunk += struct.pack('<IIIIII',
-            0,                      # Cue point ID
-            0,                      # Type (0 = forward loop)
-            loop_start,             # Start
-            loop_end_inclusive,     # End (inclusive)
-            0,                      # Fraction
-            0                       # Play count (0 = infinite)
+            0,                  # Cue point ID
+            0,                  # Type (0 = forward loop)
+            loop_start,         # Start
+            loop_end_stored,    # End (inclusive) - matches loop_end_stored exactly
+            0,                  # Fraction
+            0                   # Play count (0 = infinite)
         )
 
-    # Build custom 'agbp' (AGB Pitch) chunk to store exact pitch value
-    # This avoids precision loss from period-based round-trip
-    # pitch_value = sample_rate * 1024 (GBA format)
+    # Build 'agbp' chunk: exact GBA pitch value to avoid precision loss
     pitch_value_int = int(sample_rate * 1024.0)
     agbp_chunk = struct.pack('<I', pitch_value_int)
 
-    # Calculate sizes
-    data_chunk_size = len(samples_unsigned)
-    fmt_chunk_size = len(fmt_chunk)
-    smpl_chunk_size = len(smpl_chunk)
-    agbp_chunk_size = len(agbp_chunk)
+    # Build 'agbl' chunk: direct loopEnd override for wav2agb.
+    # wav2agb reads this value and uses it as-is for the bin header,
+    # bypassing the smpl+clamp path entirely. This preserves the off-by-one
+    # convention that aif2pcm used, which custom samples may depend on.
+    agbl_chunk = struct.pack('<I', loop_end_stored) if is_looped else None
 
-    # RIFF chunk size
-    riff_size = 4 + 8 + fmt_chunk_size + 8 + smpl_chunk_size + 8 + agbp_chunk_size + 8 + data_chunk_size
+    # Assemble chunks list
+    chunks = [
+        (b'fmt ', fmt_chunk),
+        (b'smpl', smpl_chunk),
+        (b'agbp', agbp_chunk),
+    ]
+    if agbl_chunk is not None:
+        chunks.append((b'agbl', agbl_chunk))
+    chunks.append((b'data', samples_unsigned))
 
-    # Write WAV file
+    # Calculate RIFF size
+    riff_size = 4 + sum(8 + len(data) for _, data in chunks)
+
     with open(wav_path, 'wb') as f:
-        # RIFF header
         f.write(b'RIFF')
         f.write(struct.pack('<I', riff_size))
         f.write(b'WAVE')
-
-        # fmt chunk
-        f.write(b'fmt ')
-        f.write(struct.pack('<I', fmt_chunk_size))
-        f.write(fmt_chunk)
-
-        # smpl chunk
-        f.write(b'smpl')
-        f.write(struct.pack('<I', smpl_chunk_size))
-        f.write(smpl_chunk)
-
-        # agbp chunk (custom chunk for exact GBA pitch value)
-        f.write(b'agbp')
-        f.write(struct.pack('<I', agbp_chunk_size))
-        f.write(agbp_chunk)
-
-        # data chunk
-        f.write(b'data')
-        f.write(struct.pack('<I', data_chunk_size))
-        f.write(samples_unsigned)
+        for chunk_id, chunk_data in chunks:
+            f.write(chunk_id)
+            f.write(struct.pack('<I', len(chunk_data)))
+            f.write(chunk_data)
 
 
 def convert_bin_to_wav(bin_path: str, wav_path: Optional[str] = None):
