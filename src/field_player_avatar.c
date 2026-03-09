@@ -892,8 +892,8 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     && (gRunToggleBtnSet || (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) 
     && !FlagGet(FLAG_AUTORUN_MENU_TOGGLE)) || (heldKeys & B_BUTTON))
     && FlagGet(FLAG_SYS_B_DASH) 
-    && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0)  
-    && !FollowerNPCComingThroughDoor()
+    && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0  
+    && !FollowerNPCComingThroughDoor())
     {
         // Stoutland: if press A, walk slow
         if (rideSpecies == SPECIES_STOUTLAND && (heldKeys & A_BUTTON))
