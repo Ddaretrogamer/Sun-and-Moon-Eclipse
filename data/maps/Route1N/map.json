@@ -103,7 +103,7 @@
       "y": 19,
       "elevation": 0,
       "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_1N_POKE_BALL"
     }
   ]
 }

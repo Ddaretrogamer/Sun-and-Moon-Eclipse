@@ -57,7 +57,7 @@ u8 GetMoveSlotToReplace(void);
 void SummaryScreen_SetAnimDelayTaskId(u8 taskId);
 void ShowRelearnPrompt(void);
 void TryUpdateRelearnType(enum IncrDecrUpdateValues delta);
-u32 GetCurrentRelearnMovesCount(void);
-u32 GetRelearnMovesCount(enum MoveRelearnerStates state);
+bool32 HasAnyRelearnableMoves(enum MoveRelearnerStates state, struct Pokemon *mon);
+bool32 NoMovesAvailableToRelearn(struct Pokemon *mon);
 
 #endif // GUARD_POKEMON_SUMMARY_SCREEN_H
