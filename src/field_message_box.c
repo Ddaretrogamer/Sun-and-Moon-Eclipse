@@ -30,35 +30,34 @@ void InitFieldMessageBox(void)
 static void Task_DrawFieldMessage(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
-
     switch (task->tState)
     {
-        case 0:
-            if (gMsgIsSignPost)
-                LoadSignPostWindowFrameGfx();
-            else
-                LoadMessageBoxAndBorderGfx();
-            task->tState++;
-            break;
-        case 1:
+    case 0:
+        if (gMsgIsSignPost)
+            LoadSignPostWindowFrameGfx();
+        else
+            LoadMessageBoxAndBorderGfx();
+        task->tState++;
+        break;
+    case 1:
+        if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
         {
-            u32 nameboxWinId = GetNameboxWindowId();
-            DrawDialogueFrame(0, TRUE);
-            if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
-            {
-                DrawNamePlate(1, TRUE);
-            }
-            // if (nameboxWinId != WINDOW_NONE)
-            //     DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE); //expansion namebox implimentation
-            task->tState++;
-            break;
+            DrawDialogueFrameWithNameplate(0, TRUE);
+            PutWindowTilemap(1);
+            CopyWindowToVram(1, COPYWIN_FULL);
         }
-        case 2:
-            if (RunTextPrintersAndIsPrinter0Active() != TRUE)
-            {
-                sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
-                DestroyTask(taskId);
-            }
+        else
+        {
+            DrawDialogueFrame(0, TRUE);
+        }
+        task->tState++;
+        break;
+    case 2:
+        if (RunTextPrintersAndIsPrinter0Active() != TRUE)
+        {
+            sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+            DestroyTask(taskId);
+        }
     }
 }
 

@@ -4,6 +4,7 @@
 extern const u16 gTitleScreenAlphaBlend[64];
 
 void CB2_InitTitleScreen(void);
+void CB2_InitTitleScreenFrlg(void);
 
 // Assumes SaveBlock Values will be one of these values.
 enum TitleScreenPokemon

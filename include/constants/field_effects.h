@@ -88,6 +88,10 @@
 // End qol_field_moves
 #define FLDEFF_ORAS_DOWSE                82
 
+#define FLDEFF_SMILEY_FACE_ICON          83
+#define FLDEFF_HALL_OF_FAME_RECORD_FRLG  84
+#define FLDEFF_PHOTO_FLASH               85
+
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
 #define FLDEFFOBJ_SHADOW_L              2
