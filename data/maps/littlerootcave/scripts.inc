@@ -33,12 +33,12 @@ littlerootcave_eventscript_cyndaquil_gift_2:
 
 littlerootcave_eventscript_cyndaquil_gift_4:
 # 5 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x021, littlerootcave_eventscript_cyndaquil_gift_6
+	goto_if_unset FLAG_UNUSED_0x024, littlerootcave_eventscript_cyndaquil_gift_6
 	goto littlerootcave_eventscript_cyndaquil_gift_3
 
 littlerootcave_eventscript_cyndaquil_gift_6:
 # 5 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x022, littlerootcave_eventscript_cyndaquil_gift_2
+	goto_if_unset FLAG_UNUSED_0x025, littlerootcave_eventscript_cyndaquil_gift_2
 	goto littlerootcave_eventscript_cyndaquil_gift_3
 
 littlerootcave_eventscript_cyndaquil_gift_9:
@@ -114,12 +114,12 @@ littlerootcave_eventscript_totodile_gift_2:
 
 littlerootcave_eventscript_totodile_gift_4:
 # 45 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x021, littlerootcave_eventscript_totodile_gift_6
+	goto_if_unset FLAG_UNUSED_0x024, littlerootcave_eventscript_totodile_gift_6
 	goto littlerootcave_eventscript_totodile_gift_3
 
 littlerootcave_eventscript_totodile_gift_6:
 # 45 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x022, littlerootcave_eventscript_totodile_gift_2
+	goto_if_unset FLAG_UNUSED_0x025, littlerootcave_eventscript_totodile_gift_2
 	goto littlerootcave_eventscript_totodile_gift_3
 
 littlerootcave_eventscript_totodile_gift_9:
@@ -145,7 +145,7 @@ littlerootcave_eventscript_totodile_gift_12:
 # 54 "data/maps/littlerootcave/scripts.pory"
 	removeobject 3
 # 55 "data/maps/littlerootcave/scripts.pory"
-	setflag FLAG_UNUSED_0x021
+	setflag FLAG_UNUSED_0x024
 # 56 "data/maps/littlerootcave/scripts.pory"
 	call NicknamePartyMon
 	goto littlerootcave_eventscript_totodile_gift_1
@@ -158,7 +158,7 @@ littlerootcave_eventscript_totodile_gift_13:
 # 61 "data/maps/littlerootcave/scripts.pory"
 	removeobject 3
 # 62 "data/maps/littlerootcave/scripts.pory"
-	setflag FLAG_UNUSED_0x021
+	setflag FLAG_UNUSED_0x024
 # 63 "data/maps/littlerootcave/scripts.pory"
 	Call NicknameBoxMon
 	goto littlerootcave_eventscript_totodile_gift_1
@@ -195,12 +195,12 @@ littlerootcave_eventscript_chikorita_gift_2:
 
 littlerootcave_eventscript_chikorita_gift_4:
 # 85 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x021, littlerootcave_eventscript_chikorita_gift_6
+	goto_if_unset FLAG_UNUSED_0x024, littlerootcave_eventscript_chikorita_gift_6
 	goto littlerootcave_eventscript_chikorita_gift_3
 
 littlerootcave_eventscript_chikorita_gift_6:
 # 85 "data/maps/littlerootcave/scripts.pory"
-	goto_if_unset FLAG_UNUSED_0x022, littlerootcave_eventscript_chikorita_gift_2
+	goto_if_unset FLAG_UNUSED_0x025, littlerootcave_eventscript_chikorita_gift_2
 	goto littlerootcave_eventscript_chikorita_gift_3
 
 littlerootcave_eventscript_chikorita_gift_9:
@@ -226,7 +226,7 @@ littlerootcave_eventscript_chikorita_gift_12:
 # 94 "data/maps/littlerootcave/scripts.pory"
 	removeobject 2
 # 95 "data/maps/littlerootcave/scripts.pory"
-	setflag FLAG_UNUSED_0x022
+	setflag FLAG_UNUSED_0x025
 # 96 "data/maps/littlerootcave/scripts.pory"
 	call NicknamePartyMon
 	goto littlerootcave_eventscript_chikorita_gift_1
@@ -239,7 +239,7 @@ littlerootcave_eventscript_chikorita_gift_13:
 # 101 "data/maps/littlerootcave/scripts.pory"
 	removeobject 2
 # 102 "data/maps/littlerootcave/scripts.pory"
-	setflag FLAG_UNUSED_0x022
+	setflag FLAG_UNUSED_0x025
 # 103 "data/maps/littlerootcave/scripts.pory"
 	Call NicknameBoxMon
 	goto littlerootcave_eventscript_chikorita_gift_1

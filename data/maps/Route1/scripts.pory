@@ -13,6 +13,8 @@ script MomSaysHi{
     setflag(FLAG_ENABLE_STAT_EDITOR)
     setflag(FLAG_PORTABLE_PC_TOGGLE)
     setflag(FLAG_RECEIVED_SUPER_ROD)
+    setflag(FLAG_EGG_MOVES)
+    setflag(FLAG_TUTOR_MOVES)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     msgbox("Take care, honey!")
     release

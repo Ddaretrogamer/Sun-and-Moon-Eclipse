@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "littlerootcave_eventscript_chikorita_gift",
-      "flag": "FLAG_UNUSED_0x021"
+      "flag": "FLAG_UNUSED_0x024"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TOTODILE_DOLL",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "littlerootcave_eventscript_totodile_gift",
-      "flag": "FLAG_UNUSED_0x022"
+      "flag": "FLAG_UNUSED_0x025"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",

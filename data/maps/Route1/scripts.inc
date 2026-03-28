@@ -28,53 +28,57 @@ MomSaysHi::
 # 15 "data/maps/Route1/scripts.pory"
 	setflag FLAG_RECEIVED_SUPER_ROD
 # 16 "data/maps/Route1/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	setflag FLAG_EGG_MOVES
 # 17 "data/maps/Route1/scripts.pory"
-	msgbox MomSaysHi_Text_2
+	setflag FLAG_TUTOR_MOVES
 # 18 "data/maps/Route1/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 19 "data/maps/Route1/scripts.pory"
+	msgbox MomSaysHi_Text_2
+# 20 "data/maps/Route1/scripts.pory"
 	release
 	end
 
 
 Mailbox::
-# 23 "data/maps/Route1/scripts.pory"
-	lock
-# 24 "data/maps/Route1/scripts.pory"
-	msgbox Mailbox_Text_0
 # 25 "data/maps/Route1/scripts.pory"
+	lock
+# 26 "data/maps/Route1/scripts.pory"
+	msgbox Mailbox_Text_0
+# 27 "data/maps/Route1/scripts.pory"
 	goto_if_set FLAG_SHINY_RIDE, Mailbox_2
-# 30 "data/maps/Route1/scripts.pory"
+# 32 "data/maps/Route1/scripts.pory"
 	setflag FLAG_SHINY_RIDE
 Mailbox_1:
-# 32 "data/maps/Route1/scripts.pory"
+# 34 "data/maps/Route1/scripts.pory"
 	compare VAR_ROTOM_PHONE_ENABLE, 1
 	goto_if_lt Mailbox_6
-# 37 "data/maps/Route1/scripts.pory"
+# 39 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 0
 Mailbox_5:
-# 39 "data/maps/Route1/scripts.pory"
+# 41 "data/maps/Route1/scripts.pory"
 	release
 	end
 
 Mailbox_2:
-# 27 "data/maps/Route1/scripts.pory"
+# 29 "data/maps/Route1/scripts.pory"
 	clearflag FLAG_SHINY_RIDE
 	goto Mailbox_1
 
 Mailbox_6:
-# 34 "data/maps/Route1/scripts.pory"
+# 36 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 1
 	goto Mailbox_5
 
 
 Route1LittleBoyNPC::
-# 44 "data/maps/Route1/scripts.pory"
+# 46 "data/maps/Route1/scripts.pory"
 	msgbox Route1LittleBoyNPC_Text_0, MSGBOX_NPC
 	end
 
 
 testscript::
-# 49 "data/maps/Route1/scripts.pory"
+# 51 "data/maps/Route1/scripts.pory"
 	msgbox testscript_Text_0, MSGBOX_NPC
 	end
 
@@ -90,19 +94,19 @@ MomSaysHi_Text_1:
 	.string "You should take a rest.$"
 
 MomSaysHi_Text_2:
-# 17 "data/maps/Route1/scripts.pory"
+# 19 "data/maps/Route1/scripts.pory"
 	.string "Take care, honey!$"
 
 Mailbox_Text_0:
-# 24 "data/maps/Route1/scripts.pory"
+# 26 "data/maps/Route1/scripts.pory"
 	.string "{PLAYER}'s House$"
 
 Route1LittleBoyNPC_Text_0:
-# 44 "data/maps/Route1/scripts.pory"
+# 46 "data/maps/Route1/scripts.pory"
 	.string "I gotta catch more Pokémon!\nPokémon with cool knees are so neat.$"
 
 testscript_Text_0:
-# 49 "data/maps/Route1/scripts.pory"
+# 51 "data/maps/Route1/scripts.pory"
 	.string "okay this is a test.\n"
 	.string "It seems this is a suitable line length\l"
 	.string "for scripting. This is working well.\p"
