@@ -117,14 +117,14 @@ bool32 SetUpFieldMove_RockClimb(void);
 
 // Start qol_field_moves
 // These are all moved from src/party_menu.c
-u8 CanTeachMove(struct Pokemon *, u16);
+enum CanMoveBeLearned CanTeachMove(struct Pokemon *, enum Move);
 
-enum {
-    CAN_LEARN_MOVE,
-    CANNOT_LEARN_MOVE,
-    ALREADY_KNOWS_MOVE,
-    CANNOT_LEARN_MOVE_IS_EGG
-};
-// End qol_field_moves
+// enum {
+//     CAN_LEARN_MOVE,
+//     CANNOT_LEARN_MOVE,
+//     ALREADY_KNOWS_MOVE,
+//     CANNOT_LEARN_MOVE_IS_EGG
+// };
+// // End qol_field_moves
 
 #endif // GUARD_PARTY_MENU_H

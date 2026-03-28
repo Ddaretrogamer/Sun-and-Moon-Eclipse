@@ -18,6 +18,7 @@
 #include "event_scripts.h"
 #include "field_effect.h"
 #include "party_menu.h"
+#include "constants/party_menu.h"
 #include "constants/vars.h"
 #include "constants/flags.h"
 #include "event_data.h"

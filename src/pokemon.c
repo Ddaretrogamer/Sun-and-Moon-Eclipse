@@ -69,11 +69,13 @@
 #include "constants/party_menu.h"
 #include "constants/regions.h"
 #include "constants/songs.h"
+#include "constants/teaching_types.h"
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "config/fishing.h"
 #include "wild_encounter.h"
+#include "swsh_summary_screen.h"
 
 extern u16 gSpecialVar_ItemId;
 
@@ -1370,6 +1372,32 @@ void SetBoxMonIVs(struct BoxPokemon *mon, u8 fixedIV)
         }
     }
 }
+
+bool32 ComputePlayerShinyOdds(u32 personality)
+{
+    u32 otid = gSaveBlock2Ptr->playerTrainerId[0]
+            | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+            | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+            | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+
+    if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY)) return FALSE;
+    if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY)) return TRUE;
+
+    u32 totalRerolls = 0;
+    if (CheckBagHasItem(ITEM_SHINY_CHARM, 1)) totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
+    if (LURE_STEP_COUNT != 0) totalRerolls += 1;
+    totalRerolls += CalculateChainFishingShinyRolls();
+    if (gDexNavSpecies) totalRerolls += CalculateDexNavShinyRolls();
+
+    while (GET_SHINY_VALUE(otid, personality) >= SHINY_ODDS && totalRerolls > 0)
+    {
+        personality = Random32();
+        totalRerolls--;
+    }
+
+    return (GET_SHINY_VALUE(otid, personality) < SHINY_ODDS);
+}
+
 
 void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId)
 {
@@ -6179,7 +6207,7 @@ static void Task_PokemonSummaryAnimateAfterDelay(u8 taskId)
         StartMonSummaryAnimation(READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].sAnimId);
         #if SWSH_SUMMARY_SCREEN == TRUE
         if (gTasks[taskId].tIsShadow)
-            SummaryScreen_SetShadowAnimDelayTaskId_SwSh(TASK_NONE); // needed to track anim delay task for mon shadow in BW summary screen
+            SummaryScreen_SetShadowAnimDelayTaskId(TASK_NONE); // needed to track anim delay task for mon shadow in SwSh summary screen
         else
         #endif
             SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
@@ -6258,7 +6286,7 @@ void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneF
 
         #if SWSH_SUMMARY_SCREEN == TRUE
         if (isShadow)
-            SummaryScreen_SetShadowAnimDelayTaskId_SwSh(taskId);
+            SummaryScreen_SetShadowAnimDelayTaskId(taskId);
         else
         #endif
             SummaryScreen_SetAnimDelayTaskId(taskId);

@@ -30,6 +30,7 @@ void InitFieldMessageBox(void)
 static void Task_DrawFieldMessage(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
+
     switch (task->tState)
     {
     case 0:
@@ -40,24 +41,30 @@ static void Task_DrawFieldMessage(u8 taskId)
         task->tState++;
         break;
     case 1:
+    {
+        u32 nameboxWinId = GetNameboxWindowId();
+        DrawDialogueFrame(0, TRUE);
+
+        // This is the setup for the namebox/plate
         if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
         {
-            DrawDialogueFrameWithNameplate(0, TRUE);
-            PutWindowTilemap(1);
-            CopyWindowToVram(1, COPYWIN_FULL);
+            DrawNamePlate(1, TRUE);
         }
-        else
+        else if (nameboxWinId != WINDOW_NONE)
         {
-            DrawDialogueFrame(0, TRUE);
+            DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
         }
         task->tState++;
         break;
+    }
     case 2:
+        // Wait for printer to finish, then clean up and kill the task
         if (RunTextPrintersAndIsPrinter0Active() != TRUE)
         {
             sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
             DestroyTask(taskId);
         }
+        break;
     }
 }
 

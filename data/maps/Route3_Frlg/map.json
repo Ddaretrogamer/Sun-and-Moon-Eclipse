@@ -1,7 +1,7 @@
 {
-  "id": "MAP_ROUTE3",
+  "id": "MAP_ROUTE3FRLG",
   "name": "Route3_Frlg",
-  "layout": "LAYOUT_ROUTE3",
+  "layout": "LAYOUT_ROUTE3FRLG",
   "music": "MUS_RG_ROUTE3",
   "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_ROUTE_3",

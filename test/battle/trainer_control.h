@@ -14,14 +14,15 @@
 #line 3
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 5
+        .gender = TRAINER_GENDER_MALE,
 #line 6
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 7
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -43,7 +44,7 @@
 #line 11
             .lvl = 67,
 #line 17
-            .ball = ITEM_MASTER_BALL,
+            .ball = BALL_MASTER,
 #line 15
             .friendship = 42,
 #line 10
@@ -71,6 +72,7 @@
             .ability = ABILITY_SHADOW_TAG,
 #line 25
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -82,6 +84,7 @@
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 30
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -96,14 +99,15 @@
 #line 35
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 36
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 37
+        .gender = TRAINER_GENDER_MALE,
 #line 38
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 39
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -115,6 +119,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 43
             .lvl = 5,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -129,14 +134,15 @@
 #line 47
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 48
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 49
+        .gender = TRAINER_GENDER_MALE,
 #line 50
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 51
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -148,6 +154,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 55
             .lvl = 50,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -162,14 +169,15 @@
 #line 59
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 60
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 61
+        .gender = TRAINER_GENDER_MALE,
 #line 62
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 63
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -181,6 +189,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 67
             .lvl = 1,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -195,14 +204,15 @@
 #line 71
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 72
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 73
+        .gender = TRAINER_GENDER_MALE,
 #line 74
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 75
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -214,6 +224,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 79
             .lvl = 99,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -227,14 +238,15 @@
 #line 83
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 84
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 85
+        .gender = TRAINER_GENDER_MALE,
 #line 86
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 87
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 88
         .partySize = 1,
         .poolSize = 4,
@@ -248,6 +260,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 91
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -259,6 +272,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 93
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -270,6 +284,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 95
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -281,6 +296,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 97
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -294,14 +310,15 @@
 #line 100
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 101
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 102
+        .gender = TRAINER_GENDER_MALE,
 #line 103
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 104
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 105
         .partySize = 3,
         .poolSize = 6,
@@ -315,6 +332,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 108
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -326,6 +344,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 111
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 110
@@ -339,6 +358,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 114
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 113
@@ -352,6 +372,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 116
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -363,6 +384,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 119
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 118
@@ -376,6 +398,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 122
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 121
@@ -391,16 +414,17 @@
 #line 125
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 126
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 127
+        .gender = TRAINER_GENDER_MALE,
 #line 128
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 129
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 131
         .poolRuleIndex = POOL_RULESET_WEATHER_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 130
         .partySize = 3,
         .poolSize = 10,
@@ -414,6 +438,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 135
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 134
@@ -427,6 +452,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 138
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 137
@@ -440,6 +466,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 141
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 140
@@ -453,6 +480,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 144
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 143
@@ -466,6 +494,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 147
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 146
@@ -479,6 +508,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 150
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 149
@@ -492,6 +522,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 153
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 152
@@ -505,6 +536,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 156
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 155
@@ -518,6 +550,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 158
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -529,6 +562,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 160
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -542,16 +576,17 @@
 #line 163
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 164
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 165
+        .gender = TRAINER_GENDER_MALE,
 #line 166
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 167
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 169
         .poolRuleIndex = POOL_RULESET_BASIC,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 168
         .partySize = 2,
         .poolSize = 3,
@@ -565,6 +600,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 173
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 172
@@ -578,6 +614,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 176
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 175
@@ -591,6 +628,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 179
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 178
@@ -606,10 +644,11 @@
 #line 182
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 183
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 184
+        .gender = TRAINER_GENDER_MALE,
 #line 185
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 186
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 188
@@ -617,7 +656,7 @@
 #line 189
         .poolPruneIndex = POOL_PRUNE_TEST,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 187
         .partySize = 2,
         .poolSize = 3,
@@ -631,6 +670,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 192
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -642,6 +682,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 195
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 194
@@ -655,6 +696,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 197
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -668,10 +710,11 @@
 #line 200
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 201
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 202
+        .gender = TRAINER_GENDER_MALE,
 #line 203
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 204
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 206
@@ -679,7 +722,7 @@
 #line 207
         .poolPickIndex = POOL_PICK_LOWEST,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 205
         .partySize = 2,
         .poolSize = 3,
@@ -693,6 +736,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 211
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 210
@@ -706,6 +750,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 213
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -717,6 +762,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 216
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 #line 215
@@ -732,14 +778,15 @@
 #line 219
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 220
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 221
+        .gender = TRAINER_GENDER_MALE,
 #line 222
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 223
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 224
         .partySize = 2,
         .poolSize = 2,
@@ -753,6 +800,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 227
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -764,6 +812,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 229
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -777,14 +826,15 @@
 #line 232
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 233
-        .trainerPic = TRAINER_PIC_RED,
-        .encounterMusic_gender =
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 234
+        .gender = TRAINER_GENDER_MALE,
 #line 235
-            TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 236
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_RED,
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
 #line 237
         .partySize = 2,
         .poolSize = 2,
@@ -798,6 +848,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 240
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -809,6 +860,103 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 242
             .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 243
+    [DIFFICULTY_NORMAL][11] =
+    {
+#line 244
+        .trainerName = _("Test11"),
+#line 245
+        .trainerClass = TRAINER_CLASS_BLACK_BELT,
+#line 246
+        .trainerPic = TRAINER_PIC_FRONT_RED,
+#line 247
+        .gender = TRAINER_GENDER_MALE,
+#line 248
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 249
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 0
+        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+#line 250
+        .partySize = 6,
+        .poolSize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 252
+            .species = SPECIES_WYNAUT,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 253
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 253
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 254
+            .species = SPECIES_WOBBUFFET,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 255
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 255
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 256
+            .species = SPECIES_EEVEE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 257
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 257
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 258
+            .species = SPECIES_MEW,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 259
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 259
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 260
+            .species = SPECIES_ODDISH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 261
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 261
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+            {
+#line 262
+            .species = SPECIES_ARON,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 263
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 263
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },

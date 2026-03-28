@@ -1078,12 +1078,6 @@
 #define METATILE_PlayerHouse_Door              0x8FD
 #define METATILE_Police_Left                   0x987
 #define METATILE_Police_Right                  0x994
-#define METATILE_RSMossdeepGym_RedArrow_Down   0x805
-#define METATILE_RSMossdeepGym_RedArrow_Left   0x80C
-#define METATILE_RSMossdeepGym_RedArrow_Right  0x804
-#define METATILE_RSMossdeepGym_RedArrow_Up     0x80D
-#define METATILE_RSMossdeepGym_Switch_Down     0x839
-#define METATILE_RSMossdeepGym_Switch_Up       0x838
 #define METATILE_Route2_Door                   0x8B2
 #define METATILE_Slaking_Door1                 0x8D8
 #define METATILE_Slaking_Door2                 0x8D9

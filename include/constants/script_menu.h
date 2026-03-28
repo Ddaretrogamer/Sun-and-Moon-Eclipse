@@ -221,7 +221,7 @@
 #define STDSTRING_EARTH_BADGE      37
 #define STDSTRING_COINS            38
 
-#define STDSTRING_POKERIDE         30
+#define STDSTRING_POKERIDE         39
 
 // Dynamic Multichoice Callbacks
 

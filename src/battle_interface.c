@@ -1059,33 +1059,33 @@ static u8 *AddTextPrinterAndCreateWindowOnHealthboxLightText(const u8 *str, u32 
     return AddTextPrinterAndCreateWindowOnHealthboxWithFontLightText(str, x, y, bgColor, windowId, FONT_SMALL);
 }
 
-static void PrintHpOnHealthboxLightText(u32 spriteId, s16 currHp, s16 maxHp, u32 bgColor, u32 rightTile, u32 leftTile)
-{
-    u8 *windowTileData;
-    u32 windowId, tilesCount, x;
-    u8 text[28], *txtPtr;
-    void *objVram = (void *)(OBJ_VRAM0) + gSprites[spriteId].oam.tileNum * TILE_SIZE_4BPP;
+// static void PrintHpOnHealthboxLightText(u32 spriteId, s16 currHp, s16 maxHp, u32 bgColor, u32 rightTile, u32 leftTile)
+// {
+//     u8 *windowTileData;
+//     u32 windowId, tilesCount, x;
+//     u8 text[28], *txtPtr;
+//     void *objVram = (void *)(OBJ_VRAM0) + gSprites[spriteId].oam.tileNum * TILE_SIZE_4BPP;
 
-    // To fit 4 digit HP values we need to modify a bit the way hp is printed on Healthbox.
-    // 6 chars can fit on the right healthbox, the rest goes to the left one
-    txtPtr = ConvertIntToDecimalStringN(text, currHp, STR_CONV_MODE_RIGHT_ALIGN, 4);
-    *txtPtr++ = CHAR_SLASH;
-    txtPtr = ConvertIntToDecimalStringN(txtPtr, maxHp, STR_CONV_MODE_LEFT_ALIGN, 4);
-    // Print last 6 chars on the right window
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxLightText(txtPtr - 6, 0, 4, bgColor, &windowId);
-    HpTextIntoHealthboxObject(objVram + rightTile, windowTileData, 4);
-    RemoveWindowOnHealthbox(windowId);
-    // Print the rest of the chars on the left window
-    txtPtr[-6] = EOS;
-    // if max hp is 3 digits print on block closer to the right window, if 4 digits print further from the right window
-    if (maxHp >= 1000)
-        x = 9, tilesCount = 3;
-    else
-        x = 6, tilesCount = 2, leftTile += 0x20;
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxLightText(text, x, 4, bgColor, &windowId);
-    HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, tilesCount);
-    RemoveWindowOnHealthbox(windowId);
-}
+//     // To fit 4 digit HP values we need to modify a bit the way hp is printed on Healthbox.
+//     // 6 chars can fit on the right healthbox, the rest goes to the left one
+//     txtPtr = ConvertIntToDecimalStringN(text, currHp, STR_CONV_MODE_RIGHT_ALIGN, 4);
+//     *txtPtr++ = CHAR_SLASH;
+//     txtPtr = ConvertIntToDecimalStringN(txtPtr, maxHp, STR_CONV_MODE_LEFT_ALIGN, 4);
+//     // Print last 6 chars on the right window
+//     windowTileData = AddTextPrinterAndCreateWindowOnHealthboxLightText(txtPtr - 6, 0, 4, bgColor, &windowId);
+//     HpTextIntoHealthboxObject(objVram + rightTile, windowTileData, 4);
+//     RemoveWindowOnHealthbox(windowId);
+//     // Print the rest of the chars on the left window
+//     txtPtr[-6] = EOS;
+//     // if max hp is 3 digits print on block closer to the right window, if 4 digits print further from the right window
+//     if (maxHp >= 1000)
+//         x = 9, tilesCount = 3;
+//     else
+//         x = 6, tilesCount = 2, leftTile += 0x20;
+//     windowTileData = AddTextPrinterAndCreateWindowOnHealthboxLightText(text, x, 4, bgColor, &windowId);
+//     HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, tilesCount);
+//     RemoveWindowOnHealthbox(windowId);
+// }
 
 static void UpdateHpTextInHealthboxInDoubles(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp, s16 maxHp)
 {

@@ -28011,12 +28011,12 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_FINNEON",
+                "species": "SPECIES_FINNEON"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_FINNEON",
+                "species": "SPECIES_FINNEON"
               }
             ]
           }
@@ -28842,10 +28842,6 @@
                 "min_level": 2,
                 "max_level": 2,
                 "species": "SPECIES_RATTATA"
-              },
-              {
-                "min_level": 2,
-                "max_level": 2,
               },
               {
                 "min_level": 5,

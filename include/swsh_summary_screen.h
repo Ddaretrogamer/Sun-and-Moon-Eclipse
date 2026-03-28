@@ -25,8 +25,9 @@
 #define SWSH_SUMMARY_BG_BLEND                         FALSE     // enables alpha blending for the main UI (semi-transparency)
 #define SWSH_SUMMARY_MON_IDLE_ANIMS                   TRUE      // loops the mon animations regularly as an "idle" anim
 #define SWSH_SUMMARY_MON_SHADOWS                      TRUE      // displays a shadow for the mon sprite
-#define SWSH_SUMMARY_SHOW_GIGANTAMAX                  TRUE      // show gigantamax icon
-#define SWSH_SUMMARY_SHOW_TERA_TYPE                   FALSE      // show tera type icons
+#define SWSH_SUMMARY_SHOW_DYNAMAX_LEVEL               FALSE     // show dynamax level
+#define SWSH_SUMMARY_SHOW_GIGANTAMAX                  FALSE     // show gigantamax icon
+#define SWSH_SUMMARY_SHOW_TERA_TYPE                   FALSE     // show tera type icons
 
 // Looking for configs for renaming mons and relearning moves? Those use the standard expansion configs
 // P_SUMMARY_SCREEN_RENAME and P_SUMMARY_SCREEN_MOVE_RELEARNER in include/config/pokemon.h
@@ -64,11 +65,14 @@ SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(14, 6));
 - ribbons
 */
 
-void ShowPokemonSummaryScreen_SwSh(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void));
-void ShowSelectMovePokemonSummaryScreen_SwSh(struct Pokemon *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void), u16 newMove);
-void ShowPokemonSummaryScreenHandleDeoxys_SwSh(u8 mode, struct BoxPokemon *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void));
-u8 GetMoveSlotToReplace_SwSh(void);
-void SummaryScreen_SetAnimDelayTaskId_SwSh(u8 taskId);
-void SummaryScreen_SetShadowAnimDelayTaskId_SwSh(u8 taskId);
+extern const struct SpriteTemplate sSpriteTemplate_MoveTypes;
+extern const struct CompressedSpriteSheet sSpriteSheet_MoveTypes;
+extern const u16 sMoveTypes_Pal[];
+
+void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void));
+void ShowSelectMovePokemonSummaryScreen(struct Pokemon *mons, u8 monIndex, void (*callback)(void), u16 newMove);
+u8 GetMoveSlotToReplace(void);
+void SummaryScreen_SetAnimDelayTaskId(u8 taskId);
+void SummaryScreen_SetShadowAnimDelayTaskId(u8 taskId);
 
 #endif // GUARD_SWSH_SUMMARY_SCREEN_H

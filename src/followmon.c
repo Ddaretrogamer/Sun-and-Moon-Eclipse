@@ -239,6 +239,8 @@ static bool8 TrySelectTile(s16* outX, s16* outY)
         if(y == 0 && x < 0)
             y = 1;
         break;
+    default:
+        break;
     }
     
     PlayerGetDestCoords(&playerX, &playerY);
@@ -312,14 +314,11 @@ void CreateFollowMonEncounter(void) {
 
     ZeroEnemyPartyMons();
     CreateMon(
-        &gEnemyParty[0],
-        species,
-        level,
-        USE_RANDOM_IVS, 
-        FALSE, 
-        0, 
-        OT_ID_PLAYER_ID,
-        0
+        &gEnemyParty[0], 
+        species, 
+        level, 
+        0,
+        OTID_STRUCT_PLAYER_ID
     );
     SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shiny);
 }

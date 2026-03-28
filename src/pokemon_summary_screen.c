@@ -53,6 +53,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#if !SWSH_SUMMARY_SCREEN
+
 // Screen titles (upper left)
 #define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE 0
 #define PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE 1
@@ -1224,16 +1226,16 @@ void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, 
     case SUMMARY_MODE_RELEARNER_BATTLE:
     case SUMMARY_MODE_RELEARNER_CONTEST:
         sMonSummaryScreen->minPageIndex = 0;
-        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 2; // remove contest page
+        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 1;
         break;
     case SUMMARY_MODE_LOCK_MOVES:
         sMonSummaryScreen->minPageIndex = 0;
-        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 2; // remove contest page
+        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 1;
         sMonSummaryScreen->lockMovesFlag = TRUE;
         break;
     case SUMMARY_MODE_SELECT_MOVE:
         sMonSummaryScreen->minPageIndex = PSS_PAGE_BATTLE_MOVES;
-        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 2; // remove contest page
+        sMonSummaryScreen->maxPageIndex = PSS_PAGE_COUNT - 1;
         sMonSummaryScreen->lockMonFlag = TRUE;
         break;
     }
@@ -1932,20 +1934,17 @@ void ExtractMonSkillEvData(struct Pokemon *mon, struct PokeSummary *sum)
     sum->speed = GetMonData(mon, MON_DATA_SPEED_EV);
 }
 
-bool32 HasAnyRelearnableMoves(enum MoveRelearnerStates state, struct Pokemon *mon)
+bool32 HasAnyRelearnableMoves(enum MoveRelearnerStates state)
 {
     return CanBoxMonRelearnMoves(GetCurrentBoxmon(), state);
 }
 
-bool32 NoMovesAvailableToRelearn(struct Pokemon *mon)
+bool32 NoMovesAvailableToRelearn(void)
 {
     u32 zeroCounter = 0;
-    if (mon == NULL)
-        mon = &sMonSummaryScreen->currentMon;
-    
     for (enum MoveRelearnerStates state = MOVE_RELEARNER_LEVEL_UP_MOVES; state < MOVE_RELEARNER_COUNT; state++)
     {
-        if (!HasAnyRelearnableMoves(state, mon))
+        if (!HasAnyRelearnableMoves(state))
             zeroCounter++;
     }
 
@@ -1984,7 +1983,7 @@ static void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
         && !FlagGet(P_FLAG_EGG_MOVES)
         && !FlagGet(P_FLAG_TUTOR_MOVES)))
     {
-        sMonSummaryScreen->hasRelearnableMoves = HasAnyRelearnableMoves(MOVE_RELEARNER_LEVEL_UP_MOVES, NULL);
+        sMonSummaryScreen->hasRelearnableMoves = HasAnyRelearnableMoves(MOVE_RELEARNER_LEVEL_UP_MOVES);
         return;
     }
 
@@ -1994,7 +1993,7 @@ static void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
         {
         default:
         case TRY_SET_UPDATE:
-            hasRelearnableMoves = HasAnyRelearnableMoves(gMoveRelearnerState, NULL);
+            hasRelearnableMoves = HasAnyRelearnableMoves(gMoveRelearnerState);
             if (!hasRelearnableMoves)
             {
                 delta = TRY_INCREMENT;
@@ -2018,7 +2017,7 @@ static void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
         if (!CheckRelearnerStateFlag(state))
             continue;
 
-        hasRelearnableMoves = HasAnyRelearnableMoves(state, NULL);
+        hasRelearnableMoves = HasAnyRelearnableMoves(state);
         if (hasRelearnableMoves)
         {
             gMoveRelearnerState = state;
@@ -2865,10 +2864,7 @@ static void Task_HandleInputCantForgetHMsMoves(u8 taskId)
 
 u8 GetMoveSlotToReplace(void)
 {
-    if (SWSH_SUMMARY_SCREEN)
-        return GetMoveSlotToReplace_SwSh();
-    else
-        return sMoveSlotToReplace;
+    return sMoveSlotToReplace;
 }
 
 static void DrawPagination(void) // Updates the pagination dots at the top of the summary screen
@@ -4648,7 +4644,7 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
     {
         sprite->data[1] = IsMonSpriteNotFlipped(sprite->data[0]);
         PlayMonCry();
-        PokemonSummaryDoMonAnimation(sprite, sprite->data[0], summary->isEgg, FALSE);
+        PokemonSummaryDoMonAnimation(sprite, sprite->data[0], summary->isEgg);
     }
 }
 
@@ -4656,10 +4652,7 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
 // Normally destroys itself but it can be interrupted before the animation starts
 void SummaryScreen_SetAnimDelayTaskId(u8 taskId)
 {
-    if (SWSH_SUMMARY_SCREEN)
-        SummaryScreen_SetAnimDelayTaskId_SwSh(taskId);
-    else
-        sAnimDelayTaskId = taskId;
+    sAnimDelayTaskId = taskId;
 }
 
 static void SummaryScreen_DestroyAnimDelayTask(void)
@@ -4842,7 +4835,7 @@ static inline bool32 ShouldShowMoveRelearner(void)
          && sMonSummaryScreen->hasRelearnableMoves
          && !InBattleFactory()
          && !InSlateportBattleTent()
-         && !NoMovesAvailableToRelearn(NULL));
+         && !NoMovesAvailableToRelearn());
 }
 
 static inline bool32 ShouldShowRename(void)
@@ -4947,7 +4940,7 @@ static void ShowRelearnPrompt(void)
         return;
     }
 
-    if (!HasAnyRelearnableMoves(gMoveRelearnerState, NULL))
+    if (!HasAnyRelearnableMoves(gMoveRelearnerState))
         return;
 
     const u8 *relearnText;
@@ -4997,3 +4990,5 @@ static void CB2_PssChangePokemonNickname(void)
 {
     ChangePokemonNicknameWithCallback(CB2_ReturnToSummaryScreenFromNamingScreen);
 }
+
+#endif // !SWSH_SUMMARY_SCREEN
