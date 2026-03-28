@@ -1345,10 +1345,9 @@ void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool32 drawArrow, u8 *
 
 static u16 RenderText(struct TextPrinter *textPrinter)
 {
-    u16 currChar, nextChar;
+    u16 currChar;
     s32 width;
     s32 widthHelper;
-    u8 repeats = 0;
 
     switch (textPrinter->state)
     {
@@ -1371,26 +1370,9 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             textPrinter->delayCounter = 3;
         else
             textPrinter->delayCounter = textPrinter->textSpeed;
-        switch (GetPlayerTextSpeed())
-        {
-            case OPTIONS_TEXT_SPEED_SLOW:
-                repeats = 1;
-                break;
-            case OPTIONS_TEXT_SPEED_MID:
-                repeats = 1;
-                break;
-            case OPTIONS_TEXT_SPEED_FAST:
-                repeats = 1;
-                break;
-            case OPTIONS_TEXT_SPEED_FASTER:
-                repeats = 2;
-                break;
-        }
 
-        do {
         currChar = *textPrinter->printerTemplate.currentChar;
         textPrinter->printerTemplate.currentChar++;
-        nextChar = *textPrinter->printerTemplate.currentChar;
 
         switch (currChar)
         {
@@ -1652,40 +1634,6 @@ static u16 RenderText(struct TextPrinter *textPrinter)
 
         PrintGlyph(textPrinter);
 
-        if (textPrinter->minLetterSpacing)
-        {
-            textPrinter->printerTemplate.currentX += gCurGlyph.width;
-            width = textPrinter->minLetterSpacing - gCurGlyph.width;
-            if (width > 0)
-            {
-                ClearTextSpan(textPrinter, width);
-                textPrinter->printerTemplate.currentX += width;
-            }
-        }
-        else
-        {
-            if (textPrinter->japanese)
-                textPrinter->printerTemplate.currentX += (gCurGlyph.width + textPrinter->printerTemplate.letterSpacing);
-            else
-                textPrinter->printerTemplate.currentX += gCurGlyph.width;
-        }
-        if (repeats == 2)
-        {
-            switch (nextChar)
-            {
-            case CHAR_NEWLINE:
-            case PLACEHOLDER_BEGIN:
-            case EXT_CTRL_CODE_BEGIN:
-            case CHAR_PROMPT_CLEAR:
-            case CHAR_PROMPT_SCROLL:
-            case CHAR_KEYPAD_ICON:
-            case EOS:
-                repeats--;
-                break;
-            }
-        }
-        repeats--;
-        } while (repeats > 0);
         return RENDER_PRINT;
     case RENDER_STATE_WAIT:
         if (TextPrinterWait(textPrinter))
