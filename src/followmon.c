@@ -311,7 +311,6 @@ void CreateFollowMonEncounter(void) {
 
     u16 species = wildMonInfo->wildPokemon[index].species;
     bool8 shiny = curObject->shiny;
-
     ZeroEnemyPartyMons();
     CreateMon(
         &gEnemyParty[0], 
@@ -321,6 +320,7 @@ void CreateFollowMonEncounter(void) {
         OTID_STRUCT_PLAYER_ID
     );
     SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shiny);
+    CalculateMonStats(&gEnemyParty[0]);
 }
 
 
