@@ -16,6 +16,8 @@ struct BattleEnvironment
     struct BattleBackgroundEntry entry;
     struct BattleBackground background;
     const void *palette;
+    const void *paletteTransition;
+    const void *paletteNight;
     TaskFunc battleIntroSlide;
 };
 
