@@ -79,7 +79,7 @@ static void LoadSurfOverworldPalette(void)
 
     // Check if the FIRST Pokémon in the party (gPlayerParty[0]) is shiny.
     // This assumes gPlayerParty[0] always exists and holds a valid Pokémon data structure.
-    if (FlagGet(FLAG_SHINY_RIDE))
+    if (FlagGet(FLAG_SHINY_SURF))
     {
         // If the first Pokémon is shiny, load the shiny palette for the current surf mon
         LoadSpritePalette(&sSurfablePokemonShinyPalettes[sCurrentSurfMon]);
@@ -96,7 +96,7 @@ void RefreshSurfablePaletteFromFlag(void)
     // Ensure the current surf index is up to date
     sCurrentSurfMon = GetSurfablePokemonSprite();
 
-    // This loads either the shiny or normal palette based on FLAG_SHINY_RIDE
+    // This loads either the shiny or normal palette based on FLAG_SHINY_SURF
     LoadSurfOverworldPalette();
 }
 

@@ -662,8 +662,7 @@
 #define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_PP_UP        (FLAG_HIDDEN_ITEMS_START + 0x6C)
 #define FLAG_HIDDEN_ITEM_NAVEL_ROCK_TOP_SACRED_ASH           (FLAG_HIDDEN_ITEMS_START + 0x6D)
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
-#define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
-#define FLAG_HIDDEN_ITEM_ROUTE_1N_POKE_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x70)
+#define FLAG_HIDDEN_ITEM_ROUTE_1N_POKE_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_EXP_SHARE_TOGGLE  0x264 // Unused Flag change to toggle EXP Share
 #define FLAG_SMART_WILD_AI  0x265 // Unused Flag change to toggle Smart Wild AI
@@ -679,8 +678,8 @@
 #define FLAG_DEFER_TRANSFORM 0x26F // Unused Flag
 #define FLAG_DETRANSFORM_NO_FOLLOWER  0x270 //no followers when detransforming before surfing
 #define FLAG_RIDE_PAGER_SHINY  0x271 // Set when Ride Pager uses a shiny Pokemon
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_SHINY_RIDE_SET  0x272 // temp for using shiny ride with pager so party rides dont become shiny
+#define FLAG_SHINY_SURF  0x273 // separating surfing and riding pals so we dont get conficts.
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag

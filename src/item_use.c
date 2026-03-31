@@ -1762,6 +1762,14 @@ void ItemUseOutOfBattle_CutTool(u8 taskId)
 void ItemUseOnFieldCB_CutTool(u8 taskId)
 {
     LockPlayerFieldControls();
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
+
     if (VarGet(VAR_TRANSFORM_MON) == SPECIES_MUDSDALE)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
@@ -1786,6 +1794,13 @@ void ItemUseOutOfBattle_FlyTool(u8 taskId)
 {
     s16 x, y;
     u32 behavior;
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
 
     PlayerGetDestCoords(&x, &y);
     behavior = MapGridGetMetatileBehaviorAt(x, y);
@@ -1879,6 +1894,12 @@ void ItemUseOnFieldCB_SurfTool(u8 taskId)
 void ItemUseOnFieldCB_SurfToolTransform(u8 taskId)
 {
     VarSet(VAR_0x8004, 1);
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
     VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
     FlagSet(FLAG_DETRANSFORM_NO_FOLLOWER);
     ChooseMonForTransform();
@@ -1922,6 +1943,14 @@ void ItemUseOutOfBattle_StrengthTool(u8 taskId)
 void ItemUseOnFieldCB_StrengthTool(u8 taskId)
 {
     LockPlayerFieldControls();
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
     FlagClear(FLAG_RIDE_PAGER_SHINY); // Clear Ride Pager shiny flag for hardcoded species
     VarSet(VAR_TRANSFORM_MON, SPECIES_MACHAMP);
     ChooseMonForTransform();
@@ -1931,6 +1960,14 @@ void ItemUseOnFieldCB_StrengthTool(u8 taskId)
 static void ItemUseOnFieldCB_StrengthToolNoRock(u8 taskId)
 {
     LockPlayerFieldControls();
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
     if (VarGet(VAR_TRANSFORM_MON) == SPECIES_MACHAMP)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
@@ -1980,6 +2017,14 @@ void ItemUseOutOfBattle_FlashTool(u8 taskId)
 void ItemUseOnFieldCB_FlashTool(u8 taskId)
 {
     LockPlayerFieldControls();
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
     if (VarGet(VAR_TRANSFORM_MON) == SPECIES_NOIVERN)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
@@ -2068,14 +2113,20 @@ void ItemUseOnFieldCB_RidePager(u8 taskId)
 {
     u16 species;
     bool8 isShiny;
-    
+
     LockPlayerFieldControls();
-    
+
+
     // Check if we're detransforming
     if (VarGet(VAR_TRANSFORM_MON) != SPECIES_NONE)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
         FlagClear(FLAG_RIDE_PAGER_SHINY); // Clear Ride Pager shiny flag when detransforming
+        if (FlagGet(FLAG_SHINY_RIDE_SET))
+        {
+            FlagSet(FLAG_SHINY_RIDE);
+            FlagClear(FLAG_SHINY_RIDE_SET); // Clear the temporary flag we set for shiny transformations, to avoid affecting future transformations
+        }
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
@@ -2093,6 +2144,12 @@ void ItemUseOnFieldCB_RidePager(u8 taskId)
     else
         FlagClear(FLAG_RIDE_PAGER_SHINY);
     
+    if (FlagGet(FLAG_SHINY_RIDE))
+    {
+        FlagSet(FLAG_SHINY_RIDE_SET);
+        FlagClear(FLAG_SHINY_RIDE);
+    }
+         // Clear the flag we set if it was already set before, to avoid affecting other transformations
     // Transform into first party Pokemon
     VarSet(VAR_TRANSFORM_MON, species);
     ChooseMonForTransform();
@@ -2136,6 +2193,16 @@ void ItemUseOutOfBattle_RockSmashTool(u8 taskId)
 static void ItemUseOnFieldCB_RockSmashTool(u8 taskId)
 {
     LockPlayerFieldControls();
+
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
+
     if (VarGet(VAR_TRANSFORM_MON) != SPECIES_TAUROS)
     {
         FlagClear(FLAG_RIDE_PAGER_SHINY); // Clear Ride Pager shiny flag for hardcoded species
@@ -2163,6 +2230,14 @@ static void Task_DelayedRockSmashScript(u8 taskId)
 static void ItemUseOnFieldCB_RockSmashToolNoRock(u8 taskId)
 {
     LockPlayerFieldControls();
+
+    // RESTORE LOGIC: Check if the Pager was hiding the shiny flag
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
+
     if (VarGet(VAR_TRANSFORM_MON) == SPECIES_TAUROS)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
@@ -2225,6 +2300,11 @@ void ItemUseOnFieldCB_WaterfallTool(u8 taskId)
 void ItemUseOnFieldCB_WaterfallToolTransform(u8 taskId)
 {
     VarSet(VAR_0x8004, 1);
+    if (FlagGet(FLAG_SHINY_RIDE_SET))
+    {
+        FlagSet(FLAG_SHINY_RIDE);
+        FlagClear(FLAG_SHINY_RIDE_SET);
+    }
     VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
     ChooseMonForTransform();
     ScriptContext_SetupScript(EventScript_UseWaterfallTool);
