@@ -203,6 +203,19 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	giveitem ITEM_CUT_TOOL 1
+	giveitem ITEM_FLY_TOOL 1
+	giveitem ITEM_SURF_TOOL 1
+	giveitem ITEM_STRENGTH_TOOL 1
+	giveitem ITEM_FLASH_TOOL 1
+	giveitem ITEM_ROCKSMASH_TOOL 1
+	giveitem ITEM_WATERFALL_TOOL 1
+	giveitem ITEM_TELEPORT_TOOL 1
+	giveitem ITEM_DOWSING_MACHINE 1
+	giveitem ITEM_SUPER_ROD 1
+	giveitem ITEM_TM_CASE 1
+	giveitem ITEM_MASTER_BALL 100
+	givemon SPECIES_LYCANROC 100
 	release
 	end
 

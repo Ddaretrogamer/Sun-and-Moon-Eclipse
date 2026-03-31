@@ -302,12 +302,12 @@
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x81B
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x819
 
-// gTileset_HauoliLab
-#define METATILE_HauoliLab_Door  0x86C
-
 // gTileset_GenericBuilding1
 #define METATILE_GenericBuilding1_PlayersPCOff  0x28F
 #define METATILE_GenericBuilding1_PlayersPCOn   0x28A
+
+// gTileset_HauoliLab
+#define METATILE_HauoliLab_Door  0x86C
 
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x81D
@@ -1064,28 +1064,11 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
 // Other
-#define METATILE_AlolaPokecenter_Door          0x05A
-#define METATILE_CandyShop_Door                0x89B
-#define METATILE_Clothing_Door                 0x90B
-#define METATILE_DeptStore_Left                0x854
-#define METATILE_DeptStore_Right               0x855
-#define METATILE_HaouliDock_Left               0x87B
-#define METATILE_HaouliDock_Right              0x87C
-#define METATILE_IkiTownHouse_Door             0x822
-#define METATILE_IkiTownSlide_Left             0x85B
-#define METATILE_IkiTownSlide_Right            0x85C
-#define METATILE_Leavanny_Door                 0x8DD
-#define METATILE_PlayerHouse_Door              0x8FD
-#define METATILE_Police_Left                   0x987
-#define METATILE_Police_Right                  0x994
-#define METATILE_Route2_Door                   0x8B2
-#define METATILE_Slaking_Door1                 0x8D8
-#define METATILE_Slaking_Door2                 0x8D9
-#define METATILE_Weather_Left                  0x90F
-#define METATILE_Weather_Right                 0x910
-#define METATILE_WhiteHouse_Door               0x9D9
-
-
+#define METATILE_AlolaPokecenter_Door                0x05A
+#define METATILE_CandyShop_Door                      0x89B
+#define METATILE_Clothing_Door                       0x90B
+#define METATILE_DeptStore_Left                      0x854
+#define METATILE_DeptStore_Right                     0x855
 #define METATILE_GeneralFrlg_CalmWater               0x12B
 #define METATILE_GeneralFrlg_Door                    0x03D
 #define METATILE_GeneralFrlg_Plain_Grass             0x00D
@@ -1098,6 +1081,15 @@
 #define METATILE_GeneralFrlg_WideTreeTopLeft_Mowed   0x00E
 #define METATILE_GeneralFrlg_WideTreeTopRight_Grass  0x00C
 #define METATILE_GeneralFrlg_WideTreeTopRight_Mowed  0x00F
+#define METATILE_HaouliDock_Left                     0x87B
+#define METATILE_HaouliDock_Right                    0x87C
+#define METATILE_IkiTownHouse_Door                   0x822
+#define METATILE_IkiTownSlide_Left                   0x85B
+#define METATILE_IkiTownSlide_Right                  0x85C
+#define METATILE_Leavanny_Door                       0x8DD
+#define METATILE_PlayerHouse_Door                    0x8FD
+#define METATILE_Police_Left                         0x987
+#define METATILE_Police_Right                        0x994
 #define METATILE_RSCave_CrackedFloor                 0x22F
 #define METATILE_RSCave_CrackedFloor_Hole            0x206
 #define METATILE_RSMossdeepGym_RedArrow_Down         0x205
@@ -1106,5 +1098,11 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up           0x20D
 #define METATILE_RSMossdeepGym_Switch_Down           0x239
 #define METATILE_RSMossdeepGym_Switch_Up             0x238
+#define METATILE_Route2_Door                         0x8B2
+#define METATILE_Slaking_Door1                       0x8D8
+#define METATILE_Slaking_Door2                       0x8D9
+#define METATILE_Weather_Left                        0x90F
+#define METATILE_Weather_Right                       0x910
+#define METATILE_WhiteHouse_Door                     0x9D9
 
 #endif // GUARD_METATILE_LABELS_H

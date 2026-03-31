@@ -2005,7 +2005,7 @@
 #define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_PP_UP        0
 #define FLAG_HIDDEN_ITEM_NAVEL_ROCK_TOP_SACRED_ASH           0
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                0
-#define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 0
+#define FLAG_HIDDEN_ITEM_ROUTE_1N_POKE_BALL                  0
 
 
 // Event Flags

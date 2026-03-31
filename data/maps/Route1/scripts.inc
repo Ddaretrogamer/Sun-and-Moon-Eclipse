@@ -47,38 +47,42 @@ Mailbox::
 	msgbox Mailbox_Text_0
 # 27 "data/maps/Route1/scripts.pory"
 	goto_if_set FLAG_SHINY_RIDE, Mailbox_2
-# 32 "data/maps/Route1/scripts.pory"
+# 33 "data/maps/Route1/scripts.pory"
 	setflag FLAG_SHINY_RIDE
-Mailbox_1:
 # 34 "data/maps/Route1/scripts.pory"
+	setflag FLAG_SHINY_SURF
+Mailbox_1:
+# 36 "data/maps/Route1/scripts.pory"
 	compare VAR_ROTOM_PHONE_ENABLE, 1
 	goto_if_lt Mailbox_6
-# 39 "data/maps/Route1/scripts.pory"
+# 41 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 0
 Mailbox_5:
-# 41 "data/maps/Route1/scripts.pory"
+# 43 "data/maps/Route1/scripts.pory"
 	release
 	end
 
 Mailbox_2:
 # 29 "data/maps/Route1/scripts.pory"
 	clearflag FLAG_SHINY_RIDE
+# 30 "data/maps/Route1/scripts.pory"
+	clearflag FLAG_SHINY_SURF
 	goto Mailbox_1
 
 Mailbox_6:
-# 36 "data/maps/Route1/scripts.pory"
+# 38 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 1
 	goto Mailbox_5
 
 
 Route1LittleBoyNPC::
-# 46 "data/maps/Route1/scripts.pory"
+# 48 "data/maps/Route1/scripts.pory"
 	msgbox Route1LittleBoyNPC_Text_0, MSGBOX_NPC
 	end
 
 
 testscript::
-# 51 "data/maps/Route1/scripts.pory"
+# 53 "data/maps/Route1/scripts.pory"
 	msgbox testscript_Text_0, MSGBOX_NPC
 	end
 
@@ -102,11 +106,11 @@ Mailbox_Text_0:
 	.string "{PLAYER}'s House$"
 
 Route1LittleBoyNPC_Text_0:
-# 46 "data/maps/Route1/scripts.pory"
+# 48 "data/maps/Route1/scripts.pory"
 	.string "I gotta catch more Pokémon!\nPokémon with cool knees are so neat.$"
 
 testscript_Text_0:
-# 51 "data/maps/Route1/scripts.pory"
+# 53 "data/maps/Route1/scripts.pory"
 	.string "okay this is a test.\n"
 	.string "It seems this is a suitable line length\l"
 	.string "for scripting. This is working well.\p"
