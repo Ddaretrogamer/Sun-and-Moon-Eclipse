@@ -16,6 +16,7 @@
 #include "sprite.h"
 #include "sound.h"
 #include "wild_encounter.h"
+#include "fieldmap.h"
 
 
 
@@ -44,6 +45,7 @@ void LoadFollowMonData(struct ObjectEvent *objectEvent)
     sFollowMonData.list[slot].timeOfDay = objectEvent->spawnTimeOfDay;
     sFollowMonData.list[slot].encounterIndex = objectEvent->sEncounterIndex;
     sFollowMonData.list[slot].onWater = MetatileBehavior_IsSurfableWaterOrUnderwater(objectEvent->currentMetatileBehavior);
+    sFollowMonData.list[slot].onTallGrass = MetatileBehavior_IsTallGrass(objectEvent->currentMetatileBehavior);
 
     sFollowMonData.spawnCountdown += 60;
     sFollowMonData.usedSlots++;
@@ -94,6 +96,10 @@ void FollowMon_OverworldCB(void)
                 gObjectEvents[objectEventId].shiny = followMon->isShiny;
                 gObjectEvents[objectEventId].spawnTimeOfDay = followMon->timeOfDay;
                 gObjectEvents[objectEventId].sEncounterIndex = followMon->encounterIndex;
+
+                // Store tall grass spawn status
+                u8 tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+                sFollowMonData.list[spawnSlot].onTallGrass = MetatileBehavior_IsTallGrass(tileBehavior);
 
                 // Hide reflections for spawns in water
                 // (It just looks weird)
@@ -572,4 +578,26 @@ static void GetMapSize(s32 *width, s32 *height)
     layout = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum)->mapLayout;
     *width = layout->width;
     *height = layout->height;
+}
+
+bool8 FollowMon_CanMoveToDest(struct ObjectEvent *objectEvent, s16 x, s16 y)
+{
+    u16 graphicsId = objectEvent->graphicsId;
+    
+    // Only apply this check to follow mons
+    if (!IS_FOLLOWMON_GFXID(graphicsId))
+        return TRUE;
+    
+    u16 slot = graphicsId - OBJ_EVENT_GFX_FOLLOW_MON_FIRST;
+    
+    // If the follow mon spawned on tall grass, restrict it to tall grass
+    if (sFollowMonData.list[slot].onTallGrass)
+    {
+        u8 destBehavior = MapGridGetMetatileBehaviorAt(x, y);
+        // Only allow movement to tall grass tiles
+        if (!MetatileBehavior_IsTallGrass(destBehavior))
+            return FALSE;
+    }
+    
+    return TRUE;
 }

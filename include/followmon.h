@@ -14,8 +14,9 @@ struct FollowMon
 {
     u16 isShiny:1;
     u16 onWater:1;
+    u16 onTallGrass:1;
     u16 timeOfDay:2;
-    u16 unused:4;
+    u16 unused:3;
     u16 encounterIndex:8;
     
 };
@@ -43,6 +44,7 @@ bool8 FollowMon_IsCollisionExempt(struct ObjectEvent* obstacle, struct ObjectEve
 bool8 FollowMon_IsMonObject(struct ObjectEvent* object);
 void FollowMon_OnObjectEventSpawned(struct ObjectEvent *objectEvent);
 void FollowMon_OnObjectEventRemoved(struct ObjectEvent *objectEvent);
+bool8 FollowMon_CanMoveToDest(struct ObjectEvent *objectEvent, s16 x, s16 y);
 u16 GetFollowMonObjectEventGraphicsId(u16 graphicsId);
 void FollowMon_OnWarp(void);
 void RemoveAllFollowMonObjects(void);

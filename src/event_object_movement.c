@@ -6605,6 +6605,10 @@ enum Collision GetCollisionAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 
     // regular checks
     collision = GetVanillaCollision(objectEvent, x, y, dir);
 
+    // Check if follow mon can move to destination (tall grass restriction)
+    if (!FollowMon_CanMoveToDest(objectEvent, x, y))
+        return COLLISION_IMPASSABLE;
+
     //sideways stairs direction change checks
     collision = GetSidewaysStairsCollision(objectEvent, dir, currentBehavior, nextBehavior, collision);
     switch (collision)

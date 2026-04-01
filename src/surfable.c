@@ -4,6 +4,7 @@
 #include "field_effect.h"
 #include "field_effect_helpers.h"
 #include "field_player_avatar.h"
+#include "field_weather.h"
 #include "gpu_regs.h"
 #include "main.h"
 #include "party_menu.h"
@@ -76,19 +77,28 @@ static void LoadSurfOverworldPalette(void)
 {
     // sCurrentSurfMon is already correctly determined elsewhere (0 for Lapras, 1 for Sharpedo)
     // and tells us which sprite/palette entry to use.
+    u8 paletteNum;
+    u16 paletteTag;
 
     // Check if the FIRST Pokémon in the party (gPlayerParty[0]) is shiny.
     // This assumes gPlayerParty[0] always exists and holds a valid Pokémon data structure.
     if (FlagGet(FLAG_SHINY_SURF))
     {
         // If the first Pokémon is shiny, load the shiny palette for the current surf mon
+        paletteTag = sSurfablePokemonShinyPalettes[sCurrentSurfMon].tag;
         LoadSpritePalette(&sSurfablePokemonShinyPalettes[sCurrentSurfMon]);
     }
     else
     {
         // Otherwise, load the normal palette for the current surf mon
+        paletteTag = sSurfablePokemonPalettes[sCurrentSurfMon].tag;
         LoadSpritePalette(&sSurfablePokemonPalettes[sCurrentSurfMon]);
     }
+    
+    // Apply DNS (Day/Night System) tinting immediately
+    paletteNum = IndexOfSpritePaletteTag(paletteTag);
+    if (paletteNum != 0xFF)
+        UpdateSpritePaletteWithWeather(paletteNum, FALSE);
 }
 
 void RefreshSurfablePaletteFromFlag(void)
