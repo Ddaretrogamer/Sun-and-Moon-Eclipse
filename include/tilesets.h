@@ -66,5 +66,6 @@ extern const struct Tileset gTileset_orangeislands;
 extern const struct Tileset gTileset_HauoliCity;
 extern const struct Tileset gTileset_HauliCity_South;
 extern const struct Tileset gTileset_HauoliCityDock;
+extern const struct Tileset gTileset_PlayerHouse2;
 
 #endif //GUARD_tilesets_H

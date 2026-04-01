@@ -155,6 +155,7 @@ static const u8 sDoorAnimTiles_PoliceDoorLeft[] = INCBIN_U8("graphics/door_anims
 static const u8 sDoorAnimTiles_PoliceDoorRight[] = INCBIN_U8("graphics/door_anims/policestationright1.4bpp");
 static const u8 sDoorAnimTiles_HaouliDockRight[] = INCBIN_U8("graphics/door_anims/dockright1.4bpp");
 static const u8 sDoorAnimTiles_HaouliDockLeft[] = INCBIN_U8("graphics/door_anims/dockleft1.4bpp");
+static const u8 sDoorAnimTiles_PlayerHouse_Door[] = INCBIN_U8("graphics/door_anims/alolahousedoor.4bpp");
 
 #if IS_FRLG
 
@@ -334,6 +335,7 @@ static const u8 sDoorAnimPalettes_PoliceDoorLeft[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_PoliceDoorRight[] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_HaouliDockRight[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_HaouliDockLeft[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_PlayerHouse_Door[] = {7, 7, 7, 7, 7, 7, 7, 7};
 
 #if IS_FRLG
 
@@ -453,6 +455,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Police_Right,                                 &gTileset_HauliCity_South, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_PoliceDoorRight, sDoorAnimPalettes_PoliceDoorRight},
     {METATILE_HaouliDock_Right,                             &gTileset_HauoliCityDock, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HaouliDockRight, sDoorAnimPalettes_HaouliDockRight},
     {METATILE_HaouliDock_Left,                              &gTileset_HauoliCityDock, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HaouliDockLeft, sDoorAnimPalettes_HaouliDockLeft},
+    {METATILE_PlayerHouseInterior_Door,                     &gTileset_PlayerHouse2, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_PlayerHouse_Door, sDoorAnimPalettes_PlayerHouse_Door},
 
 #else
     {METATILE_GeneralFrlg_Door,                             &gTileset_General_Frlg, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_GeneralFrlg, sDoorAnimPalettes_GeneralFrlg},

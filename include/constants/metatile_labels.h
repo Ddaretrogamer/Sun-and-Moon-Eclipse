@@ -1087,6 +1087,7 @@
 #define METATILE_IkiTownSlide_Left                   0x85B
 #define METATILE_IkiTownSlide_Right                  0x85C
 #define METATILE_Leavanny_Door                       0x8DD
+#define METATILE_PlayerHouseInterior_Door            0x8A6
 #define METATILE_PlayerHouse_Door                    0x8FD
 #define METATILE_Police_Left                         0x987
 #define METATILE_Police_Right                        0x994
