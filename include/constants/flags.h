@@ -1230,7 +1230,7 @@
 #define FLAG_FORCE_SHINY                                            0x498 // Unused Flag changed to force shiny
 #define FLAG_AUTORUN_MENU_TOGGLE                                    0x499 // Unused Flag changed to running shoes menu toggle so i can turn of press b to run toggle in menu.
 #define FLAG_PORTABLE_PC_TOGGLE                                     0x49A // Unused Flag changed to portable pc toggle
-#define FLAG_FOLLOWERS_MENU_TOGGLE                                  0x49B // Unused Flag
+#define FLAG_FOLLOWERS_MENU_TOGGLE                                  0x49B // FLAG_FOLLOWERS_MENU_TOGGLE
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag

@@ -1730,6 +1730,7 @@ const u32 gSummaryPage_InfoEgg_Tilemap[]      = INCBIN_U32("graphics/summary_scr
 const u32 gBagMaleTiles[] = INCBIN_U32("graphics/bag/bag_male.4bpp.smol");
 const u32 gBagFemaleTiles[] = INCBIN_U32("graphics/bag/bag_female.4bpp.smol");
 const u16 gBagPalette[] = INCBIN_U16("graphics/bag/bag.gbapal");
+const u16 gFemaleBagPalette[] = INCBIN_U16("graphics/bag/bag_female.gbapal");
 
 const u16 gBagScreenMale_Pal[] = INCBIN_U16("graphics/bag/menu_male.gbapal");
 const u16 gBagScreenFemale_Pal[] = INCBIN_U16("graphics/bag/menu_female.gbapal");
