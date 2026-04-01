@@ -52,21 +52,12 @@
     },
     {
       "x": 5,
-      "y": 12,
+      "y": 11,
       "elevation": 0,
       "dest_map": "MAP_TRAINER_SCHOOL1CR",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": [
-    {
-      "type": "sign",
-      "x": 5,
-      "y": 11,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "TrainerSchool1FDoor"
-    }
-  ]
+  "bg_events": []
 }

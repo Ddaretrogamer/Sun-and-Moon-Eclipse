@@ -112,6 +112,7 @@
 #define METATILE_BrendansMaysHouse_MovingBox_Open    0x870
 
 // gTileset_Building
+#define METATILE_Building_Door    0x895
 #define METATILE_Building_PC_Off  0x004
 #define METATILE_Building_PC_On   0x005
 #define METATILE_Building_TV_Off  0x002
