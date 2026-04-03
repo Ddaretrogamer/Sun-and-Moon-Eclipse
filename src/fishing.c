@@ -1,5 +1,6 @@
 #include "global.h"
 #include "main.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "field_effect_helpers.h"
@@ -180,6 +181,11 @@ static bool32 Fishing_GetRodOut(struct Task *task)
     playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     ObjectEventClearHeldMovementIfActive(playerObjEvent);
     playerObjEvent->enableAnim = TRUE;
+
+    // Freeze the surf blob bobbing during fishing
+    if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+        VarSet(VAR_FREEZESURFBLOB, 1);
+
     SetPlayerAvatarFishing(playerObjEvent->facingDirection);
     task->tStep = FISHING_WAIT_BEFORE_DOTS;
     return FALSE;
@@ -387,7 +393,10 @@ static bool32 Fishing_StartEncounter(struct Task *task)
             ObjectEventSetGraphicsId(playerObjEvent, task->tPlayerGfxId);
             ObjectEventTurn(playerObjEvent, playerObjEvent->movementDirection);
             if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+            {
                 SetSurfBlob_PlayerOffset(gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId, FALSE, 0);
+                VarSet(VAR_FREEZESURFBLOB, 0);
+            }
             gSprites[gPlayerAvatar.spriteId].x2 = 0;
             gSprites[gPlayerAvatar.spriteId].y2 = 0;
             ClearDialogWindowAndFrame(0, TRUE);
@@ -464,6 +473,8 @@ static bool32 Fishing_EndNoMon(struct Task *task)
         UnfreezeObjectEvents();
         ClearDialogWindowAndFrame(0, TRUE);
         RecordFishingAttemptForTV(FALSE);
+        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+            VarSet(VAR_FREEZESURFBLOB, 0);
         DestroyTask(FindTaskIdByFunc(Task_Fishing));
     }
     return FALSE;
