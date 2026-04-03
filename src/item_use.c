@@ -397,12 +397,22 @@ static void ItemUseOnFieldCB_Rod(u8 taskId)
     DestroyTask(taskId);
 }
 
-void MacroStartFishingSuperRod(u8 taskId)
+static void Task_StartFishingDeferred(u8 taskId)
 {
+    if (gTasks[taskId].data[0]++ > 0)
+    {
 
         StartFishing(OLD_ROD);
-        ScriptContext_Stop();
         DestroyTask(taskId);
+    }
+}
+
+void MacroStartFishingSuperRod(u8 taskId)
+{
+    CreateTask(Task_StartFishingDeferred, 0);
+    ScriptContext_Stop();
+
+
 }
 
 void ItemUseOutOfBattle_Itemfinder(u8 var)

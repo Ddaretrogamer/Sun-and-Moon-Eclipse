@@ -56,7 +56,6 @@ script HauoliOustkirtsFishingSpot1{
             if(var(VAR_RESULT) == TRUE)
             {
                 startfishing
-                waitstate
             }
             else{
                 msgbox("You don't have a Fishing Rod.")

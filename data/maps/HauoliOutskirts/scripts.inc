@@ -74,10 +74,10 @@ HauoliOustkirtsFishingSpot1::
 # 50 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_SURF_MON_SLOT, 0
 	goto_if_eq HauoliOustkirtsFishingSpot1_2
-# 72 "data/maps/HauoliOutskirts/scripts.pory"
+# 71 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_2
 HauoliOustkirtsFishingSpot1_1:
-# 74 "data/maps/HauoliOutskirts/scripts.pory"
+# 73 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
@@ -87,7 +87,7 @@ HauoliOustkirtsFishingSpot1_2:
 # 53 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_5
-# 66 "data/maps/HauoliOutskirts/scripts.pory"
+# 65 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
@@ -97,15 +97,13 @@ HauoliOustkirtsFishingSpot1_5:
 # 56 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_8
-# 62 "data/maps/HauoliOutskirts/scripts.pory"
+# 61 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_1
 	goto HauoliOustkirtsFishingSpot1_1
 
 HauoliOustkirtsFishingSpot1_8:
 # 58 "data/maps/HauoliOutskirts/scripts.pory"
 	startfishing
-# 59 "data/maps/HauoliOutskirts/scripts.pory"
-	waitstate
 	goto HauoliOustkirtsFishingSpot1_1
 
 
@@ -155,9 +153,9 @@ HauoliOustkirtsFishingSpot1_Text_0:
 	.string "Would you like to fish here?$"
 
 HauoliOustkirtsFishingSpot1_Text_1:
-# 62 "data/maps/HauoliOutskirts/scripts.pory"
+# 61 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You don't have a Fishing Rod.$"
 
 HauoliOustkirtsFishingSpot1_Text_2:
-# 72 "data/maps/HauoliOutskirts/scripts.pory"
+# 71 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You can't fish while riding a Sharpedo!$"
