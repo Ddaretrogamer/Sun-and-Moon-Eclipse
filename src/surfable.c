@@ -200,11 +200,13 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
     subpriority = gSprites[gPlayerAvatar.spriteId].subpriority - 1;
     sprite->subpriority = subpriority;
 
-    // Always sync position to handle fishing and other special animations
-    sprite->x = linkedSprite->x;
-    sprite->y = linkedSprite->y + 8;
-    sprite->y2 = linkedSprite->y2;
-    
+if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
+    if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
+    {
+        sprite->x = linkedSprite->x;
+        sprite->y = linkedSprite->y + 8;
+        sprite->y2 = linkedSprite->y2;
+    }
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
 }
@@ -235,10 +237,14 @@ static void UpdateSurfMonBase(struct Sprite *sprite)
     sprite->subpriority = playerSprite->subpriority + 1;
     sprite->oam.priority = playerSprite->oam.priority;
 
-    // POSITION SYNC: Always match player pixel coordinates for all animations
-    sprite->x = playerSprite->x;
-    sprite->y = playerSprite->y + 8;
-    sprite->y2 = playerSprite->y2;
+    // POSITION SYNC: Match player pixel coordinates exactly.
+    // Note: We do NOT add +8 here because this is the base, not the saddle.
+    if (playerSprite->animNum < MOVEMENT_ACTION_DELAY_16)
+    {
+        sprite->x = playerSprite->x;
+        sprite->y = playerSprite->y + 8;
+        sprite->y2 = playerSprite->y2;
+    }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
@@ -310,19 +316,15 @@ void UpdateSurfTransformAnimation(u8 taskId)
             baseMon->callback = UpdateSurfMonBase;
             baseMon->x = playerSprite->x;
             baseMon->y = playerSprite->y + 8;
-            baseMon->x2 = 0;  // Clear any lingering offsets
-            baseMon->y2 = 0;  // Clear any lingering offsets
             baseMon->coordOffsetEnabled = TRUE;
             baseMon->oam.mosaic = TRUE;
             baseMon->data[2] = gPlayerAvatar.spriteId; 
 
-            // E. SYNC OVERLAYS: Clear offsets and apply mosaic
+            // E. SYNC OVERLAYS: Only apply Mosaic, don't change their callback/pos
             for (i = 0; i < MAX_SPRITES; i++)
             {
                 if (gSprites[i].inUse && gSprites[i].callback == UpdateSurfMonOverlay && &gSprites[i] != baseMon)
                 {
-                    gSprites[i].x2 = 0;  // Clear any lingering offsets
-                    gSprites[i].y2 = 0;  // Clear any lingering offsets
                     gSprites[i].oam.mosaic = TRUE;
                 }
             }

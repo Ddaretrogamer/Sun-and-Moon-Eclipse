@@ -11,7 +11,6 @@
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "follower_npc.h"
-#include "gpu_regs.h"
 #include "menu.h"
 #include "metatile_behavior.h"
 #include "oras_dowse.h"
@@ -1974,14 +1973,8 @@ void SetPlayerAvatarFieldMove(void)
 void SetPlayerAvatarFishing(enum Direction direction)
 {
     EndORASDowsing();
-    
-    // Clear any lingering mosaic effect from surf transform
-    struct Sprite *playerSprite = &gSprites[gPlayerAvatar.spriteId];
-    playerSprite->oam.mosaic = FALSE;
-    SetGpuReg(REG_OFFSET_MOSAIC, 0);
-    
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FISHING));
-    StartSpriteAnim(playerSprite, GetFishingDirectionAnimNum(direction));
+    StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetFishingDirectionAnimNum(direction));
 }
 
 void PlayerUseAcroBikeOnBumpySlope(enum Direction direction)
