@@ -407,7 +407,7 @@ static void Task_StartFishingDeferred(u8 taskId)
     }
 }
 
-void MacroStartFishingSuperRod(u8 taskId)
+void MacroStartFishingSuperRod(void)
 {
     CreateTask(Task_StartFishingDeferred, 0);
     ScriptContext_Stop();
