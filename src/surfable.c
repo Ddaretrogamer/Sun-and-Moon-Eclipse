@@ -191,27 +191,22 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
     SynchroniseSurfPosition(playerObj, sprite);
 
     if (VarGet(VAR_FREEZESURFBLOB) == 0)
-    {
+	{
         UpdateBobbingEffect(playerObj, linkedSprite, sprite);
-
-        if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
-        {
-            sprite->x = linkedSprite->x;
-            sprite->y = linkedSprite->y + 8;
-            sprite->y2 = linkedSprite->y2;
-        }
-    }
-    else
-    {
-        // Frozen: still follow player position but don't copy y2
-        sprite->x = linkedSprite->x;
-        sprite->y = linkedSprite->y + 8;
-        sprite->y2 = 0;
     }
 
+    // Reset the subpriority for the overlay sprite so it shows on top of the player
+    // We need this here so the subprio is correct after a screen transition (e.g. after exiting a battle)
     subpriority = gSprites[gPlayerAvatar.spriteId].subpriority - 1;
     sprite->subpriority = subpriority;
 
+if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
+    if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
+    {
+        sprite->x = linkedSprite->x;
+        sprite->y = linkedSprite->y + 8;
+        sprite->y2 = linkedSprite->y2;
+    }
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
 }
@@ -234,17 +229,21 @@ static void UpdateSurfMonBase(struct Sprite *sprite)
     struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
     struct Sprite *playerSprite = &gSprites[gPlayerAvatar.spriteId];
 
+    // Follow the player's map movement
     SynchroniseSurfAnim(playerObj, sprite);
     SynchroniseSurfPosition(playerObj, sprite);
 
+    // PRIORITY: Keep it behind the player
     sprite->subpriority = playerSprite->subpriority + 1;
     sprite->oam.priority = playerSprite->oam.priority;
 
+    // POSITION SYNC: Match player pixel coordinates exactly.
+    // Note: We do NOT add +8 here because this is the base, not the saddle.
     if (playerSprite->animNum < MOVEMENT_ACTION_DELAY_16)
     {
         sprite->x = playerSprite->x;
         sprite->y = playerSprite->y + 8;
-        sprite->y2 = (VarGet(VAR_FREEZESURFBLOB) == 0) ? playerSprite->y2 : 0;
+        sprite->y2 = playerSprite->y2;
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))

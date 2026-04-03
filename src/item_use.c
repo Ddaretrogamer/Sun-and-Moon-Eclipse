@@ -411,6 +411,8 @@ void MacroStartFishingSuperRod(void)
 {
     CreateTask(Task_StartFishingDeferred, 0);
     ScriptContext_Stop();
+
+
 }
 
 void ItemUseOutOfBattle_Itemfinder(u8 var)

@@ -1,5 +1,4 @@
 #include "global.h"
-#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_camera.h"
 #include "field_effect.h"
@@ -1251,14 +1250,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     struct Sprite *playerSprite = &gSprites[playerObj->spriteId];
     SynchroniseSurfAnim(playerObj, sprite);
     SynchroniseSurfPosition(playerObj, sprite);
-    if (VarGet(VAR_FREEZESURFBLOB) == 0)
-        UpdateBobbingEffect(playerObj, playerSprite, sprite);
-    else
-    {
-        sprite->x = playerSprite->x;
-        sprite->y = playerSprite->y + 8;
-        sprite->y2 = 0;
-    }
+    UpdateBobbingEffect(playerObj, playerSprite, sprite);
     sprite->oam.priority = playerSprite->oam.priority;
 }
 

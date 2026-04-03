@@ -424,9 +424,6 @@ static void ResetPlayerAvatar(void)
 
     ClearPlayerAvatarInfo();
     InitPlayerAvatar(x, y, direction, gSaveBlock2Ptr->playerGender);
-
-    gSprites[gPlayerAvatar.spriteId].x2 = 0;
-    gSprites[gPlayerAvatar.spriteId].y2 = 0;
 }
 
 /*
