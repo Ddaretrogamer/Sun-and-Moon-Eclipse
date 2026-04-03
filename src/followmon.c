@@ -326,6 +326,7 @@ void CreateFollowMonEncounter(void) {
         OTID_STRUCT_PLAYER_ID
     );
     SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shiny);
+    GiveMonInitialMoveset(&gEnemyParty[0]);
     CalculateMonStats(&gEnemyParty[0]);
 }
 
