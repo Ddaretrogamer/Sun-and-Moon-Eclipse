@@ -141,6 +141,7 @@ u32 CreateSurfablePokemonSprite(void)
         sprite->data[3] = -1;
         sprite->data[6] = -1;
         sprite->data[7] = -1;
+        SetSurfBlob_PlayerOffset(spriteId, FALSE, 0); // clear stale offset
     }
     FieldEffectActiveListRemove(FLDEFF_SURF_BLOB);
     if(IsCryPlaying())
@@ -176,6 +177,7 @@ static void CreateOverlaySprite(void)
         sprite->oam.priority = 2;
     }
     SetSurfBlob_BobState(overlaySprite, BOB_PLAYER_AND_MON);
+    SetSurfBlob_PlayerOffset(overlaySprite, FALSE, 0);
 }
 
 static void UpdateSurfMonOverlay(struct Sprite *sprite)
@@ -186,7 +188,8 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
 	
     playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
     linkedSprite = &gSprites[playerObj->spriteId];
-
+    DebugPrintf("Overlay: spriteY2=%d linkedY2=%d data0=%d data3=%d", 
+        sprite->y2, linkedSprite->y2, sprite->data[0], sprite->data[3]);
     SynchroniseSurfAnim(playerObj, sprite);
     SynchroniseSurfPosition(playerObj, sprite);
 
@@ -205,7 +208,6 @@ if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
     {
         sprite->x = linkedSprite->x;
         sprite->y = linkedSprite->y + 8;
-        sprite->y2 = linkedSprite->y2;
     }
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
@@ -272,6 +274,11 @@ void UpdateSurfTransformAnimation(u8 taskId)
                 gSprites[i].oam.mosaic = FALSE;
         }
         SetGpuReg(REG_OFFSET_MOSAIC, 0);
+
+        u8 fieldEffectSpriteId = playerObj->fieldEffectSpriteId;
+        SetSurfBlob_BobState(fieldEffectSpriteId, BOB_PLAYER_AND_MON);
+        SetSurfBlob_PlayerOffset(fieldEffectSpriteId, FALSE, 0);
+
         DestroyTask(taskId);
         return;
     }
@@ -307,6 +314,9 @@ void UpdateSurfTransformAnimation(u8 taskId)
         // C. CREATE: New sprite
         sCurrentSurfMon = GetSurfablePokemonSprite();
         u8 newSpriteId = CreateSurfablePokemonSprite();
+
+        // Update fieldEffectSpriteId to point to the new sprite
+        playerObj->fieldEffectSpriteId = newSpriteId;
 
         if (newSpriteId != MAX_SPRITES)
         {
