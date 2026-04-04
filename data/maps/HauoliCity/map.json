@@ -93,15 +93,15 @@
       "x": 33,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY",
-      "dest_warp_id": "9"
+      "dest_map": "MAP_LEVANNY_SALON",
+      "dest_warp_id": "0"
     },
     {
       "x": 39,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY",
-      "dest_warp_id": "10"
+      "dest_map": "MAP_CLOTHING_STORE",
+      "dest_warp_id": "0"
     },
     {
       "x": 49,
