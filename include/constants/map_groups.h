@@ -132,6 +132,9 @@ enum
     MAP_HAUOLI_WHITE_HOUSE_ROOM         = (31 | (1 << 8)),
     MAP_HAUOLI_DOCK_BOATHOUSE           = (32 | (1 << 8)),
     MAP_HAUOLI_WEATHER_CENTER           = (33 | (1 << 8)),
+    MAP_HAUOLI_MALL                     = (34 | (1 << 8)),
+    MAP_HAUOLI_CITY_RESTAURANT          = (35 | (1 << 8)),
+    MAP_IKITOWN_CEREMONIAL_HOUSE        = (36 | (1 << 8)),
 
     // gMapGroup_IndoorLittleroot
     MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    = (0 | (2 << 8)),

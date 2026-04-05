@@ -44,10 +44,12 @@ HauoliDockBoathouse_Receptionist::
 # 31 "data/maps/HauoliDockBoathouse/scripts.pory"
 	lock
 # 32 "data/maps/HauoliDockBoathouse/scripts.pory"
-	msgbox HauoliDockBoathouse_Receptionist_Text_0
+	faceplayer
 # 33 "data/maps/HauoliDockBoathouse/scripts.pory"
-	waitmessage
+	msgbox HauoliDockBoathouse_Receptionist_Text_0
 # 34 "data/maps/HauoliDockBoathouse/scripts.pory"
+	waitmessage
+# 35 "data/maps/HauoliDockBoathouse/scripts.pory"
 	release
 	end
 
@@ -84,5 +86,5 @@ HauoliDockBoathouse_Trigger_Text_0:
 	.string "preparations.$"
 
 HauoliDockBoathouse_Receptionist_Text_0:
-# 32 "data/maps/HauoliDockBoathouse/scripts.pory"
+# 33 "data/maps/HauoliDockBoathouse/scripts.pory"
 	.string "Welcome to the Hau'oli Dock!$"
