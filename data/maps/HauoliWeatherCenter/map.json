@@ -1,0 +1,35 @@
+{
+  "id": "MAP_HAUOLI_WEATHER_CENTER",
+  "name": "HauoliWeatherCenter",
+  "layout": "LAYOUT_HAUOLI_WEATHER_CENTER",
+  "music": "MUS_USUM_HAUOLI_CITY",
+  "region_map_section": "MAPSEC_PETALBURG_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_SOUTH",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 11,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_SOUTH",
+      "dest_warp_id": "8"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

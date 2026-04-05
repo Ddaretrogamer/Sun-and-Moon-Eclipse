@@ -1,0 +1,37 @@
+mapscripts HauoliDockBoathouse_MapScripts {}
+
+script HauoliDockBoathouse_Trigger{
+    lock
+    applymovement(receptionist, Common_Movement_ExclamationMark)
+    waitmovement(receptionist)
+    applymovement(receptionist, moves(face_player)) 
+    playse(SE_PIN)
+    waitmovement(receptionist)
+    applymovement(LOCALID_PLAYER, moves(jump_in_place_up))
+    playse(SE_LEDGE)
+    waitmovement(LOCALID_PLAYER)
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(LOCALID_PLAYER)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(LOCALID_PLAYER)
+    waitmovement(receptionist)
+    msgbox("Hey!
+
+    The ship is not ready to board.
+
+    Please be patient while we finish our 
+    preparations.
+    ")
+    waitmessage
+    release
+    end
+}
+
+script HauoliDockBoathouse_Receptionist{
+    lock
+    faceplayer
+    msgbox("Welcome to the Hau'oli Dock!")
+    waitmessage
+    release
+    end
+}

@@ -87,15 +87,15 @@
       "x": 30,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY_DOCK",
-      "dest_warp_id": "5"
+      "dest_map": "MAP_HAUOLI_DOCK_BOATHOUSE",
+      "dest_warp_id": "0"
     },
     {
       "x": 31,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY_DOCK",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_HAUOLI_DOCK_BOATHOUSE",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],

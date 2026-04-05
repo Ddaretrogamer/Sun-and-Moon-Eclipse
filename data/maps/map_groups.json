@@ -192,7 +192,15 @@
     "Route2House2",
     "AlolaTourestBureau",
     "ClothingStore",
-    "LevannySalon"
+    "LevannySalon",
+    "HauoliPoliceStation",
+    "HauoliWhiteHouse",
+    "HauoliWhiteHouseRoom",
+    "HauoliDockBoathouse",
+    "HauoliWeatherCenter",
+    "HauoliMall",
+    "HauoliCityRestaurant",
+    "IkitownCeremonialHouse"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

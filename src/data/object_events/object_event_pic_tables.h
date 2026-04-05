@@ -1453,6 +1453,44 @@ static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
 
+static const struct SpriteFrameImage sPicTable_LassFrlg[] = {
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 0),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 1),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 2),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 3),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 4),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 5),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 6),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 7),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 8),
+    overworld_frame(gObjectEventPic_LassFrlg, 2, 4, 9),
+};
+
+static const struct SpriteFrameImage sPicTable_Woman1Frlg[] = {
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 8),
+    overworld_frame(gObjectEventPic_Woman1Frlg, 2, 4, 9),
+};
+
+static const struct SpriteFrameImage sPicTable_BeautyFrlg[] = {
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 0),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 1),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 2),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 3),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 4),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 5),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 6),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 7),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 8),
+    overworld_frame(gObjectEventPic_BeautyFrlg, 2, 4, 9),
+};
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {

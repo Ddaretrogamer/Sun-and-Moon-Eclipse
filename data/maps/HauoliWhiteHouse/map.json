@@ -1,0 +1,42 @@
+{
+  "id": "MAP_HAUOLI_WHITE_HOUSE",
+  "name": "HauoliWhiteHouse",
+  "layout": "LAYOUT_HAUOLI_WHITE_HOUSE",
+  "music": "MUS_USUM_HAUOLI_CITY",
+  "region_map_section": "MAPSEC_PETALBURG_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_SOUTH",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 5,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_CITY_SOUTH",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 4,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_HAUOLI_WHITE_HOUSE_ROOM",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

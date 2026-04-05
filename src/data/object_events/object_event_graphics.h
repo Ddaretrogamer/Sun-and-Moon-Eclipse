@@ -509,6 +509,11 @@ const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effe
 
 const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
 
+const u16 gObjectEventPic_LassFrlg[] = INCBIN_U16("graphics/object_events/pics/people/lass_frlg.4bpp");
+const u16 gObjectEventPic_BeautyFrlg[] = INCBIN_U16("graphics/object_events/pics/people/beauty_frlg.4bpp");
+const u16 gObjectEventPic_Woman1Frlg[] = INCBIN_U16("graphics/object_events/pics/people/woman_1_frlg.4bpp");
+const u16 gObjectEventPal_NpcBlue[] = INCBIN_U16("graphics/object_events/palettes/npc_blue.gbapal");
+const u16 gObjectEventPal_NpcGreen[] = INCBIN_U16("graphics/object_events/palettes/npc_green.gbapal");
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCBIN_U16("graphics/object_events/pics/people/red/red_normal.4bpp");

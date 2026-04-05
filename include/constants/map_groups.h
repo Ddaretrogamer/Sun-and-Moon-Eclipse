@@ -127,6 +127,11 @@ enum
     MAP_ALOLA_TOUREST_BUREAU            = (26 | (1 << 8)),
     MAP_CLOTHING_STORE                  = (27 | (1 << 8)),
     MAP_LEVANNY_SALON                   = (28 | (1 << 8)),
+    MAP_HAUOLI_POLICE_STATION           = (29 | (1 << 8)),
+    MAP_HAUOLI_WHITE_HOUSE              = (30 | (1 << 8)),
+    MAP_HAUOLI_WHITE_HOUSE_ROOM         = (31 | (1 << 8)),
+    MAP_HAUOLI_DOCK_BOATHOUSE           = (32 | (1 << 8)),
+    MAP_HAUOLI_WEATHER_CENTER           = (33 | (1 << 8)),
 
     // gMapGroup_IndoorLittleroot
     MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    = (0 | (2 << 8)),

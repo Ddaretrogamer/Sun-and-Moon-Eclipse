@@ -79,15 +79,15 @@
       "x": 23,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY",
-      "dest_warp_id": "7"
+      "dest_map": "MAP_HAUOLI_MALL",
+      "dest_warp_id": "0"
     },
     {
       "x": 24,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY",
-      "dest_warp_id": "8"
+      "dest_map": "MAP_HAUOLI_MALL",
+      "dest_warp_id": "1"
     },
     {
       "x": 33,

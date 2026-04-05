@@ -1870,3 +1870,19 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LevannySalon/scripts.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
+
+	.include "data/maps/HauoliPoliceStation/scripts.inc"
+
+	.include "data/maps/HauoliWhiteHouse/scripts.inc"
+
+	.include "data/maps/HauoliWhiteHouseRoom/scripts.inc"
+
+	.include "data/maps/HauoliDockBoathouse/scripts.inc"
+
+	.include "data/maps/HauoliWeatherCenter/scripts.inc"
+
+	.include "data/maps/HauoliMall/scripts.inc"
+
+	.include "data/maps/HauoliCityRestaurant/scripts.inc"
+
+	.include "data/maps/IkitownCeremonialHouse/scripts.inc"
