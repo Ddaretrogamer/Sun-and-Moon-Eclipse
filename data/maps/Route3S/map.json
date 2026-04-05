@@ -3,7 +3,7 @@
   "name": "Route3S",
   "layout": "LAYOUT_ROUTE3S",
   "music": "MUS_USUM_ROUTE2",
-  "region_map_section": "MAPSEC_ROUTE_3",
+  "region_map_section": "MAPSEC_KALAE_BAY_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -31,6 +31,11 @@
     {
       "map": "MAP_ROUTE3",
       "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_KALAE_BAY",
+      "offset": 26,
       "direction": "up"
     }
   ],

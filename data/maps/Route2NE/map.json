@@ -3,7 +3,7 @@
   "name": "Route2NE",
   "layout": "LAYOUT_ROUTE2NE",
   "music": "MUS_USUM_ROUTE2",
-  "region_map_section": "MAPSEC_ROUTE_2",
+  "region_map_section": "MAPSEC_ROUTE_2_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",

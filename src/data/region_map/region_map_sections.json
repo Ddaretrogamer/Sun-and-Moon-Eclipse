@@ -68,7 +68,7 @@
       "id": "MAPSEC_SLATEPORT_CITY",
       "name": "SLATEPORT CITY",
       "x": 8,
-      "y": 10,
+      "y": 9,
       "width": 1,
       "height": 2
     },
@@ -1625,6 +1625,150 @@
       "x": 8,
       "y": 4,
       "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_ROUTE_1_SM",
+      "name": "ROUTE 1",
+      "x": 4,
+      "y": 9,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_ROUTE_2_SM",
+      "name": "ROUTE 2",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "height": 3
+    },
+    {
+      "id": "MAPSEC_ROUTE_3_SM",
+      "name": "ROUTE 3",
+      "x": 5,
+      "y": 4,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_HAUOLI_OUTSKIRTS_SM",
+      "name": "HAU'OLI OUTSKIRTS",
+      "x": 8,
+      "y": 3,
+      "width": 6,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_HAUOLI_CITY_SM",
+      "name": "HAU'OLI CITY",
+      "x": 14,
+      "y": 4,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_TEN_CARAT_HILL_SM",
+      "name": "TEN CARAT HILL",
+      "x": 14,
+      "y": 7,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_MELEMELE_SEA_SM",
+      "name": "MELEMELE SEA",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_MELEMELE_MEADOW_SM",
+      "name": "MELEMELE MEADOW",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_MAHALO_TRAIL_SM",
+      "name": "MAHALO TRAIL",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_RUINS_OF_CONFLICT_SM",
+      "name": "RUINS OF CONFLICT",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_TRAINERS_SCHOOL_SM",
+      "name": "TRAINER'S SCHOOL",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEAWARD_CAVE_SM",
+      "name": "SEAWARD CAVE",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_VERDANT_CAVERN_SM",
+      "name": "VERDANT CAVERN",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_IKI_TOWN_SM",
+      "name": "IKI TOWN",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_HAUOLI_CEMETARY_SM",
+      "name": "HAU'OLI CEMETARY",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_KALAE_BAY_SM",
+      "name": "KALA'E' BAY",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_HAUOLI_CITY_DOCK_SM",
+      "name": "HAU'OLI CITY DOCK",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_AETHER_PARADISE_SM",
+      "name": "AETHER PARADISE",
+      "x": 12,
+      "y": 6,
+      "width": 2,
       "height": 1
     }
   ]

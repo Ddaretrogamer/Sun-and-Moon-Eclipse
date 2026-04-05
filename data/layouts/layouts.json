@@ -5635,7 +5635,7 @@
     {
       "id": "LAYOUT_ROUTE3",
       "name": "Route3_Layout",
-      "width": 60,
+      "width": 26,
       "height": 40,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_islandtrial",
@@ -10023,6 +10023,16 @@
       "secondary_tileset": "gTileset_HauoliLab",
       "border_filepath": "data/layouts/IkitownCeremonialHouse/border.bin",
       "blockdata_filepath": "data/layouts/IkitownCeremonialHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_KALAE_BAY",
+      "name": "KalaeBay_Layout",
+      "width": 35,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/KalaeBay/border.bin",
+      "blockdata_filepath": "data/layouts/KalaeBay/map.bin"
     }
   ]
 }

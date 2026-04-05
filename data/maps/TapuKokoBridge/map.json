@@ -3,7 +3,7 @@
   "name": "TapuKokoBridge",
   "layout": "LAYOUT_TAPU_KOKO_BRIDGE",
   "music": "MUS_USUM_IKITOWN_DAY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_MAHALO_TRAIL_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",

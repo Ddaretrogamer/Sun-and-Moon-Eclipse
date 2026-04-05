@@ -1886,3 +1886,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/HauoliCityRestaurant/scripts.inc"
 
 	.include "data/maps/IkitownCeremonialHouse/scripts.inc"
+
+	.include "data/maps/KalaeBay/scripts.inc"

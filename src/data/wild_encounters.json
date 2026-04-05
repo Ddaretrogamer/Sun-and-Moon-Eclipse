@@ -38431,6 +38431,129 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_KALAE_BAY",
+          "base_label": "gKalaeBay",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_WINGULL"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_MANTYKE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_FINNEON"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_KALAE_BAY",
+          "base_label": "gKalaeBay_2",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_WINGULL"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_MANTYKE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_FINNEON"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_REMORAID"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_REMORAID"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_REMORAID"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 10,
+                "max_level": 17,
+                "species": "SPECIES_WISHIWASHI"
+              }
+            ]
+          }
         }
       ]
     },
