@@ -452,6 +452,7 @@ static void ItemUseOnFieldCB_Itemfinder(u8 taskId)
         ChooseMonForTransform();
         ScriptUnfreezeObjectEvents();
         UnlockPlayerFieldControls();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
     }
     else
@@ -1787,6 +1788,7 @@ void ItemUseOnFieldCB_CutTool(u8 taskId)
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
     }
     else
@@ -1984,6 +1986,7 @@ static void ItemUseOnFieldCB_StrengthToolNoRock(u8 taskId)
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
     }
     else
@@ -2041,6 +2044,7 @@ void ItemUseOnFieldCB_FlashTool(u8 taskId)
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
     }
     else
@@ -2139,6 +2143,7 @@ void ItemUseOnFieldCB_RidePager(u8 taskId)
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
         return;
     }
@@ -2254,6 +2259,7 @@ static void ItemUseOnFieldCB_RockSmashToolNoRock(u8 taskId)
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();
+        UpdateFollowingPokemon();
         DestroyTask(taskId);
     }
     else

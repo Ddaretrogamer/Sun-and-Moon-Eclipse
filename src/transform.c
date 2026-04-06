@@ -442,7 +442,7 @@ static void SetPlayerTransformFlags(void)
 static void ClearPlayerTransformFlags(void)
 {
     FlagClear(FLAG_PLAYER_IS_POKEMON);
-    
+    FlagClear(FLAG_DETRANSFORM_NO_FOLLOWER);
     if (!FlagGet(FLAG_DETRANSFORM_NO_FOLLOWER) && FlagGet(FLAG_FOLLOWERS_MENU_TOGGLE))
     {
         FlagClear(FLAG_DISABLE_FOLLOWERS);
