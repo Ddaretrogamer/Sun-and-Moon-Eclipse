@@ -355,6 +355,24 @@
       "y": 12,
       "respawn_map": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_SIX_ISLAND_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_HAUOLI_CITY",
+      "map": "MAP_HAUOLI_CITY",
+      "x": 15,
+      "y": 18
+    },
+    {
+      "id": "HEAL_LOCATION_IKI_TOWN",
+      "map": "MAP_IKI_TOWN",
+      "x": 31,
+      "y": 28
+    },
+    {
+      "id": "HEAL_LOCATION_ROUTE3N",
+      "map": "MAP_ROUTE3N",
+      "x": 6,
+      "y": 12
     }
   ]
 }

@@ -381,6 +381,16 @@ const struct RegionMapInfo gRegionMapInfos[] =
         .regionMapGfx = sRegionMapSevii67_Gfx,
         .regionMapTilemap = sRegionMapSevii67_Tilemap,
     },
+    [REGION_MAP_ALOLA] =
+    {
+        .dexMapPalette = sPokedexAreaMap_Pal,
+        .dexMapGfx = sPokedexAreaMap_Gfx,
+        .dexMapTilemap = sPokedexAreaMap_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMap_Pal),
+        .regionMapPalette = sRegionMapBg_Pal,
+        .regionMapGfx = sRegionMapBg_GfxLZ,
+        .regionMapTilemap = sRegionMapBg_TilemapLZ,
+    }
 };
 
 static const u8 sMapHealLocations[][3] =
@@ -539,6 +549,11 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_RIXY_CHAMBER] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
     [MAPSEC_VIAPOIS_CHAMBER] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
     [MAPSEC_EMBER_SPA] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
+    [MAPSEC_HAUOLI_CITY_SM] = {MAP_GROUP(MAP_HAUOLI_CITY), MAP_NUM(MAP_HAUOLI_CITY), HEAL_LOCATION_HAUOLI_CITY},
+    [MAPSEC_IKI_TOWN_SM] = {MAP_GROUP(MAP_IKI_TOWN), MAP_NUM(MAP_IKI_TOWN), HEAL_LOCATION_IKI_TOWN},
+    [MAPSEC_TRAINERS_SCHOOL_SM] = {MAP_GROUP(MAP_ROUTE1N), MAP_NUM(MAP_ROUTE1N), HEAL_LOCATION_ROUTE1N},
+    [MAPSEC_ROUTE_3_POKECENTER_SM] = {MAP_GROUP(MAP_ROUTE3N), MAP_NUM(MAP_ROUTE3N), HEAL_LOCATION_ROUTE3N},
+
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -1181,6 +1196,8 @@ enum RegionMapType GetRegionMapType(u32 mapSecId)
         default:
             return REGION_MAP_KANTO;
         }
+    case REGION_ALOLA:
+        return REGION_MAP_ALOLA;
     case REGION_HOENN:
     default:
         return REGION_MAP_HOENN;
@@ -1210,6 +1227,16 @@ static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
         case KANTO_SUBREGION_KANTO:
         default:
                 return sRegionMapSections_Kanto[y][x];
+        }
+    case REGION_ALOLA:
+        switch (GetAlolaSubregion(gMapHeader.regionMapSectionId))
+        {
+        case ALOLA_SUBREGION_MELEMELE:
+            return sRegionMapSections_Alola[y][x];
+        case ALOLA_SUBREGION_AETHER:
+            return sRegionMapSections_Alola[y][x];
+        default:
+                return sRegionMapSections_Alola[y][x];
         }
     case REGION_HOENN:
     default:
@@ -1506,6 +1533,14 @@ static u8 GetMapsecType(mapsec_u16_t mapSecId)
         return FlagGet(FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_ROUTE_10_POKECENTER:
         return FlagGet(FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_HAUOLI_CITY_SM:
+        return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_IKI_TOWN_SM:
+        return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_ROUTE_3_POKECENTER_SM:
+        return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+     case MAPSEC_TRAINERS_SCHOOL_SM:
+        return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     default:
         return MAPSECTYPE_ROUTE;
     }
@@ -2010,6 +2045,7 @@ void CB2_OpenFlyMap(void)
         break;
     case 7:
         LoadPalette(sRegionMapFramePal, BG_PLTT_ID(1), sizeof(sRegionMapFramePal));
+        LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         PutWindowTilemap(WIN_FLY_TO_WHERE);
         FillWindowPixelBuffer(WIN_FLY_TO_WHERE, PIXEL_FILL(0));
         AddTextPrinterParameterized(WIN_FLY_TO_WHERE, FONT_NORMAL, gText_FlyToWhere, 0, 1, 0, NULL);
@@ -2323,6 +2359,26 @@ static const struct FlyLocation sFlyLocations[] =
         .mapsec = MAPSEC_ROUTE_10_POKECENTER,
         .flag = FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F,
     },
+    {
+        .regionMapType = REGION_MAP_ALOLA,
+        .mapsec = MAPSEC_HAUOLI_CITY_SM,
+        .flag = FLAG_VISITED_LITTLEROOT_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_ALOLA,
+        .mapsec = MAPSEC_IKI_TOWN_SM,
+        .flag = FLAG_VISITED_LITTLEROOT_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_ALOLA,
+        .mapsec = MAPSEC_ROUTE_3_POKECENTER_SM,
+        .flag = FLAG_VISITED_LITTLEROOT_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_ALOLA,
+        .mapsec = MAPSEC_TRAINERS_SCHOOL_SM,
+        .flag = FLAG_VISITED_LITTLEROOT_TOWN,
+    }
 };
 
 

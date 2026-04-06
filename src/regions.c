@@ -1,5 +1,6 @@
 #include "global.h"
 #include "regions.h"
+#include "constants/region_map_sections.h"
 
 
 static const u16 sKantoSubregionMapsecs[KANTO_SUBREGION_COUNT][30] = {
@@ -81,4 +82,29 @@ enum KantoSubRegion GetKantoSubregion(u32 mapSecId)
         }
     }
     return KANTO_SUBREGION_KANTO;
+}
+
+static const u16 sAlolaSubregionMapsecs[ALOLA_SUBREGION_COUNT][5] = {
+    [ALOLA_SUBREGION_MELEMELE] =
+    {
+        MAPSEC_NONE
+    },
+    [ALOLA_SUBREGION_AETHER] =
+    {
+        MAPSEC_AETHER_PARADISE_SM,
+        MAPSEC_NONE
+    }
+};
+
+enum AlolaSubRegion GetAlolaSubregion(u32 mapSecId)
+{
+    for (u32 i = ALOLA_SUBREGION_MELEMELE; i <= ALOLA_SUBREGION_AETHER; i++)
+    {
+        for (u32 j = 0; sAlolaSubregionMapsecs[i][j] != MAPSEC_NONE; j++)
+        {
+            if (mapSecId == sAlolaSubregionMapsecs[i][j])
+                return i;
+        }
+    }
+    return ALOLA_SUBREGION_MELEMELE;
 }

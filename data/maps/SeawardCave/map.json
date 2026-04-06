@@ -3,7 +3,7 @@
   "name": "SeawardCave",
   "layout": "LAYOUT_SEAWARD_CAVE",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_SEAWARD_CAVE_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",

@@ -96,6 +96,7 @@ enum
     MAP_AETHER_CONSERVATORY         = (81 | (0 << 8)),
     MAP_PATH_TO_TAPU_KOKO_SHRINE    = (82 | (0 << 8)),
     MAP_MELEMELE_ISLAND_TRIAL_TOTEM = (83 | (0 << 8)),
+    MAP_KALAE_BAY                   = (84 | (0 << 8)),
 
     // gMapGrouo_IndoorMelemele
     MAP_PLAYER_HOUSE                    = (0 | (1 << 8)),

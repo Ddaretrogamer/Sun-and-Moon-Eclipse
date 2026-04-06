@@ -3,7 +3,7 @@
   "name": "SlakingHotelRoom2",
   "layout": "LAYOUT_SLAKING_HOTEL_ROOM2",
   "music": "MUS_USUM_ROUTE2",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_ROUTE_2_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

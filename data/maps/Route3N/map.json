@@ -3,7 +3,7 @@
   "name": "Route3N",
   "layout": "LAYOUT_ROUTE3N",
   "music": "MUS_USUM_ROUTE2",
-  "region_map_section": "MAPSEC_ROUTE_3_SM",
+  "region_map_section": "MAPSEC_ROUTE_3_POKECENTER_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",

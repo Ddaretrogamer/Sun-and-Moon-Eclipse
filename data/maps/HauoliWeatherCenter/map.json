@@ -3,7 +3,7 @@
   "name": "HauoliWeatherCenter",
   "layout": "LAYOUT_HAUOLI_WEATHER_CENTER",
   "music": "MUS_USUM_HAUOLI_CITY",
-  "region_map_section": "MAPSEC_PETALBURG_CITY",
+  "region_map_section": "MAPSEC_HAUOLI_CITY_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

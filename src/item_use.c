@@ -1842,12 +1842,11 @@ void ItemUseOutOfBattle_FlyTool(u8 taskId)
     }
     else
     {
-        // FROM FIELD: Just open map directly, no transform yet
+        // FROM FIELD: fade to black, cleanup, then open fly map
         VarSet(VAR_FLY_TOOL_SOURCE, FLY_SOURCE_FIELD);
-        
-        // Open fly map immediately
-        SetMainCallback2(CB2_OpenFlyMap);
-        DestroyTask(taskId);
+        gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_OpenRegisteredFlyTool;
     }
 }
 

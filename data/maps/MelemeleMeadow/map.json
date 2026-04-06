@@ -3,7 +3,7 @@
   "name": "MelemeleMeadow",
   "layout": "LAYOUT_MELEMELE_MEADOW",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_MELEMELE_MEADOW_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
