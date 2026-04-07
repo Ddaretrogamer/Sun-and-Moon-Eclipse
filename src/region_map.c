@@ -1394,6 +1394,16 @@ static void InitMapBasedOnPlayerLocation(void)
     case MAPSEC_UNDERWATER_MARINE_CAVE:
         GetMarineCaveCoords(&sRegionMap->cursorPosX, &sRegionMap->cursorPosY);
         return;
+    case MAPSEC_HAUOLI_OUTSKIRTS_SM:
+        // Pin icon to the center of the section regardless of player position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_HAUOLI_OUTSKIRTS_SM].x + 1 + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_HAUOLI_OUTSKIRTS_SM].y + 0 + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_TRAINERS_SCHOOL_SM:
+        // Pin icon to exact section position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_TRAINERS_SCHOOL_SM].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_TRAINERS_SCHOOL_SM].y + MAPCURSOR_Y_MIN;
+        return;
     }
     sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + x + MAPCURSOR_X_MIN;
     sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
