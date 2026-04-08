@@ -1404,7 +1404,57 @@ static void InitMapBasedOnPlayerLocation(void)
         sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_TRAINERS_SCHOOL_SM].x + MAPCURSOR_X_MIN;
         sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_TRAINERS_SCHOOL_SM].y + MAPCURSOR_Y_MIN;
         return;
+    case MAPSEC_HAUOLI_OUTSKIRTS_E_SM:
+        // Pin icon to exact section position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_HAUOLI_OUTSKIRTS_E_SM].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_HAUOLI_OUTSKIRTS_E_SM].y + 1 + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_ROUTE_1_SM:
+        // Allow x movement but keep y at top of section
+        if (y > 0)
+            y = 0;
+        sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_HAUOLI_CITY_SM:
+        // Keep icon at top of section
+        y = 0;
+        sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_KALAE_BAY_SM:
+        // If on Route3S specifically, pin to fixed position
+        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE3S)
+            && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE3S))
+        {
+            // Pin to specific coordinates for Route3S
+            sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_KALAE_BAY_SM].x - 3 + MAPCURSOR_X_MIN;
+            sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_KALAE_BAY_SM].y + 1 + MAPCURSOR_Y_MIN;
+        }
+        else
+        {
+            // Normal behavior for other Kalae Bay maps
+            sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + 0 + MAPCURSOR_X_MIN;
+            sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + 0 + MAPCURSOR_Y_MIN;
+        }
+        return;
+    case MAPSEC_HAUOLI_CEMETARY_SM:
+        // Pin icon to exact section position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_HAUOLI_CEMETARY_SM].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_HAUOLI_CEMETARY_SM].y + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_HAUOLI_CITY_DOCK_SM:
+        // Pin icon to exact section position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_HAUOLI_CITY_DOCK_SM].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_HAUOLI_CITY_DOCK_SM].y + 1 + MAPCURSOR_Y_MIN;
+        return;
+    case MAPSEC_ROUTE_2_SM:
+        // Pin icon to exact section position
+        sRegionMap->cursorPosX = gRegionMapEntries[MAPSEC_ROUTE_2_SM].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[MAPSEC_ROUTE_2_SM].y + MAPCURSOR_Y_MIN;
+        return;
     }
+    
     sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + x + MAPCURSOR_X_MIN;
     sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
 }

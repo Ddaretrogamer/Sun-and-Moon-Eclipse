@@ -1818,7 +1818,7 @@ void ItemUseOutOfBattle_FlyTool(u8 taskId)
     behavior = MapGridGetMetatileBehaviorAt(x, y);
 
     // Prevent transformation indoors
-    if (gMapHeader.mapType == MAP_TYPE_INDOOR)
+    if ((gMapHeader.mapType == MAP_TYPE_INDOOR) || (gMapHeader.mapType == MAP_TYPE_UNDERGROUND))
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
         return;
