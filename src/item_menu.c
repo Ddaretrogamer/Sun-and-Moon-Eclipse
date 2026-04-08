@@ -227,8 +227,13 @@ static const u8 sText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_
 static const u8 sText_NoRoomForItems[] = _("There's no room to\nstore items.");
 static const u8 sText_CantStoreImportantItems[] = _("Important items\ncan't be stored in\nthe PC!");
 
+// Helper functions for registered items
+static u32 CountRegisteredItemsInArray(u16 *array);
+static s32 RegisteredItemIndexInArray(u16 item, u16 *array);
+
 // Key item wheel
 static void Task_KeyItemWheel(u8 taskId);
+static void Task_PokerideItemWheel(u8 taskId);
 
 static void Task_LoadBagSortOptions(u8 taskId);
 static void ItemMenu_SortByName(u8 taskId);
@@ -1201,12 +1206,23 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
             offset = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 119);
             BagMenu_Print(windowId, FONT_NARROW, gStringVar4, offset, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
         }
-        else if (itemId && (offset = RegisteredItemIndex(itemId)) >= 0)
+        else if (itemId)
         {
-            // 'offset' is the specific slot index (0, 1, 2, or 3)
-            // We use it to pick the correct icon graphic from your array
-            // And we keep the X coordinate at 96 so it stays aligned
-            BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[offset], 96, y - 1, 24, 16);
+            // Check the appropriate registered items array based on pocket
+            if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+                offset = RegisteredItemIndexInArray(itemId, gSaveBlock1Ptr->registeredItems);
+            else if (gBagPosition.pocket == POCKET_POKERIDE)
+                offset = RegisteredItemIndexInArray(itemId, gSaveBlock1Ptr->registeredPokerideItems);
+            else
+                offset = -1;
+            
+            if (offset >= 0)
+            {
+                // 'offset' is the specific slot index (0, 1, 2, or 3)
+                // We use it to pick the correct icon graphic from your array
+                // And we keep the X coordinate at 96 so it stays aligned
+                BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[offset], 96, y - 1, 24, 16);
+            }
         }
     }
 }
@@ -2162,10 +2178,28 @@ static u32 DpadInputToRegisteredItemIndex(bool32 check) {
     return i;
 }
 
+// Returns [1-4] based on dpad, or 0 otherwise. Checks against a specific array.
+static u32 DpadInputToRegisteredItemIndexInArray(bool32 check, u16 *array) {
+    u32 i = 0;
+    if (JOY_NEW(DPAD_UP))
+        i = 1;
+    else if (JOY_NEW(DPAD_RIGHT))
+        i = 2;
+    else if (JOY_NEW(DPAD_DOWN))
+        i = 3;
+    else if (JOY_NEW(DPAD_LEFT))
+        i = 4;
+    // If `check`, verify that slot actually has an item registered
+    if (i && check && array[i-1] == ITEM_NONE)
+        i = 0;
+    return i;
+}
+
 static void Task_RegisterUsingDpad(u8 taskId) {
     s16 *data = gTasks[taskId].data;
     u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
     u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
+    u16 *targetArray;
     u32 i = 0;
     if (JOY_NEW(B_BUTTON)) {
         PlaySE(SE_SELECT);
@@ -2176,9 +2210,18 @@ static void Task_RegisterUsingDpad(u8 taskId) {
     if (i == 0)
         return;
     PlaySE(SE_SELECT);
+    
+    // Determine which array to use based on pocket
+    if (gBagPosition.pocket == POCKET_POKERIDE)
+        targetArray = gSaveBlock1Ptr->registeredPokerideItems;
+    else // POCKET_KEY_ITEMS
+        targetArray = gSaveBlock1Ptr->registeredItems;
+    
     // register and refresh menu
-    gSaveBlock1Ptr->registeredItems[i - 1] = gSpecialVar_ItemId;
-    gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
+    targetArray[i - 1] = gSpecialVar_ItemId;
+    // Only update registeredItemCompat for key items (backwards compatibility)
+    if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+        gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
     DestroyListMenuTask(tListTaskId, scrollPos, cursorPos);
     LoadBagItemListBuffers(gBagPosition.pocket);
     tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
@@ -2244,6 +2287,24 @@ static void Task_RemoveItemFromBag(u8 taskId)
     }
 }
 
+// Helper functions for working with registered item arrays
+static u32 CountRegisteredItemsInArray(u16 *array) {
+    u32 i;
+    u32 count = 0;
+    for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
+        if (array[i] != ITEM_NONE)
+            count++;
+    return count;
+}
+
+// if passed ITEM_NONE, finds the first registered item's index in the given array
+static s32 RegisteredItemIndexInArray(u16 item, u16 *array) {
+    s32 i;
+    for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
+        if (array[i] && (!item || array[i] == item))
+            return i;
+    return -1;
+}
 
 static u32 CountRegisteredItems(void) {
     u32 i;
@@ -2277,21 +2338,38 @@ static void ItemMenu_Register(u8 taskId)
     s16 *data = gTasks[taskId].data;
     u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
     u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
-    s32 index = RegisteredItemIndex(gSpecialVar_ItemId);
-    s32 count = CountRegisteredItems();
+    u16 *targetArray;
+    s32 index, count;
+    
+    // Only allow registration from Key Items and Pokeride pockets
+    if (gBagPosition.pocket != POCKET_KEY_ITEMS && gBagPosition.pocket != POCKET_POKERIDE)
+        return;
+    
+    // Determine which array to use based on pocket
+    if (gBagPosition.pocket == POCKET_POKERIDE)
+        targetArray = gSaveBlock1Ptr->registeredPokerideItems;
+    else // POCKET_KEY_ITEMS
+        targetArray = gSaveBlock1Ptr->registeredItems;
+    
+    index = RegisteredItemIndexInArray(gSpecialVar_ItemId, targetArray);
+    count = CountRegisteredItemsInArray(targetArray);
+    
     // unregister/deselect item
     if (index >= 0) {
-        gSaveBlock1Ptr->registeredItems[index] = ITEM_NONE;
-        // unregistering last item, index set to first registered item
-        if (--count == 0 || (index = RegisteredItemIndex(ITEM_NONE)) < 0)
-            gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
-        else
-            gSaveBlock1Ptr->registeredItemCompat = gSaveBlock1Ptr->registeredItems[index];
+        targetArray[index] = ITEM_NONE;
+        // Update registeredItemCompat for key items (backwards compatibility)
+        if (gBagPosition.pocket == POCKET_KEY_ITEMS) {
+            if (--count == 0 || (index = RegisteredItemIndexInArray(ITEM_NONE, targetArray)) < 0)
+                gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
+            else
+                gSaveBlock1Ptr->registeredItemCompat = targetArray[index];
+        }
         index = 1; // ensure menu is closed
     // no items registered; register this one in slot 0
     } else if (count == 0) {
-        gSaveBlock1Ptr->registeredItems[0] = gSpecialVar_ItemId;
-        gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
+        targetArray[0] = gSpecialVar_ItemId;
+        if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+            gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
     }
 
     // no DPAD required; just close the menu
@@ -2465,6 +2543,55 @@ bool8 UseRegisteredKeyItemOnField(void)
     ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
     return TRUE;
 }
+
+bool8 UseRegisteredPokerideItemOnField(void)
+{
+    u32 taskId;
+    u32 i;
+    u32 j;
+    ItemUseFunc func = NULL;
+
+    if (InUnionRoom() == TRUE || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InBattlePike() || InMultiPartnerRoom() == TRUE)
+        return FALSE;
+    
+    HideMapNamePopUpWindow();
+    ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
+    i = CountRegisteredItemsInArray(gSaveBlock1Ptr->registeredPokerideItems);
+    
+    // Show pokeride item wheel
+    if (i > 1) {
+        func = Task_PokerideItemWheel;
+    }
+    // Use the only registered pokeride item
+    else if (i > 0) {
+        // Find first registered item
+        for (j = 0; j < MAX_REGISTERED_ITEMS; j++) {
+            if (gSaveBlock1Ptr->registeredPokerideItems[j] != ITEM_NONE) {
+                if (CheckBagHasItem(gSaveBlock1Ptr->registeredPokerideItems[j], 1) == TRUE) {
+                    gSpecialVar_ItemId = gSaveBlock1Ptr->registeredPokerideItems[j];
+                    func = GetItemFieldFunc(gSaveBlock1Ptr->registeredPokerideItems[j]);
+                } else {
+                    gSaveBlock1Ptr->registeredPokerideItems[j] = ITEM_NONE;
+                }
+                break;
+            }
+        }
+    }
+    
+    if (func) {
+        LockPlayerFieldControls();
+        FreezeObjectEvents();
+        PlayerFreeze();
+        StopPlayerAvatar();
+        taskId = CreateTask(func, 8);
+        gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
+        return TRUE;
+    }
+    
+    ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
+    return TRUE;
+}
+
 static void HBlankCB_KeyItemWheel(void) {
     u32 vCount = REG_VCOUNT;
     if (vCount >= DISPLAY_HEIGHT) {
@@ -2515,7 +2642,6 @@ static void FreeKeyItemWheelGfx(s16 *data) {
 static void Task_KeyItemWheel(u8 taskId) {
     u32 i, j;
     s16 *data = gTasks[taskId].data;
-    struct Sprite *sprite;
     switch (tState)
     {
     case 0:
@@ -2554,7 +2680,7 @@ static void Task_KeyItemWheel(u8 taskId) {
             tState = 3; // destroy and unfreeze
             break;
         }
-        i = DpadInputToRegisteredItemIndex(TRUE);
+        i = DpadInputToRegisteredItemIndexInArray(TRUE, gSaveBlock1Ptr->registeredItems);
         if (i == 0 || data[i] == MAX_SPRITES)
             break;
         // use item as if it was registered
@@ -2595,6 +2721,98 @@ static void Task_KeyItemWheel(u8 taskId) {
 #undef tBoxSprite
 #undef tIconWindow
 #undef tUsingRegisteredKeyItem
+
+static void Task_PokerideItemWheel(u8 taskId) {
+    u32 i, j;
+    s16 *data = gTasks[taskId].data;
+    
+    // Redefine task data macros locally for this function
+    #define tState data[0]
+    #define tBoxSprite (data + 1)
+    #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
+    #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
+    #define tUsingRegisteredKeyItem data[3]
+    
+    switch (tState)
+    {
+    case 0:
+    {
+        LoadSpritePalette(&sSpritePalette_KeyItemBox);
+        LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
+
+        for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
+            // Create box sprite
+            tBoxSprite[i] = j = CreateSprite(&sSpriteTemplate_KeyItemBox, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
+            if (j < MAX_SPRITES)
+                StartSpriteAffineAnim(&gSprites[j], i);
+            tBoxWinSprite[i] = MAX_SPRITES;
+            // For each registered pokeride item the player has, create a window and blit its icon to it
+            tIconWindow[i] = WINDOW_NONE;
+            if (!gSaveBlock1Ptr->registeredPokerideItems[i] || !CheckBagHasItem(gSaveBlock1Ptr->registeredPokerideItems[i], 1))
+                continue;
+            tIconWindow[i] = j = AddWindowParameterized(0, sKeyItemBoxXPos[i] / 8 - 2, sKeyItemBoxYPos[i] / 8 - 2, 4, 4, i == 3 ? 13 : 13 + i, 16*(i+9));
+            if (j == WINDOW_NONE)
+                continue;
+            PutWindowTilemap(j);
+            BlitItemIconToWindow(gSaveBlock1Ptr->registeredPokerideItems[i], j, 4, 4, i == 3 ? sKeyItemWheelExtraPalette : NULL);
+            CopyWindowToVram(j, COPYWIN_FULL);
+        }
+        SetHBlankCallback(HBlankCB_KeyItemWheel);
+        EnableInterrupts(INTR_FLAG_HBLANK);
+        PlaySE(SE_WIN_OPEN);
+        // in dark caves, we need to spawn OBJWIN sprites to show the boxes
+        tState = (gSaveBlock1Ptr->flashLevel > 1) ? 4 : 1;
+        break;
+    }
+    case 1: // process input
+    {
+        if (JOY_NEW(B_BUTTON) || JOY_NEW(L_BUTTON)) {
+            PlaySE(SE_SELECT);
+            tState = 3; // destroy and unfreeze
+            break;
+        }
+        i = DpadInputToRegisteredItemIndexInArray(TRUE, gSaveBlock1Ptr->registeredPokerideItems);
+        if (i == 0 || data[i] == MAX_SPRITES)
+            break;
+        // use item as if it was registered
+        gSpecialVar_ItemId = gSaveBlock1Ptr->registeredPokerideItems[i - 1];
+        PlaySE(SE_SELECT);
+        StartSpriteAffineAnim(&gSprites[data[i]], i + 4 - 1);
+        data[15] = data[i];
+        tState = 2; // wait for anim
+        break;
+    }
+    case 2:
+        if (!gSprites[data[15]].affineAnimEnded)
+            break;
+        FreeKeyItemWheelGfx(data);
+        i = CreateTask(GetItemFieldFunc(gSpecialVar_ItemId), 8);
+        gTasks[i].tUsingRegisteredKeyItem = TRUE;
+        DestroyTask(taskId);
+        break;
+    case 3:
+        FreeKeyItemWheelGfx(data);
+        ScriptUnfreezeObjectEvents();
+        UnlockPlayerFieldControls();
+        DestroyTask(taskId);
+        break;
+    case 4:
+        // Enable sprites to be shown inside WINOBJ
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+        // Create box sprites, but in OBJWIN mode
+        for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
+            tBoxWinSprite[i] = CreateSprite(&sSpriteTemplate_KeyItemBoxWin, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
+        tState = 1;
+        break;
+    }
+    
+    #undef tState
+    #undef tBoxSprite
+    #undef tBoxWinSprite
+    #undef tIconWindow
+    #undef tUsingRegisteredKeyItem
+}
 
 static void Task_ItemContext_Sell(u8 taskId)
 {

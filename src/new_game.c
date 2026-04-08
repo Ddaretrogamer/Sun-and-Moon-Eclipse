@@ -207,6 +207,7 @@ void NewGameInitData(void)
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
     memset(gSaveBlock1Ptr->registeredItems, 0, sizeof(gSaveBlock1Ptr->registeredItems));
+    memset(gSaveBlock1Ptr->registeredPokerideItems, 0, sizeof(gSaveBlock1Ptr->registeredPokerideItems));
     ClearBag();
     NewGameInitPCItems();
     ClearPokeblocks();

@@ -291,8 +291,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->pressedRButton && TryStartDexNavSearch())
         return TRUE;
-// pressing L opens portable pc. maybe we switch this to something else.
-    if (input->pressedLButton && TryAccessPortablePC())  
+
+    if (input->pressedLButton && UseRegisteredPokerideItemOnField() == TRUE)  
         return TRUE; 
 
     if(input->input_field_1_2 && DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)

@@ -1119,6 +1119,7 @@ struct SaveBlock1
     /*0x560*/ struct Bag bag;
     /*0x848*/ struct Pokeblock pokeblocks[POKEBLOCKS_COUNT];
     /*0xA26*/ u16 registeredItems[MAX_REGISTERED_ITEMS];
+    /*0xA2E*/ u16 registeredPokerideItems[MAX_REGISTERED_ITEMS];
 #if FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1 == FALSE
     /*0x988*/ u8 filler1[0x34]; // Previously Dex Flags, feel free to remove.
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
@@ -1126,11 +1127,11 @@ struct SaveBlock1
     /*0x9C2*/ u8 unused_9C2[6];
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
-    // MAX_REMATCH_ENTRIES decreased from vanilla's 100 to 92
-    // This is to accomodate 4 non-vanilla registeredItems
+    // MAX_REMATCH_ENTRIES decreased from vanilla's 100 to 84
+    // This is to accomodate 4 non-vanilla registeredItems and 4 registeredPokerideItems
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
 #endif //FREE_MATCH_CALL
-    /*0xA2E*/ //u8 padding3[2];
+    /*0xA36*/ //u8 padding3[2];
     /*0xA30*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];
     /*0xC70*/ struct ObjectEventTemplate objectEventTemplates[OBJECT_EVENT_TEMPLATES_COUNT];
     /*0x1270*/ u8 flags[NUM_FLAG_BYTES];
