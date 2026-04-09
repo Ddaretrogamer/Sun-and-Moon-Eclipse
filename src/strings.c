@@ -209,7 +209,7 @@ const u8 *const gPocketNamesStringsTable[] =
     [POCKET_TM_HM]  =       COMPOUND_STRING("TMs & HMs"),
     [POCKET_BERRIES] =      COMPOUND_STRING("BERRIES"),
     [POCKET_KEY_ITEMS] =    COMPOUND_STRING("KEY ITEMS"),
-    [POCKET_POKERIDE] =     COMPOUND_STRING("RIDE PAGER")
+    [POCKET_POKERIDE] =     COMPOUND_STRING("POKé RIDE")
 };
 
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x03}{STR_VAR_2}");
