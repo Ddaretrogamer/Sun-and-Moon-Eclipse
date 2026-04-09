@@ -227,11 +227,7 @@ static const u8 sText_DepositHowManyVar1[] = _("Deposit how many\n{STR_VAR_1}?")
 static const u8 sText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_1}.");
 static const u8 sText_NoRoomForItems[] = _("There's no room to\nstore items.");
 static const u8 sText_CantStoreImportantItems[] = _("Important items\ncan't be stored in\nthe PC!");
-static const u8 sText_KeyItems[] = _("KEY ITEMS");
-static const u8 sText_PokeRide[] = _("POKE RIDE");
-
-// Text colors for label window: [background, foreground, shadow]
-static const u8 sLabelWindowTextColors[] = {14, 15, 8}; // index 14 bg, 15 text, 8 shadow
+// Old text-based label code removed - now using pre-rendered graphics
 
 // Helper functions for registered items
 static u32 CountRegisteredItemsInArray(u16 *array);
@@ -440,6 +436,11 @@ static const u16 sKeyItemBoxBluePal[] = INCBIN_U16("graphics/bag/key_item_box_bl
 // static const u16 sKeyItemBoxPurplePal[] = INCBIN_U16("graphics/bag/key_item_box_purple.gbapal");
 static const u16 sKeyItemBoxOrangePal[] = INCBIN_U16("graphics/bag/key_item_box_orange.gbapal");
 
+// Label graphics (64x16 sprites, 8 tiles each)
+static const u32 sKeyItemsLabelGfx[] = INCBIN_U32("graphics/bag/key_items_label.4bpp");
+static const u32 sPokerideLabelGfx[] = INCBIN_U32("graphics/bag/pokeride_label.4bpp");
+static const u16 sLabelPal[] = INCBIN_U16("graphics/bag/pokeride_label.gbapal");
+
 static const struct SpritePalette sSpritePalette_KeyItemBox = {
     .data = sKeyItemBoxOrangePal,
     .tag = PAL_TAG_KEY_ITEM_WHEEL,
@@ -450,8 +451,21 @@ static const struct SpritePalette sSpritePalette_PokerideItemBox = {
     .tag = PAL_TAG_POKERIDE_ITEM_WHEEL, 
 };
 
+static const struct SpritePalette sSpritePalette_Label = {
+    .data = sLabelPal,
+    .tag = 0xD000,  // Label palette tag
+};
+
 static const struct SpriteFrameImage sPicTable_KeyItemBox[] = {
     obj_frame_tiles(sKeyItemBoxGfx),
+};
+
+static const struct SpriteFrameImage sPicTable_KeyItemsLabel[] = {
+    obj_frame_tiles(sKeyItemsLabelGfx),
+};
+
+static const struct SpriteFrameImage sPicTable_PokerideLabel[] = {
+    obj_frame_tiles(sPokerideLabelGfx),
 };
 
 const struct OamData sOam_KeyItemBox = {
@@ -460,6 +474,12 @@ const struct OamData sOam_KeyItemBox = {
     .priority = 1,
     .objMode = ST_OAM_OBJ_BLEND,
     .affineMode = ST_OAM_AFFINE_DOUBLE,
+};
+
+const struct OamData sOam_Label = {
+    .shape = SPRITE_SHAPE(64x32),
+    .size = SPRITE_SIZE(64x32),
+    .priority = 0,  // Draw on top
 };
 
 const struct OamData sOam_KeyItemBoxWin = {
@@ -479,6 +499,17 @@ static const union AnimCmd sSpriteAnim_KeyItemBox[] =
 static const union AnimCmd *const sSpriteAnimTable_KeyItemBox[] =
 {
     sSpriteAnim_KeyItemBox
+};
+
+static const union AnimCmd sSpriteAnim_Label[] =
+{
+    ANIMCMD_FRAME(0, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sSpriteAnimTable_Label[] =
+{
+    sSpriteAnim_Label
 };
 
 static const union AffineAnimCmd sAffineAnim_KeyItemBox0[] =
@@ -590,6 +621,26 @@ static const struct SpriteTemplate sSpriteTemplate_KeyItemBoxWin = {
     .anims = sSpriteAnimTable_KeyItemBox,
     .images = sPicTable_KeyItemBox,
     .affineAnims = sAffineAnims_KeyItemBox,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_KeyItemsLabel = {
+    .tileTag = 0xD001,  // Key items label tile tag
+    .paletteTag = 0xD000,  // Label palette tag
+    .oam = &sOam_Label,
+    .anims = sSpriteAnimTable_Label,
+    .images = sPicTable_KeyItemsLabel,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_PokerideLabel = {
+    .tileTag = 0xD002,  // Pokeride label tile tag
+    .paletteTag = 0xD000,  // Label palette tag (same as key items)
+    .oam = &sOam_Label,
+    .anims = sSpriteAnimTable_Label,
+    .images = sPicTable_PokerideLabel,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
 };
 
@@ -2646,7 +2697,33 @@ static void HBlankCB_KeyItemWheel(void) {
 #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
 // MAX_REGISTERED_ITEMS icon windows
 #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
-#define tLabelWindow data[13]
+#define tLabelSprite data[13]
+
+// Create label sprite from pre-rendered graphics
+static u8 CreateLabelSprite(const struct SpriteTemplate *template, s16 x, s16 y)
+{
+    u8 spriteId;
+    
+    // Load graphics sheet for this template (if not already loaded)
+    if (IndexOfSpritePaletteTag(0xD000) == 0xFF)
+        LoadSpritePalette(&sSpritePalette_Label);
+    
+    // Load the specific label's graphics
+    struct SpriteSheet sheet;
+    sheet.data = template->images->data;
+    sheet.size = 1024;  // 64x32 = 32 tiles (8 wide × 4 tall) × 32 bytes = 1024 bytes
+    sheet.tag = template->tileTag;
+    
+    if (IndexOfSpriteTileTag(sheet.tag) == 0xFF)
+        LoadSpriteSheet(&sheet);
+    
+    // Create sprite
+    spriteId = CreateSprite(template, x, y, 0);
+    if (spriteId == MAX_SPRITES)
+        return MAX_SPRITES;
+    
+    return spriteId;
+}
 
 // Free key item wheel gfx using sprites & windows from task data
 static void FreeKeyItemWheelGfx(s16 *data, u16 paletteTag) {
@@ -2671,10 +2748,13 @@ static void FreeKeyItemWheelGfx(s16 *data, u16 paletteTag) {
         CopyWindowToVram(tIconWindow[i], COPYWIN_MAP);
         RemoveWindow(tIconWindow[i]);
     }
-    // free label window
-    if (tLabelWindow != WINDOW_NONE) {
-        ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
-        RemoveWindow(tLabelWindow);
+    // free label sprite
+    if (tLabelSprite != MAX_SPRITES) {
+        DestroySprite(&gSprites[tLabelSprite]);
+        // Free the tile tags to prevent ghost labels from appearing
+        FreeSpriteTilesByTag(0xD001);  // Key items label tiles
+        FreeSpriteTilesByTag(0xD002);  // Pokeride label tiles
+        FreeSpritePaletteByTag(0xD000); // Shared label palette
     }
     SetHBlankCallback(NULL);
     DisableInterrupts(INTR_FLAG_HBLANK);
@@ -2690,17 +2770,10 @@ static void Task_KeyItemWheel(u8 taskId) {
         LoadSpritePalette(&sSpritePalette_KeyItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
 
-        // Create label window with frame
-        tLabelWindow = AddWindowParameterized(0, 1, 1, 9, 2, 12, 100);
-        if (tLabelWindow != WINDOW_NONE) {
-            LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(12), PLTT_SIZE_4BPP);
-            LoadUserWindowBorderGfx(tLabelWindow, 0x1E0, BG_PLTT_ID(12));
-            PutWindowTilemap(tLabelWindow);
-            DrawStdFrameWithCustomTileAndPalette(tLabelWindow, FALSE, 0x1E0, 12);
-            FillWindowPixelBuffer(tLabelWindow, PIXEL_FILL(14));
-            AddTextPrinterParameterized4(tLabelWindow, FONT_NORMAL, 4 + GetStringCenterAlignXOffset(FONT_NORMAL, sText_KeyItems, 64), 1, 0, 0, sLabelWindowTextColors, TEXT_SKIP_DRAW, sText_KeyItems);
-            CopyWindowToVram(tLabelWindow, COPYWIN_FULL);
-        }
+        // Create label sprite in top left corner
+        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_KeyItemsLabel, 36, 16);
+        if (tLabelSprite == MAX_SPRITES)
+            tLabelSprite = MAX_SPRITES;  // Ensure it's set for cleanup
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
@@ -2754,11 +2827,6 @@ static void Task_KeyItemWheel(u8 taskId) {
         break;
     case 3:
         FreeKeyItemWheelGfx(data, PAL_TAG_KEY_ITEM_WHEEL);
-        // Clean up label window
-        if (tLabelWindow != WINDOW_NONE) {
-            ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
-            RemoveWindow(tLabelWindow);
-        }
         ScriptUnfreezeObjectEvents();
         UnlockPlayerFieldControls();
         DestroyTask(taskId);
@@ -2790,7 +2858,7 @@ static void Task_PokerideItemWheel(u8 taskId) {
     #define tBoxSprite (data + 1)
     #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
     #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
-    #define tLabelWindow data[13]
+    #define tLabelSprite data[13]
     #define tUsingRegisteredKeyItem data[3]
     
     switch (tState)
@@ -2800,17 +2868,10 @@ static void Task_PokerideItemWheel(u8 taskId) {
         LoadSpritePalette(&sSpritePalette_PokerideItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_PokerideItemBox, 0);
 
-        // Create label window with frame
-        tLabelWindow = AddWindowParameterized(0, 1, 1, 9, 2, 12, 100);
-        if (tLabelWindow != WINDOW_NONE) {
-            LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(12), PLTT_SIZE_4BPP);
-            LoadUserWindowBorderGfx(tLabelWindow, 0x1E0, BG_PLTT_ID(12));
-            PutWindowTilemap(tLabelWindow);
-            DrawStdFrameWithCustomTileAndPalette(tLabelWindow, FALSE, 0x1E0, 12);
-            FillWindowPixelBuffer(tLabelWindow, PIXEL_FILL(14));
-            AddTextPrinterParameterized4(tLabelWindow, FONT_NORMAL, 4 + GetStringCenterAlignXOffset(FONT_NORMAL, sText_PokeRide, 64), 1, 0, 0, sLabelWindowTextColors, TEXT_SKIP_DRAW, sText_PokeRide);
-            CopyWindowToVram(tLabelWindow, COPYWIN_FULL);
-        }
+        // Create label sprite in top left corner
+        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_PokerideLabel, 36, 16);
+        if (tLabelSprite == MAX_SPRITES)
+            tLabelSprite = MAX_SPRITES;  // Ensure it's set for cleanup
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
@@ -2864,11 +2925,6 @@ static void Task_PokerideItemWheel(u8 taskId) {
         break;
     case 3:
         FreeKeyItemWheelGfx(data, PAL_TAG_POKERIDE_ITEM_WHEEL);
-        // Clean up label window
-        if (tLabelWindow != WINDOW_NONE) {
-            ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
-            RemoveWindow(tLabelWindow);
-        }
         ScriptUnfreezeObjectEvents();
         UnlockPlayerFieldControls();
         DestroyTask(taskId);
