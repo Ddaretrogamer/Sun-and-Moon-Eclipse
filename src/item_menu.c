@@ -57,6 +57,7 @@
 #define TAG_BAG_SCROLL_ARROW    111
 // Immune to blending; doesn't conflict with tags in event_object_movement
 #define PAL_TAG_KEY_ITEM_WHEEL  0x9000
+#define PAL_TAG_POKERIDE_ITEM_WHEEL  0x9001
 
 // The buffer for the bag item list needs to be large enough to hold the maximum
 // number of item slots that could fit in a single pocket, + 1 for Cancel.
@@ -226,6 +227,11 @@ static const u8 sText_DepositHowManyVar1[] = _("Deposit how many\n{STR_VAR_1}?")
 static const u8 sText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_1}.");
 static const u8 sText_NoRoomForItems[] = _("There's no room to\nstore items.");
 static const u8 sText_CantStoreImportantItems[] = _("Important items\ncan't be stored in\nthe PC!");
+static const u8 sText_KeyItems[] = _("KEY ITEMS");
+static const u8 sText_PokeRide[] = _("POKE RIDE");
+
+// Text colors for label window: [background, foreground, shadow]
+static const u8 sLabelWindowTextColors[] = {14, 15, 8}; // index 14 bg, 15 text, 8 shadow
 
 // Helper functions for registered items
 static u32 CountRegisteredItemsInArray(u16 *array);
@@ -429,10 +435,19 @@ static const u8* const sRegisteredSelect_Gfx[] = {sRegisterUp_Gfx, sRegisterRigh
 
 static const u32 sKeyItemBoxGfx[] = INCBIN_U32("graphics/bag/key_item_box.4bpp");
 static const u16 sKeyItemBoxPal[] = INCBIN_U16("graphics/bag/key_item_box.gbapal");
+static const u16 sKeyItemBoxBluePal[] = INCBIN_U16("graphics/bag/key_item_box_blue.gbapal");
+// static const u16 sKeyItemBoxGreenPal[] = INCBIN_U16("graphics/bag/key_item_box_green.gbapal");
+// static const u16 sKeyItemBoxPurplePal[] = INCBIN_U16("graphics/bag/key_item_box_purple.gbapal");
+static const u16 sKeyItemBoxOrangePal[] = INCBIN_U16("graphics/bag/key_item_box_orange.gbapal");
 
 static const struct SpritePalette sSpritePalette_KeyItemBox = {
-    .data = sKeyItemBoxPal,
+    .data = sKeyItemBoxOrangePal,
     .tag = PAL_TAG_KEY_ITEM_WHEEL,
+};
+
+static const struct SpritePalette sSpritePalette_PokerideItemBox = {
+    .data = sKeyItemBoxBluePal,
+    .tag = PAL_TAG_POKERIDE_ITEM_WHEEL, 
 };
 
 static const struct SpriteFrameImage sPicTable_KeyItemBox[] = {
@@ -571,6 +586,26 @@ static const struct SpriteTemplate sSpriteTemplate_KeyItemBox = {
 static const struct SpriteTemplate sSpriteTemplate_KeyItemBoxWin = {
     .tileTag = PAL_TAG_KEY_ITEM_WHEEL,
     .paletteTag = PAL_TAG_KEY_ITEM_WHEEL,
+    .oam = &sOam_KeyItemBoxWin,
+    .anims = sSpriteAnimTable_KeyItemBox,
+    .images = sPicTable_KeyItemBox,
+    .affineAnims = sAffineAnims_KeyItemBox,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_PokerideItemBox = {
+    .tileTag = PAL_TAG_KEY_ITEM_WHEEL,
+    .paletteTag = PAL_TAG_POKERIDE_ITEM_WHEEL,
+    .oam = &sOam_KeyItemBox,
+    .anims = sSpriteAnimTable_KeyItemBox,
+    .images = sPicTable_KeyItemBox,
+    .affineAnims = sAffineAnims_KeyItemBox,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_PokerideItemBoxWin = {
+    .tileTag = PAL_TAG_KEY_ITEM_WHEEL,
+    .paletteTag = PAL_TAG_POKERIDE_ITEM_WHEEL,
     .oam = &sOam_KeyItemBoxWin,
     .anims = sSpriteAnimTable_KeyItemBox,
     .images = sPicTable_KeyItemBox,
@@ -2611,13 +2646,14 @@ static void HBlankCB_KeyItemWheel(void) {
 #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
 // MAX_REGISTERED_ITEMS icon windows
 #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
+#define tLabelWindow data[13]
 
 // Free key item wheel gfx using sprites & windows from task data
-static void FreeKeyItemWheelGfx(s16 *data) {
+static void FreeKeyItemWheelGfx(s16 *data, u16 paletteTag) {
     u32 i;
     struct Sprite *sprite;
     FreeSpriteTilesByTag(PAL_TAG_KEY_ITEM_WHEEL);
-    FreeSpritePaletteByTag(PAL_TAG_KEY_ITEM_WHEEL);
+    FreeSpritePaletteByTag(paletteTag);
     // free box sprites
     for (i = 0; i < 2 * MAX_REGISTERED_ITEMS; i++) {
         if (tBoxSprite[i] >= MAX_SPRITES)
@@ -2635,6 +2671,11 @@ static void FreeKeyItemWheelGfx(s16 *data) {
         CopyWindowToVram(tIconWindow[i], COPYWIN_MAP);
         RemoveWindow(tIconWindow[i]);
     }
+    // free label window
+    if (tLabelWindow != WINDOW_NONE) {
+        ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
+        RemoveWindow(tLabelWindow);
+    }
     SetHBlankCallback(NULL);
     DisableInterrupts(INTR_FLAG_HBLANK);
 }
@@ -2648,6 +2689,18 @@ static void Task_KeyItemWheel(u8 taskId) {
     {
         LoadSpritePalette(&sSpritePalette_KeyItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
+
+        // Create label window with frame
+        tLabelWindow = AddWindowParameterized(0, 1, 1, 9, 2, 12, 100);
+        if (tLabelWindow != WINDOW_NONE) {
+            LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(12), PLTT_SIZE_4BPP);
+            LoadUserWindowBorderGfx(tLabelWindow, 0x1E0, BG_PLTT_ID(12));
+            PutWindowTilemap(tLabelWindow);
+            DrawStdFrameWithCustomTileAndPalette(tLabelWindow, FALSE, 0x1E0, 12);
+            FillWindowPixelBuffer(tLabelWindow, PIXEL_FILL(14));
+            AddTextPrinterParameterized4(tLabelWindow, FONT_NORMAL, 4 + GetStringCenterAlignXOffset(FONT_NORMAL, sText_KeyItems, 64), 1, 0, 0, sLabelWindowTextColors, TEXT_SKIP_DRAW, sText_KeyItems);
+            CopyWindowToVram(tLabelWindow, COPYWIN_FULL);
+        }
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
@@ -2694,13 +2747,18 @@ static void Task_KeyItemWheel(u8 taskId) {
     case 2:
         if (!gSprites[data[15]].affineAnimEnded)
             break;
-        FreeKeyItemWheelGfx(data);
+        FreeKeyItemWheelGfx(data, PAL_TAG_KEY_ITEM_WHEEL);
         i = CreateTask(GetItemFieldFunc(gSaveBlock1Ptr->registeredItemCompat), 8);
         gTasks[i].tUsingRegisteredKeyItem = TRUE;
         DestroyTask(taskId);
         break;
     case 3:
-        FreeKeyItemWheelGfx(data);
+        FreeKeyItemWheelGfx(data, PAL_TAG_KEY_ITEM_WHEEL);
+        // Clean up label window
+        if (tLabelWindow != WINDOW_NONE) {
+            ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
+            RemoveWindow(tLabelWindow);
+        }
         ScriptUnfreezeObjectEvents();
         UnlockPlayerFieldControls();
         DestroyTask(taskId);
@@ -2720,6 +2778,7 @@ static void Task_KeyItemWheel(u8 taskId) {
 #undef tState
 #undef tBoxSprite
 #undef tIconWindow
+#undef tLabelWindow
 #undef tUsingRegisteredKeyItem
 
 static void Task_PokerideItemWheel(u8 taskId) {
@@ -2731,18 +2790,31 @@ static void Task_PokerideItemWheel(u8 taskId) {
     #define tBoxSprite (data + 1)
     #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
     #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
+    #define tLabelWindow data[13]
     #define tUsingRegisteredKeyItem data[3]
     
     switch (tState)
     {
     case 0:
     {
-        LoadSpritePalette(&sSpritePalette_KeyItemBox);
-        LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
+        LoadSpritePalette(&sSpritePalette_PokerideItemBox);
+        LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_PokerideItemBox, 0);
+
+        // Create label window with frame
+        tLabelWindow = AddWindowParameterized(0, 1, 1, 9, 2, 12, 100);
+        if (tLabelWindow != WINDOW_NONE) {
+            LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(12), PLTT_SIZE_4BPP);
+            LoadUserWindowBorderGfx(tLabelWindow, 0x1E0, BG_PLTT_ID(12));
+            PutWindowTilemap(tLabelWindow);
+            DrawStdFrameWithCustomTileAndPalette(tLabelWindow, FALSE, 0x1E0, 12);
+            FillWindowPixelBuffer(tLabelWindow, PIXEL_FILL(14));
+            AddTextPrinterParameterized4(tLabelWindow, FONT_NORMAL, 4 + GetStringCenterAlignXOffset(FONT_NORMAL, sText_PokeRide, 64), 1, 0, 0, sLabelWindowTextColors, TEXT_SKIP_DRAW, sText_PokeRide);
+            CopyWindowToVram(tLabelWindow, COPYWIN_FULL);
+        }
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
-            tBoxSprite[i] = j = CreateSprite(&sSpriteTemplate_KeyItemBox, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
+            tBoxSprite[i] = j = CreateSprite(&sSpriteTemplate_PokerideItemBox, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
             if (j < MAX_SPRITES)
                 StartSpriteAffineAnim(&gSprites[j], i);
             tBoxWinSprite[i] = MAX_SPRITES;
@@ -2785,13 +2857,18 @@ static void Task_PokerideItemWheel(u8 taskId) {
     case 2:
         if (!gSprites[data[15]].affineAnimEnded)
             break;
-        FreeKeyItemWheelGfx(data);
+        FreeKeyItemWheelGfx(data, PAL_TAG_POKERIDE_ITEM_WHEEL);
         i = CreateTask(GetItemFieldFunc(gSpecialVar_ItemId), 8);
         gTasks[i].tUsingRegisteredKeyItem = TRUE;
         DestroyTask(taskId);
         break;
     case 3:
-        FreeKeyItemWheelGfx(data);
+        FreeKeyItemWheelGfx(data, PAL_TAG_POKERIDE_ITEM_WHEEL);
+        // Clean up label window
+        if (tLabelWindow != WINDOW_NONE) {
+            ClearStdWindowAndFrameToTransparent(tLabelWindow, FALSE);
+            RemoveWindow(tLabelWindow);
+        }
         ScriptUnfreezeObjectEvents();
         UnlockPlayerFieldControls();
         DestroyTask(taskId);
@@ -2802,7 +2879,7 @@ static void Task_PokerideItemWheel(u8 taskId) {
         SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
         // Create box sprites, but in OBJWIN mode
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
-            tBoxWinSprite[i] = CreateSprite(&sSpriteTemplate_KeyItemBoxWin, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
+            tBoxWinSprite[i] = CreateSprite(&sSpriteTemplate_PokerideItemBoxWin, sKeyItemBoxXPos[i], sKeyItemBoxYPos[i], 0);
         tState = 1;
         break;
     }
@@ -2811,6 +2888,7 @@ static void Task_PokerideItemWheel(u8 taskId) {
     #undef tBoxSprite
     #undef tBoxWinSprite
     #undef tIconWindow
+    #undef tLabelWindow
     #undef tUsingRegisteredKeyItem
 }
 

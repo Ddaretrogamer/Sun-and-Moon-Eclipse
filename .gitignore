@@ -96,3 +96,12 @@ poketransform-9.png
 poketransform-8.png
 broken_changes.patch
 convert_ridemon.py
+graphics/bag/key_item_box_green.pal
+graphics/bag/key_item_box_purple.pal
+green_keyitem.pal
+orange_keyitem.pal
+purple_keyitem.pal
+red_keyitem.pal
+brown_keyitem.pal
+yellow_keyitem.pal
+teal_keyitem.pal
