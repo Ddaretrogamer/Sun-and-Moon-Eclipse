@@ -232,4 +232,6 @@ enum RotomPhone_Colours
 
 void RotomPhone_StartMenu_Open(bool32 firstInit);
 
+const u16 *RotomPhone_StartMenu_GetPhoneColour(void);
+
 #endif // GUARD_ROTOM_START_MENU_H

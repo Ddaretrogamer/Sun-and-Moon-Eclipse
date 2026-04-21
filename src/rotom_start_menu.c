@@ -286,7 +286,7 @@ static const u16 *const sRotomPhone_StartMenu_Palettes[ROTOM_PHONE_COLOUR_COUNT]
     [ROTOM_PHONE_GOLD] =          sRotomPhonePalette_Gold,
 };
 
-static const u16 *RotomPhone_StartMenu_GetPhoneColour(void)
+const u16 *RotomPhone_StartMenu_GetPhoneColour(void)
 {
     u8 paletteId = gSaveBlock2Ptr->optionsRotomPhonePalette;
     if (paletteId >= ROTOM_PHONE_COLOUR_COUNT)

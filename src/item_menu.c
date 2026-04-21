@@ -53,6 +53,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "rotom_start_menu.h"
+
 #define TAG_POCKET_SCROLL_ARROW 110
 #define TAG_BAG_SCROLL_ARROW    111
 // Immune to blending; doesn't conflict with tags in event_object_movement
@@ -436,10 +438,11 @@ static const u16 sKeyItemBoxBluePal[] = INCBIN_U16("graphics/bag/key_item_box_bl
 // static const u16 sKeyItemBoxPurplePal[] = INCBIN_U16("graphics/bag/key_item_box_purple.gbapal");
 static const u16 sKeyItemBoxOrangePal[] = INCBIN_U16("graphics/bag/key_item_box_orange.gbapal");
 
-// Label graphics (64x16 sprites, 8 tiles each)
+// Label graphics (64x32 sprites) and tail (32x32 sprite)
 static const u32 sKeyItemsLabelGfx[] = INCBIN_U32("graphics/bag/key_items_label.4bpp");
 static const u32 sPokerideLabelGfx[] = INCBIN_U32("graphics/bag/pokeride_label.4bpp");
-static const u16 sLabelPal[] = INCBIN_U16("graphics/bag/pokeride_label.gbapal");
+static const u32 sKeyItemBoxTailGfx[] = INCBIN_U32("graphics/bag/key_item_wheel_rotom_tail.4bpp");
+// Palette loaded dynamically from rotom phone color scheme
 
 static const struct SpritePalette sSpritePalette_KeyItemBox = {
     .data = sKeyItemBoxOrangePal,
@@ -451,10 +454,8 @@ static const struct SpritePalette sSpritePalette_PokerideItemBox = {
     .tag = PAL_TAG_POKERIDE_ITEM_WHEEL, 
 };
 
-static const struct SpritePalette sSpritePalette_Label = {
-    .data = sLabelPal,
-    .tag = 0xD000,  // Label palette tag
-};
+// Label palette tag - data loaded dynamically from rotom phone color scheme
+#define LABEL_PALETTE_TAG 0xD000
 
 static const struct SpriteFrameImage sPicTable_KeyItemBox[] = {
     obj_frame_tiles(sKeyItemBoxGfx),
@@ -468,6 +469,10 @@ static const struct SpriteFrameImage sPicTable_PokerideLabel[] = {
     obj_frame_tiles(sPokerideLabelGfx),
 };
 
+static const struct SpriteFrameImage sPicTable_LabelTail[] = {
+    obj_frame_tiles(sKeyItemBoxTailGfx),
+};
+
 const struct OamData sOam_KeyItemBox = {
     .shape = SPRITE_SHAPE(32x32),
     .size = SPRITE_SIZE(32x32),
@@ -479,6 +484,12 @@ const struct OamData sOam_KeyItemBox = {
 const struct OamData sOam_Label = {
     .shape = SPRITE_SHAPE(64x32),
     .size = SPRITE_SIZE(64x32),
+    .priority = 0,  // Draw on top
+};
+
+const struct OamData sOam_LabelTail = {
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
     .priority = 0,  // Draw on top
 };
 
@@ -640,6 +651,16 @@ static const struct SpriteTemplate sSpriteTemplate_PokerideLabel = {
     .oam = &sOam_Label,
     .anims = sSpriteAnimTable_Label,
     .images = sPicTable_PokerideLabel,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_LabelTail = {
+    .tileTag = 0xD003,  // Tail tile tag
+    .paletteTag = 0xD000,  // Label palette tag (shared)
+    .oam = &sOam_LabelTail,
+    .anims = sSpriteAnimTable_Label,
+    .images = sPicTable_LabelTail,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
 };
@@ -2698,18 +2719,24 @@ static void HBlankCB_KeyItemWheel(void) {
 // MAX_REGISTERED_ITEMS icon windows
 #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
 #define tLabelSprite data[13]
+#define tLabelTailSprite data[14]
 
-// Create label sprite from pre-rendered graphics
-static u8 CreateLabelSprite(const struct SpriteTemplate *template, s16 x, s16 y)
+// Create label sprite from pre-rendered graphics and tail sprite
+static u8 CreateLabelSprite(const struct SpriteTemplate *template, s16 x, s16 y, s16 *outTailSpriteId)
 {
     u8 spriteId;
+    struct SpriteSheet sheet;
     
-    // Load graphics sheet for this template (if not already loaded)
-    if (IndexOfSpritePaletteTag(0xD000) == 0xFF)
-        LoadSpritePalette(&sSpritePalette_Label);
+    // Load palette dynamically from rotom phone color (if not already loaded)
+    if (IndexOfSpritePaletteTag(LABEL_PALETTE_TAG) == 0xFF) {
+        struct SpritePalette labelPalette = {
+            .data = RotomPhone_StartMenu_GetPhoneColour(),
+            .tag = LABEL_PALETTE_TAG,
+        };
+        LoadSpritePalette(&labelPalette);
+    }
     
     // Load the specific label's graphics
-    struct SpriteSheet sheet;
     sheet.data = template->images->data;
     sheet.size = 1024;  // 64x32 = 32 tiles (8 wide × 4 tall) × 32 bytes = 1024 bytes
     sheet.tag = template->tileTag;
@@ -2717,10 +2744,22 @@ static u8 CreateLabelSprite(const struct SpriteTemplate *template, s16 x, s16 y)
     if (IndexOfSpriteTileTag(sheet.tag) == 0xFF)
         LoadSpriteSheet(&sheet);
     
-    // Create sprite
+    // Create label sprite
     spriteId = CreateSprite(template, x, y, 0);
     if (spriteId == MAX_SPRITES)
         return MAX_SPRITES;
+    
+    // Load tail graphics if not already loaded
+    if (IndexOfSpriteTileTag(0xD003) == 0xFF) {
+        sheet.data = sKeyItemBoxTailGfx;
+        sheet.size = 512;  // 32x32 = 16 tiles × 32 bytes = 512 bytes
+        sheet.tag = 0xD003;
+        LoadSpriteSheet(&sheet);
+    }
+    
+    // Create tail sprite immediately to the right of the label
+    // Label is 64 wide, so tail starts at x + 32 (label center) + 32 (half label width) + 16 (half tail width)
+    *outTailSpriteId = CreateSprite(&sSpriteTemplate_LabelTail, x + 48, y, 0);
     
     return spriteId;
 }
@@ -2748,13 +2787,17 @@ static void FreeKeyItemWheelGfx(s16 *data, u16 paletteTag) {
         CopyWindowToVram(tIconWindow[i], COPYWIN_MAP);
         RemoveWindow(tIconWindow[i]);
     }
-    // free label sprite
+    // free label sprites (label + tail)
     if (tLabelSprite != MAX_SPRITES) {
         DestroySprite(&gSprites[tLabelSprite]);
         // Free the tile tags to prevent ghost labels from appearing
         FreeSpriteTilesByTag(0xD001);  // Key items label tiles
         FreeSpriteTilesByTag(0xD002);  // Pokeride label tiles
         FreeSpritePaletteByTag(0xD000); // Shared label palette
+    }
+    if (tLabelTailSprite != MAX_SPRITES) {
+        DestroySprite(&gSprites[tLabelTailSprite]);
+        FreeSpriteTilesByTag(0xD003);  // Tail tiles
     }
     SetHBlankCallback(NULL);
     DisableInterrupts(INTR_FLAG_HBLANK);
@@ -2770,10 +2813,12 @@ static void Task_KeyItemWheel(u8 taskId) {
         LoadSpritePalette(&sSpritePalette_KeyItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
 
-        // Create label sprite in top left corner
-        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_KeyItemsLabel, 36, 16);
-        if (tLabelSprite == MAX_SPRITES)
+        // Create label sprite in top left corner with tail
+        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_KeyItemsLabel, 120, 20, &tLabelTailSprite);
+        if (tLabelSprite == MAX_SPRITES) {
             tLabelSprite = MAX_SPRITES;  // Ensure it's set for cleanup
+            tLabelTailSprite = MAX_SPRITES;
+        }
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
@@ -2846,7 +2891,8 @@ static void Task_KeyItemWheel(u8 taskId) {
 #undef tState
 #undef tBoxSprite
 #undef tIconWindow
-#undef tLabelWindow
+#undef tLabelSprite
+#undef tLabelTailSprite
 #undef tUsingRegisteredKeyItem
 
 static void Task_PokerideItemWheel(u8 taskId) {
@@ -2859,6 +2905,7 @@ static void Task_PokerideItemWheel(u8 taskId) {
     #define tBoxWinSprite (data + 1 + MAX_REGISTERED_ITEMS)
     #define tIconWindow (data + 1 + 2*MAX_REGISTERED_ITEMS)
     #define tLabelSprite data[13]
+    #define tLabelTailSprite data[14]
     #define tUsingRegisteredKeyItem data[3]
     
     switch (tState)
@@ -2868,10 +2915,12 @@ static void Task_PokerideItemWheel(u8 taskId) {
         LoadSpritePalette(&sSpritePalette_PokerideItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_PokerideItemBox, 0);
 
-        // Create label sprite in top left corner
-        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_PokerideLabel, 36, 16);
-        if (tLabelSprite == MAX_SPRITES)
+        // Create label sprite centered with tail
+        tLabelSprite = CreateLabelSprite(&sSpriteTemplate_PokerideLabel, 120, 20, &tLabelTailSprite);
+        if (tLabelSprite == MAX_SPRITES) {
             tLabelSprite = MAX_SPRITES;  // Ensure it's set for cleanup
+            tLabelTailSprite = MAX_SPRITES;
+        }
 
         for (i = 0; i < MAX_REGISTERED_ITEMS; i++) {
             // Create box sprite
@@ -2944,7 +2993,8 @@ static void Task_PokerideItemWheel(u8 taskId) {
     #undef tBoxSprite
     #undef tBoxWinSprite
     #undef tIconWindow
-    #undef tLabelWindow
+    #undef tLabelSprite
+    #undef tLabelTailSprite
     #undef tUsingRegisteredKeyItem
 }
 
