@@ -561,5 +561,6 @@
 #define MUS_USUM_HAUOLI_CITY        611
 #define MUS_USUM_ROUTE2             612
 #define MUS_USUM_BATTLE_GLADION     613
+#define MUS_USUM_VS_WILD            614
 
 #endif  // GUARD_CONSTANTS_SONGS_H

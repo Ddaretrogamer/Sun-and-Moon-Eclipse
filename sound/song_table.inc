@@ -617,10 +617,11 @@ gSongTable::
 	song ph_nurse_held, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_solo, MUSIC_PLAYER_SE2, 2
 
-	song mus_usum_ikitown_day 0, 0
-	song mus_usum_hauoli_city 0, 0
-	song mus_usum_route2 0, 0
-	song mus_usum_battle_gladion 0, 0
+	song mus_usum_ikitown_day, MUSIC_PLAYER_BGM, 0
+	song mus_usum_hauoli_city, MUSIC_PLAYER_BGM, 0
+	song mus_usum_route2, MUSIC_PLAYER_BGM, 0
+	song mus_usum_battle_gladion, MUSIC_PLAYER_BGM, 0
+	song mus_usum_vs_wild, MUSIC_PLAYER_BGM, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0
