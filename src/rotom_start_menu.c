@@ -1352,6 +1352,17 @@ static const struct RotomPhone_MenuOptions sRotomPhoneOptions[RP_MENU_COUNT] =
 };
 static enum RotomPhone_MenuItems RotomPhone_StartMenu_SetFirstSelectedMenu(void)
 {
+    // For flip phone, respect the actual display order
+    if (!RP_CONFIG_USE_ROTOM_PHONE)
+    {
+        // If Party is unlocked, it's the first option; otherwise Clock is first
+        if (sRotomPhoneOptions[RP_MENU_PARTY].unlockedFunc && sRotomPhoneOptions[RP_MENU_PARTY].unlockedFunc())
+            return RP_MENU_PARTY;
+        else if (sRotomPhoneOptions[RP_MENU_CLOCK].unlockedFunc && sRotomPhoneOptions[RP_MENU_CLOCK].unlockedFunc())
+            return RP_MENU_CLOCK;
+    }
+    
+    // Default behavior for Rotom phone: iterate through enum order
     for (enum RotomPhone_MenuItems menuOption = RP_MENU_FIRST_OPTION; menuOption < RP_MENU_COUNT; menuOption++)
     {
         if (sRotomPhoneOptions[menuOption].unlockedFunc && sRotomPhoneOptions[menuOption].unlockedFunc())
