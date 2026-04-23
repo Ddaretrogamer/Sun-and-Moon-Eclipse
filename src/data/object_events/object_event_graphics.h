@@ -400,7 +400,12 @@ const u32 gObjectEventPic_SeleneNormalRunning[] = INCBIN_U32("graphics/object_ev
 const u16 gObjectEventPalette_Selene[] = INCBIN_U16("graphics/object_events/pics/people/selene/walking.gbapal");
 const u32 gObjectEventPic_ElioRiding[] = INCBIN_U32("graphics/object_events/pics/people/elio/riding.4bpp");
 const u32 gObjectEventPic_SeleneRiding[] = INCBIN_U32("graphics/object_events/pics/people/selene/riding.4bpp");
-
+const u32 gObjectEventPic_Olea[] = INCBIN_U32("graphics/object_events/pics/people/trial_captains/olea.4bpp");
+const u16 gObjectEventPalette_Olea[] = INCBIN_U16("graphics/object_events/pics/people/trial_captains/olea.gbapal");
+const u32 gObjectEventPic_Lana[] = INCBIN_U32("graphics/object_events/pics/people/trial_captains/lana.4bpp");
+const u16 gObjectEventPalette_Lana[] = INCBIN_U16("graphics/object_events/pics/people/trial_captains/lana.gbapal");
+const u32 gObjectEventPic_Hau[] = INCBIN_U32("graphics/object_events/pics/people/rivals/hau.4bpp");
+const u16 gObjectEventPalette_Hau[] = INCBIN_U16("graphics/object_events/pics/people/rivals/hau.gbapal");
 
 const u32 gObjectEventPic_DeoxysOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/deoxys.4bpp");
 const u32 gObjectEventPic_MewOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/mew.4bpp");

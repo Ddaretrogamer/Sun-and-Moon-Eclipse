@@ -541,6 +541,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_Selene,            OBJ_EVENT_PAL_TAG_SELENE},
     {gObjectEventPal_NpcBlue,               OBJ_EVENT_PAL_TAG_NPC_BLUE},
     {gObjectEventPal_NpcGreen,              OBJ_EVENT_PAL_TAG_NPC_GREEN},
+    {gObjectEventPalette_Hau,               OBJ_EVENT_PAL_TAG_HAU},
+    {gObjectEventPalette_Olea,            OBJ_EVENT_PAL_TAG_OLEA},
+    {gObjectEventPalette_Lana,            OBJ_EVENT_PAL_TAG_LANA},
 
 
 #if IS_FRLG

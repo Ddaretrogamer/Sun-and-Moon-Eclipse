@@ -462,6 +462,9 @@ $(OBJEVENTGFXDIR)/people/rivals/gladion.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/rivals/lilliehat.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/rivals/hau.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/team_skull/teamskullgruntM.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
@@ -482,6 +485,12 @@ $(OBJEVENTGFXDIR)/people/trial_captains/hakuna.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/people/trial_captains/kiawe.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4		
+
+$(OBJEVENTGFXDIR)/people/trial_captains/olea.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4	
+
+$(OBJEVENTGFXDIR)/people/trial_captains/lana.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4	
 
 $(OBJEVENTGFXDIR)/people/trial_captains/kukui.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4	

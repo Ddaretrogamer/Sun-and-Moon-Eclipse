@@ -482,6 +482,14 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pic
 const u16 gTrainerBackPicPalette_Pokedude[] = INCBIN_U16("graphics/trainers/back_pics/pokedude.gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCBIN_U16("graphics/trainers/back_pics/old_man.gbapal");
 
+
+// USUM
+const u32 gTrainerFrontPic_Kiawe[] = INCBIN_U32("graphics/trainers/front_pics/kiawe.4bpp.smol");
+const u16 gTrainerPalette_Kiawe[] = INCBIN_U16("graphics/trainers/palettes/kiawe.gbapal");
+
+const u32 gTrainerFrontPic_Hau[] = INCBIN_U32("graphics/trainers/front_pics/hau.4bpp.smol");
+const u16 gTrainerPalette_Hau[] = INCBIN_U16("graphics/trainers/palettes/hau.gbapal");
+
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_FRONT_HIKER), and
 // gTrainerFrontPic/gTrainerPalette pointers, (e.g "gTrainerFrontPic_Hiker" and "gTrainerPalette_Hiker").
@@ -653,6 +661,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RUIN_MANIAC_FRLG, gTrainerFrontPic_RuinManiacFrlg, gTrainerPalette_RuinManiacFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LADY_FRLG, gTrainerFrontPic_LadyFrlg, gTrainerPalette_LadyFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_PAINTER_FRLG, gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_KIAWE, gTrainerFrontPic_Kiawe, gTrainerPalette_Kiawe),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_HAU, gTrainerFrontPic_Hau, gTrainerPalette_Hau),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

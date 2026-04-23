@@ -432,6 +432,12 @@
 #define OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG         402
 #define OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG        403
 
+
+//more USUM
+#define OBJ_EVENT_GFX_HAU                        404
+#define OBJ_EVENT_GFX_MINA                       405
+#define OBJ_EVENT_GFX_LANA                       406
+
 // FRLG equivalents
 
 // #define OBJ_EVENT_GFX_MEW OBJ_EVENT_GFX_NINJA_BOY
@@ -442,7 +448,7 @@
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        404
+#define NUM_OBJ_EVENT_GFX                        407
 
 
 // These are dynamic object gfx ids.
@@ -626,6 +632,9 @@
 #define OBJ_EVENT_PAL_TAG_METEORITE               0x1140
 #define OBJ_EVENT_PAL_TAG_SEAGALLOP               0x1141
 #define OBJ_EVENT_PAL_TAG_SS_ANNE                 0x1142
+#define OBJ_EVENT_PAL_TAG_HAU                     0x1143
+#define OBJ_EVENT_PAL_TAG_LANA                    0x1144
+#define OBJ_EVENT_PAL_TAG_OLEA                    0x1145
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

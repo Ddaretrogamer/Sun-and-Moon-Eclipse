@@ -419,6 +419,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hau;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lana;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Olea;
+
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -684,6 +688,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LASS_FRLG]                = &gObjectEventGraphicsInfo_LassFrlg,
     [OBJ_EVENT_GFX_WOMAN_1_FRLG]             = &gObjectEventGraphicsInfo_Woman1Frlg,
     [OBJ_EVENT_GFX_BEAUTY_FRLG]              = &gObjectEventGraphicsInfo_BeautyFrlg,
+    [OBJ_EVENT_GFX_HAU] =                     &gObjectEventGraphicsInfo_Hau,
+    [OBJ_EVENT_GFX_LANA] =                     &gObjectEventGraphicsInfo_Lana,
+    [OBJ_EVENT_GFX_MINA] =                     &gObjectEventGraphicsInfo_Olea,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,
