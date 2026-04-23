@@ -310,6 +310,9 @@
 // gTileset_HauoliLab
 #define METATILE_HauoliLab_Door  0x86C
 
+// gTileset_HauoliCity_Primary
+#define METATILE_AlolaPokecenterHauoli_Door          0x05A
+
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x81D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x815

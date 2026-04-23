@@ -459,6 +459,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_HaouliDock_Left,                              &gTileset_HauoliCityDock, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_HaouliDockLeft, sDoorAnimPalettes_HaouliDockLeft},
     {METATILE_PlayerHouseInterior_Door,                     &gTileset_PlayerHouse2, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_PlayerHouse_Door, sDoorAnimPalettes_PlayerHouse_Door},
     {METATILE_Building_Door,                                &gTileset_Building, DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_Building, sDoorAnimPalettes_Building},
+    {METATILE_AlolaPokecenterHauoli_Door,                   &gTileset_HauoliCity_Primary, DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_AlolaPokecenter, sDoorAnimPalettes_AlolaPokecenter},
 
 #else
     {METATILE_GeneralFrlg_Door,                             &gTileset_General_Frlg, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_GeneralFrlg, sDoorAnimPalettes_GeneralFrlg},

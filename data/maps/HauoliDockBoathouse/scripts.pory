@@ -30,8 +30,19 @@ script HauoliDockBoathouse_Trigger{
 script HauoliDockBoathouse_Receptionist{
     lock
     faceplayer
-    msgbox("Welcome to the Hau'oli Dock!")
-    waitmessage
-    release
-    end
+    msgbox("Welcome to the Hau'oli Dock!
+    
+    Would you like to visit the Aether
+    Conservatory?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_AETHER_CONSERVATORY, 29, 32)
+        waitmessage
+        release
+        end
+    }
+    else{
+        waitmessage
+        releaseall
+        end
+    }
 }

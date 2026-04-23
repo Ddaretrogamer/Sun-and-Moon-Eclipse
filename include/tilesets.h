@@ -63,6 +63,7 @@ extern const struct Tileset gTileset_TrainerTower;
 extern const struct Tileset gTileset_IkiTown;
 extern const struct Tileset gTileset_Route2tiles;
 extern const struct Tileset gTileset_orangeislands;
+extern const struct Tileset gTileset_HauoliCity_Primary;
 extern const struct Tileset gTileset_HauoliCity;
 extern const struct Tileset gTileset_HauliCity_South;
 extern const struct Tileset gTileset_HauoliCityDock;

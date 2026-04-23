@@ -1,0 +1,21 @@
+mapscripts AetherConservatory_MapScripts{}
+
+script UseElevator{
+    lockall
+    msgbox("This elevator will take you back to the
+    Hau'oli City Docks.
+    
+    Would you like to use it?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_HAUOLI_DOCK_BOATHOUSE, 13, 9)
+        delay(30)
+        release
+        end
+    }
+    else{
+        waitmessage
+        releaseall
+        end
+    }
+}
+// this is temporarry until i remember how to impliment scripts that continune after warp. prob mapscript shit.

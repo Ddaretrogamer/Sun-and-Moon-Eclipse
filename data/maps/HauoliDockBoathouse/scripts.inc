@@ -46,10 +46,22 @@ HauoliDockBoathouse_Receptionist::
 # 32 "data/maps/HauoliDockBoathouse/scripts.pory"
 	faceplayer
 # 33 "data/maps/HauoliDockBoathouse/scripts.pory"
-	msgbox HauoliDockBoathouse_Receptionist_Text_0
-# 34 "data/maps/HauoliDockBoathouse/scripts.pory"
+	msgbox HauoliDockBoathouse_Receptionist_Text_0, MSGBOX_YESNO
+# 37 "data/maps/HauoliDockBoathouse/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq HauoliDockBoathouse_Receptionist_1
+# 44 "data/maps/HauoliDockBoathouse/scripts.pory"
 	waitmessage
-# 35 "data/maps/HauoliDockBoathouse/scripts.pory"
+# 45 "data/maps/HauoliDockBoathouse/scripts.pory"
+	releaseall
+	end
+
+HauoliDockBoathouse_Receptionist_1:
+# 38 "data/maps/HauoliDockBoathouse/scripts.pory"
+	warp MAP_AETHER_CONSERVATORY, 29, 32
+# 39 "data/maps/HauoliDockBoathouse/scripts.pory"
+	waitmessage
+# 40 "data/maps/HauoliDockBoathouse/scripts.pory"
 	release
 	end
 
@@ -87,4 +99,6 @@ HauoliDockBoathouse_Trigger_Text_0:
 
 HauoliDockBoathouse_Receptionist_Text_0:
 # 33 "data/maps/HauoliDockBoathouse/scripts.pory"
-	.string "Welcome to the Hau'oli Dock!$"
+	.string "Welcome to the Hau'oli Dock!\p"
+	.string "Would you like to visit the Aether\n"
+	.string "Conservatory?$"
