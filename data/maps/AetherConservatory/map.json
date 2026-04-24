@@ -2,7 +2,7 @@
   "id": "MAP_AETHER_CONSERVATORY",
   "name": "AetherConservatory",
   "layout": "LAYOUT_AETHER_CONSERVATORY",
-  "music": "MUS_DUMMY",
+  "music": "MUS_SEALED_CHAMBER",
   "region_map_section": "MAPSEC_AETHER_PARADISE_SM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -197,43 +197,46 @@
       "flag": "0"
     },
     {
+      "local_id": "aetherintrogrunt1",
       "graphics_id": "OBJ_EVENT_GFX_AETHER_GRUNT_F",
-      "x": 45,
-      "y": 17,
+      "x": 21,
+      "y": 36,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_SHOW_LILLIE_INTRO"
     },
     {
+      "local_id": "aetherintrogrunt2",
       "graphics_id": "OBJ_EVENT_GFX_AETHER_GRUNT_M",
-      "x": 46,
-      "y": 17,
+      "x": 21,
+      "y": 36,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_SHOW_LILLIE_INTRO"
     },
     {
+      "local_id": "LillieIntro",
       "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
-      "x": 43,
-      "y": 17,
+      "x": 29,
+      "y": 32,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_SHOW_LILLIE_INTRO"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(TOUCANNON)",
@@ -247,6 +250,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "aetherintrogrunt3",
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_GRUNT_M",
+      "x": 11,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_SHOW_LILLIE_INTRO"
     }
   ],
   "warp_events": [],

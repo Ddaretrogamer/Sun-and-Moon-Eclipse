@@ -1,0 +1,14 @@
+mapscripts PlayerRoom_MapScripts{
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_INTRO_PLAYED, 0 {applymovement(LOCALID_PLAYER, moves(face_up))}]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_INTRO_PLAYED, 0: RoomIntroSequence]
+}
+
+script RoomIntroSequence{
+    lock
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    delay(160)
+    waitmovement(0)
+    setvar(VAR_INTRO_PLAYED, 1)
+    release
+    end
+}

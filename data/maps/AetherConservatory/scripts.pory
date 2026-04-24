@@ -1,4 +1,7 @@
-mapscripts AetherConservatory_MapScripts{}
+mapscripts AetherConservatory_MapScripts{
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_INTRO_PLAYED, 0 {hideobjectat(LOCALID_PLAYER, MAP_AETHER_CONSERVATORY)}]
+        MAP_SCRIPT_ON_FRAME_TABLE[VAR_INTRO_PLAYED, 0: AetherIntroSequence]
+}
 
 script UseElevator{
     lockall
@@ -7,7 +10,9 @@ script UseElevator{
     
     Would you like to use it?", MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES){
-        warp(MAP_HAUOLI_DOCK_BOATHOUSE, 13, 9)
+        setvar(VAR_WARP_TO_BOATHOUSE, 1)
+        warp(MAP_HAUOLI_DOCK_BOATHOUSE, 10, 6)
+        waitstate
         delay(30)
         release
         end
@@ -18,4 +23,100 @@ script UseElevator{
         end
     }
 }
-// this is temporarry until i remember how to impliment scripts that continune after warp. prob mapscript shit.
+
+
+script AetherIntroSequence{
+    lock
+    special(SpawnCameraObject)
+    delay(30)
+    clearflag(FLAG_SHOW_LILLIE_INTRO)
+    addobject(LillieIntro)
+    addobject(aetherintrogrunt1)
+    addobject(aetherintrogrunt2)
+    playse(SE_WARP_IN)
+    waitse
+    delay(60)
+    // Lillie walks down slowly, doesn't know she's being chased yet
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down*4))
+    applymovement(LillieIntro, moves(walk_down*4))
+    waitmovement(LillieIntro)
+    delay(30)
+    // Looks around
+    applymovement(LillieIntro, moves(face_right, delay_16*3, face_left))
+    waitmovement(LillieIntro)
+    delay(15)
+    // Sees the grunts
+    applymovement(LillieIntro, Common_Movement_ExclamationMark)
+    waitmovement(LillieIntro) 
+    playse(SE_PIN)
+    waitse
+    playbgm(MUS_HELP, FALSE)
+    delay(20)
+    // Start chase
+    playse(SE_FLEE)
+    applymovement(LillieIntro, moves(walk_fast_right*9))
+    waitmovement(LillieIntro)
+    waitse
+    // Both grunts chase after her
+    playse(SE_FLEE)
+    applymovement(aetherintrogrunt1, moves(walk_fast_right*17))
+    applymovement(aetherintrogrunt2, moves(delay_16, walk_fast_right*17))
+    waitse
+    waitmovement(0)
+    // Fade to black, reposition everyone
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_up*19))
+    applymovement(LillieIntro, moves(walk_faster_up*19))
+    applymovement(aetherintrogrunt1,moves(walk_faster_up*19))
+    applymovement(aetherintrogrunt2, moves(walk_faster_up*19))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    // Continue the chase
+    playse(SE_FLEE)
+    applymovement(LillieIntro, moves(walk_fast_left*22))
+    applymovement(aetherintrogrunt1, moves(delay_8*2, walk_fast_left*18))
+    applymovement(aetherintrogrunt2, moves(delay_8*3, walk_fast_left*16))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16*4, walk_fast_left*13))
+    waitmovement(0)
+    waitse
+    delay(15)
+    // Sees another guard ahead
+    playse(SE_PIN)
+    applymovement(LillieIntro, Common_Movement_ExclamationMark)
+    waitmovement(LillieIntro)
+    delay(20)
+    // Trapped
+    applymovement(LillieIntro, moves(face_right, delay_16*2, face_left, delay_16*2, face_right, delay_16, face_left))
+    applymovement(aetherintrogrunt1, moves(delay_16*2, walk_left*1))
+    applymovement(aetherintrogrunt2, moves(delay_16*2, walk_left*1))
+    applymovement(aetherintrogrunt3, moves(delay_16*2, walk_right*1))
+    waitmovement(0)
+    delay(30)
+    // huh
+    playse(SE_PIN)
+    waitse
+    applymovement(LillieIntro, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    delay(30)
+    // sparkle
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(16, 17, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    closemessage
+    setvar(VAR_RESULT, 3)
+    delay(20)
+    special(RemoveCameraObject)
+    // orb
+    playse(SE_ORB)
+    special(DoOrbEffect)
+    delay(120)
+    fadescreenswapbuffers(FADE_TO_BLACK, 64)
+    waitstate
+    fadenewbgm(MUS_NONE)
+    delay(120)
+    warp(MAP_PLAYER_ROOM, 12, 10)
+    waitstate
+    release
+    end
+}

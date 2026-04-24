@@ -1,4 +1,16 @@
-mapscripts HauoliDockBoathouse_MapScripts {}
+mapscripts HauoliDockBoathouse_MapScripts {
+        MAP_SCRIPT_ON_FRAME_TABLE[VAR_WARP_TO_BOATHOUSE, 1: ReturnFromElevator]
+}
+
+script ReturnFromElevator{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_down*2))
+    waitmovement(LOCALID_PLAYER)
+    setvar(VAR_WARP_TO_BOATHOUSE, 0)
+    release
+    end
+
+}
 
 script HauoliDockBoathouse_Trigger{
     lock
@@ -28,7 +40,7 @@ script HauoliDockBoathouse_Trigger{
 }
 
 script HauoliDockBoathouse_Receptionist{
-    lock
+    lockall
     faceplayer
     msgbox("Welcome to the Hau'oli Dock!
     
@@ -36,12 +48,11 @@ script HauoliDockBoathouse_Receptionist{
     Conservatory?", MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES){
         warp(MAP_AETHER_CONSERVATORY, 29, 32)
-        waitmessage
-        release
+        waitstate
+        releaseall
         end
     }
     else{
-        waitmessage
         releaseall
         end
     }
