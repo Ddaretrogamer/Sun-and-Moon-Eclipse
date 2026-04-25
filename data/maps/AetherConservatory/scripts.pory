@@ -91,19 +91,18 @@ script AetherIntroSequence{
     applymovement(aetherintrogrunt2, moves(delay_16*2, walk_left*1))
     applymovement(aetherintrogrunt3, moves(delay_16*2, walk_right*1))
     waitmovement(0)
-    delay(30)
-    // huh
-    playse(SE_PIN)
-    waitse
-    applymovement(LillieIntro, Common_Movement_ExclamationMark)
-    waitmovement(0)
-    delay(30)
+    delay(60)
     // sparkle
     setvar(VAR_RESULT, 1)
     playse(SE_M_DETECT)
     dofieldeffectsparkle(16, 17, 0)
     waitfieldeffect(FLDEFF_SPARKLE)
     closemessage
+    // huh
+    playse(SE_PIN)
+    applymovement(LillieIntro, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    delay(30)
     setvar(VAR_RESULT, 3)
     delay(20)
     special(RemoveCameraObject)
@@ -114,7 +113,7 @@ script AetherIntroSequence{
     fadescreenswapbuffers(FADE_TO_BLACK, 64)
     waitstate
     fadenewbgm(MUS_NONE)
-    delay(120)
+    delay(160)
     warp(MAP_PLAYER_ROOM, 12, 10)
     waitstate
     release

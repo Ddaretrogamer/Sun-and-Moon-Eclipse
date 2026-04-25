@@ -163,52 +163,50 @@ AetherIntroSequence::
 # 93 "data/maps/AetherConservatory/scripts.pory"
 	waitmovement 0
 # 94 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
+	delay 60
 # 96 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_PIN
-# 97 "data/maps/AetherConservatory/scripts.pory"
-	waitse
-# 98 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, Common_Movement_ExclamationMark
-# 99 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement 0
-# 100 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
-# 102 "data/maps/AetherConservatory/scripts.pory"
 	setvar VAR_RESULT, 1
-# 103 "data/maps/AetherConservatory/scripts.pory"
+# 97 "data/maps/AetherConservatory/scripts.pory"
 	playse SE_M_DETECT
-# 104 "data/maps/AetherConservatory/scripts.pory"
+# 98 "data/maps/AetherConservatory/scripts.pory"
 	dofieldeffectsparkle 16, 17, 0
-# 105 "data/maps/AetherConservatory/scripts.pory"
+# 99 "data/maps/AetherConservatory/scripts.pory"
 	waitfieldeffect FLDEFF_SPARKLE
-# 106 "data/maps/AetherConservatory/scripts.pory"
+# 100 "data/maps/AetherConservatory/scripts.pory"
 	closemessage
-# 107 "data/maps/AetherConservatory/scripts.pory"
+# 102 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_PIN
+# 103 "data/maps/AetherConservatory/scripts.pory"
+	applymovement LillieIntro, Common_Movement_ExclamationMark
+# 104 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement 0
+# 105 "data/maps/AetherConservatory/scripts.pory"
+	delay 30
+# 106 "data/maps/AetherConservatory/scripts.pory"
 	setvar VAR_RESULT, 3
-# 108 "data/maps/AetherConservatory/scripts.pory"
+# 107 "data/maps/AetherConservatory/scripts.pory"
 	delay 20
-# 109 "data/maps/AetherConservatory/scripts.pory"
+# 108 "data/maps/AetherConservatory/scripts.pory"
 	special RemoveCameraObject
-# 111 "data/maps/AetherConservatory/scripts.pory"
+# 110 "data/maps/AetherConservatory/scripts.pory"
 	playse SE_ORB
-# 112 "data/maps/AetherConservatory/scripts.pory"
+# 111 "data/maps/AetherConservatory/scripts.pory"
 	special DoOrbEffect
+# 112 "data/maps/AetherConservatory/scripts.pory"
+	delay 120
 # 113 "data/maps/AetherConservatory/scripts.pory"
-	delay 120
-# 114 "data/maps/AetherConservatory/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK, 64
+# 114 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
 # 115 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
-# 116 "data/maps/AetherConservatory/scripts.pory"
 	fadenewbgm MUS_NONE
+# 116 "data/maps/AetherConservatory/scripts.pory"
+	delay 160
 # 117 "data/maps/AetherConservatory/scripts.pory"
-	delay 120
-# 118 "data/maps/AetherConservatory/scripts.pory"
 	warp MAP_PLAYER_ROOM, 12, 10
-# 119 "data/maps/AetherConservatory/scripts.pory"
+# 118 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
-# 120 "data/maps/AetherConservatory/scripts.pory"
+# 119 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 
