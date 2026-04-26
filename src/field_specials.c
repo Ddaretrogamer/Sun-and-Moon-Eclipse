@@ -4,6 +4,7 @@
 #include "battle.h"
 #include "battle_special.h"
 #include "cable_club.h"
+#include "comfy_anim.h"
 #include "data.h"
 #include "daycare.h"
 #include "decoration.h"
@@ -29,6 +30,7 @@
 #include "mail.h"
 #include "main.h"
 #include "match_call.h"
+#include "math_util.h"
 #include "menu.h"
 #include "metatile_behavior.h"
 #include "mystery_gift.h"
@@ -46,6 +48,7 @@
 #include "script.h"
 #include "script_menu.h"
 #include "sound.h"
+#include "sprite.h"
 #include "starter_choose.h"
 #include "string_util.h"
 #include "strings.h"
@@ -116,6 +119,8 @@ static EWRAM_DATA u8 sBrailleTextCursorSpriteID = 0;
 void TryLoseFansFromPlayTime(void);
 void SetPlayerGotFirstFans(void);
 u16 GetNumFansOfPlayerInTrainerFanClub(void);
+void ShowCutsceneCinematicBars(void);
+void HideCutsceneCinematicBars(void);
 
 static void RecordCyclingRoadResults(u32, u8);
 static void LoadLinkPartnerObjectEventSpritePalette(u16, u8, u8);
@@ -4497,6 +4502,247 @@ static void UIEndTask(u8 taskId)
 {
     DestroyTask(taskId);
     ScriptContext_Enable();
+}
+
+// Cinematic bars effect for cutscenes using sprite objects and the comfy anims library for smooth sliding
+// The bars are made up of multiple 32x16 sprites that slide in from the top and bottom of the screen
+// and can be kept visible during gameplay/fades by keeping the task active in an idle state
+
+#define CINEMATIC_BARS_HEIGHT 16  // pixel height
+#define CINEMATIC_BARS_SLIDE_DURATION 30  // frames for sliding in or out
+#define CINEMATIC_BARS_SPRITE_TAG 30000
+#define CINEMATIC_BARS_SPRITES_PER_BAR 8  // this is enought to cover the entire width of the screen with black boxes lol
+
+enum {
+    CINEMATIC_BARS_STATE_SLIDE_IN,
+    CINEMATIC_BARS_STATE_IDLE,
+    CINEMATIC_BARS_STATE_SLIDE_OUT,
+    CINEMATIC_BARS_STATE_DONE,
+};
+
+#define tState data[0]
+#define tTopAnimId  data[1]
+#define tBottomAnimId data[2]
+
+static EWRAM_DATA u8 sCinematicBarsTaskId = 0;
+static EWRAM_DATA u8 sCinematicBarsTopSpriteIds[CINEMATIC_BARS_SPRITES_PER_BAR] = {0};
+static EWRAM_DATA u8 sCinematicBarsBottomSpriteIds[CINEMATIC_BARS_SPRITES_PER_BAR] = {0};
+static EWRAM_DATA bool8 sCinematicBarsActive = FALSE;
+
+static const struct OamData sCinematicBarsOam = {
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .shape = SPRITE_SHAPE(32x16),
+    .size = SPRITE_SIZE(32x16),
+};
+
+static const union AnimCmd sCinematicBarsAnim[] = {
+    ANIMCMD_FRAME(0, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sCinematicBarsAnimTable[] = {
+    sCinematicBarsAnim
+};
+
+static const struct SpriteTemplate sCinematicBarsSpriteTemplate = {
+    .tileTag = CINEMATIC_BARS_SPRITE_TAG,
+    .paletteTag = CINEMATIC_BARS_SPRITE_TAG,
+    .oam = &sCinematicBarsOam,
+    .anims = sCinematicBarsAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+static void Task_CinematicBarsSlide(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    s16 topY, bottomY;
+    u8 i;
+    
+    switch (task->tState)
+    {
+    case CINEMATIC_BARS_STATE_SLIDE_IN:
+        // Advance both animations
+        TryAdvanceComfyAnim(&gComfyAnims[task->tTopAnimId]);
+        TryAdvanceComfyAnim(&gComfyAnims[task->tBottomAnimId]);
+        
+        // Read pixel positions using ComfyAnim library
+        topY = ReadComfyAnimValueSmooth(&gComfyAnims[task->tTopAnimId]);
+        bottomY = ReadComfyAnimValueSmooth(&gComfyAnims[task->tBottomAnimId]);
+        
+        // Update all sprite positions
+        for (i = 0; i < CINEMATIC_BARS_SPRITES_PER_BAR; i++)
+        {
+            gSprites[sCinematicBarsTopSpriteIds[i]].y = topY;
+            gSprites[sCinematicBarsBottomSpriteIds[i]].y = bottomY;
+        }
+        
+        // Check if animations completed
+        if (gComfyAnims[task->tTopAnimId].completed && gComfyAnims[task->tBottomAnimId].completed)
+        {
+            ReleaseComfyAnim(task->tTopAnimId);
+            ReleaseComfyAnim(task->tBottomAnimId);
+            task->tState = CINEMATIC_BARS_STATE_IDLE;
+        }
+        break;
+        
+    case CINEMATIC_BARS_STATE_IDLE:
+        // Keep sprites visible during gameplay/fades
+        break;
+        
+    case CINEMATIC_BARS_STATE_SLIDE_OUT:
+        // Advance slide out animations
+        TryAdvanceComfyAnim(&gComfyAnims[task->tTopAnimId]);
+        TryAdvanceComfyAnim(&gComfyAnims[task->tBottomAnimId]);
+        
+        topY = ReadComfyAnimValueSmooth(&gComfyAnims[task->tTopAnimId]);
+        bottomY = ReadComfyAnimValueSmooth(&gComfyAnims[task->tBottomAnimId]);
+        
+        for (i = 0; i < CINEMATIC_BARS_SPRITES_PER_BAR; i++)
+        {
+            gSprites[sCinematicBarsTopSpriteIds[i]].y = topY;
+            gSprites[sCinematicBarsBottomSpriteIds[i]].y = bottomY;
+        }
+        
+        // Check if animations completed
+        if (gComfyAnims[task->tTopAnimId].completed && gComfyAnims[task->tBottomAnimId].completed)
+        {
+            ReleaseComfyAnim(task->tTopAnimId);
+            ReleaseComfyAnim(task->tBottomAnimId);
+            task->tState = CINEMATIC_BARS_STATE_DONE;
+        }
+        break;
+        
+    case CINEMATIC_BARS_STATE_DONE:
+        // Destroy all sprite objects
+        for (i = 0; i < CINEMATIC_BARS_SPRITES_PER_BAR; i++)
+        {
+            DestroySprite(&gSprites[sCinematicBarsTopSpriteIds[i]]);
+            DestroySprite(&gSprites[sCinematicBarsBottomSpriteIds[i]]);
+        }
+        FreeSpriteTilesByTag(CINEMATIC_BARS_SPRITE_TAG);
+        FreeSpritePaletteByTag(CINEMATIC_BARS_SPRITE_TAG);
+        
+        sCinematicBarsActive = FALSE;
+        DestroyTask(taskId);
+        break;
+    }
+}
+
+static void CreateBlackSpriteTiles(void)
+{
+    struct SpriteSheet spriteSheet;
+    struct SpritePalette spritePalette;
+    u8 *tiles;
+    u16 *palette;
+    u32 i;
+    
+    // Allocate and fill sprite tiles with solid color (index 1)
+    // 32x16 sprite = 4 tiles wide × 2 tiles high = 8 tiles × 32 bytes = 256 bytes in 4bpp
+    tiles = Alloc(256);
+    if (tiles != NULL)
+    {
+        // Fill with palette index 1, which is black
+        for (i = 0; i < 256; i++)
+            tiles[i] = 0x11;  // Both pixels will use index 1
+        
+        spriteSheet.data = tiles;
+        spriteSheet.size = 256;
+        spriteSheet.tag = CINEMATIC_BARS_SPRITE_TAG;
+        LoadSpriteSheet(&spriteSheet);
+        Free(tiles);
+    }
+    
+    // Create black palette
+    palette = Alloc(32); 
+    if (palette != NULL)
+    {
+        palette[0] = RGB(31, 0, 31);  
+        palette[1] = RGB(0, 0, 0);     // Black for everything else but particularly index 1. change this stuff if you want a different color for the bars
+        for (i = 2; i < 16; i++)
+            palette[i] = RGB(0, 0, 0);  // Rest black
+        
+        spritePalette.data = palette;
+        spritePalette.tag = CINEMATIC_BARS_SPRITE_TAG;
+        LoadSpritePalette(&spritePalette);
+        Free(palette);
+    }
+}
+
+void ShowCutsceneCinematicBars(void)
+{
+    if (!sCinematicBarsActive)
+    {
+        struct ComfyAnimEasingConfig config;
+        u8 i;
+        s16 x;
+        
+        // Load black sprite graphics
+        CreateBlackSpriteTiles();
+        
+        // Create top bar sprites
+        for (i = 0, x = 16; i < CINEMATIC_BARS_SPRITES_PER_BAR; i++, x += 32)
+        {
+            sCinematicBarsTopSpriteIds[i] = CreateSprite(&sCinematicBarsSpriteTemplate, x, -CINEMATIC_BARS_HEIGHT, 0);
+            gSprites[sCinematicBarsTopSpriteIds[i]].oam.priority = 0;  // Highest priority so its on top of everything
+        }
+        
+        // Create bottom bar sprites
+        for (i = 0, x = 16; i < CINEMATIC_BARS_SPRITES_PER_BAR; i++, x += 32)
+        {
+            sCinematicBarsBottomSpriteIds[i] = CreateSprite(&sCinematicBarsSpriteTemplate, x, DISPLAY_HEIGHT + CINEMATIC_BARS_HEIGHT, 0);
+            gSprites[sCinematicBarsBottomSpriteIds[i]].oam.priority = 0;
+        }
+        
+        // Create task for animation
+        sCinematicBarsTaskId = CreateTask(Task_CinematicBarsSlide, 5); 
+        gTasks[sCinematicBarsTaskId].tState = CINEMATIC_BARS_STATE_SLIDE_IN;
+        
+        // Set up smooth easing animation for top bar
+        InitComfyAnimConfig_Easing(&config);
+        config.durationFrames = CINEMATIC_BARS_SLIDE_DURATION;
+        config.from = Q_24_8(-CINEMATIC_BARS_HEIGHT);
+        config.to = Q_24_8(8);  // Center Y of 16px sprite
+        config.easingFunc = ComfyAnimEasing_EaseOutCubic;
+        gTasks[sCinematicBarsTaskId].tTopAnimId = CreateComfyAnim_Easing(&config);
+        
+        // Set up smooth easing animation for bottom bar
+        InitComfyAnimConfig_Easing(&config);
+        config.durationFrames = CINEMATIC_BARS_SLIDE_DURATION;
+        config.from = Q_24_8(DISPLAY_HEIGHT + CINEMATIC_BARS_HEIGHT);
+        config.to = Q_24_8(DISPLAY_HEIGHT - 8);  // Center Y of 16px sprite
+        config.easingFunc = ComfyAnimEasing_EaseOutCubic;
+        gTasks[sCinematicBarsTaskId].tBottomAnimId = CreateComfyAnim_Easing(&config);
+        
+        sCinematicBarsActive = TRUE;
+    }
+}
+
+void HideCutsceneCinematicBars(void)
+{
+    if (sCinematicBarsActive && gTasks[sCinematicBarsTaskId].tState == CINEMATIC_BARS_STATE_IDLE)
+    {
+        struct ComfyAnimEasingConfig config;
+        
+        // Create slide-out animations
+        InitComfyAnimConfig_Easing(&config);
+        config.durationFrames = CINEMATIC_BARS_SLIDE_DURATION;
+        config.from = Q_24_8(8);
+        config.to = Q_24_8(-CINEMATIC_BARS_HEIGHT);
+        config.easingFunc = ComfyAnimEasing_EaseInCubic;
+        gTasks[sCinematicBarsTaskId].tTopAnimId = CreateComfyAnim_Easing(&config);
+        
+        InitComfyAnimConfig_Easing(&config);
+        config.durationFrames = CINEMATIC_BARS_SLIDE_DURATION;
+        config.from = Q_24_8(DISPLAY_HEIGHT - 8);
+        config.to = Q_24_8(DISPLAY_HEIGHT + CINEMATIC_BARS_HEIGHT);
+        config.easingFunc = ComfyAnimEasing_EaseInCubic;
+        gTasks[sCinematicBarsTaskId].tBottomAnimId = CreateComfyAnim_Easing(&config);
+        
+        gTasks[sCinematicBarsTaskId].tState = CINEMATIC_BARS_STATE_SLIDE_OUT;
+    }
 }
 
 #define tState         data[0]

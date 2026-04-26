@@ -531,6 +531,8 @@ gSpecials::
 	def_special TryGetWallpaperWithWaldaPhrase
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint
+	def_special ShowCutsceneCinematicBars
+	def_special HideCutsceneCinematicBars
 	def_special LoadLinkContestPlayerPalettes
 	def_special ShowTrainerHillRecords
 	def_special PlayerFaceTrainerAfterBattle
