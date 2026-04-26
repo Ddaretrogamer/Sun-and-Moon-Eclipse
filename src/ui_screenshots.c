@@ -114,6 +114,10 @@ static const struct WindowTemplate sScreenshotsWindowTemplates[] =
 };
 
 
+static const u32 sUELogoScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/ultra_eclipse_logo.8bpp.lz");
+static const u32 sUELogoScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/ultra_eclipse_logo.bin.lz");
+static const u16 sUELogoScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/ultra_eclipse_logo.gbapal");
+
 // static const u32 sTabletScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.8bpp.smol");
 // static const u32 sTabletScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.bin.smolTM");
 // static const u16 sTabletScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/seacrown_tablet_tiles.gbapal");
@@ -129,17 +133,11 @@ struct Screenshot {
 };
 
 static const struct Screenshot sScreenshotData[] = {
-	[SCREENSHOT_TABLET] = {
-		// .screenshotTiles = sTabletScreenshotsTiles,
-		// .screenshotTilemap = sTabletScreenshotsTilemap,
-		// .screenshotPalette = sTabletScreenshotsPalette,
-	},
-	
-	[SCREENSHOT_MAY_GOODBYE] = {
-		// .screenshotTiles = sMayScreenshotsTiles,
-		// .screenshotTilemap = sMayScreenshotsTilemap,
-		// .screenshotPalette = sMayScreenshotsPalette,
-	},
+    [SCREENSHOT_ULTRA_ECLIPSE_LOGO] = {
+        .screenshotTiles = sUELogoScreenshotsTiles,
+        .screenshotTilemap = sUELogoScreenshotsTilemap,
+        .screenshotPalette = sUELogoScreenshotsPalette,
+    },
 };
 
 
@@ -393,12 +391,45 @@ static void Task_ScreenshotsTurnOff(u8 taskId)
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_ScreenshotsMain(u8 taskId)
 {
-    if (JOY_NEW(B_BUTTON))
+    s16 *data = gTasks[taskId].data;
+    
+    // Auto-close timer
+    #define AUTOCLOSE_TIMER data[0]
+    #define AUTOCLOSE_DURATION 180 // 3 seconds cause 60fps
+    
+    AUTOCLOSE_TIMER++;
+    
+    if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON) || AUTOCLOSE_TIMER >= AUTOCLOSE_DURATION)
     {
-        PlaySE(SE_PC_OFF);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_ScreenshotsTurnOff;
+        // Check VAR_RESULT to determine behavior:
+        // If VAR_RESULT = 1: Stay black (for cutscenes with fade to black)
+        // If VAR_RESULT = 0: Return to field normally
+        if (VarGet(VAR_RESULT) == 1)
+        {
+            // Stay black until warp
+            // Set all palettes to black
+            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+            // Set backdrop color to black
+            *(u16 *)PLTT = RGB_BLACK;
+            // Turn off display
+            SetGpuReg(REG_OFFSET_DISPCNT, 0);
+            // Resume script without restoring field display
+            ScriptContext_Enable();
+            SetMainCallback2(CB2_Overworld);
+            Screenshots_FreeResources();
+            DestroyTask(taskId);
+        }
+        else
+        {
+            //Return to field normally
+            SetMainCallback2(sScreenshotsDataPtr->savedCallback);
+            Screenshots_FreeResources();
+            DestroyTask(taskId);
+        }
     }
+    
+    #undef AUTOCLOSE_TIMER
+    #undef AUTOCLOSE_DURATION
 }
 
 

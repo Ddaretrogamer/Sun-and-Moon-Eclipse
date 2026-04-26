@@ -10,8 +10,7 @@ void Screenshots_StartMenuInitCB(void);
 
 enum Screenshots
 {
-    SCREENSHOT_TABLET,
-    SCREENSHOT_MAY_GOODBYE,
+    SCREENSHOT_ULTRA_ECLIPSE_LOGO,
 };
 
 
