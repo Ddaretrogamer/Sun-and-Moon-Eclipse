@@ -280,9 +280,9 @@ extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern const struct SpritePalette gSpritePalette_CharizardFly;
 extern const struct SpritePalette gSpritePalette_CharizardFlyShiny;
 
-static const u32 sNewGameBirch_Gfx[] = INCBIN_U32("graphics/birch_speech/birch.4bpp");
+static const u32 sNewGameBirch_Gfx[] = INCBIN_U32("graphics/birch_speech/kukui.4bpp");
 static const u32 sUnusedBirchBeauty[] = INCBIN_U32("graphics/birch_speech/unused_beauty.4bpp");
-static const u16 sNewGameBirch_Pal[16] = INCBIN_U16("graphics/birch_speech/birch.gbapal");
+static const u16 sNewGameBirch_Pal[16] = INCBIN_U16("graphics/birch_speech/kukui.gbapal");
 
 static const u32 sPokeballGlow_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokeball_glow.4bpp");
 static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/pokeball_glow.gbapal");

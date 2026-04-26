@@ -486,9 +486,24 @@ const u16 gTrainerBackPicPalette_OldMan[] = INCBIN_U16("graphics/trainers/back_p
 // USUM
 const u32 gTrainerFrontPic_Kiawe[] = INCBIN_U32("graphics/trainers/front_pics/kiawe.4bpp.smol");
 const u16 gTrainerPalette_Kiawe[] = INCBIN_U16("graphics/trainers/palettes/kiawe.gbapal");
-
 const u32 gTrainerFrontPic_Hau[] = INCBIN_U32("graphics/trainers/front_pics/hau.4bpp.smol");
 const u16 gTrainerPalette_Hau[] = INCBIN_U16("graphics/trainers/palettes/hau.gbapal");
+const u32 gTrainerFrontPic_Guzma[] = INCBIN_U32("graphics/trainers/front_pics/guzma.4bpp.smol");
+const u16 gTrainerPalette_Guzma[] = INCBIN_U16("graphics/trainers/palettes/guzma.gbapal");
+const u32 gTrainerFrontPic_Gladion[] = INCBIN_U32("graphics/trainers/front_pics/gladion.4bpp.smol");
+const u16 gTrainerPalette_Gladion[] = INCBIN_U16("graphics/trainers/palettes/gladion.gbapal");
+const u32 gTrainerFrontPic_Kukui[] = INCBIN_U32("graphics/trainers/front_pics/kukui.4bpp.smol");
+const u16 gTrainerPalette_Kukui[] = INCBIN_U16("graphics/trainers/palettes/kukui.gbapal");
+const u32 gTrainerFrontPic_Ilima[] = INCBIN_U32("graphics/trainers/front_pics/ilima.4bpp.smol");
+const u16 gTrainerPalette_Ilima[] = INCBIN_U16("graphics/trainers/palettes/ilima.gbapal");
+const u32 gTrainerFrontPic_Hala[] = INCBIN_U32("graphics/trainers/front_pics/hala.4bpp.smol");
+const u16 gTrainerPalette_Hala[] = INCBIN_U16("graphics/trainers/palettes/hala.gbapal");
+const u32 gTrainerFrontPic_SkullGruntM[] = INCBIN_U32("graphics/trainers/front_pics/team_skull_grunt_m.4bpp.smol");
+const u16 gTrainerPalette_SkullGruntM[] = INCBIN_U16("graphics/trainers/palettes/team_skull_grunt_m.gbapal");
+const u32 gTrainerFrontPic_SkullGruntF[] = INCBIN_U32("graphics/trainers/front_pics/team_skull_grunt_f.4bpp.smol");
+const u16 gTrainerPalette_SkullGruntF[] = INCBIN_U16("graphics/trainers/palettes/team_skull_grunt_f.gbapal");
+const u32 gTrainerFrontPic_AlolaAceM[] = INCBIN_U32("graphics/trainers/front_pics/alola_ace_trainer_m.4bpp.smol");
+const u16 gTrainerPalette_AlolaAceM[] = INCBIN_U16("graphics/trainers/palettes/alola_ace_trainer_m.gbapal");
 
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_FRONT_HIKER), and
@@ -663,6 +678,15 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_PAINTER_FRLG, gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_KIAWE, gTrainerFrontPic_Kiawe, gTrainerPalette_Kiawe),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_HAU, gTrainerFrontPic_Hau, gTrainerPalette_Hau),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_GUZMA, gTrainerFrontPic_Guzma, gTrainerPalette_Guzma),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_GLADION, gTrainerFrontPic_Gladion, gTrainerPalette_Gladion),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_KUKUI, gTrainerFrontPic_Kukui, gTrainerPalette_Kukui),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_ILIMA, gTrainerFrontPic_Ilima, gTrainerPalette_Ilima),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_HALA, gTrainerFrontPic_Hala, gTrainerPalette_Hala),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SKULL_GRUNT_M, gTrainerFrontPic_SkullGruntM, gTrainerPalette_SkullGruntM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SKULL_GRUNT_F, gTrainerFrontPic_SkullGruntF, gTrainerPalette_SkullGruntF),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_ALOLA_ACE_M, gTrainerFrontPic_AlolaAceM, gTrainerPalette_AlolaAceM),
+
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
