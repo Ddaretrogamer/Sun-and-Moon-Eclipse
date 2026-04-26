@@ -5,9 +5,7 @@ mapscripts PlayerRoom_MapScripts{
 
 script RoomIntroSequence{
     lock
-    applymovement(LOCALID_PLAYER, moves(face_up))
-    delay(60)
-    waitmovement(0)
+    delay(30)
     setvar(VAR_INTRO_PLAYED, 1)
     release
     end

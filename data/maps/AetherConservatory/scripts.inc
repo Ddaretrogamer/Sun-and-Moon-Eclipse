@@ -53,543 +53,559 @@ AetherIntroSequence::
 # 29 "data/maps/AetherConservatory/scripts.pory"
 	lock
 # 30 "data/maps/AetherConservatory/scripts.pory"
-	special SpawnCameraObject
+	special ShowCutsceneCinematicBars
 # 31 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
+	special SpawnCameraObject
 # 32 "data/maps/AetherConservatory/scripts.pory"
-	clearflag FLAG_SHOW_LILLIE_INTRO
+	delay 60
 # 33 "data/maps/AetherConservatory/scripts.pory"
-	addobject LillieIntro
+	clearflag FLAG_SHOW_LILLIE_INTRO
 # 34 "data/maps/AetherConservatory/scripts.pory"
-	addobject aetherintrogrunt1
+	addobject LillieIntro
 # 35 "data/maps/AetherConservatory/scripts.pory"
-	addobject aetherintrogrunt2
+	addobject aetherintrogrunt1
 # 36 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_WARP_IN
+	addobject aetherintrogrunt2
 # 37 "data/maps/AetherConservatory/scripts.pory"
-	waitse
+	playse SE_WARP_IN
 # 38 "data/maps/AetherConservatory/scripts.pory"
+	waitse
+# 39 "data/maps/AetherConservatory/scripts.pory"
 	delay 60
-# 40 "data/maps/AetherConservatory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_0
 # 41 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_0
+	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_0
 # 42 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement LillieIntro
+	applymovement LillieIntro, AetherIntroSequence_Movement_0
 # 43 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement LillieIntro
+# 44 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
-# 45 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_1
 # 46 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement LillieIntro
+	applymovement LillieIntro, AetherIntroSequence_Movement_1
 # 47 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement LillieIntro
+# 48 "data/maps/AetherConservatory/scripts.pory"
 	delay 15
-# 49 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, Common_Movement_ExclamationMark
 # 50 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement LillieIntro
+	applymovement LillieIntro, Common_Movement_ExclamationMark
 # 51 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_PIN
+	waitmovement LillieIntro
 # 52 "data/maps/AetherConservatory/scripts.pory"
-	waitse
+	playse SE_PIN
 # 53 "data/maps/AetherConservatory/scripts.pory"
-	playbgm MUS_HELP, FALSE
+	waitse
 # 54 "data/maps/AetherConservatory/scripts.pory"
+	playbgm MUS_HELP, FALSE
+# 55 "data/maps/AetherConservatory/scripts.pory"
 	delay 20
-# 56 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_FLEE
 # 57 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_2
+	playse SE_FLEE
 # 58 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement LillieIntro
+	applymovement LillieIntro, AetherIntroSequence_Movement_2
 # 59 "data/maps/AetherConservatory/scripts.pory"
-	waitse
-# 61 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_FLEE
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_3
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_4
-# 64 "data/maps/AetherConservatory/scripts.pory"
-	waitse
-# 65 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement 0
-# 67 "data/maps/AetherConservatory/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 68 "data/maps/AetherConservatory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_5
-# 69 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_5
-# 70 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_5
-# 71 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_5
-# 72 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement 0
-# 73 "data/maps/AetherConservatory/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
-# 75 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_FLEE
-# 76 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_6
-# 77 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_7
-# 78 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_8
-# 79 "data/maps/AetherConservatory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_9
-# 80 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement 0
-# 81 "data/maps/AetherConservatory/scripts.pory"
-	waitse
-# 82 "data/maps/AetherConservatory/scripts.pory"
-	delay 15
-# 84 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_PIN
-# 85 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, Common_Movement_ExclamationMark
-# 86 "data/maps/AetherConservatory/scripts.pory"
 	waitmovement LillieIntro
-# 87 "data/maps/AetherConservatory/scripts.pory"
-	delay 20
-# 89 "data/maps/AetherConservatory/scripts.pory"
-	applymovement LillieIntro, AetherIntroSequence_Movement_10
-# 90 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_11
-# 91 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_11
-# 92 "data/maps/AetherConservatory/scripts.pory"
-	applymovement aetherintrogrunt3, AetherIntroSequence_Movement_12
-# 93 "data/maps/AetherConservatory/scripts.pory"
+# 60 "data/maps/AetherConservatory/scripts.pory"
+	waitse
+# 62 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_FLEE
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_3
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_4
+# 65 "data/maps/AetherConservatory/scripts.pory"
+	waitse
+# 66 "data/maps/AetherConservatory/scripts.pory"
 	waitmovement 0
-# 94 "data/maps/AetherConservatory/scripts.pory"
-	delay 60
-# 96 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_RESULT, 1
-# 97 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_M_DETECT
-# 98 "data/maps/AetherConservatory/scripts.pory"
-	dofieldeffectsparkle 16, 17, 0
-# 99 "data/maps/AetherConservatory/scripts.pory"
-	waitfieldeffect FLDEFF_SPARKLE
-# 100 "data/maps/AetherConservatory/scripts.pory"
-	closemessage
-# 102 "data/maps/AetherConservatory/scripts.pory"
+# 68 "data/maps/AetherConservatory/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 69 "data/maps/AetherConservatory/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_5
+# 70 "data/maps/AetherConservatory/scripts.pory"
+	applymovement LillieIntro, AetherIntroSequence_Movement_5
+# 71 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_5
+# 72 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_5
+# 73 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement 0
+# 74 "data/maps/AetherConservatory/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 76 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_FLEE
+# 77 "data/maps/AetherConservatory/scripts.pory"
+	applymovement LillieIntro, AetherIntroSequence_Movement_6
+# 78 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_7
+# 79 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_8
+# 80 "data/maps/AetherConservatory/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, AetherIntroSequence_Movement_9
+# 81 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement 0
+# 82 "data/maps/AetherConservatory/scripts.pory"
+	waitse
+# 83 "data/maps/AetherConservatory/scripts.pory"
+	delay 15
+# 85 "data/maps/AetherConservatory/scripts.pory"
 	playse SE_PIN
-# 103 "data/maps/AetherConservatory/scripts.pory"
+# 86 "data/maps/AetherConservatory/scripts.pory"
 	applymovement LillieIntro, Common_Movement_ExclamationMark
-# 104 "data/maps/AetherConservatory/scripts.pory"
-	waitmovement 0
-# 105 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
-# 106 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_RESULT, 3
-# 107 "data/maps/AetherConservatory/scripts.pory"
+# 87 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement LillieIntro
+# 88 "data/maps/AetherConservatory/scripts.pory"
 	delay 20
+# 90 "data/maps/AetherConservatory/scripts.pory"
+	applymovement LillieIntro, AetherIntroSequence_Movement_10
+# 91 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt1, AetherIntroSequence_Movement_11
+# 92 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt2, AetherIntroSequence_Movement_11
+# 93 "data/maps/AetherConservatory/scripts.pory"
+	applymovement aetherintrogrunt3, AetherIntroSequence_Movement_12
+# 94 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement 0
+# 95 "data/maps/AetherConservatory/scripts.pory"
+	delay 60
+# 97 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_RESULT, 1
+# 98 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_M_DETECT
+# 99 "data/maps/AetherConservatory/scripts.pory"
+	dofieldeffectsparkle 16, 17, 0
+# 100 "data/maps/AetherConservatory/scripts.pory"
+	waitfieldeffect FLDEFF_SPARKLE
+# 101 "data/maps/AetherConservatory/scripts.pory"
+	closemessage
+# 103 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_PIN
+# 104 "data/maps/AetherConservatory/scripts.pory"
+	applymovement LillieIntro, Common_Movement_ExclamationMark
+# 105 "data/maps/AetherConservatory/scripts.pory"
+	waitmovement 0
+# 106 "data/maps/AetherConservatory/scripts.pory"
+	delay 30
+# 107 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_RESULT, 3
 # 108 "data/maps/AetherConservatory/scripts.pory"
+	delay 20
+# 109 "data/maps/AetherConservatory/scripts.pory"
 	special RemoveCameraObject
-# 110 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_ORB
 # 111 "data/maps/AetherConservatory/scripts.pory"
-	special DoOrbEffect
+	playse SE_ORB
 # 112 "data/maps/AetherConservatory/scripts.pory"
-	delay 120
+	special DoOrbEffect
 # 113 "data/maps/AetherConservatory/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK, 64
+	delay 120
 # 114 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
+	fadescreen FADE_TO_BLACK
 # 115 "data/maps/AetherConservatory/scripts.pory"
-	fadenewbgm MUS_NONE
-# 116 "data/maps/AetherConservatory/scripts.pory"
-	delay 160
-# 117 "data/maps/AetherConservatory/scripts.pory"
-	warp MAP_PLAYER_ROOM, 12, 10
-# 118 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
+# 116 "data/maps/AetherConservatory/scripts.pory"
+	special HideCutsceneCinematicBars
+# 117 "data/maps/AetherConservatory/scripts.pory"
+	fadenewbgm MUS_NONE
+# 118 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_0x8000, 0
 # 119 "data/maps/AetherConservatory/scripts.pory"
+	delay 90
+# 120 "data/maps/AetherConservatory/scripts.pory"
+	setflag FLAG_SHOW_LILLIE_INTRO
+# 121 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_RESULT, 1
+# 122 "data/maps/AetherConservatory/scripts.pory"
+	playse SE_M_COSMIC_POWER
+# 123 "data/maps/AetherConservatory/scripts.pory"
+	callnative OpenScreenshotsFromScript
+# 124 "data/maps/AetherConservatory/scripts.pory"
+	delay 30
+# 125 "data/maps/AetherConservatory/scripts.pory"
+	warp MAP_PLAYER_ROOM, 12, 10
+# 126 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
+# 127 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 
 
-# 40 "data/maps/AetherConservatory/scripts.pory"
+# 41 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_0:
-# 40 "data/maps/AetherConservatory/scripts.pory"
+# 41 "data/maps/AetherConservatory/scripts.pory"
 	walk_down
-# 40 "data/maps/AetherConservatory/scripts.pory"
+# 41 "data/maps/AetherConservatory/scripts.pory"
 	walk_down
-# 40 "data/maps/AetherConservatory/scripts.pory"
+# 41 "data/maps/AetherConservatory/scripts.pory"
 	walk_down
-# 40 "data/maps/AetherConservatory/scripts.pory"
+# 41 "data/maps/AetherConservatory/scripts.pory"
 	walk_down
 	step_end
 
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_1:
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 	face_right
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 45 "data/maps/AetherConservatory/scripts.pory"
+# 46 "data/maps/AetherConservatory/scripts.pory"
 	face_left
 	step_end
 
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_2:
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
-# 57 "data/maps/AetherConservatory/scripts.pory"
+# 58 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_right
 	step_end
 
-# 62 "data/maps/AetherConservatory/scripts.pory"
+# 63 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_3:
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 62 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 63 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
 	step_end
 
-# 63 "data/maps/AetherConservatory/scripts.pory"
+# 64 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_4:
-# 63 "data/maps/AetherConservatory/scripts.pory"
+# 64 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
-# 63 "data/maps/AetherConservatory/scripts.pory"
-	walk_fast_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
+# 64 "data/maps/AetherConservatory/scripts.pory"
+	walk_faster_right
 	step_end
 
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_5:
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
-# 68 "data/maps/AetherConservatory/scripts.pory"
+# 69 "data/maps/AetherConservatory/scripts.pory"
 	walk_faster_up
 	step_end
 
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_6:
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 76 "data/maps/AetherConservatory/scripts.pory"
+# 77 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
 	step_end
 
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_7:
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	delay_8
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	delay_8
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 77 "data/maps/AetherConservatory/scripts.pory"
+# 78 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
 	step_end
 
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_8:
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	delay_8
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	delay_8
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	delay_8
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 78 "data/maps/AetherConservatory/scripts.pory"
+# 79 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
 	step_end
 
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_9:
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
-# 79 "data/maps/AetherConservatory/scripts.pory"
+# 80 "data/maps/AetherConservatory/scripts.pory"
 	walk_fast_left
 	step_end
 
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_10:
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	face_right
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	face_left
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	face_right
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 89 "data/maps/AetherConservatory/scripts.pory"
+# 90 "data/maps/AetherConservatory/scripts.pory"
 	face_left
 	step_end
 
-# 90 "data/maps/AetherConservatory/scripts.pory"
+# 91 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_11:
-# 90 "data/maps/AetherConservatory/scripts.pory"
+# 91 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 90 "data/maps/AetherConservatory/scripts.pory"
+# 91 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 90 "data/maps/AetherConservatory/scripts.pory"
+# 91 "data/maps/AetherConservatory/scripts.pory"
 	walk_left
 	step_end
 
-# 92 "data/maps/AetherConservatory/scripts.pory"
+# 93 "data/maps/AetherConservatory/scripts.pory"
 AetherIntroSequence_Movement_12:
-# 92 "data/maps/AetherConservatory/scripts.pory"
+# 93 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 92 "data/maps/AetherConservatory/scripts.pory"
+# 93 "data/maps/AetherConservatory/scripts.pory"
 	delay_16
-# 92 "data/maps/AetherConservatory/scripts.pory"
+# 93 "data/maps/AetherConservatory/scripts.pory"
 	walk_right
 	step_end
 

@@ -5523,6 +5523,16 @@
       "blockdata_filepath": "data/layouts/Route1/map.bin"
     },
     {
+      "id": "LAYOUT_ROUTE1_closed",
+      "name": "Route1_closed_Layout",
+      "width": 44,
+      "height": 38,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
+      "border_filepath": "data/layouts/Route1_closed/border.bin",
+      "blockdata_filepath": "data/layouts/Route1_closed/map.bin"
+    },
+    {
       "id": "LAYOUT_HAUOLI_OUTSKIRTS",
       "name": "HauoliOutskirts_Layout",
       "width": 64,
@@ -5551,6 +5561,16 @@
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/Route1NN/border.bin",
       "blockdata_filepath": "data/layouts/Route1NN/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE1NN_closed",
+      "name": "Route1NN_closed_Layout",
+      "width": 68,
+      "height": 35,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/Route1NN_closed/border.bin",
+      "blockdata_filepath": "data/layouts/Route1NN_closed/map.bin"
     },
     {
       "id": "LAYOUT_MELEMELE_SEA",

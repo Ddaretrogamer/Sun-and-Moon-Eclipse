@@ -25,14 +25,10 @@ RoomIntroSequence::
 # 7 "data/maps/PlayerRoom/scripts.pory"
 	lock
 # 8 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoom_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0_Movement_0
+	delay 30
 # 9 "data/maps/PlayerRoom/scripts.pory"
-	delay 160
-# 10 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement 0
-# 11 "data/maps/PlayerRoom/scripts.pory"
 	setvar VAR_INTRO_PLAYED, 1
-# 12 "data/maps/PlayerRoom/scripts.pory"
+# 10 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 

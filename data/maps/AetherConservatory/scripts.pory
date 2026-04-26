@@ -27,8 +27,9 @@ script UseElevator{
 
 script AetherIntroSequence{
     lock
+    special(ShowCutsceneCinematicBars)
     special(SpawnCameraObject)
-    delay(30)
+    delay(60)
     clearflag(FLAG_SHOW_LILLIE_INTRO)
     addobject(LillieIntro)
     addobject(aetherintrogrunt1)
@@ -59,8 +60,8 @@ script AetherIntroSequence{
     waitse
     // Both grunts chase after her
     playse(SE_FLEE)
-    applymovement(aetherintrogrunt1, moves(walk_fast_right*17))
-    applymovement(aetherintrogrunt2, moves(delay_16, walk_fast_right*17))
+    applymovement(aetherintrogrunt1, moves(walk_faster_right*17))
+    applymovement(aetherintrogrunt2, moves(delay_16, walk_faster_right*17))
     waitse
     waitmovement(0)
     // Fade to black, reposition everyone
@@ -110,10 +111,17 @@ script AetherIntroSequence{
     playse(SE_ORB)
     special(DoOrbEffect)
     delay(120)
-    fadescreenswapbuffers(FADE_TO_BLACK, 64)
+    fadescreen(FADE_TO_BLACK)
     waitstate
+    special(HideCutsceneCinematicBars)
     fadenewbgm(MUS_NONE)
-    delay(160)
+    setvar(VAR_0x8000, 0)
+    delay(90)
+    setflag(FLAG_SHOW_LILLIE_INTRO)
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_COSMIC_POWER)
+    callnative(OpenScreenshotsFromScript)
+    delay(30)
     warp(MAP_PLAYER_ROOM, 12, 10)
     waitstate
     release

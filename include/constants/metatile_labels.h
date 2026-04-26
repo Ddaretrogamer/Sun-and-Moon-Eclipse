@@ -310,9 +310,6 @@
 // gTileset_HauoliLab
 #define METATILE_HauoliLab_Door  0x86C
 
-// gTileset_HauoliCity_Primary
-#define METATILE_AlolaPokecenterHauoli_Door          0x05A
-
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x81D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x815
@@ -1068,6 +1065,7 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
 // Other
+#define METATILE_AlolaPokecenterHauoli_Door          0x05A
 #define METATILE_AlolaPokecenter_Door                0x05A
 #define METATILE_CandyShop_Door                      0x89B
 #define METATILE_Clothing_Door                       0x90B
