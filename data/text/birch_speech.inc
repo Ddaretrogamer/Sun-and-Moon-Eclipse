@@ -38,7 +38,6 @@ gText_Birch_AndYouAre::
 gText_Birch_BoyOrGirl::
 	.string "So which photo should I use for your\n"
 	.string "Trainer Passport?\p"
-	.string "\n"
 	.string "$"
 
 gText_Birch_WhatsYourName::

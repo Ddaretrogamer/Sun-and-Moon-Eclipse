@@ -13,17 +13,25 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "PlayerRoomMeowth",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
+      "x": 10,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_LILLIE_INTRO_PLAYED"
+    }
+  ],
   "warp_events": [
     {
       "x": 9,
-      "y": 13,
-      "elevation": 0,
-      "dest_map": "MAP_PLAYER_HOUSE",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 10,
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_PLAYER_HOUSE",

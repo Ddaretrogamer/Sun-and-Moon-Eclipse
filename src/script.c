@@ -360,8 +360,13 @@ const u8 *MapHeaderCheckScriptTable(u8 tag)
         varIndex2 = T1_READ_16(ptr);
         ptr += 2;
 
-        // Run map script if vars are equal
-        if (VarGet(varIndex1) == VarGet(varIndex2))
+        // Run map script if vars are equal or flag is set/clear as specified
+        bool32 conditionMet;
+        if (varIndex1 < VARS_START)
+            conditionMet = (FlagGet(varIndex1) == varIndex2);
+        else
+            conditionMet = (VarGet(varIndex1) == VarGet(varIndex2));
+        if (conditionMet)
         {
             const u8 *mapScript = T2_READ_PTR(ptr);
             if (!Script_HasNoEffect(mapScript))

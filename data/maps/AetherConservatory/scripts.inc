@@ -7,7 +7,7 @@ AetherConservatory_MapScripts::
 
 AetherConservatory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 # 2 "data/maps/AetherConservatory/scripts.pory"
-	map_script_2 VAR_INTRO_PLAYED, 0, AetherConservatory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0
+	map_script_2 FLAG_LILLIE_INTRO_PLAYED, FALSE, AetherConservatory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0
 	.2byte 0
 
 AetherConservatory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0:
@@ -17,7 +17,7 @@ AetherConservatory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0:
 
 AetherConservatory_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 3 "data/maps/AetherConservatory/scripts.pory"
-	map_script_2 VAR_INTRO_PLAYED, 0, AetherIntroSequence
+	map_script_2 FLAG_LILLIE_INTRO_PLAYED, FALSE, AetherIntroSequence
 	.2byte 0
 
 
@@ -37,7 +37,7 @@ UseElevator::
 
 UseElevator_1:
 # 13 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_WARP_TO_BOATHOUSE, 1
+	setflag FLAG_WARP_TO_BOATHOUSE
 # 14 "data/maps/AetherConservatory/scripts.pory"
 	warp MAP_HAUOLI_DOCK_BOATHOUSE, 10, 6
 # 15 "data/maps/AetherConservatory/scripts.pory"
@@ -219,7 +219,7 @@ AetherIntroSequence::
 # 124 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
 # 125 "data/maps/AetherConservatory/scripts.pory"
-	warp MAP_PLAYER_ROOM, 12, 10
+	warp MAP_ROUTE1, 27, 19
 # 126 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
 # 127 "data/maps/AetherConservatory/scripts.pory"

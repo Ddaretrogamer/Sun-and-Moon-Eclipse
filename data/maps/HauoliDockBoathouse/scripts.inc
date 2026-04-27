@@ -5,7 +5,7 @@ HauoliDockBoathouse_MapScripts::
 
 HauoliDockBoathouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 2 "data/maps/HauoliDockBoathouse/scripts.pory"
-	map_script_2 VAR_WARP_TO_BOATHOUSE, 1, ReturnFromElevator
+	map_script_2 FLAG_WARP_TO_BOATHOUSE, TRUE, ReturnFromElevator
 	.2byte 0
 
 
@@ -17,7 +17,7 @@ ReturnFromElevator::
 # 8 "data/maps/HauoliDockBoathouse/scripts.pory"
 	waitmovement LOCALID_PLAYER
 # 9 "data/maps/HauoliDockBoathouse/scripts.pory"
-	setvar VAR_WARP_TO_BOATHOUSE, 0
+	clearflag FLAG_WARP_TO_BOATHOUSE
 # 10 "data/maps/HauoliDockBoathouse/scripts.pory"
 	release
 	end

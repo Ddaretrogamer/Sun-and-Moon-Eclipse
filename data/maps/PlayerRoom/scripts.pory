@@ -1,12 +1,34 @@
 mapscripts PlayerRoom_MapScripts{
-    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_INTRO_PLAYED, 0 {applymovement(LOCALID_PLAYER, moves(face_up))}]
-    MAP_SCRIPT_ON_FRAME_TABLE[VAR_INTRO_PLAYED, 0: RoomIntroSequence]
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {applymovement(LOCALID_PLAYER, moves(face_up))
+    hideobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)}]
+    MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: RoomIntroSequence]
 }
 
 script RoomIntroSequence{
     lock
     delay(30)
-    setvar(VAR_INTRO_PLAYED, 1)
+    playse(SE_DOOR)
+    showobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)
+    delay(30)
+    applymovement(PlayerRoomMeowth, moves(walk_up*2, walk_right*2, face_up))
+    waitmovement(PlayerRoomMeowth)
+    playmoncry(SPECIES_MEOWTH, 0)
+    msgbox("Mwaaawwwrrrrrrrr!!!", MSGBOX_AUTOCLOSE)
+    waitmessage
+    waitse
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_PLAYER)
+    applymovement(LOCALID_PLAYER, moves(face_down))
+    delay(60)
+    applymovement(PlayerRoomMeowth, moves(walk_left*2, walk_down*2))
+    waitmovement(PlayerRoomMeowth)
+    playse(SE_DOOR)
+    hideobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)
+    waitse
+    applymovement(PlayerRoomMeowth, moves(walk_down))
+    waitmovement(0)
+    setflag(FLAG_LILLIE_INTRO_PLAYED)
     release
     end
 }

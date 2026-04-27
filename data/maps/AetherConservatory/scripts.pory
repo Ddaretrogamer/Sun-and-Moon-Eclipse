@@ -1,6 +1,6 @@
 mapscripts AetherConservatory_MapScripts{
-        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_INTRO_PLAYED, 0 {hideobjectat(LOCALID_PLAYER, MAP_AETHER_CONSERVATORY)}]
-        MAP_SCRIPT_ON_FRAME_TABLE[VAR_INTRO_PLAYED, 0: AetherIntroSequence]
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_AETHER_CONSERVATORY)}]
+        MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: AetherIntroSequence]
 }
 
 script UseElevator{
@@ -10,7 +10,7 @@ script UseElevator{
     
     Would you like to use it?", MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES){
-        setvar(VAR_WARP_TO_BOATHOUSE, 1)
+        setflag(FLAG_WARP_TO_BOATHOUSE)
         warp(MAP_HAUOLI_DOCK_BOATHOUSE, 10, 6)
         waitstate
         delay(30)
@@ -122,7 +122,7 @@ script AetherIntroSequence{
     playse(SE_M_COSMIC_POWER)
     callnative(OpenScreenshotsFromScript)
     delay(30)
-    warp(MAP_PLAYER_ROOM, 12, 10)
+    warp(MAP_ROUTE1, 27, 19)
     waitstate
     release
     end

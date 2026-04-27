@@ -1,12 +1,12 @@
 mapscripts HauoliDockBoathouse_MapScripts {
-        MAP_SCRIPT_ON_FRAME_TABLE[VAR_WARP_TO_BOATHOUSE, 1: ReturnFromElevator]
+        MAP_SCRIPT_ON_FRAME_TABLE[FLAG_WARP_TO_BOATHOUSE, TRUE: ReturnFromElevator]
 }
 
 script ReturnFromElevator{
     lock
     applymovement(LOCALID_PLAYER, moves(walk_down*2))
     waitmovement(LOCALID_PLAYER)
-    setvar(VAR_WARP_TO_BOATHOUSE, 0)
+    clearflag(FLAG_WARP_TO_BOATHOUSE)
     release
     end
 

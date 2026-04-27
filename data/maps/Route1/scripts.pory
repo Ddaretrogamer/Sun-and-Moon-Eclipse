@@ -3,11 +3,65 @@ mapscripts Route1_MapScripts{
         call_if_unset(FLAG_HAUOLI_OUTSKIRTS_NEWGAME, Route1CloseGates)
         end
         }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}]
+    MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro]
 }
+
 
 script Route1CloseGates{
     setmaplayoutindex(LAYOUT_ROUTE1_closed)
     return
+}
+
+script LittleGirlChasesMeowthIntro{
+    lock
+    special(SpawnCameraObject)
+    playmoncry(SPECIES_MEOWTH_ALOLA, 0)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down*5))
+    applymovement(chasedmeowth, moves(walk_fast_down*5))
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left*11))
+    applymovement(chasedmeowth, moves(walk_fast_left*20))
+    waitmovement(0)
+    playmoncry(SPECIES_MEOWTH_ALOLA, 0)
+    delay(60)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up*2))
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_diag_northeast*3))
+    waitmovement(0)
+    gettimeofday
+    if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
+        speakername("Mom")
+        msgbox("Ahhh! Could anything be more soothing?
+        The first evening spent under Alola's
+        calm moon!
+        
+        I feel like I could stay out here all
+        night!")
+    }
+    else{
+        speakername("Mom")
+        msgbox("Ahhh! Can't you just feel that warmth?
+        The first day spent under Alola's
+        sun!
+        
+        It's so warm and bright here!")
+    }
+    msgbox("But that's enough of that!
+    Time to unpack all these boxes!")
+    applymovement(momintro, moves(face_up))
+    waitmovement(0)
+    msgbox("Meowth?
+    Go get {PLAYER} for me, would you?")
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    waitmessage
+    playmoncry(SPECIES_MEOWTH, 0)
+    msgbox("Meow?")
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    warp(MAP_PLAYER_ROOM, 12, 10)
+    waitstate
+    release
+    end
 }
 
 script MomSaysHi{
