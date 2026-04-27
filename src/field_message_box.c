@@ -9,6 +9,7 @@
 #include "text_window.h"
 #include "script.h"
 #include "field_name_box.h"
+#include "bg.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
@@ -53,6 +54,16 @@ static void Task_DrawFieldMessage(u8 taskId)
         else if (nameboxWinId != WINDOW_NONE)
         {
             DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
+        }
+        else
+        {
+            FillBgTilemapBufferRect(0, 0,
+                GetWindowAttribute(1, WINDOW_TILEMAP_LEFT) - 1,
+                GetWindowAttribute(1, WINDOW_TILEMAP_TOP),
+                GetWindowAttribute(1, WINDOW_WIDTH) + 2,
+                1,
+                DLG_WINDOW_PALETTE_NUM);
+            CopyBgTilemapBufferToVram(0);
         }
         task->tState++;
         break;
