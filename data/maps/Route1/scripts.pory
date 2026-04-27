@@ -1,4 +1,14 @@
-mapscripts Route1_MapScripts{}
+mapscripts Route1_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        call_if_unset(FLAG_HAUOLI_OUTSKIRTS_NEWGAME, Route1CloseGates)
+        end
+        }
+}
+
+script Route1CloseGates{
+    setmaplayoutindex(LAYOUT_ROUTE1_closed)
+    return
+}
 
 script MomSaysHi{
     lock
@@ -15,15 +25,6 @@ script MomSaysHi{
     setflag(FLAG_RECEIVED_SUPER_ROD)
     setflag(FLAG_EGG_MOVES)
     setflag(FLAG_TUTOR_MOVES)
-    fadescreenswapbuffers(FADE_FROM_BLACK)
-    msgbox("Take care, honey!")
-    release
-end
-}
-
-script Mailbox{
-    lock
-    msgbox("{PLAYER}'s House")
     if(flag(FLAG_SHINY_RIDE))
     {
         clearflag(FLAG_SHINY_RIDE)
@@ -41,6 +42,15 @@ script Mailbox{
         setvar(VAR_ROTOM_PHONE_ENABLE, 0)
     }
     release
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox("Take care, honey!")
+    release
+end
+}
+
+script Mailbox{
+    lock
+    msgbox("{PLAYER}'s House")
 end
 }
 
@@ -51,10 +61,20 @@ end
 
 script testscript{
     msgbox("okay this is a test.
-    It seems this is a suitable line length
+    It seems this is a suitable line lengthc
     for scripting. This is working well.
     
     Do I need to do anything to compile
-    this?", MSGBOX_NPC)
+    this?
+    
+    
+    10-4, good buddy! I'll let everybody out
+    here know you're on your way!
+    
+    Yeah, that's a name that hits you like a
+    Trop Kick right to the head! Woo!
+    
+    Can't wait to see you here in person then,
+    cousin!", MSGBOX_NPC)
     end
 }

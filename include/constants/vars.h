@@ -100,7 +100,7 @@
 #define VAR_FLY_TOOL_SOURCE                              0x404E // qol_field_moves
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
-#define VAR_OLDALE_TOWN_STATE                            0x4051
+#define VAR_HAUOLI_OUTSKIRTS_STATE                       0x4051
 #define VAR_DEWFORD_TOWN_STATE                           0x4052 // Unused Var
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
@@ -238,8 +238,8 @@
 #define VAR_SOOTOPOLIS_WALLACE_STATE                     0x40D8
 #define VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0x40D9
 #define VAR_REGISTER_BIRCH_STATE                         0x40DA
-#define VAR_WARP_TO_BOATHOUSE                            0x40DB // Unused Var
-#define VAR_INTRO_PLAYED                                 0x40DC // Unused Var
+#define VAR_WARP_TO_BOATHOUSE                            0x40DB // used so that you step past the triggers in the boat house in hauoli
+#define VAR_INTRO_PLAYED                                 0x40DC // set so that the game knows if the intro cutscene has been played
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
 #define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read

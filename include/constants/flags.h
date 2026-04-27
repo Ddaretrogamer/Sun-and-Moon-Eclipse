@@ -680,7 +680,7 @@
 #define FLAG_RIDE_PAGER_SHINY  0x271 // Set when Ride Pager uses a shiny Pokemon
 #define FLAG_SHINY_RIDE_SET  0x272 // temp for using shiny ride with pager so party rides dont become shiny
 #define FLAG_SHINY_SURF  0x273 // separating surfing and riding pals so we dont get conficts.
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_HAUOLI_OUTSKIRTS_NEWGAME  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_DISABLE_FOLLOWERS  0x277 // Follower toggle
