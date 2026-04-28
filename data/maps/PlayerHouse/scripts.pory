@@ -1,12 +1,180 @@
-mapscripts PlayerHouse_MapScripts{}
+mapscripts PlayerHouse_MapScripts{
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(playerhousemom2, MAP_PLAYER_HOUSE)
+    hideobjectat(playerhousemeowth2, MAP_PLAYER_HOUSE)}]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 1: PlayerHouse_MomNewgame
+    VAR_MOM_IN_HOUSE_INTRO, 3: PlayerHouse_GotRunningShoes]
+}
 
-script PlayerRoomDoor{
-    playse(SE_DOOR)
-    warp(MAP_PLAYER_ROOM, 0)
+
+script PlayerHouse_MomNewGoGetPokemon{
+    lock
+    faceplayer
+    speakername("Mom")
+    msgbox("Where are your shoes, {PLAYER}?
+
+    You should probably unpack the box
+    in your room to find them!")
+    release
     end
 }
-script MomsRoomDoor{
-    playse(SE_DOOR)
-    warp(MAP_MOMS_ROOM, 0)
+
+script PlayerHouse_MomNewGameDialog{
+    lock
+    faceplayer
+    speakername("Mom")
+    msgbox("Where are your shoes, {PLAYER}?
+
+    You should probably unpack the box
+    in your room to find them!")
+    release
+    end
+}
+
+script PlayerHouse_MeowthNewGameDialog{
+    lock
+    faceplayer
+    playmoncry(SPECIES_MEOWTH, 0)
+    msgbox("Mrrowrr!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script PlayerHouse_MomNewgame{
+    lock
+    if (var(VAR_MOM_IN_HOUSE_INTRO) == 1){
+        playse(SE_PIN)
+        applymovement(playerhousemom1, Common_Movement_ExclamationMark)
+        waitmovement(playerhousemom1)
+        applymovement(playerhousemom1, moves(walk_left, face_up))
+        waitmovement(playerhousemom1)
+        speakername("Mom")
+        msgbox("You were out like a light, earlier!
+        You ought to be full of energy by now!")
+        gettimeofday
+        if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
+            msgbox("And just look!
+            It's already night here!")
+        }
+        else{
+            msgbox("And just look!
+            It's already daytime here!")
+        }
+        msgbox("It's completely the opposite of Kanto.
+
+        But then we are so far away here in
+        Alola.""
+        
+        So {PLAYER}!
+
+        Are you excited to meet some Alolan
+        Pokémon?")
+        dynmultichoice(0,0,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Of course!", "I guess…")
+        if(var(VAR_RESULT) == 0)
+        {
+            msgbox("That's right!
+            I want to hurry up and meet some, too!")
+        }
+        elif(var(VAR_RESULT) == 1){
+            msgbox("Oh you! Someday you're going to learn
+            to have a little wonder in your life!")
+        }
+        msgbox("We're living in the Alola region now!
+
+        The beautiful islands everyone wants
+        to visit!
+        
+        I'm sure the Pokémon living in a place
+        like this must be friendly, right?
+        
+        It might not be a bad idea to go out
+        and see for yourself just how
+        friendly Pokémon here are.
+        
+        Right {PLAYER}?
+        Go and get ready for a bit of
+        exploring!
+        
+        Your running shoes should be in the
+        box in your room.
+        
+        And didn't you leave your copy of
+        Adventure Rules on your desk, too?")
+        setvar(VAR_MOM_IN_HOUSE_INTRO, 2) // OR USE A VAR
+        release
+        end
+    }
+    else{
+        applymovement(playerhousemom1, moves(face_up))
+        waitmovement(playerhousemom1)
+        playse(SE_PIN)
+        applymovement(playerhousemom1, Common_Movement_ExclamationMark)
+        waitmovement(playerhousemom1)
+        speakername("Mom")
+        msgbox("Where are your shoes, {PLAYER}?
+        You should probably unpack the box in
+        your room to find them!")
+        release
+        end
+    }
+}
+
+script PlayerHouse_GotRunningShoes{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_down*7, walk_left))
+    waitmovement(LOCALID_PLAYER)
+    applymovement(playerhousemom2, moves(face_player))
+    waitmovement(playerhousemom2)
+    speakername("Mom")
+    msgbox("Now you look ready for anything!
+    
+    Oh, but even so, {PLAYER}…
+
+    Try to be careful walking through the
+    tall grass!
+    
+    Still, I have to admit that I'd love
+    to have a new Pokémon around…
+    
+    Why don't you head up towards Iki Town
+    and see what you discover in Alola?")
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playmoncry(SPECIES_MEOWTH, 0)
+    msgbox("Mrowrr!", MSGBOX_AUTOCLOSE)
+    setvar(VAR_MOM_IN_HOUSE_INTRO, 4)
+    release
+    end
+}
+
+
+
+script PlayerHouse_Trigger_TryingToLeaveWithoutShoes{
+    lock
+    playse(SE_PIN)
+    speakername("Mom")
+    msgbox("Are you leaving without your shoes, 
+    {PLAYER}?
+    
+    You should unpack the box in
+    your room to find them!", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+script PlayerHouse_Trigger_TryingToLeaveWithoutShoes2{
+    lock
+    applymovement(playerhousemom1, moves(face_player))
+    waitmovement(playerhousemom1)
+    playse(SE_PIN)
+    applymovement(playerhousemom1, Common_Movement_ExclamationMark)
+    waitmovement(playerhousemom1)
+    speakername("Mom")
+    msgbox("Where are you going, {PLAYER}?
+    You should probably unpack the box in
+    your room to find them!")
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(LOCALID_PLAYER)
+    release
     end
 }

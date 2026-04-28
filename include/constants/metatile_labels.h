@@ -1064,6 +1064,9 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Grass  0x284
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
+// gTilset_PlayerHouse2
+#define METATILE_PlayerHouse2_OpenBox  0x896
+
 // Other
 #define METATILE_AlolaPokecenterHauoli_Door          0x05A
 #define METATILE_AlolaPokecenter_Door                0x05A

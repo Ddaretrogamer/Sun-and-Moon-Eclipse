@@ -15,17 +15,60 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "playerhousemeowth2",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
-      "x": 5,
-      "y": 13,
+      "x": 10,
+      "y": 12,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PlayerHouse_MeowthNewGameDialog",
+      "flag": "FLAG_MOM_IN_HOUSE_INTRO"
+    },
+    {
+      "local_id": "playerhousemom2",
+      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_MOM_IN_HOUSE_INTRO"
+    },
+    {
+      "local_id": "playerhousemom1",
+      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "x": 15,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PlayerHouse_MomNewGameDialog",
+      "flag": "FLAG_LILLIE_INTRO_PLAYED"
+    },
+    {
+      "local_id": "playerhousemeowth1",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
+      "x": 12,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "PlayerHouse_MeowthNewGameDialog",
+      "flag": "FLAG_LILLIE_INTRO_PLAYED"
     }
   ],
   "warp_events": [
@@ -58,6 +101,25 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_MOM_IN_HOUSE_INTRO",
+      "var_value": "2",
+      "script": "PlayerHouse_Trigger_TryingToLeaveWithoutShoes"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_MOM_IN_HOUSE_INTRO",
+      "var_value": "2",
+      "script": "PlayerHouse_Trigger_TryingToLeaveWithoutShoes"
+    }
+  ],
   "bg_events": []
 }

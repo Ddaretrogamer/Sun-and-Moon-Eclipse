@@ -1,11 +1,14 @@
 mapscripts PlayerRoom_MapScripts{
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {applymovement(LOCALID_PLAYER, moves(face_up))
-    hideobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)}]
-    MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: RoomIntroSequence]
+    hideobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)
+    setflag(FLAG_MOM_IN_HOUSE_INTRO)}]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 0: RoomIntroSequence]
 }
 
 script RoomIntroSequence{
     lock
+    applymovement(PlayerRoomMeowth, moves(walk_faster_up))
+    waitmovement(0)
     delay(30)
     playse(SE_DOOR)
     showobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)
@@ -28,7 +31,55 @@ script RoomIntroSequence{
     waitse
     applymovement(PlayerRoomMeowth, moves(walk_down))
     waitmovement(0)
-    setflag(FLAG_LILLIE_INTRO_PLAYED)
+    setvar(VAR_MOM_IN_HOUSE_INTRO, 1)
     release
     end
 }
+
+script PlayerRoom_CheckBox{
+    lock
+    if (var(VAR_MOM_IN_HOUSE_INTRO)==1){
+        msgbox("A box of stuff brought from Kanto.
+        You should probably unpack it.")
+    }
+    elif(var(VAR_MOM_IN_HOUSE_INTRO)==2){
+        setmetatile(15, 12, METATILE_PlayerHouse2_OpenBox , TRUE)
+        special(DrawWholeMapView)
+        msgbox("You checked the box…")
+        waitbuttonpress
+        playfanfare(MUS_OBTAIN_ITEM)
+        msgbox("And grabbed your running shoes!", MSGBOX_AUTOCLOSE)
+        setflag(FLAG_SYS_B_DASH)
+        setflag(FLAG_LILLIE_INTRO_PLAYED)
+        clearflag(FLAG_MOM_IN_HOUSE_INTRO)
+        setvar(VAR_MOM_IN_HOUSE_INTRO, 3)
+        removeobject(PlayerRoomMeowth)
+    }
+    else{
+        msgbox("The box is empty.
+        You unpacked it already.")
+    }
+    release
+    end
+}
+
+script PlayerRoom_Trigger_TryingToLeaveWithoutShoes{
+    if(var(VAR_MOM_IN_HOUSE_INTRO) == 2){
+        lock
+        msgbox("Mom said you should unpack the box
+        in your room to find your shoes!")
+        applymovement(LOCALID_PLAYER, moves(walk_up))
+        waitmovement(LOCALID_PLAYER)
+        release
+        end
+    }   
+    end
+}
+
+
+//things to do tomorrow
+
+// make try to use intermediate var values so that you can finish the mom scene 1, go into the room,
+// then exit the room, but still have mom be in the original place? 
+
+// Alternatively, work on the triggers to stop you from exiting the room until you grabbed the shoes

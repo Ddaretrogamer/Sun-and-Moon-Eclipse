@@ -688,7 +688,7 @@
 #define FLAG_NO_COLLISON  0x279 // no collision
 #define FLAG_LILLIE_INTRO_PLAYED  0x27A // did the lillie intro cutscene play?
 #define FLAG_WARP_TO_BOATHOUSE  0x27B // handles warping to boathouse to make sure that the player walks past the triggers
-#define FLAG_MOM_MEOWTH_INTRO_INVISIBLE  0x27C // make mom and meowth outside the house invisible after cutscene
+#define FLAG_MOM_IN_HOUSE_INTRO  0x27C // flag to show mom and meowth in the house
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag

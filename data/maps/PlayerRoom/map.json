@@ -18,7 +18,7 @@
       "local_id": "PlayerRoomMeowth",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
       "x": 10,
-      "y": 13,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -45,6 +45,34 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_MOM_IN_HOUSE_INTRO",
+      "var_value": "1",
+      "script": "PlayerRoom_Trigger_TryingToLeaveWithoutShoes"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_MOM_IN_HOUSE_INTRO",
+      "var_value": "1",
+      "script": "PlayerRoom_Trigger_TryingToLeaveWithoutShoes"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PlayerRoom_CheckBox"
+    }
+  ]
 }
