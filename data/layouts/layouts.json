@@ -5776,6 +5776,16 @@
       "blockdata_filepath": "data/layouts/PlayerRoom/map.bin"
     },
     {
+      "id": "LAYOUT_PLAYER_ROOM_OPEN_BOX",
+      "name": "PlayerRoom_OpenBox_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PlayerHouse2",
+      "border_filepath": "data/layouts/PlayerRoom_OpenBox/border.bin",
+      "blockdata_filepath": "data/layouts/PlayerRoom_OpenBox/map.bin"
+    },
+    {
       "id": "LAYOUT_MELEMELE_MEADOW",
       "name": "MelemeleMeadow_Layout",
       "width": 61,

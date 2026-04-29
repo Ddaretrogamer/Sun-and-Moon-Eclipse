@@ -86,7 +86,7 @@ PlayerHouse_MomNewgame::
 # 112 "data/maps/PlayerHouse/scripts.pory"
 	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
 # 113 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_MomNewgame_Text_9
+	msgbox PlayerHouse_MomNewgame_Text_10
 # 116 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
@@ -119,8 +119,10 @@ PlayerHouse_MomNewgame_1:
 PlayerHouse_MomNewgame_4:
 # 62 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_MomNewgame_Text_3
+# 67 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_MomNewgame_Text_4
 # 71 "data/maps/PlayerHouse/scripts.pory"
-	dynmultichoice 0, 0, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_MomNewgame_Text_4, PlayerHouse_MomNewgame_Text_5
+	dynmultichoice 19, 7, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_MomNewgame_Text_5, PlayerHouse_MomNewgame_Text_6
 # 72 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq PlayerHouse_MomNewgame_11
@@ -129,7 +131,7 @@ PlayerHouse_MomNewgame_4:
 	goto_if_eq PlayerHouse_MomNewgame_12
 PlayerHouse_MomNewgame_10:
 # 81 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_MomNewgame_Text_8
+	msgbox PlayerHouse_MomNewgame_Text_9
 # 102 "data/maps/PlayerHouse/scripts.pory"
 	setvar VAR_MOM_IN_HOUSE_INTRO, 2
 # 103 "data/maps/PlayerHouse/scripts.pory"
@@ -143,12 +145,12 @@ PlayerHouse_MomNewgame_5:
 
 PlayerHouse_MomNewgame_11:
 # 74 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_MomNewgame_Text_6
+	msgbox PlayerHouse_MomNewgame_Text_7
 	goto PlayerHouse_MomNewgame_10
 
 PlayerHouse_MomNewgame_12:
 # 78 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_MomNewgame_Text_7
+	msgbox PlayerHouse_MomNewgame_Text_8
 	goto PlayerHouse_MomNewgame_10
 
 
@@ -180,46 +182,60 @@ PlayerHouse_GotRunningShoes::
 	end
 
 
-PlayerHouse_Trigger_TryingToLeaveWithoutShoes::
-# 151 "data/maps/PlayerHouse/scripts.pory"
+PlayerHouse_TalkToMom::
+# 149 "data/maps/PlayerHouse/scripts.pory"
 	lock
-# 152 "data/maps/PlayerHouse/scripts.pory"
-	playse SE_PIN
-# 153 "data/maps/PlayerHouse/scripts.pory"
+# 150 "data/maps/PlayerHouse/scripts.pory"
+	faceplayer
+# 151 "data/maps/PlayerHouse/scripts.pory"
 	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 152 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMom_Text_0
 # 154 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Text_0, MSGBOX_AUTOCLOSE
+	release
+	end
+
+
+PlayerHouse_Trigger_TryingToLeaveWithoutShoes::
 # 159 "data/maps/PlayerHouse/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Movement_0
+	lock
 # 160 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	playse SE_PIN
 # 161 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 162 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Text_0, MSGBOX_AUTOCLOSE
+# 167 "data/maps/PlayerHouse/scripts.pory"
+	applymovement LOCALID_PLAYER, PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Movement_0
+# 168 "data/maps/PlayerHouse/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 169 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
 
 
 PlayerHouse_Trigger_TryingToLeaveWithoutShoes2::
-# 166 "data/maps/PlayerHouse/scripts.pory"
+# 174 "data/maps/PlayerHouse/scripts.pory"
 	lock
-# 167 "data/maps/PlayerHouse/scripts.pory"
+# 175 "data/maps/PlayerHouse/scripts.pory"
 	applymovement playerhousemom1, PlayerHouse_GotRunningShoes_Movement_1
-# 168 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement playerhousemom1
-# 169 "data/maps/PlayerHouse/scripts.pory"
-	playse SE_PIN
-# 170 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemom1, Common_Movement_ExclamationMark
-# 171 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement playerhousemom1
-# 172 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
-# 173 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Text_0
 # 176 "data/maps/PlayerHouse/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Movement_0
+	waitmovement playerhousemom1
 # 177 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	playse SE_PIN
 # 178 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousemom1, Common_Movement_ExclamationMark
+# 179 "data/maps/PlayerHouse/scripts.pory"
+	waitmovement playerhousemom1
+# 180 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 181 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Text_0
+# 184 "data/maps/PlayerHouse/scripts.pory"
+	applymovement LOCALID_PLAYER, PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Movement_0
+# 185 "data/maps/PlayerHouse/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 186 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
 
@@ -264,15 +280,15 @@ PlayerHouse_GotRunningShoes_Movement_1:
 	face_player
 	step_end
 
-# 159 "data/maps/PlayerHouse/scripts.pory"
+# 167 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Movement_0:
-# 159 "data/maps/PlayerHouse/scripts.pory"
+# 167 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
 	step_end
 
-# 176 "data/maps/PlayerHouse/scripts.pory"
+# 184 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Movement_0:
-# 176 "data/maps/PlayerHouse/scripts.pory"
+# 184 "data/maps/PlayerHouse/scripts.pory"
 	walk_down
 	step_end
 
@@ -309,31 +325,33 @@ PlayerHouse_MomNewgame_Text_3:
 # 62 "data/maps/PlayerHouse/scripts.pory"
 	.string "It's completely the opposite of Kanto.\p"
 	.string "But then we are so far away here in\n"
-	.string "Alola."
-	.string "\p"
+	.string "Alola.$"
+
+PlayerHouse_MomNewgame_Text_4:
+# 67 "data/maps/PlayerHouse/scripts.pory"
 	.string "So {PLAYER}!\p"
 	.string "Are you excited to meet some Alolan\n"
 	.string "Pokémon?$"
 
-PlayerHouse_MomNewgame_Text_4:
+PlayerHouse_MomNewgame_Text_5:
 # 71 "data/maps/PlayerHouse/scripts.pory"
 	.string "Of course!$"
 
-PlayerHouse_MomNewgame_Text_5:
+PlayerHouse_MomNewgame_Text_6:
 # 71 "data/maps/PlayerHouse/scripts.pory"
 	.string "I guess…$"
 
-PlayerHouse_MomNewgame_Text_6:
+PlayerHouse_MomNewgame_Text_7:
 # 74 "data/maps/PlayerHouse/scripts.pory"
 	.string "That's right!\n"
 	.string "I want to hurry up and meet some, too!$"
 
-PlayerHouse_MomNewgame_Text_7:
+PlayerHouse_MomNewgame_Text_8:
 # 78 "data/maps/PlayerHouse/scripts.pory"
 	.string "Oh you! Someday you're going to learn\n"
 	.string "to have a little wonder in your life!$"
 
-PlayerHouse_MomNewgame_Text_8:
+PlayerHouse_MomNewgame_Text_9:
 # 81 "data/maps/PlayerHouse/scripts.pory"
 	.string "We're living in the Alola region now!\p"
 	.string "The beautiful islands everyone wants\n"
@@ -351,7 +369,7 @@ PlayerHouse_MomNewgame_Text_8:
 	.string "And didn't you leave your copy of\n"
 	.string "Adventure Rules on your desk, too?$"
 
-PlayerHouse_MomNewgame_Text_9:
+PlayerHouse_MomNewgame_Text_10:
 # 113 "data/maps/PlayerHouse/scripts.pory"
 	.string "Where are your shoes, {PLAYER}?\n"
 	.string "You should probably unpack the box in\l"
@@ -372,15 +390,20 @@ PlayerHouse_GotRunningShoes_Text_1:
 # 142 "data/maps/PlayerHouse/scripts.pory"
 	.string "Mrowrr!$"
 
+PlayerHouse_TalkToMom_Text_0:
+# 152 "data/maps/PlayerHouse/scripts.pory"
+	.string "Why don't you head up towards Iki Town\n"
+	.string "and see what you discover in Alola?$"
+
 PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Text_0:
-# 154 "data/maps/PlayerHouse/scripts.pory"
+# 162 "data/maps/PlayerHouse/scripts.pory"
 	.string "Are you leaving without your shoes, \n"
 	.string "{PLAYER}?\p"
 	.string "You should unpack the box in\n"
 	.string "your room to find them!$"
 
 PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Text_0:
-# 173 "data/maps/PlayerHouse/scripts.pory"
+# 181 "data/maps/PlayerHouse/scripts.pory"
 	.string "Where are you going, {PLAYER}?\n"
 	.string "You should probably unpack the box in\l"
 	.string "your room to find them!$"

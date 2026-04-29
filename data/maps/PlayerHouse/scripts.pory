@@ -62,13 +62,13 @@ script PlayerHouse_MomNewgame{
         msgbox("It's completely the opposite of Kanto.
 
         But then we are so far away here in
-        Alola.""
+        Alola.")
         
-        So {PLAYER}!
+        msgbox("So {PLAYER}!
 
         Are you excited to meet some Alolan
         Pokémon?")
-        dynmultichoice(0,0,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Of course!", "I guess…")
+        dynmultichoice(19,7,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Of course!", "I guess…")
         if(var(VAR_RESULT) == 0)
         {
             msgbox("That's right!
@@ -145,7 +145,15 @@ script PlayerHouse_GotRunningShoes{
     end
 }
 
-
+script PlayerHouse_TalkToMom{
+    lock
+    faceplayer
+    speakername("Mom")
+    msgbox("Why don't you head up towards Iki Town
+    and see what you discover in Alola?")
+    release
+    end
+}
 
 script PlayerHouse_Trigger_TryingToLeaveWithoutShoes{
     lock
