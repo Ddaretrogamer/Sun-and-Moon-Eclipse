@@ -57,6 +57,7 @@
       "flag": "0"
     },
     {
+      "local_id": "route1blockingboy",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
       "x": 25,
       "y": 1,
@@ -70,6 +71,7 @@
       "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
     },
     {
+      "local_id": "route1blockingrockruff",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ROCKRUFF)",
       "x": 22,
       "y": 1,
@@ -112,14 +114,14 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
       "x": 2,
-      "y": 15,
+      "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route1_LittleGirlPressB",
       "flag": "0"
     },
     {
@@ -139,14 +141,14 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH_ALOLA)",
       "x": 2,
-      "y": 16,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route1_AlolanMeowthNPC",
       "flag": "0"
     }
   ],
@@ -167,7 +169,7 @@
       "elevation": 0,
       "var": "VAR_HAUOLI_OUTSKIRTS_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route1_Trigger_BlockRightPath"
     },
     {
       "type": "trigger",
@@ -176,7 +178,7 @@
       "elevation": 0,
       "var": "VAR_HAUOLI_OUTSKIRTS_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route1_Trigger_BlockRightPath"
     },
     {
       "type": "trigger",
@@ -185,7 +187,7 @@
       "elevation": 0,
       "var": "VAR_HAUOLI_OUTSKIRTS_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route1_Trigger_BlockRightPath"
     }
   ],
   "bg_events": [

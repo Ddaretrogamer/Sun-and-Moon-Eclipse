@@ -7,6 +7,50 @@ mapscripts Route1_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro]
 }
 
+script Route1_AlolanMeowthNPC{
+    lock
+    faceplayer
+    playmoncry(SPECIES_MEOWTH_ALOLA, 0)
+    msgbox("Hsss!")
+    release
+    end
+}
+
+script Route1_LittleGirlPressB{
+    lock
+    faceplayer
+    msgbox("You can go with me!
+    If you can dash with {B_BUTTON}!
+    
+    What do you think of my song?")
+    release
+    
+}
+
+script Route1_Trigger_BlockRightPath{
+    lock
+    applymovement(route1blockingboy, moves(face_down))
+    waitmovement(route1blockingboy)
+    msgbox("Watch it, cuz!
+    
+    It's dangerous to get too close to
+    a Pokémon while it's using one of
+    its moves!")
+    applymovement(route1blockingrockruff, moves(face_down))
+    waitmovement(route1blockingrockruff)
+    playmoncry(SPECIES_ROCKRUFF, 0)
+    applymovement(route1blockingrockruff, moves(walk_in_place_down*2))
+    waitmovement(route1blockingrockruff)
+    msgbox("Ruff!", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(LOCALID_PLAYER)
+    applymovement(route1blockingboy, moves(face_up))
+    waitmovement(route1blockingboy)
+    applymovement(route1blockingrockruff, moves(face_up))
+    waitmovement(route1blockingrockruff)
+    release
+    end
+}
 
 script Route1CloseGates{
     setmaplayoutindex(LAYOUT_ROUTE1_closed)

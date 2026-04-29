@@ -217,12 +217,20 @@ AetherIntroSequence::
 # 123 "data/maps/AetherConservatory/scripts.pory"
 	callnative OpenScreenshotsFromScript
 # 124 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
-# 125 "data/maps/AetherConservatory/scripts.pory"
-	warp MAP_ROUTE1, 27, 19
-# 126 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
+# 125 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_0x8000, 1
+# 126 "data/maps/AetherConservatory/scripts.pory"
+	callnative OpenScreenshotsFromScript
 # 127 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
+# 128 "data/maps/AetherConservatory/scripts.pory"
+	delay 30
+# 129 "data/maps/AetherConservatory/scripts.pory"
+	warp MAP_ROUTE1, 27, 19
+# 130 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
+# 131 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 

@@ -139,7 +139,7 @@ script PlayerHouse_GotRunningShoes{
     and see what you discover in Alola?")
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playmoncry(SPECIES_MEOWTH, 0)
-    msgbox("Mrowrr!", MSGBOX_AUTOCLOSE)
+    msgbox("Mrowrr.", MSGBOX_AUTOCLOSE)
     setvar(VAR_MOM_IN_HOUSE_INTRO, 4)
     release
     end

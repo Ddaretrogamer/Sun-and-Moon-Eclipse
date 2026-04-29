@@ -73,6 +73,7 @@ static void Screenshots_InitWindows(void);
 static void PrintToWindow(u16 seaSectionId);
 static void Task_ScreenshotsWaitFadeIn(u8 taskId);
 static void Task_ScreenshotsMain(u8 taskId);
+static void Task_ScreenshotsFadeToBlackExit(u8 taskId);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sScreenshotsBgTemplates[] =
@@ -118,6 +119,10 @@ static const u32 sUELogoScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots
 static const u32 sUELogoScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/ultra_eclipse_logo.bin.lz");
 static const u16 sUELogoScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/ultra_eclipse_logo.gbapal");
 
+static const u32 sThreeMonthsLaterScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.8bpp.lz");
+static const u32 sThreeMonthsLaterScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.bin.lz");
+static const u16 sThreeMonthsLaterScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/ThreeMonthsLater_Tiles.gbapal");
+
 // static const u32 sTabletScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.8bpp.smol");
 // static const u32 sTabletScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.bin.smolTM");
 // static const u16 sTabletScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/seacrown_tablet_tiles.gbapal");
@@ -137,6 +142,11 @@ static const struct Screenshot sScreenshotData[] = {
         .screenshotTiles = sUELogoScreenshotsTiles,
         .screenshotTilemap = sUELogoScreenshotsTilemap,
         .screenshotPalette = sUELogoScreenshotsPalette,
+    },
+    [SCREENSHOT_THREE_MONTHS_LATER] = {
+        .screenshotTiles = sThreeMonthsLaterScreenshotsTiles,
+        .screenshotTilemap = sThreeMonthsLaterScreenshotsTilemap,
+        .screenshotPalette = sThreeMonthsLaterScreenshotsPalette,
     },
 };
 
@@ -395,7 +405,7 @@ static void Task_ScreenshotsMain(u8 taskId)
     
     // Auto-close timer
     #define AUTOCLOSE_TIMER data[0]
-    #define AUTOCLOSE_DURATION 180 // 3 seconds cause 60fps
+    #define AUTOCLOSE_DURATION 240 // 4 seconds cause 60fps
     
     AUTOCLOSE_TIMER++;
     
@@ -406,18 +416,9 @@ static void Task_ScreenshotsMain(u8 taskId)
         // If VAR_RESULT = 0: Return to field normally
         if (VarGet(VAR_RESULT) == 1)
         {
-            // Stay black until warp
-            // Set all palettes to black
-            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
-            // Set backdrop color to black
-            *(u16 *)PLTT = RGB_BLACK;
-            // Turn off display
-            SetGpuReg(REG_OFFSET_DISPCNT, 0);
-            // Resume script without restoring field display
-            ScriptContext_Enable();
-            SetMainCallback2(CB2_Overworld);
-            Screenshots_FreeResources();
-            DestroyTask(taskId);
+            // Fade to black, then stay black for cutscene warp
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_ScreenshotsFadeToBlackExit;
         }
         else
         {
@@ -430,6 +431,22 @@ static void Task_ScreenshotsMain(u8 taskId)
     
     #undef AUTOCLOSE_TIMER
     #undef AUTOCLOSE_DURATION
+}
+
+static void Task_ScreenshotsFadeToBlackExit(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        // Ensure screen stays black after fade
+        BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+        *(u16 *)PLTT = RGB_BLACK;
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        // Resume script without restoring field display
+        ScriptContext_Enable();
+        SetMainCallback2(CB2_Overworld);
+        Screenshots_FreeResources();
+        DestroyTask(taskId);
+    }
 }
 
 

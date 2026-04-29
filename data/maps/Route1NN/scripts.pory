@@ -1,0 +1,41 @@
+mapscripts Route1NN_MapScripts{
+    
+}
+
+script Route1NN_Trigger_GetStarters{
+
+
+
+
+
+
+RollShinyRowlet VAR_TEMP_1
+RollShinyLitten VAR_TEMP_2
+RollShinyPopplio VAR_TEMP_3
+Switch(PickStarter)
+case 1: 
+  GiveMon ROWLET, VAR_TEMP_1
+  RivalShinyStarter VAR_TEMP_3
+case 2: 
+  GiveMon LITTEN, VAR_TEMP_2
+  RivalShinyStarter VAR_TEMP_1
+case 3: 
+  GiveMon POPPLIO, VAR_TEMP_3
+  RivalShinyStarter VAR_TEMP_2
+
+
+
+}
+
+script Route1NN_Rockruff{
+    lock
+    faceplayer
+    emote_heart
+    playmoncry(SPECIES_ROCKRUFF, 0)
+    playse(SE_PIN)
+    applymovement(route1nnrockruff, moves(emote_heart))
+    waitmovement(route1nnrockruff)
+    msgbox("Ruff!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}

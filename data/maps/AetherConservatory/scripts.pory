@@ -121,6 +121,10 @@ script AetherIntroSequence{
     setvar(VAR_RESULT, 1)
     playse(SE_M_COSMIC_POWER)
     callnative(OpenScreenshotsFromScript)
+    waitstate
+    setvar(VAR_0x8000, 1)
+    callnative(OpenScreenshotsFromScript)
+    waitstate
     delay(30)
     warp(MAP_ROUTE1, 27, 19)
     waitstate

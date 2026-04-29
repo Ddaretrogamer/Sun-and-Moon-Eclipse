@@ -28,289 +28,394 @@ Route1_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-Route1CloseGates::
+Route1_AlolanMeowthNPC::
+# 11 "data/maps/Route1/scripts.pory"
+	lock
 # 12 "data/maps/Route1/scripts.pory"
+	faceplayer
+# 13 "data/maps/Route1/scripts.pory"
+	playmoncry SPECIES_MEOWTH_ALOLA, 0
+# 14 "data/maps/Route1/scripts.pory"
+	msgbox Route1_AlolanMeowthNPC_Text_0
+# 15 "data/maps/Route1/scripts.pory"
+	release
+	end
+
+
+Route1_LittleGirlPressB::
+# 20 "data/maps/Route1/scripts.pory"
+	lock
+# 21 "data/maps/Route1/scripts.pory"
+	faceplayer
+# 22 "data/maps/Route1/scripts.pory"
+	msgbox Route1_LittleGirlPressB_Text_0
+# 26 "data/maps/Route1/scripts.pory"
+	release
+	return
+
+
+Route1_Trigger_BlockRightPath::
+# 31 "data/maps/Route1/scripts.pory"
+	lock
+# 32 "data/maps/Route1/scripts.pory"
+	applymovement route1blockingboy, Route1_Trigger_BlockRightPath_Movement_0
+# 33 "data/maps/Route1/scripts.pory"
+	waitmovement route1blockingboy
+# 34 "data/maps/Route1/scripts.pory"
+	msgbox Route1_Trigger_BlockRightPath_Text_0
+# 39 "data/maps/Route1/scripts.pory"
+	applymovement route1blockingrockruff, Route1_Trigger_BlockRightPath_Movement_0
+# 40 "data/maps/Route1/scripts.pory"
+	waitmovement route1blockingrockruff
+# 41 "data/maps/Route1/scripts.pory"
+	playmoncry SPECIES_ROCKRUFF, 0
+# 42 "data/maps/Route1/scripts.pory"
+	applymovement route1blockingrockruff, Route1_Trigger_BlockRightPath_Movement_1
+# 43 "data/maps/Route1/scripts.pory"
+	waitmovement route1blockingrockruff
+# 44 "data/maps/Route1/scripts.pory"
+	msgbox Route1_Trigger_BlockRightPath_Text_1, MSGBOX_AUTOCLOSE
+# 45 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1_Trigger_BlockRightPath_Movement_2
+# 46 "data/maps/Route1/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 47 "data/maps/Route1/scripts.pory"
+	applymovement route1blockingboy, Route1_Trigger_BlockRightPath_Movement_3
+# 48 "data/maps/Route1/scripts.pory"
+	waitmovement route1blockingboy
+# 49 "data/maps/Route1/scripts.pory"
+	applymovement route1blockingrockruff, Route1_Trigger_BlockRightPath_Movement_3
+# 50 "data/maps/Route1/scripts.pory"
+	waitmovement route1blockingrockruff
+# 51 "data/maps/Route1/scripts.pory"
+	release
+	end
+
+
+Route1CloseGates::
+# 56 "data/maps/Route1/scripts.pory"
 	setmaplayoutindex LAYOUT_ROUTE1_closed
 	return
 
 
 LittleGirlChasesMeowthIntro::
-# 17 "data/maps/Route1/scripts.pory"
+# 61 "data/maps/Route1/scripts.pory"
 	lock
-# 18 "data/maps/Route1/scripts.pory"
+# 62 "data/maps/Route1/scripts.pory"
 	special SpawnCameraObject
-# 19 "data/maps/Route1/scripts.pory"
+# 63 "data/maps/Route1/scripts.pory"
 	playmoncry SPECIES_MEOWTH_ALOLA, 0
-# 20 "data/maps/Route1/scripts.pory"
+# 64 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, LittleGirlChasesMeowthIntro_Movement_0
-# 21 "data/maps/Route1/scripts.pory"
+# 65 "data/maps/Route1/scripts.pory"
 	applymovement chasedmeowth, LittleGirlChasesMeowthIntro_Movement_0
-# 22 "data/maps/Route1/scripts.pory"
+# 66 "data/maps/Route1/scripts.pory"
 	waitmovement 0
-# 23 "data/maps/Route1/scripts.pory"
+# 67 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, LittleGirlChasesMeowthIntro_Movement_1
-# 24 "data/maps/Route1/scripts.pory"
+# 68 "data/maps/Route1/scripts.pory"
 	applymovement chasedmeowth, LittleGirlChasesMeowthIntro_Movement_2
-# 25 "data/maps/Route1/scripts.pory"
+# 69 "data/maps/Route1/scripts.pory"
 	waitmovement 0
-# 26 "data/maps/Route1/scripts.pory"
+# 70 "data/maps/Route1/scripts.pory"
 	playmoncry SPECIES_MEOWTH_ALOLA, 0
-# 27 "data/maps/Route1/scripts.pory"
+# 71 "data/maps/Route1/scripts.pory"
 	delay 60
-# 28 "data/maps/Route1/scripts.pory"
+# 72 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, LittleGirlChasesMeowthIntro_Movement_3
-# 29 "data/maps/Route1/scripts.pory"
+# 73 "data/maps/Route1/scripts.pory"
 	waitmovement 0
-# 30 "data/maps/Route1/scripts.pory"
+# 74 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, LittleGirlChasesMeowthIntro_Movement_4
-# 31 "data/maps/Route1/scripts.pory"
+# 75 "data/maps/Route1/scripts.pory"
 	waitmovement 0
-# 32 "data/maps/Route1/scripts.pory"
+# 76 "data/maps/Route1/scripts.pory"
 	gettimeofday
-# 33 "data/maps/Route1/scripts.pory"
+# 77 "data/maps/Route1/scripts.pory"
 	compare VAR_0x8000, TIME_NIGHT
 	goto_if_eq LittleGirlChasesMeowthIntro_2
-# 33 "data/maps/Route1/scripts.pory"
+# 77 "data/maps/Route1/scripts.pory"
 	compare VAR_0x8000, TIME_EVENING
 	goto_if_eq LittleGirlChasesMeowthIntro_2
-# 43 "data/maps/Route1/scripts.pory"
+# 87 "data/maps/Route1/scripts.pory"
 	speakername LittleGirlChasesMeowthIntro_Text_0
-# 44 "data/maps/Route1/scripts.pory"
+# 88 "data/maps/Route1/scripts.pory"
 	msgbox LittleGirlChasesMeowthIntro_Text_2
 LittleGirlChasesMeowthIntro_1:
-# 50 "data/maps/Route1/scripts.pory"
+# 94 "data/maps/Route1/scripts.pory"
 	msgbox LittleGirlChasesMeowthIntro_Text_3
-# 52 "data/maps/Route1/scripts.pory"
-	applymovement momintro, LittleGirlChasesMeowthIntro_Movement_5
-# 53 "data/maps/Route1/scripts.pory"
+# 96 "data/maps/Route1/scripts.pory"
+	applymovement momintro, Route1_Trigger_BlockRightPath_Movement_3
+# 97 "data/maps/Route1/scripts.pory"
 	waitmovement 0
-# 54 "data/maps/Route1/scripts.pory"
+# 98 "data/maps/Route1/scripts.pory"
 	msgbox LittleGirlChasesMeowthIntro_Text_4
-# 56 "data/maps/Route1/scripts.pory"
+# 100 "data/maps/Route1/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 57 "data/maps/Route1/scripts.pory"
+# 101 "data/maps/Route1/scripts.pory"
 	waitmessage
-# 58 "data/maps/Route1/scripts.pory"
+# 102 "data/maps/Route1/scripts.pory"
 	playmoncry SPECIES_MEOWTH, 0
-# 59 "data/maps/Route1/scripts.pory"
+# 103 "data/maps/Route1/scripts.pory"
 	msgbox LittleGirlChasesMeowthIntro_Text_5
-# 60 "data/maps/Route1/scripts.pory"
+# 104 "data/maps/Route1/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 61 "data/maps/Route1/scripts.pory"
+# 105 "data/maps/Route1/scripts.pory"
 	warp MAP_PLAYER_ROOM, 12, 10
-# 62 "data/maps/Route1/scripts.pory"
+# 106 "data/maps/Route1/scripts.pory"
 	waitstate
-# 63 "data/maps/Route1/scripts.pory"
+# 107 "data/maps/Route1/scripts.pory"
 	release
 	end
 
 LittleGirlChasesMeowthIntro_2:
-# 34 "data/maps/Route1/scripts.pory"
+# 78 "data/maps/Route1/scripts.pory"
 	speakername LittleGirlChasesMeowthIntro_Text_0
-# 35 "data/maps/Route1/scripts.pory"
+# 79 "data/maps/Route1/scripts.pory"
 	msgbox LittleGirlChasesMeowthIntro_Text_1
 	goto LittleGirlChasesMeowthIntro_1
 
 
 MomSaysHi::
-# 68 "data/maps/Route1/scripts.pory"
+# 112 "data/maps/Route1/scripts.pory"
 	lock
-# 69 "data/maps/Route1/scripts.pory"
+# 113 "data/maps/Route1/scripts.pory"
 	faceplayer
-# 70 "data/maps/Route1/scripts.pory"
+# 114 "data/maps/Route1/scripts.pory"
 	speakername LittleGirlChasesMeowthIntro_Text_0
-# 71 "data/maps/Route1/scripts.pory"
+# 115 "data/maps/Route1/scripts.pory"
 	msgbox MomSaysHi_Text_0
-# 72 "data/maps/Route1/scripts.pory"
+# 116 "data/maps/Route1/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 73 "data/maps/Route1/scripts.pory"
+# 117 "data/maps/Route1/scripts.pory"
 	playfanfare MUS_HEAL
-# 74 "data/maps/Route1/scripts.pory"
+# 118 "data/maps/Route1/scripts.pory"
 	waitfanfare
-# 75 "data/maps/Route1/scripts.pory"
+# 119 "data/maps/Route1/scripts.pory"
 	special HealPlayerParty
-# 76 "data/maps/Route1/scripts.pory"
+# 120 "data/maps/Route1/scripts.pory"
 	setflag FLAG_DN_FLAG_DEXNAV_GET
-# 77 "data/maps/Route1/scripts.pory"
+# 121 "data/maps/Route1/scripts.pory"
 	setflag FLAG_ENABLE_STAT_EDITOR
-# 78 "data/maps/Route1/scripts.pory"
+# 122 "data/maps/Route1/scripts.pory"
 	setflag FLAG_PORTABLE_PC_TOGGLE
-# 79 "data/maps/Route1/scripts.pory"
+# 123 "data/maps/Route1/scripts.pory"
 	setflag FLAG_RECEIVED_SUPER_ROD
-# 80 "data/maps/Route1/scripts.pory"
+# 124 "data/maps/Route1/scripts.pory"
 	setflag FLAG_EGG_MOVES
-# 81 "data/maps/Route1/scripts.pory"
+# 125 "data/maps/Route1/scripts.pory"
 	setflag FLAG_TUTOR_MOVES
-# 82 "data/maps/Route1/scripts.pory"
+# 126 "data/maps/Route1/scripts.pory"
 	goto_if_set FLAG_SHINY_RIDE, MomSaysHi_2
-# 88 "data/maps/Route1/scripts.pory"
+# 132 "data/maps/Route1/scripts.pory"
 	setflag FLAG_SHINY_RIDE
-# 89 "data/maps/Route1/scripts.pory"
+# 133 "data/maps/Route1/scripts.pory"
 	setflag FLAG_SHINY_SURF
 MomSaysHi_1:
-# 91 "data/maps/Route1/scripts.pory"
+# 135 "data/maps/Route1/scripts.pory"
 	compare VAR_ROTOM_PHONE_ENABLE, 1
 	goto_if_lt MomSaysHi_6
-# 96 "data/maps/Route1/scripts.pory"
+# 140 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 0
 MomSaysHi_5:
-# 98 "data/maps/Route1/scripts.pory"
+# 142 "data/maps/Route1/scripts.pory"
 	release
-# 99 "data/maps/Route1/scripts.pory"
+# 143 "data/maps/Route1/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 100 "data/maps/Route1/scripts.pory"
+# 144 "data/maps/Route1/scripts.pory"
 	msgbox MomSaysHi_Text_1
-# 101 "data/maps/Route1/scripts.pory"
+# 145 "data/maps/Route1/scripts.pory"
 	release
 	end
 
 MomSaysHi_2:
-# 84 "data/maps/Route1/scripts.pory"
+# 128 "data/maps/Route1/scripts.pory"
 	clearflag FLAG_SHINY_RIDE
-# 85 "data/maps/Route1/scripts.pory"
+# 129 "data/maps/Route1/scripts.pory"
 	clearflag FLAG_SHINY_SURF
 	goto MomSaysHi_1
 
 MomSaysHi_6:
-# 93 "data/maps/Route1/scripts.pory"
+# 137 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 1
 	goto MomSaysHi_5
 
 
 Mailbox::
-# 106 "data/maps/Route1/scripts.pory"
+# 150 "data/maps/Route1/scripts.pory"
 	lock
-# 107 "data/maps/Route1/scripts.pory"
+# 151 "data/maps/Route1/scripts.pory"
 	msgbox Mailbox_Text_0
 	end
 
 
 Route1LittleBoyNPC::
-# 112 "data/maps/Route1/scripts.pory"
+# 156 "data/maps/Route1/scripts.pory"
 	msgbox Route1LittleBoyNPC_Text_0, MSGBOX_NPC
 	end
 
 
 testscript::
-# 117 "data/maps/Route1/scripts.pory"
+# 161 "data/maps/Route1/scripts.pory"
 	msgbox testscript_Text_0, MSGBOX_NPC
 	end
 
 
-# 20 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_0:
-# 20 "data/maps/Route1/scripts.pory"
-	walk_fast_down
-# 20 "data/maps/Route1/scripts.pory"
-	walk_fast_down
-# 20 "data/maps/Route1/scripts.pory"
-	walk_fast_down
-# 20 "data/maps/Route1/scripts.pory"
-	walk_fast_down
-# 20 "data/maps/Route1/scripts.pory"
-	walk_fast_down
+# 32 "data/maps/Route1/scripts.pory"
+Route1_Trigger_BlockRightPath_Movement_0:
+# 32 "data/maps/Route1/scripts.pory"
+	face_down
 	step_end
 
-# 23 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_1:
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 23 "data/maps/Route1/scripts.pory"
-	walk_fast_left
+# 42 "data/maps/Route1/scripts.pory"
+Route1_Trigger_BlockRightPath_Movement_1:
+# 42 "data/maps/Route1/scripts.pory"
+	walk_in_place_down
+# 42 "data/maps/Route1/scripts.pory"
+	walk_in_place_down
 	step_end
 
-# 24 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_2:
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
-# 24 "data/maps/Route1/scripts.pory"
-	walk_fast_left
+# 45 "data/maps/Route1/scripts.pory"
+Route1_Trigger_BlockRightPath_Movement_2:
+# 45 "data/maps/Route1/scripts.pory"
+	walk_down
 	step_end
 
-# 28 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_3:
-# 28 "data/maps/Route1/scripts.pory"
-	walk_slow_up
-# 28 "data/maps/Route1/scripts.pory"
-	walk_slow_up
-	step_end
-
-# 30 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_4:
-# 30 "data/maps/Route1/scripts.pory"
-	walk_slow_diag_northeast
-# 30 "data/maps/Route1/scripts.pory"
-	walk_slow_diag_northeast
-# 30 "data/maps/Route1/scripts.pory"
-	walk_slow_diag_northeast
-	step_end
-
-# 52 "data/maps/Route1/scripts.pory"
-LittleGirlChasesMeowthIntro_Movement_5:
-# 52 "data/maps/Route1/scripts.pory"
+# 47 "data/maps/Route1/scripts.pory"
+Route1_Trigger_BlockRightPath_Movement_3:
+# 47 "data/maps/Route1/scripts.pory"
 	face_up
 	step_end
 
-LittleGirlChasesMeowthIntro_Text_0:
+# 64 "data/maps/Route1/scripts.pory"
+LittleGirlChasesMeowthIntro_Movement_0:
+# 64 "data/maps/Route1/scripts.pory"
+	walk_fast_down
+# 64 "data/maps/Route1/scripts.pory"
+	walk_fast_down
+# 64 "data/maps/Route1/scripts.pory"
+	walk_fast_down
+# 64 "data/maps/Route1/scripts.pory"
+	walk_fast_down
+# 64 "data/maps/Route1/scripts.pory"
+	walk_fast_down
+	step_end
+
+# 67 "data/maps/Route1/scripts.pory"
+LittleGirlChasesMeowthIntro_Movement_1:
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 67 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+	step_end
+
+# 68 "data/maps/Route1/scripts.pory"
+LittleGirlChasesMeowthIntro_Movement_2:
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+# 68 "data/maps/Route1/scripts.pory"
+	walk_fast_left
+	step_end
+
+# 72 "data/maps/Route1/scripts.pory"
+LittleGirlChasesMeowthIntro_Movement_3:
+# 72 "data/maps/Route1/scripts.pory"
+	walk_slow_up
+# 72 "data/maps/Route1/scripts.pory"
+	walk_slow_up
+	step_end
+
+# 74 "data/maps/Route1/scripts.pory"
+LittleGirlChasesMeowthIntro_Movement_4:
+# 74 "data/maps/Route1/scripts.pory"
+	walk_slow_diag_northeast
+# 74 "data/maps/Route1/scripts.pory"
+	walk_slow_diag_northeast
+# 74 "data/maps/Route1/scripts.pory"
+	walk_slow_diag_northeast
+	step_end
+
+Route1_AlolanMeowthNPC_Text_0:
+# 14 "data/maps/Route1/scripts.pory"
+	.string "Hsss!$"
+
+Route1_LittleGirlPressB_Text_0:
+# 22 "data/maps/Route1/scripts.pory"
+	.string "You can go with me!\n"
+	.string "If you can dash with {B_BUTTON}!\p"
+	.string "What do you think of my song?$"
+
+Route1_Trigger_BlockRightPath_Text_0:
 # 34 "data/maps/Route1/scripts.pory"
+	.string "Watch it, cuz!\p"
+	.string "It's dangerous to get too close to\n"
+	.string "a Pokémon while it's using one of\l"
+	.string "its moves!$"
+
+Route1_Trigger_BlockRightPath_Text_1:
+# 44 "data/maps/Route1/scripts.pory"
+	.string "Ruff!$"
+
+LittleGirlChasesMeowthIntro_Text_0:
+# 78 "data/maps/Route1/scripts.pory"
 	.string "Mom$"
 
 LittleGirlChasesMeowthIntro_Text_1:
-# 35 "data/maps/Route1/scripts.pory"
+# 79 "data/maps/Route1/scripts.pory"
 	.string "Ahhh! Could anything be more soothing?\n"
 	.string "The first evening spent under Alola's\l"
 	.string "calm moon!\p"
@@ -318,46 +423,46 @@ LittleGirlChasesMeowthIntro_Text_1:
 	.string "night!$"
 
 LittleGirlChasesMeowthIntro_Text_2:
-# 44 "data/maps/Route1/scripts.pory"
+# 88 "data/maps/Route1/scripts.pory"
 	.string "Ahhh! Can't you just feel that warmth?\n"
 	.string "The first day spent under Alola's\l"
 	.string "sun!\p"
 	.string "It's so warm and bright here!$"
 
 LittleGirlChasesMeowthIntro_Text_3:
-# 50 "data/maps/Route1/scripts.pory"
+# 94 "data/maps/Route1/scripts.pory"
 	.string "But that's enough of that!\n"
 	.string "Time to unpack all these boxes!$"
 
 LittleGirlChasesMeowthIntro_Text_4:
-# 54 "data/maps/Route1/scripts.pory"
+# 98 "data/maps/Route1/scripts.pory"
 	.string "Meowth?\n"
 	.string "Go get {PLAYER} for me, would you?$"
 
 LittleGirlChasesMeowthIntro_Text_5:
-# 59 "data/maps/Route1/scripts.pory"
+# 103 "data/maps/Route1/scripts.pory"
 	.string "Meow?$"
 
 MomSaysHi_Text_0:
-# 71 "data/maps/Route1/scripts.pory"
+# 115 "data/maps/Route1/scripts.pory"
 	.string "How are you doing, honey?\n"
 	.string "You look a little tired.\p"
 	.string "You should take a rest.$"
 
 MomSaysHi_Text_1:
-# 100 "data/maps/Route1/scripts.pory"
+# 144 "data/maps/Route1/scripts.pory"
 	.string "Take care, honey!$"
 
 Mailbox_Text_0:
-# 107 "data/maps/Route1/scripts.pory"
+# 151 "data/maps/Route1/scripts.pory"
 	.string "{PLAYER}'s House$"
 
 Route1LittleBoyNPC_Text_0:
-# 112 "data/maps/Route1/scripts.pory"
+# 156 "data/maps/Route1/scripts.pory"
 	.string "I gotta catch more Pokémon!\nPokémon with cool knees are so neat.$"
 
 testscript_Text_0:
-# 117 "data/maps/Route1/scripts.pory"
+# 161 "data/maps/Route1/scripts.pory"
 	.string "okay this is a test.\n"
 	.string "It seems this is a suitable line lengthc\l"
 	.string "for scripting. This is working well.\p"

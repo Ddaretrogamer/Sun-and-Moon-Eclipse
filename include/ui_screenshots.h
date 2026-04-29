@@ -11,6 +11,7 @@ void Screenshots_StartMenuInitCB(void);
 enum Screenshots
 {
     SCREENSHOT_ULTRA_ECLIPSE_LOGO,
+    SCREENSHOT_THREE_MONTHS_LATER,
 };
 
 

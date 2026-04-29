@@ -388,7 +388,7 @@ PlayerHouse_GotRunningShoes_Text_0:
 
 PlayerHouse_GotRunningShoes_Text_1:
 # 142 "data/maps/PlayerHouse/scripts.pory"
-	.string "Mrowrr!$"
+	.string "Mrowrr.$"
 
 PlayerHouse_TalkToMom_Text_0:
 # 152 "data/maps/PlayerHouse/scripts.pory"
