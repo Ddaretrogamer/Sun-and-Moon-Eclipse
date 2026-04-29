@@ -141,6 +141,7 @@ script PlayerHouse_GotRunningShoes{
     playmoncry(SPECIES_MEOWTH, 0)
     msgbox("Mrowrr.", MSGBOX_AUTOCLOSE)
     setvar(VAR_MOM_IN_HOUSE_INTRO, 4)
+    setflag(FLAG_HIDE_STARTERS)
     release
     end
 }

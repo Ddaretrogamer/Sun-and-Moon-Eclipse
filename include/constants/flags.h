@@ -689,9 +689,9 @@
 #define FLAG_LILLIE_INTRO_PLAYED  0x27A // did the lillie intro cutscene play?
 #define FLAG_WARP_TO_BOATHOUSE  0x27B // handles warping to boathouse to make sure that the player walks past the triggers
 #define FLAG_MOM_IN_HOUSE_INTRO  0x27C // flag to show mom and meowth in the house
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
-#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
-#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
+#define FLAG_RIVAL_SHINY  0x27D // did the rival get a shiny mon in the intro?
+#define FLAG_KUKUI_SHINY  0x27E // did kukui get a shiny mon in the intro?
+#define FLAG_HIDE_STARTERS  0x27F // Unused Flag
 #define FLAG_UNUSED_0x280  0x280 // Unused Flag
 #define FLAG_UNUSED_0x281  0x281 // Unused Flag
 #define FLAG_UNUSED_0x282  0x282 // Unused Flag

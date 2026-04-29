@@ -681,3 +681,12 @@ void Script_SetKO(struct ScriptContext *ctx)
         SetMonData(&gPlayerParty[slot], MON_DATA_HP, &hp);
     }
 }
+
+// Rolls for shininess and sets gSpecialVar_Result to the appropriate ShinyMode:
+// SHINY_MODE_ALWAYS (0) if shiny, SHINY_MODE_NEVER (2) if not.
+// Pass the result directly to the shinyMode parameter of givemon/createmon.
+// Use with `specialvar VAR_TEMP_0, Script_RollShiny` in event scripts.
+void Script_RollShiny(void)
+{
+    gSpecialVar_Result = ComputePlayerShinyOdds(Random32()) ? SHINY_MODE_ALWAYS : SHINY_MODE_NEVER;
+}
