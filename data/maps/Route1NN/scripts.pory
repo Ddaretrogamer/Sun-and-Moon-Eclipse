@@ -400,7 +400,7 @@ script Route1NN_Trigger_GetStarters{
     msgbox("Y'see, the fact of the matter is…
 
     one of these Pokémon will become
-    your first parter, woo!
+    your first partner, woo!
     
     Heh…
 
@@ -408,7 +408,7 @@ script Route1NN_Trigger_GetStarters{
     you?
     
     Go on and choose the one you'd like
-    to keep as your parter, cousin!")
+    to keep as your partner, cousin!")
     dynmultichoice(20,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "{COLOR GREEN}Rowlet", "{COLOR RED}Litten", "{COLOR BLUE}Popplio")
     switch(var(VAR_RESULT)){
     case 0:
@@ -632,8 +632,7 @@ script Route1NN_Trigger_GetStarters{
     removeobject(litten2)
     removeobject(littenshiny2)
     removeobject(rowlet2)
-    removeobject(rowletshiny2)
-    fadescreenswapbuffers(FADE_FROM_BLACK)
+    removeobject(rowletshiny2) 
     special(SpawnCameraObject)
     speakername("Kukui")
     msgbox("So you went with {STR_VAR_1}!
@@ -716,7 +715,7 @@ script Route1NN_Trigger_GetStarters{
     waitmovement(OBJ_EVENT_ID_CAMERA)
     delay(90)
     fadescreenswapbuffers(FADE_TO_BLACK)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right*15, walk_diag_southeast*3))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*18, walk_faster_down*3))
     setobjectxy(kukuistarters, 21, 19)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
