@@ -142,6 +142,7 @@ script PlayerHouse_GotRunningShoes{
     msgbox("Mrowrr.", MSGBOX_AUTOCLOSE)
     setvar(VAR_MOM_IN_HOUSE_INTRO, 4)
     setflag(FLAG_HIDE_STARTERS)
+    setflag(FLAG_HIDE_KUKUI_STARTERS)
     release
     end
 }

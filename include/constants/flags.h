@@ -691,8 +691,8 @@
 #define FLAG_MOM_IN_HOUSE_INTRO  0x27C // flag to show mom and meowth in the house
 #define FLAG_RIVAL_SHINY  0x27D // did the rival get a shiny mon in the intro?
 #define FLAG_KUKUI_SHINY  0x27E // did kukui get a shiny mon in the intro?
-#define FLAG_HIDE_STARTERS  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
+#define FLAG_HIDE_STARTERS  0x27F // hide the starters for the intro sequence, set when the player chooses a starter to prevent them from appearing in the background of the intro sequence
+#define FLAG_HIDE_KUKUI_STARTERS  0x280 // hide kukui separately because he gets used later.
 #define FLAG_UNUSED_0x281  0x281 // Unused Flag
 #define FLAG_UNUSED_0x282  0x282 // Unused Flag
 #define FLAG_UNUSED_0x283  0x283 // Unused Flag
