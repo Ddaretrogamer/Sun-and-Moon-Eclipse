@@ -1194,18 +1194,16 @@ Route1NN_Rockruff::
 # 731 "data/maps/Route1NN/scripts.pory"
 	lock
 # 732 "data/maps/Route1NN/scripts.pory"
-	faceplayer
-# 733 "data/maps/Route1NN/scripts.pory"
 	playmoncry SPECIES_ROCKRUFF, 0
-# 734 "data/maps/Route1NN/scripts.pory"
+# 733 "data/maps/Route1NN/scripts.pory"
 	playse SE_PIN
+# 734 "data/maps/Route1NN/scripts.pory"
+	applymovement route1nnrockruff, Route1NN_Rockruff_Movement_0
 # 735 "data/maps/Route1NN/scripts.pory"
-	applymovement route1nnrockruff, Route1NN_Trigger_GetStarters_Movement_28
-# 736 "data/maps/Route1NN/scripts.pory"
 	waitmovement route1nnrockruff
-# 737 "data/maps/Route1NN/scripts.pory"
+# 736 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Rockruff_Text_0, MSGBOX_AUTOCLOSE
-# 738 "data/maps/Route1NN/scripts.pory"
+# 737 "data/maps/Route1NN/scripts.pory"
 	release
 	end
 
@@ -1780,6 +1778,14 @@ Route1NN_Trigger_GetStarters_Movement_37:
 	walk_diag_southeast
 	step_end
 
+# 734 "data/maps/Route1NN/scripts.pory"
+Route1NN_Rockruff_Movement_0:
+# 734 "data/maps/Route1NN/scripts.pory"
+	face_player
+# 734 "data/maps/Route1NN/scripts.pory"
+	emote_heart
+	step_end
+
 YungoosMeowth_Blocking_Text_0:
 # 7 "data/maps/Route1NN/scripts.pory"
 	.string "We can win this! We can win this!\n"
@@ -2005,5 +2011,5 @@ Route1NN_Trigger_GetStarters_Text_34:
 	.string "Iki Town is right up here!$"
 
 Route1NN_Rockruff_Text_0:
-# 737 "data/maps/Route1NN/scripts.pory"
+# 736 "data/maps/Route1NN/scripts.pory"
 	.string "Ruff!$"

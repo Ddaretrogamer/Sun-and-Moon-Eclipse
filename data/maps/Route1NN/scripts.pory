@@ -729,10 +729,9 @@ script Route1NN_Trigger_GetStarters{
 
 script Route1NN_Rockruff{
     lock
-    faceplayer
     playmoncry(SPECIES_ROCKRUFF, 0)
     playse(SE_PIN)
-    applymovement(route1nnrockruff, moves(emote_heart))
+    applymovement(route1nnrockruff, moves(face_player, emote_heart))
     waitmovement(route1nnrockruff)
     msgbox("Ruff!", MSGBOX_AUTOCLOSE)
     release
