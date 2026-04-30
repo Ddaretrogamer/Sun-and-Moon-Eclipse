@@ -635,6 +635,7 @@ script Route1NN_Trigger_GetStarters{
     removeobject(rowletshiny2)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     special(SpawnCameraObject)
+    speakername("Kukui")
     msgbox("So you went with {STR_VAR_1}!
     Woo, what a fine-looking team you
     two are!
