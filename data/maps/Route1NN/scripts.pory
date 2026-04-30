@@ -621,7 +621,7 @@ script Route1NN_Trigger_GetStarters{
     }
     else{
         msgbox("No worries! You can nickname your
-        Pokémon anytime from the menu.")
+        Pokémon anytime from the menu.", MSGBOX_AUTOCLOSE)
     }
     fadescreenswapbuffers(FADE_TO_BLACK)
     playse(SE_BALL_OPEN)

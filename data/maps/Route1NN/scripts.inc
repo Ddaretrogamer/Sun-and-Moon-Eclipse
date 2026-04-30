@@ -510,7 +510,7 @@ Route1NN_Trigger_GetStarters_77:
 	compare VAR_RESULT, 1
 	goto_if_eq Route1NN_Trigger_GetStarters_83
 # 623 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_27
+	msgbox Route1NN_Trigger_GetStarters_Text_27, MSGBOX_AUTOCLOSE
 Route1NN_Trigger_GetStarters_82:
 # 626 "data/maps/Route1NN/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
