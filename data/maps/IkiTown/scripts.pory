@@ -443,3 +443,64 @@ script IkiTown_Trigger_TopGetStarters{
     waitmovement(LOCALID_PLAYER)
     call(IkiTown_Trigger_HauGetStarter)
 }
+
+script Ikitown_HauAfterBattle{
+    lock
+    faceplayer
+    speakername("Hau")
+    msgbox("You should totally check out Iki Town!")
+    release
+    end
+}
+
+script Ikitown_KukuiAfterBattle{
+    lock
+    faceplayer
+    speakername("Kukui")
+    msgbox("Iki Town is right up those stairs.
+    Come on, {PLAYER}!")
+    release
+    end
+}
+
+script Ikitown_Trigger_LeaveIkitownEarly{
+    lock
+    playse(SE_PIN)
+    applymovement(ikitownkukui, moves(face_right, emote_exclamation_mark))
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Iki Town is right up those stairs.
+    Come on, {PLAYER}!")
+    applymovement(LOCALID_PLAYER, moves(walk_left))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+script Ikitown_TrainerTipsSign{
+    lock
+    msgbox("Trainer Tips
+
+    Pokémon can gain Exp. Points by
+    battling other Pokémon.
+    
+    Exp. Points help them grow stronger.
+    And your Pokémon will still get Exp.
+    Ponts even if you catch a Pokémon
+    you are battling against!")
+    release
+    end
+}
+
+script Ikitown_lassNPC{
+    lock
+    faceplayer
+    msgbox("If you happen to pick up a Potion
+    anywhere, use it on your Pokémon when
+    it's low on HP\.
+    and it'll be feeling better before you
+    know it!")
+    release
+    end
+}

@@ -698,6 +698,80 @@ IkiTown_Trigger_TopGetStarters::
 	return
 
 
+Ikitown_HauAfterBattle::
+# 448 "data/maps/IkiTown/scripts.pory"
+	lock
+# 449 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 450 "data/maps/IkiTown/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 451 "data/maps/IkiTown/scripts.pory"
+	msgbox IkiTown_StartRivalBattle_Text_7
+# 452 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_KukuiAfterBattle::
+# 457 "data/maps/IkiTown/scripts.pory"
+	lock
+# 458 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 459 "data/maps/IkiTown/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 460 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_KukuiAfterBattle_Text_0
+# 462 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_Trigger_LeaveIkitownEarly::
+# 467 "data/maps/IkiTown/scripts.pory"
+	lock
+# 468 "data/maps/IkiTown/scripts.pory"
+	playse SE_PIN
+# 469 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_Movement_0
+# 470 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_1
+# 471 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 472 "data/maps/IkiTown/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 473 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_KukuiAfterBattle_Text_0
+# 475 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_2
+# 476 "data/maps/IkiTown/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 477 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_TrainerTipsSign::
+# 482 "data/maps/IkiTown/scripts.pory"
+	lock
+# 483 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_TrainerTipsSign_Text_0
+# 492 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_lassNPC::
+# 497 "data/maps/IkiTown/scripts.pory"
+	lock
+# 498 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 499 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_lassNPC_Text_0
+# 504 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
 # 58 "data/maps/IkiTown/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_0:
 # 58 "data/maps/IkiTown/scripts.pory"
@@ -926,6 +1000,26 @@ IkiTown_Trigger_TopGetStarters_Movement_0:
 	face_left
 	step_end
 
+# 469 "data/maps/IkiTown/scripts.pory"
+Ikitown_Trigger_LeaveIkitownEarly_Movement_0:
+# 469 "data/maps/IkiTown/scripts.pory"
+	face_right
+# 469 "data/maps/IkiTown/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 470 "data/maps/IkiTown/scripts.pory"
+Ikitown_Trigger_LeaveIkitownEarly_Movement_1:
+# 470 "data/maps/IkiTown/scripts.pory"
+	face_left
+	step_end
+
+# 475 "data/maps/IkiTown/scripts.pory"
+Ikitown_Trigger_LeaveIkitownEarly_Movement_2:
+# 475 "data/maps/IkiTown/scripts.pory"
+	walk_left
+	step_end
+
 IkiTown_Trigger_HauGetStarter_Text_0:
 # 66 "data/maps/IkiTown/scripts.pory"
 	.string "???$"
@@ -1137,3 +1231,26 @@ IkiTown_StartRivalBattle_Text_6:
 IkiTown_StartRivalBattle_Text_7:
 # 428 "data/maps/IkiTown/scripts.pory"
 	.string "You should totally check out Iki Town!$"
+
+Ikitown_KukuiAfterBattle_Text_0:
+# 460 "data/maps/IkiTown/scripts.pory"
+	.string "Iki Town is right up those stairs.\n"
+	.string "Come on, {PLAYER}!$"
+
+Ikitown_TrainerTipsSign_Text_0:
+# 483 "data/maps/IkiTown/scripts.pory"
+	.string "Trainer Tips\p"
+	.string "Pokémon can gain Exp. Points by\n"
+	.string "battling other Pokémon.\p"
+	.string "Exp. Points help them grow stronger.\n"
+	.string "And your Pokémon will still get Exp.\l"
+	.string "Ponts even if you catch a Pokémon\l"
+	.string "you are battling against!$"
+
+Ikitown_lassNPC_Text_0:
+# 499 "data/maps/IkiTown/scripts.pory"
+	.string "If you happen to pick up a Potion\n"
+	.string "anywhere, use it on your Pokémon when\l"
+	.string "it's low on HP…\l"
+	.string "and it'll be feeling better before you\l"
+	.string "know it!$"

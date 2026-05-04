@@ -339,19 +339,19 @@ script Route1NN_Trigger_GetStarters{
      if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
-        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         waitmovement(rowletshiny2)
+        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
 
     }
     else{
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
-        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         waitmovement(rowlet2)
+        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
@@ -360,18 +360,20 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            playse(SE_LEDGE)
+            applymovement(littenshiny2, moves(jump_in_place_down))
+            waitmovement(littenshiny2)
             msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            applymovement(littenshiny2, moves(walk_in_place_down*4))
-            waitmovement(littenshiny2)
         }
         else{
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            playse(SE_LEDGE)
+            applymovement(litten2, moves(jump_in_place_down))
+            waitmovement(litten2)
             msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            applymovement(litten2, moves(walk_in_place_down*4))
-            waitmovement(litten2)
         }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
@@ -380,20 +382,18 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            applymovement(popplioshiny2, moves(face_up, delay_16*2, face_down))
+            waitmovement(popplioshiny2)
             msgbox("Bwark?", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            playse(SE_LEDGE)
-            applymovement(popplioshiny2, moves(jump_in_place_down))
-            waitmovement(popplioshiny2)
         }
         else{
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            applymovement(popplio2, moves(face_up, delay_16*2, face_down))
+            waitmovement(popplio2)
             msgbox("Bwark?", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            playse(SE_LEDGE)
-            applymovement(popplio2, moves(jump_in_place_down))
-            waitmovement(popplio2)
         }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_diag_southwest, walk_slow_down))
