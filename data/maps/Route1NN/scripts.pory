@@ -67,6 +67,7 @@ script Route1NN_Trigger_TopGetStarters{
 
 script Route1NN_Trigger_GetStarters{
     lock
+    setflag(FLAG_HIDE_IKITOWN_INTRO)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setflag(FLAG_SYS_POKEMON_GET)
     special(SpawnCameraObject)
@@ -409,9 +410,15 @@ script Route1NN_Trigger_GetStarters{
     
     Go on and choose the one you'd like
     to keep as your partner, cousin!")
-    dynmultichoice(20,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "{COLOR GREEN}Rowlet", "{COLOR RED}Litten", "{COLOR BLUE}Popplio")
+    dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "{COLOR GREEN}Rowlet", "{COLOR RED}Litten", "{COLOR BLUE}Popplio")
     switch(var(VAR_RESULT)){
     case 0:
+        if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_RIVAL_SHINY)
+        }
+        if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_KUKUI_SHINY)
+        }
         if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
             givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_ALWAYS)
             applymovement(rowletshiny2, moves(walk_down, walk_right, face_down))
@@ -425,34 +432,6 @@ script Route1NN_Trigger_GetStarters{
             waitmovement(rowletshiny2)
             delay(60)
         }
-        elif (var(VAR_TEMP_3)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-            givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(rowlet2, moves(walk_down, walk_right, face_down))
-            waitmovement(rowlet2)
-            playmoncry(SPECIES_ROWLET, 0)
-            applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
-            waitmovement(rowlet2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(rowlet2, moves(emote_heart))
-            waitmovement(rowlet2)
-            delay(60)
-        }
-        elif (var(VAR_TEMP_2)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-            givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(rowlet2, moves(walk_down, walk_right, face_down))
-            waitmovement(rowlet2)
-            playmoncry(SPECIES_ROWLET, 0)
-            applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
-            waitmovement(rowlet2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(rowlet2, moves(emote_heart))
-            waitmovement(rowlet2)
-            delay(60)
-        }
         else{
             givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
             applymovement(rowlet2, moves(walk_down, walk_right, face_down))
@@ -466,12 +445,19 @@ script Route1NN_Trigger_GetStarters{
             waitmovement(rowlet2)
             delay(60)
         }
+        setvar(VAR_STARTER_MON, 0)
         playfanfare(MUS_OBTAIN_ITEM)
         removeobject(rowlet2)
         removeobject(rowletshiny2)
         delay(150)
         break
     case 1: 
+        if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_KUKUI_SHINY)
+        }
+        if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_RIVAL_SHINY)
+        }
         if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
             givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_ALWAYS)
             applymovement(littenshiny2, moves(walk_down))
@@ -479,7 +465,7 @@ script Route1NN_Trigger_GetStarters{
             playmoncry(SPECIES_LITTEN, 0)
             waitse
             playse(SE_LEDGE)
-            applymovement(littenshiny2, moves(jump_in_place_up_down))
+            applymovement(littenshiny2, moves(jump_in_place_down))
             waitmovement(littenshiny2)
             delay(30)
             playse(SE_PIN)
@@ -487,39 +473,6 @@ script Route1NN_Trigger_GetStarters{
             waitmovement(littenshiny2)
             delay(60)
         }
-        elif (var(VAR_TEMP_3)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-            givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(litten2, moves(walk_down))
-            waitmovement(litten2)
-            playmoncry(SPECIES_LITTEN, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(litten2, moves(jump_in_place_up_down))
-            waitmovement(litten2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(litten2, moves(emote_heart))
-            waitmovement(litten2)
-            delay(60)
-
-        }
-        elif (var(VAR_TEMP_1)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-            givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(litten2, moves(walk_down))
-            waitmovement(litten2)
-            playmoncry(SPECIES_LITTEN, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(litten2, moves(jump_in_place_up_down))
-            waitmovement(litten2)
-            delay(60)
-            playse(SE_PIN)
-            applymovement(litten2, moves(emote_heart))
-            waitmovement(litten2)
-            delay(60)
-        }
         else{
             givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
             applymovement(litten2, moves(walk_down))
@@ -527,7 +480,7 @@ script Route1NN_Trigger_GetStarters{
             playmoncry(SPECIES_LITTEN, 0)
             waitse
             playse(SE_LEDGE)
-            applymovement(litten2, moves(jump_in_place_up_down))
+            applymovement(litten2, moves(jump_in_place_down))
             waitmovement(litten2)
             delay(30)
             playse(SE_PIN)
@@ -535,12 +488,19 @@ script Route1NN_Trigger_GetStarters{
             waitmovement(litten2)
             delay(60)
         }
+        setvar(VAR_STARTER_MON, 1)
         playfanfare(MUS_OBTAIN_ITEM)
         removeobject(litten2)
         removeobject(littenshiny2)
         delay(150)
         break
     case 2: 
+        if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_RIVAL_SHINY)
+        }
+        if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+            setflag(FLAG_KUKUI_SHINY)
+        }
         if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
             givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_ALWAYS)
             applymovement(popplioshiny2, moves(walk_down, walk_left, face_down))
@@ -548,44 +508,12 @@ script Route1NN_Trigger_GetStarters{
             playmoncry(SPECIES_POPPLIO, 0)
             waitse
             playse(SE_LEDGE)
-            applymovement(popplioshiny2, moves(jump_in_place_up_down))
+            applymovement(popplioshiny2, moves(jump_in_place_down))
             waitmovement(popplioshiny2)
             delay(30)
             playse(SE_PIN)
             applymovement(popplioshiny2, moves(emote_heart))
             waitmovement(popplioshiny2)
-            delay(60)
-        }
-        elif (var(VAR_TEMP_2)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-            givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(popplio2, moves(walk_down, walk_left, face_down))
-            waitmovement(popplio2)
-            playmoncry(SPECIES_POPPLIO, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(popplio2, moves(jump_in_place_up_down))
-            waitmovement(popplio2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(popplio2, moves(emote_heart))
-            waitmovement(popplio2)
-            delay(60)
-        }
-        elif (var(VAR_TEMP_1)==SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-            givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(popplio2, moves(walk_down, walk_left, face_down))
-            waitmovement(popplio2)
-            playmoncry(SPECIES_POPPLIO, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(popplio2, moves(jump_in_place_up_down))
-            waitmovement(popplio2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(popplio2, moves(emote_heart))
-            waitmovement(popplio2)
             delay(60)
         }
         else{
@@ -595,7 +523,7 @@ script Route1NN_Trigger_GetStarters{
             playmoncry(SPECIES_POPPLIO, 0)
             waitse
             playse(SE_LEDGE)
-            applymovement(popplio2, moves(jump_in_place_up_down))
+            applymovement(popplio2, moves(jump_in_place_down))
             waitmovement(popplio2)
             delay(30)
             playse(SE_PIN)
@@ -603,6 +531,7 @@ script Route1NN_Trigger_GetStarters{
             waitmovement(popplio2)
             delay(60)
         }
+        setvar(VAR_STARTER_MON, 2)
         playfanfare(MUS_OBTAIN_ITEM)
         removeobject(popplio2)
         removeobject(popplioshiny2)

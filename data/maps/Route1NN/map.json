@@ -296,7 +296,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YungoosMeowth_Blocking",
-      "flag": "0"
+      "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
     },
     {
       "local_id": "route1meowth2",
@@ -310,7 +310,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YungoosMeowth_Blocking",
-      "flag": "0"
+      "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
@@ -323,7 +323,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YungoosMeowth_Blocking",
-      "flag": "0"
+      "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
     },
     {
       "local_id": "route1yungoos2",
@@ -337,7 +337,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YungoosMeowth_Blocking",
-      "flag": "0"
+      "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
     }
   ],
   "warp_events": [],

@@ -122,7 +122,7 @@ PlayerHouse_MomNewgame_4:
 # 67 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_MomNewgame_Text_4
 # 71 "data/maps/PlayerHouse/scripts.pory"
-	dynmultichoice 19, 7, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_MomNewgame_Text_5, PlayerHouse_MomNewgame_Text_6
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_MomNewgame_Text_5, PlayerHouse_MomNewgame_Text_6
 # 72 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq PlayerHouse_MomNewgame_11

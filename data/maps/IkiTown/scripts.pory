@@ -1,0 +1,445 @@
+mapscripts IkiTown_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        if (var(VAR_STARTER_MON) == 0){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES_SHINY(POPPLIO))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES(POPPLIO))
+            }
+            if (flag(FLAG_KUKUI_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(LITTEN))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(LITTEN))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 1){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(ROWLET))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(ROWLET))
+            }
+            if (flag(FLAG_KUKUI_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES_SHINY(POPPLIO))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES(POPPLIO))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 2){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES_SHINY(LITTEN))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES(LITTEN))
+            }
+            if (flag(FLAG_KUKUI_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(ROWLET))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(ROWLET))
+            }
+        }
+        end
+    }
+}
+
+
+script IkiTown_Trigger_HauGetStarter{
+    lock
+    addobject(ikitownmon1)
+    addobject(ikitownmon2)
+    addobject(ikitownhau)
+    addobject(ikitownkukui)
+    setflag(FLAG_HIDE_KUKUI_STARTERS)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_question_mark))
+    applymovement(ikitownhau, moves(walk_fast_down*7, delay_16*3, face_left, delay_16*3, face_right))
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(ikitownhau, moves(emote_exclamation_mark, delay_16))
+    waitmovement(ikitownhau)
+    applymovement(ikitownhau, moves(walk_fast_right*3))
+    waitmovement(ikitownhau)
+    speakername("???")
+    msgbox("Hey, hey!
+    
+    Which Pokémon are you gonna choose as
+    your partner? {PAUSE 30} Have you decided?")
+    speakername("Hau")
+    playse(SE_PIN)
+    applymovement(ikitownhau, moves(emote_x))
+    waitmovement(ikitownhau)
+    msgbox("Oh yeah! I'm Hau!
+    
+    I couldn't wait for us to pick our
+    partners together, so I came to find
+    you myself!")
+    bufferleadmonspeciesname(STR_VAR_1)
+    dynmultichoice(18,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "I chose {STR_VAR_1}!", "You're too late.")
+    if(var(VAR_RESULT) == 0){
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_left*2))
+        waitmovement(LOCALID_PLAYER)
+        msgbox("Whoa! {STR_VAR_1} is so cool!
+        
+        Hey wait!
+        You already picked your Pokémon?!")
+    }
+    elif(var(VAR_RESULT) == 1){
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_left*2))
+        waitmovement(LOCALID_PLAYER)
+        msgbox("Hey wait!
+        You already picked your Pokémon?!")
+    }
+    applymovement(ikitownkukui, moves(walk_fast_left, walk_left*6))
+    applymovement(ikitownmon1, moves(walk_fast_left, walk_left*6))
+    applymovement(ikitownmon2, moves(walk_fast_left, walk_left*6))
+    waitmovement(0)
+    speakername("Kukui")
+    checkplayergender
+    if (var(VAR_RESULT) == 0){
+        msgbox("Sorry about that, Hau.
+        
+        We had a little accident on the way
+        here, so I ended up letting {PLAYER}
+        choose his partner first without you.")
+    }
+    else{
+        msgbox("Sorry about that, Hau.
+        
+        We had a little accident on the way
+        here, so I ended up letting {PLAYER}
+        choose her partner first without you.")
+    }
+    applymovement(ikitownhau, moves(walk_in_place_right*2))
+    waitmovement(ikitownhau)
+    speakername("Hau")
+    msgbox("Fair enough.
+
+    I guess it was just fate for you guys
+    to meet!")
+    applymovement(ikitownkukui, moves(walk_in_place_left*2))
+    waitmovement(ikitownkukui)
+    speakername("Kukui")
+    msgbox("But you can choose one of the
+    remaining two, Hau!") 
+    applymovement(ikitownmon1, moves(walk_left*2))
+    applymovement(ikitownmon2, moves(walk_left*2))
+    waitmovement(0)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    if (var(VAR_STARTER_MON) == 0){
+        playmoncry(SPECIES_LITTEN, 0)
+        applymovement(ikitownmon1, moves(jump_in_place_left))
+        waitmovement(ikitownmon1)
+        msgbox("Mrawr!")
+        delay(30)
+        playmoncry(SPECIES_POPPLIO, 0)
+        applymovement(ikitownmon2, moves(jump_in_place_left))
+        waitmovement(ikitownmon2)
+        msgbox("Bwark!")
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        speakername("Hau")
+        msgbox("Then my partner will be\.{PAUSE 30}
+        Popplio! I chose you!")
+        playmoncry(SPECIES_POPPLIO, 0)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitownmon2, moves(jump_in_place_left))
+        waitmovement(ikitownmon2)
+        msgbox("Bwark!", MSGBOX_AUTOCLOSE)
+        delay(30)
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitownmon2, moves(walk_left*2))
+        waitmovement(ikitownmon2)
+        speakername("Hau")
+        msgbox("Alola, friend!
+        
+        I decided ages ago that you're the
+        one I wanted to have an adventure
+        with!
+        
+        We're gonna do so much awesome stuff
+        together!
+        
+        Just you wait and see!")
+        playmoncry(SPECIES_POPPLIO, 0)
+        applymovement(ikitownmon2, moves(emote_heart))
+        waitmovement(0)
+        delay(30)
+        applymovement(ikitownmon2, moves(walk_left, face_right))
+        waitmovement(ikitownmon2)
+        msgbox("Professor!
+        You'll take good care of Litten, right?")
+        applymovement(ikitownkukui, moves(jump_in_place_left*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Kukui")
+        msgbox("You better believe I will, Hau!")
+        applymovement(ikitownmon1, moves(walk_right, face_down))
+        waitmovement(ikitownmon1)
+        msgbox("All right then. Litten! Everybody!
+        Time to get back in your balls for now!")
+        playse(SE_PIN)
+        applymovement(ikitownhau, moves(emote_exclamation_mark))
+        waitmovement(ikitownhau)
+        speakername("Hau")
+        msgbox("Wait up!
+        Me and Popplio have a favor to ask.")
+        applymovement(ikitownhau, moves(walk_in_place_right*2))
+        waitmovement(ikitownhau)
+        goto(Ikitown_RivalBattleYesNo)
+    }
+    elif (var(VAR_STARTER_MON) == 1){
+        playmoncry(SPECIES_ROWLET, 0)
+        msgbox("Hoo!")
+        applymovement(ikitownmon1, moves(face_up, delay_16, face_right, delay_16, face_down, delay_16, face_left))
+        waitmovement(ikitownmon1)
+        delay(30)
+        playmoncry(SPECIES_POPPLIO, 0)
+        msgbox("Bwark!")
+        applymovement(ikitownmon2, moves(jump_in_place_left))
+        waitmovement(ikitownmon2)
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        speakername("Hau")
+        msgbox("Then my partner will be\.{PAUSE 30}
+        Rowlet! I chose you!")
+        playmoncry(SPECIES_ROWLET, 0)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        msgbox("Hoo!")
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitownmon1, moves(face_up, delay_16, face_right, delay_16, face_down, delay_16, face_left))
+        waitmovement(ikitownmon1)
+        applymovement(ikitownmon1, moves(walk_left*2))
+        waitmovement(ikitownmon1)
+        speakername("Hau")
+        msgbox("Alola, friend!
+
+        I decided ages ago that you're the
+        one I wanted to have an adventure
+        with!
+
+        We're gonna do so much awesome stuff
+        together!
+
+        Just you wait and see!")
+        playmoncry(SPECIES_ROWLET, 0)
+        applymovement(ikitownmon1, moves(emote_heart))
+        waitmovement(0)
+        delay(30)
+        applymovement(ikitownmon1, moves(walk_left, face_right))
+        waitmovement(ikitownmon1)
+        msgbox("Professor!
+        You'll take good care of Popplio, right?")
+        applymovement(ikitownkukui, moves(jump_in_place_left*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Kukui")
+        msgbox("You better believe I will, Hau!")
+        applymovement(ikitownmon2, moves(walk_right, face_up))
+        waitmovement(ikitownmon2)
+        msgbox("All right then. Popplio! Everybody!
+        Time to get back in your balls for now!")
+        playse(SE_PIN)
+        applymovement(ikitownhau, moves(emote_exclamation_mark))
+        waitmovement(ikitownhau)
+        speakername("Hau")
+        msgbox("Wait up!
+        Me and Rowlet have a favor to ask.")
+        applymovement(ikitownhau, moves(walk_in_place_right*2))
+        waitmovement(ikitownhau)
+        goto(Ikitown_RivalBattleYesNo)
+        
+    }
+    elif (var(VAR_STARTER_MON) == 2){
+        playmoncry(SPECIES_ROWLET, 0)
+        msgbox("Hoo!")
+        applymovement(ikitownmon1, moves(face_up, delay_16, face_right, delay_16, face_down, delay_16, face_left))
+        waitmovement(ikitownmon1)
+        delay(30)
+        playmoncry(SPECIES_LITTEN, 0)
+        msgbox("Mrawr!")
+        applymovement(ikitownmon2, moves(jump_in_place_left))
+        waitmovement(ikitownmon2)
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        speakername("Hau")
+        msgbox("Then my partner will be\.{PAUSE 30}
+        Litten! I chose you!")
+        playmoncry(SPECIES_LITTEN, 0)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        msgbox("Mrawr!")
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitownmon2, moves(jump_in_place_left))
+        waitmovement(ikitownmon2)
+        applymovement(ikitownmon2, moves(walk_left*2))
+        waitmovement(ikitownmon2)
+        speakername("Hau")
+        msgbox("Alola, friend!
+
+        I decided ages ago that you're the
+        one I wanted to have an adventure
+        with!
+
+        We're gonna do so much awesome stuff
+        together!
+
+        Just you wait and see!")
+        playmoncry(SPECIES_LITTEN, 0)
+        applymovement(ikitownmon2, moves(emote_heart))
+        waitmovement(0)
+        delay(30)
+        applymovement(ikitownmon2, moves(walk_left, face_right))
+        waitmovement(ikitownmon2)
+        msgbox("Professor!
+        You'll take good care of Rowlet, right?")
+        applymovement(ikitownkukui, moves(jump_in_place_left*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Kukui")
+        msgbox("You better believe I will, Hau!")
+        applymovement(ikitownmon1, moves(walk_right, face_down))
+        waitmovement(ikitownmon1)
+        msgbox("All right then. Rowlet! Everybody!
+        Time to get back in your balls for now!")
+        playse(SE_PIN)
+        applymovement(ikitownhau, moves(emote_exclamation_mark))
+        waitmovement(ikitownhau)
+        speakername("Hau")
+        msgbox("Wait up!
+        Me and Litten have a favor to ask.")
+        applymovement(ikitownhau, moves(walk_in_place_right*2))
+        waitmovement(ikitownhau)
+        goto(Ikitown_RivalBattleYesNo)
+    }
+    release
+    end
+}
+
+script Ikitown_RivalBattleYesNo{
+        speakername("Hau")
+        msgbox("Be our opponents in our first ever
+        Pokémon battle together!", MSGBOX_YESNO)
+        goto_if_eq(VAR_RESULT, YES, IkiTown_StartRivalBattle)
+        goto_if_eq(VAR_RESULT, NO, RivalBattleNo)
+        end
+}
+
+script RivalBattleNo{
+        speakername("Hau")
+        playse(SE_PIN)
+        applymovement(ikitownhau, moves(emote_exclamation_mark))
+        waitmovement(ikitownhau)
+        msgbox("Come on, don't be like that!
+        It'll be fun!")
+        goto(Ikitown_RivalBattleYesNo)
+}
+script IkiTown_StartRivalBattle{
+        speakername("Kukui")
+        applymovement(ikitownkukui, moves(walk_in_place_left*2))
+        waitmovement(ikitownkukui)
+        bufferleadmonspeciesname(STR_VAR_1)
+        msgbox("Hold on!
+        
+        Before you two step into the ring,
+        let's make sure little {STR_VAR_1} is up
+        to it!")
+        special(HealPlayerParty)
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        playfanfare(MUS_HEAL)
+        waitfanfare
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        speakername("Hau")
+        msgbox("All right, I'm surely going to enjoy
+        this!")
+        switch(var(VAR_STARTER_MON)){
+        case 0:
+            if (flag(FLAG_RIVAL_SHINY)){
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_POPPLIOSHINY, "Our first defeat! Sorry, Popplio!")
+            }
+            else{
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_POPPLIO, "Our first defeat! Sorry, Popplio!")
+            }
+            break
+        case 1:
+            if (flag(FLAG_RIVAL_SHINY)){
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_ROWLETSHINY, "Our first defeat! Sorry, Rowlet!")
+            }
+            else{
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_ROWLET, "Our first defeat! Sorry, Rowlet!")
+            }
+            break
+        case 2:
+            if (flag(FLAG_RIVAL_SHINY)){
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_LITTENSHINY, "Our first defeat! Sorry, Litten!")
+            }
+            else{
+                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_LITTEN, "Our first defeat! Sorry, Litten!")
+            }
+            break
+        }
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        playse(SE_BALL_OPEN)
+        delay(60)
+        removeobject(ikitownmon1)
+        removeobject(ikitownmon2)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        bufferleadmonspeciesname(STR_VAR_1)
+        applymovement(ikitownhau, moves(jump_in_place_right*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Hau")
+        msgbox("Whoa! That was awesome, {PLAYER}!
+
+        You and {STR_VAR_1} were both so
+        cool!
+        
+        You've gotta have the kinda battles
+        where everyone has fun.
+        
+        You and your partner Pokémon, too,
+        you know?")
+        applymovement(ikitownkukui, moves(walk_in_place_left*2))
+        waitmovement(ikitownkukui)
+        speakername("Kukui")
+        msgbox("Right on {PLAYER}!
+        
+        You and Hau both brought out the
+        best in your partners and pulled
+        off some spectacular moves, yeah!
+        
+        Iki Town is right up those stairs.
+        Come on, {PLAYER}!", MSGBOX_AUTOCLOSE)
+        applymovement(ikitownhau, moves(walk_left*3, walk_up*2, delay_16, face_down, delay_16*2))
+        waitmovement(ikitownhau)
+        applymovement(ikitownhau, moves(jump_in_place_down*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Hau")
+        msgbox("You should totally check out Iki Town!")
+        setvar(VAR_IKITOWN_STATE, 1)
+        release
+        end
+}
+
+script IkiTown_Trigger_BottomGetStarters{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_up, face_left))
+    waitmovement(LOCALID_PLAYER)
+    call(IkiTown_Trigger_HauGetStarter)
+}
+script IkiTown_Trigger_TopGetStarters{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_down, face_left))
+    waitmovement(LOCALID_PLAYER)
+    call(IkiTown_Trigger_HauGetStarter)
+}

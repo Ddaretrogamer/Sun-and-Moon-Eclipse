@@ -68,7 +68,7 @@ script PlayerHouse_MomNewgame{
 
         Are you excited to meet some Alolan
         Pokémon?")
-        dynmultichoice(19,7,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Of course!", "I guess…")
+        dynmultichoice(20,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Of course!", "I guess…")
         if(var(VAR_RESULT) == 0)
         {
             msgbox("That's right!

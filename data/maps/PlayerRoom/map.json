@@ -45,26 +45,7 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_MOM_IN_HOUSE_INTRO",
-      "var_value": "1",
-      "script": "PlayerRoom_Trigger_TryingToLeaveWithoutShoes"
-    },
-    {
-      "type": "trigger",
-      "x": 8,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_MOM_IN_HOUSE_INTRO",
-      "var_value": "1",
-      "script": "PlayerRoom_Trigger_TryingToLeaveWithoutShoes"
-    }
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -73,6 +54,22 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PlayerRoom_CheckBox"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PlayerRoom_AdventureGuide"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PlayerRoom_Wii"
     }
   ]
 }

@@ -41,5 +41,16 @@ const struct HelpWindow gHelpWindowInfo[] =
                             ),
         .headerFont = FONT_NARROWER,
     },
+    [HELP_ADVENTURE_GUIDE] =
+    {
+        .header = COMPOUND_STRING("ADVENTURE GUIDE"),
+        .desc = COMPOUND_STRING("ADVENTURE RULE NO. 1\n"
+                                "Open the Start Menu by pressing {START_BUTTON}.\n\n"
+                                "ADEVENTURE RULE NO. 2\n"
+                                "You can save your progress by selecting the\n"
+                                "“Save” option in the Start Menu."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
     // Add more entries
 };
