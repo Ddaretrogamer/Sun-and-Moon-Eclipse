@@ -347,7 +347,7 @@ IkiTown_Trigger_HauGetStarter_12:
 # 210 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 211 "data/maps/IkiTown/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_21
+	msgbox IkiTown_Trigger_HauGetStarter_Text_21, MSGBOX_AUTOCLOSE
 # 212 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 213 "data/maps/IkiTown/scripts.pory"
@@ -444,7 +444,7 @@ IkiTown_Trigger_HauGetStarter_13:
 # 273 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 274 "data/maps/IkiTown/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_13
+	msgbox IkiTown_Trigger_HauGetStarter_Text_13, MSGBOX_AUTOCLOSE
 # 275 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 276 "data/maps/IkiTown/scripts.pory"
