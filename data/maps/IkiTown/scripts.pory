@@ -291,7 +291,7 @@ script IkiTown_Trigger_HauGetStarter{
         playmoncry(SPECIES_LITTEN, 0)
         applymovement(ikitownmon2, moves(emote_heart))
         waitmovement(0)
-        delay(30)
+        delay(30)  
         applymovement(ikitownmon2, moves(walk_left, face_right))
         waitmovement(ikitownmon2)
         msgbox("Professor!
@@ -487,7 +487,7 @@ script Ikitown_TrainerTipsSign{
     
     Exp. Points help them grow stronger.
     And your Pokémon will still get Exp.
-    Ponts even if you catch a Pokémon
+    Points even if you catch a Pokémon
     you are battling against!")
     release
     end
@@ -497,10 +497,10 @@ script Ikitown_lassNPC{
     lock
     faceplayer
     msgbox("If you happen to pick up a Potion
-    anywhere, use it on your Pokémon when
-    it's low on HP\.
-    and it'll be feeling better before you
-    know it!")
+    anywhere, use it on your Pokémon
+    when it's low on HP\.
+    and it'll be feeling better before\
+    you know it!")
     release
     end
 }

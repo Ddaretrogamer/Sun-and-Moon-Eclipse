@@ -1244,13 +1244,13 @@ Ikitown_TrainerTipsSign_Text_0:
 	.string "battling other Pokémon.\p"
 	.string "Exp. Points help them grow stronger.\n"
 	.string "And your Pokémon will still get Exp.\l"
-	.string "Ponts even if you catch a Pokémon\l"
+	.string "Points even if you catch a Pokémon\l"
 	.string "you are battling against!$"
 
 Ikitown_lassNPC_Text_0:
 # 499 "data/maps/IkiTown/scripts.pory"
 	.string "If you happen to pick up a Potion\n"
-	.string "anywhere, use it on your Pokémon when\l"
-	.string "it's low on HP…\l"
-	.string "and it'll be feeling better before you\l"
-	.string "know it!$"
+	.string "anywhere, use it on your Pokémon\l"
+	.string "when it's low on HP…\l"
+	.string "and it'll be feeling better before\\l"
+	.string "you know it!$"
