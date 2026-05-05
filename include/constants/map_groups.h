@@ -97,6 +97,7 @@ enum
     MAP_PATH_TO_TAPU_KOKO_SHRINE    = (82 | (0 << 8)),
     MAP_MELEMELE_ISLAND_TRIAL_TOTEM = (83 | (0 << 8)),
     MAP_KALAE_BAY                   = (84 | (0 << 8)),
+    MAP_IKI_TOWN_SOUTH              = (85 | (0 << 8)),
 
     // gMapGrouo_IndoorMelemele
     MAP_PLAYER_HOUSE                    = (0 | (1 << 8)),

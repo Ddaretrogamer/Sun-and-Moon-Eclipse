@@ -5616,7 +5616,7 @@
       "id": "LAYOUT_IKI_TOWN",
       "name": "IkiTown_Layout",
       "width": 49,
-      "height": 56,
+      "height": 34,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_IkiTown",
       "border_filepath": "data/layouts/IkiTown/border.bin",
@@ -10063,6 +10063,16 @@
       "secondary_tileset": "gTileset_islandtrial",
       "border_filepath": "data/layouts/KalaeBay/border.bin",
       "blockdata_filepath": "data/layouts/KalaeBay/map.bin"
+    },
+    {
+      "id": "LAYOUT_IKI_TOWN_SOUTH",
+      "name": "IkiTownSouth_Layout",
+      "width": 49,
+      "height": 22,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_IkiTown",
+      "border_filepath": "data/layouts/IkiTownSouth/border.bin",
+      "blockdata_filepath": "data/layouts/IkiTownSouth/map.bin"
     }
   ]
 }

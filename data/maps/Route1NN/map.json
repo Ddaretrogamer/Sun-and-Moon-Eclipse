@@ -32,6 +32,11 @@
       "map": "MAP_ROUTE3S",
       "offset": 0,
       "direction": "up"
+    },
+    {
+      "map": "MAP_IKI_TOWN_SOUTH",
+      "offset": 13,
+      "direction": "left"
     }
   ],
   "object_events": [

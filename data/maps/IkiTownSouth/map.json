@@ -1,0 +1,165 @@
+{
+  "id": "MAP_IKI_TOWN_SOUTH",
+  "name": "IkiTownSouth",
+  "layout": "LAYOUT_IKI_TOWN_SOUTH",
+  "music": "MUS_USUM_IKITOWN_DAY",
+  "region_map_section": "MAPSEC_ROUTE_1_SM",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_IKI_TOWN",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE1NN",
+      "offset": -13,
+      "direction": "right"
+    }
+  ],
+  "object_events": [
+    {
+      "local_id": "ikitownmon1",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_1",
+      "x": 48,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO"
+    },
+    {
+      "local_id": "ikitownkukui",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 47,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Ikitown_KukuiAfterBattle",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO"
+    },
+    {
+      "local_id": "ikitownmon2",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_2",
+      "x": 48,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 39,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Ikitown_lassNPC",
+      "flag": "0"
+    },
+    {
+      "local_id": "ikitownhau",
+      "graphics_id": "OBJ_EVENT_GFX_HAU",
+      "x": 33,
+      "y": -4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Ikitown_HauAfterBattle",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO"
+    }
+  ],
+  "warp_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "0",
+      "script": "IkiTown_Trigger_TopGetStarters"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "0",
+      "script": "IkiTown_Trigger_HauGetStarter"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "0",
+      "script": "IkiTown_Trigger_BottomGetStarters"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 47,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Ikitown_TrainerTipsSign"
+    }
+  ]
+}
