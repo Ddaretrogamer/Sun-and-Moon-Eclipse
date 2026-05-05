@@ -499,7 +499,7 @@ script Ikitown_lassNPC{
     msgbox("If you happen to pick up a Potion
     anywhere, use it on your Pokémon
     when it's low on HP\.
-    and it'll be feeling better before\
+    and it'll be feeling better before
     you know it!")
     release
     end

@@ -1252,5 +1252,5 @@ Ikitown_lassNPC_Text_0:
 	.string "If you happen to pick up a Potion\n"
 	.string "anywhere, use it on your Pokémon\l"
 	.string "when it's low on HP…\l"
-	.string "and it'll be feeling better before\\l"
+	.string "and it'll be feeling better before\l"
 	.string "you know it!$"

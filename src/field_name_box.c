@@ -18,7 +18,7 @@
 #include "data/speaker_names.h"
 
 static EWRAM_INIT u8 sNameboxWindowId = WINDOW_NONE;
-EWRAM_DATA const u8 *gSpeakerName = NULL;
+// EWRAM_DATA const u8 *gSpeakerName = NULL;
 
 static const u32 sNameBoxDefaultGfx[] = INCBIN_U32("graphics/text_window/name_box.4bpp");
 static const u32 sNameBoxPokenavGfx[] = INCBIN_U32("graphics/pokenav/name_box.4bpp");
