@@ -1702,7 +1702,6 @@ bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
     return FALSE;
 }
 
-
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);

@@ -13,6 +13,7 @@
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
+EWRAM_DATA const u8* gSpeakerName = NULL;
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *, bool32);
 static void StartDrawFieldMessage(void);

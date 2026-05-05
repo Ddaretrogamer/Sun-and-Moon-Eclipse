@@ -1686,7 +1686,7 @@ static void Task_NewGameBirchSpeech_WhatsYourName(u8 taskId)
 {
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
-    AddTextPrinterForMessage(TRUE);
+    NewGameBirchSpeech_PrintDialogue();
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForWhatsYourNameToPrint;
 }
 
@@ -2389,7 +2389,6 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 }
 
 #undef tTimer
-
 
 static void NewGameBirchSpeech_PrintDialogue(void)
 {

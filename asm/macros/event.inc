@@ -1888,6 +1888,12 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
+	
+	@ Sets the text of the name box in the next-shown message box.
+	.macro setspeaker text:req
+	.byte SCR_OP_SETSPEAKER
+	.4byte \text
+	.endm
 
 	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
 	.byte SCR_OP_DYNMULTICHOICE
