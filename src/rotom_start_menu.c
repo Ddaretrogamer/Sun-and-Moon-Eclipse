@@ -245,9 +245,9 @@ static const u16 sRotomPhone_DaycareCompatability_Pal[] =       INCBIN_U16("grap
 static const u16 sRotomPhone_StartMenuRotomFaceIconsPal[] =     INCBIN_U16("graphics/rotom_start_menu/rotom_face.gbapal");
 static const u32 sRotomPhone_StartMenuRotomFaceGfx[] =          INCBIN_U32("graphics/rotom_start_menu/rotom_face.4bpp.lz");
 
-static const u32 sRotomPhone_SaveScreenTiles[] =                INCBIN_U32("graphics/rotom_start_menu/save_screen/save_screen_tiles.4bpp.lz");
-static const u32 sRotomPhone_SaveScreenTilemap[] =              INCBIN_U32("graphics/rotom_start_menu/save_screen/save_screen.bin.lz");
-static const u16 sRotomPhone_SaveScreenPalette[] =              INCBIN_U16("graphics/rotom_start_menu/save_screen/save_screen.gbapal");
+static const u32 sRotomPhone_SaveScreenTiles[] =                INCBIN_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.4bpp.lz");
+static const u32 sRotomPhone_SaveScreenTilemap[] =              INCBIN_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.bin.lz");
+static const u16 sRotomPhone_SaveScreenPalette[] =              INCBIN_U16("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.gbapal");
 
 static const u16 sRotomPhonePalette_Black[] =                   INCBIN_U16("graphics/rotom_start_menu/palettes/black.gbapal");
 static const u16 sRotomPhonePalette_Red[] =                     INCBIN_U16("graphics/rotom_start_menu/palettes/red.gbapal");

@@ -384,6 +384,10 @@ script Route1NN_Trigger_GetStarters{
             msgbox("Bwark?", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             applymovement(popplioshiny2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
+            playse(SE_M_CRABHAMMER)
+            waitse
+            playse(SE_M_CRABHAMMER)
+            waitse
             waitmovement(popplioshiny2)
         }
         else{
@@ -392,6 +396,10 @@ script Route1NN_Trigger_GetStarters{
             msgbox("Bwark?", MSGBOX_AUTOCLOSE)
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             applymovement(popplio2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
+            playse(SE_M_CRABHAMMER)
+            waitse
+            playse(SE_M_CRABHAMMER)
+            waitse
             waitmovement(popplio2)
         }
     speakername("Kukui")

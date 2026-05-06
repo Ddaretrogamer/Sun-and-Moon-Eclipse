@@ -694,8 +694,8 @@
 #define FLAG_HIDE_STARTERS  0x27F // hide the starters for the intro sequence, set when the player chooses a starter to prevent them from appearing in the background of the intro sequence
 #define FLAG_HIDE_KUKUI_STARTERS  0x280 // hide kukui separately because he gets used later.
 #define FLAG_HIDE_IKITOWN_INTRO  0x281 // hide the ikitown intro sequence
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
+#define FLAG_HIDE_IKITOWN_INTRO_KUKUI  0x282 // hide the ikitown intro sequence part 2
+#define FLAG_HIDE_IKITOWN_INTRO_HAU  0x283 // hide the ikitown intro sequence part 2
 #define FLAG_UNUSED_0x284  0x284 // Unused Flag
 #define FLAG_UNUSED_0x285  0x285 // Unused Flag
 #define FLAG_UNUSED_0x286  0x286 // Unused Flag

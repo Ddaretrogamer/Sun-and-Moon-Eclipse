@@ -28,7 +28,7 @@
     {
       "local_id": "ikitownmon1",
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
-      "x": 48,
+      "x": 47,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -42,7 +42,7 @@
     {
       "local_id": "ikitownkukui",
       "graphics_id": "OBJ_EVENT_GFX_KUKUI",
-      "x": 47,
+      "x": 46,
       "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -56,7 +56,7 @@
     {
       "local_id": "ikitownmon2",
       "graphics_id": "OBJ_EVENT_GFX_VAR_2",
-      "x": 48,
+      "x": 47,
       "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -69,7 +69,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 39,
+      "x": 41,
       "y": 1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -83,7 +83,7 @@
     {
       "local_id": "ikitownhau",
       "graphics_id": "OBJ_EVENT_GFX_HAU",
-      "x": 33,
+      "x": 32,
       "y": -4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -99,7 +99,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 38,
+      "x": 37,
       "y": 2,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
@@ -108,7 +108,7 @@
     },
     {
       "type": "trigger",
-      "x": 38,
+      "x": 37,
       "y": 3,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
@@ -117,7 +117,7 @@
     },
     {
       "type": "trigger",
-      "x": 38,
+      "x": 37,
       "y": 4,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
@@ -126,7 +126,7 @@
     },
     {
       "type": "trigger",
-      "x": 42,
+      "x": 41,
       "y": 2,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
@@ -135,7 +135,16 @@
     },
     {
       "type": "trigger",
-      "x": 42,
+      "x": 41,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly"
+    },
+    {
+      "type": "trigger",
+      "x": 41,
       "y": 3,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
@@ -144,12 +153,30 @@
     },
     {
       "type": "trigger",
-      "x": 42,
+      "x": 29,
       "y": 4,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
       "var_value": "1",
-      "script": "Ikitown_Trigger_LeaveIkitownEarly"
+      "script": "Ikitown_Trigger_LeaveIkitownEarly_left"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly_left"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 0,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_Trigger_LeaveIkitownEarly_left"
     }
   ],
   "bg_events": [

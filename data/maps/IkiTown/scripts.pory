@@ -1,13 +1,145 @@
 mapscripts IkiTown_MapScripts{
-
+    MAP_SCRIPT_ON_TRANSITION{  
+        end
+    }
 }
 
-script Ikitown_ChangeMusicRouteTrigger{
-    playbgm(MUS_USUM_ROUTE2, FALSE) // change this to route 1 music when i get it so we can transition to ikitown song on triggers
+script Ikitown_trigger_right{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_left, face_up))
+    waitmovement(0)
+    call(Ikitown_trigger_WecomeToIkitown)
+}
+
+script Ikitown_trigger_left{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_right, face_up))
+    waitmovement(0)
+    call(Ikitown_trigger_WecomeToIkitown)
+}
+
+script Ikitown_trigger_WecomeToIkitown{
+    lock
+    special(SpawnCameraObject)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    clearflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
+    clearflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+    removeobject(ikitownhau, MAP_IKI_TOWN_SOUTH)
+    removeobject(ikitownkukui, MAP_IKI_TOWN_SOUTH)
+    addobject(ikitownintrohau)
+    addobject(ikitownintrokukui)
+    applymovement(ikitownintrohau, moves(walk_faster_down*6, walk_faster_right, face_down))
+    applymovement(ikitownintrokukui, moves(walk_faster_down*9))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    applymovement(ikitownintrokukui, moves(walk_up*9))
+    applymovement(ikitownintrohau, moves(delay_16*4, walk_fast_left, walk_fast_up*6))
+    waitmovement(0)
+    delay(30)
+    applymovement(ikitownintrohau, moves(face_down))
+    waitmovement(0)
+    delay(30)
+    applymovement(ikitownintrokukui, moves(face_down))
+    waitmovement(0)
+    applymovement(ikitownintrokukui, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("And we're here!
+    This right here is Iki Town!", MSGBOX_AUTOCLOSE)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*9, walk_faster_up*18, walk_up*4))
+    delay(120)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("This town is where folks come to
+    worship the Pokemon that watches
+    over Melemele Island.
+    
+    Tapu Koko keeps us all safe and
+    happy, see!")
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*9, walk_faster_down*22))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    playse(SE_PIN)
+    applymovement(ikitownintrokukui, moves(emote_question_mark))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Looks like the kahuna's nowhere to be
+    found, though\.
+    
+    I guess there must be some trouble
+    somewhere on the island that needs
+    fixing, yeah?")
+    applymovement(ikitownintrohau, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("Yeah, the kahuna wandered off without
+    a word to anybody, singing a little
+    ditty or something.")
+    applymovement(ikitownintrohau, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    waitmovement(0)
+    switch (var(VAR_STARTER_MON)){
+        case 0:
+            msgbox("I'm gonna go stop by home for a sec.
+            I've gotta show my mom Popplio!", MSGBOX_AUTOCLOSE)
+        break
+        case 1:
+            msgbox("I'm gonna go stop by home for a sec.
+            I've gotta show my mom Rowlet!", MSGBOX_AUTOCLOSE)
+        break
+        case 2:
+            msgbox("I'm gonna go stop by home for a sec.
+            I've gotta show my mom Litten!", MSGBOX_AUTOCLOSE)
+        break
+    }
+    applymovement(ikitownintrohau, moves(walk_fast_up*8))
+    waitmovement(0)
+    removeobject(ikitownintrohau)
+    applymovement(ikitownintrokukui, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Hey, I've got an idea for you,
+    {PLAYER}.
+    
+    If you head through the village and
+    up the hill, you can visit the ruins
+    that belong to Tapu Koko.
+    
+    That's our island's guardian deity,
+    yeah.
+    
+    Why don't you go and introduce
+    yourself?")
+    applymovement(ikitownintrokukui, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    waitmovement(0)
+    msgbox("If you're really lucky, maybe you'll
+    actually get a glimpse of the
+    guardian deity yourself!
+    
+    I'll stick around and see if the
+    kahuna comes back.")
+    setvar(VAR_IKITOWN_STATE, 2)
+    special(RemoveCameraObject)
+    release
     end
 }
 
-script Ikitown_ChangeMusicTownTrigger{
-    playbgm(MUS_USUM_IKITOWN_DAY, FALSE) 
+script Ikitown_KukuiSeeTapuKoko{
+    lock
+    faceplayer
+    speakername("Kukui")
+    msgbox("I'll stick around and see if the
+    kahuna comes back.")
+    release
     end
 }

@@ -1,6 +1,7 @@
 mapscripts Route1_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
         call_if_unset(FLAG_HAUOLI_OUTSKIRTS_NEWGAME, Route1CloseGates)
+        setrespawn(HEAL_LOCATION_PLAYER_HOUSE)
         end
         }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}]

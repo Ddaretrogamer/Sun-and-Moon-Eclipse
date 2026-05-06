@@ -466,153 +466,161 @@ Route1NN_Trigger_GetStarters_69:
 # 381 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_3, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_74
-# 390 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 391 "data/maps/Route1NN/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 392 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_21, MSGBOX_AUTOCLOSE
-# 393 "data/maps/Route1NN/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 394 "data/maps/Route1NN/scripts.pory"
-	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_24
+	playmoncry SPECIES_POPPLIO, 0
 # 395 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 396 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_Trigger_GetStarters_Text_21, MSGBOX_AUTOCLOSE
+# 397 "data/maps/Route1NN/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 398 "data/maps/Route1NN/scripts.pory"
+	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_24
+# 399 "data/maps/Route1NN/scripts.pory"
+	playse SE_M_CRABHAMMER
+# 400 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 401 "data/maps/Route1NN/scripts.pory"
+	playse SE_M_CRABHAMMER
+# 402 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 403 "data/maps/Route1NN/scripts.pory"
 	waitmovement popplio2
 Route1NN_Trigger_GetStarters_73:
-# 397 "data/maps/Route1NN/scripts.pory"
+# 405 "data/maps/Route1NN/scripts.pory"
 	speakername Route1NN_KukuiGoToIki_Text_0
-# 398 "data/maps/Route1NN/scripts.pory"
+# 406 "data/maps/Route1NN/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_25
-# 399 "data/maps/Route1NN/scripts.pory"
+# 407 "data/maps/Route1NN/scripts.pory"
 	waitmovement 0
-# 400 "data/maps/Route1NN/scripts.pory"
+# 408 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Trigger_GetStarters_Text_22
-# 412 "data/maps/Route1NN/scripts.pory"
+# 420 "data/maps/Route1NN/scripts.pory"
 	dynmultichoice 22, 6, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Route1NN_Trigger_GetStarters_Text_23, Route1NN_Trigger_GetStarters_Text_24, Route1NN_Trigger_GetStarters_Text_25
-# 413 "data/maps/Route1NN/scripts.pory"
+# 421 "data/maps/Route1NN/scripts.pory"
 	switch VAR_RESULT
-# 414 "data/maps/Route1NN/scripts.pory"
+# 422 "data/maps/Route1NN/scripts.pory"
 	case 0, Route1NN_Trigger_GetStarters_79
-# 453 "data/maps/Route1NN/scripts.pory"
+# 461 "data/maps/Route1NN/scripts.pory"
 	case 1, Route1NN_Trigger_GetStarters_80
-# 496 "data/maps/Route1NN/scripts.pory"
+# 504 "data/maps/Route1NN/scripts.pory"
 	case 2, Route1NN_Trigger_GetStarters_81
 Route1NN_Trigger_GetStarters_77:
-# 540 "data/maps/Route1NN/scripts.pory"
+# 548 "data/maps/Route1NN/scripts.pory"
 	bufferleadmonspeciesname STR_VAR_1
-# 541 "data/maps/Route1NN/scripts.pory"
+# 549 "data/maps/Route1NN/scripts.pory"
 	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_31
-# 542 "data/maps/Route1NN/scripts.pory"
+# 550 "data/maps/Route1NN/scripts.pory"
 	applymovement LOCALID_PLAYER, Route1NN_Trigger_GetStarters_Movement_10
-# 543 "data/maps/Route1NN/scripts.pory"
+# 551 "data/maps/Route1NN/scripts.pory"
 	waitmovement 0
-# 544 "data/maps/Route1NN/scripts.pory"
+# 552 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Trigger_GetStarters_Text_26, MSGBOX_YESNO
-# 546 "data/maps/Route1NN/scripts.pory"
+# 554 "data/maps/Route1NN/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq Route1NN_Trigger_GetStarters_83
-# 551 "data/maps/Route1NN/scripts.pory"
+# 559 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Trigger_GetStarters_Text_27, MSGBOX_AUTOCLOSE
 Route1NN_Trigger_GetStarters_82:
-# 554 "data/maps/Route1NN/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 555 "data/maps/Route1NN/scripts.pory"
-	playse SE_BALL_OPEN
-# 556 "data/maps/Route1NN/scripts.pory"
-	delay 60
-# 557 "data/maps/Route1NN/scripts.pory"
-	special RemoveCameraObject
-# 558 "data/maps/Route1NN/scripts.pory"
-	removeobject popplio2
-# 559 "data/maps/Route1NN/scripts.pory"
-	removeobject popplioshiny2
-# 560 "data/maps/Route1NN/scripts.pory"
-	removeobject litten2
-# 561 "data/maps/Route1NN/scripts.pory"
-	removeobject littenshiny2
 # 562 "data/maps/Route1NN/scripts.pory"
-	removeobject rowlet2
+	fadescreenswapbuffers FADE_TO_BLACK
 # 563 "data/maps/Route1NN/scripts.pory"
-	removeobject rowletshiny2
+	playse SE_BALL_OPEN
 # 564 "data/maps/Route1NN/scripts.pory"
-	special SpawnCameraObject
+	delay 60
 # 565 "data/maps/Route1NN/scripts.pory"
-	speakername Route1NN_KukuiGoToIki_Text_0
+	special RemoveCameraObject
 # 566 "data/maps/Route1NN/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	removeobject popplio2
 # 567 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_28
-# 578 "data/maps/Route1NN/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 579 "data/maps/Route1NN/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 580 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_29, MSGBOX_AUTOCLOSE
-# 581 "data/maps/Route1NN/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 582 "data/maps/Route1NN/scripts.pory"
+	removeobject popplioshiny2
+# 568 "data/maps/Route1NN/scripts.pory"
+	removeobject litten2
+# 569 "data/maps/Route1NN/scripts.pory"
+	removeobject littenshiny2
+# 570 "data/maps/Route1NN/scripts.pory"
+	removeobject rowlet2
+# 571 "data/maps/Route1NN/scripts.pory"
+	removeobject rowletshiny2
+# 572 "data/maps/Route1NN/scripts.pory"
+	special SpawnCameraObject
+# 573 "data/maps/Route1NN/scripts.pory"
 	speakername Route1NN_KukuiGoToIki_Text_0
-# 583 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_30
+# 574 "data/maps/Route1NN/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 575 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_Trigger_GetStarters_Text_28
+# 586 "data/maps/Route1NN/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 587 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 588 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_Trigger_GetStarters_Text_29, MSGBOX_AUTOCLOSE
 # 589 "data/maps/Route1NN/scripts.pory"
-	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Route1NN_Trigger_GetStarters_Text_31, Route1NN_Trigger_GetStarters_Text_32
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 590 "data/maps/Route1NN/scripts.pory"
+	speakername Route1NN_KukuiGoToIki_Text_0
+# 591 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_Trigger_GetStarters_Text_30
+# 597 "data/maps/Route1NN/scripts.pory"
+	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Route1NN_Trigger_GetStarters_Text_31, Route1NN_Trigger_GetStarters_Text_32
+# 598 "data/maps/Route1NN/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq Route1NN_Trigger_GetStarters_96
-# 613 "data/maps/Route1NN/scripts.pory"
+# 621 "data/maps/Route1NN/scripts.pory"
 	applymovement LOCALID_PLAYER, Route1NN_Trigger_GetStarters_Movement_15
-# 614 "data/maps/Route1NN/scripts.pory"
+# 622 "data/maps/Route1NN/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 615 "data/maps/Route1NN/scripts.pory"
+# 623 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Trigger_GetStarters_Text_33, MSGBOX_AUTOCLOSE
 Route1NN_Trigger_GetStarters_95:
-# 632 "data/maps/Route1NN/scripts.pory"
-	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_32
-# 633 "data/maps/Route1NN/scripts.pory"
-	applymovement LOCALID_PLAYER, Route1NN_Trigger_GetStarters_Movement_33
-# 634 "data/maps/Route1NN/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_33
-# 635 "data/maps/Route1NN/scripts.pory"
-	waitmovement 0
-# 636 "data/maps/Route1NN/scripts.pory"
-	clearflag FLAG_HIDE_KUKUI_STARTERS
-# 637 "data/maps/Route1NN/scripts.pory"
-	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_34
-# 638 "data/maps/Route1NN/scripts.pory"
-	waitmovement kukuistarters
-# 639 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_34, MSGBOX_AUTOCLOSE
 # 640 "data/maps/Route1NN/scripts.pory"
-	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_31
+	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_32
 # 641 "data/maps/Route1NN/scripts.pory"
-	waitmovement kukuistarters
+	applymovement LOCALID_PLAYER, Route1NN_Trigger_GetStarters_Movement_33
 # 642 "data/maps/Route1NN/scripts.pory"
-	delay 30
+	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_33
 # 643 "data/maps/Route1NN/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_35
+	waitmovement 0
 # 644 "data/maps/Route1NN/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	clearflag FLAG_HIDE_KUKUI_STARTERS
 # 645 "data/maps/Route1NN/scripts.pory"
-	delay 90
+	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_34
 # 646 "data/maps/Route1NN/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	waitmovement kukuistarters
 # 647 "data/maps/Route1NN/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_36
+	msgbox Route1NN_Trigger_GetStarters_Text_34, MSGBOX_AUTOCLOSE
 # 648 "data/maps/Route1NN/scripts.pory"
-	setobjectxy kukuistarters, 21, 19
+	applymovement kukuistarters, Route1NN_Trigger_GetStarters_Movement_31
 # 649 "data/maps/Route1NN/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement kukuistarters
 # 650 "data/maps/Route1NN/scripts.pory"
-	special RemoveCameraObject
+	delay 30
 # 651 "data/maps/Route1NN/scripts.pory"
-	addobject techguy
+	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_35
 # 652 "data/maps/Route1NN/scripts.pory"
-	clearflag FLAG_TEMP_2
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 653 "data/maps/Route1NN/scripts.pory"
-	setvar VAR_STARTERS_STATE, 1
+	delay 90
 # 654 "data/maps/Route1NN/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 # 655 "data/maps/Route1NN/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_Trigger_GetStarters_Movement_36
+# 656 "data/maps/Route1NN/scripts.pory"
+	setobjectxy kukuistarters, 21, 19
+# 657 "data/maps/Route1NN/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 658 "data/maps/Route1NN/scripts.pory"
+	special RemoveCameraObject
+# 659 "data/maps/Route1NN/scripts.pory"
+	addobject techguy
+# 660 "data/maps/Route1NN/scripts.pory"
+	clearflag FLAG_TEMP_2
+# 661 "data/maps/Route1NN/scripts.pory"
+	setvar VAR_STARTERS_STATE, 1
+# 662 "data/maps/Route1NN/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 663 "data/maps/Route1NN/scripts.pory"
 	release
 	end
 
@@ -776,302 +784,310 @@ Route1NN_Trigger_GetStarters_74:
 # 386 "data/maps/Route1NN/scripts.pory"
 	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_24
 # 387 "data/maps/Route1NN/scripts.pory"
+	playse SE_M_CRABHAMMER
+# 388 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 389 "data/maps/Route1NN/scripts.pory"
+	playse SE_M_CRABHAMMER
+# 390 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 391 "data/maps/Route1NN/scripts.pory"
 	waitmovement popplioshiny2
 	goto Route1NN_Trigger_GetStarters_73
 
 Route1NN_Trigger_GetStarters_79:
-# 415 "data/maps/Route1NN/scripts.pory"
+# 423 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_3, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_87
 Route1NN_Trigger_GetStarters_86:
-# 418 "data/maps/Route1NN/scripts.pory"
+# 426 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_2, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_100
 Route1NN_Trigger_GetStarters_99:
-# 421 "data/maps/Route1NN/scripts.pory"
+# 429 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_1, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_109
-# 435 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_ROWLET, 5, shinyMode = SHINY_MODE_NEVER
-# 436 "data/maps/Route1NN/scripts.pory"
-	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_26
-# 437 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowlet2
-# 438 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
-# 439 "data/maps/Route1NN/scripts.pory"
-	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_27
-# 440 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowlet2
-# 441 "data/maps/Route1NN/scripts.pory"
-	delay 30
-# 442 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
 # 443 "data/maps/Route1NN/scripts.pory"
-	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_28
+	givemon SPECIES_ROWLET, 5, shinyMode = SHINY_MODE_NEVER
 # 444 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowlet2
+	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_26
 # 445 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowlet2
+# 446 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_ROWLET, 0
+# 447 "data/maps/Route1NN/scripts.pory"
+	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_27
+# 448 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowlet2
+# 449 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 450 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 451 "data/maps/Route1NN/scripts.pory"
+	applymovement rowlet2, Route1NN_Trigger_GetStarters_Movement_28
+# 452 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowlet2
+# 453 "data/maps/Route1NN/scripts.pory"
 	delay 60
 Route1NN_Trigger_GetStarters_108:
-# 447 "data/maps/Route1NN/scripts.pory"
+# 455 "data/maps/Route1NN/scripts.pory"
 	setvar VAR_STARTER_MON, 0
-# 448 "data/maps/Route1NN/scripts.pory"
+# 456 "data/maps/Route1NN/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 449 "data/maps/Route1NN/scripts.pory"
+# 457 "data/maps/Route1NN/scripts.pory"
 	removeobject rowlet2
-# 450 "data/maps/Route1NN/scripts.pory"
+# 458 "data/maps/Route1NN/scripts.pory"
 	removeobject rowletshiny2
-# 451 "data/maps/Route1NN/scripts.pory"
+# 459 "data/maps/Route1NN/scripts.pory"
 	delay 150
 	goto Route1NN_Trigger_GetStarters_77
 
 Route1NN_Trigger_GetStarters_80:
-# 454 "data/maps/Route1NN/scripts.pory"
+# 462 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_3, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_90
 Route1NN_Trigger_GetStarters_89:
-# 457 "data/maps/Route1NN/scripts.pory"
+# 465 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_1, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_103
 Route1NN_Trigger_GetStarters_102:
-# 460 "data/maps/Route1NN/scripts.pory"
+# 468 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_2, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_113
-# 476 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_LITTEN, 5, shinyMode = SHINY_MODE_NEVER
-# 477 "data/maps/Route1NN/scripts.pory"
-	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_29
-# 478 "data/maps/Route1NN/scripts.pory"
-	waitmovement litten2
-# 479 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 480 "data/maps/Route1NN/scripts.pory"
-	waitse
-# 481 "data/maps/Route1NN/scripts.pory"
-	playse SE_LEDGE
-# 482 "data/maps/Route1NN/scripts.pory"
-	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_23
-# 483 "data/maps/Route1NN/scripts.pory"
-	waitmovement litten2
 # 484 "data/maps/Route1NN/scripts.pory"
-	delay 30
+	givemon SPECIES_LITTEN, 5, shinyMode = SHINY_MODE_NEVER
 # 485 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
+	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_29
 # 486 "data/maps/Route1NN/scripts.pory"
-	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_28
-# 487 "data/maps/Route1NN/scripts.pory"
 	waitmovement litten2
+# 487 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
 # 488 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 489 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 490 "data/maps/Route1NN/scripts.pory"
+	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_23
+# 491 "data/maps/Route1NN/scripts.pory"
+	waitmovement litten2
+# 492 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 493 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 494 "data/maps/Route1NN/scripts.pory"
+	applymovement litten2, Route1NN_Trigger_GetStarters_Movement_28
+# 495 "data/maps/Route1NN/scripts.pory"
+	waitmovement litten2
+# 496 "data/maps/Route1NN/scripts.pory"
 	delay 60
 Route1NN_Trigger_GetStarters_112:
-# 490 "data/maps/Route1NN/scripts.pory"
+# 498 "data/maps/Route1NN/scripts.pory"
 	setvar VAR_STARTER_MON, 1
-# 491 "data/maps/Route1NN/scripts.pory"
+# 499 "data/maps/Route1NN/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 492 "data/maps/Route1NN/scripts.pory"
+# 500 "data/maps/Route1NN/scripts.pory"
 	removeobject litten2
-# 493 "data/maps/Route1NN/scripts.pory"
+# 501 "data/maps/Route1NN/scripts.pory"
 	removeobject littenshiny2
-# 494 "data/maps/Route1NN/scripts.pory"
+# 502 "data/maps/Route1NN/scripts.pory"
 	delay 150
 	goto Route1NN_Trigger_GetStarters_77
 
 Route1NN_Trigger_GetStarters_81:
-# 497 "data/maps/Route1NN/scripts.pory"
+# 505 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_2, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_93
 Route1NN_Trigger_GetStarters_92:
-# 500 "data/maps/Route1NN/scripts.pory"
+# 508 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_1, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_106
 Route1NN_Trigger_GetStarters_105:
-# 503 "data/maps/Route1NN/scripts.pory"
+# 511 "data/maps/Route1NN/scripts.pory"
 	compare VAR_TEMP_3, SHINY_MODE_ALWAYS
 	goto_if_eq Route1NN_Trigger_GetStarters_117
-# 519 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_POPPLIO, 5, shinyMode = SHINY_MODE_NEVER
-# 520 "data/maps/Route1NN/scripts.pory"
-	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_30
-# 521 "data/maps/Route1NN/scripts.pory"
-	waitmovement popplio2
-# 522 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 523 "data/maps/Route1NN/scripts.pory"
-	waitse
-# 524 "data/maps/Route1NN/scripts.pory"
-	playse SE_LEDGE
-# 525 "data/maps/Route1NN/scripts.pory"
-	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_23
-# 526 "data/maps/Route1NN/scripts.pory"
-	waitmovement popplio2
 # 527 "data/maps/Route1NN/scripts.pory"
-	delay 30
+	givemon SPECIES_POPPLIO, 5, shinyMode = SHINY_MODE_NEVER
 # 528 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
+	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_30
 # 529 "data/maps/Route1NN/scripts.pory"
-	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_28
-# 530 "data/maps/Route1NN/scripts.pory"
 	waitmovement popplio2
+# 530 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
 # 531 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 532 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 533 "data/maps/Route1NN/scripts.pory"
+	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_23
+# 534 "data/maps/Route1NN/scripts.pory"
+	waitmovement popplio2
+# 535 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 536 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 537 "data/maps/Route1NN/scripts.pory"
+	applymovement popplio2, Route1NN_Trigger_GetStarters_Movement_28
+# 538 "data/maps/Route1NN/scripts.pory"
+	waitmovement popplio2
+# 539 "data/maps/Route1NN/scripts.pory"
 	delay 60
 Route1NN_Trigger_GetStarters_116:
-# 533 "data/maps/Route1NN/scripts.pory"
+# 541 "data/maps/Route1NN/scripts.pory"
 	setvar VAR_STARTER_MON, 2
-# 534 "data/maps/Route1NN/scripts.pory"
+# 542 "data/maps/Route1NN/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 535 "data/maps/Route1NN/scripts.pory"
+# 543 "data/maps/Route1NN/scripts.pory"
 	removeobject popplio2
-# 536 "data/maps/Route1NN/scripts.pory"
+# 544 "data/maps/Route1NN/scripts.pory"
 	removeobject popplioshiny2
-# 537 "data/maps/Route1NN/scripts.pory"
+# 545 "data/maps/Route1NN/scripts.pory"
 	delay 150
 	goto Route1NN_Trigger_GetStarters_77
 
 Route1NN_Trigger_GetStarters_83:
-# 547 "data/maps/Route1NN/scripts.pory"
+# 555 "data/maps/Route1NN/scripts.pory"
 	setvar VAR_0x8004, 0
-# 548 "data/maps/Route1NN/scripts.pory"
+# 556 "data/maps/Route1NN/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	goto Route1NN_Trigger_GetStarters_82
 
 Route1NN_Trigger_GetStarters_87:
-# 416 "data/maps/Route1NN/scripts.pory"
+# 424 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_RIVAL_SHINY
 	goto Route1NN_Trigger_GetStarters_86
 
 Route1NN_Trigger_GetStarters_90:
-# 455 "data/maps/Route1NN/scripts.pory"
+# 463 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_KUKUI_SHINY
 	goto Route1NN_Trigger_GetStarters_89
 
 Route1NN_Trigger_GetStarters_93:
-# 498 "data/maps/Route1NN/scripts.pory"
+# 506 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_RIVAL_SHINY
 	goto Route1NN_Trigger_GetStarters_92
 
 Route1NN_Trigger_GetStarters_96:
-# 592 "data/maps/Route1NN/scripts.pory"
+# 600 "data/maps/Route1NN/scripts.pory"
 	applymovement LOCALID_PLAYER, Route1NN_Trigger_GetStarters_Movement_15
-# 593 "data/maps/Route1NN/scripts.pory"
+# 601 "data/maps/Route1NN/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 594 "data/maps/Route1NN/scripts.pory"
+# 602 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Trigger_GetStarters_Text_33, MSGBOX_AUTOCLOSE
 	goto Route1NN_Trigger_GetStarters_95
 
 Route1NN_Trigger_GetStarters_100:
-# 419 "data/maps/Route1NN/scripts.pory"
+# 427 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_KUKUI_SHINY
 	goto Route1NN_Trigger_GetStarters_99
 
 Route1NN_Trigger_GetStarters_103:
-# 458 "data/maps/Route1NN/scripts.pory"
+# 466 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_RIVAL_SHINY
 	goto Route1NN_Trigger_GetStarters_102
 
 Route1NN_Trigger_GetStarters_106:
-# 501 "data/maps/Route1NN/scripts.pory"
+# 509 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_KUKUI_SHINY
 	goto Route1NN_Trigger_GetStarters_105
 
 Route1NN_Trigger_GetStarters_109:
-# 422 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_ROWLET, 5, shinyMode = SHINY_MODE_ALWAYS
-# 423 "data/maps/Route1NN/scripts.pory"
-	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_26
-# 424 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowletshiny2
-# 425 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
-# 426 "data/maps/Route1NN/scripts.pory"
-	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_27
-# 427 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowletshiny2
-# 428 "data/maps/Route1NN/scripts.pory"
-	delay 30
-# 429 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
 # 430 "data/maps/Route1NN/scripts.pory"
-	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_28
+	givemon SPECIES_ROWLET, 5, shinyMode = SHINY_MODE_ALWAYS
 # 431 "data/maps/Route1NN/scripts.pory"
-	waitmovement rowletshiny2
+	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_26
 # 432 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowletshiny2
+# 433 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_ROWLET, 0
+# 434 "data/maps/Route1NN/scripts.pory"
+	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_27
+# 435 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowletshiny2
+# 436 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 437 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 438 "data/maps/Route1NN/scripts.pory"
+	applymovement rowletshiny2, Route1NN_Trigger_GetStarters_Movement_28
+# 439 "data/maps/Route1NN/scripts.pory"
+	waitmovement rowletshiny2
+# 440 "data/maps/Route1NN/scripts.pory"
 	delay 60
 	goto Route1NN_Trigger_GetStarters_108
 
 Route1NN_Trigger_GetStarters_113:
-# 461 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_LITTEN, 5, shinyMode = SHINY_MODE_ALWAYS
-# 462 "data/maps/Route1NN/scripts.pory"
-	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_29
-# 463 "data/maps/Route1NN/scripts.pory"
-	waitmovement littenshiny2
-# 464 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 465 "data/maps/Route1NN/scripts.pory"
-	waitse
-# 466 "data/maps/Route1NN/scripts.pory"
-	playse SE_LEDGE
-# 467 "data/maps/Route1NN/scripts.pory"
-	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_23
-# 468 "data/maps/Route1NN/scripts.pory"
-	waitmovement littenshiny2
 # 469 "data/maps/Route1NN/scripts.pory"
-	delay 30
+	givemon SPECIES_LITTEN, 5, shinyMode = SHINY_MODE_ALWAYS
 # 470 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
+	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_29
 # 471 "data/maps/Route1NN/scripts.pory"
-	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_28
-# 472 "data/maps/Route1NN/scripts.pory"
 	waitmovement littenshiny2
+# 472 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
 # 473 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 474 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 475 "data/maps/Route1NN/scripts.pory"
+	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_23
+# 476 "data/maps/Route1NN/scripts.pory"
+	waitmovement littenshiny2
+# 477 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 478 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 479 "data/maps/Route1NN/scripts.pory"
+	applymovement littenshiny2, Route1NN_Trigger_GetStarters_Movement_28
+# 480 "data/maps/Route1NN/scripts.pory"
+	waitmovement littenshiny2
+# 481 "data/maps/Route1NN/scripts.pory"
 	delay 60
 	goto Route1NN_Trigger_GetStarters_112
 
 Route1NN_Trigger_GetStarters_117:
-# 504 "data/maps/Route1NN/scripts.pory"
-	givemon SPECIES_POPPLIO, 5, shinyMode = SHINY_MODE_ALWAYS
-# 505 "data/maps/Route1NN/scripts.pory"
-	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_30
-# 506 "data/maps/Route1NN/scripts.pory"
-	waitmovement popplioshiny2
-# 507 "data/maps/Route1NN/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 508 "data/maps/Route1NN/scripts.pory"
-	waitse
-# 509 "data/maps/Route1NN/scripts.pory"
-	playse SE_LEDGE
-# 510 "data/maps/Route1NN/scripts.pory"
-	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_23
-# 511 "data/maps/Route1NN/scripts.pory"
-	waitmovement popplioshiny2
 # 512 "data/maps/Route1NN/scripts.pory"
-	delay 30
+	givemon SPECIES_POPPLIO, 5, shinyMode = SHINY_MODE_ALWAYS
 # 513 "data/maps/Route1NN/scripts.pory"
-	playse SE_PIN
+	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_30
 # 514 "data/maps/Route1NN/scripts.pory"
-	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_28
-# 515 "data/maps/Route1NN/scripts.pory"
 	waitmovement popplioshiny2
+# 515 "data/maps/Route1NN/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
 # 516 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 517 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 518 "data/maps/Route1NN/scripts.pory"
+	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_23
+# 519 "data/maps/Route1NN/scripts.pory"
+	waitmovement popplioshiny2
+# 520 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 521 "data/maps/Route1NN/scripts.pory"
+	playse SE_PIN
+# 522 "data/maps/Route1NN/scripts.pory"
+	applymovement popplioshiny2, Route1NN_Trigger_GetStarters_Movement_28
+# 523 "data/maps/Route1NN/scripts.pory"
+	waitmovement popplioshiny2
+# 524 "data/maps/Route1NN/scripts.pory"
 	delay 60
 	goto Route1NN_Trigger_GetStarters_116
 
 
 Route1NN_Rockruff::
-# 660 "data/maps/Route1NN/scripts.pory"
+# 668 "data/maps/Route1NN/scripts.pory"
 	lock
-# 661 "data/maps/Route1NN/scripts.pory"
+# 669 "data/maps/Route1NN/scripts.pory"
 	playmoncry SPECIES_ROCKRUFF, 0
-# 662 "data/maps/Route1NN/scripts.pory"
+# 670 "data/maps/Route1NN/scripts.pory"
 	playse SE_PIN
-# 663 "data/maps/Route1NN/scripts.pory"
+# 671 "data/maps/Route1NN/scripts.pory"
 	applymovement route1nnrockruff, Route1NN_Rockruff_Movement_0
-# 664 "data/maps/Route1NN/scripts.pory"
+# 672 "data/maps/Route1NN/scripts.pory"
 	waitmovement route1nnrockruff
-# 665 "data/maps/Route1NN/scripts.pory"
+# 673 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_Rockruff_Text_0, MSGBOX_AUTOCLOSE
-# 666 "data/maps/Route1NN/scripts.pory"
+# 674 "data/maps/Route1NN/scripts.pory"
 	release
 	end
 
@@ -1448,215 +1464,215 @@ Route1NN_Trigger_GetStarters_Movement_24:
 	face_down
 	step_end
 
-# 398 "data/maps/Route1NN/scripts.pory"
+# 406 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_25:
-# 398 "data/maps/Route1NN/scripts.pory"
+# 406 "data/maps/Route1NN/scripts.pory"
 	walk_slow_diag_southwest
-# 398 "data/maps/Route1NN/scripts.pory"
+# 406 "data/maps/Route1NN/scripts.pory"
 	walk_slow_down
 	step_end
 
-# 423 "data/maps/Route1NN/scripts.pory"
+# 431 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_26:
-# 423 "data/maps/Route1NN/scripts.pory"
+# 431 "data/maps/Route1NN/scripts.pory"
 	walk_down
-# 423 "data/maps/Route1NN/scripts.pory"
+# 431 "data/maps/Route1NN/scripts.pory"
 	walk_right
-# 423 "data/maps/Route1NN/scripts.pory"
+# 431 "data/maps/Route1NN/scripts.pory"
 	face_down
 	step_end
 
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_27:
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	face_left
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	face_up
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	face_right
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 426 "data/maps/Route1NN/scripts.pory"
+# 434 "data/maps/Route1NN/scripts.pory"
 	face_down
 	step_end
 
-# 430 "data/maps/Route1NN/scripts.pory"
+# 438 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_28:
-# 430 "data/maps/Route1NN/scripts.pory"
+# 438 "data/maps/Route1NN/scripts.pory"
 	emote_heart
 	step_end
 
-# 462 "data/maps/Route1NN/scripts.pory"
+# 470 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_29:
-# 462 "data/maps/Route1NN/scripts.pory"
+# 470 "data/maps/Route1NN/scripts.pory"
 	walk_down
 	step_end
 
-# 505 "data/maps/Route1NN/scripts.pory"
+# 513 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_30:
-# 505 "data/maps/Route1NN/scripts.pory"
+# 513 "data/maps/Route1NN/scripts.pory"
 	walk_down
-# 505 "data/maps/Route1NN/scripts.pory"
+# 513 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 505 "data/maps/Route1NN/scripts.pory"
+# 513 "data/maps/Route1NN/scripts.pory"
 	face_down
 	step_end
 
-# 541 "data/maps/Route1NN/scripts.pory"
+# 549 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_31:
-# 541 "data/maps/Route1NN/scripts.pory"
+# 549 "data/maps/Route1NN/scripts.pory"
 	face_left
 	step_end
 
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_32:
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_down
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 632 "data/maps/Route1NN/scripts.pory"
+# 640 "data/maps/Route1NN/scripts.pory"
 	walk_left
 	step_end
 
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_33:
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	delay_16
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_down
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_down
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
-# 633 "data/maps/Route1NN/scripts.pory"
+# 641 "data/maps/Route1NN/scripts.pory"
 	walk_left
 	step_end
 
-# 637 "data/maps/Route1NN/scripts.pory"
+# 645 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_34:
-# 637 "data/maps/Route1NN/scripts.pory"
+# 645 "data/maps/Route1NN/scripts.pory"
 	face_down
 	step_end
 
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_35:
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_fast_left
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_diag_northwest
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_diag_northwest
-# 643 "data/maps/Route1NN/scripts.pory"
+# 651 "data/maps/Route1NN/scripts.pory"
 	walk_diag_northwest
 	step_end
 
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 Route1NN_Trigger_GetStarters_Movement_36:
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_right
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_down
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_down
-# 647 "data/maps/Route1NN/scripts.pory"
+# 655 "data/maps/Route1NN/scripts.pory"
 	walk_faster_down
 	step_end
 
-# 663 "data/maps/Route1NN/scripts.pory"
+# 671 "data/maps/Route1NN/scripts.pory"
 Route1NN_Rockruff_Movement_0:
-# 663 "data/maps/Route1NN/scripts.pory"
+# 671 "data/maps/Route1NN/scripts.pory"
 	face_player
-# 663 "data/maps/Route1NN/scripts.pory"
+# 671 "data/maps/Route1NN/scripts.pory"
 	emote_heart
 	step_end
 
@@ -1803,7 +1819,7 @@ Route1NN_Trigger_GetStarters_Text_21:
 	.string "Bwark?$"
 
 Route1NN_Trigger_GetStarters_Text_22:
-# 400 "data/maps/Route1NN/scripts.pory"
+# 408 "data/maps/Route1NN/scripts.pory"
 	.string "Y'see, the fact of the matter is…\p"
 	.string "one of these Pokémon will become\n"
 	.string "your first partner, woo!\p"
@@ -1814,29 +1830,29 @@ Route1NN_Trigger_GetStarters_Text_22:
 	.string "to keep as your partner, cousin!$"
 
 Route1NN_Trigger_GetStarters_Text_23:
-# 412 "data/maps/Route1NN/scripts.pory"
+# 420 "data/maps/Route1NN/scripts.pory"
 	.string "{COLOR GREEN}Rowlet$"
 
 Route1NN_Trigger_GetStarters_Text_24:
-# 412 "data/maps/Route1NN/scripts.pory"
+# 420 "data/maps/Route1NN/scripts.pory"
 	.string "{COLOR RED}Litten$"
 
 Route1NN_Trigger_GetStarters_Text_25:
-# 412 "data/maps/Route1NN/scripts.pory"
+# 420 "data/maps/Route1NN/scripts.pory"
 	.string "{COLOR BLUE}Popplio$"
 
 Route1NN_Trigger_GetStarters_Text_26:
-# 544 "data/maps/Route1NN/scripts.pory"
+# 552 "data/maps/Route1NN/scripts.pory"
 	.string "Would you like to nickname your\n"
 	.string "{STR_VAR_1}?$"
 
 Route1NN_Trigger_GetStarters_Text_27:
-# 551 "data/maps/Route1NN/scripts.pory"
+# 559 "data/maps/Route1NN/scripts.pory"
 	.string "No worries! You can nickname your\n"
 	.string "Pokémon anytime from the menu.$"
 
 Route1NN_Trigger_GetStarters_Text_28:
-# 567 "data/maps/Route1NN/scripts.pory"
+# 575 "data/maps/Route1NN/scripts.pory"
 	.string "So you went with {STR_VAR_1}!\n"
 	.string "Woo, what a fine-looking team you\l"
 	.string "two are!\p"
@@ -1847,26 +1863,26 @@ Route1NN_Trigger_GetStarters_Text_28:
 	.string "It should feel nice and cozy in there.$"
 
 Route1NN_Trigger_GetStarters_Text_29:
-# 580 "data/maps/Route1NN/scripts.pory"
+# 588 "data/maps/Route1NN/scripts.pory"
 	.string "Received {STR_VAR_1}'s Poké Ball!$"
 
 Route1NN_Trigger_GetStarters_Text_30:
-# 583 "data/maps/Route1NN/scripts.pory"
+# 591 "data/maps/Route1NN/scripts.pory"
 	.string "All right! Then let's get going up\n"
 	.string "to Iki Town, {PLAYER}.\p"
 	.string "Woo!\p"
 	.string "Time to meet the {COLOR RED}Island Kahuna!$"
 
 Route1NN_Trigger_GetStarters_Text_31:
-# 589 "data/maps/Route1NN/scripts.pory"
+# 597 "data/maps/Route1NN/scripts.pory"
 	.string "Island Kahuna?!$"
 
 Route1NN_Trigger_GetStarters_Text_32:
-# 589 "data/maps/Route1NN/scripts.pory"
+# 597 "data/maps/Route1NN/scripts.pory"
 	.string "But why?!$"
 
 Route1NN_Trigger_GetStarters_Text_33:
-# 594 "data/maps/Route1NN/scripts.pory"
+# 602 "data/maps/Route1NN/scripts.pory"
 	.string "Truth is, that partner {STR_VAR_1}\n"
 	.string "of yours is a gift from the kahuna,\l"
 	.string "not me.\p"
@@ -1881,9 +1897,9 @@ Route1NN_Trigger_GetStarters_Text_33:
 	.string "battle with one!$"
 
 Route1NN_Trigger_GetStarters_Text_34:
-# 639 "data/maps/Route1NN/scripts.pory"
+# 647 "data/maps/Route1NN/scripts.pory"
 	.string "Iki Town is right up here!$"
 
 Route1NN_Rockruff_Text_0:
-# 665 "data/maps/Route1NN/scripts.pory"
+# 673 "data/maps/Route1NN/scripts.pory"
 	.string "Ruff!$"

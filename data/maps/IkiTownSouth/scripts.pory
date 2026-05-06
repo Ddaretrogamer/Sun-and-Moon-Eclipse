@@ -53,6 +53,8 @@ script IkiTown_Trigger_HauGetStarter{
     addobject(ikitownhau)
     addobject(ikitownkukui)
     setflag(FLAG_HIDE_KUKUI_STARTERS)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_question_mark))
     applymovement(ikitownhau, moves(walk_fast_down*7, delay_16*3, face_left, delay_16*3, face_right))
@@ -359,31 +361,32 @@ script IkiTown_StartRivalBattle{
         switch(var(VAR_STARTER_MON)){
         case 0:
             if (flag(FLAG_RIVAL_SHINY)){
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_POPPLIOSHINY, "Our first defeat! Sorry, Popplio!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_POPPLIOSHINY, 3, "Our first defeat! Sorry, Popplio!", "Alola! Way to go, Popplio!")
             }
             else{
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_POPPLIO, "Our first defeat! Sorry, Popplio!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_POPPLIO, 3, "Our first defeat! Sorry, Popplio!", "Alola! Way to go, Popplio!")
             }
             break
         case 1:
             if (flag(FLAG_RIVAL_SHINY)){
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_ROWLETSHINY, "Our first defeat! Sorry, Rowlet!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_ROWLETSHINY, 3, "Our first defeat! Sorry, Rowlet!", "Alola! Way to go, Rowlet!")
             }
             else{
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_ROWLET, "Our first defeat! Sorry, Rowlet!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_ROWLET, 3, "Our first defeat! Sorry, Rowlet!", "Alola! Way to go, Rowlet!")
             }
             break
         case 2:
             if (flag(FLAG_RIVAL_SHINY)){
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_LITTENSHINY, "Our first defeat! Sorry, Litten!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_LITTENSHINY, 3, "Our first defeat! Sorry, Litten!", "Alola! Way to go, Litten!")
             }
             else{
-                trainerbattle_no_intro(TRAINER_HAU_IKITOWN1_LITTEN, "Our first defeat! Sorry, Litten!")
+                trainerbattle_earlyrival(TRAINER_HAU_IKITOWN1_LITTEN, 3, "Our first defeat! Sorry, Litten!", "Alola! Way to go, Litten!")
             }
             break
         }
         fadescreenswapbuffers(FADE_TO_BLACK)
         playse(SE_BALL_OPEN)
+        special(HealPlayerParty)
         delay(60)
         removeobject(ikitownmon1)
         removeobject(ikitownmon2)
@@ -472,6 +475,21 @@ script Ikitown_Trigger_LeaveIkitownEarly{
     msgbox("Iki Town is right up those stairs.
     Come on, {PLAYER}!")
     applymovement(LOCALID_PLAYER, moves(walk_left))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+script Ikitown_Trigger_LeaveIkitownEarly_left{
+    lock
+    playse(SE_PIN)
+    applymovement(ikitownkukui, moves(face_right, emote_exclamation_mark))
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Iki Town is right up those stairs.
+    Come on, {PLAYER}!")
+    applymovement(LOCALID_PLAYER, moves(walk_right))
     waitmovement(LOCALID_PLAYER)
     release
     end

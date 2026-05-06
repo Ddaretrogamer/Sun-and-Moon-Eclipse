@@ -1083,9 +1083,9 @@ EventScript_AfterWhiteOutMomHeal::
 	lockall
 	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	speakername gText_MomSpeakerName
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	call Common_EventScript_OutOfCenterPartyHeal
-	msgbox gText_MomExplainHPGetPotions
 	fadedefaultbgm
 	releaseall
 	end
@@ -1423,7 +1423,7 @@ gText_MonsHealed::
 	.string "We hope you excel!$"
 
 gText_HadQuiteAnExperienceTakeRest::
-	.string "MOM: {PLAYER}!\n"
+	.string "{PLAYER}!\n"
 	.string "Welcome home.\p"
 	.string "It sounds like you had quite\n"
 	.string "an experience.\p"
@@ -1431,7 +1431,7 @@ gText_HadQuiteAnExperienceTakeRest::
 	.string "rest.$"
 
 gText_MomExplainHPGetPotions::
-	.string "MOM: Oh, good! You and your\n"
+	.string "Oh, good! You and your\n"
 	.string "POKéMON are looking great.\p"
 	.string "I just heard from PROF. BIRCH.\p"
 	.string "He said that POKéMON's energy is\n"
@@ -1444,6 +1444,9 @@ gText_MomExplainHPGetPotions::
 	.string "POTIONS at the POKéMON MART.\p"
 	.string "Make me proud, honey!\p"
 	.string "Take care!$"
+
+gText_MomSpeakerName::
+	.string "Mom"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"

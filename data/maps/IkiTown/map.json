@@ -34,7 +34,36 @@
       "direction": "down"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "ikitownintrokukui",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 33,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Ikitown_KukuiSeeTapuKoko",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO_KUKUI"
+    },
+    {
+      "local_id": "ikitownintrohau",
+      "graphics_id": "OBJ_EVENT_GFX_HAU",
+      "x": 31,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+    }
+  ],
   "warp_events": [
     {
       "x": 38,
@@ -44,42 +73,42 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 25,
+      "x": 24,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_IKITOWN_HOUSE_TWO",
       "dest_warp_id": "0"
     },
     {
-      "x": 12,
+      "x": 11,
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_IKITOWN_CEREMONIAL_HOUSE",
       "dest_warp_id": "1"
     },
     {
-      "x": 11,
+      "x": 10,
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_IKITOWN_CEREMONIAL_HOUSE",
       "dest_warp_id": "0"
     },
     {
-      "x": 16,
+      "x": 15,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_IKITOWN_HOUSE_ONE",
       "dest_warp_id": "0"
     },
     {
-      "x": 23,
+      "x": 22,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_PATH_TO_TAPU_KOKO_SHRINE",
       "dest_warp_id": "0"
     },
     {
-      "x": 24,
+      "x": 23,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_PATH_TO_TAPU_KOKO_SHRINE",
@@ -89,12 +118,21 @@
   "coord_events": [
     {
       "type": "trigger",
+      "x": 31,
+      "y": 30,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "1",
+      "script": "Ikitown_trigger_left"
+    },
+    {
+      "type": "trigger",
       "x": 32,
       "y": 30,
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Ikitown_trigger_WecomeToIkitown"
     },
     {
       "type": "trigger",
@@ -103,16 +141,7 @@
       "elevation": 0,
       "var": "VAR_IKITOWN_STATE",
       "var_value": "1",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 34,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_IKITOWN_STATE",
-      "var_value": "1",
-      "script": "NULL"
+      "script": "Ikitown_trigger_right"
     }
   ],
   "bg_events": [

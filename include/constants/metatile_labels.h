@@ -481,6 +481,9 @@
 // gTileset_PewterCity
 #define METATILE_PewterCity_Door  0x2CE
 
+// gTileset_PlayerHouse2
+#define METATILE_PlayerHouse2_OpenBox  0x896
+
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_CounterBarrier            0x85D
 #define METATILE_PokemonCenter_Door_CableClub            0x864
@@ -1063,9 +1066,6 @@
 // gTileset_ViridianForest
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Grass  0x284
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
-
-// gTilset_PlayerHouse2
-#define METATILE_PlayerHouse2_OpenBox  0x896
 
 // Other
 #define METATILE_AlolaPokecenterHauoli_Door          0x05A

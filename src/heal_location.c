@@ -71,7 +71,8 @@ bool32 IsLastHealLocationPlayerHouse()
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
-        || IsLastHealLocation(HEAL_LOCATION_PALLET_TOWN))
+        || IsLastHealLocation(HEAL_LOCATION_PALLET_TOWN)
+        || IsLastHealLocation(HEAL_LOCATION_PLAYER_HOUSE))
         return TRUE;
 
     return FALSE;
