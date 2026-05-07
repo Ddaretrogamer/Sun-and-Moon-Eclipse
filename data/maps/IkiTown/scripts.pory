@@ -28,12 +28,12 @@ script Ikitown_trigger_WecomeToIkitown{
     removeobject(ikitownkukui, MAP_IKI_TOWN_SOUTH)
     addobject(ikitownintrohau)
     addobject(ikitownintrokukui)
-    applymovement(ikitownintrohau, moves(walk_faster_down*6, walk_faster_right, face_down))
+    applymovement(ikitownintrohau, moves(walk_faster_down*7, walk_faster_right, face_down))
     applymovement(ikitownintrokukui, moves(walk_faster_down*9))
     waitmovement(0)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     applymovement(ikitownintrokukui, moves(walk_up*9))
-    applymovement(ikitownintrohau, moves(delay_16*4, walk_fast_left, walk_fast_up*6))
+    applymovement(ikitownintrohau, moves(delay_16*4, walk_fast_left, walk_fast_up*7))
     waitmovement(0)
     delay(30)
     applymovement(ikitownintrohau, moves(face_down))
@@ -140,6 +140,146 @@ script Ikitown_KukuiSeeTapuKoko{
     speakername("Kukui")
     msgbox("I'll stick around and see if the
     kahuna comes back.")
+    release
+    end
+}
+
+
+script Ikitown_Trigger_KukuiSeeTapuKoko{
+    lock
+    faceplayer
+    speakername("Kukui")
+    playse(SE_PIN)
+    applymovement(ikitownintrokukui, moves(face_down, emote_exclamation_mark))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    msgbox("I'll stick around and see if the
+    kahuna comes back.")
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    release
+    end
+}
+
+script Ikitown_MainSign{
+    lock
+    msgbox("Iki Town
+    \qoThe place where we give thanks to
+    Pokémon.\qc")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_LittleBoyWRockruff{
+    lock
+    faceplayer
+    msgbox("Hey, you've got a Pokémon! I want one,
+    too!
+    
+    Where'd you get yours?")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_Rockruff{
+    lock
+    faceplayer
+    playmoncry(SPECIES_ROCKRUFF, 0)
+    msgbox("Ruff ruff!")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_LeftSideGuy{
+    lock
+    faceplayer
+    msgbox("Welcome to Iki Town, the town watched
+    over by Pokémon!")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_MomwithChild{
+    lock
+    faceplayer
+    msgbox("If you treat your Pokémon wrong, the
+    guardian deity will strike you down
+    with lightning!
+    
+    But the children all laugh when I tell
+    them that.")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_ChildwithMom{
+    lock
+    faceplayer
+    msgbox("I want to meet the guardian deity!
+    
+    Maybe I should cause some mischief for
+    a Pokémon\.")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_DontForgetToSave{
+    lock
+    faceplayer
+    msgbox("Don't forget to save!
+    
+    If you want to remember everything
+    that's happened, you must not
+    forget to save!")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_KahunaGivesWisdom{
+    lock
+    faceplayer
+    msgbox("The kahuna gives us wisdom and
+    guidance and teaches us how to live
+    with our Pokémon.")
+    release
+    end
+}
+
+script Ikitown_ManBlockingDoor{
+    lock
+    faceplayer
+    msgbox("Kahuna Hala is the strongest Pokémon
+    Trainer on all of Melemele!
+    
+    There must be some trouble going down
+    somewhere on the island that needs
+    a kahuna's touch, 'cause he said
+    something about how it's \qoTime
+    for old Hala!\qc and off he went\.")
+    release
+    end
+}
+
+script Ikitown_Meowth{
+    lock
+    faceplayer
+    playmoncry(SPECIES_MEOWTH_ALOLA, 0)
+    msgbox("Hsss!")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_sign_Ruinsofconflict{
+    lock
+    msgbox("Ruins of Conflict")
+    waitmessage
     release
     end
 }

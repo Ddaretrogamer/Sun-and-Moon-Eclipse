@@ -70,7 +70,8 @@ script PlayerRoom_CheckBox{
         setmetatile(15, 12, METATILE_PlayerHouse2_OpenBox , TRUE)
         special(DrawWholeMapView)
         msgbox("You checked the box…")
-        waitbuttonpress
+        waitmessage
+        delay(30)
         playfanfare(MUS_OBTAIN_ITEM)
         msgbox("And grabbed your running shoes!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SYS_B_DASH)

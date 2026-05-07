@@ -1,1 +1,30 @@
 mapscripts IkitownHouseOne_MapScripts {}
+
+script IkitownHouseOne_ManDialog{
+    lock
+    faceplayer
+    msgbox("Opening a window lets night come
+    creeping in.
+
+    If you leave one open, it'll make you
+    sleepy.")
+    waitmessage
+    release
+    end
+}
+
+script IkitownHouseOne_WomanDialog{
+    lock
+    faceplayer
+    msgbox("Ahh\. On lovely calm days like this one,
+    I always think of my brother\.
+    
+    When we were young, he always worked so
+    hard to collect sand from the beach.
+    
+    Where could he be now?
+    What must he be doing?")
+    waitmessage
+    release
+    end
+}

@@ -1,0 +1,87 @@
+mapscripts PathToTapuKokoShrine_MapScripts{}
+
+script PathToTapuKokoShrine_Woman{
+    lock
+    faceplayer
+    msgbox("Going to pay your respects to the
+    guardian deity?
+
+    It's a fickle one, but I hope you meet
+    it!")
+    release
+    end
+}
+
+script PathToTapuKokoShrine_Meowth{
+    lock
+    faceplayer
+    playmoncry(SPECIES_MEOWTH_ALOLA, 0)
+    msgbox("Hsss!")
+    waitmessage
+    release
+    end
+}
+
+script PathToTapuKokoShrine_Trigger_Lillie{
+    lock
+    special(SpawnCameraObject)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_question_mark))
+    delay(60)
+    getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
+    if(var(VAR_TEMP_2)==19){
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest*5))
+        waitmovement(0)
+        delay(30)
+        applymovement(pathtoruinslillie, moves(walk_in_place_up*2))
+        waitmovement(pathtoruinslillie)
+        msgbox("I know! I know.
+        I'll take you to the ruins.
+
+        So, please stay in the bag.
+        We could get in trouble if anyone
+        sees you.", MSGBOX_AUTOCLOSE)   
+        waitmessage
+        applymovement(pathtoruinslillie, moves(walk_up*5))
+        waitmovement(pathtoruinslillie)
+        playse(SE_EXIT)
+        removeobject(pathtoruinslillie)
+        waitse
+        delay(30)
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        delay(60)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*5, walk_faster_down*5))
+        waitmovement(0)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+    }
+    else{
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest*5, walk_up))
+        waitmovement(0)
+        delay(30)
+        applymovement(pathtoruinslillie, moves(walk_in_place_up*2))
+        waitmovement(pathtoruinslillie)
+        msgbox("I know! I know.
+        I'll take you to the ruins.
+
+        So, please stay in the bag.
+        We could get in trouble if anyone
+        sees you.", MSGBOX_AUTOCLOSE)
+        waitmessage
+        applymovement(pathtoruinslillie, moves(walk_up*5))
+        waitmovement(pathtoruinslillie)
+        playse(SE_EXIT)
+        setflag(FLAG_HIDE_PATHTORUINS_LILLIE)
+        removeobject(pathtoruinslillie)
+        waitse
+        delay(30)
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        delay(60)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*5, walk_faster_down*6))
+        waitmovement(0)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+    }
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 3)
+    release
+    end
+}

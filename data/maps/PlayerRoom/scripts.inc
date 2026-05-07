@@ -125,10 +125,10 @@ PlayerRoom_CheckBox::
 # 69 "data/maps/PlayerRoom/scripts.pory"
 	compare VAR_MOM_IN_HOUSE_INTRO, 2
 	goto_if_eq PlayerRoom_CheckBox_3
-# 83 "data/maps/PlayerRoom/scripts.pory"
+# 84 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoom_CheckBox_Text_3
 PlayerRoom_CheckBox_1:
-# 86 "data/maps/PlayerRoom/scripts.pory"
+# 87 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
@@ -145,40 +145,42 @@ PlayerRoom_CheckBox_3:
 # 72 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoom_CheckBox_Text_1
 # 73 "data/maps/PlayerRoom/scripts.pory"
-	waitbuttonpress
+	waitmessage
 # 74 "data/maps/PlayerRoom/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	delay 30
 # 75 "data/maps/PlayerRoom/scripts.pory"
-	msgbox PlayerRoom_CheckBox_Text_2, MSGBOX_AUTOCLOSE
+	playfanfare MUS_OBTAIN_ITEM
 # 76 "data/maps/PlayerRoom/scripts.pory"
-	setflag FLAG_SYS_B_DASH
+	msgbox PlayerRoom_CheckBox_Text_2, MSGBOX_AUTOCLOSE
 # 77 "data/maps/PlayerRoom/scripts.pory"
-	setflag FLAG_LILLIE_INTRO_PLAYED
+	setflag FLAG_SYS_B_DASH
 # 78 "data/maps/PlayerRoom/scripts.pory"
-	clearflag FLAG_MOM_IN_HOUSE_INTRO
+	setflag FLAG_LILLIE_INTRO_PLAYED
 # 79 "data/maps/PlayerRoom/scripts.pory"
-	setvar VAR_MOM_IN_HOUSE_INTRO, 3
+	clearflag FLAG_MOM_IN_HOUSE_INTRO
 # 80 "data/maps/PlayerRoom/scripts.pory"
+	setvar VAR_MOM_IN_HOUSE_INTRO, 3
+# 81 "data/maps/PlayerRoom/scripts.pory"
 	removeobject PlayerRoomMeowth
 	goto PlayerRoom_CheckBox_1
 
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes::
-# 91 "data/maps/PlayerRoom/scripts.pory"
+# 92 "data/maps/PlayerRoom/scripts.pory"
 	compare VAR_MOM_IN_HOUSE_INTRO, 2
 	goto_if_eq PlayerRoom_Trigger_TryingToLeaveWithoutShoes_2
 	end
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_2:
-# 92 "data/maps/PlayerRoom/scripts.pory"
-	lock
 # 93 "data/maps/PlayerRoom/scripts.pory"
+	lock
+# 94 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0
-# 95 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0
 # 96 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0
 # 97 "data/maps/PlayerRoom/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 98 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
@@ -233,9 +235,9 @@ RoomIntroSequence_Movement_4:
 	walk_down
 	step_end
 
-# 95 "data/maps/PlayerRoom/scripts.pory"
+# 96 "data/maps/PlayerRoom/scripts.pory"
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0:
-# 95 "data/maps/PlayerRoom/scripts.pory"
+# 96 "data/maps/PlayerRoom/scripts.pory"
 	walk_up
 	step_end
 
@@ -258,15 +260,15 @@ PlayerRoom_CheckBox_Text_1:
 	.string "You checked the box…$"
 
 PlayerRoom_CheckBox_Text_2:
-# 75 "data/maps/PlayerRoom/scripts.pory"
+# 76 "data/maps/PlayerRoom/scripts.pory"
 	.string "And grabbed your running shoes!$"
 
 PlayerRoom_CheckBox_Text_3:
-# 83 "data/maps/PlayerRoom/scripts.pory"
+# 84 "data/maps/PlayerRoom/scripts.pory"
 	.string "The box is empty.\n"
 	.string "You unpacked it already.$"
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0:
-# 93 "data/maps/PlayerRoom/scripts.pory"
+# 94 "data/maps/PlayerRoom/scripts.pory"
 	.string "Mom said you should unpack the box\n"
 	.string "in your room to find your shoes!$"

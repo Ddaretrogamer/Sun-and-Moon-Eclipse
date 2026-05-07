@@ -1,1 +1,39 @@
 mapscripts IkitownHouseTwo_MapScripts {}
+
+script IkitownHouseTwo_GirlDialog{
+    lock
+    faceplayer
+    msgbox("My Rockruff is the best bodyguard
+    ever!
+    
+    She always comes with me when I go
+    shopping, and she lies outside my
+    door when I sleep!")
+    waitmessage
+    release
+    end
+}
+
+script IkitownHouseTwo_MomDialog{
+    lock
+    faceplayer
+    msgbox("Rockruff there was a wild Pok\emon
+    when we got her, but now she's like
+    part of the family.
+    
+    When I see her roughhousing with my
+    little girl, I can't help but smile!")
+    waitmessage
+    release
+    end
+}
+
+script IkitownHouseTwo_RockruffDialog{
+    lock
+    faceplayer
+    playmoncry(SPECIES_ROCKRUFF, 0)
+    msgbox("Ruff ruff!")
+    waitmessage
+    release
+    end
+}

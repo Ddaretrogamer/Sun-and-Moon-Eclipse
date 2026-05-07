@@ -1,1 +1,27 @@
 mapscripts IkitownHouseThree_MapScripts {}
+
+script IkitownHouseThree_ManDialog{
+    lock
+    faceplayer
+    msgbox("It's said that ancient peoples rode
+    over the waves and seas together
+    with their Pokémon to settle the
+    Alola Region.")
+    waitmessage
+    release
+    end
+}
+script IkitownHouseThree_WomanDialog{
+    lock
+    faceplayer
+    msgbox("Different people interact with Pokémon
+    in their own different ways.
+    
+    Some may see them as allies in battle,
+    while others just enjoy sharing
+    their lives with them.")
+    waitmessage
+    release
+    end
+}
+

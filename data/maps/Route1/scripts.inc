@@ -419,8 +419,8 @@ LittleGirlChasesMeowthIntro_Text_0:
 LittleGirlChasesMeowthIntro_Text_1:
 # 80 "data/maps/Route1/scripts.pory"
 	.string "Ahhh! Could anything be more soothing?\n"
-	.string "The first evening spent under Alola's\l"
-	.string "calm moon!\p"
+	.string "The first evening spent under\l"
+	.string "Alola's calm moon!\p"
 	.string "I feel like I could stay out here all\n"
 	.string "night!$"
 

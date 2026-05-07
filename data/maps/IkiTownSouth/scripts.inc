@@ -991,10 +991,6 @@ IkiTown_StartRivalBattle_Movement_1:
 # 422 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
 # 422 "data/maps/IkiTownSouth/scripts.pory"
-	walk_left
-# 422 "data/maps/IkiTownSouth/scripts.pory"
-	walk_up
-# 422 "data/maps/IkiTownSouth/scripts.pory"
 	walk_up
 # 422 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16

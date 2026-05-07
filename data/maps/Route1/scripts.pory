@@ -78,8 +78,8 @@ script LittleGirlChasesMeowthIntro{
     if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
         speakername("Mom")
         msgbox("Ahhh! Could anything be more soothing?
-        The first evening spent under Alola's
-        calm moon!
+        The first evening spent under
+        Alola's calm moon!
         
         I feel like I could stay out here all
         night!")

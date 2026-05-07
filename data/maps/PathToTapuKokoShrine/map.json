@@ -13,7 +13,48 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "x": 29,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PathToTapuKokoShrine_Woman",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH_ALOLA)",
+      "x": 28,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PathToTapuKokoShrine_Meowth",
+      "flag": "0"
+    },
+    {
+      "local_id": "pathtoruinslillie",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
+      "x": 18,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_PATHTORUINS_LILLIE"
+    }
+  ],
   "warp_events": [
     {
       "x": 27,
@@ -44,6 +85,25 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "PathToTapuKokoShrine_Trigger_Lillie"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "2",
+      "script": "PathToTapuKokoShrine_Trigger_Lillie"
+    }
+  ],
   "bg_events": []
 }
