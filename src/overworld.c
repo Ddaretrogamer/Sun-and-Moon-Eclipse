@@ -1915,16 +1915,16 @@ void CB2_NewGame(void)
     else
         gFieldCallback = FieldCB_WarpExitFadeFromBlack;
     gFieldCallback2 = NULL;
-    DoMapLoadLoop(&gMain.state);
-    SetFieldVBlankCallback();
-    SetMainCallback1(CB1_Overworld);
-    SetMainCallback2(CB2_Overworld);
 // comment this out if you want to use the wall clock (needs calibrating)    
 #if OW_USE_FAKE_RTC
     // Wall clock now track local time so we set it to 10AM to match initial wall clock time
     // Randomly start at 10 AM (day) or 10 PM (night) with 50/50 odds
     RtcCalcLocalTimeOffset(0, (Random() & 1) ? 10 : 22, 0, 0);
 #endif
+    DoMapLoadLoop(&gMain.state);
+    SetFieldVBlankCallback();
+    SetMainCallback1(CB1_Overworld);
+    SetMainCallback2(CB2_Overworld);
 }
 
 void CB2_WhiteOut(void)
