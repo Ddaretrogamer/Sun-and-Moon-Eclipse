@@ -37,6 +37,7 @@
 #include "text.h"
 #include "text_window.h"
 #include "title_screen.h"
+//#include "wallclock.h"  // add back if we want to set the clock after kukui intro speech
 #include "window.h"
 #include "mystery_gift_menu.h"
 #include "ui_main_menu.h"
@@ -1891,7 +1892,9 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
         ResetAllPicSprites();
-        SetMainCallback2(CB2_NewGame);
+        SetMainCallback2(CB2_NewGame); // comment this out and uncomment the two lines below for a clock at newgame
+        //SetMainCallback2(CB2_StartWallClock);
+        //gMain.savedCallback = CB2_NewGame;
         DestroyTask(taskId);
     }
 }
