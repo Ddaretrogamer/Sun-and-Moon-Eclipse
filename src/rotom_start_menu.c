@@ -3460,8 +3460,8 @@ static void RotomPhone_RotomRealityMenu_PrintTime(void)
 
     FillWindowPixelBuffer(RP_RR_WIN_TIME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    AddTextPrinterParameterized4(RP_RR_WIN_TIME, FONT_NORMAL,
-        GetStringCenterAlignXOffset(FONT_NORMAL, time, sRotomPhone_RotomRealityMenuWindowTemplates[RP_RR_WIN_TIME].width * 8),
+    AddTextPrinterParameterized4(RP_RR_WIN_TIME, FONT_NARROWER,
+        GetStringCenterAlignXOffset(FONT_NARROWER, time, sRotomPhone_RotomRealityMenuWindowTemplates[RP_RR_WIN_TIME].width * 8),
         1, 0, 0,
         sRotomPhone_StartMenu_FontColours[FONT_RR_ROTOM_PHONE], TEXT_SKIP_DRAW, time);
 
