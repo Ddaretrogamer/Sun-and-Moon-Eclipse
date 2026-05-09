@@ -25,6 +25,12 @@ script PathToTapuKokoShrine_Meowth{
 script PathToTapuKokoShrine_Trigger_Lillie{
     lock
     special(SpawnCameraObject)
+    setflag(FLAG_HIDE_CIRCLING_WINGULLS)
+    callnative(Script_RollShiny)
+    copyvar(VAR_TEMP_1, VAR_RESULT)
+    if (var(VAR_TEMP_1)==SHINY_MODE_ALWAYS){
+        setflag(FLAG_SHINY_COSMOG)
+    }
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_question_mark))
     delay(60)
@@ -48,11 +54,8 @@ script PathToTapuKokoShrine_Trigger_Lillie{
         removeobject(pathtoruinslillie)
         waitse
         delay(30)
-        fadescreenswapbuffers(FADE_TO_BLACK)
-        delay(60)
-        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*5, walk_faster_down*5))
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southeast*5))
         waitmovement(0)
-        fadescreenswapbuffers(FADE_FROM_BLACK)
     }
     else{
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest*5, walk_up))
@@ -74,11 +77,8 @@ script PathToTapuKokoShrine_Trigger_Lillie{
         removeobject(pathtoruinslillie)
         waitse
         delay(30)
-        fadescreenswapbuffers(FADE_TO_BLACK)
-        delay(60)
-        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*5, walk_faster_down*6))
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down, walk_diag_southeast*5 ))
         waitmovement(0)
-        fadescreenswapbuffers(FADE_FROM_BLACK)
     }
     special(RemoveCameraObject)
     setvar(VAR_IKITOWN_STATE, 3)

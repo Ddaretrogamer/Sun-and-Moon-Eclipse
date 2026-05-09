@@ -697,9 +697,9 @@
 #define FLAG_HIDE_IKITOWN_INTRO_KUKUI  0x282 // hide the ikitown intro sequence part 2
 #define FLAG_HIDE_IKITOWN_INTRO_HAU  0x283 // hide the ikitown intro sequence part 2
 #define FLAG_HIDE_PATHTORUINS_LILLIE  0x284 // hide the path to ruins lillie
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
+#define FLAG_SHINY_COSMOG  0x285 // Determines if the cosmog you recieve from lillie is shiny or not set in intro sequence.
+#define FLAG_HIDE_FLYOVER_WINGULLS  0x286 // hide the flyover wingulls
+#define FLAG_HIDE_CIRCLING_WINGULLS  0x287 // hide the circling wingulls
 #define FLAG_UNUSED_0x288  0x288 // Unused Flag
 #define FLAG_UNUSED_0x289  0x289 // Unused Flag
 #define FLAG_UNUSED_0x28A  0x28A // Unused Flag

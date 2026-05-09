@@ -13,7 +13,120 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "bridgelillie",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
+      "x": 21,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TapuKokoBridge_InteractLillie",
+      "flag": "0"
+    },
+    {
+      "local_id": "bridgecosmog",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_2",
+      "x": 21,
+      "y": 26,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "local_id": "bridgewingull1",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 20,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_FLYOVER_WINGULLS"
+    },
+    {
+      "local_id": "bridgewingull3",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 22,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_FLYOVER_WINGULLS"
+    },
+    {
+      "local_id": "bridgewingull2",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 21,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_FLYOVER_WINGULLS"
+    },
+    {
+      "local_id": "bridgewingull5",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 20,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIRCLING_WINGULLS"
+    },
+    {
+      "local_id": "bridgewingull4",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 20,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIRCLING_WINGULLS"
+    },
+    {
+      "local_id": "bridgewingull6",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 22,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIRCLING_WINGULLS"
+    }
+  ],
   "warp_events": [
     {
       "x": 22,
@@ -51,6 +164,79 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_trigger_TryLeave"
+    }
+  ],
   "bg_events": []
 }

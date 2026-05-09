@@ -36,55 +36,59 @@ PathToTapuKokoShrine_Trigger_Lillie::
 # 27 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	special SpawnCameraObject
 # 28 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	playse SE_PIN
+	setflag FLAG_HIDE_CIRCLING_WINGULLS
 # 29 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement LOCALID_PLAYER, PathToTapuKokoShrine_Trigger_Lillie_Movement_0
+	callnative Script_RollShiny
 # 30 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 60
+	copyvar VAR_TEMP_1, VAR_RESULT
 # 31 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-# 32 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	compare VAR_TEMP_2, 19
+	compare VAR_TEMP_1, SHINY_MODE_ALWAYS
 	goto_if_eq PathToTapuKokoShrine_Trigger_Lillie_2
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_5
-# 59 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement 0
-# 60 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 30
-# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_2
-# 62 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement pathtoruinslillie
-# 63 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	msgbox PathToTapuKokoShrine_Trigger_Lillie_Text_0, MSGBOX_AUTOCLOSE
-# 69 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmessage
-# 70 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_3
-# 71 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement pathtoruinslillie
-# 72 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	playse SE_EXIT
-# 73 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	setflag FLAG_HIDE_PATHTORUINS_LILLIE
-# 74 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	removeobject pathtoruinslillie
-# 75 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitse
-# 76 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 30
-# 77 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 78 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 60
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_6
-# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement 0
-# 81 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
 PathToTapuKokoShrine_Trigger_Lillie_1:
+# 34 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	playse SE_PIN
+# 35 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement LOCALID_PLAYER, PathToTapuKokoShrine_Trigger_Lillie_Movement_0
+# 36 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	delay 60
+# 37 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	getplayerxy VAR_TEMP_1, VAR_TEMP_2
+# 38 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	compare VAR_TEMP_2, 19
+	goto_if_eq PathToTapuKokoShrine_Trigger_Lillie_5
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_5
+# 62 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement 0
+# 63 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	delay 30
+# 64 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_2
+# 65 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement pathtoruinslillie
+# 66 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	msgbox PathToTapuKokoShrine_Trigger_Lillie_Text_0, MSGBOX_AUTOCLOSE
+# 72 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmessage
+# 73 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_3
+# 74 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement pathtoruinslillie
+# 75 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	playse SE_EXIT
+# 76 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	setflag FLAG_HIDE_PATHTORUINS_LILLIE
+# 77 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	removeobject pathtoruinslillie
+# 78 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitse
+# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	delay 30
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_6
+# 81 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement 0
+PathToTapuKokoShrine_Trigger_Lillie_4:
 # 83 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	special RemoveCameraObject
 # 84 "data/maps/PathToTapuKokoShrine/scripts.pory"
@@ -94,151 +98,130 @@ PathToTapuKokoShrine_Trigger_Lillie_1:
 	end
 
 PathToTapuKokoShrine_Trigger_Lillie_2:
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_1
-# 34 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement 0
-# 35 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 30
-# 36 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_2
-# 37 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement pathtoruinslillie
-# 38 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	msgbox PathToTapuKokoShrine_Trigger_Lillie_Text_0, MSGBOX_AUTOCLOSE
-# 44 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmessage
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_3
-# 46 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement pathtoruinslillie
-# 47 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	playse SE_EXIT
-# 48 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	removeobject pathtoruinslillie
-# 49 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitse
-# 50 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 30
-# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 52 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	delay 60
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_4
-# 54 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	waitmovement 0
-# 55 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+# 32 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	setflag FLAG_SHINY_COSMOG
 	goto PathToTapuKokoShrine_Trigger_Lillie_1
 
+PathToTapuKokoShrine_Trigger_Lillie_5:
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_1
+# 40 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement 0
+# 41 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	delay 30
+# 42 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_2
+# 43 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement pathtoruinslillie
+# 44 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	msgbox PathToTapuKokoShrine_Trigger_Lillie_Text_0, MSGBOX_AUTOCLOSE
+# 50 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmessage
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement pathtoruinslillie, PathToTapuKokoShrine_Trigger_Lillie_Movement_3
+# 52 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement pathtoruinslillie
+# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	playse SE_EXIT
+# 54 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	removeobject pathtoruinslillie
+# 55 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitse
+# 56 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	delay 30
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, PathToTapuKokoShrine_Trigger_Lillie_Movement_4
+# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	waitmovement 0
+	goto PathToTapuKokoShrine_Trigger_Lillie_4
 
-# 29 "data/maps/PathToTapuKokoShrine/scripts.pory"
+
+# 35 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_0:
-# 29 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 35 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	emote_question_mark
 	step_end
 
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_1:
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 33 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 39 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
 	step_end
 
-# 36 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 42 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_2:
-# 36 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 42 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_in_place_up
-# 36 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 42 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_3:
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
-# 45 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 51 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
 	step_end
 
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_4:
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 53 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 57 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
 	step_end
 
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_5:
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_diag_northwest
-# 58 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 61 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	walk_up
 	step_end
 
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
 PathToTapuKokoShrine_Trigger_Lillie_Movement_6:
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_right
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
-# 79 "data/maps/PathToTapuKokoShrine/scripts.pory"
-	walk_faster_down
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_down
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
+# 80 "data/maps/PathToTapuKokoShrine/scripts.pory"
+	walk_diag_southeast
 	step_end
 
 PathToTapuKokoShrine_Woman_Text_0:
@@ -253,7 +236,7 @@ PathToTapuKokoShrine_Meowth_Text_0:
 	.string "Hsss!$"
 
 PathToTapuKokoShrine_Trigger_Lillie_Text_0:
-# 38 "data/maps/PathToTapuKokoShrine/scripts.pory"
+# 44 "data/maps/PathToTapuKokoShrine/scripts.pory"
 	.string "I know! I know.\n"
 	.string "I'll take you to the ruins.\p"
 	.string "So, please stay in the bag.\n"
