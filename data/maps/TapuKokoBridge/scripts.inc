@@ -297,42 +297,66 @@ TapuKokoBridge_trigger_TryLeave::
 # 162 "data/maps/TapuKokoBridge/scripts.pory"
 	faceplayer
 # 163 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_0
-# 164 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 165 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_InteractLillie_Text_0
-# 168 "data/maps/TapuKokoBridge/scripts.pory"
 	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-# 169 "data/maps/TapuKokoBridge/scripts.pory"
+# 164 "data/maps/TapuKokoBridge/scripts.pory"
 	compare VAR_TEMP_2, 29
 	goto_if_eq TapuKokoBridge_trigger_TryLeave_2
 TapuKokoBridge_trigger_TryLeave_1:
-# 172 "data/maps/TapuKokoBridge/scripts.pory"
+# 174 "data/maps/TapuKokoBridge/scripts.pory"
 	compare VAR_TEMP_1, 19
 	goto_if_eq TapuKokoBridge_trigger_TryLeave_5
 TapuKokoBridge_trigger_TryLeave_4:
-# 175 "data/maps/TapuKokoBridge/scripts.pory"
+# 184 "data/maps/TapuKokoBridge/scripts.pory"
 	compare VAR_TEMP_1, 23
 	goto_if_eq TapuKokoBridge_trigger_TryLeave_8
 TapuKokoBridge_trigger_TryLeave_7:
-# 178 "data/maps/TapuKokoBridge/scripts.pory"
+# 194 "data/maps/TapuKokoBridge/scripts.pory"
 	release
 	end
 
 TapuKokoBridge_trigger_TryLeave_2:
-# 170 "data/maps/TapuKokoBridge/scripts.pory"
+# 165 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_0
+# 166 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_PIN
+# 167 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 168 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_InteractLillie_Text_0
+# 171 "data/maps/TapuKokoBridge/scripts.pory"
 	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_1
+# 172 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement LOCALID_PLAYER
 	goto TapuKokoBridge_trigger_TryLeave_1
 
 TapuKokoBridge_trigger_TryLeave_5:
-# 173 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_2
+# 175 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_2
+# 176 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_PIN
+# 177 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 178 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_InteractLillie_Text_0
+# 181 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_3
+# 182 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement LOCALID_PLAYER
 	goto TapuKokoBridge_trigger_TryLeave_4
 
 TapuKokoBridge_trigger_TryLeave_8:
-# 176 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_3
+# 185 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_4
+# 186 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_PIN
+# 187 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 188 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_InteractLillie_Text_0
+# 191 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_5
+# 192 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement LOCALID_PLAYER
 	goto TapuKokoBridge_trigger_TryLeave_7
 
 
@@ -418,10 +442,6 @@ TapuKokoBridge_LillieCosmogEvent_Movement_6:
 
 # 67 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_LillieCosmogEvent_Movement_7:
-# 67 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_fast_down
-# 67 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_fast_down
 # 67 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_fast_down
 # 67 "data/maps/TapuKokoBridge/scripts.pory"
@@ -572,29 +592,45 @@ TapuKokoBridge_LillieCosmogEvent_Movement_17:
 	face_down
 	step_end
 
-# 163 "data/maps/TapuKokoBridge/scripts.pory"
+# 165 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_TryLeave_Movement_0:
-# 163 "data/maps/TapuKokoBridge/scripts.pory"
-	face_player
-# 163 "data/maps/TapuKokoBridge/scripts.pory"
+# 165 "data/maps/TapuKokoBridge/scripts.pory"
+	face_down
+# 165 "data/maps/TapuKokoBridge/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 170 "data/maps/TapuKokoBridge/scripts.pory"
+# 171 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_TryLeave_Movement_1:
-# 170 "data/maps/TapuKokoBridge/scripts.pory"
+# 171 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_up
 	step_end
 
-# 173 "data/maps/TapuKokoBridge/scripts.pory"
+# 175 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_TryLeave_Movement_2:
-# 173 "data/maps/TapuKokoBridge/scripts.pory"
+# 175 "data/maps/TapuKokoBridge/scripts.pory"
+	face_left
+# 175 "data/maps/TapuKokoBridge/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 181 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_TryLeave_Movement_3:
+# 181 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_right
 	step_end
 
-# 176 "data/maps/TapuKokoBridge/scripts.pory"
-TapuKokoBridge_trigger_TryLeave_Movement_3:
-# 176 "data/maps/TapuKokoBridge/scripts.pory"
+# 185 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_TryLeave_Movement_4:
+# 185 "data/maps/TapuKokoBridge/scripts.pory"
+	face_right
+# 185 "data/maps/TapuKokoBridge/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 191 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_TryLeave_Movement_5:
+# 191 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_left
 	step_end
 

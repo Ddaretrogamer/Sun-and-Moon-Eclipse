@@ -160,20 +160,39 @@ script TapuKokoBridge_InteractLillie{
 script TapuKokoBridge_trigger_TryLeave{
     lock
     faceplayer
-    applymovement(bridgelillie, moves(face_player,emote_exclamation_mark))
-    waitmovement(bridgelillie)
-    msgbox("Please!
-    
-    Please save Nebby!")
     getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
     if(var(VAR_TEMP_2)==29){
+        applymovement(bridgelillie, moves(face_down,emote_exclamation_mark))
+        playse(SE_PIN)
+        applymovement(LOCALID_PLAYER, moves(face_up))
+        waitmovement(0)
+        msgbox("Please!
+        
+        Please save Nebby!")
         applymovement(LOCALID_PLAYER, moves(walk_up))
+        waitmovement(LOCALID_PLAYER)
     }
     if(var(VAR_TEMP_1)==19){
+        applymovement(bridgelillie, moves(face_left,emote_exclamation_mark))
+        playse(SE_PIN)
+        applymovement(LOCALID_PLAYER, moves(face_right))
+        waitmovement(0)
+        msgbox("Please!
+        
+        Please save Nebby!")
         applymovement(LOCALID_PLAYER, moves(walk_right))
+        waitmovement(LOCALID_PLAYER)
     }
     if (var(VAR_TEMP_1)==23){
+        applymovement(bridgelillie, moves(face_right,emote_exclamation_mark))
+        playse(SE_PIN)
+        applymovement(LOCALID_PLAYER, moves(face_left))
+        waitmovement(0)
+        msgbox("Please!
+        
+        Please save Nebby!")
         applymovement(LOCALID_PLAYER, moves(walk_left))
+        waitmovement(LOCALID_PLAYER)
     }
     release
     end
