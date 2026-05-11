@@ -91,8 +91,8 @@
       "x": 23,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "2",
       "script": "PathToTapuKokoShrine_Trigger_Lillie"
     },
     {

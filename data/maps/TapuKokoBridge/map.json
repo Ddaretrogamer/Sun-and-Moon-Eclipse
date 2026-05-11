@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TapuKokoBridge_InteractLillie",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BRIDGE_LILLIE"
     },
     {
       "local_id": "bridgecosmog",
@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_BRIDGE_COSMOG"
     },
     {
       "local_id": "bridgewingull1",
@@ -125,6 +125,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_CIRCLING_WINGULLS"
+    },
+    {
+      "local_id": "bridgetapukoko",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAPU_KOKO)",
+      "x": 30,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_BRIDGE_LILLIE"
+    },
+    {
+      "local_id": "bridgecosmog2",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_1",
+      "x": 20,
+      "y": 30,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO"
     }
   ],
   "warp_events": [
@@ -236,6 +264,87 @@
       "var": "VAR_IKITOWN_STATE",
       "var_value": "4",
       "script": "TapuKokoBridge_trigger_TryLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_Trigger_StartWingullBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_Trigger_StartWingullBattleRight"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "4",
+      "script": "TapuKokoBridge_Trigger_StartWingullBattleleft"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_TryLeave2"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_TryLeave2"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_TryLeave2"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_BridgeShake"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_BridgeShake"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "5",
+      "script": "TapuKokoBridge_trigger_BridgeShake"
     }
   ],
   "bg_events": []

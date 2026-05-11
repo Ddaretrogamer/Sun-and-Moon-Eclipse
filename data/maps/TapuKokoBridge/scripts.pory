@@ -1,11 +1,15 @@
 mapscripts TapuKokoBridge_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
+            call_if_set(FLAG_MAHALO_BRIDGE_BROKEN, TapuKokoBridge_SetBrokenBridge)
             if (flag(FLAG_SHINY_COSMOG)){
                 setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES_SHINY(COSMOG))
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(COSMOG))
             }
             else{
                 setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_SPECIES(COSMOG))
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(COSMOG))
             }
+            end
         }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 3 {
         hideobjectat(bridgecosmog, MAP_TAPU_KOKO_BRIDGE )
@@ -61,16 +65,15 @@ script TapuKokoBridge_LillieCosmogEvent{
     fadescreenswapbuffers(FADE_TO_BLACK)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_up*5))
     waitmovement(0)
-    delay(60)
+    delay(30)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     playmoncry(SPECIES_WINGULL, 0)
-    applymovement(bridgewingull1, moves(walk_fast_down*11))
-    applymovement(bridgewingull2, moves(walk_fast_down*11))
-    applymovement(bridgewingull3, moves(walk_fast_down*11))
+    applymovement(bridgewingull1, moves(walk_fast_down*7))
+    applymovement(bridgewingull2, moves(walk_fast_down*7))
+    applymovement(bridgewingull3, moves(walk_fast_down*7))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down*5))
     playse(SE_M_FLY)
     waitmovement(0)
-    delay(30)
     fadescreenswapbuffers(FADE_TO_BLACK)
     removeobject(bridgewingull1)
     removeobject(bridgewingull2)
@@ -85,8 +88,9 @@ script TapuKokoBridge_LillieCosmogEvent{
     showobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
     waitmovement(0)
     setvar(VAR_IKITOWN_STATE, 4)
-    fadescreenswapbuffers(FADE_FROM_BLACK)
     delay(30)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    delay(15)
     applymovement(LOCALID_PLAYER, moves(walk_up*4))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*4))
     waitmovement(0)
@@ -168,7 +172,7 @@ script TapuKokoBridge_trigger_TryLeave{
         waitmovement(0)
         msgbox("Please!
         
-        Please save Nebby!")
+        Please save Nebby!",MSGBOX_AUTOCLOSE)
         applymovement(LOCALID_PLAYER, moves(walk_up))
         waitmovement(LOCALID_PLAYER)
     }
@@ -179,7 +183,7 @@ script TapuKokoBridge_trigger_TryLeave{
         waitmovement(0)
         msgbox("Please!
         
-        Please save Nebby!")
+        Please save Nebby!",MSGBOX_AUTOCLOSE)
         applymovement(LOCALID_PLAYER, moves(walk_right))
         waitmovement(LOCALID_PLAYER)
     }
@@ -190,7 +194,7 @@ script TapuKokoBridge_trigger_TryLeave{
         waitmovement(0)
         msgbox("Please!
         
-        Please save Nebby!")
+        Please save Nebby!",MSGBOX_AUTOCLOSE)
         applymovement(LOCALID_PLAYER, moves(walk_left))
         waitmovement(LOCALID_PLAYER)
     }
@@ -198,3 +202,343 @@ script TapuKokoBridge_trigger_TryLeave{
     end
 }
 
+script TapuKokoBridge_Trigger_StartWingullBattle{
+    lockplayer
+    addobject(bridgewingull2)
+    applymovement(bridgewingull2, moves(walk_faster_down*5))
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(LOCALID_PLAYER)
+    playmoncry(SPECIES_WINGULL, 0)
+    waitmoncry
+    applymovement(bridgewingull2, moves(walk_fast_down*5))
+    waitmovement(bridgewingull2)
+    setflag(FLAG_NO_WILD_CATCHING)
+    setflag(FLAG_NO_WILD_RUNNING)
+    setflag(FLAG_FORCE_NO_SHINY)
+    setwildbattle(SPECIES_WINGULL, 3, 0, FALSE)
+    dowildbattle
+    clearflag(FLAG_NO_WILD_CATCHING)
+    clearflag(FLAG_NO_WILD_RUNNING)
+    clearflag(FLAG_FORCE_NO_SHINY)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+    if (var(VAR_RESULT) == B_OUTCOME_WON)
+        {
+            applymovement(bridgewingull2, moves(walk_fast_right*10))
+            playse(SE_M_FLY)
+            waitmovement(bridgewingull2)
+            waitse
+            removeobject(bridgewingull2)
+            setvar(VAR_IKITOWN_STATE, 5)
+            delay(30)
+            applymovement(bridgelillie, moves(walk_in_place_up*2))
+            waitmovement(bridgelillie)
+            msgbox("You managed to chase off one of the
+            Wingull, but\.oh, there are still more!
+            
+            Please\.please help Nebby if you can!
+            
+            But be careful\.
+            
+            It looks like that attack may have
+            damaged the Plank Bridge, too\.", MSGBOX_AUTOCLOSE)
+            waitmessage
+            releaseplayer
+            end
+        }
+}
+
+script TapuKokoBridge_Trigger_StartWingullBattleleft{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_right, face_up))
+    waitmovement(0)
+    call(TapuKokoBridge_Trigger_StartWingullBattle)
+}
+
+script TapuKokoBridge_Trigger_StartWingullBattleRight{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_left, face_up))
+    waitmovement(0)
+    call(TapuKokoBridge_Trigger_StartWingullBattle)
+}
+
+script TapuKokoBridge_trigger_TryLeave2{
+    lock
+    faceplayer
+    applymovement(bridgelillie, moves(emote_exclamation_mark))
+    playse(SE_PIN)
+    msgbox("Please\.please help Nebby if you can!
+            
+    But be careful\.", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+script TapuKokoBridge_trigger_BridgeShake{
+    lockplayer
+    setvar(VAR_0x8004, 2)
+    setvar(VAR_0x8005, 6)
+    setvar(VAR_0x8006, 4)
+    setvar(VAR_0x8007, 4)
+    special(ShakeCamera)
+    waitstate
+    delay(60)
+    applymovement(LOCALID_PLAYER, moves(walk_fast_up*3))
+    waitmovement(LOCALID_PLAYER)
+    removeobject(bridgecosmog, MAP_TAPU_KOKO_BRIDGE)
+    setflag(FLAG_HIDE_BRIDGE_COSMOG)
+    setvar(VAR_0x8004, 2)
+    setvar(VAR_0x8005, 6)
+    setvar(VAR_0x8006, 4)
+    setvar(VAR_0x8007, 4)
+    special(ShakeCamera)
+    waitstate
+    delay(60)
+    // sparkle
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(21, 20, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    closemessage
+    // huh
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(0)
+    delay(30)
+    setvar(VAR_RESULT, 3)
+    delay(20)
+    special(RemoveCameraObject)
+    // orb
+    playse(SE_ORB)
+    special(DoOrbEffect)
+    waitstate
+    fadescreen(FADE_TO_BLACK)
+    special(FadeOutOrbEffect)
+    waitstate
+    playse(SE_BANG)
+    delay(60)
+    setflag(FLAG_MAHALO_BRIDGE_BROKEN)
+    setmaplayoutindex(LAYOUT_TAPU_KOKO_BRIDGE_BROKEN)
+    setmetatile(20, 25, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 25, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 25, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 24, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 24, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 24, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 23, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 23, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 23, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 22, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 22, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 22, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 21, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 21, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 21, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 20, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(21, 20, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 20, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(22, 19, METATILE_TapuKokoBridge_Water, TRUE)
+    setmetatile(20, 14, 0x03E, TRUE)
+    setmetatile(21, 14, 0x03E, TRUE)
+    setmetatile(22, 14, 0x03E, TRUE)
+    setmetatile(20, 15, 0x03E, TRUE)
+    setmetatile(21, 15, 0x03E, TRUE)
+    setmetatile(22, 15, 0x03E, TRUE)
+    setmetatile(21, 16, 0x03E, TRUE)
+    setmetatile(22, 16, 0x03E, TRUE)
+    setmetatile(22, 17, 0x03E, TRUE)
+    setmetatile(20, 16, 0x14F, TRUE)
+    setmetatile(21, 17, 0x14F, TRUE)
+    setmetatile(22, 18, 0x14F, TRUE)
+    setmetatile(20, 17, 0x03F, TRUE)
+    setmetatile(21, 18, 0x03F, TRUE)
+    setmetatile(22, 19, 0x924, TRUE)
+    setmetatile(20, 18, 0x03E, TRUE)
+    setmetatile(21, 19, 0x03E, TRUE)
+    setmetatile(20, 19, 0x03E, TRUE)
+    special(DrawWholeMapView)
+    removeobject(bridgewingull4)
+    removeobject(bridgewingull5)
+    removeobject(bridgewingull6)
+    setflag(FLAG_HIDE_FLYOVER_WINGULLS)
+    delay(30)
+    fadescreen(FADE_FROM_BLACK)
+    delay(30)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
+    waitmovement(0)
+    applymovement(bridgetapukoko, moves(walk_faster_left*18))
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(slide_down*3))
+    playse(SE_FALL)
+    waitmovement(0)
+    hideobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
+    delay(60)
+    fadescreen(FADE_TO_BLACK)
+    showobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
+    setobjectxy(bridgetapukoko, 21, 27)
+    addobject(bridgecosmog2, MAP_TAPU_KOKO_BRIDGE)
+    setobjectxy(bridgecosmog2, 20, 30)
+    setobjectmovementtype(bridgecosmog2, MOVEMENT_TYPE_NONE)
+    applymovement(bridgecosmog2, moves(face_up))
+    applymovement(bridgetapukoko, moves(face_down))
+    applymovement(LOCALID_PLAYER, moves(walk_fast_down*6, walk_left, face_right))
+    applymovement(bridgelillie, moves(walk_down*2, face_left))
+    waitmovement(0)
+    delay(30)
+    fadescreen(FADE_FROM_BLACK)
+    setvar(VAR_IKITOWN_STATE, 6)
+    playmoncry(SPECIES_TAPU_KOKO, 0)
+    applymovement(bridgetapukoko, moves(walk_in_place_down*2))
+    waitmoncry
+    playse(SE_PIN)
+    applymovement(bridgelillie, moves(emote_exclamation_mark, face_up))
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_up))
+    waitmovement(0)
+    delay(30)
+    playmoncry(SPECIES_TAPU_KOKO, 0)
+    waitmoncry
+    playse(SE_M_FLY)
+    applymovement(bridgetapukoko, moves(slide_up*9))  
+    waitmovement(0)
+    delay(39)
+    applymovement(bridgelillie, moves(face_left))
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    waitmovement(0)
+    delay(30)
+    applymovement(bridgecosmog2, moves(walk_in_place_right*2))
+    playmoncry(SPECIES_COSMOG, 0)
+    msgbox("Pew!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    waitmovement(bridgecosmog2)
+    applymovement(bridgelillie, moves(walk_in_place_left*2))
+    waitmovement(bridgelillie)
+    msgbox("Oh\.
+    Oh thank goodness!
+    
+    You tried using your power again\.
+    didn't you\.?
+    
+    Oh, Nebby\.
+    
+    You know what happened last time you
+    used it.
+    
+    You couldnt move for ages after that.
+    
+    I don't want to see you like that again!
+    
+    No\. I shouldn't say that.
+    I'm sorry, Nebby\.
+    
+    I know you were trying to save me that
+    time\.
+    
+    And I couldn't even help you in return\.")
+    applymovement(bridgecosmog2, moves(walk_right*2))
+    playmoncry(SPECIES_COSMOG, 0)
+    msgbox("Pew!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    waitmovement(bridgecosmog2)
+    playse(SE_PIN)
+    applymovement(bridgelillie, moves(emote_question_mark, face_down))
+    waitmovement(bridgelillie)
+    msgbox("What\.
+    What is that?",MSGBOX_AUTOCLOSE)
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(23, 30, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    closemessage
+    applymovement(bridgecosmog2, moves(face_up))
+    waitmovement(bridgecosmog2)
+    playmoncry(SPECIES_COSMOG, 0)
+    msgbox("Pew pew!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    msgbox("A sparkling\.stone?
+    It feels almost warm somehow\.", MSGBOX_AUTOCLOSE)
+    playse(SE_PIN)
+    applymovement(bridgelillie, moves(face_left, emote_exclamation_mark))
+    waitmovement(bridgelillie)
+    msgbox("Please, forgive me\.
+        
+    I am so grateful to you for helping us
+    out of that dangerous spot.")
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Who are you?", "Are you the kahuna?")
+    if(var(VAR_RESULT) == 0)
+    {
+        speakername("Lillie")
+        msgbox("I'm\.I'm Lillie.")
+    }   
+    if(var(VAR_RESULT) == 1)
+    {
+        speakername("Lillie")
+        msgbox("No no.
+        
+        I'm\.I'm Lillie.")
+    }
+    speakername("Lillie")
+    msgbox("And I suppose\.this stone must belong
+    to you.", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(bridgelillie, moves(walk_left))
+    waitmovement(bridgelillie)
+    finditem(ITEM_Z_POWER_RING, 1)
+    speakername("Lillie")
+    msgbox("Please\.
+
+    Don't tell anyone about this\.
+    About seeing Nebby\.
+
+    It's\.it's a secret, OK?", MSGBOX_AUTOCLOSE)
+    applymovement(bridgelillie, moves(face_down))
+    waitmovement(bridgelillie)
+    speakername("Lillie")
+    msgbox("Come on, Into the bag, Nebby.", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playmoncry(SPECIES_COSMOG, 0)
+    applymovement(bridgecosmog2, moves(walk_in_place_up*2))
+    waitmoncry
+    msgbox("Pew\.", MSGBOX_AUTOCLOSE)
+    waitmovement(bridgecosmog2)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    playse(SE_BALL_OPEN)
+    removeobject(bridgecosmog2)
+    waitse
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    delay(30)
+    applymovement(bridgelillie, moves(walk_down*2, delay_16*3, face_up))
+    waitmovement(bridgelillie)
+    speakername("Lillie")
+    msgbox("Um\.
+
+    I'm worried we might get attacked again
+    by some wild Pokémon or\.or something.
+    
+    I know it's too much for me to ask it,
+    but\.
+    
+    Do you think you could see us back to
+    town?", MSGBOX_AUTOCLOSE)
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down*2))
+    waitmovement(LOCALID_PLAYER)
+    applymovement(bridgelillie, moves(delay_16*2, walk_down))
+    applymovement(LOCALID_PLAYER, moves(walk_down*3))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setflag(FLAG_HIDE_BRIDGE_LILLIE)
+    warp(MAP_IKI_TOWN, 5)
+    release
+    releaseplayer
+    end
+}
+
+script TapuKokoBridge_SetBrokenBridge{
+    setmaplayoutindex(LAYOUT_TAPU_KOKO_BRIDGE_BROKEN)
+    return
+}

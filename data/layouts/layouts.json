@@ -5766,6 +5766,16 @@
       "blockdata_filepath": "data/layouts/TapuKokoBridge/map.bin"
     },
     {
+      "id": "LAYOUT_TAPU_KOKO_BRIDGE_BROKEN",
+      "name": "TapuKokoBridgeBroken_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_islandtrial",
+      "border_filepath": "data/layouts/TapuKokoBridgeBroken/border.bin",
+      "blockdata_filepath": "data/layouts/TapuKokoBridgeBroken/map.bin"
+    },
+    {
       "id": "LAYOUT_PLAYER_ROOM",
       "name": "PlayerRoom_Layout",
       "width": 20,

@@ -700,9 +700,9 @@
 #define FLAG_SHINY_COSMOG  0x285 // Determines if the cosmog you recieve from lillie is shiny or not set in intro sequence.
 #define FLAG_HIDE_FLYOVER_WINGULLS  0x286 // hide the flyover wingulls
 #define FLAG_HIDE_CIRCLING_WINGULLS  0x287 // hide the circling wingulls
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
+#define FLAG_MAHALO_BRIDGE_BROKEN  0x288 // Mahalo Bridge broken flag
+#define FLAG_HIDE_BRIDGE_LILLIE  0x289 // hide Lillie on the bridge
+#define FLAG_HIDE_BRIDGE_COSMOG  0x28A // hide Cosmog on the bridge
 #define FLAG_UNUSED_0x28B  0x28B // Unused Flag
 #define FLAG_UNUSED_0x28C  0x28C // Unused Flag
 #define FLAG_UNUSED_0x28D  0x28D // Unused Flag
@@ -1231,7 +1231,7 @@
 #define FLAG_AUTORUN_MENU_TOGGLE                                    0x499 // Unused Flag changed to running shoes menu toggle so i can turn of press b to run toggle in menu.
 #define FLAG_PORTABLE_PC_TOGGLE                                     0x49A // Unused Flag changed to portable pc toggle
 #define FLAG_FOLLOWERS_MENU_TOGGLE                                  0x49B // FLAG_FOLLOWERS_MENU_TOGGLE
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
+#define FLAG_FORCE_NO_SHINY                                         0x49C // force no shiny
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
