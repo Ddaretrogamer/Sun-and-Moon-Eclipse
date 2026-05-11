@@ -904,6 +904,16 @@
 	.byte SCR_OP_RELEASE
 	.endm
 
+	@ Freezes only the player, without affecting other object events. The player is frozen once their current movement is finished.
+	.macro lockplayer
+	.byte SCR_OP_LOCKPLAYER
+	.endm
+
+	@ Resumes player movement only, without affecting other object events. Also closes any standard message boxes that are still open.
+	.macro releaseplayer
+	.byte SCR_OP_RELEASEPLAYER
+	.endm
+
 	@ Blocks script execution until the player presses the A or B button.
 	.macro waitbuttonpress
 	.byte SCR_OP_WAITBUTTONPRESS

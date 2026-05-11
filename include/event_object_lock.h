@@ -4,6 +4,7 @@
 bool8 IsFreezePlayerFinished(void);
 bool8 IsFreezeSelectedObjectAndPlayerFinished(void);
 void FreezeObjects_WaitForPlayer(void);
+void FreezePlayerOnly_WaitForPlayer(void);
 void FreezeObjects_WaitForPlayerAndSelected(void);
 void FreezeForApproachingTrainers(void);
 bool8 IsFreezeObjectAndPlayerFinished(void);

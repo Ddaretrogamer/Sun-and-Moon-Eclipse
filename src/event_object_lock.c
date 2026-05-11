@@ -46,6 +46,11 @@ void FreezeObjects_WaitForPlayer(void)
     CreateTask(Task_FreezePlayer, 80);
 }
 
+void FreezePlayerOnly_WaitForPlayer(void)
+{
+    CreateTask(Task_FreezePlayer, 80);
+}
+
 #define tPlayerFrozen data[0]
 #define tObjectFrozen data[1]
 #define tObjectId     data[2]

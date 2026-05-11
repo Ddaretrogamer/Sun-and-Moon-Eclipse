@@ -1623,6 +1623,18 @@ bool8 ScrCmd_lockall(struct ScriptContext *ctx)
     }
 }
 
+bool8 ScrCmd_lockplayer(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (IsOverworldLinkActive())
+        return FALSE;
+
+    FreezePlayerOnly_WaitForPlayer();
+    SetupNativeScript(ctx, IsFreezePlayerFinished);
+    return TRUE;
+}
+
 // lock freezes all object events except the player, follower, and the selected object immediately.
 // The player and selected object are frozen after waiting for their current movement to finish.
 bool8 ScrCmd_lock(struct ScriptContext *ctx)
@@ -1691,6 +1703,18 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
+    gMsgBoxIsCancelable = FALSE;
+    return FALSE;
+}
+
+bool8 ScrCmd_releaseplayer(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    u8 playerObjectId;
+    HideFieldMessageBox();
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
+    ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     gMsgBoxIsCancelable = FALSE;
     return FALSE;
 }

@@ -256,6 +256,8 @@ gScriptCmdTable::
 
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xe7
 	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xe8
+	script_cmd_table_entry SCR_OP_LOCKPLAYER                    ScrCmd_lockplayer,                  requests_effects=1  @ 0xe9
+	script_cmd_table_entry SCR_OP_RELEASEPLAYER                 ScrCmd_releaseplayer,               requests_effects=1  @ 0xea
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::
