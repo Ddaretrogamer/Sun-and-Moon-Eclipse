@@ -89,7 +89,7 @@ Ikitown_trigger_WecomeToIkitown::
 # 50 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_trigger_WecomeToIkitown_Movement_6
 # 51 "data/maps/IkiTown/scripts.pory"
-	delay 120
+	delay 100
 # 52 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
 # 53 "data/maps/IkiTown/scripts.pory"
@@ -564,7 +564,7 @@ Ikitown_trigger_WecomeToIkitown_Movement_6:
 # 50 "data/maps/IkiTown/scripts.pory"
 	walk_faster_up
 # 50 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
+	walk_up
 # 50 "data/maps/IkiTown/scripts.pory"
 	walk_up
 # 50 "data/maps/IkiTown/scripts.pory"

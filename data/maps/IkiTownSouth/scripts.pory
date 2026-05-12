@@ -483,7 +483,7 @@ script Ikitown_Trigger_LeaveIkitownEarly{
 script Ikitown_Trigger_LeaveIkitownEarly_left{
     lock
     playse(SE_PIN)
-    applymovement(ikitownkukui, moves(face_right, emote_exclamation_mark))
+    applymovement(ikitownkukui, moves(face_left, emote_exclamation_mark))
     applymovement(LOCALID_PLAYER, moves(face_right))
     waitmovement(0)
     speakername("Kukui")

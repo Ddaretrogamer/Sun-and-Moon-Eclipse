@@ -47,8 +47,8 @@ script Ikitown_trigger_WecomeToIkitown{
     msgbox("And we're here!
     This right here is Iki Town!", MSGBOX_AUTOCLOSE)
     fadescreenswapbuffers(FADE_TO_BLACK)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*9, walk_faster_up*18, walk_up*4))
-    delay(120)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*9, walk_faster_up*17, walk_up*5))
+    delay(100)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     waitmovement(0)
     speakername("Kukui")

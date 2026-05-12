@@ -762,9 +762,9 @@ Ikitown_Trigger_LeaveIkitownEarly_left::
 # 485 "data/maps/IkiTownSouth/scripts.pory"
 	playse SE_PIN
 # 486 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_Movement_0
+	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0
 # 487 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
 # 488 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement 0
 # 489 "data/maps/IkiTownSouth/scripts.pory"
@@ -772,7 +772,7 @@ Ikitown_Trigger_LeaveIkitownEarly_left::
 # 490 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
 # 492 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2
 # 493 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement LOCALID_PLAYER
 # 494 "data/maps/IkiTownSouth/scripts.pory"
@@ -1046,14 +1046,22 @@ Ikitown_Trigger_LeaveIkitownEarly_Movement_2:
 	walk_left
 	step_end
 
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 486 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0:
+# 486 "data/maps/IkiTownSouth/scripts.pory"
+	face_left
+# 486 "data/maps/IkiTownSouth/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 487 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1:
 # 487 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
 	step_end
 
 # 492 "data/maps/IkiTownSouth/scripts.pory"
-Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1:
+Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2:
 # 492 "data/maps/IkiTownSouth/scripts.pory"
 	walk_right
 	step_end
