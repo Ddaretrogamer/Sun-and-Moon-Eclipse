@@ -15,6 +15,10 @@ mapscripts TapuKokoBridge_MapScripts{
         hideobjectat(bridgecosmog, MAP_TAPU_KOKO_BRIDGE )
         hideobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
         setobjectxy(bridgelillie, 21, 30)
+    }
+    VAR_IKITOWN_STATE, 4 {
+        setobjectxy(bridgelillie, 22, 27)
+        setobjectxy(bridgecosmog, 21, 20)
     }]    
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 3: TapuKokoBridge_LillieCosmogEvent]
 }
@@ -24,6 +28,8 @@ script TapuKokoBridge_LillieCosmogEvent{
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
     waitmovement(0)
+    special(ShowCutsceneCinematicBars)
+    delay(60)
     applymovement(bridgelillie, moves(walk_up*3))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*3))
     waitmovement(0)
@@ -89,6 +95,7 @@ script TapuKokoBridge_LillieCosmogEvent{
     waitmovement(0)
     setvar(VAR_IKITOWN_STATE, 4)
     delay(30)
+    special(HideCutsceneCinematicBars)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     delay(15)
     applymovement(LOCALID_PLAYER, moves(walk_up*4))
@@ -278,6 +285,8 @@ script TapuKokoBridge_trigger_TryLeave2{
 
 script TapuKokoBridge_trigger_BridgeShake{
     lockplayer
+    special(ShowCutsceneCinematicBars)
+    delay(30)
     setvar(VAR_0x8004, 2)
     setvar(VAR_0x8005, 6)
     setvar(VAR_0x8006, 4)
@@ -314,9 +323,9 @@ script TapuKokoBridge_trigger_BridgeShake{
     playse(SE_ORB)
     special(DoOrbEffect)
     waitstate
-    fadescreen(FADE_TO_BLACK)
     special(FadeOutOrbEffect)
     waitstate
+    fadescreenswapbuffers(FADE_TO_BLACK)
     playse(SE_BANG)
     delay(60)
     setflag(FLAG_MAHALO_BRIDGE_BROKEN)
@@ -364,7 +373,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     removeobject(bridgewingull6)
     setflag(FLAG_HIDE_FLYOVER_WINGULLS)
     delay(30)
-    fadescreen(FADE_FROM_BLACK)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     delay(30)
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
@@ -376,7 +385,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     waitmovement(0)
     hideobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
     delay(60)
-    fadescreen(FADE_TO_BLACK)
+    fadescreenswapbuffers(FADE_TO_BLACK)
     showobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
     setobjectxy(bridgetapukoko, 21, 27)
     addobject(bridgecosmog2, MAP_TAPU_KOKO_BRIDGE)
@@ -388,7 +397,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     applymovement(bridgelillie, moves(walk_down*2, face_left))
     waitmovement(0)
     delay(30)
-    fadescreen(FADE_FROM_BLACK)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     setvar(VAR_IKITOWN_STATE, 6)
     playmoncry(SPECIES_TAPU_KOKO, 0)
     applymovement(bridgetapukoko, moves(walk_in_place_down*2))
@@ -403,6 +412,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     playse(SE_M_FLY)
     applymovement(bridgetapukoko, moves(slide_up*9))  
     waitmovement(0)
+    special(HideCutsceneCinematicBars)
     delay(39)
     applymovement(bridgelillie, moves(face_left))
     applymovement(LOCALID_PLAYER, moves(face_right))
@@ -439,9 +449,9 @@ script TapuKokoBridge_trigger_BridgeShake{
     And I couldn't even help you in return\.")
     applymovement(bridgecosmog2, moves(walk_right*2))
     playmoncry(SPECIES_COSMOG, 0)
+    waitmovement(bridgecosmog2)
     msgbox("Pew!", MSGBOX_AUTOCLOSE)
     waitmoncry
-    waitmovement(bridgecosmog2)
     playse(SE_PIN)
     applymovement(bridgelillie, moves(emote_question_mark, face_down))
     waitmovement(bridgelillie)
@@ -486,7 +496,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     applymovement(bridgelillie, moves(walk_left))
     waitmovement(bridgelillie)
-    finditem(ITEM_Z_POWER_RING, 1)
+    giveitem(ITEM_Z_POWER_RING, 1)
     speakername("Lillie")
     msgbox("Please\.
 
@@ -525,8 +535,13 @@ script TapuKokoBridge_trigger_BridgeShake{
     Do you think you could see us back to
     town?", MSGBOX_AUTOCLOSE)
     delay(30)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down*2))
+    applymovement(LOCALID_PLAYER, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
     waitmovement(LOCALID_PLAYER)
+    delay(30)
     applymovement(bridgelillie, moves(delay_16*2, walk_down))
     applymovement(LOCALID_PLAYER, moves(walk_down*3))
     waitmovement(0)

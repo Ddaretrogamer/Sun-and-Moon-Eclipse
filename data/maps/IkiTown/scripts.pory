@@ -1,5 +1,5 @@
 mapscripts IkiTown_MapScripts{
-    MAP_SCRIPT_ON_TRANSITION{  
+    MAP_SCRIPT_ON_TRANSITION{
         end
     }
 }

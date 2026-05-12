@@ -336,21 +336,23 @@ script Route1NN_Trigger_GetStarters{
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up, walk_slow_diag_northwest))
     waitmovement(0)
     msgbox("This is the Grass-type Pokémon, Rowlet.")
-     if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+    if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        msgbox("Hoo!")
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         waitmovement(rowletshiny2)
+        delay(30)
     }
     else{
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        msgbox("Hoo!")
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         waitmovement(rowlet2)
+        delay(30)
     }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
@@ -359,20 +361,22 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
+            msgbox("Mrawr.")
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             playse(SE_LEDGE)
             applymovement(littenshiny2, moves(jump_in_place_down))
             waitmovement(littenshiny2)
+            delay(30)
         }
         else{
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
+            msgbox("Mrawr.")
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             playse(SE_LEDGE)
             applymovement(litten2, moves(jump_in_place_down))
             waitmovement(litten2)
+            delay(30)
         }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
@@ -381,7 +385,7 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            msgbox("Bwark?")
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             applymovement(popplioshiny2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
             playse(SE_M_CRABHAMMER)
@@ -389,11 +393,12 @@ script Route1NN_Trigger_GetStarters{
             playse(SE_M_CRABHAMMER)
             waitse
             waitmovement(popplioshiny2)
+            delay(30)
         }
         else{
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            msgbox("Bwark?")
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             applymovement(popplio2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
             playse(SE_M_CRABHAMMER)
@@ -401,6 +406,7 @@ script Route1NN_Trigger_GetStarters{
             playse(SE_M_CRABHAMMER)
             waitse
             waitmovement(popplio2)
+            delay(30)
         }
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_diag_southwest, walk_slow_down))
@@ -420,130 +426,471 @@ script Route1NN_Trigger_GetStarters{
     dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "{COLOR GREEN}Rowlet", "{COLOR RED}Litten", "{COLOR BLUE}Popplio")
     switch(var(VAR_RESULT)){
     case 0:
-        if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-        }
-        if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-        }
-        if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
-            givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_ALWAYS)
-            applymovement(rowletshiny2, moves(walk_down, walk_right, face_down))
-            waitmovement(rowletshiny2)
-            playmoncry(SPECIES_ROWLET, 0)
-            applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
-            waitmovement(rowletshiny2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(rowletshiny2, moves(emote_heart))
-            waitmovement(rowletshiny2)
+        speakername("Kukui")
+        msgbox("Rowlet can fly up on its enemies real
+        quiet like and catch 'em by surprise!
+        
+        So, you wanna go with the Grass-type
+        Pokémon Rowlet?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(rowletshiny2, moves(walk_down, walk_right, face_down))
+                waitmovement(rowletshiny2)
+                playmoncry(SPECIES_ROWLET, 0)
+                applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
+                waitmovement(rowletshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(rowletshiny2, moves(emote_heart))
+                waitmovement(rowletshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(rowlet2, moves(walk_down, walk_right, face_down))
+                waitmovement(rowlet2)
+                playmoncry(SPECIES_ROWLET, 0)
+                applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
+                waitmovement(rowlet2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(rowlet2, moves(emote_heart))
+                waitmovement(rowlet2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 0)
+            playse(SE_BALL_OPEN)
+            removeobject(rowlet2)
+            removeobject(rowletshiny2)
             delay(60)
+            break
         }
         else{
-            givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(rowlet2, moves(walk_down, walk_right, face_down))
-            waitmovement(rowlet2)
-            playmoncry(SPECIES_ROWLET, 0)
-            applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
-            waitmovement(rowlet2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(rowlet2, moves(emote_heart))
-            waitmovement(rowlet2)
-            delay(60)
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
         }
-        setvar(VAR_STARTER_MON, 0)
-        playfanfare(MUS_OBTAIN_ITEM)
-        removeobject(rowlet2)
-        removeobject(rowletshiny2)
-        delay(150)
-        break
     case 1: 
-        if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-        }
-        if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-        }
-        if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
-            givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_ALWAYS)
-            applymovement(littenshiny2, moves(walk_down))
-            waitmovement(littenshiny2)
-            playmoncry(SPECIES_LITTEN, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(littenshiny2, moves(jump_in_place_down))
-            waitmovement(littenshiny2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(littenshiny2, moves(emote_heart))
-            waitmovement(littenshiny2)
+        speakername("Kukui")
+        msgbox("Litten may use Fire-type moves, but
+        it's one cool cat!
+        
+        So, you wanna go with the Fire-type
+        Pokémon Litten?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(littenshiny2, moves(walk_down))
+                waitmovement(littenshiny2)
+                playmoncry(SPECIES_LITTEN, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(littenshiny2, moves(jump_in_place_down))
+                waitmovement(littenshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(littenshiny2, moves(emote_heart))
+                waitmovement(littenshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(litten2, moves(walk_down))
+                waitmovement(litten2)
+                playmoncry(SPECIES_LITTEN, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(litten2, moves(jump_in_place_down))
+                waitmovement(litten2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(litten2, moves(emote_heart))
+                waitmovement(litten2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 1)
+            playse(SE_BALL_OPEN)
+            removeobject(litten2)
+            removeobject(littenshiny2)
             delay(60)
+            break
         }
         else{
-            givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(litten2, moves(walk_down))
-            waitmovement(litten2)
-            playmoncry(SPECIES_LITTEN, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(litten2, moves(jump_in_place_down))
-            waitmovement(litten2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(litten2, moves(emote_heart))
-            waitmovement(litten2)
-            delay(60)
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
         }
-        setvar(VAR_STARTER_MON, 1)
-        playfanfare(MUS_OBTAIN_ITEM)
-        removeobject(litten2)
-        removeobject(littenshiny2)
-        delay(150)
-        break
     case 2: 
-        if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_RIVAL_SHINY)
-        }
-        if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
-            setflag(FLAG_KUKUI_SHINY)
-        }
-        if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
-            givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_ALWAYS)
-            applymovement(popplioshiny2, moves(walk_down, walk_left, face_down))
-            waitmovement(popplioshiny2)
-            playmoncry(SPECIES_POPPLIO, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(popplioshiny2, moves(jump_in_place_down))
-            waitmovement(popplioshiny2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(popplioshiny2, moves(emote_heart))
-            waitmovement(popplioshiny2)
+        speakername("Kukui")
+        msgbox("Popplio works hard and makes some
+        pretty awesome balloons!
+        
+        So, you wanna go with the Water-type
+        Pokémon Popplio?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(popplioshiny2, moves(walk_down, walk_left, face_down))
+                waitmovement(popplioshiny2)
+                playmoncry(SPECIES_POPPLIO, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(popplioshiny2, moves(jump_in_place_down))
+                waitmovement(popplioshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(popplioshiny2, moves(emote_heart))
+                waitmovement(popplioshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(popplio2, moves(walk_down, walk_left, face_down))
+                waitmovement(popplio2)
+                playmoncry(SPECIES_POPPLIO, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(popplio2, moves(jump_in_place_down))
+                waitmovement(popplio2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(popplio2, moves(emote_heart))
+                waitmovement(popplio2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 2)
+            playse(SE_BALL_OPEN)
+            removeobject(popplio2)
+            removeobject(popplioshiny2)
             delay(60)
+            break
         }
         else{
-            givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_NEVER)
-            applymovement(popplio2, moves(walk_down, walk_left, face_down))
-            waitmovement(popplio2)
-            playmoncry(SPECIES_POPPLIO, 0)
-            waitse
-            playse(SE_LEDGE)
-            applymovement(popplio2, moves(jump_in_place_down))
-            waitmovement(popplio2)
-            delay(30)
-            playse(SE_PIN)
-            applymovement(popplio2, moves(emote_heart))
-            waitmovement(popplio2)
-            delay(60)
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
         }
-        setvar(VAR_STARTER_MON, 2)
-        playfanfare(MUS_OBTAIN_ITEM)
-        removeobject(popplio2)
-        removeobject(popplioshiny2)
-        delay(150)
-        break
+    }
+    bufferleadmonspeciesname(STR_VAR_1)
+    applymovement(kukuistarters, moves(face_left))
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    waitmovement(0)
+    msgbox("Would you like to nickname your
+    {STR_VAR_1}?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == 1){
+        setvar(VAR_0x8004, 0)
+	    call(Common_EventScript_NameReceivedPartyMon)
+    }
+    else{
+        msgbox("No worries! You can nickname your
+        Pokémon anytime from the menu.", MSGBOX_AUTOCLOSE)
+    }
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    playse(SE_BALL_OPEN)
+    delay(60)
+    special(RemoveCameraObject)
+    removeobject(popplio2)
+    removeobject(popplioshiny2)
+    removeobject(litten2)
+    removeobject(littenshiny2)
+    removeobject(rowlet2)
+    removeobject(rowletshiny2) 
+    special(SpawnCameraObject)
+    speakername("Kukui")
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox("So you went with {STR_VAR_1}!
+    Woo, what a fine-looking team you
+    two are!
+    
+    Now that you can have Pokémon battles,
+    you're what we call a Pokémon Trainer!
+    
+    Here's a Poké Ball for {STR_VAR_1},
+    too.
+    
+    It should feel nice and cozy in there.")
+    playfanfare(MUS_OBTAIN_ITEM)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Received {STR_VAR_1}'s Poké Ball!", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    speakername("Kukui")
+    msgbox("All right! Then let's get going up
+    to Iki Town, {PLAYER}.
+    
+    Woo!
+    
+    Time to meet the {COLOR RED}Island Kahuna!")
+    dynmultichoice(18,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Island Kahuna?!", "But why?!")
+        if(var(VAR_RESULT) == 0)
+        {
+            applymovement(LOCALID_PLAYER, moves(walk_in_place_right*2))
+            waitmovement(LOCALID_PLAYER)
+            msgbox("Truth is, that partner {STR_VAR_1}
+            of yours is a gift from the kahuna,
+            not me.
+
+            So let's go show it off and say a
+            proper thank-you, cousin.
+
+            It may not be the only gift you
+            get!
+            
+            In case you hadn't heard, the
+            kahunas are all crazy-strong
+            Pokémon Trainers.
+            
+            Be careful about getting into a
+            battle with one!", MSGBOX_AUTOCLOSE)
+        }
+        else
+        {
+            applymovement(LOCALID_PLAYER, moves(walk_in_place_right*2))
+            waitmovement(LOCALID_PLAYER)
+            msgbox("Truth is, that partner {STR_VAR_1}
+            of yours is a gift from the kahuna,
+            not me.
+
+            So let's go show it off and say a
+            proper thank-you, cousin.
+
+            It may not be the only gift you
+            get!
+            
+            In case you hadn't heard, the
+            kahunas are all crazy-strong
+            Pokémon Trainers.
+            
+            Be careful about getting into a
+            battle with one!", MSGBOX_AUTOCLOSE)
+        }
+    applymovement(kukuistarters, moves(walk_down*1, walk_left *7))
+    applymovement(LOCALID_PLAYER, moves(delay_16*4, walk_down*2, walk_left *6))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16*4, walk_down*2, walk_left *6))
+    waitmovement(0)
+    clearflag(FLAG_HIDE_KUKUI_STARTERS)
+    applymovement(kukuistarters, moves(face_down))
+    waitmovement(kukuistarters)
+    msgbox("Iki Town is right up here!", MSGBOX_AUTOCLOSE)
+    applymovement(kukuistarters, moves(face_left))
+    waitmovement(kukuistarters)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left*15, walk_diag_northwest*3))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    delay(90)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*18, walk_faster_down*3))
+    setobjectxy(kukuistarters, 21, 19)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    addobject(techguy)
+    clearflag(FLAG_TEMP_2)
+    setvar(VAR_STARTERS_STATE, 1)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Route1NN_BackOutOfStarter{
+    speakername("Kukui")
+    msgbox("Go on and choose the one you'd like
+    to keep as your partner, cousin!")
+    dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "{COLOR GREEN}Rowlet", "{COLOR RED}Litten", "{COLOR BLUE}Popplio")
+    switch(var(VAR_RESULT)){
+    case 0:
+        speakername("Kukui")
+        msgbox("Rowlet can fly up on its enemies real
+        quiet like and catch 'em by surprise!
+        
+        So, you wanna go with the Grass-type
+        Pokémon Rowlet?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(rowletshiny2, moves(walk_down, walk_right, face_down))
+                waitmovement(rowletshiny2)
+                playmoncry(SPECIES_ROWLET, 0)
+                applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
+                waitmovement(rowletshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(rowletshiny2, moves(emote_heart))
+                waitmovement(rowletshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_ROWLET, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(rowlet2, moves(walk_down, walk_right, face_down))
+                waitmovement(rowlet2)
+                playmoncry(SPECIES_ROWLET, 0)
+                applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down))
+                waitmovement(rowlet2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(rowlet2, moves(emote_heart))
+                waitmovement(rowlet2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 0)
+            playse(SE_BALL_OPEN)
+            removeobject(rowlet2)
+            removeobject(rowletshiny2)
+            delay(60)
+            break
+        }
+        else{
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
+        }
+    case 1: 
+        speakername("Kukui")
+        msgbox("Litten may use Fire-type moves, but
+        it's one cool cat!
+        
+        So, you wanna go with the Fire-type
+        Pokémon Litten?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(littenshiny2, moves(walk_down))
+                waitmovement(littenshiny2)
+                playmoncry(SPECIES_LITTEN, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(littenshiny2, moves(jump_in_place_down))
+                waitmovement(littenshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(littenshiny2, moves(emote_heart))
+                waitmovement(littenshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_LITTEN, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(litten2, moves(walk_down))
+                waitmovement(litten2)
+                playmoncry(SPECIES_LITTEN, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(litten2, moves(jump_in_place_down))
+                waitmovement(litten2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(litten2, moves(emote_heart))
+                waitmovement(litten2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 1)
+            playse(SE_BALL_OPEN)
+            removeobject(litten2)
+            removeobject(littenshiny2)
+            delay(60)
+            break
+        }
+        else{
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
+        }
+    case 2: 
+        speakername("Kukui")
+        msgbox("Popplio works hard and makes some
+        pretty awesome balloons!
+        
+        So, you wanna go with the Water-type
+        Pokémon Popplio?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES){
+            if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_RIVAL_SHINY)
+            }
+            if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+                setflag(FLAG_KUKUI_SHINY)
+            }
+            if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+                givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_ALWAYS)
+                applymovement(popplioshiny2, moves(walk_down, walk_left, face_down))
+                waitmovement(popplioshiny2)
+                playmoncry(SPECIES_POPPLIO, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(popplioshiny2, moves(jump_in_place_down))
+                waitmovement(popplioshiny2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(popplioshiny2, moves(emote_heart))
+                waitmovement(popplioshiny2)
+                delay(60)
+            }
+            else{
+                givemon(SPECIES_POPPLIO, 5, shinyMode=SHINY_MODE_NEVER)
+                applymovement(popplio2, moves(walk_down, walk_left, face_down))
+                waitmovement(popplio2)
+                playmoncry(SPECIES_POPPLIO, 0)
+                waitse
+                playse(SE_LEDGE)
+                applymovement(popplio2, moves(jump_in_place_down))
+                waitmovement(popplio2)
+                delay(30)
+                playse(SE_PIN)
+                applymovement(popplio2, moves(emote_heart))
+                waitmovement(popplio2)
+                delay(60)
+            }
+            setvar(VAR_STARTER_MON, 2)
+            playse(SE_BALL_OPEN)
+            removeobject(popplio2)
+            removeobject(popplioshiny2)
+            delay(60)
+            break
+        }
+        else{
+            speakername("Kukui")
+            msgbox("I know the feeling, cousin\.
+            I had a real hard time choosing once,
+            too.")
+            call(Route1NN_BackOutOfStarter)
+        }
     }
     bufferleadmonspeciesname(STR_VAR_1)
     applymovement(kukuistarters, moves(face_left))

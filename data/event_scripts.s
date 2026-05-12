@@ -1446,7 +1446,7 @@ gText_MomExplainHPGetPotions::
 	.string "Take care!$"
 
 gText_MomSpeakerName::
-	.string "Mom"
+	.string "Mom$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
