@@ -276,7 +276,10 @@ script TapuKokoBridge_trigger_TryLeave2{
     playse(SE_PIN)
     msgbox("Please\.please help Nebby if you can!
             
-    But be careful\.", MSGBOX_AUTOCLOSE)
+    But be careful\.
+            
+    It looks like that attack may have
+    damaged the Plank Bridge, too\.", MSGBOX_AUTOCLOSE)
     applymovement(LOCALID_PLAYER, moves(walk_up))
     waitmovement(LOCALID_PLAYER)
     release
@@ -323,9 +326,10 @@ script TapuKokoBridge_trigger_BridgeShake{
     playse(SE_ORB)
     special(DoOrbEffect)
     waitstate
-    special(FadeOutOrbEffect)
+    special(OrbFadeToBlack)
     waitstate
-    fadescreenswapbuffers(FADE_TO_BLACK)
+    // fadescreenswapbuffers(FADE_TO_BLACK)
+    waitse
     playse(SE_BANG)
     delay(60)
     setflag(FLAG_MAHALO_BRIDGE_BROKEN)
@@ -496,7 +500,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     applymovement(bridgelillie, moves(walk_left))
     waitmovement(bridgelillie)
-    giveitem(ITEM_Z_POWER_RING, 1)
+    giveitem(ITEM_SPARKLING_STONE, 1)
     speakername("Lillie")
     msgbox("Please\.
 
@@ -547,6 +551,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     waitmovement(0)
     fadescreenswapbuffers(FADE_TO_BLACK)
     setflag(FLAG_HIDE_BRIDGE_LILLIE)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
     warp(MAP_IKI_TOWN, 5)
     release
     releaseplayer

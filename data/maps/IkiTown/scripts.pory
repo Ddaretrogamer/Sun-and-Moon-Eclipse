@@ -1,7 +1,14 @@
 mapscripts IkiTown_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
+        if (var(VAR_IKITOWN_STATE) == 6){
+            clearflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+            setobjectxy(ikitownlillie, MAP_IKI_TOWN_SOUTH, 23, 5)
+            setobjectxy(ikitownhala, MAP_IKI_TOWN_SOUTH, 32, 19)
+            setobjectxy(ikitownhau, MAP_IKI_TOWN_SOUTH, 6, 14)
+        }
         end
     }
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 6: Ikitown_GetPokedex]
 }
 
 script Ikitown_trigger_right{
@@ -282,4 +289,34 @@ script Ikitown_sign_Ruinsofconflict{
     waitmessage
     release
     end
+}
+
+script Ikitown_GetPokedex{
+    lock
+    applymovement(ikitownlillie, moves(walk_down*5))
+    applymovement(LOCALID_PLAYER, moves(delay_16*2, walk_down*5))
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(ikitownkukui, moves(emote_exclamation_mark, face_up))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Oh, {PLAYER}!
+    You already met Lillie, huh?
+
+    She's my assistant, yeah!")
+    delay(30)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(LOCALID_PLAYER, moves(walk_faster_down*4, walk_faster_left*4))
+    applymovement(ikitownlillie, moves(walk_faster_down*4, walk_faster_left*3))
+    applymovement(ikitownkukui, moves(face_down))
+    waitmovement(0)
+    delay(30)
+    applymovement(ikitownlillie, moves(walk_right*3))
+    applymovement(LOCALID_PLAYER, moves(delay_16*2, walk_right*2, face_up))
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    waitmovement(0)
+    speakername("Kukui")
+    end
+
+
 }

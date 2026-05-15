@@ -1064,6 +1064,9 @@ enum __attribute__((packed)) Item
     ITEM_SWEETSCENT_TOOL = 883,
     //End qol_field_moves
 
+    //UE NEW ITEMS
+    ITEM_SPARKLING_STONE = 884,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };

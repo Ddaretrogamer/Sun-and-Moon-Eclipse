@@ -1568,6 +1568,8 @@ extern const u32 gItemIcon_MegaRing[];
 extern const u16 gItemIconPalette_MegaRing[];
 extern const u32 gItemIcon_ZPowerRing[];
 extern const u16 gItemIconPalette_ZPowerRing[];
+extern const u32 gItemIcon_ZRing[];
+extern const u16 gItemIconPalette_ZRing[];
 extern const u32 gItemIcon_DynamaxBand[];
 extern const u16 gItemIconPalette_DynamaxBand[];
 // Misc. Key Items

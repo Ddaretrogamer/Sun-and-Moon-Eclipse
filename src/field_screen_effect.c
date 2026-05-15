@@ -1330,6 +1330,27 @@ static void Task_OrbEffect(u8 taskId)
         ScriptContext_Enable();
         DestroyTask(taskId);
         break;
+    case 8:
+        // Fade to black while orb GPU state is still active, preserving day/night blend
+        InstallCameraPanAheadCallback();
+        SetCameraPanningCallback(NULL);
+        FadeScreenHardware(FADE_TO_BLACK, 0);
+        tState = 9;
+        break;
+    case 9:
+        if (!gPaletteFade.active)
+        {
+            // Clean up orb-specific state only. Do NOT restore BLDCNT/BLDALPHA/WININ/WINOUT
+            // here - FadeScreenHardware left them in the "full black" state, which must
+            // persist until the caller issues fadescreenswapbuffers(FADE_FROM_BLACK).
+            BgDmaFill(0, PIXEL_FILL(0), 0, 1);
+            SetGpuReg(REG_OFFSET_WIN0H, 255);
+            SetGpuReg(REG_OFFSET_DISPCNT, tDispCnt);
+            UpdateShadowColor(RGB_BLACK);
+            ScriptContext_Enable();
+            DestroyTask(taskId);
+        }
+        break;
     }
 }
 
@@ -1366,6 +1387,14 @@ void FadeOutOrbEffect(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_OrbEffect);
     gTasks[taskId].tState = 6;
+}
+
+// Starts a hardware fade-to-black while the orb GPU state is still active,
+// then cleans up once the fade completes. Preserves day/night tinting.
+void OrbFadeToBlack(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_OrbEffect);
+    gTasks[taskId].tState = 8;
 }
 
 #undef tBlueOrb

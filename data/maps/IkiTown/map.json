@@ -192,6 +192,48 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Ikitown_Rockruff",
       "flag": "0"
+    },
+    {
+      "local_id": "ikitownintrokukui2",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 23,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Ikitown_KukuiSeeTapuKoko",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+    },
+    {
+      "local_id": "ikitownlillie",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
+      "x": 22,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+    },
+    {
+      "local_id": "ikitownhala",
+      "graphics_id": "OBJ_EVENT_GFX_HALA",
+      "x": 24,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
     }
   ],
   "warp_events": [

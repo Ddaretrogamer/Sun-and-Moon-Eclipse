@@ -40,6 +40,7 @@ void DoSpinEnterWarp(void);
 void DoSpinExitWarp(void);
 void DoOrbEffect(void);
 void FadeOutOrbEffect(void);
+void OrbFadeToBlack(void);
 void WriteFlashScanlineEffectBuffer(u8 flashLevel);
 bool8 IsPlayerStandingStill(void);
 void DoStairWarp(u16 metatileBehavior, u16 delay);

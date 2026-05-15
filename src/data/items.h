@@ -13847,6 +13847,22 @@ const struct ItemInfo gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_ZRing,
+        .iconPalette = gItemIconPalette_ZRing,
+    },
+
+    [ITEM_SPARKLING_STONE] =
+    {
+        .name = ITEM_NAME("Sparkling Stone"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "A sparkling stone\n"
+            "that glows with a\n"
+            "mysterious light."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_ZPowerRing,
         .iconPalette = gItemIconPalette_ZPowerRing,
     },
