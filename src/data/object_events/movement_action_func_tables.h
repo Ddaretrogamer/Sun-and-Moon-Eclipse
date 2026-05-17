@@ -302,6 +302,16 @@ u8 MovementAction_SpinLeft_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_SpinRight_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_SpinRight_Step1(struct ObjectEvent *, struct Sprite *);
 
+//Jamie movement pack
+u8 MovementAction_ShakeHorizontal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeHorizontal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_QuarterStepLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_QuarterStepRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_QuarterStepUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_QuarterStepDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_QuarterStep_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -488,6 +498,13 @@ u8 (*const gMovementActionFuncs_SpinUp[])(struct ObjectEvent *, struct Sprite *)
 u8 (*const gMovementActionFuncs_SpinLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SpinRight[])(struct ObjectEvent *, struct Sprite *);
 
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_QuarterStepUp[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_QuarterStepDown[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_QuarterStepLeft[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_QuarterStepRight[])(struct ObjectEvent *, struct Sprite *);
+
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
     [MOVEMENT_ACTION_FACE_UP] = gMovementActionFuncs_FaceUp,
@@ -672,6 +689,13 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_SPIN_UP]          = gMovementActionFuncs_SpinUp,
     [MOVEMENT_ACTION_SPIN_LEFT]        = gMovementActionFuncs_SpinLeft,
     [MOVEMENT_ACTION_SPIN_RIGHT]       = gMovementActionFuncs_SpinRight,
+    //Jamie movement pack
+    [MOVEMENT_ACTION_SHAKE_HORIZONTAL] = gMovementActionFuncs_ShakeHorizontal,
+    [MOVEMENT_ACTION_SHAKE_VERTICAL] = gMovementActionFuncs_ShakeVertical,
+    [MOVEMENT_ACTION_QUARTER_STEP_LEFT] = gMovementActionFuncs_QuarterStepLeft,
+    [MOVEMENT_ACTION_QUARTER_STEP_RIGHT] = gMovementActionFuncs_QuarterStepRight,
+    [MOVEMENT_ACTION_QUARTER_STEP_UP] = gMovementActionFuncs_QuarterStepUp,
+    [MOVEMENT_ACTION_QUARTER_STEP_DOWN] = gMovementActionFuncs_QuarterStepDown,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1757,4 +1781,41 @@ u8 (*const gMovementActionFuncs_SpinRight[])(struct ObjectEvent *, struct Sprite
     MovementAction_SpinRight_Step0,
     MovementAction_SpinRight_Step1,
     MovementAction_PauseSpriteAnim,
+};
+
+//Jamie movement pack
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeHorizontal_Step0,
+    MovementAction_ShakeHorizontal_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeVertical_Step0,
+    MovementAction_ShakeVertical_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_QuarterStepLeft[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_QuarterStepLeft_Step0,
+    MovementAction_QuarterStep_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_QuarterStepRight[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_QuarterStepRight_Step0,
+    MovementAction_QuarterStep_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_QuarterStepUp[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_QuarterStepUp_Step0,
+    MovementAction_QuarterStep_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_QuarterStepDown[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_QuarterStepDown_Step0,
+    MovementAction_QuarterStep_Step1,
+    MovementAction_Finish,
 };
