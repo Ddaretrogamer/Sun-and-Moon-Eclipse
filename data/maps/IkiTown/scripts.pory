@@ -1,13 +1,17 @@
 mapscripts IkiTown_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
-        if (var(VAR_IKITOWN_STATE) == 6){
-            clearflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
-            setobjectxy(ikitownlillie, MAP_IKI_TOWN_SOUTH, 23, 5)
-            setobjectxy(ikitownhala, MAP_IKI_TOWN_SOUTH, 32, 19)
-            setobjectxy(ikitownhau, MAP_IKI_TOWN_SOUTH, 6, 14)
-        }
         end
     }
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 6 {
+            clearflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+            clearflag(FLAG_HIDE_IKITOWN_HALA)
+            addobject(ikitownlillie)
+            setobjectxy(ikitownlillie, 23, 5)
+            addobject(ikitownhala)
+            setobjectxy(ikitownhala, 32, 19)
+            addobject(ikitownintrohau)
+            setobjectxy(ikitownintrohau, 9, 14)
+    }]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 6: Ikitown_GetPokedex]
 }
 
@@ -54,10 +58,10 @@ script Ikitown_trigger_WecomeToIkitown{
     msgbox("And we're here!
     This right here is Iki Town!", MSGBOX_AUTOCLOSE)
     fadescreenswapbuffers(FADE_TO_BLACK)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*9, walk_faster_up*17, walk_up*5))
-    delay(100)
-    fadescreenswapbuffers(FADE_FROM_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*9, walk_faster_up*15))
     waitmovement(0)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*7))
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     speakername("Kukui")
     msgbox("This town is where folks come to
     worship the Pokemon that watches
@@ -293,30 +297,383 @@ script Ikitown_sign_Ruinsofconflict{
 
 script Ikitown_GetPokedex{
     lock
-    applymovement(ikitownlillie, moves(walk_down*5))
-    applymovement(LOCALID_PLAYER, moves(delay_16*2, walk_down*5))
+    applymovement(ikitownlillie, moves(walk_down*6, walk_left*6, walk_down*4, walk_diag_northeast, walk_right*3, walk_up, face_right))
+    applymovement(LOCALID_PLAYER, moves(delay_16*3, walk_down*6, walk_left*5, walk_down*4, walk_diag_northeast, walk_right*3))
     waitmovement(0)
     playse(SE_PIN)
-    applymovement(ikitownkukui, moves(emote_exclamation_mark, face_up))
+    applymovement(ikitownintrokukui2, moves(emote_exclamation_mark, walk_down, face_left))
     waitmovement(0)
     speakername("Kukui")
     msgbox("Oh, {PLAYER}!
     You already met Lillie, huh?
 
     She's my assistant, yeah!")
-    delay(30)
-    fadescreenswapbuffers(FADE_TO_BLACK)
-    applymovement(LOCALID_PLAYER, moves(walk_faster_down*4, walk_faster_left*4))
-    applymovement(ikitownlillie, moves(walk_faster_down*4, walk_faster_left*3))
-    applymovement(ikitownkukui, moves(face_down))
+    applymovement(ikitownintrokukui2, moves(walk_in_place_left*2))
     waitmovement(0)
+    msgbox("Lillie, I thought you were with the
+    kahuna?")
+    applymovement(ikitownlillie, moves(walk_in_place_right*2))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Kahuna Hala? He said that he had
+    something to attend to, so he left
+    town on his own.
+    
+    I was just, um, taking a little stroll
+    up Mahalo Trail while I waited for
+    him to return\.")
+    checkplayergender
+    if (var(VAR_RESULT) == 0){
+        speakername("Kukui")
+        msgbox("And that's how you met our new neighbor
+        {PLAYER}, huh?
+        
+        He just got to Alola yesterday.
+        Help him find his way around, yeah?")
+    }
+    else{
+        speakername("Kukui")
+        msgbox("And that's how you met our new neighbor
+        {PLAYER}, huh?
+        
+        She just got to Alola yesterday.
+        Help her find her way around, yeah?")
+    }
+    applymovement(ikitownlillie, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("So\.you're also one of
+    the professor's acquaintances?
+    
+    It's nice to meet you.", MSGBOX_AUTOCLOSE)
+    special(SpawnCameraObject)
     delay(30)
-    applymovement(ikitownlillie, moves(walk_right*3))
-    applymovement(LOCALID_PLAYER, moves(delay_16*2, walk_right*2, face_up))
-    fadescreenswapbuffers(FADE_FROM_BLACK)
+    //fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right*8, walk_diag_northeast))
+    waitmovement(0)
+    applymovement(ikitownman1, moves(emote_exclamation_mark, face_down))
+    applymovement(ikitownoldman1, moves(emote_exclamation_mark, face_down))
+    waitmovement(0)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("The kahuna is back!
+    Kahuna Hala has returned!
+    
+    Our guardian's chosen one is back!
+    
+    Only one of the strongest Pokémon
+    users in all Alola, yeah!", MSGBOX_AUTOCLOSE)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down, delay_16*3))
+    applymovement(ikitownhala, moves(walk_up*4, face_left))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Have I missed something?", MSGBOX_AUTOCLOSE)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*4, walk_left*3))
+    waitmovement(0)
+    applymovement(ikitownintrokukui2, moves(face_right))
     waitmovement(0)
     speakername("Kukui")
+    msgbox("There you are, Kahuna Hala!
+    Was there some kind of trouble?")
+    applymovement(ikitownhala, moves(walk_left*4, walk_diag_northwest, walk_left*3))
+    waitmovement(0)
+    applymovement(ikitownintrokukui2, moves(face_down))
+    applymovement(ikitownlillie, moves(face_right))
+    speakername("Hala")
+    msgbox("Ahaha! Just got caught up in the
+    middle of some brawling Rockruff,
+    that's all!
+    
+    Sorry, Lillie.
+    What were you saying before?
+    
+    For some reason I thought I saw
+    Tapu Koko flying about\.")
+    applymovement(ikitownlillie, moves(walk_in_place_right*2))    
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Oh, um\.
+    Yes, Kahuna Hala\.
+    
+    Nebby got attacked by some Wingull
+    on the Plank Bridge.
+    
+    And {PLAYER} here helped protect it.
+    
+    But the bridge collapsed, and I thought
+    both of them might fall to the
+    bottom of the ravine\.
+    
+    And that was when the island's guardian
+    deity, swooped in to save them!")
+    applymovement(ikitownintrokukui2, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Woo! That's something you don't hear
+    every day!")
+    applymovement(ikitownhala, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Ho! Although it is said to protect us,
+    our Tapu Koko is a rather fickle
+    creature.
+    Yet our guardian was moved to save you.")
+    applymovement(ikitownhala, moves(walk_in_place_left*2))
+    waitmovement(0)
+    msgbox("Kukui, my boy, I think we have
+    cause to celebrate!
+    
+    Looks like we have a brave and kind new
+    Pokémon Trainer in our midst!
+    
+    I'm glad to meet you, child.
+    I'm Hala, the kahuna of Melemele
+    Island.
+    
+    Welcome to Alola!
+    Young Kukui had told me of your
+    coming.
+    
+    I'm glad we had the chance to meet
+    today.")
+    applymovement(ikitownintrokukui2, moves(walk_down, walk_left))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("All right, here's a lovely gift to
+    help make today special {PLAYER}!")
+    setvar(VAR_ROTOM_PHONE_ENABLE, 1)
+    setflag(FLAG_SYS_POKEDEX_GET)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox("You obtained a {COLOR RED}Rotom Phone{COLOR DARK_GRAY}!")
+    waitfanfare
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Kukui")
+    msgbox("The Rotom Phone comes equipped with a
+    Pokédex, which is a really high-tech
+    kinda tool, that can automatically
+    record facts about any Pokémon that
+    you meet.
+    
+    Your new partner, {STR_VAR_1} is
+    already registered, oh yeah, so
+    check it out!")
+    // placeholder for help window on how to use the rotom phone.
+    msgbox("Well, you got to meet the kahuna
+    at least.
+    
+    Ready to head home now, {PLAYER}?", MSGBOX_AUTOCLOSE)
+    special(RemoveCameraObject)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(ikitownintrokukui2, moves(walk_faster_right, walk_faster_up, face_down))
+    delay(60)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    setvar(VAR_IKITOWN_STATE, 7)
+    release
     end
 
 
+}
+
+script ikitown_lilliedialog2{
+    lock
+    faceplayer
+    bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Lillie")
+    msgbox("I really, um, really appreciate what you
+    did for us on the Plank Bridge.
+    
+    I won't forget you and {STR_VAR_1}\.")
+    waitmessage
+    release
+    end
+}
+
+script ikitown_kukuidialog2{
+    lock
+    faceplayer
+    speakername("Kukui")
+    msgbox("Now that you met Tapu Koko, I can't
+    wait to see how far you can go as a
+    Pokémon Trainer!")
+    waitmessage
+    release
+    end
+}
+
+script ikitown_haladialog2{
+    lock
+    faceplayer
+    speakername("Hala")
+    msgbox("If you two can work in harmony with
+    each other, you can go anywhere
+    together!")
+    waitmessage
+    release
+    end
+}
+
+script Ikitown_trigger_GiveHalaSparklingStone{
+    lock
+    speakername("Hau")
+    msgbox("Oh yeah! {PLAYER}!
+    Hold up a sec!", MSGBOX_AUTOCLOSE)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_question_mark))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setobjectxy(ikitownhala, 24, 12)
+    setobjectxy(ikitownintrokukui2, 23, 12)
+    getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
+    if (var(VAR_TEMP_1) == 28 && var(VAR_TEMP_2) == 14){
+        applymovement(LOCALID_PLAYER, moves(walk_faster_left*4))
+        waitmovement(0)
+        addobject(ikitownintrohau)
+        setobjectxy(ikitownintrohau, 27, 15)
+        applymovement(ikitownintrohau, moves(walk_faster_left*11))
+        waitmovement(0)
+    }
+    if (var(VAR_TEMP_1) == 28 && var(VAR_TEMP_2) == 15){
+        applymovement(LOCALID_PLAYER, moves(walk_faster_left*4, walk_faster_up, face_left))
+        waitmovement(0)
+        addobject(ikitownintrohau)
+        setobjectxy(ikitownintrohau, 27, 15)
+        applymovement(ikitownintrohau, moves(walk_faster_left*11))
+        waitmovement(0)
+    }
+    if (var(VAR_TEMP_1) == 17 && var(VAR_TEMP_2) == 14){
+        applymovement(LOCALID_PLAYER, moves(walk_faster_right*7, face_left))
+        waitmovement(0)
+        addobject(ikitownintrohau)
+        setobjectxy(ikitownintrohau, 16, 15)
+    }
+    if (var(VAR_TEMP_1) == 17 && var(VAR_TEMP_2) == 15){
+        applymovement(LOCALID_PLAYER, moves(walk_faster_right*7, walk_faster_up, face_left))
+        waitmovement(0)
+        addobject(ikitownintrohau)
+        setobjectxy(ikitownintrohau, 16, 15)
+    }
+    delay(30)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    applymovement(ikitownintrohau, moves(walk_right, walk_diag_northeast, walk_right*2))
+    delay(60)
+    applymovement(ikitownhala, moves(walk_down, delay_8, face_left))
+    waitmovement(0)
+    applymovement(ikitownlillie, moves(face_right))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("What is it Hau? Did you forget
+    something?")
+    applymovement(ikitownintrohau, moves(walk_in_place_right*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("You're seriously asking me that?!
+    
+    Who's the one here who forgot to tell
+    anyone before wandering off for a
+    little stroll and a sing without a
+    word, huh?")
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(24, 14, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    closemessage
+    playse(SE_PIN)
+    applymovement(ikitownhala, moves(emote_exclamation_mark))
+    waitmovement(0)
+    applymovement(ikitownhala, moves(face_down))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Hm?
+    {PLAYER}\.
+    
+    Would you be so kind as to give me a
+    look at that {COLOR RED}Sparkling Stone{COLOR DARK_GRAY} you
+    have there?")
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Could it be?!")
+    applymovement(ikitownintrohau, moves(walk_in_place_right*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("Tutu, isn't that\.")
+    applymovement(ikitownhala, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("You were rescued by Tapu Koko at the
+    bridge-isn't that what I heard,
+    {PLAYER}?")
+    dynmultichoice(18,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Yeah, it rescued me", "It gave me a stone")
+    if (var(VAR_RESULT) == 0){
+        speakername("Hala")
+        msgbox("So it even deigned to give you a stone\.
+        
+        Perhaps you are here in Alola,
+        {PLAYER}, because this is where
+        you are meant to be.
+        
+        Allow me to borrow this stone for now.
+        
+        Fret not, I will return it to you
+        tomorrow evening.
+        
+        You have the makings of a brilliant
+        Trainer.
+        I can see that light within you, too.
+        
+        You must do us the honor of joining in
+        our festival tomorrow!")
+    }
+    else{
+        speakername("Hala")
+        msgbox("So it even deigned to give you a stone\.
+        
+        Perhaps you are here in Alola,
+        {PLAYER}, because this is where
+        you are meant to be.
+        
+        Allow me to borrow this stone for now.
+        
+        Fret not, I will return it to you
+        tomorrow evening.
+        
+        You have the makings of a brilliant
+        Trainer.
+        I can see that light within you, too.
+        
+        You must do us the honor of joining in
+        our festival tomorrow!")
+    }
+    applymovement(ikitownintrokukui2, moves(walk_down))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("First I'll make sure you get back home
+    safe today, though, {PLAYER}.")
+    applymovement(ikitownintrokukui2, moves(face_left))
+    msgbox("Lillie, you two should come with us
+    too, yeah.
+    
+    Wouldn't want to go losing you twice
+    in one day.
+    You or that precious Pokémon of yours!")
+    applymovement(ikitownlillie, moves(walk_in_place_right*2))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Yes\.
+    I will key an eye on Nebby")
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setflag(FLAG_HIDE_IKITOWN_HALA)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+    setvar(VAR_IKITOWN_STATE, 8)
+    setvar(VAR_HAUOLI_OUTSKIRTS_STATE, 1)
+    setflag(FLAG_HAUOLI_OUTSKIRTS_NEWGAME)
+    setflag(FLAG_MOM_IN_HOUSE_INTRO)
+    removeitem(ITEM_SPARKLING_STONE, 1)
+    warp(MAP_PLAYER_HOUSE, 8, 15)
+    waitstate
 }

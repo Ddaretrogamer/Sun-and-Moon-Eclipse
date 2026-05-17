@@ -1205,7 +1205,7 @@ Route1NN_BackOutOfStarter_6:
 # 937 "data/maps/Route1NN/scripts.pory"
 	speakername Route1NN_KukuiGoToIki_Text_0
 # 938 "data/maps/Route1NN/scripts.pory"
-	msgbox Route1NN_Trigger_GetStarters_Text_34
+	msgbox Route1NN_BackOutOfStarter_Text_1
 # 944 "data/maps/Route1NN/scripts.pory"
 	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Route1NN_Trigger_GetStarters_Text_35, Route1NN_Trigger_GetStarters_Text_36
 # 945 "data/maps/Route1NN/scripts.pory"
@@ -2419,7 +2419,7 @@ Route1NN_Trigger_GetStarters_Text_34:
 	.string "All right! Then let's get going up\n"
 	.string "to Iki Town, {PLAYER}.\p"
 	.string "Woo!\p"
-	.string "Time to meet the {COLOR RED}Island Kahuna!$"
+	.string "Time to meet the {COLOR RED}Island Kahuna{COLOR DARK_GRAY}!$"
 
 Route1NN_Trigger_GetStarters_Text_35:
 # 648 "data/maps/Route1NN/scripts.pory"
@@ -2452,6 +2452,13 @@ Route1NN_BackOutOfStarter_Text_0:
 # 720 "data/maps/Route1NN/scripts.pory"
 	.string "Go on and choose the one you'd like\n"
 	.string "to keep as your partner, cousin!$"
+
+Route1NN_BackOutOfStarter_Text_1:
+# 938 "data/maps/Route1NN/scripts.pory"
+	.string "All right! Then let's get going up\n"
+	.string "to Iki Town, {PLAYER}.\p"
+	.string "Woo!\p"
+	.string "Time to meet the {COLOR RED}Island Kahuna!$"
 
 Route1NN_Rockruff_Text_0:
 # 1020 "data/maps/Route1NN/scripts.pory"

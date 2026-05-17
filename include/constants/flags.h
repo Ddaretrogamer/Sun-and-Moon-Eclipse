@@ -703,7 +703,7 @@
 #define FLAG_MAHALO_BRIDGE_BROKEN  0x288 // Mahalo Bridge broken flag
 #define FLAG_HIDE_BRIDGE_LILLIE  0x289 // hide Lillie on the bridge
 #define FLAG_HIDE_BRIDGE_COSMOG  0x28A // hide Cosmog on the bridge
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
+#define FLAG_HIDE_IKITOWN_HALA  0x28B // hide Hala in Ikitown
 #define FLAG_UNUSED_0x28C  0x28C // Unused Flag
 #define FLAG_UNUSED_0x28D  0x28D // Unused Flag
 #define FLAG_UNUSED_0x28E  0x28E // Unused Flag

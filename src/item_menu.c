@@ -429,7 +429,14 @@ static const u8 sRegisterRight_Gfx[] = INCBIN_U8("graphics/bag/select_button_rig
 static const u8 sRegisterDown_Gfx[] = INCBIN_U8("graphics/bag/select_button_down.4bpp");
 static const u8 sRegisterLeft_Gfx[] = INCBIN_U8("graphics/bag/select_button_left.4bpp");
 
+// Key item wheel gfx
+static const u8 sRegisterUpL_Gfx[] = INCBIN_U8("graphics/bag/l_button.4bpp");
+static const u8 sRegisterRightL_Gfx[] = INCBIN_U8("graphics/bag/l_button_right.4bpp");
+static const u8 sRegisterDownL_Gfx[] = INCBIN_U8("graphics/bag/l_button_down.4bpp");
+static const u8 sRegisterLeftL_Gfx[] = INCBIN_U8("graphics/bag/l_button_left.4bpp");
+
 static const u8* const sRegisteredSelect_Gfx[] = {sRegisterUp_Gfx, sRegisterRight_Gfx, sRegisterDown_Gfx, sRegisterLeft_Gfx, sRegisterUp_Gfx};
+static const u8* const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
 
 static const u32 sKeyItemBoxGfx[] = INCBIN_U32("graphics/bag/key_item_box.4bpp");
 static const u16 sKeyItemBoxPal[] = INCBIN_U16("graphics/bag/key_item_box.gbapal");
@@ -1328,7 +1335,10 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
                 // 'offset' is the specific slot index (0, 1, 2, or 3)
                 // We use it to pick the correct icon graphic from your array
                 // And we keep the X coordinate at 96 so it stays aligned
-                BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[offset], 96, y - 1, 24, 16);
+                if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+                    BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[offset], 96, y - 1, 24, 16);
+                else // if (gBagPosition.pocket == POCKET_POKERIDE)
+                    BlitBitmapToWindow(windowId, sRegisteredSelectL_Gfx[offset], 96, y - 1, 24, 16);
             }
         }
     }

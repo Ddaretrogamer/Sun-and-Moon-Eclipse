@@ -429,6 +429,7 @@ script IkiTown_StartRivalBattle{
         speakername("Hau")
         msgbox("You should totally check out Iki Town!")
         setvar(VAR_IKITOWN_STATE, 1)
+        setflag(FLAG_HIDE_IKITOWN_HALA)
         release
         end
 }

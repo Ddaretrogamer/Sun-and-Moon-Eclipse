@@ -637,6 +637,8 @@ IkiTown_StartRivalBattle_1:
 # 431 "data/maps/IkiTownSouth/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 1
 # 432 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_HALA
+# 433 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
@@ -681,123 +683,123 @@ IkiTown_StartRivalBattle_15:
 
 
 IkiTown_Trigger_BottomGetStarters::
-# 437 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 438 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, IkiTown_Trigger_BottomGetStarters_Movement_0
+	lock
 # 439 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_BottomGetStarters_Movement_0
 # 440 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 441 "data/maps/IkiTownSouth/scripts.pory"
 	call IkiTown_Trigger_HauGetStarter
 	return
 
 
 IkiTown_Trigger_TopGetStarters::
-# 443 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 444 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, IkiTown_Trigger_TopGetStarters_Movement_0
+	lock
 # 445 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_TopGetStarters_Movement_0
 # 446 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 447 "data/maps/IkiTownSouth/scripts.pory"
 	call IkiTown_Trigger_HauGetStarter
 	return
 
 
 Ikitown_HauAfterBattle::
-# 450 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 451 "data/maps/IkiTownSouth/scripts.pory"
-	faceplayer
+	lock
 # 452 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
+	faceplayer
 # 453 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_StartRivalBattle_Text_10
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
 # 454 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_StartRivalBattle_Text_10
+# 455 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_KukuiAfterBattle::
-# 459 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 460 "data/maps/IkiTownSouth/scripts.pory"
-	faceplayer
+	lock
 # 461 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	faceplayer
 # 462 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 463 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 464 "data/maps/IkiTownSouth/scripts.pory"
+# 465 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_Trigger_LeaveIkitownEarly::
-# 469 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 470 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
+	lock
 # 471 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_Movement_0
+	playse SE_PIN
 # 472 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_1
+	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_Movement_0
 # 473 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_1
 # 474 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	waitmovement 0
 # 475 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 476 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 477 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_2
 # 478 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_2
 # 479 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 480 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_Trigger_LeaveIkitownEarly_left::
-# 484 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 485 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
+	lock
 # 486 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0
+	playse SE_PIN
 # 487 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
+	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0
 # 488 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
 # 489 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	waitmovement 0
 # 490 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 491 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 492 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2
 # 493 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2
 # 494 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 495 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_TrainerTipsSign::
-# 499 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 500 "data/maps/IkiTownSouth/scripts.pory"
+	lock
+# 501 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_TrainerTipsSign_Text_0
-# 509 "data/maps/IkiTownSouth/scripts.pory"
+# 510 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_lassNPC::
-# 514 "data/maps/IkiTownSouth/scripts.pory"
-	lock
 # 515 "data/maps/IkiTownSouth/scripts.pory"
-	faceplayer
+	lock
 # 516 "data/maps/IkiTownSouth/scripts.pory"
+	faceplayer
+# 517 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_lassNPC_Text_0
-# 521 "data/maps/IkiTownSouth/scripts.pory"
+# 522 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
@@ -1010,59 +1012,59 @@ IkiTown_StartRivalBattle_Movement_2:
 	jump_in_place_down
 	step_end
 
-# 438 "data/maps/IkiTownSouth/scripts.pory"
+# 439 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_BottomGetStarters_Movement_0:
-# 438 "data/maps/IkiTownSouth/scripts.pory"
+# 439 "data/maps/IkiTownSouth/scripts.pory"
 	walk_up
-# 438 "data/maps/IkiTownSouth/scripts.pory"
+# 439 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 444 "data/maps/IkiTownSouth/scripts.pory"
+# 445 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_TopGetStarters_Movement_0:
-# 444 "data/maps/IkiTownSouth/scripts.pory"
+# 445 "data/maps/IkiTownSouth/scripts.pory"
 	walk_down
-# 444 "data/maps/IkiTownSouth/scripts.pory"
+# 445 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 471 "data/maps/IkiTownSouth/scripts.pory"
+# 472 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_Movement_0:
-# 471 "data/maps/IkiTownSouth/scripts.pory"
+# 472 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
-# 471 "data/maps/IkiTownSouth/scripts.pory"
+# 472 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 473 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_Movement_1:
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 473 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 477 "data/maps/IkiTownSouth/scripts.pory"
+# 478 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_Movement_2:
-# 477 "data/maps/IkiTownSouth/scripts.pory"
+# 478 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
 	step_end
 
-# 486 "data/maps/IkiTownSouth/scripts.pory"
+# 487 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0:
-# 486 "data/maps/IkiTownSouth/scripts.pory"
+# 487 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
-# 486 "data/maps/IkiTownSouth/scripts.pory"
+# 487 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 488 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1:
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 488 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
 	step_end
 
-# 492 "data/maps/IkiTownSouth/scripts.pory"
+# 493 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2:
-# 492 "data/maps/IkiTownSouth/scripts.pory"
+# 493 "data/maps/IkiTownSouth/scripts.pory"
 	walk_right
 	step_end
 
@@ -1291,12 +1293,12 @@ IkiTown_StartRivalBattle_Text_10:
 	.string "You should totally check out Iki Town!$"
 
 Ikitown_KukuiAfterBattle_Text_0:
-# 462 "data/maps/IkiTownSouth/scripts.pory"
+# 463 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Iki Town is right up those stairs.\n"
 	.string "Come on, {PLAYER}!$"
 
 Ikitown_TrainerTipsSign_Text_0:
-# 500 "data/maps/IkiTownSouth/scripts.pory"
+# 501 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Trainer Tips\p"
 	.string "Pokémon can gain Exp. Points by\n"
 	.string "battling other Pokémon.\p"
@@ -1306,7 +1308,7 @@ Ikitown_TrainerTipsSign_Text_0:
 	.string "you are battling against!$"
 
 Ikitown_lassNPC_Text_0:
-# 516 "data/maps/IkiTownSouth/scripts.pory"
+# 517 "data/maps/IkiTownSouth/scripts.pory"
 	.string "If you happen to pick up a Potion\n"
 	.string "anywhere, use it on your Pokémon\l"
 	.string "when it's low on HP…\l"

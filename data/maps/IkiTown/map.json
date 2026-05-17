@@ -142,6 +142,7 @@
       "flag": "0"
     },
     {
+      "local_id": "ikitownman1",
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
       "x": 30,
       "y": 11,
@@ -155,6 +156,7 @@
       "flag": "0"
     },
     {
+      "local_id": "ikitownoldman1",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
       "x": 31,
       "y": 11,
@@ -197,20 +199,20 @@
       "local_id": "ikitownintrokukui2",
       "graphics_id": "OBJ_EVENT_GFX_KUKUI",
       "x": 23,
-      "y": 13,
+      "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Ikitown_KukuiSeeTapuKoko",
-      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+      "script": "ikitown_kukuidialog2",
+      "flag": "FLAG_HIDE_IKITOWN_HALA"
     },
     {
       "local_id": "ikitownlillie",
       "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
-      "x": 22,
+      "x": 21,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -218,8 +220,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+      "script": "ikitown_lilliedialog2",
+      "flag": "FLAG_HIDE_IKITOWN_HALA"
     },
     {
       "local_id": "ikitownhala",
@@ -232,8 +234,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_IKITOWN_INTRO_HAU"
+      "script": "ikitown_haladialog2",
+      "flag": "FLAG_HIDE_IKITOWN_HALA"
     }
   ],
   "warp_events": [
@@ -314,6 +316,42 @@
       "var": "VAR_IKITOWN_STATE",
       "var_value": "1",
       "script": "Ikitown_trigger_right"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "7",
+      "script": "Ikitown_trigger_GiveHalaSparklingStone"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "7",
+      "script": "Ikitown_trigger_GiveHalaSparklingStone"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "7",
+      "script": "Ikitown_trigger_GiveHalaSparklingStone"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "7",
+      "script": "Ikitown_trigger_GiveHalaSparklingStone"
     }
   ],
   "bg_events": [

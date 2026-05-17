@@ -297,8 +297,21 @@ script TapuKokoBridge_trigger_BridgeShake{
     special(ShakeCamera)
     waitstate
     delay(60)
-    applymovement(LOCALID_PLAYER, moves(walk_fast_up*3))
-    waitmovement(LOCALID_PLAYER)
+    getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
+    if (var(VAR_TEMP_1) == 20)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_fast_right, walk_fast_up*3))
+        waitmovement(LOCALID_PLAYER)
+    }
+    if (var(VAR_TEMP_1) == 22)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_fast_left, walk_fast_up*3))
+        waitmovement(LOCALID_PLAYER)
+    }
+    if (var(VAR_TEMP_1) == 21){
+        applymovement(LOCALID_PLAYER, moves(walk_fast_up*3))
+        waitmovement(LOCALID_PLAYER)
+    }
     removeobject(bridgecosmog, MAP_TAPU_KOKO_BRIDGE)
     setflag(FLAG_HIDE_BRIDGE_COSMOG)
     setvar(VAR_0x8004, 2)

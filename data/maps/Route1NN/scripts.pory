@@ -644,7 +644,7 @@ script Route1NN_Trigger_GetStarters{
     
     Woo!
     
-    Time to meet the {COLOR RED}Island Kahuna!")
+    Time to meet the {COLOR RED}Island Kahuna{COLOR DARK_GRAY}!")
     dynmultichoice(18,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Island Kahuna?!", "But why?!")
         if(var(VAR_RESULT) == 0)
         {
