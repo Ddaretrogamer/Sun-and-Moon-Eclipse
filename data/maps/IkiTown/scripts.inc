@@ -821,10 +821,12 @@ Ikitown_trigger_GiveHalaSparklingStone_21:
 # 675 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_MOM_IN_HOUSE_INTRO
 # 676 "data/maps/IkiTown/scripts.pory"
-	removeitem ITEM_SPARKLING_STONE, 1
+	clearflag FLAG_HIDE_PLAYER_MOM3
 # 677 "data/maps/IkiTown/scripts.pory"
-	warp MAP_PLAYER_HOUSE, 8, 15
+	removeitem ITEM_SPARKLING_STONE, 1
 # 678 "data/maps/IkiTown/scripts.pory"
+	warp MAP_PLAYER_HOUSE, 8, 15
+# 679 "data/maps/IkiTown/scripts.pory"
 	waitstate
 	return
 

@@ -673,6 +673,7 @@ script Ikitown_trigger_GiveHalaSparklingStone{
     setvar(VAR_HAUOLI_OUTSKIRTS_STATE, 1)
     setflag(FLAG_HAUOLI_OUTSKIRTS_NEWGAME)
     setflag(FLAG_MOM_IN_HOUSE_INTRO)
+    clearflag(FLAG_HIDE_PLAYER_MOM3)
     removeitem(ITEM_SPARKLING_STONE, 1)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate

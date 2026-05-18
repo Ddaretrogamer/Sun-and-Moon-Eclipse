@@ -127,6 +127,9 @@ static const u32 sSurfingPikachuScreenshotsTiles[] = INCBIN_U32("graphics/ui_scr
 static const u32 sSurfingPikachuScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/surfingpikachu_tiles.bin.lz");
 static const u16 sSurfingPikachuScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/surfingpikachu_tiles.gbapal");
 
+static const u32 sTheNextDayScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/TheNextDay_tiles.8bpp.lz");
+static const u32 sTheNextDayScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/TheNextDay_tiles.bin.lz");
+static const u16 sTheNextDayScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/TheNextDay_tiles.gbapal");
 // static const u32 sTabletScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.8bpp.smol");
 // static const u32 sTabletScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.bin.smolTM");
 // static const u16 sTabletScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/seacrown_tablet_tiles.gbapal");
@@ -156,6 +159,11 @@ static const struct Screenshot sScreenshotData[] = {
         .screenshotTiles = sSurfingPikachuScreenshotsTiles,
         .screenshotTilemap = sSurfingPikachuScreenshotsTilemap,
         .screenshotPalette = sSurfingPikachuScreenshotsPalette,
+    },
+    [SCREENSHOT_THE_NEXT_DAY] = {
+        .screenshotTiles = sTheNextDayScreenshotsTiles,
+        .screenshotTilemap = sTheNextDayScreenshotsTilemap,
+        .screenshotPalette = sTheNextDayScreenshotsPalette,
     },
 };
 

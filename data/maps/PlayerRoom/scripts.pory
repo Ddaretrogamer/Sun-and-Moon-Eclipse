@@ -5,11 +5,15 @@ mapscripts PlayerRoom_MapScripts{
         }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {applymovement(LOCALID_PLAYER, moves(face_up))
     hideobjectat(PlayerRoomMeowth, MAP_PLAYER_ROOM)
-    setflag(FLAG_MOM_IN_HOUSE_INTRO)}]
-    MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 0: RoomIntroSequence]
+    setflag(FLAG_MOM_IN_HOUSE_INTRO)
+    setflag(FLAG_HIDE_PLAYER_MOM3)
+    setflag(FLAG_HIDE_PLAYERHOUSE_STARTER)}
+    VAR_IKITOWN_STATE, 9 {applymovement(LOCALID_PLAYER, moves(face_up))}]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 0: RoomIntroSequence
+    VAR_IKITOWN_STATE, 9: PlayerRoomDoorbell]
 }
 
-script PlayerRoom_Wii{
+script PlayerRoom_Wii{  
     lock
     msgbox("A Wii console…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}
     but now isn't the time for games!")
@@ -98,5 +102,21 @@ script PlayerRoom_Trigger_TryingToLeaveWithoutShoes{
         release
         end
     }   
+    end
+}
+
+script PlayerRoomDoorbell{
+    lock
+    playse(SE_DING_DONG)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
+    waitmovement(LOCALID_PLAYER)
+    waitse
+    delay(150)
+    speakername("Mom")
+    msgbox("Was that the doorbell?
+    Go see who it is, {PLAYER}.")
+    setvar(VAR_IKITOWN_STATE, 10)
+    waitmessage
+    release
     end
 }

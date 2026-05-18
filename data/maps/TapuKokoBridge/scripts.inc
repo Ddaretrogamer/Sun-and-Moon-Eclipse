@@ -758,192 +758,196 @@ TapuKokoBridge_trigger_BridgeShake_7:
 # 427 "data/maps/TapuKokoBridge/scripts.pory"
 	playmoncry SPECIES_TAPU_KOKO, 0
 # 428 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmoncry
-# 429 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_M_FLY
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
 	applymovement bridgetapukoko, TapuKokoBridge_trigger_BridgeShake_Movement_8
+# 429 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmoncry
+# 430 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_M_FLY
 # 431 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement 0
+	applymovement bridgetapukoko, TapuKokoBridge_trigger_BridgeShake_Movement_9
 # 432 "data/maps/TapuKokoBridge/scripts.pory"
-	special HideCutsceneCinematicBars
-# 433 "data/maps/TapuKokoBridge/scripts.pory"
-	delay 39
-# 434 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_6
-# 435 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_3
-# 436 "data/maps/TapuKokoBridge/scripts.pory"
 	waitmovement 0
+# 433 "data/maps/TapuKokoBridge/scripts.pory"
+	special HideCutsceneCinematicBars
+# 434 "data/maps/TapuKokoBridge/scripts.pory"
+	delay 39
+# 435 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_6
+# 436 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_TryLeave_Movement_3
 # 437 "data/maps/TapuKokoBridge/scripts.pory"
-	delay 30
+	waitmovement 0
 # 438 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgecosmog2, TapuKokoBridge_trigger_BridgeShake_Movement_9
+	delay 30
 # 439 "data/maps/TapuKokoBridge/scripts.pory"
-	playmoncry SPECIES_COSMOG, 0
+	applymovement bridgecosmog2, TapuKokoBridge_trigger_BridgeShake_Movement_10
 # 440 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_0, MSGBOX_AUTOCLOSE
+	playmoncry SPECIES_COSMOG, 0
 # 441 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmoncry
-# 442 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgecosmog2
-# 443 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_10
-# 444 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 445 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_1
-# 467 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgecosmog2, TapuKokoBridge_trigger_BridgeShake_Movement_11
-# 468 "data/maps/TapuKokoBridge/scripts.pory"
-	playmoncry SPECIES_COSMOG, 0
-# 469 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgecosmog2
-# 470 "data/maps/TapuKokoBridge/scripts.pory"
 	msgbox TapuKokoBridge_trigger_BridgeShake_Text_0, MSGBOX_AUTOCLOSE
-# 471 "data/maps/TapuKokoBridge/scripts.pory"
+# 442 "data/maps/TapuKokoBridge/scripts.pory"
 	waitmoncry
-# 472 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_PIN
-# 473 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_12
-# 474 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 475 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_2, MSGBOX_AUTOCLOSE
-# 477 "data/maps/TapuKokoBridge/scripts.pory"
-	setvar VAR_RESULT, 1
-# 478 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_M_DETECT
-# 479 "data/maps/TapuKokoBridge/scripts.pory"
-	dofieldeffectsparkle 23, 30, 0
-# 480 "data/maps/TapuKokoBridge/scripts.pory"
-	waitfieldeffect FLDEFF_SPARKLE
-# 481 "data/maps/TapuKokoBridge/scripts.pory"
-	closemessage
-# 482 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgecosmog2, TapuKokoBridge_LillieCosmogEvent_Movement_12
-# 483 "data/maps/TapuKokoBridge/scripts.pory"
+# 443 "data/maps/TapuKokoBridge/scripts.pory"
 	waitmovement bridgecosmog2
-# 484 "data/maps/TapuKokoBridge/scripts.pory"
-	playmoncry SPECIES_COSMOG, 0
-# 485 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_3, MSGBOX_AUTOCLOSE
-# 486 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmoncry
-# 487 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_4, MSGBOX_AUTOCLOSE
-# 489 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_PIN
-# 490 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_2
-# 491 "data/maps/TapuKokoBridge/scripts.pory"
+# 444 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_11
+# 445 "data/maps/TapuKokoBridge/scripts.pory"
 	waitmovement bridgelillie
+# 446 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_1
+# 468 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgecosmog2, TapuKokoBridge_trigger_BridgeShake_Movement_12
+# 469 "data/maps/TapuKokoBridge/scripts.pory"
+	playmoncry SPECIES_COSMOG, 0
+# 470 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgecosmog2
+# 471 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_0, MSGBOX_AUTOCLOSE
+# 472 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmoncry
+# 473 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_PIN
+# 474 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_13
+# 475 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 476 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_2, MSGBOX_AUTOCLOSE
+# 478 "data/maps/TapuKokoBridge/scripts.pory"
+	setvar VAR_RESULT, 1
+# 479 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_M_DETECT
+# 480 "data/maps/TapuKokoBridge/scripts.pory"
+	dofieldeffectsparkle 23, 30, 0
+# 481 "data/maps/TapuKokoBridge/scripts.pory"
+	waitfieldeffect FLDEFF_SPARKLE
+# 482 "data/maps/TapuKokoBridge/scripts.pory"
+	closemessage
+# 483 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgecosmog2, TapuKokoBridge_LillieCosmogEvent_Movement_12
+# 484 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgecosmog2
+# 485 "data/maps/TapuKokoBridge/scripts.pory"
+	playmoncry SPECIES_COSMOG, 0
+# 486 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_3, MSGBOX_AUTOCLOSE
+# 487 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmoncry
+# 488 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_4, MSGBOX_AUTOCLOSE
+# 490 "data/maps/TapuKokoBridge/scripts.pory"
+	playse SE_PIN
+# 491 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_2
 # 492 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 493 "data/maps/TapuKokoBridge/scripts.pory"
 	msgbox TapuKokoBridge_trigger_BridgeShake_Text_5
-# 496 "data/maps/TapuKokoBridge/scripts.pory"
-	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, TapuKokoBridge_LillieCosmogEvent_Text_2, TapuKokoBridge_trigger_BridgeShake_Text_6
 # 497 "data/maps/TapuKokoBridge/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, TapuKokoBridge_LillieCosmogEvent_Text_2, TapuKokoBridge_trigger_BridgeShake_Text_6
+# 498 "data/maps/TapuKokoBridge/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq TapuKokoBridge_trigger_BridgeShake_11
 TapuKokoBridge_trigger_BridgeShake_10:
-# 502 "data/maps/TapuKokoBridge/scripts.pory"
+# 503 "data/maps/TapuKokoBridge/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq TapuKokoBridge_trigger_BridgeShake_14
 TapuKokoBridge_trigger_BridgeShake_13:
-# 509 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
 # 510 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 511 "data/maps/TapuKokoBridge/scripts.pory"
 	msgbox TapuKokoBridge_trigger_BridgeShake_Text_10, MSGBOX_AUTOCLOSE
-# 512 "data/maps/TapuKokoBridge/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 513 "data/maps/TapuKokoBridge/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 514 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_7
-# 515 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 516 "data/maps/TapuKokoBridge/scripts.pory"
-	giveitem ITEM_SPARKLING_STONE, 1
-# 517 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
-# 518 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_11, MSGBOX_AUTOCLOSE
-# 524 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_LillieCosmogEvent_Movement_16
-# 525 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 526 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
-# 527 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_12, MSGBOX_AUTOCLOSE
-# 528 "data/maps/TapuKokoBridge/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 529 "data/maps/TapuKokoBridge/scripts.pory"
+# 514 "data/maps/TapuKokoBridge/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 515 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_TryLeave_Movement_7
+# 516 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 517 "data/maps/TapuKokoBridge/scripts.pory"
+	giveitem ITEM_SPARKLING_STONE, 1
+# 518 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 519 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_11, MSGBOX_AUTOCLOSE
+# 525 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_LillieCosmogEvent_Movement_16
+# 526 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 527 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 528 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_12, MSGBOX_AUTOCLOSE
+# 529 "data/maps/TapuKokoBridge/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 530 "data/maps/TapuKokoBridge/scripts.pory"
-	playmoncry SPECIES_COSMOG, 0
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 531 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgecosmog2, TapuKokoBridge_Trigger_StartWingullBattle_Movement_2
+	playmoncry SPECIES_COSMOG, 0
 # 532 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmoncry
+	applymovement bridgecosmog2, TapuKokoBridge_Trigger_StartWingullBattle_Movement_2
 # 533 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_13, MSGBOX_AUTOCLOSE
+	waitmoncry
 # 534 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgecosmog2
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_13, MSGBOX_AUTOCLOSE
 # 535 "data/maps/TapuKokoBridge/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	waitmovement bridgecosmog2
 # 536 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_BALL_OPEN
+	fadescreenswapbuffers FADE_TO_BLACK
 # 537 "data/maps/TapuKokoBridge/scripts.pory"
-	removeobject bridgecosmog2
+	playse SE_BALL_OPEN
 # 538 "data/maps/TapuKokoBridge/scripts.pory"
-	waitse
+	removeobject bridgecosmog2
 # 539 "data/maps/TapuKokoBridge/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	waitse
 # 540 "data/maps/TapuKokoBridge/scripts.pory"
 	delay 30
 # 541 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_13
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 542 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement bridgelillie
-# 543 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
-# 544 "data/maps/TapuKokoBridge/scripts.pory"
-	msgbox TapuKokoBridge_trigger_BridgeShake_Text_14, MSGBOX_AUTOCLOSE
-# 554 "data/maps/TapuKokoBridge/scripts.pory"
 	delay 30
-# 555 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_BridgeShake_Movement_14
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
+	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_14
+# 544 "data/maps/TapuKokoBridge/scripts.pory"
+	waitmovement bridgelillie
+# 545 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 546 "data/maps/TapuKokoBridge/scripts.pory"
+	msgbox TapuKokoBridge_trigger_BridgeShake_Text_14, MSGBOX_AUTOCLOSE
 # 556 "data/maps/TapuKokoBridge/scripts.pory"
-	playse SE_LEDGE
+	delay 30
 # 557 "data/maps/TapuKokoBridge/scripts.pory"
-	waitse
+	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_BridgeShake_Movement_15
 # 558 "data/maps/TapuKokoBridge/scripts.pory"
 	playse SE_LEDGE
 # 559 "data/maps/TapuKokoBridge/scripts.pory"
 	waitse
 # 560 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	playse SE_LEDGE
 # 561 "data/maps/TapuKokoBridge/scripts.pory"
-	delay 30
+	waitse
 # 562 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_15
+	waitmovement LOCALID_PLAYER
 # 563 "data/maps/TapuKokoBridge/scripts.pory"
-	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_BridgeShake_Movement_16
+	delay 30
 # 564 "data/maps/TapuKokoBridge/scripts.pory"
-	waitmovement 0
+	applymovement bridgelillie, TapuKokoBridge_trigger_BridgeShake_Movement_16
 # 565 "data/maps/TapuKokoBridge/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
+	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_BridgeShake_Movement_17
 # 566 "data/maps/TapuKokoBridge/scripts.pory"
-	setflag FLAG_HIDE_BRIDGE_LILLIE
+	waitmovement 0
 # 567 "data/maps/TapuKokoBridge/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
+	fadescreenswapbuffers FADE_TO_BLACK
 # 568 "data/maps/TapuKokoBridge/scripts.pory"
-	warp MAP_IKI_TOWN, 5
+	setflag FLAG_HIDE_BRIDGE_LILLIE
 # 569 "data/maps/TapuKokoBridge/scripts.pory"
-	release
+	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
 # 570 "data/maps/TapuKokoBridge/scripts.pory"
+	warp MAP_IKI_TOWN, 5
+# 571 "data/maps/TapuKokoBridge/scripts.pory"
+	release
+# 572 "data/maps/TapuKokoBridge/scripts.pory"
 	releaseplayer
 	end
 
@@ -969,22 +973,22 @@ TapuKokoBridge_trigger_BridgeShake_8:
 	goto TapuKokoBridge_trigger_BridgeShake_7
 
 TapuKokoBridge_trigger_BridgeShake_11:
-# 499 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
 # 500 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 501 "data/maps/TapuKokoBridge/scripts.pory"
 	msgbox TapuKokoBridge_trigger_BridgeShake_Text_8
 	goto TapuKokoBridge_trigger_BridgeShake_10
 
 TapuKokoBridge_trigger_BridgeShake_14:
-# 504 "data/maps/TapuKokoBridge/scripts.pory"
-	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
 # 505 "data/maps/TapuKokoBridge/scripts.pory"
+	speakername TapuKokoBridge_trigger_BridgeShake_Text_7
+# 506 "data/maps/TapuKokoBridge/scripts.pory"
 	msgbox TapuKokoBridge_trigger_BridgeShake_Text_9
 	goto TapuKokoBridge_trigger_BridgeShake_13
 
 
 TapuKokoBridge_SetBrokenBridge::
-# 575 "data/maps/TapuKokoBridge/scripts.pory"
+# 577 "data/maps/TapuKokoBridge/scripts.pory"
 	setmaplayoutindex LAYOUT_TAPU_KOKO_BRIDGE_BROKEN
 	return
 
@@ -1455,101 +1459,109 @@ TapuKokoBridge_trigger_BridgeShake_Movement_7:
 	face_up
 	step_end
 
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
+# 428 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_BridgeShake_Movement_8:
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
-# 430 "data/maps/TapuKokoBridge/scripts.pory"
-	slide_up
+# 428 "data/maps/TapuKokoBridge/scripts.pory"
+	shake_horizontal
+# 428 "data/maps/TapuKokoBridge/scripts.pory"
+	shake_horizontal
 	step_end
 
-# 438 "data/maps/TapuKokoBridge/scripts.pory"
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_BridgeShake_Movement_9:
-# 438 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_in_place_right
-# 438 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_in_place_right
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
+# 431 "data/maps/TapuKokoBridge/scripts.pory"
+	slide_up
 	step_end
 
-# 443 "data/maps/TapuKokoBridge/scripts.pory"
+# 439 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_BridgeShake_Movement_10:
-# 443 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_in_place_left
-# 443 "data/maps/TapuKokoBridge/scripts.pory"
-	walk_in_place_left
+# 439 "data/maps/TapuKokoBridge/scripts.pory"
+	walk_in_place_right
+# 439 "data/maps/TapuKokoBridge/scripts.pory"
+	walk_in_place_right
 	step_end
 
-# 467 "data/maps/TapuKokoBridge/scripts.pory"
+# 444 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_BridgeShake_Movement_11:
-# 467 "data/maps/TapuKokoBridge/scripts.pory"
+# 444 "data/maps/TapuKokoBridge/scripts.pory"
+	walk_in_place_left
+# 444 "data/maps/TapuKokoBridge/scripts.pory"
+	walk_in_place_left
+	step_end
+
+# 468 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_BridgeShake_Movement_12:
+# 468 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_right
-# 467 "data/maps/TapuKokoBridge/scripts.pory"
+# 468 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_right
 	step_end
 
-# 473 "data/maps/TapuKokoBridge/scripts.pory"
-TapuKokoBridge_trigger_BridgeShake_Movement_12:
-# 473 "data/maps/TapuKokoBridge/scripts.pory"
+# 474 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_BridgeShake_Movement_13:
+# 474 "data/maps/TapuKokoBridge/scripts.pory"
 	emote_question_mark
-# 473 "data/maps/TapuKokoBridge/scripts.pory"
+# 474 "data/maps/TapuKokoBridge/scripts.pory"
 	face_down
 	step_end
 
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
-TapuKokoBridge_trigger_BridgeShake_Movement_13:
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_BridgeShake_Movement_14:
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	delay_16
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	delay_16
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	delay_16
-# 541 "data/maps/TapuKokoBridge/scripts.pory"
+# 543 "data/maps/TapuKokoBridge/scripts.pory"
 	face_up
 	step_end
 
-# 555 "data/maps/TapuKokoBridge/scripts.pory"
-TapuKokoBridge_trigger_BridgeShake_Movement_14:
-# 555 "data/maps/TapuKokoBridge/scripts.pory"
-	jump_in_place_down
-# 555 "data/maps/TapuKokoBridge/scripts.pory"
-	jump_in_place_down
-	step_end
-
-# 562 "data/maps/TapuKokoBridge/scripts.pory"
+# 557 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_trigger_BridgeShake_Movement_15:
-# 562 "data/maps/TapuKokoBridge/scripts.pory"
+# 557 "data/maps/TapuKokoBridge/scripts.pory"
+	jump_in_place_down
+# 557 "data/maps/TapuKokoBridge/scripts.pory"
+	jump_in_place_down
+	step_end
+
+# 564 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_BridgeShake_Movement_16:
+# 564 "data/maps/TapuKokoBridge/scripts.pory"
 	delay_16
-# 562 "data/maps/TapuKokoBridge/scripts.pory"
+# 564 "data/maps/TapuKokoBridge/scripts.pory"
 	delay_16
-# 562 "data/maps/TapuKokoBridge/scripts.pory"
+# 564 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
 	step_end
 
-# 563 "data/maps/TapuKokoBridge/scripts.pory"
-TapuKokoBridge_trigger_BridgeShake_Movement_16:
-# 563 "data/maps/TapuKokoBridge/scripts.pory"
+# 565 "data/maps/TapuKokoBridge/scripts.pory"
+TapuKokoBridge_trigger_BridgeShake_Movement_17:
+# 565 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
-# 563 "data/maps/TapuKokoBridge/scripts.pory"
+# 565 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
-# 563 "data/maps/TapuKokoBridge/scripts.pory"
+# 565 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_down
 	step_end
 
@@ -1608,11 +1620,11 @@ TapuKokoBridge_trigger_TryLeave2_Text_0:
 	.string "damaged the Plank Bridge, too…$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_0:
-# 440 "data/maps/TapuKokoBridge/scripts.pory"
+# 441 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Pew!$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_1:
-# 445 "data/maps/TapuKokoBridge/scripts.pory"
+# 446 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Oh…\n"
 	.string "Oh thank goodness!\p"
 	.string "You tried using your power again…\n"
@@ -1629,64 +1641,64 @@ TapuKokoBridge_trigger_BridgeShake_Text_1:
 	.string "And I couldn't even help you in return…$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_2:
-# 475 "data/maps/TapuKokoBridge/scripts.pory"
+# 476 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "What…\n"
 	.string "What is that?$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_3:
-# 485 "data/maps/TapuKokoBridge/scripts.pory"
+# 486 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Pew pew!$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_4:
-# 487 "data/maps/TapuKokoBridge/scripts.pory"
+# 488 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "A sparkling…stone?\n"
 	.string "It feels almost warm somehow…$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_5:
-# 492 "data/maps/TapuKokoBridge/scripts.pory"
+# 493 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Please, forgive me…\p"
 	.string "I am so grateful to you for helping us\n"
 	.string "out of that dangerous spot.$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_6:
-# 496 "data/maps/TapuKokoBridge/scripts.pory"
+# 497 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Are you the kahuna?$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_7:
-# 499 "data/maps/TapuKokoBridge/scripts.pory"
+# 500 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Lillie$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_8:
-# 500 "data/maps/TapuKokoBridge/scripts.pory"
+# 501 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "I'm…I'm Lillie.$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_9:
-# 505 "data/maps/TapuKokoBridge/scripts.pory"
+# 506 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "No no.\p"
 	.string "I'm…I'm Lillie.$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_10:
-# 510 "data/maps/TapuKokoBridge/scripts.pory"
+# 511 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "And I suppose…this stone must belong\n"
 	.string "to you.$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_11:
-# 518 "data/maps/TapuKokoBridge/scripts.pory"
+# 519 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Please…\p"
 	.string "Don't tell anyone about this…\n"
 	.string "About seeing Nebby…\p"
 	.string "It's…it's a secret, OK?$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_12:
-# 527 "data/maps/TapuKokoBridge/scripts.pory"
+# 528 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Come on, Into the bag, Nebby.$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_13:
-# 533 "data/maps/TapuKokoBridge/scripts.pory"
+# 534 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Pew…$"
 
 TapuKokoBridge_trigger_BridgeShake_Text_14:
-# 544 "data/maps/TapuKokoBridge/scripts.pory"
+# 546 "data/maps/TapuKokoBridge/scripts.pory"
 	.string "Um…\p"
 	.string "I'm worried we might get attacked again\n"
 	.string "by some wild Pokémon or…or something.\p"

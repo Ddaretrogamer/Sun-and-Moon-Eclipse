@@ -425,6 +425,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     waitmovement(0)
     delay(30)
     playmoncry(SPECIES_TAPU_KOKO, 0)
+    applymovement(bridgetapukoko, moves(shake_horizontal*2))
     waitmoncry
     playse(SE_M_FLY)
     applymovement(bridgetapukoko, moves(slide_up*9))  
@@ -536,6 +537,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     playse(SE_BALL_OPEN)
     removeobject(bridgecosmog2)
     waitse
+    delay(30)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     delay(30)
     applymovement(bridgelillie, moves(walk_down*2, delay_16*3, face_up))

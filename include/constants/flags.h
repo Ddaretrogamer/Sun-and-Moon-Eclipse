@@ -704,8 +704,8 @@
 #define FLAG_HIDE_BRIDGE_LILLIE  0x289 // hide Lillie on the bridge
 #define FLAG_HIDE_BRIDGE_COSMOG  0x28A // hide Cosmog on the bridge
 #define FLAG_HIDE_IKITOWN_HALA  0x28B // hide Hala in Ikitown
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
+#define FLAG_HIDE_PLAYER_MOM3  0x28C // hide player mom 3
+#define FLAG_HIDE_PLAYERHOUSE_STARTER  0x28D // hide the starter in the player's house
 #define FLAG_UNUSED_0x28E  0x28E // Unused Flag
 #define FLAG_UNUSED_0x28F  0x28F // Unused Flag
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag

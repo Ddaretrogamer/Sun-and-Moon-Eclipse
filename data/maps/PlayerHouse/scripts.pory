@@ -1,8 +1,37 @@
 mapscripts PlayerHouse_MapScripts{
+    MAP_SCRIPT_ON_TRANSITION{
+        callnative(Script_IsLeadMonShiny)
+        if (var(VAR_STARTER_MON) == 0){
+            if (var(VAR_RESULT) == TRUE){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(ROWLET))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(ROWLET))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 1){
+            if (var(VAR_RESULT) == TRUE){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(LITTEN))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(LITTEN))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 2){
+            if (var(VAR_RESULT) == TRUE){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(POPPLIO))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(POPPLIO))
+            }
+        }
+        end
+    }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(playerhousemom2, MAP_PLAYER_HOUSE)
     hideobjectat(playerhousemeowth2, MAP_PLAYER_HOUSE)}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 1: PlayerHouse_MomNewgame
-    VAR_MOM_IN_HOUSE_INTRO, 3: PlayerHouse_GotRunningShoes]
+    VAR_MOM_IN_HOUSE_INTRO, 3: PlayerHouse_GotRunningShoes
+    VAR_IKITOWN_STATE, 8: PlayerHouse_ShowMomPokemon]
 }
 
 
@@ -186,6 +215,107 @@ script PlayerHouse_Trigger_TryingToLeaveWithoutShoes2{
     your room to find them!")
     applymovement(LOCALID_PLAYER, moves(walk_down))
     waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
+
+script PlayerHouse_ShowMomPokemon{
+    lock
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(walk_up*2))
+    applymovement(playerhousestarter, moves(walk_up))
+    waitmovement(0)
+    delay(30)
+    playse(SE_PIN)
+    applymovement(playerhousemom3, moves(face_down, emote_exclamation_mark))
+    waitmovement(playerhousemom3)
+    speakername("Mom")
+    msgbox("Welcome back, {PLAYER}!
+
+    So what did you think of Kahuna Hala?")
+    playse(SE_PIN)
+    applymovement(playerhousemom3, moves(emote_exclamation_mark))
+    waitmovement(playerhousemom3)
+    msgbox("Oh! And look who you've got with you!")
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    if (var(VAR_STARTER_MON) == 0){
+        playmoncry(SPECIES_ROWLET, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Hoo?", MSGBOX_AUTOCLOSE)
+    }
+    if (var(VAR_STARTER_MON) == 2){
+        playmoncry(SPECIES_POPPLIO, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Bar?", MSGBOX_AUTOCLOSE)
+    }
+    if (var(VAR_STARTER_MON) == 1){
+        playmoncry(SPECIES_LITTEN, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Mrawr?", MSGBOX_AUTOCLOSE)
+    }
+    waitmoncry
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(playerhousemom3, moves(walk_up*2, walk_right*3, walk_down*4))
+    waitmovement(playerhousemom3)
+    speakername("Mom")
+    msgbox("It came running out to help you?
+    What a sweet little thing!")
+    dynmultichoice(20,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "That's right", "Right on Route 1")
+    if(var(VAR_RESULT) == 0)
+    {
+        speakername("Mom")
+        msgbox("And it saved you! That's amazing.
+        It must have been fate that you met!")
+    }
+    elif(var(VAR_RESULT) == 1){
+        speakername("Mom")
+        msgbox("And it saved you! That's amazing.
+        It must have been fate that you met!")
+    }
+    speakername("Mom")
+    msgbox("The two of you look great together\.
+    I feel happier just looking at the
+    pair of you!", MSGBOX_AUTOCLOSE)
+    applymovement(playerhousemeowth3, moves(walk_left, face_down))
+    waitmovement(playerhousemeowth3)
+    playmoncry(SPECIES_MEOWTH, 0)
+    applymovement(playerhousemeowth3, moves(walk_in_place_down*2))
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Mrrrrr!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    waitmessage
+    if (var(VAR_STARTER_MON) == 0){
+        playmoncry(SPECIES_ROWLET, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Hoo?", MSGBOX_AUTOCLOSE)
+    }
+    if (var(VAR_STARTER_MON) == 2){
+        playmoncry(SPECIES_POPPLIO, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Bar?", MSGBOX_AUTOCLOSE)
+    }
+    if (var(VAR_STARTER_MON) == 1){
+        playmoncry(SPECIES_LITTEN, 0)
+        applymovement(playerhousestarter, moves(emote_heart))
+        msgbox("Mrawr?", MSGBOX_AUTOCLOSE)
+    }
+    waitmoncry
+    delay(30)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    setvar(VAR_0x8000, 3)
+    setvar(VAR_RESULT, 1)
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    playfanfare(MUS_HEAL)
+    callnative(OpenScreenshotsFromScript)
+    waitstate
+    waitfanfare
+    setvar(VAR_IKITOWN_STATE, 9)
+    setflag(FLAG_HIDE_PLAYERHOUSE_STARTER)
+    delay(30)
+    warpsilent(MAP_PLAYER_ROOM, 12, 10)
+    waitstate
+    special(HealPlayerParty)
     release
     end
 }
