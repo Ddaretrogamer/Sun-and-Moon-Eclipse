@@ -418,14 +418,16 @@ PlayerHouse_ShowMomPokemon_21:
 	delay 30
 # 309 "data/maps/PlayerHouse/scripts.pory"
 	playfanfare MUS_HEAL
-# 311 "data/maps/PlayerHouse/scripts.pory"
+# 310 "data/maps/PlayerHouse/scripts.pory"
 	callnative OpenScreenshotsFromScript
-# 312 "data/maps/PlayerHouse/scripts.pory"
+# 311 "data/maps/PlayerHouse/scripts.pory"
 	waitstate
-# 313 "data/maps/PlayerHouse/scripts.pory"
+# 312 "data/maps/PlayerHouse/scripts.pory"
 	waitfanfare
-# 314 "data/maps/PlayerHouse/scripts.pory"
+# 313 "data/maps/PlayerHouse/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 9
+# 314 "data/maps/PlayerHouse/scripts.pory"
+	setflag FLAG_HIDE_PLAYERHOUSE_STARTER
 # 315 "data/maps/PlayerHouse/scripts.pory"
 	delay 30
 # 316 "data/maps/PlayerHouse/scripts.pory"
@@ -505,6 +507,20 @@ PlayerHouse_ShowMomPokemon_22:
 # 300 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_4, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_21
+
+
+PlayerHouse_TalkToMomAfterDoorbell::
+# 324 "data/maps/PlayerHouse/scripts.pory"
+	lock
+# 325 "data/maps/PlayerHouse/scripts.pory"
+	faceplayer
+# 326 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 327 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_0
+# 329 "data/maps/PlayerHouse/scripts.pory"
+	release
+	end
 
 
 # 77 "data/maps/PlayerHouse/scripts.pory"
@@ -789,3 +805,8 @@ PlayerHouse_ShowMomPokemon_Text_9:
 PlayerHouse_ShowMomPokemon_Text_10:
 # 284 "data/maps/PlayerHouse/scripts.pory"
 	.string "Mrrrrr!$"
+
+PlayerHouse_TalkToMomAfterDoorbell_Text_0:
+# 327 "data/maps/PlayerHouse/scripts.pory"
+	.string "Was that the doorbell?\n"
+	.string "Go see who it is, {PLAYER}.$"

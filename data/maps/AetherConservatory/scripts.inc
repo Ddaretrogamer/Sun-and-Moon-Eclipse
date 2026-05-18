@@ -227,12 +227,10 @@ AetherIntroSequence::
 # 128 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
 # 129 "data/maps/AetherConservatory/scripts.pory"
-	warpsilent MAP_ROUTE1, 27, 19
+	warp MAP_ROUTE1, 27, 19
 # 130 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
 # 131 "data/maps/AetherConservatory/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 132 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 
