@@ -111,7 +111,7 @@ script PlayerRoomDoorbell{
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
     waitmovement(LOCALID_PLAYER)
     waitse
-    delay(150)
+    delay(90)
     speakername("Mom")
     msgbox("Was that the doorbell?
     Go see who it is, {PLAYER}.")

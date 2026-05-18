@@ -319,3 +319,13 @@ script PlayerHouse_ShowMomPokemon{
     release
     end
 }
+
+script PlayerHouse_TalkToMomAfterDoorbell{
+    lock
+    faceplayer
+    speakername("Mom")
+    msgbox("Was that the doorbell?
+    Go see who it is, {PLAYER}.")
+    release
+    end
+}
