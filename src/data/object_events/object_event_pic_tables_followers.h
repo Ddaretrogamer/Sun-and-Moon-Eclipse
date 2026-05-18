@@ -5019,6 +5019,11 @@ static const struct SpriteFrameImage sPicTable_Noibat[] = {
 static const struct SpriteFrameImage sPicTable_Noivern[] = {
     overworld_ascending_frames(gObjectEventPic_Noivern, 4, 4),
 };
+#if P_ALOLAN_FORMS
+static const struct SpriteFrameImage sPicTable_NoivernAlola[] = {
+    overworld_ascending_frames(gObjectEventPic_NoivernAlola, 4, 4),
+};
+#endif //P_ALOLAN_FORMS
 #endif //P_FAMILY_NOIBAT
 
 #if P_FAMILY_XERNEAS

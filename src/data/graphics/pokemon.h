@@ -21191,6 +21191,21 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u16 gShinyOverworldPalette_Noivern[] = INCBIN_U16("graphics/pokemon/noivern/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+#if P_ALOLAN_FORMS
+    const u32 gMonFrontPic_NoivernAlola[] = INCBIN_U32("graphics/pokemon/noivern/alola/anim_front.4bpp.smol");
+    const u16 gMonPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/normal.gbapal");
+    const u32 gMonBackPic_NoivernAlola[] = INCBIN_U32("graphics/pokemon/noivern/alola/back.4bpp.smol");
+    const u16 gMonShinyPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/shiny.gbapal");
+    const u8 gMonIcon_NoivernAlola[] = INCBIN_U8("graphics/pokemon/noivern/alola/icon.4bpp");
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_NoivernAlola[] = INCBIN_COMP("graphics/pokemon/noivern/alola/overworld.4bpp");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+    const u16 gOverworldPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/overworld_normal.gbapal");
+    const u16 gShinyOverworldPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/overworld_shiny.gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //P_ALOLAN_FORMS
 #endif //P_FAMILY_NOIBAT
 
 #if P_FAMILY_XERNEAS

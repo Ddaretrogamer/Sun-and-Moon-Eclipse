@@ -216,6 +216,8 @@ Debug_EventScript_Script_1::
 	giveitem ITEM_TM_CASE 1
 	giveitem ITEM_MASTER_BALL 100
 	givemon SPECIES_LYCANROC 100
+	givemon SPECIES_NOIVERN 100
+	givemon SPECIES_NOIVERN_ALOLA 100
 	release
 	end
 

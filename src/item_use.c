@@ -2008,8 +2008,8 @@ void ItemUseOutOfBattle_FlashTool(u8 taskId)
     PlayerGetDestCoords(&x, &y);
     behavior = MapGridGetMetatileBehaviorAt(x, y);
     
-    // Prevent transformation indoors (unless already transformed into Noivern)
-    if (gMapHeader.mapType == MAP_TYPE_INDOOR && VarGet(VAR_TRANSFORM_MON) != SPECIES_NOIVERN)
+    // Prevent transformation indoors (unless already transformed into Noivern Alola)
+    if (gMapHeader.mapType == MAP_TYPE_INDOOR && VarGet(VAR_TRANSFORM_MON) != SPECIES_NOIVERN_ALOLA)
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
         return;
@@ -2037,7 +2037,7 @@ void ItemUseOnFieldCB_FlashTool(u8 taskId)
         FlagClear(FLAG_SHINY_RIDE_SET);
     }
 
-    if (VarGet(VAR_TRANSFORM_MON) == SPECIES_NOIVERN)
+    if (VarGet(VAR_TRANSFORM_MON) == SPECIES_NOIVERN_ALOLA)
     {
         VarSet(VAR_TRANSFORM_MON, SPECIES_NONE);
         FlagClear(FLAG_RIDE_PAGER_SHINY); // Clear when detransforming
@@ -2050,7 +2050,7 @@ void ItemUseOnFieldCB_FlashTool(u8 taskId)
     else
     {
         FlagClear(FLAG_RIDE_PAGER_SHINY); // Clear Ride Pager shiny flag for hardcoded species
-        VarSet(VAR_TRANSFORM_MON, SPECIES_NOIVERN);
+        VarSet(VAR_TRANSFORM_MON, SPECIES_NOIVERN_ALOLA);
         ChooseMonForTransform();
         UnlockPlayerFieldControls();
         UnfreezeObjectEvents();

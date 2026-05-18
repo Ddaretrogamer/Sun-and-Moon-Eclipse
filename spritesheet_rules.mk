@@ -3922,6 +3922,9 @@ $(POKEMONGFXDIR)/noibat/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/noivern/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(POKEMONGFXDIR)/noivern/alola/overworld.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(POKEMONGFXDIR)/xerneas/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 

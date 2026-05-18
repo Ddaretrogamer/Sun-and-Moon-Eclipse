@@ -2074,7 +2074,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] = {
             [RIDE_SPRITE_DIR_EAST] = { .playerX=0,  .playerY=-8,  .playerRendersInFront=RIDER_SHOW_INFRONT },
         }
     },
-    [SPECIES_NOIVERN] = {
+    [SPECIES_NOIVERN_ALOLA] = {
         .riderGfxId = { [MALE] = OBJ_EVENT_GFX_ELIO_RIDING, [FEMALE] = OBJ_EVENT_GFX_SELENE_RIDING },
         .spriteInfo = {
             [RIDE_SPRITE_DIR_DOWN] = { .playerX=0,  .playerY=-7,  .playerRendersInFront=RIDER_SHOW_BEHIND },

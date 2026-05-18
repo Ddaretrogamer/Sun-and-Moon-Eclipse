@@ -15,8 +15,8 @@
   "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(NOIBAT)",
-      "x": 11,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOIVERN_ALOLA)",
+      "x": 9,
       "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
@@ -30,7 +30,7 @@
     {
       "local_id": "Phant",
       "graphics_id": "OBJ_EVENT_GFX_ALOLA_ACE_M",
-      "x": 10,
+      "x": 11,
       "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",

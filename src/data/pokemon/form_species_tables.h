@@ -1815,6 +1815,16 @@ static const u16 sAvaluggFormSpeciesIdTable[] = {
 };
 #endif //P_FAMILY_BERGMITE
 
+#if P_FAMILY_NOIBAT
+static const u16 sNoivernFormSpeciesIdTable[] = {
+    SPECIES_NOIVERN,
+#if P_ALOLAN_FORMS
+    SPECIES_NOIVERN_ALOLA,
+#endif
+    FORM_SPECIES_END,
+};
+#endif //P_FAMILY_NOIBAT
+
 #if P_FAMILY_XERNEAS
 static const u16 sXerneasFormSpeciesIdTable[] = {
     SPECIES_XERNEAS_NEUTRAL,

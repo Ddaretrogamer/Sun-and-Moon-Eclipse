@@ -5755,7 +5755,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_NOIVERN] =
+    [SPECIES_NOIVERN_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_FLY,
         .spriteInfo = 

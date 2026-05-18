@@ -6534,7 +6534,79 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         )
         .levelUpLearnset = sNoivernLevelUpLearnset,
         .teachableLearnset = sNoivernTeachableLearnset,
+        .formSpeciesIdTable = sNoivernFormSpeciesIdTable,
     },
+
+#if P_ALOLAN_FORMS
+    [SPECIES_NOIVERN_ALOLA] =
+    {
+        .baseHP        = 85,
+        .baseAttack    = 50,
+        .baseDefense   = 95,
+        .baseSpeed     = 150,
+        .baseSpAttack  = 125,
+        .baseSpDefense = 95,
+        .types = MON_TYPES(TYPE_ICE, TYPE_DRAGON),
+        .catchRate = 45,
+        .expYield = 187,
+        .evYield_Speed = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = NOIBAT_EGG_GROUPS,
+        .abilities = { ABILITY_REFRIGERATE, ABILITY_INFILTRATOR, ABILITY_ICE_SCALES },
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = TRUE,
+        .speciesName = _("Noivern"),
+        .cryId = CRY_NOIVERN,
+        .natDexNum = NATIONAL_DEX_NOIVERN,
+        .categoryName = _("Sound Wave"),
+        .height = 15,
+        .weight = 850,
+        .description = COMPOUND_STRING(
+            "An Alolan Noivern adapted to icy mountain\n"
+            "peaks. Its powerful wings generate\n"
+            "ultrasonic waves that freeze the air,\n"
+            "shattering anything caught in their path."),
+        .pokemonScale = 268,
+        .pokemonOffset = 2,
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_NoivernAlola,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 3,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 32),
+            ANIMCMD_FRAME(0, 20),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_NoivernAlola,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 4,
+        .backAnimId = BACK_ANIM_JOLT_RIGHT,
+        .palette = gMonPalette_NoivernAlola,
+        .shinyPalette = gMonShinyPalette_NoivernAlola,
+        .iconSprite = gMonIcon_NoivernAlola,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(5, 10, SHADOW_SIZE_L)
+        FOOTPRINT(Noivern)
+        OVERWORLD(
+            sPicTable_NoivernAlola,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_NoivernAlola,
+            gShinyOverworldPalette_NoivernAlola
+        )
+        .isAlolanForm = TRUE,
+        .levelUpLearnset = sNoivernAlolaLevelUpLearnset,
+        .teachableLearnset = sNoivernAlolaTeachableLearnset,
+        .formSpeciesIdTable = sNoivernFormSpeciesIdTable,
+    },
+#endif //P_ALOLAN_FORMS
 #endif //P_FAMILY_NOIBAT
 
 #if P_FAMILY_XERNEAS
