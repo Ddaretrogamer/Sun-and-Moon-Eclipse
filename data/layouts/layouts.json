@@ -5533,6 +5533,16 @@
       "blockdata_filepath": "data/layouts/Route1_closed/map.bin"
     },
     {
+      "id": "LAYOUT_ROUTE1_leftclosed",
+      "name": "Route1_leftclosed_Layout",
+      "width": 44,
+      "height": 38,
+      "primary_tileset": "gTileset_orangeislands",
+      "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
+      "border_filepath": "data/layouts/Route1_leftclosed/border.bin",
+      "blockdata_filepath": "data/layouts/Route1_leftclosed/map.bin"
+    },
+    {
       "id": "LAYOUT_HAUOLI_OUTSKIRTS",
       "name": "HauoliOutskirts_Layout",
       "width": 64,

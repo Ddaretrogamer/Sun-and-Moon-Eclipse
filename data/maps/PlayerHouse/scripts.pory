@@ -28,7 +28,9 @@ mapscripts PlayerHouse_MapScripts{
         end
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(playerhousemom2, MAP_PLAYER_HOUSE)
-    hideobjectat(playerhousemeowth2, MAP_PLAYER_HOUSE)}]
+    hideobjectat(playerhousemeowth2, MAP_PLAYER_HOUSE)}
+    VAR_IKITOWN_STATE, 8 {clearflag(FLAG_HIDE_PLAYERHOUSE_STARTER)
+    addobject(playerhousestarter)}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 1: PlayerHouse_MomNewgame
     VAR_MOM_IN_HOUSE_INTRO, 3: PlayerHouse_GotRunningShoes
     VAR_IKITOWN_STATE, 8: PlayerHouse_ShowMomPokemon]
@@ -301,6 +303,7 @@ script PlayerHouse_ShowMomPokemon{
     }
     waitmoncry
     delay(30)
+    special(HealPlayerParty)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setvar(VAR_0x8000, 3)
     setvar(VAR_RESULT, 1)
@@ -315,7 +318,6 @@ script PlayerHouse_ShowMomPokemon{
     delay(30)
     warpsilent(MAP_PLAYER_ROOM, 12, 10)
     waitstate
-    special(HealPlayerParty)
     release
     end
 }

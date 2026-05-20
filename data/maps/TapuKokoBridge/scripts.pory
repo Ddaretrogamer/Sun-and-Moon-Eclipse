@@ -396,7 +396,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
     waitmovement(0)
     applymovement(bridgetapukoko, moves(walk_faster_left*18))
-    delay(30)
+    delay(28)
     applymovement(LOCALID_PLAYER, moves(slide_down*3))
     playse(SE_FALL)
     waitmovement(0)

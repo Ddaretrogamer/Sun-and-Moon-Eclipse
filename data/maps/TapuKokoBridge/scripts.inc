@@ -700,7 +700,7 @@ TapuKokoBridge_trigger_BridgeShake_7:
 # 398 "data/maps/TapuKokoBridge/scripts.pory"
 	applymovement bridgetapukoko, TapuKokoBridge_trigger_BridgeShake_Movement_3
 # 399 "data/maps/TapuKokoBridge/scripts.pory"
-	delay 30
+	delay 28
 # 400 "data/maps/TapuKokoBridge/scripts.pory"
 	applymovement LOCALID_PLAYER, TapuKokoBridge_trigger_BridgeShake_Movement_4
 # 401 "data/maps/TapuKokoBridge/scripts.pory"

@@ -468,10 +468,6 @@ script Route1NN_Trigger_GetStarters{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 0)
-            playse(SE_BALL_OPEN)
-            removeobject(rowlet2)
-            removeobject(rowletshiny2)
-            delay(60)
             break
         }
         else{
@@ -526,10 +522,6 @@ script Route1NN_Trigger_GetStarters{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 1)
-            playse(SE_BALL_OPEN)
-            removeobject(litten2)
-            removeobject(littenshiny2)
-            delay(60)
             break
         }
         else{
@@ -584,10 +576,6 @@ script Route1NN_Trigger_GetStarters{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 2)
-            playse(SE_BALL_OPEN)
-            removeobject(popplio2)
-            removeobject(popplioshiny2)
-            delay(60)
             break
         }
         else{
@@ -764,10 +752,6 @@ script Route1NN_BackOutOfStarter{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 0)
-            playse(SE_BALL_OPEN)
-            removeobject(rowlet2)
-            removeobject(rowletshiny2)
-            delay(60)
             break
         }
         else{
@@ -822,10 +806,6 @@ script Route1NN_BackOutOfStarter{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 1)
-            playse(SE_BALL_OPEN)
-            removeobject(litten2)
-            removeobject(littenshiny2)
-            delay(60)
             break
         }
         else{
@@ -880,10 +860,6 @@ script Route1NN_BackOutOfStarter{
                 delay(60)
             }
             setvar(VAR_STARTER_MON, 2)
-            playse(SE_BALL_OPEN)
-            removeobject(popplio2)
-            removeobject(popplioshiny2)
-            delay(60)
             break
         }
         else{

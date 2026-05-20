@@ -706,7 +706,7 @@
 #define FLAG_HIDE_IKITOWN_HALA  0x28B // hide Hala in Ikitown
 #define FLAG_HIDE_PLAYER_MOM3  0x28C // hide player mom 3
 #define FLAG_HIDE_PLAYERHOUSE_STARTER  0x28D // hide the starter in the player's house
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
+#define FLAG_OPEN_TRAINER_SCHOOL  0x28E // open the trainer schooL
 #define FLAG_UNUSED_0x28F  0x28F // Unused Flag
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag
 #define FLAG_UNUSED_0x291  0x291 // Unused Flag

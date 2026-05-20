@@ -1,6 +1,10 @@
 mapscripts Route1_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
         call_if_unset(FLAG_HAUOLI_OUTSKIRTS_NEWGAME, Route1CloseGates)
+        if(flag(FLAG_HAUOLI_OUTSKIRTS_NEWGAME))
+        {
+            call_if_unset(FLAG_OPEN_TRAINER_SCHOOL, Route1CloseGates2)
+        }
         setrespawn(HEAL_LOCATION_PLAYER_HOUSE)
         end
         }
@@ -55,6 +59,11 @@ script Route1_Trigger_BlockRightPath{
 
 script Route1CloseGates{
     setmaplayoutindex(LAYOUT_ROUTE1_closed)
+    return
+}
+
+script Route1CloseGates2{
+    setmaplayoutindex(LAYOUT_ROUTE1_leftclosed)
     return
 }
 
