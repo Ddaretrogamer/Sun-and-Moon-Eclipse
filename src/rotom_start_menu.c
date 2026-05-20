@@ -1456,7 +1456,7 @@ static void RotomPhone_OverworldMenu_Init(bool32 firstInit)
         return;
     }
 
-    if (RP_CONFIG_USE_ROTOM_PHONE && RP_CONFIG_UPDATE_MESSAGE_SOUND)
+    if (RP_CONFIG_ROTOM_ACTIVE && RP_CONFIG_UPDATE_MESSAGE_SOUND)
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x80);
 
     sRotomPhone_StartMenu->menuOverworldLoading = FALSE;
@@ -1751,7 +1751,7 @@ static void RotomPhone_OverworldMenu_LoadBgGfx(bool32 firstInit)
 #define ROTOM_SPEECH_BOTTOM_ROW_Y   1
 static void RotomPhone_OverworldMenu_CreateSpeechWindows(void)
 {
-    if (!RP_CONFIG_USE_ROTOM_PHONE)
+    if (!RP_CONFIG_ROTOM_ACTIVE)
         return;
 
     DecompressDataWithHeaderVram(sRotomPhone_OverworldSpeechTilemap, GetBgTilemapBuffer(0));
@@ -1793,7 +1793,7 @@ static void RotomPhone_OverworldMenu_PrintRotomSpeech(u8 textBuffer[80], bool32 
 
 static void RotomPhone_OverworldMenu_PrintGreeting(void)
 {
-    if (!RP_CONFIG_USE_ROTOM_PHONE)
+    if (!RP_CONFIG_ROTOM_ACTIVE)
         return;
     
     u8 textBuffer[80];
@@ -1867,7 +1867,7 @@ static enum RotomPhone_Overworld_Messages RotomPhone_OverworldMenu_GetRandomMess
 
 static void RotomPhone_OverworldMenu_CheckUpdateMessage(u8 taskId)
 {
-    if (!tRotomUpdateTimer && RP_CONFIG_USE_ROTOM_PHONE)
+    if (!tRotomUpdateTimer && RP_CONFIG_ROTOM_ACTIVE)
     {
         switch (tRotomUpdateMessage)
         {
@@ -2160,7 +2160,7 @@ static void RotomPhone_OverworldMenu_PrintAdventure(u8 taskId)
 static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
 {
     u8 fontId;
-    if (RP_CONFIG_USE_ROTOM_PHONE)
+    if (RP_CONFIG_ROTOM_ACTIVE)
     {
         u8 textBuffer[80];
 
@@ -2182,7 +2182,7 @@ static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
             StringAppend(textBuffer, sRotomPhoneOptions[menuSelectedOverworld].rotomSpeech);
         RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, FALSE, TRUE);
     }
-    else
+    else if (!RP_CONFIG_USE_ROTOM_PHONE)
     {
         u8 menuName[24];
         StringCopy(menuName, sRotomPhoneOptions[menuSelectedOverworld].menuName);
@@ -2441,7 +2441,7 @@ static void Task_RotomPhone_OverworldMenu_PhoneSlideOpen(u8 taskId)
     else
     {
         ReleaseComfyAnim(tPhoneComfyAnimId);
-        if (RP_CONFIG_USE_ROTOM_PHONE)
+        if (RP_CONFIG_ROTOM_ACTIVE)
             RotomPhone_StartMenu_CreateRotomFaceSprite(TRUE);
         else
             RotomPhone_OverworldMenu_ContinueInit(TRUE);
@@ -2539,7 +2539,7 @@ static void Task_RotomPhone_OverworldMenu_HandleMainInput(u8 taskId)
     }
     else if (JOY_NEW(B_BUTTON) && sRotomPhone_StartMenu->menuOverworldLoading == FALSE)
     {
-        if (RP_CONFIG_USE_ROTOM_PHONE)
+        if (RP_CONFIG_ROTOM_ACTIVE)
         {
             gTasks[taskId].func = Task_RotomPhone_OverworldMenu_RotomShutdown;
             RotomPhone_StartMenu_RotomShutdownPreparation(taskId, TRUE);
@@ -2610,7 +2610,7 @@ static void Task_RotomPhone_OverworldMenu_RotomShutdown(u8 taskId)
 static void Task_RotomPhone_OverworldMenu_CloseAndSave(u8 taskId)
 {
     TaskFunc func;
-    if (RP_CONFIG_USE_ROTOM_PHONE)
+    if (RP_CONFIG_ROTOM_ACTIVE)
         func = Task_RotomPhone_OverworldMenu_RotomShutdown;
     else
         func = Task_RotomPhone_OverworldMenu_PhoneSlideClose;
@@ -3782,7 +3782,7 @@ static void RotomPhone_StartMenu_LoadRotomFaceSpritesheet(void)
 
 static void RotomPhone_StartMenu_CreateRotomFaceSprite(bool32 rotomFade)
 {
-    if (!RP_CONFIG_USE_ROTOM_PHONE || sRotomPhone_StartMenu->menuRotomFaceSpriteId != SPRITE_NONE)
+    if (!RP_CONFIG_ROTOM_ACTIVE || sRotomPhone_StartMenu->menuRotomFaceSpriteId != SPRITE_NONE)
         return;
 
     bool32 flash = FALSE;
@@ -3861,6 +3861,8 @@ static void RotomPhone_StartMenu_CreateRotomFaceSprite(bool32 rotomFade)
 
 static void RotomPhone_StartMenu_UpdateRotomFaceAnim(bool32 input)
 {
+    if (sRotomPhone_StartMenu->menuRotomFaceSpriteId == SPRITE_NONE)
+        return;
     enum RotomPhone_FaceExpressions rotomFace = RP_FACE_HAPPY;
     u32 randMax = sRotomPhone_StartMenu->rotomFaceLastLoaded + 1;
     if (!input)
@@ -3960,7 +3962,7 @@ static bool32 RotomPhone_StartMenu_UnlockedFunc_SafariFlag(void)
 static bool32 RotomPhone_StartMenu_UnlockedFunc_RotomReality(void)
 {
     if (!RotomPhone_StartMenu_IsRotomReality())
-        return RP_CONFIG_USE_ROTOM_PHONE && !GetSafariZoneFlag();
+        return RP_CONFIG_ROTOM_ACTIVE && !GetSafariZoneFlag();
     else
         return FALSE;
 }
