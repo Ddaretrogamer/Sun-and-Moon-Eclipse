@@ -108,6 +108,7 @@ script PlayerRoom_Trigger_TryingToLeaveWithoutShoes{
 script PlayerRoomDoorbell{
     lock
     playse(SE_DING_DONG)
+    playbgm(MUS_USUM_IKITOWN_DAY, FALSE)
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
     waitmovement(LOCALID_PLAYER)
     waitse

@@ -204,22 +204,24 @@ PlayerRoomDoorbell::
 # 110 "data/maps/PlayerRoom/scripts.pory"
 	playse SE_DING_DONG
 # 111 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
+	playbgm MUS_USUM_IKITOWN_DAY, FALSE
 # 112 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
 # 113 "data/maps/PlayerRoom/scripts.pory"
-	waitse
+	waitmovement LOCALID_PLAYER
 # 114 "data/maps/PlayerRoom/scripts.pory"
-	delay 90
+	waitse
 # 115 "data/maps/PlayerRoom/scripts.pory"
-	speakername PlayerRoomDoorbell_Text_0
+	delay 90
 # 116 "data/maps/PlayerRoom/scripts.pory"
+	speakername PlayerRoomDoorbell_Text_0
+# 117 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoomDoorbell_Text_1
-# 118 "data/maps/PlayerRoom/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 10
 # 119 "data/maps/PlayerRoom/scripts.pory"
-	waitmessage
+	setvar VAR_IKITOWN_STATE, 10
 # 120 "data/maps/PlayerRoom/scripts.pory"
+	waitmessage
+# 121 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
@@ -280,11 +282,11 @@ PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0:
 	walk_up
 	step_end
 
-# 111 "data/maps/PlayerRoom/scripts.pory"
+# 112 "data/maps/PlayerRoom/scripts.pory"
 PlayerRoomDoorbell_Movement_0:
-# 111 "data/maps/PlayerRoom/scripts.pory"
+# 112 "data/maps/PlayerRoom/scripts.pory"
 	emote_exclamation_mark
-# 111 "data/maps/PlayerRoom/scripts.pory"
+# 112 "data/maps/PlayerRoom/scripts.pory"
 	face_down
 	step_end
 
@@ -321,10 +323,10 @@ PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0:
 	.string "in your room to find your shoes!$"
 
 PlayerRoomDoorbell_Text_0:
-# 115 "data/maps/PlayerRoom/scripts.pory"
+# 116 "data/maps/PlayerRoom/scripts.pory"
 	.string "Mom$"
 
 PlayerRoomDoorbell_Text_1:
-# 116 "data/maps/PlayerRoom/scripts.pory"
+# 117 "data/maps/PlayerRoom/scripts.pory"
 	.string "Was that the doorbell?\n"
 	.string "Go see who it is, {PLAYER}.$"
