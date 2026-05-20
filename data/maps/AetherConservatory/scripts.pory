@@ -118,6 +118,8 @@ script AetherIntroSequence{
     setvar(VAR_0x8000, 0)
     delay(90)
     setflag(FLAG_SHOW_LILLIE_INTRO)
+    setflag(FLAG_KUKUI_CATCHING_TUTORIAL1)
+    setflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
     setvar(VAR_RESULT, 1)
     playse(SE_M_COSMIC_POWER)
     callnative(OpenScreenshotsFromScript)

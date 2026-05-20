@@ -220,8 +220,10 @@ PlayerRoomDoorbell::
 # 119 "data/maps/PlayerRoom/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 10
 # 120 "data/maps/PlayerRoom/scripts.pory"
-	waitmessage
+	clearflag FLAG_KUKUI_CATCHING_TUTORIAL1
 # 121 "data/maps/PlayerRoom/scripts.pory"
+	waitmessage
+# 122 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 

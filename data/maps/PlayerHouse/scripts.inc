@@ -524,12 +524,23 @@ PlayerHouse_TalkToMomAfterDoorbell::
 # 327 "data/maps/PlayerHouse/scripts.pory"
 	faceplayer
 # 328 "data/maps/PlayerHouse/scripts.pory"
+	compare VAR_IKITOWN_STATE, 10
+	goto_if_eq PlayerHouse_TalkToMomAfterDoorbell_2
+# 334 "data/maps/PlayerHouse/scripts.pory"
 	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
-# 329 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_0
-# 331 "data/maps/PlayerHouse/scripts.pory"
+# 335 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_1
+PlayerHouse_TalkToMomAfterDoorbell_1:
+# 340 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
+
+PlayerHouse_TalkToMomAfterDoorbell_2:
+# 329 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 330 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_0
+	goto PlayerHouse_TalkToMomAfterDoorbell_1
 
 
 # 79 "data/maps/PlayerHouse/scripts.pory"
@@ -816,6 +827,12 @@ PlayerHouse_ShowMomPokemon_Text_10:
 	.string "Mrrrrr!$"
 
 PlayerHouse_TalkToMomAfterDoorbell_Text_0:
-# 329 "data/maps/PlayerHouse/scripts.pory"
+# 330 "data/maps/PlayerHouse/scripts.pory"
 	.string "Was that the doorbell?\n"
 	.string "Go see who it is, {PLAYER}.$"
+
+PlayerHouse_TalkToMomAfterDoorbell_Text_1:
+# 335 "data/maps/PlayerHouse/scripts.pory"
+	.string "Sleep does the body good!\n"
+	.string "Traveling is a true education!\p"
+	.string "And unpacking… will be the death of me!$"

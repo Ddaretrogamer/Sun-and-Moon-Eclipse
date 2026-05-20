@@ -339,20 +339,20 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         msgbox("Hoo!", MSGBOX_AUTOCLOSE)
-        waitmovement(rowletshiny2)
         closemessage
+        applymovement(rowletshiny2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
+        waitmovement(rowletshiny2)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         delay(30)
     }
     else{
         playmoncry(SPECIES_ROWLET, 0)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
         msgbox("Hoo!", MSGBOX_AUTOCLOSE)
-        waitmovement(rowlet2)
         closemessage
+        applymovement(rowlet2, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
+        waitmovement(rowlet2)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
         delay(30)
     }
@@ -363,25 +363,23 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
+            closemessage
             applymovement(littenshiny2, moves(jump_in_place_down))
             playse(SE_LEDGE)
             waitmovement(littenshiny2)
-            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
-            closemessage
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            waitmovement(littenshiny2)
             delay(30)
         }
         else{
             playmoncry(SPECIES_LITTEN, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
+            closemessage
             applymovement(litten2, moves(jump_in_place_down))
             playse(SE_LEDGE)
             waitmovement(litten2)
-            msgbox("Mrawr.", MSGBOX_AUTOCLOSE)
-            closemessage
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-            waitmovement(litten2)
             delay(30)
         }
     speakername("Kukui")
@@ -391,22 +389,28 @@ script Route1NN_Trigger_GetStarters{
     if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            closemessage
             applymovement(popplioshiny2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
             playse(SE_M_CRABHAMMER)
-            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            waitse
+            playse(SE_M_CRABHAMMER)
+            waitse
             waitmovement(popplioshiny2)
-            closemessage
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             delay(30)
         }
         else{
             playmoncry(SPECIES_POPPLIO, 0)
             setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            closemessage
             applymovement(popplio2, moves(face_up, delay_16, walk_in_place_up*2, delay_16*2, face_down))
             playse(SE_M_CRABHAMMER)
-            msgbox("Bwark?", MSGBOX_AUTOCLOSE)
+            waitse
+            playse(SE_M_CRABHAMMER)
+            waitse
             waitmovement(popplio2)
-            closemessage
             clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
             delay(30)
         }

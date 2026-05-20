@@ -1,7 +1,7 @@
 mapscripts Route1_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
-        call_if_unset(FLAG_HAUOLI_OUTSKIRTS_NEWGAME, Route1CloseGates)
-        if(flag(FLAG_HAUOLI_OUTSKIRTS_NEWGAME))
+        call_if_unset(FLAG_IKITOWN_FESTIVAL_COMPLETE, Route1CloseGates)
+        if(flag(FLAG_IKITOWN_FESTIVAL_COMPLETE))
         {
             call_if_unset(FLAG_OPEN_TRAINER_SCHOOL, Route1CloseGates2)
         }
@@ -9,7 +9,8 @@ mapscripts Route1_MapScripts{
         end
         }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}]
-    MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro]
+    MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro
+    VAR_IKITOWN_STATE, 10 {call(Route1_KukuiCatchingTutorial)}]
 }
 
 script Route1_AlolanMeowthNPC{
@@ -118,6 +119,59 @@ script LittleGirlChasesMeowthIntro{
     end
 }
 
+script Route1_KukuiCatchingTutorial{
+    lock
+    playse(SE_PIN)
+    special(SpawnCameraObject)
+    applymovement(catchingintrokukui, moves(emote_exclamation_mark))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16*3, walk_down*3))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Hey there, {PLAYER}!
+    It's about time we set out for the
+    festival, yeah!
+    
+    But first\.
+    I've got something to teach you,
+    yeah, now that you're a real
+    Pokémon Trainer.
+    
+    It's the most basic of all the basics.
+    Come on-to Route 1!", MSGBOX_AUTOCLOSE)
+    applymovement(catchingintrokukui, moves(walk_down, walk_right*6, face_left))
+    waitmovement(catchingintrokukui)
+    msgbox("{PLAYER}!
+    Hurry it up, cousin!
+
+    Pretend you're a Pokémon and use your
+    Agility!", MSGBOX_AUTOCLOSE)
+    applymovement(catchingintrokukui, moves(walk_right*5))
+    waitmovement(catchingintrokukui)
+    removeobject(catchingintrokukui)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*3))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 11)
+    setflag(FLAG_KUKUI_CATCHING_TUTORIAL1)
+    clearflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
+    release
+    end
+}
+
+script Route1_trigger_kukui_catching_tutorial{
+    lock
+    speakername("Kukui")
+    msgbox("{PLAYER}!
+    Hurry it up, cousin!
+
+    Pretend you're a Pokémon and use your
+    Agility!")
+    applymovement(LOCALID_PLAYER, moves(walk_right))
+    release
+    end
+}
+
 script MomSaysHi{
     lock
     faceplayer
@@ -159,7 +213,8 @@ end
 script Mailbox{
     lock
     msgbox("{PLAYER}'s House")
-end
+    release
+    end
 }
 
 script Route1LittleBoyNPC{

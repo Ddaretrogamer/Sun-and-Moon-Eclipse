@@ -117,6 +117,7 @@ script PlayerRoomDoorbell{
     msgbox("Was that the doorbell?
     Go see who it is, {PLAYER}.")
     setvar(VAR_IKITOWN_STATE, 10)
+    clearflag(FLAG_KUKUI_CATCHING_TUTORIAL1)
     waitmessage
     release
     end

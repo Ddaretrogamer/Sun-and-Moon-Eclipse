@@ -325,9 +325,18 @@ script PlayerHouse_ShowMomPokemon{
 script PlayerHouse_TalkToMomAfterDoorbell{
     lock
     faceplayer
-    speakername("Mom")
-    msgbox("Was that the doorbell?
-    Go see who it is, {PLAYER}.")
+    if(var(VAR_IKITOWN_STATE) == 10){
+        speakername("Mom")
+        msgbox("Was that the doorbell?
+        Go see who it is, {PLAYER}.")
+    }
+    else{
+        speakername("Mom")
+        msgbox("Sleep does the body good!
+        Traveling is a true education!
+        
+        And unpacking\. will be the death of me!")
+    }
     release
     end
 }
