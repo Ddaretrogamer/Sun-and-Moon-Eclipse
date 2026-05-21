@@ -52,5 +52,30 @@ const struct HelpWindow gHelpWindowInfo[] =
                             ),
         .headerFont = FONT_NARROW,
     },
+    [HELP_CATCHING_GUIDE] =
+    {
+        .header = COMPOUND_STRING("KUKUI'S CATCHING GUIDE"),
+        .desc = COMPOUND_STRING("CATCHING TIP NO. 1\n"
+                                "You've gotta weaken a Pokémon up a bit before\n"
+                                "you try lobbing a Poké Ball at it!\n\n"
+                                "CATCHING TIP NO. 2\n"
+                                "Status conditions like Sleep or Paralysis can\n"
+                                "make it easier to catch Pokémon."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_OVERWORLD_MON_GUIDE] =
+    {
+        .header = COMPOUND_STRING("OVERWORLD POKÉMON GUIDE"),
+        .desc = COMPOUND_STRING("ABOUT OVERWORLD POKÉMON ENCOUNTERS\n"
+                                "When enabled, Pokémon will appear in the\n"
+                                "overworld. Interact with them to start a\n"
+                                "battle!\n"
+                                "TO ENABLE OVERWORLD POKÉMON ENCOUNTERS\n"
+                                "Open the options menu and press {R_BUTTON} and\n"
+                                "scroll down to toggle overworld encounters."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
     // Add more entries
 };

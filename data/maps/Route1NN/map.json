@@ -343,6 +343,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YungoosMeowth_Blocking",
       "flag": "FLAG_HAUOLI_OUTSKIRTS_NEWGAME"
+    },
+    {
+      "local_id": "kukuicatchtut",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 48,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_KUKUI_CATCHING_TUTORIAL2"
+    },
+    {
+      "local_id": "rockruffcatchtut",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ROCKRUFF)",
+      "x": 49,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_KUKUI_CATCHING_TUTORIAL2"
     }
   ],
   "warp_events": [],
@@ -382,6 +410,42 @@
       "var": "VAR_STARTERS_STATE",
       "var_value": "0",
       "script": "Route1NN_Trigger_BottomGetStarters"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "11",
+      "script": "Route1NN_CatchingTutorial"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "11",
+      "script": "Route1NN_CatchingTutorial"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "11",
+      "script": "Route1NN_CatchingTutorial"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "11",
+      "script": "Route1NN_CatchingTutorial"
     }
   ],
   "bg_events": []

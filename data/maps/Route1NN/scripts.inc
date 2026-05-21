@@ -1577,6 +1577,148 @@ Route1NN_Rockruff::
 	end
 
 
+Route1NN_CatchingTutorial::
+# 1008 "data/maps/Route1NN/scripts.pory"
+	lock
+# 1009 "data/maps/Route1NN/scripts.pory"
+	special SpawnCameraObject
+# 1010 "data/maps/Route1NN/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_CatchingTutorial_Movement_0
+# 1011 "data/maps/Route1NN/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 1012 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 1013 "data/maps/Route1NN/scripts.pory"
+	applymovement kukuicatchtut, Route1NN_CatchingTutorial_Movement_1
+# 1014 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 1015 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 1016 "data/maps/Route1NN/scripts.pory"
+	playse SE_LEDGE
+# 1017 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 1018 "data/maps/Route1NN/scripts.pory"
+	waitmovement kukuicatchtut
+# 1019 "data/maps/Route1NN/scripts.pory"
+	speakername Route1NN_KukuiGoToIki_Text_0
+# 1020 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_CatchingTutorial_Text_0, MSGBOX_AUTOCLOSE
+# 1021 "data/maps/Route1NN/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Route1NN_CatchingTutorial_Movement_2
+# 1022 "data/maps/Route1NN/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 1023 "data/maps/Route1NN/scripts.pory"
+	special RemoveCameraObject
+# 1024 "data/maps/Route1NN/scripts.pory"
+	delay 30
+# 1025 "data/maps/Route1NN/scripts.pory"
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+# 1026 "data/maps/Route1NN/scripts.pory"
+	compare VAR_TEMP_0, 48
+	goto_if_eq Route1NN_CatchingTutorial_2
+Route1NN_CatchingTutorial_1:
+# 1030 "data/maps/Route1NN/scripts.pory"
+	compare VAR_TEMP_0, 46
+	goto_if_eq Route1NN_CatchingTutorial_5
+Route1NN_CatchingTutorial_4:
+# 1034 "data/maps/Route1NN/scripts.pory"
+	compare VAR_TEMP_0, 47
+	goto_if_eq Route1NN_CatchingTutorial_8
+Route1NN_CatchingTutorial_7:
+# 1038 "data/maps/Route1NN/scripts.pory"
+	compare VAR_TEMP_0, 49
+	goto_if_eq Route1NN_CatchingTutorial_11
+Route1NN_CatchingTutorial_10:
+# 1042 "data/maps/Route1NN/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 1043 "data/maps/Route1NN/scripts.pory"
+	bufferleadmonspeciesname STR_VAR_1
+# 1044 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_CatchingTutorial_Text_1, MSGBOX_AUTOCLOSE
+# 1051 "data/maps/Route1NN/scripts.pory"
+	waitmessage
+# 1052 "data/maps/Route1NN/scripts.pory"
+	helpwindow HELP_CATCHING_GUIDE
+# 1053 "data/maps/Route1NN/scripts.pory"
+	speakername Route1NN_KukuiGoToIki_Text_0
+# 1054 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_CatchingTutorial_Text_2
+# 1066 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1067 "data/maps/Route1NN/scripts.pory"
+	giveitem ITEM_POKE_BALL, 10
+# 1068 "data/maps/Route1NN/scripts.pory"
+	giveitem ITEM_POTION, 5
+# 1069 "data/maps/Route1NN/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1070 "data/maps/Route1NN/scripts.pory"
+	bufferleadmonspeciesname STR_VAR_1
+# 1071 "data/maps/Route1NN/scripts.pory"
+	speakername Route1NN_KukuiGoToIki_Text_0
+# 1072 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_CatchingTutorial_Text_3, MSGBOX_AUTOCLOSE
+# 1077 "data/maps/Route1NN/scripts.pory"
+	applymovement kukuicatchtut, Route1NN_CatchingTutorial_Movement_3
+# 1078 "data/maps/Route1NN/scripts.pory"
+	applymovement rockruffcatchtut, Route1NN_CatchingTutorial_Movement_3
+# 1079 "data/maps/Route1NN/scripts.pory"
+	delay 60
+# 1080 "data/maps/Route1NN/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 1081 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1082 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_KUKUI_CATCHING_TUTORIAL2
+# 1083 "data/maps/Route1NN/scripts.pory"
+	setflag FLAG_ENABLE_OW_MON_OPTION
+# 1084 "data/maps/Route1NN/scripts.pory"
+	playse SE_EXIT
+# 1085 "data/maps/Route1NN/scripts.pory"
+	waitse
+# 1086 "data/maps/Route1NN/scripts.pory"
+	removeobject kukuicatchtut
+# 1087 "data/maps/Route1NN/scripts.pory"
+	removeobject rockruffcatchtut
+# 1088 "data/maps/Route1NN/scripts.pory"
+	delay 60
+# 1089 "data/maps/Route1NN/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 1090 "data/maps/Route1NN/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 1091 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_CatchingTutorial_Text_4, MSGBOX_AUTOCLOSE
+# 1093 "data/maps/Route1NN/scripts.pory"
+	waitfanfare
+# 1094 "data/maps/Route1NN/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1095 "data/maps/Route1NN/scripts.pory"
+	helpwindow HELP_OVERWORLD_MON_GUIDE
+# 1096 "data/maps/Route1NN/scripts.pory"
+	release
+	end
+
+Route1NN_CatchingTutorial_2:
+# 1028 "data/maps/Route1NN/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1NN_CatchingTutorial_Movement_3
+	goto Route1NN_CatchingTutorial_1
+
+Route1NN_CatchingTutorial_5:
+# 1032 "data/maps/Route1NN/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1NN_CatchingTutorial_Movement_4
+	goto Route1NN_CatchingTutorial_4
+
+Route1NN_CatchingTutorial_8:
+# 1036 "data/maps/Route1NN/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1NN_CatchingTutorial_Movement_5
+	goto Route1NN_CatchingTutorial_7
+
+Route1NN_CatchingTutorial_11:
+# 1040 "data/maps/Route1NN/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1NN_CatchingTutorial_Movement_6
+	goto Route1NN_CatchingTutorial_10
+
+
 # 10 "data/maps/Route1NN/scripts.pory"
 YungoosMeowth_Blocking_Movement_0:
 # 10 "data/maps/Route1NN/scripts.pory"
@@ -2161,6 +2303,94 @@ Route1NN_Rockruff_Movement_0:
 	emote_heart
 	step_end
 
+# 1010 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_0:
+# 1010 "data/maps/Route1NN/scripts.pory"
+	walk_fast_up
+# 1010 "data/maps/Route1NN/scripts.pory"
+	walk_fast_up
+# 1010 "data/maps/Route1NN/scripts.pory"
+	walk_fast_up
+# 1010 "data/maps/Route1NN/scripts.pory"
+	walk_fast_up
+	step_end
+
+# 1013 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_1:
+# 1013 "data/maps/Route1NN/scripts.pory"
+	jump_in_place_down
+# 1013 "data/maps/Route1NN/scripts.pory"
+	jump_in_place_down
+	step_end
+
+# 1021 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_2:
+# 1021 "data/maps/Route1NN/scripts.pory"
+	walk_fast_down
+# 1021 "data/maps/Route1NN/scripts.pory"
+	walk_fast_down
+# 1021 "data/maps/Route1NN/scripts.pory"
+	walk_fast_down
+# 1021 "data/maps/Route1NN/scripts.pory"
+	walk_fast_down
+	step_end
+
+# 1028 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_3:
+# 1028 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1028 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1028 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1028 "data/maps/Route1NN/scripts.pory"
+	walk_up
+	step_end
+
+# 1032 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_4:
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_right
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_right
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1032 "data/maps/Route1NN/scripts.pory"
+	walk_up
+	step_end
+
+# 1036 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_5:
+# 1036 "data/maps/Route1NN/scripts.pory"
+	walk_right
+# 1036 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1036 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1036 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1036 "data/maps/Route1NN/scripts.pory"
+	walk_up
+	step_end
+
+# 1040 "data/maps/Route1NN/scripts.pory"
+Route1NN_CatchingTutorial_Movement_6:
+# 1040 "data/maps/Route1NN/scripts.pory"
+	walk_left
+# 1040 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1040 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1040 "data/maps/Route1NN/scripts.pory"
+	walk_up
+# 1040 "data/maps/Route1NN/scripts.pory"
+	walk_up
+	step_end
+
 YungoosMeowth_Blocking_Text_0:
 # 7 "data/maps/Route1NN/scripts.pory"
 	.string "We can win this! We can win this!\n"
@@ -2427,3 +2657,40 @@ Route1NN_BackOutOfStarter_Text_1:
 Route1NN_Rockruff_Text_0:
 # 1002 "data/maps/Route1NN/scripts.pory"
 	.string "Ruff!$"
+
+Route1NN_CatchingTutorial_Text_0:
+# 1020 "data/maps/Route1NN/scripts.pory"
+	.string "Yeah, over here!$"
+
+Route1NN_CatchingTutorial_Text_1:
+# 1044 "data/maps/Route1NN/scripts.pory"
+	.string "So you know that wild Pokémon will\n"
+	.string "sometimes jump at you in the tall\l"
+	.string "grass, yeah?\p"
+	.string "Now that you've got {STR_VAR_1},\n"
+	.string "you can not only fight wild Pokémon…\l"
+	.string "you can also try to catch 'em. Woo!$"
+
+Route1NN_CatchingTutorial_Text_2:
+# 1054 "data/maps/Route1NN/scripts.pory"
+	.string "Wild Pokémon do sometimes attack\n"
+	.string "people if they get close… \p"
+	.string "But catch 'em and they'll join your team\n"
+	.string "and be a great help to you, yeah!\p"
+	.string "And if your Pokémon get all tuckered\n"
+	.string "out, you can always head home and\l"
+	.string "rest up a bit, yeah?\p"
+	.string "Here're some Poké Balls and Potions\n"
+	.string "to get you started out.$"
+
+Route1NN_CatchingTutorial_Text_3:
+# 1072 "data/maps/Route1NN/scripts.pory"
+	.string "Why don't you have a little adventure\n"
+	.string "of your own on the way to Iki Town?\p"
+	.string "Take good care of {PLAYER}, \n"
+	.string "{STR_VAR_1}!$"
+
+Route1NN_CatchingTutorial_Text_4:
+# 1091 "data/maps/Route1NN/scripts.pory"
+	.string "{COLOR RED}Overworld Pokémon encounters{COLOR DARK_GRAY} can now\n"
+	.string "be enabled!$"

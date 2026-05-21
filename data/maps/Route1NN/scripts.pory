@@ -1003,3 +1003,96 @@ script Route1NN_Rockruff{
     release
     end
 }
+
+script Route1NN_CatchingTutorial{
+    lock
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up*4))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    delay(30)
+    applymovement(kukuicatchtut, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    waitmovement(kukuicatchtut)
+    speakername("Kukui")
+    msgbox("Yeah, over here!", MSGBOX_AUTOCLOSE)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down*4))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+    delay(30)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    if (var(VAR_TEMP_0)== 48)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_up*4))
+    }
+    if (var(VAR_TEMP_0)== 46)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_right*2, walk_up*4))
+    }
+    if (var(VAR_TEMP_0)== 47)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_right, walk_up*4))
+    }
+    if (var(VAR_TEMP_0)== 49)
+    {
+        applymovement(LOCALID_PLAYER, moves(walk_left, walk_up*4))
+    }
+    waitmovement(LOCALID_PLAYER)
+    bufferleadmonspeciesname(STR_VAR_1)
+    msgbox("So you know that wild Pokémon will
+    sometimes jump at you in the tall
+    grass, yeah?
+    
+    Now that you've got {STR_VAR_1},
+    you can not only fight wild Pokémon\.
+    you can also try to catch 'em. Woo!", MSGBOX_AUTOCLOSE)
+    waitmessage
+    helpwindow(HELP_CATCHING_GUIDE)
+    speakername("Kukui")
+    msgbox("Wild Pokémon do sometimes attack
+    people if they get close\. 
+    
+    But catch 'em and they'll join your team
+    and be a great help to you, yeah!
+    
+    And if your Pokémon get all tuckered
+    out, you can always head home and
+    rest up a bit, yeah?
+    
+    Here're some Poké Balls and Potions
+    to get you started out.")
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    giveitem(ITEM_POKE_BALL, 10)
+    giveitem(ITEM_POTION, 5)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Kukui")
+    msgbox("Why don't you have a little adventure
+    of your own on the way to Iki Town?
+    
+    Take good care of {PLAYER}, 
+    {STR_VAR_1}!", MSGBOX_AUTOCLOSE)
+    applymovement(kukuicatchtut, moves(walk_up*4))
+    applymovement(rockruffcatchtut, moves(walk_up*4))
+    delay(60)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    setflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
+    setflag(FLAG_ENABLE_OW_MON_OPTION)
+    playse(SE_EXIT)
+    waitse
+    removeobject(kukuicatchtut)
+    removeobject(rockruffcatchtut)
+    delay(60)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox("{COLOR RED}Overworld Pokémon encounters{COLOR DARK_GRAY} can now
+    be enabled!", MSGBOX_AUTOCLOSE)
+    waitfanfare
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    helpwindow(HELP_OVERWORLD_MON_GUIDE)
+    release
+    end
+}

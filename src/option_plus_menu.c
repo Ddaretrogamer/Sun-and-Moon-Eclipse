@@ -318,10 +318,11 @@ static bool8 CheckConditions(int selection)
     case MENU_CUSTOM:
         switch(selection)
         {  
+        case MENUITEM_OW_ENCOUNTERS:
+            return FlagGet(FLAG_ENABLE_OW_MON_OPTION);
         case MENUITEM_MENUPAL:
         case MENUITEM_FOLLOWER:
         case MENUITEM_BATTLESPEED:
-        case MENUITEM_OW_ENCOUNTERS:
         case MENUITEM_AUTORUN:
         case MENUITEM_TITLESCREEN:
         case MENUITEM_CANCEL_PG2:
@@ -744,7 +745,9 @@ void CB2_InitOptionPlusMenu(void)
         sOptions->sel_custom[MENUITEM_MENUPAL]       = gSaveBlock2Ptr->optionsRotomPhonePalette;
         sOptions->sel_custom[MENUITEM_FOLLOWER]     = !FlagGet(FLAG_FOLLOWERS_MENU_TOGGLE);
         sOptions->sel_custom[MENUITEM_BATTLESPEED]  = gSaveBlock2Ptr->optionsBattleSpeed;
-        sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] = !(FlagGet(OW_FLAG_SPAWN_OVERWORLD_MON) && FlagGet(FLAG_OW_NO_ENCOUNTER));
+        sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] = FlagGet(FLAG_ENABLE_OW_MON_OPTION)
+            ? !(FlagGet(OW_FLAG_SPAWN_OVERWORLD_MON) && FlagGet(FLAG_OW_NO_ENCOUNTER))
+            : 1;
         sOptions->sel_custom[MENUITEM_AUTORUN]      = FlagGet(FLAG_AUTORUN_MENU_TOGGLE) ? 0 : 1;
         sOptions->sel_custom[MENUITEM_TITLESCREEN]  = gSaveBlock2Ptr->optionsTitleScreenPokemon;
 
@@ -998,12 +1001,12 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagClear(FLAG_AUTORUN_MENU_TOGGLE); // Clear flag to DISABLE autorun
     }
 
-    if (sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 0) // Assuming 0 means Overworld Encounters are ON
+    if (FlagGet(FLAG_ENABLE_OW_MON_OPTION) && sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 0) // Assuming 0 means Overworld Encounters are ON
     {
         FlagSet(OW_FLAG_SPAWN_OVERWORLD_MON); // Enable overworld encounters
         FlagSet(FLAG_OW_NO_ENCOUNTER); // Set the no encounter flag
     }
-    else // sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 1, meaning OFF
+    else // sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 1, meaning OFF (or flag not set)
     {
         FlagClear(OW_FLAG_SPAWN_OVERWORLD_MON);   // Disable overworld encounters
         FlagClear(FLAG_OW_NO_ENCOUNTER); // Clear the no encounter flag
