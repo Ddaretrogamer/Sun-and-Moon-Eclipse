@@ -1673,28 +1673,30 @@ Route1NN_CatchingTutorial_10:
 # 1083 "data/maps/Route1NN/scripts.pory"
 	setflag FLAG_ENABLE_OW_MON_OPTION
 # 1084 "data/maps/Route1NN/scripts.pory"
-	playse SE_EXIT
+	setvar VAR_IKITOWN_STATE, 12
 # 1085 "data/maps/Route1NN/scripts.pory"
-	waitse
+	playse SE_EXIT
 # 1086 "data/maps/Route1NN/scripts.pory"
-	removeobject kukuicatchtut
+	waitse
 # 1087 "data/maps/Route1NN/scripts.pory"
-	removeobject rockruffcatchtut
+	removeobject kukuicatchtut
 # 1088 "data/maps/Route1NN/scripts.pory"
-	delay 60
+	removeobject rockruffcatchtut
 # 1089 "data/maps/Route1NN/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
+	delay 60
 # 1090 "data/maps/Route1NN/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 1091 "data/maps/Route1NN/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 1092 "data/maps/Route1NN/scripts.pory"
 	msgbox Route1NN_CatchingTutorial_Text_4, MSGBOX_AUTOCLOSE
-# 1093 "data/maps/Route1NN/scripts.pory"
-	waitfanfare
 # 1094 "data/maps/Route1NN/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	waitfanfare
 # 1095 "data/maps/Route1NN/scripts.pory"
-	helpwindow HELP_OVERWORLD_MON_GUIDE
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 1096 "data/maps/Route1NN/scripts.pory"
+	helpwindow HELP_OVERWORLD_MON_GUIDE
+# 1097 "data/maps/Route1NN/scripts.pory"
 	release
 	end
 
@@ -2691,6 +2693,6 @@ Route1NN_CatchingTutorial_Text_3:
 	.string "{STR_VAR_1}!$"
 
 Route1NN_CatchingTutorial_Text_4:
-# 1091 "data/maps/Route1NN/scripts.pory"
+# 1092 "data/maps/Route1NN/scripts.pory"
 	.string "{COLOR RED}Overworld Pokémon encounters{COLOR DARK_GRAY} can now\n"
 	.string "be enabled!$"

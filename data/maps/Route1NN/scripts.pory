@@ -1081,6 +1081,7 @@ script Route1NN_CatchingTutorial{
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
     setflag(FLAG_ENABLE_OW_MON_OPTION)
+    setvar(VAR_IKITOWN_STATE, 12)
     playse(SE_EXIT)
     waitse
     removeobject(kukuicatchtut)

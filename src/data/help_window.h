@@ -66,12 +66,12 @@ const struct HelpWindow gHelpWindowInfo[] =
     },
     [HELP_OVERWORLD_MON_GUIDE] =
     {
-        .header = COMPOUND_STRING("OVERWORLD POKÉMON GUIDE"),
-        .desc = COMPOUND_STRING("ABOUT OVERWORLD POKÉMON ENCOUNTERS\n"
+        .header = COMPOUND_STRING("OVERWORLD POKéMON GUIDE"),
+        .desc = COMPOUND_STRING("ABOUT OVERWORLD POKéMON ENCOUNTERS:\n"
                                 "When enabled, Pokémon will appear in the\n"
                                 "overworld. Interact with them to start a\n"
                                 "battle!\n"
-                                "TO ENABLE OVERWORLD POKÉMON ENCOUNTERS\n"
+                                "TO ENABLE OVERWORLD POKéMON ENCOUNTERS:\n"
                                 "Open the options menu and press {R_BUTTON} and\n"
                                 "scroll down to toggle overworld encounters."
                             ),
