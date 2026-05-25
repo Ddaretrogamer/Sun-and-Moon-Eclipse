@@ -47,6 +47,7 @@
 #include "rtc.h"
 #include "script.h"
 #include "script_menu.h"
+#include "script_movement.h"
 #include "sound.h"
 #include "sprite.h"
 #include "starter_choose.h"
@@ -1407,6 +1408,13 @@ void SnapCameraToPlayer(void)
     MoveObjectEventToMapCoords(playerObjEvent,
                                playerObjEvent->currentCoords.x,
                                playerObjEvent->currentCoords.y);
+}
+
+// Cancels all active applymovement tasks immediately.
+// Used by the cutscene skip system to stop in-progress NPC walks before repositioning.
+void StopAllObjectMovements(void)
+{
+    ScriptMovement_UnfreezeObjectEvents();
 }
 
 // Closes any open script menu (msgbox / dynmultichoice) without waiting for input.

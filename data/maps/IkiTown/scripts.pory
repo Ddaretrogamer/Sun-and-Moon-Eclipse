@@ -297,6 +297,7 @@ script Ikitown_sign_Ruinsofconflict{
 
 script Ikitown_GetPokedex{
     lock
+    startcutscene(CUTSCENE_IKITOWN_GET_POKEDEX)
     applymovement(ikitownlillie, moves(walk_down*6, walk_left*6, walk_down*4, walk_diag_northeast, walk_right*3, walk_up, face_right))
     applymovement(LOCALID_PLAYER, moves(delay_16*3, walk_down*6, walk_left*5, walk_down*4, walk_diag_northeast, walk_right*3))
     waitmovement(0)
@@ -472,10 +473,46 @@ script Ikitown_GetPokedex{
     delay(60)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     setvar(VAR_IKITOWN_STATE, 7)
+    endcutscene
     release
     end
+}
 
-
+script Ikitown_GetPokedexSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(HideCutsceneCinematicBars)
+    special(RemoveCameraObject)
+    setvar(VAR_ROTOM_PHONE_ENABLE, 1)
+    setflag(FLAG_SYS_POKEDEX_GET)
+    setvar(VAR_IKITOWN_STATE, 7)
+    // Set player position first — SnapCameraToPlayer reads currentCoords to anchor the camera.
+    setobjectxy(LOCALID_PLAYER, 21, 14)
+    special(SnapCameraToPlayer)
+    // THIS IS SUPER IMPORTANT OR OBJECTS WILL BE MISSING!!!!!
+    // NPC setobjectxy MUST come after SnapCameraToPlayer. SetSpritePosToMapCoords bakes in
+    // gTotalCameraPixelOffsetX at call time; SnapCameraToPlayer resets that offset to 0, so
+    // any setobjectxy called before it would leave sprite->pos at a stale camera-panned value.
+    addobject(ikitownlillie)
+    addobject(ikitownhala)
+    addobject(ikitownintrokukui2)
+    showobjectat(LOCALID_PLAYER, MAP_IKI_TOWN)
+    showobjectat(ikitownlillie, MAP_IKI_TOWN)
+    showobjectat(ikitownhala, MAP_IKI_TOWN)
+    showobjectat(ikitownintrokukui2, MAP_IKI_TOWN)
+    setobjectxy(ikitownlillie, 21, 13)
+    setobjectxy(ikitownhala, 24, 14)
+    setobjectxy(ikitownintrokukui2, 23, 13)
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    applymovement(ikitownlillie, moves(face_right))
+    applymovement(ikitownhala, moves(face_left))
+    applymovement(ikitownintrokukui2, moves(face_down))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
 }
 
 script ikitown_lilliedialog2{
@@ -527,6 +564,10 @@ script Ikitown_trigger_GiveHalaSparklingStone{
     fadescreenswapbuffers(FADE_TO_BLACK)
     setobjectxy(ikitownhala, 24, 12)
     setobjectxy(ikitownintrokukui2, 23, 12)
+    applymovement(ikitownhala, moves(face_down))
+    applymovement(ikitownintrokukui2, moves(face_down))
+    applymovement(ikitownlillie, moves(face_right))
+    waitmovement(0)
     getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
     if (var(VAR_TEMP_1) == 28 && var(VAR_TEMP_2) == 14){
         applymovement(LOCALID_PLAYER, moves(walk_faster_left*4))

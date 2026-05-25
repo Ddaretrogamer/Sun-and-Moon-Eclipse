@@ -299,6 +299,7 @@ gSpecials::
 	def_special RemoveCameraObject
 	def_special SnapCameraToPlayer
 	def_special CloseScriptMenus
+	def_special StopAllObjectMovements
 	def_special GetPokeblockNameByMonNature
 	def_special GetSecretBaseNearbyMapName
 	def_special CheckRelicanthWailord

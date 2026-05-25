@@ -9,6 +9,7 @@
 // extern const u8 EventScript_ExampleCutsceneSkip[];
 extern const u8 TapuKokoBridge_LillieCosmogSkip[];
 extern const u8 TapuKokoBridge_BridgeShakeSkip[];
+extern const u8 Ikitown_GetPokedexSkip[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -25,6 +26,10 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_TAPUKOKO_BRIDGE_SHAKE] =
     {
         .scriptCutsceneSkipPtr = TapuKokoBridge_BridgeShakeSkip,
+    },
+    [CUTSCENE_IKITOWN_GET_POKEDEX] =
+    {
+        .scriptCutsceneSkipPtr = Ikitown_GetPokedexSkip,
     },
 };
 
