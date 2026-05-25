@@ -10,7 +10,8 @@
 extern const u8 TapuKokoBridge_LillieCosmogSkip[];
 extern const u8 TapuKokoBridge_BridgeShakeSkip[];
 extern const u8 Ikitown_GetPokedexSkip[];
-
+extern const u8 Ikitown_trigger_GiveHalaSparklingStoneSkip[];
+extern const u8 PlayerHouse_ShowMomPokemonSkip[];
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
     // Add entries like this:
@@ -30,6 +31,14 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_IKITOWN_GET_POKEDEX] =
     {
         .scriptCutsceneSkipPtr = Ikitown_GetPokedexSkip,
+    },
+    [CUTSCENE_IKITOWN_GIVE_HALA_SPARKLING_STONE] =
+    {
+        .scriptCutsceneSkipPtr = Ikitown_trigger_GiveHalaSparklingStoneSkip,
+    },
+    [CUTSCENE_PLAYERHOUSE_SHOW_MOM_POKEMON] =
+    {
+        .scriptCutsceneSkipPtr = PlayerHouse_ShowMomPokemonSkip,
     },
 };
 

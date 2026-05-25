@@ -223,6 +223,7 @@ script PlayerHouse_Trigger_TryingToLeaveWithoutShoes2{
 
 script PlayerHouse_ShowMomPokemon{
     lock
+    startcutscene(CUTSCENE_PLAYERHOUSE_SHOW_MOM_POKEMON)
     delay(30)
     applymovement(LOCALID_PLAYER, moves(walk_up*2))
     applymovement(playerhousestarter, moves(walk_up))
@@ -313,10 +314,25 @@ script PlayerHouse_ShowMomPokemon{
     callnative(OpenScreenshotsFromScript)
     waitstate
     waitfanfare
+    endcutscene
     setvar(VAR_IKITOWN_STATE, 9)
     setflag(FLAG_HIDE_PLAYERHOUSE_STARTER)
     delay(30)
     warpsilent(MAP_PLAYER_ROOM, 12, 10)
+    waitstate
+    release
+    end
+}
+
+script PlayerHouse_ShowMomPokemonSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(CloseScriptMenus)
+    special(HideCutsceneCinematicBars)
+    special(HealPlayerParty)
+    setvar(VAR_IKITOWN_STATE, 9)
+    setflag(FLAG_HIDE_PLAYERHOUSE_STARTER)
+    warp(MAP_PLAYER_ROOM, 12, 10)
     waitstate
     release
     end

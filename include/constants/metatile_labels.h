@@ -484,9 +484,6 @@
 // gTileset_PlayerHouse2
 #define METATILE_PlayerHouse2_OpenBox  0x896
 
-// gTilset_TapuKokoBridge
-#define METATILE_TapuKokoBridge_Water   0x19B
-
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_CounterBarrier            0x85D
 #define METATILE_PokemonCenter_Door_CableClub            0x864
@@ -1110,6 +1107,7 @@
 #define METATILE_Route2_Door                         0x8B2
 #define METATILE_Slaking_Door1                       0x8D8
 #define METATILE_Slaking_Door2                       0x8D9
+#define METATILE_TapuKokoBridge_Water                0x19B
 #define METATILE_Weather_Left                        0x90F
 #define METATILE_Weather_Right                       0x910
 #define METATILE_WhiteHouse_Door                     0x9D9

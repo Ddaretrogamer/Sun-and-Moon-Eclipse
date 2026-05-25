@@ -317,228 +317,256 @@ PlayerHouse_ShowMomPokemon::
 # 225 "data/maps/PlayerHouse/scripts.pory"
 	lock
 # 226 "data/maps/PlayerHouse/scripts.pory"
-	delay 30
+	startcutscene CUTSCENE_PLAYERHOUSE_SHOW_MOM_POKEMON
 # 227 "data/maps/PlayerHouse/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerHouse_ShowMomPokemon_Movement_0
-# 228 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Movement_0
-# 229 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement 0
-# 230 "data/maps/PlayerHouse/scripts.pory"
 	delay 30
+# 228 "data/maps/PlayerHouse/scripts.pory"
+	applymovement LOCALID_PLAYER, PlayerHouse_ShowMomPokemon_Movement_0
+# 229 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_Trigger_TryingToLeaveWithoutShoes_Movement_0
+# 230 "data/maps/PlayerHouse/scripts.pory"
+	waitmovement 0
 # 231 "data/maps/PlayerHouse/scripts.pory"
-	playse SE_PIN
+	delay 30
 # 232 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_1
-# 233 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement playerhousemom3
-# 234 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
-# 235 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_ShowMomPokemon_Text_0
-# 238 "data/maps/PlayerHouse/scripts.pory"
 	playse SE_PIN
-# 239 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_2
-# 240 "data/maps/PlayerHouse/scripts.pory"
+# 233 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_1
+# 234 "data/maps/PlayerHouse/scripts.pory"
 	waitmovement playerhousemom3
+# 235 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 236 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_ShowMomPokemon_Text_0
+# 239 "data/maps/PlayerHouse/scripts.pory"
+	playse SE_PIN
+# 240 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_2
 # 241 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_ShowMomPokemon_Text_1
+	waitmovement playerhousemom3
 # 242 "data/maps/PlayerHouse/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
+	msgbox PlayerHouse_ShowMomPokemon_Text_1
 # 243 "data/maps/PlayerHouse/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 244 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 0
 	goto_if_eq PlayerHouse_ShowMomPokemon_2
 PlayerHouse_ShowMomPokemon_1:
-# 248 "data/maps/PlayerHouse/scripts.pory"
+# 249 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 2
 	goto_if_eq PlayerHouse_ShowMomPokemon_5
 PlayerHouse_ShowMomPokemon_4:
-# 253 "data/maps/PlayerHouse/scripts.pory"
+# 254 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 1
 	goto_if_eq PlayerHouse_ShowMomPokemon_8
 PlayerHouse_ShowMomPokemon_7:
-# 258 "data/maps/PlayerHouse/scripts.pory"
-	waitmoncry
 # 259 "data/maps/PlayerHouse/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	waitmoncry
 # 260 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_4
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 261 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement playerhousemom3
+	applymovement playerhousemom3, PlayerHouse_ShowMomPokemon_Movement_4
 # 262 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+	waitmovement playerhousemom3
 # 263 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 264 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_5
-# 265 "data/maps/PlayerHouse/scripts.pory"
-	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_ShowMomPokemon_Text_6, PlayerHouse_ShowMomPokemon_Text_7
 # 266 "data/maps/PlayerHouse/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, PlayerHouse_ShowMomPokemon_Text_6, PlayerHouse_ShowMomPokemon_Text_7
+# 267 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq PlayerHouse_ShowMomPokemon_11
-# 272 "data/maps/PlayerHouse/scripts.pory"
+# 273 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq PlayerHouse_ShowMomPokemon_12
 PlayerHouse_ShowMomPokemon_10:
-# 277 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
 # 278 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 279 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_9, MSGBOX_AUTOCLOSE
-# 281 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemeowth3, PlayerHouse_ShowMomPokemon_Movement_5
 # 282 "data/maps/PlayerHouse/scripts.pory"
-	waitmovement playerhousemeowth3
+	applymovement playerhousemeowth3, PlayerHouse_ShowMomPokemon_Movement_5
 # 283 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_MEOWTH, 0
+	waitmovement playerhousemeowth3
 # 284 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousemeowth3, PlayerHouse_ShowMomPokemon_Movement_6
+	playmoncry SPECIES_MEOWTH, 0
 # 285 "data/maps/PlayerHouse/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
+	applymovement playerhousemeowth3, PlayerHouse_ShowMomPokemon_Movement_6
 # 286 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_ShowMomPokemon_Text_10, MSGBOX_AUTOCLOSE
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 287 "data/maps/PlayerHouse/scripts.pory"
-	waitmoncry
+	msgbox PlayerHouse_ShowMomPokemon_Text_10, MSGBOX_AUTOCLOSE
 # 288 "data/maps/PlayerHouse/scripts.pory"
-	waitmessage
+	waitmoncry
 # 289 "data/maps/PlayerHouse/scripts.pory"
+	waitmessage
+# 290 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 0
 	goto_if_eq PlayerHouse_ShowMomPokemon_16
 PlayerHouse_ShowMomPokemon_15:
-# 294 "data/maps/PlayerHouse/scripts.pory"
+# 295 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 2
 	goto_if_eq PlayerHouse_ShowMomPokemon_19
 PlayerHouse_ShowMomPokemon_18:
-# 299 "data/maps/PlayerHouse/scripts.pory"
+# 300 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_STARTER_MON, 1
 	goto_if_eq PlayerHouse_ShowMomPokemon_22
 PlayerHouse_ShowMomPokemon_21:
-# 304 "data/maps/PlayerHouse/scripts.pory"
-	waitmoncry
 # 305 "data/maps/PlayerHouse/scripts.pory"
-	delay 30
+	waitmoncry
 # 306 "data/maps/PlayerHouse/scripts.pory"
-	special HealPlayerParty
+	delay 30
 # 307 "data/maps/PlayerHouse/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+	special HealPlayerParty
 # 308 "data/maps/PlayerHouse/scripts.pory"
-	setvar VAR_0x8000, 3
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 309 "data/maps/PlayerHouse/scripts.pory"
-	setvar VAR_RESULT, 1
+	setvar VAR_0x8000, 3
 # 310 "data/maps/PlayerHouse/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	setvar VAR_RESULT, 1
 # 311 "data/maps/PlayerHouse/scripts.pory"
-	delay 30
+	fadescreen FADE_TO_BLACK
 # 312 "data/maps/PlayerHouse/scripts.pory"
-	playfanfare MUS_HEAL
-# 313 "data/maps/PlayerHouse/scripts.pory"
-	callnative OpenScreenshotsFromScript
-# 314 "data/maps/PlayerHouse/scripts.pory"
-	waitstate
-# 315 "data/maps/PlayerHouse/scripts.pory"
-	waitfanfare
-# 316 "data/maps/PlayerHouse/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 9
-# 317 "data/maps/PlayerHouse/scripts.pory"
-	setflag FLAG_HIDE_PLAYERHOUSE_STARTER
-# 318 "data/maps/PlayerHouse/scripts.pory"
 	delay 30
-# 319 "data/maps/PlayerHouse/scripts.pory"
-	warpsilent MAP_PLAYER_ROOM, 12, 10
-# 320 "data/maps/PlayerHouse/scripts.pory"
+# 313 "data/maps/PlayerHouse/scripts.pory"
+	playfanfare MUS_HEAL
+# 314 "data/maps/PlayerHouse/scripts.pory"
+	callnative OpenScreenshotsFromScript
+# 315 "data/maps/PlayerHouse/scripts.pory"
 	waitstate
+# 316 "data/maps/PlayerHouse/scripts.pory"
+	waitfanfare
+# 317 "data/maps/PlayerHouse/scripts.pory"
+	endcutscene
+# 318 "data/maps/PlayerHouse/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 9
+# 319 "data/maps/PlayerHouse/scripts.pory"
+	setflag FLAG_HIDE_PLAYERHOUSE_STARTER
+# 320 "data/maps/PlayerHouse/scripts.pory"
+	delay 30
 # 321 "data/maps/PlayerHouse/scripts.pory"
+	warpsilent MAP_PLAYER_ROOM, 12, 10
+# 322 "data/maps/PlayerHouse/scripts.pory"
+	waitstate
+# 323 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
 
 PlayerHouse_ShowMomPokemon_2:
-# 244 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
 # 245 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_ROWLET, 0
 # 246 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 247 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_2, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_1
 
 PlayerHouse_ShowMomPokemon_5:
-# 249 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
 # 250 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_POPPLIO, 0
 # 251 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 252 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_3, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_4
 
 PlayerHouse_ShowMomPokemon_8:
-# 254 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
 # 255 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_LITTEN, 0
 # 256 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 257 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_4, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_7
 
 PlayerHouse_ShowMomPokemon_11:
-# 268 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
 # 269 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 270 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_8
 	goto PlayerHouse_ShowMomPokemon_10
 
 PlayerHouse_ShowMomPokemon_12:
-# 273 "data/maps/PlayerHouse/scripts.pory"
-	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
 # 274 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 275 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_8
 	goto PlayerHouse_ShowMomPokemon_10
 
 PlayerHouse_ShowMomPokemon_16:
-# 290 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
 # 291 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_ROWLET, 0
 # 292 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 293 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_2, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_15
 
 PlayerHouse_ShowMomPokemon_19:
-# 295 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
 # 296 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_POPPLIO, 0
 # 297 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 298 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_3, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_18
 
 PlayerHouse_ShowMomPokemon_22:
-# 300 "data/maps/PlayerHouse/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
 # 301 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+	playmoncry SPECIES_LITTEN, 0
 # 302 "data/maps/PlayerHouse/scripts.pory"
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_3
+# 303 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_ShowMomPokemon_Text_4, MSGBOX_AUTOCLOSE
 	goto PlayerHouse_ShowMomPokemon_21
 
 
-PlayerHouse_TalkToMomAfterDoorbell::
-# 326 "data/maps/PlayerHouse/scripts.pory"
-	lock
-# 327 "data/maps/PlayerHouse/scripts.pory"
-	faceplayer
+PlayerHouse_ShowMomPokemonSkip::
 # 328 "data/maps/PlayerHouse/scripts.pory"
+	closemessage
+# 329 "data/maps/PlayerHouse/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 330 "data/maps/PlayerHouse/scripts.pory"
+	special CloseScriptMenus
+# 331 "data/maps/PlayerHouse/scripts.pory"
+	special HideCutsceneCinematicBars
+# 332 "data/maps/PlayerHouse/scripts.pory"
+	special HealPlayerParty
+# 333 "data/maps/PlayerHouse/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 9
+# 334 "data/maps/PlayerHouse/scripts.pory"
+	setflag FLAG_HIDE_PLAYERHOUSE_STARTER
+# 335 "data/maps/PlayerHouse/scripts.pory"
+	warp MAP_PLAYER_ROOM, 12, 10
+# 336 "data/maps/PlayerHouse/scripts.pory"
+	waitstate
+# 337 "data/maps/PlayerHouse/scripts.pory"
+	release
+	end
+
+
+PlayerHouse_TalkToMomAfterDoorbell::
+# 342 "data/maps/PlayerHouse/scripts.pory"
+	lock
+# 343 "data/maps/PlayerHouse/scripts.pory"
+	faceplayer
+# 344 "data/maps/PlayerHouse/scripts.pory"
 	compare VAR_IKITOWN_STATE, 10
 	goto_if_eq PlayerHouse_TalkToMomAfterDoorbell_2
-# 334 "data/maps/PlayerHouse/scripts.pory"
+# 350 "data/maps/PlayerHouse/scripts.pory"
 	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
-# 335 "data/maps/PlayerHouse/scripts.pory"
+# 351 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_1
 PlayerHouse_TalkToMomAfterDoorbell_1:
-# 340 "data/maps/PlayerHouse/scripts.pory"
+# 356 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
 
 PlayerHouse_TalkToMomAfterDoorbell_2:
-# 329 "data/maps/PlayerHouse/scripts.pory"
+# 345 "data/maps/PlayerHouse/scripts.pory"
 	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
-# 330 "data/maps/PlayerHouse/scripts.pory"
+# 346 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_0
 	goto PlayerHouse_TalkToMomAfterDoorbell_1
 
@@ -595,69 +623,69 @@ PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Movement_0:
 	walk_down
 	step_end
 
-# 227 "data/maps/PlayerHouse/scripts.pory"
+# 228 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_0:
-# 227 "data/maps/PlayerHouse/scripts.pory"
+# 228 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
-# 227 "data/maps/PlayerHouse/scripts.pory"
+# 228 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
 	step_end
 
-# 232 "data/maps/PlayerHouse/scripts.pory"
+# 233 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_1:
-# 232 "data/maps/PlayerHouse/scripts.pory"
+# 233 "data/maps/PlayerHouse/scripts.pory"
 	face_down
-# 232 "data/maps/PlayerHouse/scripts.pory"
+# 233 "data/maps/PlayerHouse/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 239 "data/maps/PlayerHouse/scripts.pory"
+# 240 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_2:
-# 239 "data/maps/PlayerHouse/scripts.pory"
+# 240 "data/maps/PlayerHouse/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 245 "data/maps/PlayerHouse/scripts.pory"
+# 246 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_3:
-# 245 "data/maps/PlayerHouse/scripts.pory"
+# 246 "data/maps/PlayerHouse/scripts.pory"
 	emote_heart
 	step_end
 
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_4:
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_right
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_right
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_right
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_down
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_down
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_down
-# 260 "data/maps/PlayerHouse/scripts.pory"
+# 261 "data/maps/PlayerHouse/scripts.pory"
 	walk_down
 	step_end
 
-# 281 "data/maps/PlayerHouse/scripts.pory"
+# 282 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_5:
-# 281 "data/maps/PlayerHouse/scripts.pory"
+# 282 "data/maps/PlayerHouse/scripts.pory"
 	walk_left
-# 281 "data/maps/PlayerHouse/scripts.pory"
+# 282 "data/maps/PlayerHouse/scripts.pory"
 	face_down
 	step_end
 
-# 284 "data/maps/PlayerHouse/scripts.pory"
+# 285 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_6:
-# 284 "data/maps/PlayerHouse/scripts.pory"
+# 285 "data/maps/PlayerHouse/scripts.pory"
 	walk_in_place_down
-# 284 "data/maps/PlayerHouse/scripts.pory"
+# 285 "data/maps/PlayerHouse/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -778,61 +806,61 @@ PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Text_0:
 	.string "your room to find them!$"
 
 PlayerHouse_ShowMomPokemon_Text_0:
-# 235 "data/maps/PlayerHouse/scripts.pory"
+# 236 "data/maps/PlayerHouse/scripts.pory"
 	.string "Welcome back, {PLAYER}!\p"
 	.string "So what did you think of Kahuna Hala?$"
 
 PlayerHouse_ShowMomPokemon_Text_1:
-# 241 "data/maps/PlayerHouse/scripts.pory"
+# 242 "data/maps/PlayerHouse/scripts.pory"
 	.string "Oh! And look who you've got with you!$"
 
 PlayerHouse_ShowMomPokemon_Text_2:
-# 246 "data/maps/PlayerHouse/scripts.pory"
+# 247 "data/maps/PlayerHouse/scripts.pory"
 	.string "Hoo?$"
 
 PlayerHouse_ShowMomPokemon_Text_3:
-# 251 "data/maps/PlayerHouse/scripts.pory"
+# 252 "data/maps/PlayerHouse/scripts.pory"
 	.string "Bar?$"
 
 PlayerHouse_ShowMomPokemon_Text_4:
-# 256 "data/maps/PlayerHouse/scripts.pory"
+# 257 "data/maps/PlayerHouse/scripts.pory"
 	.string "Mrawr?$"
 
 PlayerHouse_ShowMomPokemon_Text_5:
-# 263 "data/maps/PlayerHouse/scripts.pory"
+# 264 "data/maps/PlayerHouse/scripts.pory"
 	.string "It came running out to help you?\n"
 	.string "What a sweet little thing!$"
 
 PlayerHouse_ShowMomPokemon_Text_6:
-# 265 "data/maps/PlayerHouse/scripts.pory"
+# 266 "data/maps/PlayerHouse/scripts.pory"
 	.string "That's right$"
 
 PlayerHouse_ShowMomPokemon_Text_7:
-# 265 "data/maps/PlayerHouse/scripts.pory"
+# 266 "data/maps/PlayerHouse/scripts.pory"
 	.string "Right on Route 1$"
 
 PlayerHouse_ShowMomPokemon_Text_8:
-# 269 "data/maps/PlayerHouse/scripts.pory"
+# 270 "data/maps/PlayerHouse/scripts.pory"
 	.string "And it saved you! That's amazing.\n"
 	.string "It must have been fate that you met!$"
 
 PlayerHouse_ShowMomPokemon_Text_9:
-# 278 "data/maps/PlayerHouse/scripts.pory"
+# 279 "data/maps/PlayerHouse/scripts.pory"
 	.string "The two of you look great together…\n"
 	.string "I feel happier just looking at the\l"
 	.string "pair of you!$"
 
 PlayerHouse_ShowMomPokemon_Text_10:
-# 286 "data/maps/PlayerHouse/scripts.pory"
+# 287 "data/maps/PlayerHouse/scripts.pory"
 	.string "Mrrrrr!$"
 
 PlayerHouse_TalkToMomAfterDoorbell_Text_0:
-# 330 "data/maps/PlayerHouse/scripts.pory"
+# 346 "data/maps/PlayerHouse/scripts.pory"
 	.string "Was that the doorbell?\n"
 	.string "Go see who it is, {PLAYER}.$"
 
 PlayerHouse_TalkToMomAfterDoorbell_Text_1:
-# 335 "data/maps/PlayerHouse/scripts.pory"
+# 351 "data/maps/PlayerHouse/scripts.pory"
 	.string "Sleep does the body good!\n"
 	.string "Traveling is a true education!\p"
 	.string "And unpacking… will be the death of me!$"

@@ -25,10 +25,10 @@ mapscripts TapuKokoBridge_MapScripts{
 
 script TapuKokoBridge_LillieCosmogEvent{
     lock
-    startcutscene(CUTSCENE_TAPUKOKO_BRIDGE)
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
     waitmovement(0)
+    startcutscene(CUTSCENE_TAPUKOKO_BRIDGE)
     special(ShowCutsceneCinematicBars)
     delay(60)
     applymovement(bridgelillie, moves(walk_up*3))
@@ -617,6 +617,7 @@ script TapuKokoBridge_BridgeShakeSkip{
     setflag(FLAG_HIDE_BRIDGE_LILLIE)
     setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
     warp(MAP_IKI_TOWN, 5)
+    waitstate
     releaseplayer
     end
 }

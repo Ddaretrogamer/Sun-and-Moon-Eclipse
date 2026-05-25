@@ -59,13 +59,13 @@ TapuKokoBridge_LillieCosmogEvent::
 # 27 "data/maps/TapuKokoBridge/scripts.pory"
 	lock
 # 28 "data/maps/TapuKokoBridge/scripts.pory"
-	startcutscene CUTSCENE_TAPUKOKO_BRIDGE
-# 29 "data/maps/TapuKokoBridge/scripts.pory"
 	special SpawnCameraObject
-# 30 "data/maps/TapuKokoBridge/scripts.pory"
+# 29 "data/maps/TapuKokoBridge/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, TapuKokoBridge_LillieCosmogEvent_Movement_0
-# 31 "data/maps/TapuKokoBridge/scripts.pory"
+# 30 "data/maps/TapuKokoBridge/scripts.pory"
 	waitmovement 0
+# 31 "data/maps/TapuKokoBridge/scripts.pory"
+	startcutscene CUTSCENE_TAPUKOKO_BRIDGE
 # 32 "data/maps/TapuKokoBridge/scripts.pory"
 	special ShowCutsceneCinematicBars
 # 33 "data/maps/TapuKokoBridge/scripts.pory"
@@ -1071,21 +1071,23 @@ TapuKokoBridge_BridgeShakeSkip::
 # 619 "data/maps/TapuKokoBridge/scripts.pory"
 	warp MAP_IKI_TOWN, 5
 # 620 "data/maps/TapuKokoBridge/scripts.pory"
+	waitstate
+# 621 "data/maps/TapuKokoBridge/scripts.pory"
 	releaseplayer
 	end
 
 
 TapuKokoBridge_SetBrokenBridge::
-# 625 "data/maps/TapuKokoBridge/scripts.pory"
+# 626 "data/maps/TapuKokoBridge/scripts.pory"
 	setmaplayoutindex LAYOUT_TAPU_KOKO_BRIDGE_BROKEN
 	return
 
 
-# 30 "data/maps/TapuKokoBridge/scripts.pory"
+# 29 "data/maps/TapuKokoBridge/scripts.pory"
 TapuKokoBridge_LillieCosmogEvent_Movement_0:
-# 30 "data/maps/TapuKokoBridge/scripts.pory"
+# 29 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_up
-# 30 "data/maps/TapuKokoBridge/scripts.pory"
+# 29 "data/maps/TapuKokoBridge/scripts.pory"
 	walk_up
 	step_end
 
