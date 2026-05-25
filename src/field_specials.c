@@ -59,6 +59,8 @@
 #include "tv.h"
 #include "wallclock.h"
 #include "window.h"
+#include "field_message_box.h"
+#include "script_menu.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_pyramid.h"
 #include "constants/battle_tower.h"
@@ -1374,6 +1376,45 @@ void RemoveCameraObject(void)
 {
     CameraObjectSetFollowedSpriteId(GetPlayerAvatarSpriteId());
     RemoveObjectEventByLocalIdAndMap(LOCALID_CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+}
+
+// Teleports the camera object to the player's current map position.
+// Call this before RemoveCameraObject to prevent a visible camera snap.
+void SnapCameraToPlayer(void)
+{
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+    // Re-center the map scroll on the player's tile
+    gSaveBlock1Ptr->pos.x = playerObjEvent->currentCoords.x - MAP_OFFSET;
+    gSaveBlock1Ptr->pos.y = playerObjEvent->currentCoords.y - MAP_OFFSET;
+
+    // Reset the BG tile ring-buffer position and pixel scroll offset.
+    // Without this, FieldUpdateBgTilemapScroll still uses the old panned
+    // pixel offset and the screen appears vertically/horizontally shifted.
+    ResetFieldCamera();
+
+    // Reset all accumulated camera pixel offsets
+    gTotalCameraPixelOffsetX = 0;
+    gTotalCameraPixelOffsetY = 0;
+    gFieldCamera.x = 0;
+    gFieldCamera.y = 0;
+
+    // Redraw map tiles for the corrected scroll position
+    DrawWholeMapView();
+
+    // Re-snap the player sprite to its current tile, clearing any sub-tile movement
+    // offset that accumulated from an in-progress applymovement at skip time.
+    MoveObjectEventToMapCoords(playerObjEvent,
+                               playerObjEvent->currentCoords.x,
+                               playerObjEvent->currentCoords.y);
+}
+
+// Closes any open script menu (msgbox / dynmultichoice) without waiting for input.
+// Used by the cutscene skip system so menus left open mid-cutscene are cleaned up.
+void CloseScriptMenus(void)
+{
+    HideFieldMessageBox();
+    ScriptMenu_ForceClose();
 }
 
 u8 GetPokeblockNameByMonNature(void)

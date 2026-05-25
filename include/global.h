@@ -17,6 +17,7 @@
 #include "constants/pokedex.h"
 #include "constants/apricorn_tree.h"
 #include "constants/berry.h"
+#include "constants/cutscene.h"
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/easy_chat.h"
@@ -623,6 +624,9 @@ struct SaveBlock2
 #endif //FREE_RECORD_MIXING_HALL_RECORDS
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+#if CUTSCENE_FLAG_TRACKING == FALSE
+              u8 flagCutscenes[ROUND_BITS_TO_BYTES(CUTSCENE_COUNT)];
+#endif
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

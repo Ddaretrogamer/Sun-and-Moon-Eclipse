@@ -25,6 +25,7 @@ mapscripts TapuKokoBridge_MapScripts{
 
 script TapuKokoBridge_LillieCosmogEvent{
     lock
+    startcutscene(CUTSCENE_TAPUKOKO_BRIDGE)
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
     waitmovement(0)
@@ -154,6 +155,34 @@ script TapuKokoBridge_LillieCosmogEvent{
     applymovement(bridgelillie, moves(face_up))
     waitmovement(bridgelillie)
     special(RemoveCameraObject)
+    endcutscene
+    release
+    end
+}
+
+script TapuKokoBridge_LillieCosmogSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(CloseScriptMenus)
+    setobjectxy(LOCALID_PLAYER, 21, 28)
+    special(HideCutsceneCinematicBars)
+    special(SnapCameraToPlayer)
+    special(RemoveCameraObject)
+    showobjectat(LOCALID_PLAYER, MAP_TAPU_KOKO_BRIDGE)
+    showobjectat(bridgecosmog, MAP_TAPU_KOKO_BRIDGE)
+    setobjectxy(bridgelillie, 22, 27)
+    setobjectxy(bridgecosmog, 21, 20)
+    removeobject(bridgewingull1)
+    removeobject(bridgewingull2)
+    removeobject(bridgewingull3)
+    addobject(bridgewingull4, MAP_TAPU_KOKO_BRIDGE)
+    addobject(bridgewingull5, MAP_TAPU_KOKO_BRIDGE)
+    addobject(bridgewingull6, MAP_TAPU_KOKO_BRIDGE)
+    setflag(FLAG_HIDE_FLYOVER_WINGULLS)
+    clearflag(FLAG_HIDE_CIRCLING_WINGULLS)
+    setvar(VAR_IKITOWN_STATE, 4)
+    special(HealPlayerParty)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     release
     end
 }
@@ -288,6 +317,7 @@ script TapuKokoBridge_trigger_TryLeave2{
 
 script TapuKokoBridge_trigger_BridgeShake{
     lockplayer
+    startcutscene(CUTSCENE_TAPUKOKO_BRIDGE_SHAKE)
     special(ShowCutsceneCinematicBars)
     delay(30)
     setvar(VAR_0x8004, 2)
@@ -564,11 +594,29 @@ script TapuKokoBridge_trigger_BridgeShake{
     applymovement(bridgelillie, moves(delay_16*2, walk_down))
     applymovement(LOCALID_PLAYER, moves(walk_down*3))
     waitmovement(0)
+    endcutscene
     fadescreenswapbuffers(FADE_TO_BLACK)
     setflag(FLAG_HIDE_BRIDGE_LILLIE)
     setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
     warp(MAP_IKI_TOWN, 5)
     release
+    releaseplayer
+    end
+}
+
+script TapuKokoBridge_BridgeShakeSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(CloseScriptMenus)
+    special(HideCutsceneCinematicBars)
+    setflag(FLAG_MAHALO_BRIDGE_BROKEN)
+    setflag(FLAG_HIDE_BRIDGE_COSMOG)
+    setflag(FLAG_HIDE_FLYOVER_WINGULLS)
+    setvar(VAR_IKITOWN_STATE, 6)
+    additem(ITEM_SPARKLING_STONE, 1)
+    setflag(FLAG_HIDE_BRIDGE_LILLIE)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
+    warp(MAP_IKI_TOWN, 5)
     releaseplayer
     end
 }

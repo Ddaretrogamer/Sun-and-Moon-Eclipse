@@ -978,6 +978,7 @@ const u8 gText_ButtonMode[] = _("BUTTON MODE");
 const u8 gText_Follower[] = _("FOLLOWERS");
 const u8 gText_BattleSpeed[] = _("BATTLE SPEED");
 const u8 gText_AutoRun[] = _("RUN MODE");
+const u8 gText_CutsceneSkipButton[] = _("SKIP BUTTON");
 const u8 gText_TitleScreen[] = _("TITLE SCREEN");
 const u8 gText_TS_Time[] = _("TIME");
 const u8 gText_TS_Random[] = _("RANDOM");

@@ -274,6 +274,18 @@
 	.endif
 	.endm
 
+	@ Starts the given cutscene, which can be skipped if seen before.
+	@ The scene ID must be a value from the Cutscenes enum in include/constants/cutscene.h.
+	.macro startcutscene scene:req
+	setvar VAR_0x8004, \scene
+	callnative StartSkippableCutscene, requests_effects=1
+	.endm
+
+	@ Ends the active cutscene and removes the skip button.
+	.macro endcutscene
+	callnative EndSkippableCutscene, requests_effects=1
+	.endm
+
 	@ Replaces the script with the function stored at func. Execution returns to the bytecode script when func returns TRUE.
 	.macro gotonative func:req, requests_effects=0
 	.byte SCR_OP_GOTONATIVE

@@ -631,6 +631,54 @@ static void Task_HandleYesNoInput(u8 taskId)
     ScriptContext_Enable();
 }
 
+// Force-closes any open script menu (dynmultichoice, multichoice, or yesno) without
+// waiting for player input. Called by the cutscene skip system to clean up mid-cutscene.
+void ScriptMenu_ForceClose(void)
+{
+    u8 taskId;
+
+    // Scrolling multichoice (dynmultichoice): full resource cleanup
+    taskId = FindTaskIdByFunc(Task_HandleScrollingMultichoiceInput);
+    if (taskId != TASK_NONE)
+    {
+        struct ListMenuItem *items;
+
+        sDynamicMenuEventId = DYN_MULTICHOICE_CB_NONE;
+        TRY_FREE_AND_SET_NULL(sDynamicMenuEventScratchPad);
+
+        if (gTasks[taskId].data[5] > gTasks[taskId].data[7])
+            RemoveScrollIndicatorArrowPair(gTasks[taskId].data[6]);
+
+        LoadWordFromTwoHalfwords((u16 *)&gTasks[taskId].data[3], (u32 *)(&items));
+        FreeListMenuItems(items, gTasks[taskId].data[5]);
+        DestroyListMenuTask(gTasks[taskId].data[0], NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].data[2], TRUE);
+        RemoveWindow(gTasks[taskId].data[2]);
+        DestroyTask(taskId);
+    }
+
+    // Regular multichoice: data[6] is the windowId
+    taskId = FindTaskIdByFunc(Task_HandleMultichoiceInput);
+    if (taskId != TASK_NONE)
+    {
+        ClearToTransparentAndRemoveWindow(gTasks[taskId].data[6]);
+        DestroyTask(taskId);
+    }
+
+    // Grid multichoice: data[6] is the windowId
+    taskId = FindTaskIdByFunc(Task_HandleMultichoiceGridInput);
+    if (taskId != TASK_NONE)
+    {
+        ClearToTransparentAndRemoveWindow(gTasks[taskId].data[6]);
+        DestroyTask(taskId);
+    }
+
+    // Yes/no windowId stored in task; just kill the task
+    taskId = FindTaskIdByFunc(Task_HandleYesNoInput);
+    if (taskId != TASK_NONE)
+        DestroyTask(taskId);
+}
+
 bool8 ScriptMenu_MultichoiceGrid(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 columnCount)
 {
     if (FuncIsActiveTask(Task_HandleMultichoiceGridInput) == TRUE)
