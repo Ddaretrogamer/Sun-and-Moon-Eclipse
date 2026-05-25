@@ -254,6 +254,11 @@ void BattleIntroSlide1(u8 taskId)
         for (; i < DISPLAY_HEIGHT; i++)
             gScanlineEffectRegBuffers[gScanlineEffect.srcBuffer][i] = -gTasks[taskId].data[2];
 
+        // Keep gBattle_BG3_X in sync with the slide offset so that VBlankCB_Battle's
+        // SetGpuReg call provides the correct value for scanline 0 when battle speed
+        // is greater than 1x (fake VBlankCB calls may fire during active display).
+        gBattle_BG3_X = gTasks[taskId].data[2];
+
         if (gTasks[taskId].data[2] == 0)
         {
             gScanlineEffect.state = 3;
@@ -366,6 +371,8 @@ void BattleIntroSlide2(u8 taskId)
         for (; i < DISPLAY_HEIGHT; i++)
             gScanlineEffectRegBuffers[gScanlineEffect.srcBuffer][i] = -gTasks[taskId].data[2];
 
+        gBattle_BG3_X = gTasks[taskId].data[2];
+
         if (gTasks[taskId].data[2] == 0)
         {
             gScanlineEffect.state = 3;
@@ -455,6 +462,8 @@ void BattleIntroSlide3(u8 taskId)
 
         for (; i < DISPLAY_HEIGHT; i++)
             gScanlineEffectRegBuffers[gScanlineEffect.srcBuffer][i] = -gTasks[taskId].data[2];
+
+        gBattle_BG3_X = gTasks[taskId].data[2];
 
         if (gTasks[taskId].data[2] == 0)
         {
