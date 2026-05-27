@@ -63,7 +63,7 @@ void StartSkippableCutscene(struct ScriptContext *ctx)
 
     if (TaskHelper_CheckCutsceneFlag(cutscene))
     {
-        if (!FlagGet(FLAG_CUTSCENE_SKIP_DISABLED))
+        if (FlagGet(FLAG_CUTSCENE_SKIP_ENABLED))
         {
             u8 taskId = CreateTask(Task_SkippableCutscene, 64);
             u8 spriteId;

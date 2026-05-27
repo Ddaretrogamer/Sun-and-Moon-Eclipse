@@ -760,7 +760,7 @@ void CB2_InitOptionPlusMenu(void)
             : 1;
         sOptions->sel_custom[MENUITEM_AUTORUN]      = FlagGet(FLAG_AUTORUN_MENU_TOGGLE) ? 0 : 1;
         sOptions->sel_custom[MENUITEM_TITLESCREEN]  = gSaveBlock2Ptr->optionsTitleScreenPokemon;
-        if (FlagGet(FLAG_CUTSCENE_SKIP_DISABLED))
+        if (!FlagGet(FLAG_CUTSCENE_SKIP_ENABLED))
             sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 0;
         else if (!FlagGet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE))
             sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 1;
@@ -993,15 +993,15 @@ static void Task_OptionMenuSave(u8 taskId)
     switch (sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON])
     {
     case 0: // No Skip
-        FlagSet(FLAG_CUTSCENE_SKIP_DISABLED);
+        FlagClear(FLAG_CUTSCENE_SKIP_ENABLED);
         FlagClear(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
         break;
     case 1: // Show
-        FlagClear(FLAG_CUTSCENE_SKIP_DISABLED);
+        FlagSet(FLAG_CUTSCENE_SKIP_ENABLED);
         FlagClear(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
         break;
     default: // Hide
-        FlagClear(FLAG_CUTSCENE_SKIP_DISABLED);
+        FlagSet(FLAG_CUTSCENE_SKIP_ENABLED);
         FlagSet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
         break;
     }
