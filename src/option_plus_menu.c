@@ -263,7 +263,7 @@ static const MenuItemFunctions sItemFunctionsCustom[MENUITEM_COUNT_PG2] =
     [MENUITEM_OW_ENCOUNTERS] = {DrawChoices_OW_Encounters,    TwoOptions_ProcessInput},
     [MENUITEM_AUTORUN]  = {DrawChoices_AutoRun,    ProcessInput_AutoRun},
     [MENUITEM_TITLESCREEN] = {DrawChoices_TitleScreen,    FiveOptions_ProcessInput},
-    [MENUITEM_CUTSCENE_SKIP_BUTTON] = {DrawChoices_CutsceneSkipButton,    TwoOptions_ProcessInput},
+    [MENUITEM_CUTSCENE_SKIP_BUTTON] = {DrawChoices_CutsceneSkipButton,    ThreeOptions_ProcessInput},
     [MENUITEM_CANCEL_PG2]       = {NULL, NULL},
 };
 
@@ -364,6 +364,7 @@ static const u8 sText_Desc_MatchCallOn[]        = _("TRAINERs will be able to ca
 static const u8 sText_Desc_MatchCallOff[]       = _("You will not receive calls.\nSpecial events will still occur.");
 static const u8 sText_Desc_Autorun_Toggle[]     = _("Toggle between running and walking\nby pressing the {B_BUTTON} button.");
 static const u8 sText_Desc_Autorun_Hold[]       = _("Hold the {B_BUTTON} button to run.");
+static const u8 sText_Desc_CutsceneSkip_Disabled[] = _("Cutscenes cannot be skipped.");
 static const u8 sText_Desc_CutsceneSkip_On[]    = _("The skip button is shown\nduring cutscenes.");
 static const u8 sText_Desc_CutsceneSkip_Off[]   = _("The skip button is hidden\nduring cutscenes.");
 static const u8 sText_Desc_BattleScene_On[]     = _("Show the POKéMON battle animations.");
@@ -410,7 +411,7 @@ static const u8 *const sOptionMenuItemDescriptionsCustom[MENUITEM_COUNT_PG2][5] 
     [MENUITEM_OW_ENCOUNTERS] = {sText_Desc_OW_On,            sText_Desc_OW_Off,                sText_Empty,                    sText_Empty, sText_Empty,},
     [MENUITEM_AUTORUN] = {sText_Desc_Autorun_Hold,     sText_Desc_Autorun_Toggle,          sText_Empty,                    sText_Empty, sText_Empty,},
     [MENUITEM_TITLESCREEN] = {sText_Desc_TS_Necrozma,            sText_Desc_TS_Solgaleo,              sText_Desc_TS_Lunala,                    sText_Desc_TS_Random, sText_Desc_TS_Time,},
-    [MENUITEM_CUTSCENE_SKIP_BUTTON] = {sText_Desc_CutsceneSkip_On,  sText_Desc_CutsceneSkip_Off,        sText_Empty,                    sText_Empty, sText_Empty,},
+    [MENUITEM_CUTSCENE_SKIP_BUTTON] = {sText_Desc_CutsceneSkip_Disabled, sText_Desc_CutsceneSkip_On, sText_Desc_CutsceneSkip_Off,    sText_Empty, sText_Empty,},
     [MENUITEM_CANCEL_PG2]       = {sText_Desc_Save,                 sText_Empty,                      sText_Empty,                    sText_Empty, sText_Empty,},
 };
 
@@ -759,7 +760,12 @@ void CB2_InitOptionPlusMenu(void)
             : 1;
         sOptions->sel_custom[MENUITEM_AUTORUN]      = FlagGet(FLAG_AUTORUN_MENU_TOGGLE) ? 0 : 1;
         sOptions->sel_custom[MENUITEM_TITLESCREEN]  = gSaveBlock2Ptr->optionsTitleScreenPokemon;
-        sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = FlagGet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE) ? 1 : 0;
+        if (FlagGet(FLAG_CUTSCENE_SKIP_DISABLED))
+            sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 0;
+        else if (!FlagGet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE))
+            sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 1;
+        else
+            sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 2;
 
         sOptions->submenu = sCurrPage; // Restore last page
 
@@ -983,12 +989,22 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsRotomPhonePalette = sOptions->sel_custom[MENUITEM_MENUPAL];
     gSaveBlock2Ptr->optionsTitleScreenPokemon = sOptions->sel_custom[MENUITEM_TITLESCREEN];
 
-    // Handle CutsceneSkipButton option (0 = SHOW, 1 = HIDE)
-    // Flag SET means hidden; flag CLEAR (default) means shown.
-    if (sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] == 0)
+    // Handle CutsceneSkipButton option (0 = NO SKIP, 1 = SHOW, 2 = HIDE)
+    switch (sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON])
+    {
+    case 0: // No Skip
+        FlagSet(FLAG_CUTSCENE_SKIP_DISABLED);
         FlagClear(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
-    else
+        break;
+    case 1: // Show
+        FlagClear(FLAG_CUTSCENE_SKIP_DISABLED);
+        FlagClear(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
+        break;
+    default: // Hide
+        FlagClear(FLAG_CUTSCENE_SKIP_DISABLED);
         FlagSet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE);
+        break;
+    }
 
     // Handle Follower option (flag-based)
     // If sOptions->sel_custom[MENUITEM_FOLLOWER] is 0 (ON), clear the disable flag.
@@ -1459,12 +1475,9 @@ static void DrawChoices_AutoRun(int selection, int y)
 
 static void DrawChoices_CutsceneSkipButton(int selection, int y)
 {
+    static const u8 *const sStrings[] = {gText_CutsceneSkipNoSkip, gText_FollowerOn, gText_FollowerOff};
     bool8 active = CheckConditions(MENUITEM_CUTSCENE_SKIP_BUTTON);
-    u8 styles[2] = {0};
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(gText_FollowerOn, 104, y, styles[0], active);
-    DrawOptionMenuChoice(gText_FollowerOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_FollowerOff, 198), y, styles[1], active);
+    DrawOptionMenuChoice(sStrings[selection], 104, y, 1, active);
 }
 
 static int ProcessInput_AutoRun(int selection)

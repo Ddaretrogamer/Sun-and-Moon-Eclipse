@@ -87,1071 +87,1141 @@ IkiTown_Trigger_HauGetStarter::
 # 50 "data/maps/IkiTownSouth/scripts.pory"
 	lock
 # 51 "data/maps/IkiTownSouth/scripts.pory"
-	addobject ikitownmon1
+	startcutscene CUTSCENE_HAU_GET_STARTER
 # 52 "data/maps/IkiTownSouth/scripts.pory"
-	addobject ikitownmon2
+	addobject ikitownmon1
 # 53 "data/maps/IkiTownSouth/scripts.pory"
-	addobject ikitownhau
+	addobject ikitownmon2
 # 54 "data/maps/IkiTownSouth/scripts.pory"
-	addobject ikitownkukui
+	addobject ikitownhau
 # 55 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_KUKUI_STARTERS
+	addobject ikitownkukui
 # 56 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
+	setflag FLAG_HIDE_KUKUI_STARTERS
 # 57 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
+	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
 # 58 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
+	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
 # 59 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_0
+	playse SE_PIN
 # 60 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_1
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_0
 # 61 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_1
 # 62 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
+	waitmovement 0
 # 63 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_2
-# 64 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
-# 65 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_3
-# 66 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
-# 67 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_0
-# 68 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_1
-# 72 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 73 "data/maps/IkiTownSouth/scripts.pory"
 	playse SE_PIN
-# 74 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_4
-# 75 "data/maps/IkiTownSouth/scripts.pory"
+# 64 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_2
+# 65 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownhau
+# 66 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_3
+# 67 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 68 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_0
+# 69 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_1
+# 73 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 74 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 75 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_4
 # 76 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 77 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_3
-# 81 "data/maps/IkiTownSouth/scripts.pory"
-	bufferleadmonspeciesname STR_VAR_1
 # 82 "data/maps/IkiTownSouth/scripts.pory"
-	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, IkiTown_Trigger_HauGetStarter_Text_4, IkiTown_Trigger_HauGetStarter_Text_5
+	bufferleadmonspeciesname STR_VAR_1
 # 83 "data/maps/IkiTownSouth/scripts.pory"
+	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, IkiTown_Trigger_HauGetStarter_Text_4, IkiTown_Trigger_HauGetStarter_Text_5
+# 84 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq IkiTown_Trigger_HauGetStarter_2
-# 91 "data/maps/IkiTownSouth/scripts.pory"
+# 92 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq IkiTown_Trigger_HauGetStarter_3
 IkiTown_Trigger_HauGetStarter_1:
-# 97 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_6
 # 98 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_6
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_6
 # 99 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_6
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_6
 # 100 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_6
 # 101 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	waitmovement 0
 # 102 "data/maps/IkiTownSouth/scripts.pory"
-	checkplayergender
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
 # 103 "data/maps/IkiTownSouth/scripts.pory"
+	checkplayergender
+# 104 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq IkiTown_Trigger_HauGetStarter_7
-# 111 "data/maps/IkiTownSouth/scripts.pory"
+# 112 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_10
 IkiTown_Trigger_HauGetStarter_6:
-# 117 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
 # 118 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
 # 119 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
+	waitmovement ikitownhau
 # 120 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 121 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_11
-# 124 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_5
 # 125 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownkukui
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_5
 # 126 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	waitmovement ikitownkukui
 # 127 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 128 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_12
-# 129 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_8
 # 130 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_8
 # 131 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
 # 132 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
+	waitmovement 0
 # 133 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 134 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_STARTER_MON, 0
 	goto_if_eq IkiTown_Trigger_HauGetStarter_11
-# 196 "data/maps/IkiTownSouth/scripts.pory"
+# 197 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_STARTER_MON, 1
 	goto_if_eq IkiTown_Trigger_HauGetStarter_12
-# 259 "data/maps/IkiTownSouth/scripts.pory"
+# 260 "data/maps/IkiTownSouth/scripts.pory"
 	compare VAR_STARTER_MON, 2
 	goto_if_eq IkiTown_Trigger_HauGetStarter_13
 IkiTown_Trigger_HauGetStarter_10:
-# 321 "data/maps/IkiTownSouth/scripts.pory"
+# 322 "data/maps/IkiTownSouth/scripts.pory"
+	endcutscene
+# 323 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 IkiTown_Trigger_HauGetStarter_2:
-# 84 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_5
 # 85 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_5
 # 86 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 87 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_6
 	goto IkiTown_Trigger_HauGetStarter_1
 
 IkiTown_Trigger_HauGetStarter_3:
-# 92 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_5
 # 93 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarter_Movement_5
 # 94 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 95 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_7
 	goto IkiTown_Trigger_HauGetStarter_1
 
 IkiTown_Trigger_HauGetStarter_7:
-# 104 "data/maps/IkiTownSouth/scripts.pory"
+# 105 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_Trigger_HauGetStarter_Text_9
 	goto IkiTown_Trigger_HauGetStarter_6
 
 IkiTown_Trigger_HauGetStarter_11:
-# 134 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
 # 135 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_9
+	playmoncry SPECIES_LITTEN, 0
 # 136 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon1
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_9
 # 137 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_13
-# 138 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 139 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 140 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
-# 141 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 142 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_14
-# 143 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 144 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 145 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_15
-# 147 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 148 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 149 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
-# 150 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 151 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_14, MSGBOX_AUTOCLOSE
-# 152 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 153 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 154 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
-# 155 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 156 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 157 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_16
-# 167 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 168 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_10
-# 169 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
-# 170 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 171 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_11
-# 172 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 173 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_17
-# 175 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
-# 176 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 177 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 178 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 179 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 180 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 181 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_18
-# 182 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_13
-# 183 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownmon1
-# 184 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_19
-# 186 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
-# 187 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
-# 188 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
-# 189 "data/maps/IkiTownSouth/scripts.pory"
+# 138 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_13
+# 139 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 140 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
+# 141 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
+# 142 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 143 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_14
+# 144 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 145 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 190 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_20
-# 192 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
-# 193 "data/maps/IkiTownSouth/scripts.pory"
+# 146 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_15
+# 148 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
+# 149 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 150 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
+# 151 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 152 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_14, MSGBOX_AUTOCLOSE
+# 153 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 154 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 155 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
+# 156 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 157 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 158 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_16
+# 168 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
+# 169 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_10
+# 170 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 171 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 172 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_11
+# 173 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 174 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_17
+# 176 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
+# 177 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 178 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 179 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 180 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 181 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 182 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_18
+# 183 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_13
+# 184 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon1
+# 185 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_19
+# 187 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 188 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
+# 189 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownhau
+# 190 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 191 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_20
+# 193 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
 # 194 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 195 "data/maps/IkiTownSouth/scripts.pory"
 	goto Ikitown_RivalBattleYesNo
 	goto IkiTown_Trigger_HauGetStarter_10
 
 IkiTown_Trigger_HauGetStarter_12:
-# 197 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
 # 198 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_21
+	playmoncry SPECIES_ROWLET, 0
 # 199 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_15
+	msgbox IkiTown_Trigger_HauGetStarter_Text_21
 # 200 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon1
-# 201 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 202 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 203 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_14
-# 204 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
-# 205 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 206 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 207 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 208 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_22
-# 210 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
-# 211 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 212 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_21, MSGBOX_AUTOCLOSE
-# 213 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 214 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_15
-# 215 "data/maps/IkiTownSouth/scripts.pory"
+# 201 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownmon1
-# 216 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_8
-# 217 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon1
-# 218 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 219 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_16
-# 229 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
-# 230 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_10
-# 231 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
-# 232 "data/maps/IkiTownSouth/scripts.pory"
+# 202 "data/maps/IkiTownSouth/scripts.pory"
 	delay 30
-# 233 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_11
-# 234 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon1
-# 235 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_23
-# 237 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
-# 238 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 239 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 240 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 241 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 242 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 243 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_18
-# 244 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_16
-# 245 "data/maps/IkiTownSouth/scripts.pory"
+# 203 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
+# 204 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_14
+# 205 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
+# 206 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownmon2
-# 246 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_24
-# 248 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
-# 249 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
-# 250 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
-# 251 "data/maps/IkiTownSouth/scripts.pory"
+# 207 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 208 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 252 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_25
-# 254 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
-# 255 "data/maps/IkiTownSouth/scripts.pory"
+# 209 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_22
+# 211 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_ROWLET, 0
+# 212 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 213 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_21, MSGBOX_AUTOCLOSE
+# 214 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 215 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_15
+# 216 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon1
+# 217 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_8
+# 218 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon1
+# 219 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 220 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_16
+# 230 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_ROWLET, 0
+# 231 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_10
+# 232 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 233 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 234 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_11
+# 235 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon1
+# 236 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_23
+# 238 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
+# 239 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 240 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 241 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 242 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 243 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 244 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_18
+# 245 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_16
+# 246 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 247 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_24
+# 249 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 250 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
+# 251 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownhau
+# 252 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 253 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_25
+# 255 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
 # 256 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 257 "data/maps/IkiTownSouth/scripts.pory"
 	goto Ikitown_RivalBattleYesNo
 	goto IkiTown_Trigger_HauGetStarter_10
 
 IkiTown_Trigger_HauGetStarter_13:
-# 260 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_ROWLET, 0
 # 261 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_21
+	playmoncry SPECIES_ROWLET, 0
 # 262 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_15
+	msgbox IkiTown_Trigger_HauGetStarter_Text_21
 # 263 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon1
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_15
 # 264 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 265 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 266 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_13
-# 267 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
-# 268 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 269 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 270 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 271 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_26
-# 273 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 274 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 275 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_13, MSGBOX_AUTOCLOSE
-# 276 "data/maps/IkiTownSouth/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 277 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
-# 278 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 279 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
-# 280 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 281 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 282 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_16
-# 292 "data/maps/IkiTownSouth/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 293 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_10
-# 294 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement 0
-# 295 "data/maps/IkiTownSouth/scripts.pory"
-	delay 30
-# 296 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_11
-# 297 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownmon2
-# 298 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_27
-# 300 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
-# 301 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 302 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 303 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 304 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 305 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 306 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_18
-# 307 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_13
-# 308 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownmon1
-# 309 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_28
-# 311 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
-# 312 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
-# 313 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
-# 314 "data/maps/IkiTownSouth/scripts.pory"
+# 265 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 266 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
+# 267 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_13
+# 268 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
+# 269 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 270 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 271 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 315 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_Trigger_HauGetStarter_Text_29
-# 317 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
-# 318 "data/maps/IkiTownSouth/scripts.pory"
+# 272 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_26
+# 274 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
+# 275 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 276 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_13, MSGBOX_AUTOCLOSE
+# 277 "data/maps/IkiTownSouth/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 278 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_9
+# 279 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 280 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_8
+# 281 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 282 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 283 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_16
+# 293 "data/maps/IkiTownSouth/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
+# 294 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_10
+# 295 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 296 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 297 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarter_Movement_11
+# 298 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon2
+# 299 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_27
+# 301 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_12
+# 302 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 303 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 304 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 305 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 306 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 307 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_18
+# 308 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarter_Movement_13
+# 309 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownmon1
+# 310 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_28
+# 312 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 313 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
+# 314 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownhau
+# 315 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 316 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_Trigger_HauGetStarter_Text_29
+# 318 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_7
 # 319 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 320 "data/maps/IkiTownSouth/scripts.pory"
 	goto Ikitown_RivalBattleYesNo
 	goto IkiTown_Trigger_HauGetStarter_10
 
 
-Ikitown_RivalBattleYesNo::
-# 326 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 327 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox Ikitown_RivalBattleYesNo_Text_0, MSGBOX_YESNO
+IkiTown_Trigger_HauGetStarterSkip::
+# 328 "data/maps/IkiTownSouth/scripts.pory"
+	closemessage
 # 329 "data/maps/IkiTownSouth/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, IkiTown_StartRivalBattle
+	fadescreenswapbuffers FADE_TO_BLACK
 # 330 "data/maps/IkiTownSouth/scripts.pory"
+	special StopAllObjectMovements
+# 331 "data/maps/IkiTownSouth/scripts.pory"
+	special CloseScriptMenus
+# 332 "data/maps/IkiTownSouth/scripts.pory"
+	addobject ikitownhau
+# 333 "data/maps/IkiTownSouth/scripts.pory"
+	addobject ikitownkukui
+# 334 "data/maps/IkiTownSouth/scripts.pory"
+	addobject ikitownmon1
+# 335 "data/maps/IkiTownSouth/scripts.pory"
+	addobject ikitownmon2
+# 336 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_KUKUI_STARTERS
+# 337 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
+# 338 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
+# 339 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownhau, 35, 3
+# 340 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownkukui, 39, 3
+# 341 "data/maps/IkiTownSouth/scripts.pory"
+	compare VAR_STARTER_MON, 0
+	goto_if_eq IkiTown_Trigger_HauGetStarterSkip_2
+# 341 "data/maps/IkiTownSouth/scripts.pory"
+	compare VAR_STARTER_MON, 2
+	goto_if_eq IkiTown_Trigger_HauGetStarterSkip_2
+# 348 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownmon1, 36, 2
+# 349 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownmon2, 40, 4
+# 350 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarterSkip_Movement_0
+# 351 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarterSkip_Movement_1
+IkiTown_Trigger_HauGetStarterSkip_1:
+# 353 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_Trigger_HauGetStarterSkip_Movement_1
+# 354 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarterSkip_Movement_0
+# 355 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 356 "data/maps/IkiTownSouth/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 357 "data/maps/IkiTownSouth/scripts.pory"
+	goto Ikitown_RivalBattleYesNo
+	return
+
+IkiTown_Trigger_HauGetStarterSkip_2:
+# 342 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownmon1, 40, 2
+# 343 "data/maps/IkiTownSouth/scripts.pory"
+	setobjectxy ikitownmon2, 36, 4
+# 344 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon1, IkiTown_Trigger_HauGetStarterSkip_Movement_0
+# 345 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownmon2, IkiTown_Trigger_HauGetStarterSkip_Movement_1
+	goto IkiTown_Trigger_HauGetStarterSkip_1
+
+
+Ikitown_RivalBattleYesNo::
+# 362 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 363 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_RivalBattleYesNo_Text_0, MSGBOX_YESNO
+# 365 "data/maps/IkiTownSouth/scripts.pory"
+	goto_if_eq VAR_RESULT, YES, IkiTown_StartRivalBattle
+# 366 "data/maps/IkiTownSouth/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, RivalBattleNo
 	end
 
 
 RivalBattleNo::
-# 335 "data/maps/IkiTownSouth/scripts.pory"
+# 371 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 336 "data/maps/IkiTownSouth/scripts.pory"
+# 372 "data/maps/IkiTownSouth/scripts.pory"
 	playse SE_PIN
-# 337 "data/maps/IkiTownSouth/scripts.pory"
+# 373 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitownhau, IkiTown_Trigger_HauGetStarter_Movement_14
-# 338 "data/maps/IkiTownSouth/scripts.pory"
+# 374 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownhau
-# 339 "data/maps/IkiTownSouth/scripts.pory"
+# 375 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox RivalBattleNo_Text_0
-# 341 "data/maps/IkiTownSouth/scripts.pory"
+# 377 "data/maps/IkiTownSouth/scripts.pory"
 	goto Ikitown_RivalBattleYesNo
 	return
 
 
 IkiTown_StartRivalBattle::
-# 344 "data/maps/IkiTownSouth/scripts.pory"
+# 380 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 345 "data/maps/IkiTownSouth/scripts.pory"
+# 381 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_5
-# 346 "data/maps/IkiTownSouth/scripts.pory"
+# 382 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement ikitownkukui
-# 347 "data/maps/IkiTownSouth/scripts.pory"
+# 383 "data/maps/IkiTownSouth/scripts.pory"
 	bufferleadmonspeciesname STR_VAR_1
-# 348 "data/maps/IkiTownSouth/scripts.pory"
+# 384 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_StartRivalBattle_Text_0
-# 353 "data/maps/IkiTownSouth/scripts.pory"
-	special HealPlayerParty
-# 354 "data/maps/IkiTownSouth/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 355 "data/maps/IkiTownSouth/scripts.pory"
-	playfanfare MUS_HEAL
-# 356 "data/maps/IkiTownSouth/scripts.pory"
-	waitfanfare
-# 357 "data/maps/IkiTownSouth/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
-# 358 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 359 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_StartRivalBattle_Text_1
-# 361 "data/maps/IkiTownSouth/scripts.pory"
-	switch VAR_STARTER_MON
-# 362 "data/maps/IkiTownSouth/scripts.pory"
-	case 0, IkiTown_StartRivalBattle_3
-# 370 "data/maps/IkiTownSouth/scripts.pory"
-	case 1, IkiTown_StartRivalBattle_4
-# 378 "data/maps/IkiTownSouth/scripts.pory"
-	case 2, IkiTown_StartRivalBattle_5
-IkiTown_StartRivalBattle_1:
-# 387 "data/maps/IkiTownSouth/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 388 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_BALL_OPEN
 # 389 "data/maps/IkiTownSouth/scripts.pory"
 	special HealPlayerParty
 # 390 "data/maps/IkiTownSouth/scripts.pory"
-	delay 60
+	fadescreenswapbuffers FADE_TO_BLACK
 # 391 "data/maps/IkiTownSouth/scripts.pory"
-	removeobject ikitownmon1
+	playfanfare MUS_HEAL
 # 392 "data/maps/IkiTownSouth/scripts.pory"
-	removeobject ikitownmon2
+	waitfanfare
 # 393 "data/maps/IkiTownSouth/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
 # 394 "data/maps/IkiTownSouth/scripts.pory"
-	bufferleadmonspeciesname STR_VAR_1
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
 # 395 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_0
-# 396 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
+	msgbox IkiTown_StartRivalBattle_Text_1
 # 397 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
+	switch VAR_STARTER_MON
 # 398 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
-# 399 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
-# 400 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 401 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_StartRivalBattle_Text_8
-# 411 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_5
-# 412 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownkukui
-# 413 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_8
+	case 0, IkiTown_StartRivalBattle_3
+# 406 "data/maps/IkiTownSouth/scripts.pory"
+	case 1, IkiTown_StartRivalBattle_4
 # 414 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_StartRivalBattle_Text_9, MSGBOX_AUTOCLOSE
-# 422 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_1
+	case 2, IkiTown_StartRivalBattle_5
+IkiTown_StartRivalBattle_1:
 # 423 "data/maps/IkiTownSouth/scripts.pory"
-	waitmovement ikitownhau
+	fadescreenswapbuffers FADE_TO_BLACK
 # 424 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_2
+	playse SE_BALL_OPEN
 # 425 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
+	special HealPlayerParty
 # 426 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
+	delay 60
 # 427 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_LEDGE
+	removeobject ikitownmon1
 # 428 "data/maps/IkiTownSouth/scripts.pory"
-	waitse
+	removeobject ikitownmon2
 # 429 "data/maps/IkiTownSouth/scripts.pory"
-	speakername IkiTown_Trigger_HauGetStarter_Text_2
+	fadescreenswapbuffers FADE_FROM_BLACK
 # 430 "data/maps/IkiTownSouth/scripts.pory"
-	msgbox IkiTown_StartRivalBattle_Text_10
+	bufferleadmonspeciesname STR_VAR_1
 # 431 "data/maps/IkiTownSouth/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 1
+	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_0
 # 432 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_HALA
+	playse SE_LEDGE
 # 433 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 434 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 435 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 436 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 437 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_StartRivalBattle_Text_8
+# 447 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownkukui, IkiTown_Trigger_HauGetStarter_Movement_5
+# 448 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownkukui
+# 449 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_8
+# 450 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_StartRivalBattle_Text_9, MSGBOX_AUTOCLOSE
+# 458 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_1
+# 459 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitownhau
+# 460 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitownhau, IkiTown_StartRivalBattle_Movement_2
+# 461 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 462 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 463 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_LEDGE
+# 464 "data/maps/IkiTownSouth/scripts.pory"
+	waitse
+# 465 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_2
+# 466 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox IkiTown_StartRivalBattle_Text_10
+# 467 "data/maps/IkiTownSouth/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 1
+# 468 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_HALA
+# 469 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 IkiTown_StartRivalBattle_3:
-# 363 "data/maps/IkiTownSouth/scripts.pory"
+# 399 "data/maps/IkiTownSouth/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, IkiTown_StartRivalBattle_7
-# 367 "data/maps/IkiTownSouth/scripts.pory"
+# 403 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_POPPLIO, 3, IkiTown_StartRivalBattle_Text_2, IkiTown_StartRivalBattle_Text_3
 IkiTown_StartRivalBattle_6:
 	goto IkiTown_StartRivalBattle_1
 
 IkiTown_StartRivalBattle_4:
-# 371 "data/maps/IkiTownSouth/scripts.pory"
+# 407 "data/maps/IkiTownSouth/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, IkiTown_StartRivalBattle_11
-# 375 "data/maps/IkiTownSouth/scripts.pory"
+# 411 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_ROWLET, 3, IkiTown_StartRivalBattle_Text_4, IkiTown_StartRivalBattle_Text_5
 IkiTown_StartRivalBattle_10:
 	goto IkiTown_StartRivalBattle_1
 
 IkiTown_StartRivalBattle_5:
-# 379 "data/maps/IkiTownSouth/scripts.pory"
+# 415 "data/maps/IkiTownSouth/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, IkiTown_StartRivalBattle_15
-# 383 "data/maps/IkiTownSouth/scripts.pory"
+# 419 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_LITTEN, 3, IkiTown_StartRivalBattle_Text_6, IkiTown_StartRivalBattle_Text_7
 IkiTown_StartRivalBattle_14:
 	goto IkiTown_StartRivalBattle_1
 
 IkiTown_StartRivalBattle_7:
-# 364 "data/maps/IkiTownSouth/scripts.pory"
+# 400 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_POPPLIOSHINY, 3, IkiTown_StartRivalBattle_Text_2, IkiTown_StartRivalBattle_Text_3
 	goto IkiTown_StartRivalBattle_6
 
 IkiTown_StartRivalBattle_11:
-# 372 "data/maps/IkiTownSouth/scripts.pory"
+# 408 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_ROWLETSHINY, 3, IkiTown_StartRivalBattle_Text_4, IkiTown_StartRivalBattle_Text_5
 	goto IkiTown_StartRivalBattle_10
 
 IkiTown_StartRivalBattle_15:
-# 380 "data/maps/IkiTownSouth/scripts.pory"
+# 416 "data/maps/IkiTownSouth/scripts.pory"
 	trainerbattle_earlyrival TRAINER_HAU_IKITOWN1_LITTENSHINY, 3, IkiTown_StartRivalBattle_Text_6, IkiTown_StartRivalBattle_Text_7
 	goto IkiTown_StartRivalBattle_14
 
 
 IkiTown_Trigger_BottomGetStarters::
-# 438 "data/maps/IkiTownSouth/scripts.pory"
+# 474 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 439 "data/maps/IkiTownSouth/scripts.pory"
+# 475 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement LOCALID_PLAYER, IkiTown_Trigger_BottomGetStarters_Movement_0
-# 440 "data/maps/IkiTownSouth/scripts.pory"
+# 476 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 441 "data/maps/IkiTownSouth/scripts.pory"
+# 477 "data/maps/IkiTownSouth/scripts.pory"
 	call IkiTown_Trigger_HauGetStarter
 	return
 
 
 IkiTown_Trigger_TopGetStarters::
-# 444 "data/maps/IkiTownSouth/scripts.pory"
+# 480 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 445 "data/maps/IkiTownSouth/scripts.pory"
+# 481 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement LOCALID_PLAYER, IkiTown_Trigger_TopGetStarters_Movement_0
-# 446 "data/maps/IkiTownSouth/scripts.pory"
+# 482 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 447 "data/maps/IkiTownSouth/scripts.pory"
+# 483 "data/maps/IkiTownSouth/scripts.pory"
 	call IkiTown_Trigger_HauGetStarter
 	return
 
 
 Ikitown_HauAfterBattle::
-# 451 "data/maps/IkiTownSouth/scripts.pory"
+# 487 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 452 "data/maps/IkiTownSouth/scripts.pory"
+# 488 "data/maps/IkiTownSouth/scripts.pory"
 	faceplayer
-# 453 "data/maps/IkiTownSouth/scripts.pory"
+# 489 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_2
-# 454 "data/maps/IkiTownSouth/scripts.pory"
+# 490 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox IkiTown_StartRivalBattle_Text_10
-# 455 "data/maps/IkiTownSouth/scripts.pory"
+# 491 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_KukuiAfterBattle::
-# 460 "data/maps/IkiTownSouth/scripts.pory"
+# 496 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 461 "data/maps/IkiTownSouth/scripts.pory"
+# 497 "data/maps/IkiTownSouth/scripts.pory"
 	faceplayer
-# 462 "data/maps/IkiTownSouth/scripts.pory"
+# 498 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 463 "data/maps/IkiTownSouth/scripts.pory"
+# 499 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 465 "data/maps/IkiTownSouth/scripts.pory"
+# 501 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_Trigger_LeaveIkitownEarly::
-# 470 "data/maps/IkiTownSouth/scripts.pory"
+# 506 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 471 "data/maps/IkiTownSouth/scripts.pory"
+# 507 "data/maps/IkiTownSouth/scripts.pory"
 	playse SE_PIN
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 508 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_Movement_0
-# 473 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_1
-# 474 "data/maps/IkiTownSouth/scripts.pory"
+# 509 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarterSkip_Movement_0
+# 510 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement 0
-# 475 "data/maps/IkiTownSouth/scripts.pory"
+# 511 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 476 "data/maps/IkiTownSouth/scripts.pory"
+# 512 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 478 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_2
-# 479 "data/maps/IkiTownSouth/scripts.pory"
+# 514 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_Movement_1
+# 515 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 480 "data/maps/IkiTownSouth/scripts.pory"
+# 516 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_Trigger_LeaveIkitownEarly_left::
-# 485 "data/maps/IkiTownSouth/scripts.pory"
+# 521 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 486 "data/maps/IkiTownSouth/scripts.pory"
+# 522 "data/maps/IkiTownSouth/scripts.pory"
 	playse SE_PIN
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 523 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitownkukui, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0
-# 488 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
-# 489 "data/maps/IkiTownSouth/scripts.pory"
+# 524 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, IkiTown_Trigger_HauGetStarterSkip_Movement_1
+# 525 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement 0
-# 490 "data/maps/IkiTownSouth/scripts.pory"
+# 526 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_8
-# 491 "data/maps/IkiTownSouth/scripts.pory"
+# 527 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_KukuiAfterBattle_Text_0
-# 493 "data/maps/IkiTownSouth/scripts.pory"
-	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2
-# 494 "data/maps/IkiTownSouth/scripts.pory"
+# 529 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1
+# 530 "data/maps/IkiTownSouth/scripts.pory"
 	waitmovement LOCALID_PLAYER
-# 495 "data/maps/IkiTownSouth/scripts.pory"
+# 531 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_TrainerTipsSign::
-# 500 "data/maps/IkiTownSouth/scripts.pory"
+# 536 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 501 "data/maps/IkiTownSouth/scripts.pory"
+# 537 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_TrainerTipsSign_Text_0
-# 510 "data/maps/IkiTownSouth/scripts.pory"
+# 546 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
 Ikitown_lassNPC::
-# 515 "data/maps/IkiTownSouth/scripts.pory"
+# 551 "data/maps/IkiTownSouth/scripts.pory"
 	lock
-# 516 "data/maps/IkiTownSouth/scripts.pory"
+# 552 "data/maps/IkiTownSouth/scripts.pory"
 	faceplayer
-# 517 "data/maps/IkiTownSouth/scripts.pory"
+# 553 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_lassNPC_Text_0
-# 522 "data/maps/IkiTownSouth/scripts.pory"
+# 558 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 
 
-# 59 "data/maps/IkiTownSouth/scripts.pory"
+# 60 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_0:
-# 59 "data/maps/IkiTownSouth/scripts.pory"
+# 60 "data/maps/IkiTownSouth/scripts.pory"
 	emote_question_mark
 	step_end
 
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_1:
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_down
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 60 "data/maps/IkiTownSouth/scripts.pory"
+# 61 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
 	step_end
 
-# 63 "data/maps/IkiTownSouth/scripts.pory"
+# 64 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_2:
-# 63 "data/maps/IkiTownSouth/scripts.pory"
+# 64 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
-# 63 "data/maps/IkiTownSouth/scripts.pory"
+# 64 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
 	step_end
 
-# 65 "data/maps/IkiTownSouth/scripts.pory"
+# 66 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_3:
-# 65 "data/maps/IkiTownSouth/scripts.pory"
+# 66 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_right
-# 65 "data/maps/IkiTownSouth/scripts.pory"
+# 66 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_right
-# 65 "data/maps/IkiTownSouth/scripts.pory"
+# 66 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_right
 	step_end
 
-# 74 "data/maps/IkiTownSouth/scripts.pory"
+# 75 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_4:
-# 74 "data/maps/IkiTownSouth/scripts.pory"
+# 75 "data/maps/IkiTownSouth/scripts.pory"
 	emote_x
 	step_end
 
-# 84 "data/maps/IkiTownSouth/scripts.pory"
+# 85 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_5:
-# 84 "data/maps/IkiTownSouth/scripts.pory"
+# 85 "data/maps/IkiTownSouth/scripts.pory"
 	walk_in_place_left
-# 84 "data/maps/IkiTownSouth/scripts.pory"
+# 85 "data/maps/IkiTownSouth/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_6:
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_fast_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 97 "data/maps/IkiTownSouth/scripts.pory"
+# 98 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
 	step_end
 
-# 117 "data/maps/IkiTownSouth/scripts.pory"
+# 118 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_7:
-# 117 "data/maps/IkiTownSouth/scripts.pory"
+# 118 "data/maps/IkiTownSouth/scripts.pory"
 	walk_in_place_right
-# 117 "data/maps/IkiTownSouth/scripts.pory"
+# 118 "data/maps/IkiTownSouth/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 129 "data/maps/IkiTownSouth/scripts.pory"
+# 130 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_8:
-# 129 "data/maps/IkiTownSouth/scripts.pory"
+# 130 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 129 "data/maps/IkiTownSouth/scripts.pory"
+# 130 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
 	step_end
 
-# 135 "data/maps/IkiTownSouth/scripts.pory"
+# 136 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_9:
-# 135 "data/maps/IkiTownSouth/scripts.pory"
+# 136 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_left
 	step_end
 
-# 168 "data/maps/IkiTownSouth/scripts.pory"
+# 169 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_10:
-# 168 "data/maps/IkiTownSouth/scripts.pory"
+# 169 "data/maps/IkiTownSouth/scripts.pory"
 	emote_heart
 	step_end
 
-# 171 "data/maps/IkiTownSouth/scripts.pory"
+# 172 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_11:
-# 171 "data/maps/IkiTownSouth/scripts.pory"
+# 172 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 171 "data/maps/IkiTownSouth/scripts.pory"
+# 172 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
 	step_end
 
-# 175 "data/maps/IkiTownSouth/scripts.pory"
+# 176 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_12:
-# 175 "data/maps/IkiTownSouth/scripts.pory"
+# 176 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_left
-# 175 "data/maps/IkiTownSouth/scripts.pory"
+# 176 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_left
 	step_end
 
-# 182 "data/maps/IkiTownSouth/scripts.pory"
+# 183 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_13:
-# 182 "data/maps/IkiTownSouth/scripts.pory"
+# 183 "data/maps/IkiTownSouth/scripts.pory"
 	walk_right
-# 182 "data/maps/IkiTownSouth/scripts.pory"
+# 183 "data/maps/IkiTownSouth/scripts.pory"
 	face_down
 	step_end
 
-# 187 "data/maps/IkiTownSouth/scripts.pory"
+# 188 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_14:
-# 187 "data/maps/IkiTownSouth/scripts.pory"
+# 188 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_15:
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	face_up
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	face_down
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 199 "data/maps/IkiTownSouth/scripts.pory"
+# 200 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 244 "data/maps/IkiTownSouth/scripts.pory"
+# 245 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_16:
-# 244 "data/maps/IkiTownSouth/scripts.pory"
+# 245 "data/maps/IkiTownSouth/scripts.pory"
 	walk_right
-# 244 "data/maps/IkiTownSouth/scripts.pory"
+# 245 "data/maps/IkiTownSouth/scripts.pory"
 	face_up
 	step_end
 
-# 395 "data/maps/IkiTownSouth/scripts.pory"
+# 344 "data/maps/IkiTownSouth/scripts.pory"
+IkiTown_Trigger_HauGetStarterSkip_Movement_0:
+# 344 "data/maps/IkiTownSouth/scripts.pory"
+	face_left
+	step_end
+
+# 345 "data/maps/IkiTownSouth/scripts.pory"
+IkiTown_Trigger_HauGetStarterSkip_Movement_1:
+# 345 "data/maps/IkiTownSouth/scripts.pory"
+	face_right
+	step_end
+
+# 431 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_StartRivalBattle_Movement_0:
-# 395 "data/maps/IkiTownSouth/scripts.pory"
+# 431 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_right
-# 395 "data/maps/IkiTownSouth/scripts.pory"
+# 431 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_right
 	step_end
 
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_StartRivalBattle_Movement_1:
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	walk_up
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	face_down
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
-# 422 "data/maps/IkiTownSouth/scripts.pory"
+# 458 "data/maps/IkiTownSouth/scripts.pory"
 	delay_16
 	step_end
 
-# 424 "data/maps/IkiTownSouth/scripts.pory"
+# 460 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_StartRivalBattle_Movement_2:
-# 424 "data/maps/IkiTownSouth/scripts.pory"
+# 460 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_down
-# 424 "data/maps/IkiTownSouth/scripts.pory"
+# 460 "data/maps/IkiTownSouth/scripts.pory"
 	jump_in_place_down
 	step_end
 
-# 439 "data/maps/IkiTownSouth/scripts.pory"
+# 475 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_BottomGetStarters_Movement_0:
-# 439 "data/maps/IkiTownSouth/scripts.pory"
+# 475 "data/maps/IkiTownSouth/scripts.pory"
 	walk_up
-# 439 "data/maps/IkiTownSouth/scripts.pory"
+# 475 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 445 "data/maps/IkiTownSouth/scripts.pory"
+# 481 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_TopGetStarters_Movement_0:
-# 445 "data/maps/IkiTownSouth/scripts.pory"
+# 481 "data/maps/IkiTownSouth/scripts.pory"
 	walk_down
-# 445 "data/maps/IkiTownSouth/scripts.pory"
+# 481 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
 	step_end
 
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 508 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_Movement_0:
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 508 "data/maps/IkiTownSouth/scripts.pory"
 	face_right
-# 472 "data/maps/IkiTownSouth/scripts.pory"
+# 508 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 473 "data/maps/IkiTownSouth/scripts.pory"
+# 514 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_Movement_1:
-# 473 "data/maps/IkiTownSouth/scripts.pory"
-	face_left
-	step_end
-
-# 478 "data/maps/IkiTownSouth/scripts.pory"
-Ikitown_Trigger_LeaveIkitownEarly_Movement_2:
-# 478 "data/maps/IkiTownSouth/scripts.pory"
+# 514 "data/maps/IkiTownSouth/scripts.pory"
 	walk_left
 	step_end
 
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 523 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_0:
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 523 "data/maps/IkiTownSouth/scripts.pory"
 	face_left
-# 487 "data/maps/IkiTownSouth/scripts.pory"
+# 523 "data/maps/IkiTownSouth/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 488 "data/maps/IkiTownSouth/scripts.pory"
+# 529 "data/maps/IkiTownSouth/scripts.pory"
 Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1:
-# 488 "data/maps/IkiTownSouth/scripts.pory"
-	face_right
-	step_end
-
-# 493 "data/maps/IkiTownSouth/scripts.pory"
-Ikitown_Trigger_LeaveIkitownEarly_left_Movement_2:
-# 493 "data/maps/IkiTownSouth/scripts.pory"
+# 529 "data/maps/IkiTownSouth/scripts.pory"
 	walk_right
 	step_end
 
 IkiTown_Trigger_HauGetStarter_Text_0:
-# 67 "data/maps/IkiTownSouth/scripts.pory"
+# 68 "data/maps/IkiTownSouth/scripts.pory"
 	.string "???$"
 
 IkiTown_Trigger_HauGetStarter_Text_1:
-# 68 "data/maps/IkiTownSouth/scripts.pory"
+# 69 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Hey, hey!\p"
 	.string "Which Pokémon are you gonna choose as\n"
 	.string "your partner? {PAUSE 30} Have you decided?$"
 
 IkiTown_Trigger_HauGetStarter_Text_2:
-# 72 "data/maps/IkiTownSouth/scripts.pory"
+# 73 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Hau$"
 
 IkiTown_Trigger_HauGetStarter_Text_3:
-# 76 "data/maps/IkiTownSouth/scripts.pory"
+# 77 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Oh yeah! I'm Hau!\p"
 	.string "I couldn't wait for us to pick our\n"
 	.string "partners together, so I came to find\l"
 	.string "you myself!$"
 
 IkiTown_Trigger_HauGetStarter_Text_4:
-# 82 "data/maps/IkiTownSouth/scripts.pory"
+# 83 "data/maps/IkiTownSouth/scripts.pory"
 	.string "I chose {STR_VAR_1}!$"
 
 IkiTown_Trigger_HauGetStarter_Text_5:
-# 82 "data/maps/IkiTownSouth/scripts.pory"
+# 83 "data/maps/IkiTownSouth/scripts.pory"
 	.string "You're too late.$"
 
 IkiTown_Trigger_HauGetStarter_Text_6:
-# 86 "data/maps/IkiTownSouth/scripts.pory"
+# 87 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Whoa! {STR_VAR_1} is so cool!\p"
 	.string "Hey wait!\n"
 	.string "You already picked your Pokémon?!$"
 
 IkiTown_Trigger_HauGetStarter_Text_7:
-# 94 "data/maps/IkiTownSouth/scripts.pory"
+# 95 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Hey wait!\n"
 	.string "You already picked your Pokémon?!$"
 
 IkiTown_Trigger_HauGetStarter_Text_8:
-# 101 "data/maps/IkiTownSouth/scripts.pory"
+# 102 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Kukui$"
 
 IkiTown_Trigger_HauGetStarter_Text_9:
-# 104 "data/maps/IkiTownSouth/scripts.pory"
+# 105 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Sorry about that, Hau.\p"
 	.string "We had a little accident on the way\n"
 	.string "here, so I ended up letting {PLAYER}\l"
 	.string "choose his partner first without you.$"
 
 IkiTown_Trigger_HauGetStarter_Text_10:
-# 111 "data/maps/IkiTownSouth/scripts.pory"
+# 112 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Sorry about that, Hau.\p"
 	.string "We had a little accident on the way\n"
 	.string "here, so I ended up letting {PLAYER}\l"
 	.string "choose her partner first without you.$"
 
 IkiTown_Trigger_HauGetStarter_Text_11:
-# 120 "data/maps/IkiTownSouth/scripts.pory"
+# 121 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Fair enough.\p"
 	.string "I guess it was just fate for you guys\n"
 	.string "to meet!$"
 
 IkiTown_Trigger_HauGetStarter_Text_12:
-# 127 "data/maps/IkiTownSouth/scripts.pory"
+# 128 "data/maps/IkiTownSouth/scripts.pory"
 	.string "But you can choose one of the\n"
 	.string "remaining two, Hau!$"
 
 IkiTown_Trigger_HauGetStarter_Text_13:
-# 137 "data/maps/IkiTownSouth/scripts.pory"
+# 138 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Mrawr!$"
 
 IkiTown_Trigger_HauGetStarter_Text_14:
-# 142 "data/maps/IkiTownSouth/scripts.pory"
+# 143 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Bwark!$"
 
 IkiTown_Trigger_HauGetStarter_Text_15:
-# 145 "data/maps/IkiTownSouth/scripts.pory"
+# 146 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Then my partner will be…{PAUSE 30}\n"
 	.string "Popplio! I chose you!$"
 
 IkiTown_Trigger_HauGetStarter_Text_16:
-# 157 "data/maps/IkiTownSouth/scripts.pory"
+# 158 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Alola, friend!\p"
 	.string "I decided ages ago that you're the\n"
 	.string "one I wanted to have an adventure\l"
@@ -1161,116 +1231,116 @@ IkiTown_Trigger_HauGetStarter_Text_16:
 	.string "Just you wait and see!$"
 
 IkiTown_Trigger_HauGetStarter_Text_17:
-# 173 "data/maps/IkiTownSouth/scripts.pory"
+# 174 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Professor!\n"
 	.string "You'll take good care of Litten, right?$"
 
 IkiTown_Trigger_HauGetStarter_Text_18:
-# 181 "data/maps/IkiTownSouth/scripts.pory"
+# 182 "data/maps/IkiTownSouth/scripts.pory"
 	.string "You better believe I will, Hau!$"
 
 IkiTown_Trigger_HauGetStarter_Text_19:
-# 184 "data/maps/IkiTownSouth/scripts.pory"
+# 185 "data/maps/IkiTownSouth/scripts.pory"
 	.string "All right then. Litten! Everybody!\n"
 	.string "Time to get back in your balls for now!$"
 
 IkiTown_Trigger_HauGetStarter_Text_20:
-# 190 "data/maps/IkiTownSouth/scripts.pory"
+# 191 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Wait up!\n"
 	.string "Me and Popplio have a favor to ask.$"
 
 IkiTown_Trigger_HauGetStarter_Text_21:
-# 198 "data/maps/IkiTownSouth/scripts.pory"
+# 199 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Hoo!$"
 
 IkiTown_Trigger_HauGetStarter_Text_22:
-# 208 "data/maps/IkiTownSouth/scripts.pory"
+# 209 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Then my partner will be…{PAUSE 30}\n"
 	.string "Rowlet! I chose you!$"
 
 IkiTown_Trigger_HauGetStarter_Text_23:
-# 235 "data/maps/IkiTownSouth/scripts.pory"
+# 236 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Professor!\n"
 	.string "You'll take good care of Popplio, right?$"
 
 IkiTown_Trigger_HauGetStarter_Text_24:
-# 246 "data/maps/IkiTownSouth/scripts.pory"
+# 247 "data/maps/IkiTownSouth/scripts.pory"
 	.string "All right then. Popplio! Everybody!\n"
 	.string "Time to get back in your balls for now!$"
 
 IkiTown_Trigger_HauGetStarter_Text_25:
-# 252 "data/maps/IkiTownSouth/scripts.pory"
+# 253 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Wait up!\n"
 	.string "Me and Rowlet have a favor to ask.$"
 
 IkiTown_Trigger_HauGetStarter_Text_26:
-# 271 "data/maps/IkiTownSouth/scripts.pory"
+# 272 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Then my partner will be…{PAUSE 30}\n"
 	.string "Litten! I chose you!$"
 
 IkiTown_Trigger_HauGetStarter_Text_27:
-# 298 "data/maps/IkiTownSouth/scripts.pory"
+# 299 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Professor!\n"
 	.string "You'll take good care of Rowlet, right?$"
 
 IkiTown_Trigger_HauGetStarter_Text_28:
-# 309 "data/maps/IkiTownSouth/scripts.pory"
+# 310 "data/maps/IkiTownSouth/scripts.pory"
 	.string "All right then. Rowlet! Everybody!\n"
 	.string "Time to get back in your balls for now!$"
 
 IkiTown_Trigger_HauGetStarter_Text_29:
-# 315 "data/maps/IkiTownSouth/scripts.pory"
+# 316 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Wait up!\n"
 	.string "Me and Litten have a favor to ask.$"
 
 Ikitown_RivalBattleYesNo_Text_0:
-# 327 "data/maps/IkiTownSouth/scripts.pory"
+# 363 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Be our opponents in our first ever\n"
 	.string "Pokémon battle together!$"
 
 RivalBattleNo_Text_0:
-# 339 "data/maps/IkiTownSouth/scripts.pory"
+# 375 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Come on, don't be like that!\n"
 	.string "It'll be fun!$"
 
 IkiTown_StartRivalBattle_Text_0:
-# 348 "data/maps/IkiTownSouth/scripts.pory"
+# 384 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Hold on!\p"
 	.string "Before you two step into the ring,\n"
 	.string "let's make sure little {STR_VAR_1} is up\l"
 	.string "to it!$"
 
 IkiTown_StartRivalBattle_Text_1:
-# 359 "data/maps/IkiTownSouth/scripts.pory"
+# 395 "data/maps/IkiTownSouth/scripts.pory"
 	.string "All right, I'm surely going to enjoy\n"
 	.string "this!$"
 
 IkiTown_StartRivalBattle_Text_2:
-# 364 "data/maps/IkiTownSouth/scripts.pory"
+# 400 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Our first defeat! Sorry, Popplio!$"
 
 IkiTown_StartRivalBattle_Text_3:
-# 364 "data/maps/IkiTownSouth/scripts.pory"
+# 400 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Alola! Way to go, Popplio!$"
 
 IkiTown_StartRivalBattle_Text_4:
-# 372 "data/maps/IkiTownSouth/scripts.pory"
+# 408 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Our first defeat! Sorry, Rowlet!$"
 
 IkiTown_StartRivalBattle_Text_5:
-# 372 "data/maps/IkiTownSouth/scripts.pory"
+# 408 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Alola! Way to go, Rowlet!$"
 
 IkiTown_StartRivalBattle_Text_6:
-# 380 "data/maps/IkiTownSouth/scripts.pory"
+# 416 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Our first defeat! Sorry, Litten!$"
 
 IkiTown_StartRivalBattle_Text_7:
-# 380 "data/maps/IkiTownSouth/scripts.pory"
+# 416 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Alola! Way to go, Litten!$"
 
 IkiTown_StartRivalBattle_Text_8:
-# 401 "data/maps/IkiTownSouth/scripts.pory"
+# 437 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Whoa! That was awesome, {PLAYER}!\p"
 	.string "You and {STR_VAR_1} were both so\n"
 	.string "cool!\p"
@@ -1280,7 +1350,7 @@ IkiTown_StartRivalBattle_Text_8:
 	.string "you know?$"
 
 IkiTown_StartRivalBattle_Text_9:
-# 414 "data/maps/IkiTownSouth/scripts.pory"
+# 450 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Right on {PLAYER}!\p"
 	.string "You and Hau both brought out the\n"
 	.string "best in your partners and pulled\l"
@@ -1289,16 +1359,16 @@ IkiTown_StartRivalBattle_Text_9:
 	.string "Come on, {PLAYER}!$"
 
 IkiTown_StartRivalBattle_Text_10:
-# 430 "data/maps/IkiTownSouth/scripts.pory"
+# 466 "data/maps/IkiTownSouth/scripts.pory"
 	.string "You should totally check out Iki Town!$"
 
 Ikitown_KukuiAfterBattle_Text_0:
-# 463 "data/maps/IkiTownSouth/scripts.pory"
+# 499 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Iki Town is right up those stairs.\n"
 	.string "Come on, {PLAYER}!$"
 
 Ikitown_TrainerTipsSign_Text_0:
-# 501 "data/maps/IkiTownSouth/scripts.pory"
+# 537 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Trainer Tips\p"
 	.string "Pokémon can gain Exp. Points by\n"
 	.string "battling other Pokémon.\p"
@@ -1308,7 +1378,7 @@ Ikitown_TrainerTipsSign_Text_0:
 	.string "you are battling against!$"
 
 Ikitown_lassNPC_Text_0:
-# 517 "data/maps/IkiTownSouth/scripts.pory"
+# 553 "data/maps/IkiTownSouth/scripts.pory"
 	.string "If you happen to pick up a Potion\n"
 	.string "anywhere, use it on your Pokémon\l"
 	.string "when it's low on HP…\l"

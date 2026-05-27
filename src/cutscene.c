@@ -63,22 +63,25 @@ void StartSkippableCutscene(struct ScriptContext *ctx)
 
     if (TaskHelper_CheckCutsceneFlag(cutscene))
     {
-        u8 taskId = CreateTask(Task_SkippableCutscene, 64);
-        u8 spriteId;
-
-        gTasks[taskId].tCutscene = cutscene;
-
-        if (!FlagGet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE))
+        if (!FlagGet(FLAG_CUTSCENE_SKIP_DISABLED))
         {
-            LoadSpriteSheets(sCutsceneSkipButtonSpriteSheets);
-            LoadSpritePalette(&sCutsceneSkipButtonPalette);
-            spriteId = CreateSprite(&sCutsceneSkipButtonTemplate, 20, 30, 0xFF);
-            gSprites[spriteId].oam.priority = 0;
-            gTasks[taskId].tSpriteId = spriteId;
-        }
-        else
-        {
-            gTasks[taskId].tSpriteId = MAX_SPRITES; // sentinel: no sprite
+            u8 taskId = CreateTask(Task_SkippableCutscene, 64);
+            u8 spriteId;
+
+            gTasks[taskId].tCutscene = cutscene;
+
+            if (!FlagGet(FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE))
+            {
+                LoadSpriteSheets(sCutsceneSkipButtonSpriteSheets);
+                LoadSpritePalette(&sCutsceneSkipButtonPalette);
+                spriteId = CreateSprite(&sCutsceneSkipButtonTemplate, 20, 30, 0xFF);
+                gSprites[spriteId].oam.priority = 0;
+                gTasks[taskId].tSpriteId = spriteId;
+            }
+            else
+            {
+                gTasks[taskId].tSpriteId = MAX_SPRITES; // sentinel: no sprite
+            }
         }
     }
     else

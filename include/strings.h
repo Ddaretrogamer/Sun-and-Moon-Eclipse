@@ -264,6 +264,7 @@ extern const u8 gText_BattleSpeed3x[];
 extern const u8 gText_BattleSpeed4x[];
 extern const u8 gText_AutoRunOn[];
 extern const u8 gText_AutoRunOff[];
+extern const u8 gText_CutsceneSkipNoSkip[];
 extern const u8 gText_CutsceneSkipButton[];
 extern const u8 gText_Option[];
 extern const u8 gText_OptionMenu[];

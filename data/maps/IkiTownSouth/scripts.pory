@@ -48,6 +48,7 @@ mapscripts IkiTownSouth_MapScripts {
 
 script IkiTown_Trigger_HauGetStarter{
     lock
+    startcutscene(CUTSCENE_HAU_GET_STARTER)
     addobject(ikitownmon1)
     addobject(ikitownmon2)
     addobject(ikitownhau)
@@ -318,9 +319,44 @@ script IkiTown_Trigger_HauGetStarter{
         waitmovement(ikitownhau)
         goto(Ikitown_RivalBattleYesNo)
     }
+    endcutscene
     release
     end
 }
+
+script IkiTown_Trigger_HauGetStarterSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    addobject(ikitownhau)
+    addobject(ikitownkukui)
+    addobject(ikitownmon1)
+    addobject(ikitownmon2)
+    setflag(FLAG_HIDE_KUKUI_STARTERS)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+    setobjectxy(ikitownhau, 35, 3)
+    setobjectxy(ikitownkukui, 39, 3)
+    if (var(VAR_STARTER_MON)== 0 || var(VAR_STARTER_MON) == 2){
+        setobjectxy(ikitownmon1, 40, 2)
+        setobjectxy(ikitownmon2, 36, 4)
+        applymovement(ikitownmon1, moves(face_left))
+        applymovement(ikitownmon2, moves(face_right))
+    }
+    else{
+        setobjectxy(ikitownmon1, 36, 2)
+        setobjectxy(ikitownmon2, 40, 4)
+        applymovement(ikitownmon2, moves(face_left))
+        applymovement(ikitownmon1, moves(face_right))
+    }
+    applymovement(ikitownhau, moves(face_right))
+    applymovement(ikitownkukui, moves(face_left))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    goto(Ikitown_RivalBattleYesNo)
+}
+
 
 script Ikitown_RivalBattleYesNo{
         speakername("Hau")

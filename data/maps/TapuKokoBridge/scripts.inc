@@ -1063,22 +1063,31 @@ TapuKokoBridge_BridgeShakeSkip::
 # 615 "data/maps/TapuKokoBridge/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 6
 # 616 "data/maps/TapuKokoBridge/scripts.pory"
-	additem ITEM_SPARKLING_STONE, 1
+	checkitem ITEM_SPARKLING_STONE, 1
 # 617 "data/maps/TapuKokoBridge/scripts.pory"
-	setflag FLAG_HIDE_BRIDGE_LILLIE
-# 618 "data/maps/TapuKokoBridge/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
-# 619 "data/maps/TapuKokoBridge/scripts.pory"
-	warp MAP_IKI_TOWN, 5
+	compare VAR_RESULT, FALSE
+	goto_if_eq TapuKokoBridge_BridgeShakeSkip_2
+TapuKokoBridge_BridgeShakeSkip_1:
 # 620 "data/maps/TapuKokoBridge/scripts.pory"
-	waitstate
+	setflag FLAG_HIDE_BRIDGE_LILLIE
 # 621 "data/maps/TapuKokoBridge/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
+# 622 "data/maps/TapuKokoBridge/scripts.pory"
+	warp MAP_IKI_TOWN, 5
+# 623 "data/maps/TapuKokoBridge/scripts.pory"
+	waitstate
+# 624 "data/maps/TapuKokoBridge/scripts.pory"
 	releaseplayer
 	end
 
+TapuKokoBridge_BridgeShakeSkip_2:
+# 618 "data/maps/TapuKokoBridge/scripts.pory"
+	additem ITEM_SPARKLING_STONE, 1
+	goto TapuKokoBridge_BridgeShakeSkip_1
+
 
 TapuKokoBridge_SetBrokenBridge::
-# 626 "data/maps/TapuKokoBridge/scripts.pory"
+# 629 "data/maps/TapuKokoBridge/scripts.pory"
 	setmaplayoutindex LAYOUT_TAPU_KOKO_BRIDGE_BROKEN
 	return
 

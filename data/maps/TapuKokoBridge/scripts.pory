@@ -613,7 +613,10 @@ script TapuKokoBridge_BridgeShakeSkip{
     setflag(FLAG_HIDE_BRIDGE_COSMOG)
     setflag(FLAG_HIDE_FLYOVER_WINGULLS)
     setvar(VAR_IKITOWN_STATE, 6)
-    additem(ITEM_SPARKLING_STONE, 1)
+    checkitem(ITEM_SPARKLING_STONE, 1)
+    if (var(VAR_RESULT) == FALSE){
+        additem(ITEM_SPARKLING_STONE, 1)
+    }
     setflag(FLAG_HIDE_BRIDGE_LILLIE)
     setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
     warp(MAP_IKI_TOWN, 5)
