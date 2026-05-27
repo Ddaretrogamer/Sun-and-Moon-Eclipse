@@ -29,6 +29,26 @@ script Ikitown_trigger_left{
     call(Ikitown_trigger_WecomeToIkitown)
 }
 
+script Ikitown_trigger_WecomeToIkitownSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    clearflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
+    clearflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(SnapCameraToPlayer)
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 2)
+    addobject(ikitownintrokukui)
+    setobjectxy(ikitownintrokukui, 33, 28)
+    applymovement(ikitownintrokukui, moves(face_down))
+    waitmovement(0)
+    removeobject(ikitownintrohau)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
 script Ikitown_trigger_WecomeToIkitown{
     lock
     special(SpawnCameraObject)
@@ -39,6 +59,7 @@ script Ikitown_trigger_WecomeToIkitown{
     removeobject(ikitownkukui, MAP_IKI_TOWN_SOUTH)
     addobject(ikitownintrohau)
     addobject(ikitownintrokukui)
+    startcutscene(CUTSCENE_WELCOME_TO_IKITOWN)
     applymovement(ikitownintrohau, moves(walk_faster_down*7, walk_faster_right, face_down))
     applymovement(ikitownintrokukui, moves(walk_faster_down*9))
     waitmovement(0)
@@ -141,6 +162,7 @@ script Ikitown_trigger_WecomeToIkitown{
     kahuna comes back.")
     setvar(VAR_IKITOWN_STATE, 2)
     special(RemoveCameraObject)
+    endcutscene
     release
     end
 }

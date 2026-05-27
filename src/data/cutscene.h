@@ -13,6 +13,9 @@ extern const u8 Ikitown_GetPokedexSkip[];
 extern const u8 Ikitown_trigger_GiveHalaSparklingStoneSkip[];
 extern const u8 PlayerHouse_ShowMomPokemonSkip[];
 extern const u8 IkiTown_Trigger_HauGetStarterSkip[];
+extern const u8 Route1NN_Trigger_GetStartersSkip[];
+extern const u8 Route1NN_Trigger_GetStartersSkipPart2[];
+extern const u8 Ikitown_trigger_WecomeToIkitownSkip[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -45,6 +48,18 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_HAU_GET_STARTER] =
     {
         .scriptCutsceneSkipPtr = IkiTown_Trigger_HauGetStarterSkip,
+    },
+    [CUTSCENE_PLAYER_GET_STARTER] =
+    {
+        .scriptCutsceneSkipPtr = Route1NN_Trigger_GetStartersSkip,
+    },
+    [CUTSCENE_KUKUI_POINTS_TO_IKI] =
+    {
+        .scriptCutsceneSkipPtr = Route1NN_Trigger_GetStartersSkipPart2,
+    },
+    [CUTSCENE_WELCOME_TO_IKITOWN] =
+    {
+        .scriptCutsceneSkipPtr = Ikitown_trigger_WecomeToIkitownSkip,
     },
 };
 

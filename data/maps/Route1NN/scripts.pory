@@ -65,6 +65,63 @@ script Route1NN_Trigger_TopGetStarters{
     call(Route1NN_Trigger_GetStarters)
 }
 
+script Route1NN_Trigger_GetStartersSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setobjectxy(LOCALID_PLAYER, 27, 18)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(SnapCameraToPlayer)
+    removeobject(rt1_yungoos)
+    removeobject(rowlet)
+    removeobject(litten)
+    removeobject(popplio)
+    removeobject(rowletshiny)
+    removeobject(littenshiny)
+    removeobject(popplioshiny)
+    removeobject(techguy)
+    addobject(kukuistarters)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    setobjectxy(kukuistarters, 28, 18)
+    applymovement(kukuistarters, moves(face_up))
+    if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
+        addobject(rowletshiny2)
+        setobjectxy(rowletshiny2, 26, 16)
+        applymovement(rowletshiny, moves(face_down))
+    }
+    else{
+        addobject(rowlet2)
+        setobjectxy(rowlet2, 26, 16)
+        applymovement(rowlet2, moves(face_down))
+    }
+    if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
+        addobject(littenshiny2)
+        setobjectxy(littenshiny2, 27, 16)
+        applymovement(littenshiny2, moves(face_down))
+    }
+    else{
+        addobject(litten2)
+        setobjectxy(litten2, 27, 16)
+        applymovement(litten2, moves(face_down))
+    }
+    if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
+        addobject(popplioshiny2)
+        setobjectxy(popplioshiny2, 28, 16)
+        applymovement(popplioshiny2, moves(face_down))
+    }
+    else{
+        addobject(popplio2)
+        setobjectxy(popplio2, 28, 16)
+        applymovement(popplio2, moves(face_down))
+    }
+    waitmovement(0)
+    setflag(FLAG_SYS_POKEMON_GET)
+    setflag(FLAG_HIDE_IKITOWN_INTRO)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    call(Route1NN_Trigger_GetStartersPart2)
+}
+
+
 script Route1NN_Trigger_GetStarters{
     lock
     setflag(FLAG_HIDE_IKITOWN_INTRO)
@@ -77,6 +134,7 @@ script Route1NN_Trigger_GetStarters{
     copyvar(VAR_TEMP_2, VAR_RESULT)
     callnative(Script_RollShiny)
     copyvar(VAR_TEMP_3, VAR_RESULT)
+    startcutscene(CUTSCENE_PLAYER_GET_STARTER)
     playse(SE_M_SCRATCH)
     waitse
     addobject(rt1_yungoos)
@@ -417,6 +475,11 @@ script Route1NN_Trigger_GetStarters{
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_diag_southwest, walk_slow_down))
     waitmovement(0)
+    call(Route1NN_Trigger_GetStartersPart2)
+    endcutscene
+}
+
+script Route1NN_Trigger_GetStartersPart2{
     msgbox("Y'see, the fact of the matter is…
 
     one of these Pokémon will become
@@ -615,6 +678,7 @@ script Route1NN_Trigger_GetStarters{
     removeobject(rowlet2)
     removeobject(rowletshiny2) 
     special(SpawnCameraObject)
+    startcutscene(CUTSCENE_KUKUI_POINTS_TO_IKI)
     speakername("Kukui")
     fadescreenswapbuffers(FADE_FROM_BLACK)
     msgbox("So you went with {STR_VAR_1}!
@@ -690,6 +754,7 @@ script Route1NN_Trigger_GetStarters{
     applymovement(kukuistarters, moves(face_down))
     waitmovement(kukuistarters)
     msgbox("Iki Town is right up here!", MSGBOX_AUTOCLOSE)
+    waitmovement(0)
     applymovement(kukuistarters, moves(face_left))
     waitmovement(kukuistarters)
     delay(30)
@@ -705,9 +770,33 @@ script Route1NN_Trigger_GetStarters{
     clearflag(FLAG_TEMP_2)
     setvar(VAR_STARTERS_STATE, 1)
     fadescreenswapbuffers(FADE_FROM_BLACK)
+    endcutscene
     release
     end
 }
+
+script Route1NN_Trigger_GetStartersSkipPart2{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setobjectxy(LOCALID_PLAYER, 21, 20)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(SnapCameraToPlayer)
+    special(RemoveCameraObject)
+    setobjectxy(kukuistarters, 21, 19)
+    applymovement(kukuistarters, moves(face_left))
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    waitmovement(0)
+    clearflag(FLAG_HIDE_KUKUI_STARTERS)
+    addobject(techguy)
+    setobjectxy(techguy, 25, 16)
+    clearflag(FLAG_TEMP_2)
+    setvar(VAR_STARTERS_STATE, 1)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
 
 script Route1NN_BackOutOfStarter{
     speakername("Kukui")
@@ -899,6 +988,7 @@ script Route1NN_BackOutOfStarter{
     removeobject(rowlet2)
     removeobject(rowletshiny2) 
     special(SpawnCameraObject)
+    startcutscene(CUTSCENE_KUKUI_POINTS_TO_IKI)
     speakername("Kukui")
     fadescreenswapbuffers(FADE_FROM_BLACK)
     msgbox("So you went with {STR_VAR_1}!
@@ -974,6 +1064,7 @@ script Route1NN_BackOutOfStarter{
     applymovement(kukuistarters, moves(face_down))
     waitmovement(kukuistarters)
     msgbox("Iki Town is right up here!", MSGBOX_AUTOCLOSE)
+    waitmovement(0)
     applymovement(kukuistarters, moves(face_left))
     waitmovement(kukuistarters)
     delay(30)
@@ -989,6 +1080,7 @@ script Route1NN_BackOutOfStarter{
     clearflag(FLAG_TEMP_2)
     setvar(VAR_STARTERS_STATE, 1)
     fadescreenswapbuffers(FADE_FROM_BLACK)
+    endcutscene
     release
     end
 }
