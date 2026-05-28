@@ -1,10 +1,13 @@
 #include "global.h"
 #include "battle.h"
+#include "egg_hatch.h"
 #include "event_data.h"
+#include "new_game.h"
 #include "pokemon.h"
 #include "test/overworld_script.h"
 #include "test/test.h"
 #include "constants/characters.h"
+#include "constants/daycare.h"
 #include "constants/move_relearner.h"
 
 TEST("Nature independent from Hidden Nature")
@@ -85,6 +88,27 @@ TEST("Shininess independent from PID and OTID")
     EXPECT_EQ(pid, GetMonData(&mon, MON_DATA_PERSONALITY));
     EXPECT_EQ(otId, GetMonData(&mon, MON_DATA_OT_ID));
     EXPECT_EQ(!isShiny, GetMonData(&mon, MON_DATA_IS_SHINY));
+}
+
+TEST("Shininess set on an Egg persists after hatching")
+{
+    u32 personality = SHINY_ODDS;
+    u32 trainerId = 0;
+    bool32 isShiny = TRUE;
+    bool8 isEgg = TRUE;
+
+    SetTrainerId(trainerId, gSaveBlock2Ptr->playerTrainerId);
+    CreateMon(&gPlayerParty[0], SPECIES_TOGEPI, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID);
+    SetMonData(&gPlayerParty[0], MON_DATA_IS_EGG, &isEgg);
+    SetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY, &isShiny);
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), TRUE);
+
+    gSpecialVar_0x8004 = 0;
+    ScriptHatchMon();
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_EGG), FALSE);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), TRUE);
 }
 
 TEST("Hyper Training increases stats without affecting IVs")
@@ -558,6 +582,9 @@ TEST("CalculateMonStats")
 
 TEST("BoxPokemon encryption works")
 {
+    // This test exists to ensure that expansion has not broken anything with regards to how BoxPokemon encryption works.
+    // If users make changes to the definitions of BoxPokemon, Pokemon, or any of their members, it is expected that this test will fail. To avoid the failing test from blocking CI, users can uncomment the KNOWN_FAILING declaration.
+    // KNOWN_FAILING;
     u32 raw[20] =
     {
         990384375,

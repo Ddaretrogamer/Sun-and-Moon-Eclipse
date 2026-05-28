@@ -79,8 +79,6 @@ static EWRAM_DATA void *sTempTileDataBuffer[0x20] = {NULL};
 static const u8 sMessageBoxTilemap[] = INCBIN_U8("graphics/text_window/msgbox.bin");
 static const u8 sNameBoxTilemap[] = INCBIN_U8("graphics/text_window/namebox.bin");
 
-//const u16 gStandardMenuPalette[] = INCBIN_U16("graphics/interface/std_menu.gbapal");
-
 static const u8 sTextSpeedFrameDelays[] =
 {
     [OPTIONS_TEXT_SPEED_SLOW] = 8,
@@ -88,6 +86,7 @@ static const u8 sTextSpeedFrameDelays[] =
     [OPTIONS_TEXT_SPEED_FAST] = 1,
     [OPTIONS_TEXT_SPEED_FASTER] = 1
 };
+//const u16 gStandardMenuPalette[] = INCGFX_U16("graphics/interface/std_menu.pal", ".gbapal");
 
 static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
 {
@@ -123,7 +122,7 @@ static const struct WindowTemplate sYesNo_WindowTemplates =
     .baseBlock = 0x125
 };
 
-static const u16 sHofPC_TopBar_Pal[] = INCBIN_U16("graphics/interface/hof_pc_topbar.gbapal");
+static const u16 sHofPC_TopBar_Pal[] = INCGFX_U16("graphics/interface/hof_pc_topbar.pal", ".gbapal");
 static const u8 sTextColors[] = { TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY };
 
 // Table of move info icon offsets in graphics/interface/menu_info.png
@@ -481,18 +480,18 @@ void FillDialogFramePlate(u8 windowId)
     int i = 0;
     u32 winSize = DLW_WIN_PLATE_SIZE;
 
-    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[8 * 0x11], TILE_SIZE_4BPP, i);
-    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[8 * 0x14], TILE_SIZE_4BPP, i + winSize);
+    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0x11], TILE_SIZE_4BPP, i);
+    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0x14], TILE_SIZE_4BPP, i + winSize);
 
     for (i = 1; i < winSize; i++)
     {
-        CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[0x8 * 0x12], TILE_SIZE_4BPP, i);
-        CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[0x8 * 0x15], TILE_SIZE_4BPP, i + winSize);
+        CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0x12], TILE_SIZE_4BPP, i);
+        CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0x15], TILE_SIZE_4BPP, i + winSize);
     }
 
     i--;
-    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[8 * 0xE], TILE_SIZE_4BPP, i);
-    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[8 * 0xF], TILE_SIZE_4BPP, i + winSize);
+    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0xE], TILE_SIZE_4BPP, i);
+    CopyToWindowPixelBuffer(windowId, &gMessageBox_Gfx[TILE_SIZE_4BPP * 0xF], TILE_SIZE_4BPP, i + winSize);
 }
 
 static void WindowFunc_ClearStdWindowAndFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
@@ -1971,6 +1970,7 @@ void AddTextPrinterParameterized6(u8 windowId, u8 fontId, u8 left, u8 top, u8 le
     struct TextPrinterTemplate printer;
 
     printer.currentChar = str;
+    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = fontId;
     printer.x = left;

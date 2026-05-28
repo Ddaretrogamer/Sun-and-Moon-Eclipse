@@ -424,31 +424,31 @@ static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
 };
 
 // Key item wheel gfx
-static const u8 sRegisterUp_Gfx[] = INCBIN_U8("graphics/bag/select_button.4bpp");
-static const u8 sRegisterRight_Gfx[] = INCBIN_U8("graphics/bag/select_button_right.4bpp");
-static const u8 sRegisterDown_Gfx[] = INCBIN_U8("graphics/bag/select_button_down.4bpp");
-static const u8 sRegisterLeft_Gfx[] = INCBIN_U8("graphics/bag/select_button_left.4bpp");
+static const u8 sRegisterUp_Gfx[] = INCGFX_U8("graphics/bag/select_button.png", ".4bpp");
+static const u8 sRegisterRight_Gfx[] = INCGFX_U8("graphics/bag/select_button_right.png", ".4bpp");
+static const u8 sRegisterDown_Gfx[] = INCGFX_U8("graphics/bag/select_button_down.png", ".4bpp");
+static const u8 sRegisterLeft_Gfx[] = INCGFX_U8("graphics/bag/select_button_left.png", ".4bpp");
 
 // Key item wheel gfx
-static const u8 sRegisterUpL_Gfx[] = INCBIN_U8("graphics/bag/l_button.4bpp");
-static const u8 sRegisterRightL_Gfx[] = INCBIN_U8("graphics/bag/l_button_right.4bpp");
-static const u8 sRegisterDownL_Gfx[] = INCBIN_U8("graphics/bag/l_button_down.4bpp");
-static const u8 sRegisterLeftL_Gfx[] = INCBIN_U8("graphics/bag/l_button_left.4bpp");
+static const u8 sRegisterUpL_Gfx[] = INCGFX_U8("graphics/bag/l_button.png", ".4bpp");
+static const u8 sRegisterRightL_Gfx[] = INCGFX_U8("graphics/bag/l_button_right.png", ".4bpp");
+static const u8 sRegisterDownL_Gfx[] = INCGFX_U8("graphics/bag/l_button_down.png", ".4bpp");
+static const u8 sRegisterLeftL_Gfx[] = INCGFX_U8("graphics/bag/l_button_left.png", ".4bpp");
 
 static const u8* const sRegisteredSelect_Gfx[] = {sRegisterUp_Gfx, sRegisterRight_Gfx, sRegisterDown_Gfx, sRegisterLeft_Gfx, sRegisterUp_Gfx};
 static const u8* const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
 
-static const u32 sKeyItemBoxGfx[] = INCBIN_U32("graphics/bag/key_item_box.4bpp");
-static const u16 sKeyItemBoxPal[] = INCBIN_U16("graphics/bag/key_item_box.gbapal");
-static const u16 sKeyItemBoxBluePal[] = INCBIN_U16("graphics/bag/key_item_box_blue.gbapal");
-// static const u16 sKeyItemBoxGreenPal[] = INCBIN_U16("graphics/bag/key_item_box_green.gbapal");
-// static const u16 sKeyItemBoxPurplePal[] = INCBIN_U16("graphics/bag/key_item_box_purple.gbapal");
-static const u16 sKeyItemBoxOrangePal[] = INCBIN_U16("graphics/bag/key_item_box_orange.gbapal");
+static const u32 sKeyItemBoxGfx[] = INCGFX_U32("graphics/bag/key_item_box.png", ".4bpp");
+static const u16 sKeyItemBoxPal[] = INCGFX_U16("graphics/bag/key_item_box.png", ".gbapal");
+static const u16 sKeyItemBoxBluePal[] = INCGFX_U16("graphics/bag/key_item_box_blue.pal", ".gbapal");
+// static const u16 sKeyItemBoxGreenPal[] = INCGFX_U16("graphics/bag/key_item_box_green.pal", ".gbapal");
+// static const u16 sKeyItemBoxPurplePal[] = INCGFX_U16("graphics/bag/key_item_box_purple.pal", ".gbapal");
+static const u16 sKeyItemBoxOrangePal[] = INCGFX_U16("graphics/bag/key_item_box_orange.pal", ".gbapal");
 
 // Label graphics (64x32 sprites) and tail (32x32 sprite)
-static const u32 sKeyItemsLabelGfx[] = INCBIN_U32("graphics/bag/key_items_label.4bpp");
-static const u32 sPokerideLabelGfx[] = INCBIN_U32("graphics/bag/pokeride_label.4bpp");
-static const u32 sKeyItemBoxTailGfx[] = INCBIN_U32("graphics/bag/key_item_wheel_rotom_tail.4bpp");
+static const u32 sKeyItemsLabelGfx[] = INCGFX_U32("graphics/bag/key_items_label.png", ".4bpp");
+static const u32 sPokerideLabelGfx[] = INCGFX_U32("graphics/bag/pokeride_label.png", ".4bpp");
+static const u32 sKeyItemBoxTailGfx[] = INCGFX_U32("graphics/bag/key_item_wheel_rotom_tail.png", ".4bpp");
 // Palette loaded dynamically from rotom phone color scheme
 
 static const struct SpritePalette sSpritePalette_KeyItemBox = {

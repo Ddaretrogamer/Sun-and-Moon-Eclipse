@@ -842,7 +842,7 @@ static const struct WindowTemplate sWindowTemplate_FirstBattleOakVoiceover =
     .bg = 2,
     .tilemapLeft = 2,
     .tilemapTop = 15,
-    .width = 26,
+    .width = 27,
     .height = 4,
     .paletteNum = 14,
     .baseBlock = 0x1DF,
@@ -1052,8 +1052,8 @@ static const u8 *const sUnionRoomTradeMessages[] =
     [UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_2 - 1]   = gText_CantTradeWithTrainer,
 };
 
-static const u32 sHeldItemGfx[] = INCBIN_U32("graphics/party_menu/hold_icons.4bpp");
-const u16 gHeldItemPalette[] = INCBIN_U16("graphics/party_menu/hold_icons.gbapal");
+static const u32 sHeldItemGfx[] = INCGFX_U32("graphics/party_menu/hold_icons.png", ".4bpp");
+const u16 gHeldItemPalette[] = INCGFX_U16("graphics/party_menu/hold_icons.png", ".gbapal");
 
 static const struct OamData sOamData_HeldItem =
 {

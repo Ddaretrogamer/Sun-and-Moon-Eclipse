@@ -60,21 +60,21 @@ static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite);
 static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 
 // const rom data
-static const u16 sUnusedUnknownPal[] = INCBIN_U16("graphics/title_screen/unused.gbapal");
+static const u16 sUnusedUnknownPal[] = INCGFX_U16("graphics/title_screen/unused.pal", ".gbapal");
 
-static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/ultranecrozma.4bpp.lz");
-static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/ultranecrozma.bin.lz");
-static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/logo_shine.4bpp.lz");
-static const u32 sTitleScreenCloudsGfx[] = INCBIN_U32("graphics/title_screen/clouds.4bpp.lz");
+static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/ultranecrozma.png", ".4bpp.smol");
+static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/ultranecrozma.bin.smolTM");
+static const u32 sTitleScreenLogoShineGfx[] = INCGFX_U32("graphics/title_screen/logo_shine.png", ".4bpp.smol");
+static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clouds.png", ".4bpp.smol");
 
-static const u16 sTitleScreenPalUltraNecrozma[] = INCBIN_U16("graphics/title_screen/ultranecrozma.gbapal");
-static const u32 sTitleScreenSolgaleoGfx[] = INCBIN_U32("graphics/title_screen/solgaleo.4bpp.lz");
-static const u32 sTitleScreenSolgaleoTilemap[] = INCBIN_U32("graphics/title_screen/solgaleo.bin.lz");
-static const u16 sTitleScreenPalSolgaleo[] = INCBIN_U16("graphics/title_screen/solgaleo.gbapal");
+static const u16 sTitleScreenPalUltraNecrozma[] = INCGFX_U16("graphics/title_screen/ultranecrozma.pal", ".gbapal");
+static const u32 sTitleScreenSolgaleoGfx[] = INCGFX_U32("graphics/title_screen/solgaleo.png", ".4bpp.lz");
+static const u32 sTitleScreenSolgaleoTilemap[] = INCGFX_U32("graphics/title_screen/solgaleo.bin", ".lz");
+static const u16 sTitleScreenPalSolgaleo[] = INCGFX_U16("graphics/title_screen/solgaleo.png", ".gbapal");
 
-static const u32 sTitleScreenLunalaGfx[] = INCBIN_U32("graphics/title_screen/lunala.4bpp.lz");
-static const u32 sTitleScreenLunalaTilemap[] = INCBIN_U32("graphics/title_screen/lunala.bin.lz");
-static const u16 sTitleScreenPalLunala[] = INCBIN_U16("graphics/title_screen/lunala.gbapal");
+static const u32 sTitleScreenLunalaGfx[] = INCGFX_U32("graphics/title_screen/lunala.png", ".4bpp.lz");
+static const u32 sTitleScreenLunalaTilemap[] = INCGFX_U32("graphics/title_screen/lunala.bin", ".lz");
+static const u16 sTitleScreenPalLunala[] = INCGFX_U16("graphics/title_screen/lunala.png", ".gbapal");
 
 #define BG_INDEX_TITLE_SCREEN_POKEMON 14
 #define FADE_COLOUR_COUNT PLTT_SIZE_4BPP / sizeof(u16)
