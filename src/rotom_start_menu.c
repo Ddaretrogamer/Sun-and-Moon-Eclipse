@@ -223,48 +223,48 @@ void RotomPhone_StartMenu_Open(bool32 firstInit)
 }
 
 
-static const u32 sRotomPhone_OverworldTiles[] =                 INCBIN_U32("graphics/rotom_start_menu/overworld/rotom_phone_tiles.4bpp.lz");
-static const u32 sRotomPhone_OverworldTilemap[] =               INCBIN_U32("graphics/rotom_start_menu/overworld/rotom_phone.bin.lz");
-static const u32 sRotomPhone_OverworldSpeechTilemap[] =         INCBIN_U32("graphics/rotom_start_menu/overworld/rotom_phone_speech.bin.lz");
-static const u32 sFlipPhone_OverworldTiles[] =                  INCBIN_U32("graphics/rotom_start_menu/overworld/flip_phone_tiles.4bpp.lz");
-static const u32 sFlipPhone_OverworldOpenTilemap[] =            INCBIN_U32("graphics/rotom_start_menu/overworld/flip_phone_open.bin.lz");
-static const u32 sFlipPhone_OverworldClosedTilemap[] =          INCBIN_U32("graphics/rotom_start_menu/overworld/flip_phone_closed.bin.lz");
-static const u32 sRotomFlipPhone_OverworldIconsGfx[] =          INCBIN_U32("graphics/rotom_start_menu/overworld/icons.4bpp.lz");
+static const u32 sRotomPhone_OverworldTiles[] =                 INCGFX_U32("graphics/rotom_start_menu/overworld/rotom_phone_tiles.png", ".4bpp.lz");
+static const u32 sRotomPhone_OverworldTilemap[] =               INCGFX_U32("graphics/rotom_start_menu/overworld/rotom_phone.bin", ".lz");
+static const u32 sRotomPhone_OverworldSpeechTilemap[] =         INCGFX_U32("graphics/rotom_start_menu/overworld/rotom_phone_speech.bin", ".lz");
+static const u32 sFlipPhone_OverworldTiles[] =                  INCGFX_U32("graphics/rotom_start_menu/overworld/flip_phone_tiles.png", ".4bpp.lz");
+static const u32 sFlipPhone_OverworldOpenTilemap[] =            INCGFX_U32("graphics/rotom_start_menu/overworld/flip_phone_open.bin", ".lz");
+static const u32 sFlipPhone_OverworldClosedTilemap[] =          INCGFX_U32("graphics/rotom_start_menu/overworld/flip_phone_closed.bin", ".lz");
+static const u32 sRotomFlipPhone_OverworldIconsGfx[] =          INCGFX_U32("graphics/rotom_start_menu/overworld/icons.png", ".4bpp.lz");
 
-static const u32 sRotomPhone_RotomRealityMenuTiles[] =          INCBIN_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone_tiles.4bpp.lz");
-static const u32 sRotomPhone_RotomRealityMenuTilemap[] =        INCBIN_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone.bin.lz");
-static const u32 sRotomPhone_RotomRealityMenuPanelTilemap[] =   INCBIN_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone_panel.bin.lz");
-static const u32 sRotomPhone_RotomRealityMenuIconsGfx_One[] =   INCBIN_U32("graphics/rotom_start_menu/rotom_reality/icons_1.4bpp.lz");
-static const u32 sRotomPhone_RotomRealityMenuIconsGfx_Two[] =   INCBIN_U32("graphics/rotom_start_menu/rotom_reality/icons_2.4bpp.lz");
-static const u16 sRotomPhone_RotomRealityMenuIconsPal_Two[] =   INCBIN_U16("graphics/rotom_start_menu/rotom_reality/icons_2.gbapal");
-static const u32 sRotomPhone_RotomRealityMenuShortcutGfx[] =    INCBIN_U32("graphics/rotom_start_menu/rotom_reality/shortcut.4bpp.lz");
-static const u16 sRotomPhone_RotomRealityMenuShortcutPal[] =    INCBIN_U16("graphics/rotom_start_menu/rotom_reality/shortcut.gbapal");
-static const u32 sRotomPhone_DaycareCompatability_Gfx[] =       INCBIN_U32("graphics/rotom_start_menu/rotom_reality/panel/daycare/heart.4bpp.lz");
-static const u16 sRotomPhone_DaycareCompatability_Pal[] =       INCBIN_U16("graphics/rotom_start_menu/rotom_reality/panel/daycare/heart.gbapal");
+static const u32 sRotomPhone_RotomRealityMenuTiles[] =          INCGFX_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone_tiles.png", ".4bpp.lz");
+static const u32 sRotomPhone_RotomRealityMenuTilemap[] =        INCGFX_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone.bin", ".lz");
+static const u32 sRotomPhone_RotomRealityMenuPanelTilemap[] =   INCGFX_U32("graphics/rotom_start_menu/rotom_reality/rotom_phone_panel.bin", ".lz");
+static const u32 sRotomPhone_RotomRealityMenuIconsGfx_One[] =   INCGFX_U32("graphics/rotom_start_menu/rotom_reality/icons_1.png", ".4bpp.lz");
+static const u32 sRotomPhone_RotomRealityMenuIconsGfx_Two[] =   INCGFX_U32("graphics/rotom_start_menu/rotom_reality/icons_2.png", ".4bpp.lz");
+static const u16 sRotomPhone_RotomRealityMenuIconsPal_Two[] =   INCGFX_U16("graphics/rotom_start_menu/rotom_reality/icons_2.png", ".gbapal");
+static const u32 sRotomPhone_RotomRealityMenuShortcutGfx[] =    INCGFX_U32("graphics/rotom_start_menu/rotom_reality/shortcut.png", ".4bpp.lz");
+static const u16 sRotomPhone_RotomRealityMenuShortcutPal[] =    INCGFX_U16("graphics/rotom_start_menu/rotom_reality/shortcut.png", ".gbapal");
+static const u32 sRotomPhone_DaycareCompatability_Gfx[] =       INCGFX_U32("graphics/rotom_start_menu/rotom_reality/panel/daycare/heart.png", ".4bpp.lz");
+static const u16 sRotomPhone_DaycareCompatability_Pal[] =       INCGFX_U16("graphics/rotom_start_menu/rotom_reality/panel/daycare/heart.png", ".gbapal");
 
-static const u16 sRotomPhone_StartMenuRotomFaceIconsPal[] =     INCBIN_U16("graphics/rotom_start_menu/rotom_face.gbapal");
-static const u32 sRotomPhone_StartMenuRotomFaceGfx[] =          INCBIN_U32("graphics/rotom_start_menu/rotom_face.4bpp.lz");
+static const u16 sRotomPhone_StartMenuRotomFaceIconsPal[] =     INCGFX_U16("graphics/rotom_start_menu/rotom_face.png", ".gbapal");
+static const u32 sRotomPhone_StartMenuRotomFaceGfx[] =          INCGFX_U32("graphics/rotom_start_menu/rotom_face.png", ".4bpp.lz");
 
-static const u32 sRotomPhone_SaveScreenTiles[] =                INCBIN_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.4bpp.lz");
-static const u32 sRotomPhone_SaveScreenTilemap[] =              INCBIN_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.bin.lz");
-static const u16 sRotomPhone_SaveScreenPalette[] =              INCBIN_U16("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.gbapal");
+static const u32 sRotomPhone_SaveScreenTiles[] =                INCGFX_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.png", ".4bpp.lz");
+static const u32 sRotomPhone_SaveScreenTilemap[] =              INCGFX_U32("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.bin", ".lz");
+static const u16 sRotomPhone_SaveScreenPalette[] =              INCGFX_U16("graphics/rotom_start_menu/save_screen/surfingpikachu_tiles.png", ".gbapal");
 
-static const u16 sRotomPhonePalette_Black[] =                   INCBIN_U16("graphics/rotom_start_menu/palettes/black.gbapal");
-static const u16 sRotomPhonePalette_Red[] =                     INCBIN_U16("graphics/rotom_start_menu/palettes/red.gbapal");
-static const u16 sRotomPhonePalette_Yellow[] =                  INCBIN_U16("graphics/rotom_start_menu/palettes/yellow.gbapal");
-static const u16 sRotomPhonePalette_Green[] =                   INCBIN_U16("graphics/rotom_start_menu/palettes/green.gbapal");
-static const u16 sRotomPhonePalette_Purple[] =                  INCBIN_U16("graphics/rotom_start_menu/palettes/purple.gbapal");
-static const u16 sRotomPhonePalette_Blue[] =                    INCBIN_U16("graphics/rotom_start_menu/palettes/blue.gbapal");
-static const u16 sRotomPhonePalette_Turquoise[] =               INCBIN_U16("graphics/rotom_start_menu/palettes/turquoise.gbapal");
-static const u16 sRotomPhonePalette_Rose[] =                    INCBIN_U16("graphics/rotom_start_menu/palettes/rose.gbapal");
-static const u16 sRotomPhonePalette_Brown[] =                   INCBIN_U16("graphics/rotom_start_menu/palettes/brown.gbapal");
-static const u16 sRotomPhonePalette_DarkGreen[] =               INCBIN_U16("graphics/rotom_start_menu/palettes/dark_green.gbapal");
-static const u16 sRotomPhonePalette_WineRed[] =                 INCBIN_U16("graphics/rotom_start_menu/palettes/wine_red.gbapal");
-static const u16 sRotomPhonePalette_Navy[] =                    INCBIN_U16("graphics/rotom_start_menu/palettes/navy.gbapal");
-static const u16 sRotomPhonePalette_White[] =                   INCBIN_U16("graphics/rotom_start_menu/palettes/white.gbapal");
-static const u16 sRotomPhonePalette_Lavender[] =                INCBIN_U16("graphics/rotom_start_menu/palettes/lavender.gbapal");
-static const u16 sRotomPhonePalette_Gold[] =                    INCBIN_U16("graphics/rotom_start_menu/palettes/gold.gbapal");
-static const u16 sRotomPhonePalette_OG[] =                      INCBIN_U16("graphics/rotom_start_menu/palettes/og.gbapal");
+static const u16 sRotomPhonePalette_Black[] =                   INCGFX_U16("graphics/rotom_start_menu/palettes/black.png", ".gbapal");
+static const u16 sRotomPhonePalette_Red[] =                     INCGFX_U16("graphics/rotom_start_menu/palettes/red.png", ".gbapal");
+static const u16 sRotomPhonePalette_Yellow[] =                  INCGFX_U16("graphics/rotom_start_menu/palettes/yellow.png", ".gbapal");
+static const u16 sRotomPhonePalette_Green[] =                   INCGFX_U16("graphics/rotom_start_menu/palettes/green.png", ".gbapal");
+static const u16 sRotomPhonePalette_Purple[] =                  INCGFX_U16("graphics/rotom_start_menu/palettes/purple.png", ".gbapal");
+static const u16 sRotomPhonePalette_Blue[] =                    INCGFX_U16("graphics/rotom_start_menu/palettes/blue.png", ".gbapal");
+static const u16 sRotomPhonePalette_Turquoise[] =               INCGFX_U16("graphics/rotom_start_menu/palettes/turquoise.png", ".gbapal");
+static const u16 sRotomPhonePalette_Rose[] =                    INCGFX_U16("graphics/rotom_start_menu/palettes/rose.png", ".gbapal");
+static const u16 sRotomPhonePalette_Brown[] =                   INCGFX_U16("graphics/rotom_start_menu/palettes/brown.png", ".gbapal");
+static const u16 sRotomPhonePalette_DarkGreen[] =               INCGFX_U16("graphics/rotom_start_menu/palettes/dark_green.png", ".gbapal");
+static const u16 sRotomPhonePalette_WineRed[] =                 INCGFX_U16("graphics/rotom_start_menu/palettes/wine_red.png", ".gbapal");
+static const u16 sRotomPhonePalette_Navy[] =                    INCGFX_U16("graphics/rotom_start_menu/palettes/navy.png", ".gbapal");
+static const u16 sRotomPhonePalette_White[] =                   INCGFX_U16("graphics/rotom_start_menu/palettes/white.png", ".gbapal");
+static const u16 sRotomPhonePalette_Lavender[] =                INCGFX_U16("graphics/rotom_start_menu/palettes/lavender.png", ".gbapal");
+static const u16 sRotomPhonePalette_Gold[] =                    INCGFX_U16("graphics/rotom_start_menu/palettes/gold.png", ".gbapal");
+static const u16 sRotomPhonePalette_OG[] =                      INCGFX_U16("graphics/rotom_start_menu/palettes/og.png", ".gbapal");
 
 static const u16 *const sRotomPhone_StartMenu_Palettes[ROTOM_PHONE_COLOUR_COUNT] =
 {

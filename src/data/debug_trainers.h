@@ -66,7 +66,7 @@
 #line 35
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 33
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
 #line 0
         .trainerBackPic = TRAINER_PIC_FRONT_STEVEN,
         .partySize = 3,

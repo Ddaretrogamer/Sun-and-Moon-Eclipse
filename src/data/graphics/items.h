@@ -92,32 +92,32 @@ const u16 gItemIconPalette_CherishBall[] = INCGFX_U16("graphics/items/icon_palet
 
 // PokeRides
 
-const u32 gItemIcon_PokeRideCharizard[] = INCBIN_U32("graphics/items/icons/pokeridecharizard.4bpp.lz");
-const u16 gItemIconPalette_PokeRideCharizard[] = INCBIN_U16("graphics/items/icon_palettes/pokeridecharizard.gbapal");
+const u32 gItemIcon_PokeRideCharizard[] = INCGFX_U32("graphics/items/icons/pokeridecharizard.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideCharizard[] = INCGFX_U16("graphics/items/icon_palettes/pokeridecharizard.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideLapras[] = INCBIN_U32("graphics/items/icons/pokeridelapras.4bpp.lz");
-const u16 gItemIconPalette_PokeRideLapras[] = INCBIN_U16("graphics/items/icon_palettes/pokeridelapras.gbapal");
+const u32 gItemIcon_PokeRideLapras[] = INCGFX_U32("graphics/items/icons/pokeridelapras.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideLapras[] = INCGFX_U16("graphics/items/icon_palettes/pokeridelapras.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideMachamp[] = INCBIN_U32("graphics/items/icons/pokeridemachamp.4bpp.lz");
-const u16 gItemIconPalette_PokeRideMachamp[] = INCBIN_U16("graphics/items/icon_palettes/pokeridemachamp.gbapal");
+const u32 gItemIcon_PokeRideMachamp[] = INCGFX_U32("graphics/items/icons/pokeridemachamp.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideMachamp[] = INCGFX_U16("graphics/items/icon_palettes/pokeridemachamp.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideSharpedo[] = INCBIN_U32("graphics/items/icons/pokeridesharpedo.4bpp.lz");
-const u16 gItemIconPalette_PokeRideSharpedo[] = INCBIN_U16("graphics/items/icon_palettes/pokeridesharpedo.gbapal");
+const u32 gItemIcon_PokeRideSharpedo[] = INCGFX_U32("graphics/items/icons/pokeridesharpedo.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideSharpedo[] = INCGFX_U16("graphics/items/icon_palettes/pokeridesharpedo.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideTauros[] = INCBIN_U32("graphics/items/icons/pokeridetauros.4bpp.lz");
-const u16 gItemIconPalette_PokeRideTauros[] = INCBIN_U16("graphics/items/icon_palettes/pokeridetauros.gbapal");
+const u32 gItemIcon_PokeRideTauros[] = INCGFX_U32("graphics/items/icons/pokeridetauros.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideTauros[] = INCGFX_U16("graphics/items/icon_palettes/pokeridetauros.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideMudsdale[] = INCBIN_U32("graphics/items/icons/pokeridemudsdale.4bpp.lz");
-const u16 gItemIconPalette_PokeRideMudsdale[] = INCBIN_U16("graphics/items/icon_palettes/pokeridemudsdale.gbapal");
+const u32 gItemIcon_PokeRideMudsdale[] = INCGFX_U32("graphics/items/icons/pokeridemudsdale.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideMudsdale[] = INCGFX_U16("graphics/items/icon_palettes/pokeridemudsdale.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideStoutland[] = INCBIN_U32("graphics/items/icons/pokeridestoutland.4bpp.lz");
-const u16 gItemIconPalette_PokeRideStoutland[] = INCBIN_U16("graphics/items/icon_palettes/pokeridestoutland.gbapal");
+const u32 gItemIcon_PokeRideStoutland[] = INCGFX_U32("graphics/items/icons/pokeridestoutland.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideStoutland[] = INCGFX_U16("graphics/items/icon_palettes/pokeridestoutland.pal", ".gbapal");
 
-const u32 gItemIcon_PokeRideNoivern[] = INCBIN_U32("graphics/items/icons/pokeridenoivern.4bpp.lz");
-const u16 gItemIconPalette_PokeRideNoivern[] = INCBIN_U16("graphics/items/icon_palettes/pokeridenoivern.gbapal");
+const u32 gItemIcon_PokeRideNoivern[] = INCGFX_U32("graphics/items/icons/pokeridenoivern.png", ".4bpp.lz");
+const u16 gItemIconPalette_PokeRideNoivern[] = INCGFX_U16("graphics/items/icon_palettes/pokeridenoivern.pal", ".gbapal");
 
-const u32 gItemIcon_RidePager[] = INCBIN_U32("graphics/items/icons/ride_pager.4bpp.lz");
-const u16 gItemIconPalette_RidePager[] = INCBIN_U16("graphics/items/icon_palettes/ride_pager.gbapal");
+const u32 gItemIcon_RidePager[] = INCGFX_U32("graphics/items/icons/ride_pager.png", ".4bpp.lz");
+const u16 gItemIconPalette_RidePager[] = INCGFX_U16("graphics/items/icon_palettes/ride_pager.pal", ".gbapal");
 
 
 // Medicine

@@ -599,6 +599,7 @@ script TapuKokoBridge_trigger_BridgeShake{
     setflag(FLAG_HIDE_BRIDGE_LILLIE)
     setflag(FLAG_HIDE_IKITOWN_INTRO_KUKUI)
     warp(MAP_IKI_TOWN, 5)
+    waitstate
     release
     releaseplayer
     end

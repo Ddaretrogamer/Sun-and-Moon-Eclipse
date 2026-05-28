@@ -122,22 +122,22 @@ static const u8 sText_ErrorMessage[] = _(
     );
 static const u8 sText_BottomMessage[] = _("Press START to continue.");
 
-static const u32 sErrorScreen_Gfx[] = INCBIN_U32( "graphics/intro/emulator_check/background.4bpp.lz");
-static const u32 sErrorScreen_Map[] = INCBIN_U32( "graphics/intro/emulator_check/background.bin.lz");
-static const u16 sErrorScreen_Pal[] = INCBIN_U16("graphics/intro/emulator_check/background.gbapal");
+static const u32 sErrorScreen_Gfx[] = INCGFX_U32("graphics/intro/emulator_check/background.png", ".4bpp.lz");
+static const u32 sErrorScreen_Map[] = INCGFX_U32("graphics/intro/emulator_check/background.bin", ".lz");
+static const u16 sErrorScreen_Pal[] = INCGFX_U16("graphics/intro/emulator_check/background.pal", ".gbapal");
 
-static const u32 sWarningLeft_Gfx[]  = INCBIN_U32("graphics/intro/emulator_check/warning_left.4bpp.lz");
-static const u32 sWarningRight_Gfx[] = INCBIN_U32("graphics/intro/emulator_check/warning_right.4bpp.lz");
-static const u16 sWarning_Pal[]      = INCBIN_U16("graphics/intro/emulator_check/warning.gbapal");
+static const u32 sWarningLeft_Gfx[]  = INCGFX_U32("graphics/intro/emulator_check/warning_left.png", ".4bpp.lz");
+static const u32 sWarningRight_Gfx[] = INCGFX_U32("graphics/intro/emulator_check/warning_right.png", ".4bpp.lz");
+static const u16 sWarning_Pal[]      = INCGFX_U16("graphics/intro/emulator_check/warning.pal", ".gbapal");
 
-static const u32 sDizzyEgg_Gfx[] = INCBIN_U32("graphics/intro/emulator_check/dizzy_egg.4bpp.lz");
-static const u16 sDizzyEgg_Pal[] = INCBIN_U16("graphics/intro/emulator_check/dizzy_egg.gbapal");
+static const u32 sDizzyEgg_Gfx[] = INCGFX_U32("graphics/intro/emulator_check/dizzy_egg.png", ".4bpp.lz");
+static const u16 sDizzyEgg_Pal[] = INCGFX_U16("graphics/intro/emulator_check/dizzy_egg.pal", ".gbapal");
 
-static const u32 sPikachu_Gfx[]  = INCBIN_U32("graphics/intro/emulator_check/pikachu.4bpp.lz");
-static const u16 sPikachu_Pal[]  = INCBIN_U16("graphics/intro/emulator_check/pikachu.gbapal");
+static const u32 sPikachu_Gfx[]  = INCGFX_U32("graphics/intro/emulator_check/pikachu.png", ".4bpp.lz");
+static const u16 sPikachu_Pal[]  = INCGFX_U16("graphics/intro/emulator_check/pikachu.pal", ".gbapal");
 
-static const u32 sPorygon_Gfx[]  = INCBIN_U32("graphics/intro/emulator_check/porygon.4bpp.lz");
-static const u16 sPorygon_Pal[]  = INCBIN_U16("graphics/intro/emulator_check/porygon.gbapal");
+static const u32 sPorygon_Gfx[]  = INCGFX_U32("graphics/intro/emulator_check/porygon.png", ".4bpp.lz");
+static const u16 sPorygon_Pal[]  = INCGFX_U16("graphics/intro/emulator_check/porygon.pal", ".gbapal");
 
 // using dummy tag IDs since these are only loaded once during this check UI and will be freed afterwards
 #define TAG_EMUCHECK_WARNING_LEFT  0

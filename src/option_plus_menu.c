@@ -210,18 +210,18 @@ static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg3TilemapBuffer = NULL;
 
 // const data
-static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equals_sign.4bpp"); // note: this is only used in the Japanese release
+static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equals_sign.png", ".4bpp"); // note: this is only used in the Japanese release
 static const u16 sOptionMenuBg_Pal[] = {RGB(0, 0, 0)};
-static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text_custom.gbapal");
+static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text_custom.pal", ".gbapal");
 
-static const u32 sOptionsPlusTiles[] = INCBIN_U32("graphics/ui_options_plus/options_plus_tiles.4bpp.lz");
-static const u16 sOptionsPlusPalette[] = INCBIN_U16("graphics/ui_options_plus/options_plus_tiles.gbapal");
-static const u32 sOptionsPlusTilemap[] = INCBIN_U32("graphics/ui_options_plus/options_plus_tiles.bin.lz");
+static const u32 sOptionsPlusTiles[] = INCGFX_U32("graphics/ui_options_plus/options_plus_tiles.png", ".4bpp.lz");
+static const u16 sOptionsPlusPalette[] = INCGFX_U16("graphics/ui_options_plus/options_plus_tiles.pal", ".gbapal");
+static const u32 sOptionsPlusTilemap[] = INCGFX_U32("graphics/ui_options_plus/options_plus_tiles.bin", ".lz");
 
 // Scrolling Background
-static const u32 sScrollBgTiles[] = INCBIN_U32("graphics/ui_options_plus/waterscrollscaletwo.4bpp.lz");
-static const u32 sScrollBgTilemap[] = INCBIN_U32("graphics/ui_options_plus/waterscrollscaletwo.bin.lz");
-static const u16 sScrollBgPalette[] = INCBIN_U16("graphics/ui_options_plus/waterscrollscaletwo.gbapal");
+static const u32 sScrollBgTiles[] = INCGFX_U32("graphics/ui_options_plus/waterscrollscaletwo.png", ".4bpp.lz");
+static const u32 sScrollBgTilemap[] = INCGFX_U32("graphics/ui_options_plus/waterscrollscaletwo.bin", ".lz");
+static const u16 sScrollBgPalette[] = INCGFX_U16("graphics/ui_options_plus/waterscrollscaletwo.png", ".gbapal");
 
 #define TEXT_COLOR_OPTIONS_WHITE                1
 #define TEXT_COLOR_OPTIONS_GRAY_FG              2

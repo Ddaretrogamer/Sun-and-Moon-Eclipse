@@ -12,8 +12,8 @@
 
 #define TAG_CUTSCENE_SKIP_BUTTON 5550
 
-static const u16 sCutsceneSkipButton_Gfx[] = INCBIN_U16("graphics/cutscene/skip_button.4bpp");
-static const u16 sCutsceneSkipButton_Pal[] = INCBIN_U16("graphics/cutscene/skip_button.gbapal");
+static const u16 sCutsceneSkipButton_Gfx[] = INCGFX_U16("graphics/cutscene/skip_button.png", ".4bpp");
+static const u16 sCutsceneSkipButton_Pal[] = INCGFX_U16("graphics/cutscene/skip_button.png", ".gbapal");
 
 static const struct SpriteSheet sCutsceneSkipButtonSpriteSheets[] = {
     {(const void *)sCutsceneSkipButton_Gfx, sizeof(sCutsceneSkipButton_Gfx), TAG_CUTSCENE_SKIP_BUTTON},

@@ -145,26 +145,26 @@ static EWRAM_DATA u8 sSaveDialogTimer = 0;
 static EWRAM_DATA u8 sSaveInfoWindowId = 0;
 
 // --BG-GFX--
-static const u32 sStartMenuTiles[] = INCBIN_U32("graphics/heat_start_menu/bg.4bpp.lz");
-static const u32 sStartMenuTilemap[] = INCBIN_U32("graphics/heat_start_menu/bg.bin.lz");
-static const u32 sStartMenuTilemapSafari[] = INCBIN_U32("graphics/heat_start_menu/bg_safari.bin.lz");
-static const u16 sStartMenuPalette[] = INCBIN_U16("graphics/heat_start_menu/bg.gbapal");
-const u16 gStandardMenuPalette[] = INCBIN_U16("graphics/interface/std_menu.gbapal");
+static const u32 sStartMenuTiles[] = INCGFX_U32("graphics/heat_start_menu/bg.png", ".4bpp.lz");
+static const u32 sStartMenuTilemap[] = INCGFX_U32("graphics/heat_start_menu/bg.bin", ".lz");
+static const u32 sStartMenuTilemapSafari[] = INCGFX_U32("graphics/heat_start_menu/bg_safari.bin", ".lz");
+static const u16 sStartMenuPalette[] = INCGFX_U16("graphics/heat_start_menu/bg.pal", ".gbapal");
+const u16 gStandardMenuPalette[] = INCGFX_U16("graphics/interface/std_menu.pal", ".gbapal");
 
 // --alternate BG pals--
 static const u16 sStartMenuPalettes[MENU_PAL_COUNT][16] = {
-    INCBIN_U16("graphics/heat_start_menu/bg.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_blue.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_red.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_green.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_og_grey.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_grass_green.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_slowpoke.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_sunshine.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_lava_red.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_ice_white.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_sandy_brown.gbapal"),
-    INCBIN_U16("graphics/heat_start_menu/bg_spacey.gbapal"), 
+    INCGFX_U16("graphics/heat_start_menu/bg.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_blue.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_red.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_green.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_og_grey.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_grass_green.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_slowpoke.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_sunshine.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_lava_red.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_ice_white.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_sandy_brown.pal", ".gbapal"),
+    INCGFX_U16("graphics/heat_start_menu/bg_spacey.pal", ".gbapal"), 
 
 };
 #define MENU_PAL_COUNT 12
@@ -181,8 +181,8 @@ const u16 *GetStartMenuPalette(u8 id)
 #define TAG_ICON_GFX 1234
 #define TAG_ICON_PAL 0x4654
 
-static const u32 sIconGfx[] = INCBIN_U32("graphics/heat_start_menu/icons.4bpp.lz");
-static const u16 sIconPal[] = INCBIN_U16("graphics/heat_start_menu/icons.gbapal");
+static const u32 sIconGfx[] = INCGFX_U32("graphics/heat_start_menu/icons.png", ".4bpp.lz");
+static const u16 sIconPal[] = INCGFX_U16("graphics/heat_start_menu/icons.pal", ".gbapal");
 
 static const struct WindowTemplate sSaveInfoWindowTemplate = {
     .bg = 0,

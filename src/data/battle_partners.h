@@ -112,3 +112,35 @@
             },
         },
     },
+#line 48
+    [DIFFICULTY_NORMAL][PARTNER_DUMMY] =
+    {
+#line 50
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+#line 51
+        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
+#line 52
+        .gender = TRAINER_GENDER_MALE,
+#line 53
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 54
+        .trainerBackPic = TRAINER_PIC_BACK_BRENDAN,
+#line 55
+        .partySize = 0,
+        .poolSize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 57
+            .species = SPECIES_WYNAUT,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 58
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 58
+            .lvl = 100,
+            .ball = POKEBALL_COUNT,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },

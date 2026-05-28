@@ -115,21 +115,21 @@ static const struct WindowTemplate sScreenshotsWindowTemplates[] =
 };
 
 
-static const u32 sUELogoScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/ultra_eclipse_logo.8bpp.lz");
-static const u32 sUELogoScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/ultra_eclipse_logo.bin.lz");
-static const u16 sUELogoScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/ultra_eclipse_logo.gbapal");
+static const u32 sUELogoScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/ultra_eclipse_logo.png", ".8bpp.lz");
+static const u32 sUELogoScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/ultra_eclipse_logo.bin", ".lz");
+static const u16 sUELogoScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/ultra_eclipse_logo.png", ".gbapal");
 
-static const u32 sThreeMonthsLaterScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.8bpp.lz");
-static const u32 sThreeMonthsLaterScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.bin.lz");
-static const u16 sThreeMonthsLaterScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/ThreeMonthsLater_Tiles.gbapal");
+static const u32 sThreeMonthsLaterScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.png", ".8bpp.lz");
+static const u32 sThreeMonthsLaterScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/ThreeMonthsLater_Tiles.bin", ".lz");
+static const u16 sThreeMonthsLaterScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/ThreeMonthsLater_Tiles.png", ".gbapal");
 
-static const u32 sSurfingPikachuScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/surfingpikachu_tiles.8bpp.lz");
-static const u32 sSurfingPikachuScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/surfingpikachu_tiles.bin.lz");
-static const u16 sSurfingPikachuScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/surfingpikachu_tiles.gbapal");
+static const u32 sSurfingPikachuScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/surfingpikachu_tiles.png", ".8bpp.lz");
+static const u32 sSurfingPikachuScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/surfingpikachu_tiles.bin", ".lz");
+static const u16 sSurfingPikachuScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/surfingpikachu_tiles.png", ".gbapal");
 
-static const u32 sTheNextDayScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/TheNextDay_tiles.8bpp.lz");
-static const u32 sTheNextDayScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/TheNextDay_tiles.bin.lz");
-static const u16 sTheNextDayScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/TheNextDay_tiles.gbapal");
+static const u32 sTheNextDayScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/TheNextDay_tiles.png", ".8bpp.lz");
+static const u32 sTheNextDayScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/TheNextDay_tiles.bin", ".lz");
+static const u16 sTheNextDayScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/TheNextDay_tiles.png", ".gbapal");
 // static const u32 sTabletScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.8bpp.smol");
 // static const u32 sTabletScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.bin.smolTM");
 // static const u16 sTabletScreenshotsPalette[] = INCBIN_U16("graphics/ui_screenshots/seacrown_tablet_tiles.gbapal");

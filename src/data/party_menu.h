@@ -833,9 +833,9 @@ static const struct WindowTemplate sLevelUpStatsWindowTemplate =
     .baseBlock = 0x2C0, //0x2E9,
 };
 
-static const u16 sPartyMenuBg_Gfx[] = INCBIN_U16("graphics/party_menu/new/bg.4bpp");
-static const u16 sPartyMenuBg_Pal[] = INCBIN_U16("graphics/party_menu/new/bg.gbapal");
-static const u32 sPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/new/bg.bin.lz");
+static const u16 sPartyMenuBg_Gfx[] = INCGFX_U16("graphics/party_menu/new/bg.png", ".4bpp");
+static const u16 sPartyMenuBg_Pal[] = INCGFX_U16("graphics/party_menu/new/bg.png", ".gbapal");
+static const u32 sPartyMenuBg_Tilemap[] = INCGFX_U32("graphics/party_menu/new/bg.bin", ".lz");
 
 static const struct WindowTemplate sWindowTemplate_FirstBattleOakVoiceover =
 {
@@ -848,8 +848,8 @@ static const struct WindowTemplate sWindowTemplate_FirstBattleOakVoiceover =
     .baseBlock = 0x1DF,
 };
 
-static const u32 sPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball.4bpp.lz");
-static const u16 sPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/pokeball.gbapal");
+static const u32 sPartyMenuPokeball_Gfx[] = INCGFX_U32("graphics/party_menu/pokeball.png", ".4bpp.lz");
+static const u16 sPartyMenuPokeball_Pal[] = INCGFX_U16("graphics/party_menu/pokeball.png", ".gbapal");
 
 // Plain tilemaps for party menu slots.
 // The versions with no HP bar are used by eggs, and in certain displays like registering at a battle facility.
@@ -861,10 +861,10 @@ static const u8 sSlotTilemap_WideNoHP[]  = INCBIN_U8("graphics/party_menu/slot_w
 static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_wide_empty.bin");
 
 //Custom party menu
-static const u8 sEqualMainSlotTilemap[] = INCBIN_U8("graphics/party_menu/new/slot.4bpp");
-static const u8 sEqualMainSlotTilemapNoHP[] = INCBIN_U8("graphics/party_menu/new/slot_no_hp.4bpp");
-static const u8 sEqualEmptySlotTilemap[] = INCBIN_U8("graphics/party_menu/new/slot_empty.4bpp");
-static const u8 sEmptySlotTilemap[] = INCBIN_U8("graphics/party_menu/new/slot_wide_empty.4bpp");
+static const u8 sEqualMainSlotTilemap[] = INCGFX_U8("graphics/party_menu/new/slot.png", ".4bpp");
+static const u8 sEqualMainSlotTilemapNoHP[] = INCGFX_U8("graphics/party_menu/new/slot_no_hp.png", ".4bpp");
+static const u8 sEqualEmptySlotTilemap[] = INCGFX_U8("graphics/party_menu/new/slot_empty.png", ".4bpp");
+static const u8 sEmptySlotTilemap[] = INCGFX_U8("graphics/party_menu/new/slot_wide_empty.png", ".4bpp");
 
 //
 // Palette offsets
@@ -1133,8 +1133,8 @@ static const struct SubspriteTable sStartMenu_CursorSubspriteTable[] =
     {ARRAY_COUNT(sStartMenu_CursorSubsprites), sStartMenu_CursorSubsprites},
     {}
 };
-static const struct SpriteSheet sSpriteSheet_Cursor = {(const u16[])INCBIN_U16("graphics/party_menu/new/cursor.4bpp"), 128*64/2, TAG_CURSOR};
-static const struct SpritePalette sSpritePalette_Cursor = {(const u16[])INCBIN_U16("graphics/party_menu/new/cursor.gbapal"), TAG_CURSOR};
+static const struct SpriteSheet sSpriteSheet_Cursor = {(const u16[])INCGFX_U16("graphics/party_menu/new/cursor.png", ".4bpp"), 128*64/2, TAG_CURSOR};
+static const struct SpritePalette sSpritePalette_Cursor = {(const u16[])INCGFX_U16("graphics/party_menu/new/cursor.png", ".gbapal"), TAG_CURSOR};
 static const struct OamData sOamData_Cursor = 
 {
     .affineMode = ST_OAM_AFFINE_OFF,
@@ -1155,7 +1155,7 @@ static const struct SpriteTemplate sSpriteTemplate_Cursor =
     .callback = SpriteCB_Cursor,
 };
 
-static const u32 sRButtonBoxes_Gfx[] = INCBIN_U32("graphics/party_menu/new/r_button_boxes.4bpp.smol");
+static const u32 sRButtonBoxes_Gfx[] = INCGFX_U32("graphics/party_menu/new/r_button_boxes.png", ".4bpp.smol");
 
 static const struct OamData sOamData_RButtonBoxes =
 {

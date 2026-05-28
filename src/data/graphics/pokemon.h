@@ -21193,16 +21193,16 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 
 #if P_ALOLAN_FORMS
-    const u32 gMonFrontPic_NoivernAlola[] = INCBIN_U32("graphics/pokemon/noivern/alola/anim_front.4bpp.smol");
-    const u16 gMonPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/normal.gbapal");
-    const u32 gMonBackPic_NoivernAlola[] = INCBIN_U32("graphics/pokemon/noivern/alola/back.4bpp.smol");
-    const u16 gMonShinyPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/shiny.gbapal");
-    const u8 gMonIcon_NoivernAlola[] = INCBIN_U8("graphics/pokemon/noivern/alola/icon.4bpp");
+    const u32 gMonFrontPic_NoivernAlola[] = INCGFX_U32("graphics/pokemon/noivern/alola/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_NoivernAlola[] = INCGFX_U16("graphics/pokemon/noivern/alola/normal.pal", ".gbapal");
+    const u32 gMonBackPic_NoivernAlola[] = INCGFX_U32("graphics/pokemon/noivern/alola/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_NoivernAlola[] = INCGFX_U16("graphics/pokemon/noivern/alola/shiny.pal", ".gbapal");
+    const u8 gMonIcon_NoivernAlola[] = INCGFX_U8("graphics/pokemon/noivern/alola/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_NoivernAlola[] = INCBIN_COMP("graphics/pokemon/noivern/alola/overworld.4bpp");
+    const u32 gObjectEventPic_NoivernAlola[] = INCGFX_COMP("graphics/pokemon/noivern/alola/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    const u16 gOverworldPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/overworld_normal.gbapal");
-    const u16 gShinyOverworldPalette_NoivernAlola[] = INCBIN_U16("graphics/pokemon/noivern/alola/overworld_shiny.gbapal");
+    const u16 gOverworldPalette_NoivernAlola[] = INCGFX_U16("graphics/pokemon/noivern/alola/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_NoivernAlola[] = INCGFX_U16("graphics/pokemon/noivern/alola/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_ALOLAN_FORMS
