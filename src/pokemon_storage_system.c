@@ -1668,6 +1668,11 @@ void PokemonPC_SetReturnToPartyCallback(MainCallback cb)
 
 void ShowPokemonPCFromParty(void)
 {
+    if (SWSH_STORAGE_SYSTEM)
+    {
+        ShowPokemonPCFromParty_SwSh();
+        return;
+    }
     EnterPokeStorage(OPTION_MOVE_MONS);
 }
 

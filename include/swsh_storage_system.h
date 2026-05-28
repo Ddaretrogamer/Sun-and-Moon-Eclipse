@@ -6,6 +6,7 @@
 #define SWSH_STORAGE_SYSTEM TRUE
 
 void ShowPokemonStorageSystemPC_SwSh(void);
+void ShowPokemonPCFromParty_SwSh(void);
 void ChooseMonFromStorage_SwSh(void);
 void SetMonFormPSS_SwSh(struct BoxPokemon *boxMon, enum FormChanges method);
 void SetMonFormPSS_ItemHold_SwSh(struct BoxPokemon *boxMon);

@@ -1057,6 +1057,11 @@ void ShowPokemonStorageSystemPC_SwSh(void)
     LockPlayerFieldControls();
 }
 
+void ShowPokemonPCFromParty_SwSh(void)
+{
+    EnterPokeStorage(OPTION_MOVE_MONS);
+}
+
 static void FieldTask_ReturnToPcMenu(void)
 {
     u8 taskId;
