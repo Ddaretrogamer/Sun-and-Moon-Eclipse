@@ -1666,6 +1666,11 @@ void PokemonPC_SetReturnToPartyCallback(MainCallback cb)
     sReturnToPartyCallback = cb;
 }
 
+bool8 PokemonPC_HasReturnToPartyCallback(void)
+{
+    return sReturnToPartyCallback != NULL;
+}
+
 void ShowPokemonPCFromParty(void)
 {
     if (SWSH_STORAGE_SYSTEM)

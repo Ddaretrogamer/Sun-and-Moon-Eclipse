@@ -316,7 +316,7 @@ static void CreatePartyMonStatusSprite(struct Pokemon *, struct PartyMenuBox *);
 static u8 CreateSmallPokeballButtonSprite(u8, u8);
 static void DrawCancelConfirmButtons(void);
 static void SavePartyMenuStateForPC(void);
-static void CB2_ReopenPartyMenuFromPC(void);
+void CB2_ReopenPartyMenuFromPC(void);
 static u8 CreatePokeballButtonSprite(u8, u8);
 static void AnimateSelectedPartyIcon(u8, u8);
 static void PartyMenuStartSpriteAnim(u8, u8);
@@ -1455,7 +1455,7 @@ static void SavePartyMenuStateForPC(void)
     sSavedPartyExitCallback = gPartyMenu.exitCallback;
 }
 
-static void CB2_ReopenPartyMenuFromPC(void)
+void CB2_ReopenPartyMenuFromPC(void)
 {
     if (sSavedPartyTask == NULL)
         sSavedPartyTask = Task_HandleChooseMonInput;

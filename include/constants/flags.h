@@ -60,7 +60,7 @@
 #define FLAG_ENABLE_OW_MON_OPTION    0x26 // Set to enable the option to toggle overworld encounters in the options menu, also used to check if the option is enabled or not
 #define FLAG_CUTSCENE_SKIP_BUTTON_TOGGLE    0x27 // skip cutscene button toggle, set means hidden, clear means shown
 #define FLAG_CUTSCENE_SKIP_ENABLED           0x28 // when set, cutscene skipping is enabled 
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
+#define FLAG_PARTY_PC_ACCESS    0x29 // When set, allows accessing the PC from the party menu via R button
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag

@@ -218,6 +218,7 @@ Debug_EventScript_Script_1::
 	givemon SPECIES_LYCANROC 100
 	givemon SPECIES_NOIVERN 100
 	givemon SPECIES_NOIVERN_ALOLA 100
+	setflag FLAG_PARTY_PC_ACCESS
 	release
 	end
 
