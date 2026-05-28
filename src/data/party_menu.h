@@ -1133,7 +1133,7 @@ static const struct SubspriteTable sStartMenu_CursorSubspriteTable[] =
     {ARRAY_COUNT(sStartMenu_CursorSubsprites), sStartMenu_CursorSubsprites},
     {}
 };
-static const struct SpriteSheet sSpriteSheet_Cursor = {(const u16[])INCGFX_U16("graphics/party_menu/new/cursor.png", ".4bpp"), 128*64/2, TAG_CURSOR};
+static const struct SpriteSheet sSpriteSheet_Cursor = {(const u16[])INCGFX_U16("graphics/party_menu/new/cursor.png", ".4bpp", "-mwidth 8 -mheight 8"), 128*64/2, TAG_CURSOR};
 static const struct SpritePalette sSpritePalette_Cursor = {(const u16[])INCGFX_U16("graphics/party_menu/new/cursor.png", ".gbapal"), TAG_CURSOR};
 static const struct OamData sOamData_Cursor = 
 {
