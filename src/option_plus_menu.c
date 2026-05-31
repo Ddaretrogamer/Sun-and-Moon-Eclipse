@@ -84,7 +84,7 @@ static const struct WindowTemplate sOptionMenuWinTemplates[] =
         .tilemapTop = 3,
         .width = 26,
         .height = 10,
-        .paletteNum = 1,
+        .paletteNum = 2,
         .baseBlock = 62
     },
     {//WIN_DESCRIPTION
@@ -93,7 +93,7 @@ static const struct WindowTemplate sOptionMenuWinTemplates[] =
         .tilemapTop = 15,
         .width = 26,
         .height = 4,
-        .paletteNum = 1,
+        .paletteNum = 2,
         .baseBlock = 500
     },
     DUMMY_WIN_TEMPLATE
@@ -219,9 +219,27 @@ static const u16 sOptionsPlusPalette[] = INCGFX_U16("graphics/ui_options_plus/op
 static const u32 sOptionsPlusTilemap[] = INCGFX_U32("graphics/ui_options_plus/options_plus_tiles.bin", ".lz");
 
 // Scrolling Background
-static const u32 sScrollBgTiles[] = INCGFX_U32("graphics/ui_options_plus/waterscrollscaletwo.png", ".4bpp.lz");
-static const u32 sScrollBgTilemap[] = INCGFX_U32("graphics/ui_options_plus/waterscrollscaletwo.bin", ".lz");
-static const u16 sScrollBgPalette[] = INCGFX_U16("graphics/ui_options_plus/waterscrollscaletwo.png", ".gbapal");
+static const u32 sScrollBgTiles[] = INCGFX_U32("graphics/ui_main_menu/waterscroll.png", ".4bpp.lz");
+static const u32 sScrollBgTilemap[] = INCGFX_U32("graphics/ui_main_menu/waterscroll.bin", ".lz");
+static const u16 sScrollBgPalette[] = INCGFX_U16("graphics/ui_main_menu/waterscroll.png", ".gbapal");
+
+// Parallax scrolling (targets BG3, the scroll background layer)
+static const struct ScanlineEffectParams sScanlineParams_Parallax =
+{
+    .dmaDest = &REG_BG3HOFS,
+    .dmaControl = SCANLINE_EFFECT_DMACNT_16BIT,
+    .initState = 1
+};
+
+static const u16 sParallaxScrollSpeeds[][8] =
+{
+    {Q_8_8(0.1), Q_8_8(0.2), Q_8_8(0.2), Q_8_8(0.3), Q_8_8(0.3), Q_8_8(0.4), Q_8_8(0.5), Q_8_8(0.1)},
+};
+
+//pal cycling bg
+static const u32 sCycleBgTiles[] = INCGFX_U32("graphics/ui_options_plus/waterscrolltwo_palcycle_tiles.png", ".4bpp.lz");
+static const u32 sCycleBgTilemap[] = INCGFX_U32("graphics/ui_options_plus/waterscrolltwo_palcycle_tiles.bin", ".lz");
+static const u16 sCycleBgPalette[] = INCGFX_U16("graphics/ui_options_plus/waterscrolltwo_palcycle_tiles.png", ".gbapal");
 
 #define TEXT_COLOR_OPTIONS_WHITE                1
 #define TEXT_COLOR_OPTIONS_GRAY_FG              2
@@ -507,7 +525,8 @@ static void VBlankCB(void)
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
-    ChangeBgY(3, 96, BG_COORD_SUB);
+    ScanlineEffect_InitHBlankDmaTransfer();
+    // ChangeBgY(3, 64, BG_COORD_SUB);
 }
 
 static const u8 sText_TopBar_Vanilla[]         = _("VANILLA");
@@ -521,9 +540,9 @@ static const u8 sText_TopBar_Sound_Left[]      = _("{L_BUTTON}BATTLE");
 static const u8 sText_TopBar_Sound_Right[]     = _("{R_BUTTON}GENERAL");
 static void DrawTopBarText(void)
 {
-    const u8 color[3] = { 0, TEXT_COLOR_WHITE, TEXT_COLOR_OPTIONS_GRAY_FG };
+    const u8 color[3] = { 0, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY };
 
-    FillWindowPixelBuffer(WIN_TOPBAR, PIXEL_FILL(7));
+    FillWindowPixelBuffer(WIN_TOPBAR, PIXEL_FILL(0));
     switch (sOptions->submenu)
     {
         case MENU_VANILLA:
@@ -634,6 +653,74 @@ static void HighlightOptionMenuItem(void)
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(cursor * Y_DIFF + 24, cursor * Y_DIFF + 40));
 }
 
+static void Task_ParallaxScroll(u8 taskId)
+{
+    u32 i;
+    s16 *data = gTasks[taskId].data;
+
+    data[0] += sParallaxScrollSpeeds[0][0];
+    data[1] += sParallaxScrollSpeeds[0][1];
+    data[2] += sParallaxScrollSpeeds[0][2];
+    data[3] += sParallaxScrollSpeeds[0][3];
+    data[4] += sParallaxScrollSpeeds[0][4];
+    data[5] += sParallaxScrollSpeeds[0][5];
+    data[6] += sParallaxScrollSpeeds[0][6];
+    data[7] -= sParallaxScrollSpeeds[0][7];
+
+    for (i = 0; i < DISPLAY_HEIGHT; i++)
+    {
+        if (i <= 88)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[7]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[7]);
+        }
+        else if (i <= 96)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[0]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[0]);
+        }
+        else if (i <= 104)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[1]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[1]);
+        }
+        else if (i <= 112)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[2]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[2]);
+        }
+        else if (i <= 120)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[3]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[3]);
+        }
+        else if (i <= 128)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[4]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[4]);
+        }
+        else if (i <= 138)
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[5]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[5]);
+        }
+        else
+        {
+            gScanlineEffectRegBuffers[0][i] = Q_8_8_TO_INT(data[6]);
+            gScanlineEffectRegBuffers[1][i] = Q_8_8_TO_INT(data[6]);
+        }
+    }
+}
+
+static void InitParallaxEffect(void)
+{
+    ScanlineEffect_Stop();
+    ScanlineEffect_Clear();
+    CpuFastFill16(0, gScanlineEffectRegBuffers, sizeof(gScanlineEffectRegBuffers));
+    ScanlineEffect_SetParams(sScanlineParams_Parallax);
+    CreateTask(Task_ParallaxScroll, 0);
+}
+
 static bool8 OptionsMenu_LoadGraphics(void) // Load all the tilesets, tilemaps, spritesheets, and palettes
 {
     switch (sOptions->gfxLoadState)
@@ -664,7 +751,7 @@ static bool8 OptionsMenu_LoadGraphics(void) // Load all the tilesets, tilemaps, 
         break;
     case 4:
         LoadPalette(sOptionsPlusPalette, 64, 32);
-        LoadPalette(sScrollBgPalette, 32, 32);
+        LoadPalette(sScrollBgPalette, 16, 32);
         sOptions->gfxLoadState++;
         break;
     default:
@@ -742,7 +829,7 @@ void CB2_InitOptionPlusMenu(void)
         gMain.state++;
         break;
     case 5:
-        LoadPalette(sOptionMenuText_Pal, 16, sizeof(sOptionMenuText_Pal));
+        LoadPalette(sOptionMenuText_Pal, 32, sizeof(sOptionMenuText_Pal));
         gMain.state++;
         break;
     case 6:
@@ -808,6 +895,8 @@ void CB2_InitOptionPlusMenu(void)
         ShowBg(1);
         ShowBg(2);
         ShowBg(3);
+        InitParallaxEffect();
+        EnableInterrupts(INTR_FLAG_HBLANK);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
         SetVBlankCallback(VBlankCB);
         SetMainCallback2(MainCB2);
@@ -1061,6 +1150,7 @@ static void Task_OptionMenuFadeOut(u8 taskId)
     if (!gPaletteFade.active)
     {
         DestroyTask(taskId);
+        ScanlineEffect_Stop();
         FreeAllWindowBuffers();
         FREE_AND_SET_NULL(sOptions);
         try_free(sBg2TilemapBuffer);

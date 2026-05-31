@@ -1989,8 +1989,8 @@ const u32 gStorageSystemPartyMenu_Tilemap[] = INCBIN_U32("graphics/pokemon_stora
 const u16 gNamingScreenMenu_Pal[6][16] =
 {
     INCGFX_U16("graphics/naming_screen/menu.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/page_swap_upper.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/page_swap_lower.pal", ".gbapal"),
+    INCGFX_U16("graphics/naming_screen/page_swap_others.pal", ".gbapal"),
+    INCGFX_U16("graphics/naming_screen/page_swap_others.pal", ".gbapal"),
     INCGFX_U16("graphics/naming_screen/page_swap_others.pal", ".gbapal"),
     INCGFX_U16("graphics/naming_screen/buttons.pal", ".gbapal"),
     INCGFX_U16("graphics/naming_screen/cursor.pal", ".gbapal"),
@@ -2008,6 +2008,9 @@ const u32 gNamingScreenCursorFilled_Gfx[]        = INCGFX_U32("graphics/naming_s
 const u32 gNamingScreenPageSwapButton_Gfx[]      = INCGFX_U32("graphics/naming_screen/page_swap_button.png", ".4bpp");
 const u32 gNamingScreenInputArrow_Gfx[]          = INCGFX_U32("graphics/naming_screen/input_arrow.png", ".4bpp");
 const u32 gNamingScreenUnderscore_Gfx[]          = INCGFX_U32("graphics/naming_screen/underscore.png", ".4bpp");
+const u32 gNamingScreenTextEntryBox_Left_Gfx[]   = INCGFX_U32("graphics/naming_screen/text_entry_box_left.png", ".4bpp");
+const u32 gNamingScreenTextEntryBox_Mid_Gfx[]    = INCGFX_U32("graphics/naming_screen/text_entry_box_middle.png", ".4bpp");
+const u32 gNamingScreenTextEntryBox_Right_Gfx[]  = INCGFX_U32("graphics/naming_screen/text_entry_box_right.png", ".4bpp");
 const u32 gNamingScreenBackground_Tilemap[]      = INCBIN_U32("graphics/naming_screen/background.bin.smolTM");
 const u32 gNamingScreenKeyboardUpper_Tilemap[]   = INCBIN_U32("graphics/naming_screen/keyboard_upper.bin.smolTM");
 const u32 gNamingScreenKeyboardLower_Tilemap[]   = INCBIN_U32("graphics/naming_screen/keyboard_lower.bin.smolTM");

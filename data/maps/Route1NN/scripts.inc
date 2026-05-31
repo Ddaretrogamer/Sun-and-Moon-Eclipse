@@ -615,9 +615,9 @@ Route1NN_Trigger_GetStarters_73:
 # 477 "data/maps/Route1NN/scripts.pory"
 	waitmovement 0
 # 478 "data/maps/Route1NN/scripts.pory"
-	call Route1NN_Trigger_GetStartersPart2
-# 479 "data/maps/Route1NN/scripts.pory"
 	endcutscene
+# 479 "data/maps/Route1NN/scripts.pory"
+	call Route1NN_Trigger_GetStartersPart2
 	return
 
 Route1NN_Trigger_GetStarters_2:

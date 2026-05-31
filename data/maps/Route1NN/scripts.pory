@@ -475,8 +475,8 @@ script Route1NN_Trigger_GetStarters{
     speakername("Kukui")
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_diag_southwest, walk_slow_down))
     waitmovement(0)
-    call(Route1NN_Trigger_GetStartersPart2)
     endcutscene
+    call(Route1NN_Trigger_GetStartersPart2)
 }
 
 script Route1NN_Trigger_GetStartersPart2{
