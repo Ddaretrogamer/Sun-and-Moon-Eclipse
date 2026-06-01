@@ -179,6 +179,7 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
     }
     //TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM); // this is for expansions implimentation of namebox
     StringExpandPlaceholders(gStringVar4, str);
+    TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
 }

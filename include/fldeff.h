@@ -58,5 +58,6 @@ bool8 FldEff_Defog(void);
 
 //general
 void Task_DoFieldMove_RunFunc(u8 taskId); // qol_field_moves
+void Task_EnterCaveTransition2(u8 taskId);
 
 #endif // GUARD_FLDEFF_H

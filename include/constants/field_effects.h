@@ -91,6 +91,7 @@
 #define FLDEFF_SMILEY_FACE_ICON          83
 #define FLDEFF_HALL_OF_FAME_RECORD_FRLG  84
 #define FLDEFF_PHOTO_FLASH               85
+#define FLDEFF_OW_ENCOUNTER_SPAWN_ANIM   86
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
