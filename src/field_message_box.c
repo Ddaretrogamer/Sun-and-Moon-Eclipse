@@ -45,14 +45,15 @@ static void Task_DrawFieldMessage(u8 taskId)
     case 1:
     {
         u32 nameboxWinId = GetNameboxWindowId();
+        bool32 suppressSpeakerName = FlagGet(FLAG_SUPPRESS_SPEAKER_NAME);
         DrawDialogueFrame(0, TRUE);
 
         // This is the setup for the namebox/plate
-        if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
+        if (gSpeakerName != NULL && !suppressSpeakerName)
         {
             DrawNamePlate(1, TRUE);
         }
-        else if (nameboxWinId != WINDOW_NONE)
+        else if (nameboxWinId != WINDOW_NONE && !suppressSpeakerName)
         {
             DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
         }
@@ -177,9 +178,11 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
         FillDialogFramePlate(1);
         AddTextPrinterParameterized3(1, FONT_SMALL, 0, 0, colors, 0, gNamePlateBuffer);
     }
-    //TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM); // this is for expansions implimentation of namebox
     StringExpandPlaceholders(gStringVar4, str);
-    TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
+    if (!FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
+        TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
+    else
+        DestroyNamebox();
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
 }

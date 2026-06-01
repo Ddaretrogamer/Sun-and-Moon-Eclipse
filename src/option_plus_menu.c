@@ -20,7 +20,7 @@
 #include "decompress.h"
 #include "heat_start_menu.h"
 #include "event_data.h"
-#include "followmon.h"
+// #include "followmon.h"
 #include "rotom_start_menu.h"
 #include "transform.h"
 
@@ -843,7 +843,7 @@ void CB2_InitOptionPlusMenu(void)
         sOptions->sel_custom[MENUITEM_FOLLOWER]     = !FlagGet(FLAG_FOLLOWERS_MENU_TOGGLE);
         sOptions->sel_custom[MENUITEM_BATTLESPEED]  = gSaveBlock2Ptr->optionsBattleSpeed;
         sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] = FlagGet(FLAG_ENABLE_OW_MON_OPTION)
-            ? !(FlagGet(OW_FLAG_SPAWN_OVERWORLD_MON) && FlagGet(FLAG_OW_NO_ENCOUNTER))
+            ? FlagGet(FLAG_OW_MON_SPAWN)
             : 1;
         sOptions->sel_custom[MENUITEM_AUTORUN]      = FlagGet(FLAG_AUTORUN_MENU_TOGGLE) ? 0 : 1;
         sOptions->sel_custom[MENUITEM_TITLESCREEN]  = gSaveBlock2Ptr->optionsTitleScreenPokemon;
@@ -1123,15 +1123,15 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagClear(FLAG_AUTORUN_MENU_TOGGLE); // Clear flag to DISABLE autorun
     }
 
-    if (FlagGet(FLAG_ENABLE_OW_MON_OPTION) && sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 0) // Assuming 0 means Overworld Encounters are ON
+    if (FlagGet(FLAG_ENABLE_OW_MON_OPTION) && sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 0) // 0 means Overworld Encounters are ON
     {
-        FlagSet(OW_FLAG_SPAWN_OVERWORLD_MON); // Enable overworld encounters
-        FlagSet(FLAG_OW_NO_ENCOUNTER); // Set the no encounter flag
+        FlagClear(FLAG_OW_MON_SPAWN); // Enable OW encounters (this flag disables when set)
+        FlagSet(FLAG_OW_NO_ENCOUNTER); // Disable random encounters while OW encounters are ON
     }
-    else // sOptions->sel_custom[MENUITEM_OW_ENCOUNTERS] == 1, meaning OFF (or flag not set)
+    else // 1 means OFF (or option flag disabled)
     {
-        FlagClear(OW_FLAG_SPAWN_OVERWORLD_MON);   // Disable overworld encounters
-        FlagClear(FLAG_OW_NO_ENCOUNTER); // Clear the no encounter flag
+        FlagSet(FLAG_OW_MON_SPAWN);   // Disable OW encounters
+        FlagClear(FLAG_OW_NO_ENCOUNTER); // Re-enable random encounters when OW encounters are OFF
     }
 
     // The fade-out and task function assignment remain the same.

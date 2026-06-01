@@ -445,7 +445,7 @@ void SetPartyHPBarSprite(struct Sprite *sprite, u8 animNum)
     sprite->animCmdIndex = 0;
 }
 
-u8 CreateMonIconNoPalette(u16 species, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority, u32 personality)
+u8 CreateMonIconNoPalette(enum Species species, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority, u32 personality)
 {
     u8 spriteId;
     u16 palIndex;

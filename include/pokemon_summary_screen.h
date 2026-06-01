@@ -31,6 +31,7 @@ enum PokemonSummaryScreenMode
     SUMMARY_MODE_BOX_CURSOR, // mon is being moved in PC
     SUMMARY_MODE_SELECT_MOVE,
     SUMMARY_MODE_RELEARNER_BATTLE, // returning from move relearner initiated from battle moves page
+    SUMMARY_MODE_RELEARNER_CONTEST, // returning from move relearner initiated from contest moves page
 };
 
 enum PokemonSummaryScreenPage

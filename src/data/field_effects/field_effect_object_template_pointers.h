@@ -97,5 +97,4 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_CHARIZARD_FLY_SHINY]    = &gFieldEffectObjectTemplate_CharizardFlyShiny,
     [FLDEFFOBJ_ORAS_DOWSE_BRENDAN]    = &gFieldEffectObjectTemplate_ORASDowsingBrendan,
     [FLDEFFOBJ_ORAS_DOWSE_MAY]        = &gFieldEffectObjectTemplate_ORASDowsingMay,
-    [FLDEFFOBJ_SHINY_SPARKLE]         = &gFieldEffectObjectTemplate_ShinySparkle,
 };

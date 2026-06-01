@@ -12,7 +12,7 @@
 #line 3
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
-        .trainerPic = TRAINER_PIC_FRONT_HIKER,
+        .trainerPic = TRAINER_PIC_HIKER,
 #line 5
         .gender = TRAINER_GENDER_MALE,
 #line 6
@@ -20,7 +20,7 @@
 #line 7
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_HIKER,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 0,
         .party = (const struct TrainerMon[])
         {
@@ -34,7 +34,7 @@
 #line 11
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 12
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 13
         .gender = TRAINER_GENDER_MALE,
 #line 14
@@ -42,7 +42,7 @@
 #line 15
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -68,7 +68,7 @@
 #line 23
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 24
-        .trainerPic = TRAINER_PIC_FRONT_LEAF,
+        .trainerPic = TRAINER_PIC_LEAF,
 #line 25
         .gender = TRAINER_GENDER_FEMALE,
 #line 26
@@ -76,7 +76,7 @@
 #line 27
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_LEAF,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -102,7 +102,7 @@
 #line 36
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 37
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 38
         .gender = TRAINER_GENDER_MALE,
 #line 39
@@ -110,7 +110,7 @@
 #line 40
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
@@ -187,7 +187,7 @@
 #line 68
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 69
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 70
         .gender = TRAINER_GENDER_MALE,
 #line 71
@@ -195,7 +195,7 @@
 #line 72
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -222,7 +222,7 @@
 #line 80
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 81
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 82
         .gender = TRAINER_GENDER_MALE,
 #line 83
@@ -230,7 +230,7 @@
 #line 84
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -257,7 +257,7 @@
 #line 92
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 93
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 94
         .gender = TRAINER_GENDER_MALE,
 #line 95
@@ -265,7 +265,7 @@
 #line 96
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -292,7 +292,7 @@
 #line 104
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 105
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 106
         .gender = TRAINER_GENDER_MALE,
 #line 107
@@ -300,7 +300,7 @@
 #line 108
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -326,7 +326,7 @@
 #line 116
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 117
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 118
         .gender = TRAINER_GENDER_MALE,
 #line 119
@@ -334,7 +334,7 @@
 #line 120
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 121
         .partySize = 1,
         .poolSize = 4,
@@ -398,7 +398,7 @@
 #line 133
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 134
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 135
         .gender = TRAINER_GENDER_MALE,
 #line 136
@@ -406,7 +406,7 @@
 #line 137
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 138
         .partySize = 3,
         .poolSize = 6,
@@ -502,7 +502,7 @@
 #line 158
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 159
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 160
         .gender = TRAINER_GENDER_MALE,
 #line 161
@@ -512,7 +512,7 @@
 #line 164
         .poolRuleIndex = POOL_RULESET_WEATHER_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 163
         .partySize = 3,
         .poolSize = 10,
@@ -664,7 +664,7 @@
 #line 196
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 197
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 198
         .gender = TRAINER_GENDER_MALE,
 #line 199
@@ -674,7 +674,7 @@
 #line 202
         .poolRuleIndex = POOL_RULESET_BASIC,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 201
         .partySize = 2,
         .poolSize = 3,
@@ -732,7 +732,7 @@
 #line 215
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 216
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 217
         .gender = TRAINER_GENDER_MALE,
 #line 218
@@ -744,7 +744,7 @@
 #line 222
         .poolPruneIndex = POOL_PRUNE_TEST,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 220
         .partySize = 2,
         .poolSize = 3,
@@ -798,7 +798,7 @@
 #line 233
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 234
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 235
         .gender = TRAINER_GENDER_MALE,
 #line 236
@@ -810,7 +810,7 @@
 #line 240
         .poolPickIndex = POOL_PICK_LOWEST,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 238
         .partySize = 2,
         .poolSize = 3,
@@ -866,7 +866,7 @@
 #line 252
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 253
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 254
         .gender = TRAINER_GENDER_MALE,
 #line 255
@@ -874,7 +874,7 @@
 #line 256
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 257
         .partySize = 2,
         .poolSize = 2,
@@ -914,7 +914,7 @@
 #line 265
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 266
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 267
         .gender = TRAINER_GENDER_MALE,
 #line 268
@@ -922,7 +922,7 @@
 #line 269
         .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 270
         .partySize = 2,
         .poolSize = 2,
@@ -962,7 +962,7 @@
 #line 278
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
 #line 279
-        .trainerPic = TRAINER_PIC_FRONT_RED,
+        .trainerPic = TRAINER_PIC_RED,
 #line 280
         .gender = TRAINER_GENDER_MALE,
 #line 281
@@ -970,7 +970,7 @@
 #line 282
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 0
-        .trainerBackPic = TRAINER_PIC_FRONT_RED,
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
 #line 283
         .partySize = 6,
         .poolSize = 6,

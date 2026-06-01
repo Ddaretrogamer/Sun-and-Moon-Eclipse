@@ -1775,7 +1775,6 @@ static void RotomPhone_OverworldMenu_CreateFlipPhoneWindow(void)
     PutWindowTilemap(sRotomPhone_StartMenu->menuOverworldFlipPhoneWindowId);
 }
 
-static const u8 sText_ClearWindow[] = COMPOUND_STRING("{CLEAR_TO 190}");
 static void RotomPhone_OverworldMenu_PrintRotomSpeech(u8 textBuffer[80], bool32 top, bool32 copy)
 {
     u8 fontId = GetFontIdToFit(textBuffer, FONT_SHORT, 0, ROTOM_SPEECH_WINDOW_WIDTH_PXL);

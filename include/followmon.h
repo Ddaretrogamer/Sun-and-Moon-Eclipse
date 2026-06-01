@@ -1,52 +1,52 @@
-#ifndef GUARD_FOLLOWMON_H
-#define GUARD_FOLLOWMON_H
+// #ifndef GUARD_FOLLOWMON_H
+// #define GUARD_FOLLOWMON_H
 
-#define OW_FLAG_SPAWN_OVERWORLD_MON         FLAG_OW_MON_SPAWN
+// #define OW_FLAG_SPAWN_OVERWORLD_MON         FLAG_OW_MON_SPAWN
 
-#define FOLLOWMON_SHINY_OFFSET              10000
-#define FOLLOWMON_MAX_SPAWN_SLOTS           5
-#define FOLLOWMON_IDEAL_OBJECT_EVENT_COUNT  8
+// #define FOLLOWMON_SHINY_OFFSET              10000
+// #define FOLLOWMON_MAX_SPAWN_SLOTS           5
+// #define FOLLOWMON_IDEAL_OBJECT_EVENT_COUNT  8
 
-#define INVALID_SPAWN_SLOT 0xFF
+// #define INVALID_SPAWN_SLOT 0xFF
 
-// Could be reduced to an u8 but I prefer to leave some potential for more advanced features
-struct FollowMon
-{
-    u16 isShiny:1;
-    u16 onWater:1;
-    u16 onTallGrass:1;
-    u16 timeOfDay:2;
-    u16 unused:3;
-    u16 encounterIndex:8;
+// // Could be reduced to an u8 but I prefer to leave some potential for more advanced features
+// struct FollowMon
+// {
+//     u16 isShiny:1;
+//     u16 onWater:1;
+//     u16 onTallGrass:1;
+//     u16 timeOfDay:2;
+//     u16 unused:3;
+//     u16 encounterIndex:8;
     
-};
+// };
 
-#define EMPTY_FOLLOWMON 0xFF;
+// #define EMPTY_FOLLOWMON 0xFF;
 
-struct FollowMonData
-{
-    bool8 pendingInteraction;
-    u8 oldestSlot:4;
-    u8 usedSlots:4;
-    u16 spawnCountdown;
-    u16 pendingSpawnAnim;
-    struct FollowMon list[FOLLOWMON_MAX_SPAWN_SLOTS];
-};
+// struct FollowMonData
+// {
+//     bool8 pendingInteraction;
+//     u8 oldestSlot:4;
+//     u8 usedSlots:4;
+//     u16 spawnCountdown;
+//     u16 pendingSpawnAnim;
+//     struct FollowMon list[FOLLOWMON_MAX_SPAWN_SLOTS];
+// };
 
-//data/scripts/followmon.inc
-extern const u8 InteractWithDynamicWildFollowMon[];
+// //data/scripts/followmon.inc
+// extern const u8 InteractWithDynamicWildFollowMon[];
 
-void LoadFollowMonData(struct ObjectEvent *objectEvent);
-void FollowMon_OverworldCB(void);
-void CreateFollowMonEncounter(void);
-bool8 FollowMon_ProcessMonInteraction(void);
-bool8 FollowMon_IsCollisionExempt(struct ObjectEvent* obstacle, struct ObjectEvent* collider);
-bool8 FollowMon_IsMonObject(struct ObjectEvent* object);
-void FollowMon_OnObjectEventSpawned(struct ObjectEvent *objectEvent);
-void FollowMon_OnObjectEventRemoved(struct ObjectEvent *objectEvent);
-bool8 FollowMon_CanMoveToDest(struct ObjectEvent *objectEvent, s16 x, s16 y);
-u16 GetFollowMonObjectEventGraphicsId(u16 graphicsId);
-void FollowMon_OnWarp(void);
-void RemoveAllFollowMonObjects(void);
+// void LoadFollowMonData(struct ObjectEvent *objectEvent);
+// void FollowMon_OverworldCB(void);
+// void CreateFollowMonEncounter(void);
+// bool8 FollowMon_ProcessMonInteraction(void);
+// bool8 FollowMon_IsCollisionExempt(struct ObjectEvent* obstacle, struct ObjectEvent* collider);
+// bool8 FollowMon_IsMonObject(struct ObjectEvent* object);
+// void FollowMon_OnObjectEventSpawned(struct ObjectEvent *objectEvent);
+// void FollowMon_OnObjectEventRemoved(struct ObjectEvent *objectEvent);
+// bool8 FollowMon_CanMoveToDest(struct ObjectEvent *objectEvent, s16 x, s16 y);
+// u16 GetFollowMonObjectEventGraphicsId(u16 graphicsId);
+// void FollowMon_OnWarp(void);
+// void RemoveAllFollowMonObjects(void);
 
-#endif // GUARD_FOLLOWMON_H
+// #endif // GUARD_FOLLOWMON_H

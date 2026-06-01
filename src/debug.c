@@ -253,6 +253,7 @@ static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *
 static u32 Debug_GenerateListBasicMenu(const struct DebugMenuOption *items);
 static u32 Debug_GenerateListTrainerMenu(const struct DebugMenuOption *items);
 static u32 Debug_GenerateListFlagsMenu(const struct DebugMenuOption *items);
+static u32 Debug_GenerateListForCurrentMenuType(const struct DebugMenuOption *items);
 static void Debug_DestroyMenu(u8 taskId);
 static void DebugAction_Cancel(u8 taskId);
 static void DebugAction_DestroyExtraWindow(u8 taskId);
@@ -506,13 +507,6 @@ static const s32 sPowersOfTen[] =
       10000000,
      100000000,
     1000000000,
-};
-
-static const u32 (*generateListFunctions[])(const struct DebugMenuOption *) =
-{
-    [DEBUG_BASIC_MENU] = Debug_GenerateListBasicMenu,
-    [DEBUG_FLAGS_MENU] = Debug_GenerateListFlagsMenu,
-    [DEBUG_TRAINERS_MENU] = Debug_GenerateListTrainerMenu
 };
 
 // *******************************
@@ -885,6 +879,20 @@ static u32 Debug_GenerateListBasicMenu(const struct DebugMenuOption *items)
     return totalItems;
 }
 
+static u32 Debug_GenerateListForCurrentMenuType(const struct DebugMenuOption *items)
+{
+    switch (sDebugMenuListData->menuType)
+    {
+    case DEBUG_FLAGS_MENU:
+        return Debug_GenerateListFlagsMenu(items);
+    case DEBUG_TRAINERS_MENU:
+        return Debug_GenerateListTrainerMenu(items);
+    case DEBUG_BASIC_MENU:
+    default:
+        return Debug_GenerateListBasicMenu(items);
+    }
+}
+
 static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *items)
 {
     struct ListMenuTemplate menuTemplate = {0};
@@ -904,7 +912,7 @@ static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *
     DrawStdWindowFrame(windowId, FALSE);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 
-    u32 totalItems = generateListFunctions[sDebugMenuListData->menuType](items);
+    u32 totalItems = Debug_GenerateListForCurrentMenuType(items);
 
     // create list menu
     menuTemplate.items = sDebugMenuListData->listItems;
@@ -1392,7 +1400,7 @@ static void DebugAction_ExecuteScript(u8 taskId, void *script)
 static void DebugAction_ToggleFlag(u8 taskId, void *flagToggleFunc)
 {
     ((DebugFunc)flagToggleFunc)(taskId);
-    generateListFunctions[sDebugMenuListData->menuType](NULL);
+    Debug_GenerateListForCurrentMenuType(NULL);
     RedrawListMenu(gTasks[taskId].tMenuTaskId);
 }
 

@@ -480,6 +480,7 @@ script Route1NN_Trigger_GetStarters{
 }
 
 script Route1NN_Trigger_GetStartersPart2{
+    speakername("Kukui")
     msgbox("Y'see, the fact of the matter is…
 
     one of these Pokémon will become

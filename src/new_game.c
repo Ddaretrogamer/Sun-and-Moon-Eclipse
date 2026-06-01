@@ -144,6 +144,7 @@ static void WarpToTruck(void)
     else
         SetWarpDestination(MAP_GROUP(MAP_AETHER_CONSERVATORY), MAP_NUM(MAP_AETHER_CONSERVATORY), WARP_ID_NONE, 29, 32);
         FlagSet(FLAG_FOLLOWERS_MENU_TOGGLE);
+        FlagSet(FLAG_OW_MON_SPAWN);
         FlagSet(FLAG_AUTORUN_MENU_TOGGLE);
         FlagSet(FLAG_SHOW_LILLIE_INTRO);
     WarpIntoMap();
