@@ -26,7 +26,7 @@
 #define WE_OWE_RESTRICT_METATILE                TRUE    // If TRUE, OWEs will stay within tiles with the same encounter metatile behavior as the one it is currently on, if any.
 #define WE_OWE_RESTRICT_MAP                     TRUE    // If TRUE, OWEs will stay within their current map bounds.
 #define WE_OWE_UNRESTRICT_SIGHT                 FALSE   // If TRUE, OWEs with movement behaviors that respond to the player, will ignore all movement restrictions when they can see the player.
-#define WE_OWE_SPAWN_REPLACEMENT                FALSE   // If TRUE, the oldest OWE objects will despawn after a short time and be replaced with a new spawn if possible.
+#define WE_OWE_SPAWN_REPLACEMENT                TRUE   // If TRUE, the oldest OWE objects will despawn after a short time and be replaced with a new spawn if possible.
 #define WE_OWE_FLEE_DESPAWN                     TRUE    // If TRUE, a fleeing OWE will despawn if it is unable to take a step for a short time.
 #define WE_OWE_SHINY_SPARKLE                    TRUE   // If TRUE, shiny OWEs will spawn with a sparkle animation and play the shiny sound effect.
 #define WE_OWE_FEEBAS_SPOTS                     FALSE   // If TRUE, any spot that could result in a Feebas fishing encounter can spawn a Feebas OWE.
@@ -36,6 +36,6 @@
 #define WE_OWE_PREVENT_FEEBAS_DESPAWN           FALSE   // If TRUE, Feebas OWEs spawned from special Feebas fishing spots (when WE_OWE_FEEBAS_SPOTS is TRUE) will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
 #define WE_OWE_PREVENT_SPECIAL_MOVEMENT_DESPAWN TRUE    // If TRUE, shiny OWEs (if WE_OWE_PREVENT_SHINY_DESPAWN is TRUE) or Feebas OWEs (if WE_OWE_PREVENT_FEEBAS_DESPAWN is TRUE) will not be despawned by their movement type (for example, OWE_DESPAWN_ON_NOTICE).
 #define WE_OWE_DESPAWN_ON_ENTER_TOWN            TRUE    // If TRUE, despawns all OWEs upon entering a city (MAP_TYPE_CITY) or town (MAP_TYPE_TOWN).
-#define WE_OWE_NO_REPEL_DEXNAV_COLLISION        FALSE   // If TRUE, OWEs cannot be triggered by a collision if a Repel or the DexNav is active.
+#define WE_OWE_NO_REPEL_DEXNAV_COLLISION        TRUE   // If TRUE, OWEs cannot be triggered by a collision if a Repel or the DexNav is active.
 
 #endif // GUARD_CONFIG_WILD_ENCOUNTER_H
