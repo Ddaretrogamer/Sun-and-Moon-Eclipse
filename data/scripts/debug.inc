@@ -221,6 +221,10 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	setflag FLAG_SYS_QUEST_MENU_GET
+	startquest QUEST_1
+	startquest QUEST_2
+	startquest QUEST_3
 	release
 	end
 

@@ -269,7 +269,7 @@
 #define VAR_SURF_MON_SLOT                                0x40F7 // surfmon
 #define VAR_FREEZESURFBLOB                               0x40F8 // freezesurfmon
 #define VAR_TRANSFORM_MON                                0x40F9 // pokeride mon
-#define VAR_ROTOM_PHONE_ENABLE                           0x40FA // Unused Var
+#define VAR_ROTOM_PHONE_ENABLE                           0x40FA // enable rotom phone, 0 is reg phone, 1 is rotom phone without rotom, 2 is rotom phone with rotom. 
 #define VAR_BATTLE_SPEED                                 0x40FB // changed from unused to battle speed
 #define VAR_DN_VAR_SPECIES                               0x40FC // DN_VAR_SPECIES 
 #define VAR_DN_VAR_STEP_COUNTER                          0x40FD // DN_VAR_STEP_COUNTER

@@ -44,6 +44,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
+#include "quests.h"
 
 #ifdef RHH_EXPANSION
 #include "constants/expansion.h"
@@ -184,6 +185,7 @@ static bool32 RotomPhone_StartMenu_UnlockedFunc_Unlocked_RotomReality(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Pokedex(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Pokemon(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_PokeNav(void);
+static bool32 RotomPhone_StartMenu_UnlockedFunc_RotomLog(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Save(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_SafariFlag(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_RotomReality(void);
@@ -196,6 +198,7 @@ static void RotomPhone_StartMenu_SelectedFunc_Pokedex(void);
 static void RotomPhone_StartMenu_SelectedFunc_Pokemon(void);
 static void RotomPhone_StartMenu_SelectedFunc_Bag(void);
 static void RotomPhone_StartMenu_SelectedFunc_PokeNav(void);
+static void RotomPhone_StartMenu_SelectedFunc_RotomLog(void);
 static void RotomPhone_StartMenu_SelectedFunc_Trainer(void);
 static void RotomPhone_StartMenu_SelectedFunc_Save(void);
 static void RotomPhone_StartMenu_SelectedFunc_Settings(void);
@@ -502,6 +505,7 @@ enum RotomPhone_MenuItems
     RP_MENU_BAG,
     RP_MENU_DEXNAV,
     RP_MENU_POKENAV,
+    RP_MENU_QUEST_LOG,
     RP_MENU_TRAINER_CARD,
     RP_MENU_SAVE,
     RP_MENU_OPTIONS,
@@ -1269,6 +1273,17 @@ static const struct RotomPhone_MenuOptions sRotomPhoneOptions[RP_MENU_COUNT] =
         .owIconPalSlot = PAL_ICON_ORANGE,
         .owAnim = RP_ICON_ANIM_EIGHT,
         .rrAnim = RP_ICON_ANIM_SIX,
+        .rrSpriteTemplate = &sSpriteTemplate_RotomRealityIcons_One,
+    },
+    [RP_MENU_QUEST_LOG] =
+    {
+        .menuName = COMPOUND_STRING("Rotom Log"),
+        .rotomSpeech = COMPOUND_STRING("to check your Rotom Log?"),
+        .unlockedFunc = RotomPhone_StartMenu_UnlockedFunc_RotomLog,
+        .selectedFunc = RotomPhone_StartMenu_SelectedFunc_RotomLog,
+        .owIconPalSlot = PAL_ICON_BLUE,
+        .owAnim = RP_ICON_ANIM_NINE,
+        .rrAnim = RP_ICON_ANIM_SEVEN,
         .rrSpriteTemplate = &sSpriteTemplate_RotomRealityIcons_One,
     },
     [RP_MENU_TRAINER_CARD] =
@@ -3942,6 +3957,14 @@ static bool32 RotomPhone_StartMenu_UnlockedFunc_PokeNav(void)
         return FlagGet(FLAG_SYS_POKENAV_GET);
 }
 
+static bool32 RotomPhone_StartMenu_UnlockedFunc_RotomLog(void)
+{
+    if (!RotomPhone_StartMenu_IsRotomReality())
+        return FALSE;
+    else
+        return FlagGet(FLAG_SYS_QUEST_MENU_GET);
+}
+
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Save(void)
 {
     if (!RotomPhone_StartMenu_IsRotomReality())
@@ -4016,6 +4039,15 @@ static void RotomPhone_StartMenu_SelectedFunc_PokeNav(void)
     RotomPhone_StartMenu_DoCleanUpAndChangeCallback(CB2_InitPokeNav);
 }
 
+static void QuestMenuCallback(void)
+{
+    CreateTask(Task_QuestMenu_OpenFromStartMenu, 0);
+}
+
+static void RotomPhone_StartMenu_SelectedFunc_RotomLog(void)
+{    
+    RotomPhone_StartMenu_DoCleanUpAndChangeCallback(QuestMenuCallback);
+}
 static void RotomPhone_StartMenu_ChooseTrainerCard(void)
 {
     if (IsOverworldLinkActive() || InUnionRoom())

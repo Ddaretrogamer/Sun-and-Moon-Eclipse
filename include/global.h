@@ -584,6 +584,8 @@ struct RankingHall2P
     u8 language;
     //u8 padding;
 };
+// quest menu
+#include "constants/quests.h"
 
 struct SaveBlock2
 {
@@ -630,6 +632,12 @@ struct SaveBlock2
 #if CUTSCENE_FLAG_TRACKING == FALSE
               u8 flagCutscenes[ROUND_BITS_TO_BYTES(CUTSCENE_COUNT)];
 #endif
+#define QUEST_FLAGS_COUNT ROUND_BITS_TO_BYTES(QUEST_COUNT)
+#define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)
+#define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
+
+    u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
+    u8 subQuests[SUB_FLAGS_COUNT];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
