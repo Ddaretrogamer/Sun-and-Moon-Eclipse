@@ -5,6 +5,7 @@
 #include "decompress.h"
 #include "gpu_regs.h"
 #include "graphics.h"
+#include "international_string_util.h"
 #include "item.h"
 #include "item_icon.h"
 #include "item_menu.h"
@@ -200,12 +201,9 @@ static void Task_QuestMenuTurnOff1(u8 taskId);
 static void Task_QuestMenuTurnOff2(u8 taskId);
 
 // Tiles, palettes and tilemaps for the Quest Menu
-static const u32 sQuestMenuTiles[] =
-        INCBIN_U32("graphics/quest_menu/menu.4bpp.lz");
-static const u16 sQuestMenuBgPals[] =
-        INCBIN_U16("graphics/quest_menu/menu.gbapal");
-static const u32 sQuestMenuTilemap[] =
-        INCBIN_U32("graphics/quest_menu/menu.bin.lz");
+static const u32 sQuestMenuTiles[] = INCGFX_U32("graphics/quest_menu/menu.png", ".4bpp.smol");
+static const u16 sQuestMenuBgPals[] = INCGFX_U16("graphics/quest_menu/menu.pal", ".gbapal");
+static const u32 sQuestMenuTilemap[] = INCBIN_U32("graphics/quest_menu/menu.bin.smolTM");
 
 //Strings used for the Quest Menu
 static const u8 sText_Empty[] = _("");
@@ -227,7 +225,7 @@ static const u8 sText_StartForMore[] =
       _("Start for more details.");
 static const u8 sText_ReturnRecieveReward[] =
       _("Return to {STR_VAR_2}\nto recieve your reward!");
-static const u8 sText_SubQuestButton[] = _(" {A_BUTTON}");
+static const u8 sText_SubQuestButton[] = _(" ({A_BUTTON})");
 static const u8 sText_Type[] = _("{R_BUTTON}Type");
 static const u8 sText_Caught[] = _("Caught");
 static const u8 sText_Found[] = _("Found");
@@ -576,8 +574,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      gText_SideQuestDesc_2,
 	      gText_SideQuestDoneDesc_2,
 	      gText_SideQuestMap2,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
+	      ITEM_WATERIUM_Z,
+	      ITEM,
 	      sSubQuests1,
 	      QUEST_1_SUB_COUNT
 	),
@@ -586,8 +584,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      gText_SideQuestDesc_3,
 	      gText_SideQuestDoneDesc_3,
 	      gText_SideQuestMap3,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
+	      SPECIES_POPPLIO,
+	      PKMN,
 	      sSubQuests2,
 	      QUEST_2_SUB_COUNT
 	),
@@ -2169,8 +2167,8 @@ void DetermineSpriteType(s32 questId)
 	QuestMenu_DestroySprite(sStateDataPtr->spriteIconSlot ^ 1);
 	sStateDataPtr->spriteIconSlot ^= 1;
 }
-#define QUEST_SPRITE_X 216
-#define QUEST_SPRITE_Y 49
+#define QUEST_SPRITE_X 19
+#define QUEST_SPRITE_Y 130
 
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 {
@@ -2193,7 +2191,7 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 			case PKMN:
 				LoadMonIconPalettes();
 				// spriteId = CreateMonIconNoPersonality(itemId, SpriteCallbackDummy, 20, 132, 0);
-				spriteId = CreateMonIconNoPersonality(itemId, SpriteCB_MonIcon, QUEST_SPRITE_X, QUEST_SPRITE_Y + 5, 0);
+				spriteId = CreateMonIconNoPersonality(itemId, SpriteCB_MonIcon, QUEST_SPRITE_X +1, QUEST_SPRITE_Y + 5, 0);
 				break;
 			default:
 				break;

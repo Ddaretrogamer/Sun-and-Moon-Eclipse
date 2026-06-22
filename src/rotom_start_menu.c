@@ -4039,14 +4039,9 @@ static void RotomPhone_StartMenu_SelectedFunc_PokeNav(void)
     RotomPhone_StartMenu_DoCleanUpAndChangeCallback(CB2_InitPokeNav);
 }
 
-static void QuestMenuCallback(void)
-{
-    CreateTask(Task_QuestMenu_OpenFromStartMenu, 0);
-}
-
 static void RotomPhone_StartMenu_SelectedFunc_RotomLog(void)
 {    
-    RotomPhone_StartMenu_DoCleanUpAndChangeCallback(QuestMenuCallback);
+    RotomPhone_StartMenu_DoCleanUpAndCreateTask(Task_QuestMenu_OpenFromStartMenu, 0);
 }
 static void RotomPhone_StartMenu_ChooseTrainerCard(void)
 {
