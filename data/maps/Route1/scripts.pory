@@ -140,6 +140,7 @@ script Route1_KukuiCatchingTutorial{
     Come on-to Route 1!", MSGBOX_AUTOCLOSE)
     applymovement(catchingintrokukui, moves(walk_down, walk_right*6, face_left))
     waitmovement(catchingintrokukui)
+    speakername("Kukui")
     msgbox("{PLAYER}!
     Hurry it up, cousin!
 

@@ -212,7 +212,7 @@ const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
     [REMATCH_EDWIN] = REMATCH(TRAINER_EDWIN_1, TRAINER_EDWIN_2, TRAINER_EDWIN_3, TRAINER_EDWIN_4, TRAINER_EDWIN_5, MAP_ROUTE110),
     [REMATCH_LYDIA] = REMATCH(TRAINER_LYDIA_1, TRAINER_LYDIA_2, TRAINER_LYDIA_3, TRAINER_LYDIA_4, TRAINER_LYDIA_5, MAP_ROUTE117),
     [REMATCH_ISAAC] = REMATCH(TRAINER_ISAAC_1, TRAINER_ISAAC_2, TRAINER_ISAAC_3, TRAINER_ISAAC_4, TRAINER_ISAAC_5, MAP_ROUTE117),
-    [REMATCH_GABRIELLE] = REMATCH(TRAINER_GABRIELLE_1, TRAINER_GABRIELLE_2, TRAINER_GABRIELLE_3, TRAINER_GABRIELLE_4, TRAINER_GABRIELLE_5, MAP_MT_PYRE_3F),
+    [REMATCH_GABRIELLE] = REMATCH(TRAINER_PRESCHOOLER_OLIVER, TRAINER_GABRIELLE_2, TRAINER_GABRIELLE_3, TRAINER_GABRIELLE_4, TRAINER_GABRIELLE_5, MAP_MT_PYRE_3F),
     [REMATCH_CATHERINE] = REMATCH(TRAINER_CATHERINE_1, TRAINER_CATHERINE_2, TRAINER_CATHERINE_3, TRAINER_CATHERINE_4, TRAINER_CATHERINE_5, MAP_ROUTE119),
     [REMATCH_JACKSON] = REMATCH(TRAINER_JACKSON_1, TRAINER_JACKSON_2, TRAINER_JACKSON_3, TRAINER_JACKSON_4, TRAINER_JACKSON_5, MAP_ROUTE119),
     [REMATCH_HALEY] = REMATCH(TRAINER_HALEY_1, TRAINER_HALEY_2, TRAINER_HALEY_3, TRAINER_HALEY_4, TRAINER_HALEY_5, MAP_ROUTE104),
@@ -1119,10 +1119,6 @@ void SetMapVarsToTrainerB(void)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdB;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdB, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-        if (gTrainerBattleParameter.params.opponentA != 0) 
-        {
-            gSpeakerName = gTrainers[gTrainerBattleParameter.params.opponentA]->trainerName;
-        }
     }
 }
 
@@ -1673,29 +1669,24 @@ static const u8 *ReturnEmptyStringIfNull(const u8 *string)
 
 static const u8 *GetIntroSpeechOfApproachingTrainer(void)
 {
-    if (gApproachingTrainerId == 0) {
-        gSpeakerName = gTrainers[gTrainerBattleParameter.params.opponentA]->trainerName;
-        return ReturnEmptyStringIfNull(gTrainerBattleParameter.params.introTextA);
+    gSpeakerName = NULL;
+
+    if (!OW_NAME_BOX_NPC_TRAINER)
+    {
+        if (gApproachingTrainerId != 0 && TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE)
+            return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
+
+        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
     }
-    else {
-        gSpeakerName = gTrainers[gTrainerBattleParameter.params.opponentB]->trainerName;
-        return ReturnEmptyStringIfNull(gTrainerBattleParameter.params.introTextB);
 
-    // Below code is if i decide to switch to using expansions name box instead of mudskip/tustin21    
-    // if (gApproachingTrainerId == 0)
-    // {
-    //     if (OW_NAME_BOX_NPC_TRAINER)
-    //         gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA);
-
-    //     return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
-    // }
-    // else
-    // {
-    //     if (OW_NAME_BOX_NPC_TRAINER)
-    //         gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentB);
-
-    //     return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
+    if (gApproachingTrainerId != 0 && TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE)
+    {
+        gSpeakerName = gTrainers[TRAINER_BATTLE_PARAM.opponentB]->trainerName;
+        return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
     }
+
+    gSpeakerName = gTrainers[TRAINER_BATTLE_PARAM.opponentA]->trainerName;
+    return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
 }
 
 

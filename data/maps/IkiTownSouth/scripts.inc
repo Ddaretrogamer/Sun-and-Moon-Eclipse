@@ -874,6 +874,16 @@ Ikitown_lassNPC::
 	end
 
 
+Ikitown_Battle_VsYoungster::
+# 563 "data/maps/IkiTownSouth/scripts.pory"
+	trainerbattle_single TRAINER_PRESCHOOLER_OLIVER, Ikitown_Battle_VsYoungster_Text_0, Ikitown_Battle_VsYoungster_Text_1
+# 564 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Battle_VsYoungster_Text_2
+# 567 "data/maps/IkiTownSouth/scripts.pory"
+	release
+	end
+
+
 # 60 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_0:
 # 60 "data/maps/IkiTownSouth/scripts.pory"
@@ -1384,3 +1394,17 @@ Ikitown_lassNPC_Text_0:
 	.string "when it's low on HP…\l"
 	.string "and it'll be feeling better before\l"
 	.string "you know it!$"
+
+Ikitown_Battle_VsYoungster_Text_0:
+# 563 "data/maps/IkiTownSouth/scripts.pory"
+	.string "Hey! Please battle me!$"
+
+Ikitown_Battle_VsYoungster_Text_1:
+# 563 "data/maps/IkiTownSouth/scripts.pory"
+	.string "If you're strong, please go away!$"
+
+Ikitown_Battle_VsYoungster_Text_2:
+# 564 "data/maps/IkiTownSouth/scripts.pory"
+	.string "Great Trainers can sense promise in\n"
+	.string "other Trainers!\l"
+	.string "Did you pick up on anything?$"

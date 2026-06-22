@@ -558,3 +558,12 @@ script Ikitown_lassNPC{
     release
     end
 }
+
+script Ikitown_Battle_VsYoungster{
+    trainerbattle_single(TRAINER_PRESCHOOLER_OLIVER, "Hey! Please battle me!", "If you're strong, please go away!")
+    msgbox("Great Trainers can sense promise in
+    other Trainers!
+    Did you pick up on anything?")
+    release
+    end
+}

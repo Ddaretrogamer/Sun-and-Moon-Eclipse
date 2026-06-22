@@ -710,8 +710,8 @@
 #define FLAG_KUKUI_CATCHING_TUTORIAL1  0x28F // hide kukui outside the front of your house.
 #define FLAG_KUKUI_CATCHING_TUTORIAL2  0x290 // hide kukui after the catching tutorial
 #define FLAG_IKITOWN_FESTIVAL_COMPLETE  0x291 // flag for if ikitown festivalis complete, opens map to kukuis lab
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
+#define FLAG_HIDE_IKITOWN_SOUTH_LASS  0x292 // hide the lass in ikitown south
+#define FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER  0x293 // hide the youngster in ikitown south
 #define FLAG_UNUSED_0x294  0x294 // Unused Flag
 #define FLAG_UNUSED_0x295  0x295 // Unused Flag
 #define FLAG_UNUSED_0x296  0x296 // Unused Flag

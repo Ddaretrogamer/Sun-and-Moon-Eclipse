@@ -128,7 +128,7 @@ script AetherIntroSequence{
     callnative(OpenScreenshotsFromScript)
     waitstate
     delay(30)
-    warp(MAP_ROUTE1, 27, 19)
+    warpsilent(MAP_ROUTE1, 27, 19)
     waitstate
     release
     end

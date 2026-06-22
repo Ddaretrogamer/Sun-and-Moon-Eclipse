@@ -231,7 +231,7 @@ AetherIntroSequence::
 # 130 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
 # 131 "data/maps/AetherConservatory/scripts.pory"
-	warp MAP_ROUTE1, 27, 19
+	warpsilent MAP_ROUTE1, 27, 19
 # 132 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
 # 133 "data/maps/AetherConservatory/scripts.pory"

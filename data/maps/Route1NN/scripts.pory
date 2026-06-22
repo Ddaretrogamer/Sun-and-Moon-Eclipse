@@ -125,6 +125,7 @@ script Route1NN_Trigger_GetStartersSkip{
 script Route1NN_Trigger_GetStarters{
     lock
     setflag(FLAG_HIDE_IKITOWN_INTRO)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setflag(FLAG_SYS_POKEMON_GET)
     special(SpawnCameraObject)
@@ -1134,6 +1135,7 @@ script Route1NN_CatchingTutorial{
     }
     waitmovement(LOCALID_PLAYER)
     bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Kukui")
     msgbox("So you know that wild Pokémon will
     sometimes jump at you in the tall
     grass, yeah?
@@ -1186,7 +1188,48 @@ script Route1NN_CatchingTutorial{
     be enabled!", MSGBOX_AUTOCLOSE)
     waitfanfare
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_LASS)
+    clearflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
     helpwindow(HELP_OVERWORLD_MON_GUIDE)
+    release
+    end
+}
+
+script Route1NN_Item_PokeBall{
+    lock
+    giveitem(ITEM_POKE_BALL, 1)
+    release
+    end
+}
+
+script Route1NN_Item_Potion{
+    lock
+    giveitem(ITEM_POTION, 1)
+    release
+    end
+}
+
+script Route1NN_Battle_VsLass{
+    trainerbattle_single(TRAINER_LASS_AUDREY, "When Pokémon Trainer's eyes meet,\nyou know what's going to happen, right?", "Oh! Your Pokémon look so happy that\nthey've won!")
+    msgbox("The more you battle other trainers, the
+    more powerful your Pokémon will become!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script Route1NN_Battle_VsYoungster{
+    trainerbattle_single(TRAINER_YOUNGSTER_JIMMY, "Go for it, Caterpie!\nShow me the power of Bug-type Pokémon!", "I lost with my Bug-type Pokémon!\nYou're really bugging me, you know?")
+    msgbox("Bug-type Pokémon grow strong quickly!
+    I'm gonna do my best to raise 'em!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script Route1NN_dialog_RockruffFriendly{
+    lock
+    faceplayer
+    msgbox("Rockruff is a really friendly Pokémon!
+    you should try playing with it a bit!", MSGBOX_AUTOCLOSE)
     release
     end
 }

@@ -11,9 +11,9 @@
 #define TRAINER_HAU_IKITOWN1_LITTENSHINY      4
 #define TRAINER_HAU_IKITOWN1_POPPLIO          5
 #define TRAINER_HAU_IKITOWN1_POPPLIOSHINY     6
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
-#define TRAINER_GABRIELLE_1                   9
+#define TRAINER_LASS_AUDREY                   7
+#define TRAINER_YOUNGSTER_JIMMY               8
+#define TRAINER_PRESCHOOLER_OLIVER            9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
 #define TRAINER_MARCEL                       11
 #define TRAINER_ALBERTO                      12
