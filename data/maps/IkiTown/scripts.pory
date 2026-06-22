@@ -43,7 +43,8 @@ script Ikitown_trigger_WecomeToIkitownSkip{
     setobjectxy(ikitownintrokukui, 33, 28)
     applymovement(ikitownintrokukui, moves(face_down))
     waitmovement(0)
-    removeobject(ikitownintrohau)
+    removeobject(ikitownintrohau, MAP_IKI_TOWN)
+    setflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     release
     end
