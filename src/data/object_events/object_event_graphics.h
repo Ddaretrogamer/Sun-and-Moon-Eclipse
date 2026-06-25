@@ -424,6 +424,17 @@ const u32 gObjectEventPic_Lana[] = INCGFX_U32("graphics/object_events/pics/peopl
 const u16 gObjectEventPalette_Lana[] = INCGFX_U16("graphics/object_events/pics/people/trial_captains/lana.png", ".gbapal");
 const u32 gObjectEventPic_Hau[] = INCGFX_U32("graphics/object_events/pics/people/rivals/hau.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPalette_Hau[] = INCGFX_U16("graphics/object_events/pics/people/rivals/hau.png", ".gbapal");
+const u32 gObjectEventPic_UltraRecon1[] = INCGFX_U32("graphics/object_events/pics/people/ultra_recon.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_UltraRecon1[] = INCGFX_U16("graphics/object_events/pics/people/ultra_recon.png", ".gbapal");
+const u32 gObjectEventPic_UltraRecon2[] = INCGFX_U32("graphics/object_events/pics/people/ultra_recon_2.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_UltraRecon2[] = INCGFX_U16("graphics/object_events/pics/people/ultra_recon_2.png", ".gbapal");
+const u32 gObjectEventPic_UltraRecon3[] = INCGFX_U32("graphics/object_events/pics/people/ultra_recon_3.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_UltraRecon3[] = INCGFX_U16("graphics/object_events/pics/people/ultra_recon_3.png", ".gbapal");
+const u32 gObjectEventPic_UltraRecon4[] = INCGFX_U32("graphics/object_events/pics/people/ultra_recon_4.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPalette_UltraRecon4[] = INCGFX_U16("graphics/object_events/pics/people/ultra_recon_4.png", ".gbapal");
+const u32 gObjectEventPic_SamsonOak[] = INCGFX_U32("graphics/object_events/pics/people/samson_oak.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPalette_SamsonOak[] = INCGFX_U16("graphics/object_events/pics/people/samson_oak.png", ".gbapal");
+
 
 const u32 gObjectEventPic_VigorothMover[] = INCGFX_U32("graphics/object_events/pics/pokemon_old/vigoroth_mover.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_SudowoodoTree[] = INCGFX_U32("graphics/object_events/pics/pokemon_old/sudowoodo_tree.png", ".4bpp", "-mwidth 2 -mheight 4");

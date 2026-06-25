@@ -554,6 +554,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette_Hau,               OBJ_EVENT_PAL_TAG_HAU},
     {gObjectEventPalette_Olea,            OBJ_EVENT_PAL_TAG_OLEA},
     {gObjectEventPalette_Lana,            OBJ_EVENT_PAL_TAG_LANA},
+    {gObjectEventPalette_UltraRecon1,            OBJ_EVENT_PAL_TAG_ULTRA_RECON_1},
+    {gObjectEventPalette_UltraRecon2,            OBJ_EVENT_PAL_TAG_ULTRA_RECON_2},
+    {gObjectEventPalette_UltraRecon3,            OBJ_EVENT_PAL_TAG_ULTRA_RECON_3},
+    {gObjectEventPalette_UltraRecon4,            OBJ_EVENT_PAL_TAG_ULTRA_RECON_4},
+    {gObjectEventPalette_SamsonOak,            OBJ_EVENT_PAL_TAG_SAMSON_OAK},
 
 
 #if IS_FRLG

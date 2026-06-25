@@ -760,6 +760,29 @@ static const struct SpriteFrameImage sPicTable_SeleneRiding[] = {
     overworld_frame(gObjectEventPic_SeleneRiding, 2, 4, 3),   
 };
 
+
+static const struct SpriteFrameImage sPicTable_UltraRecon1[] = {
+    overworld_ascending_frames(gObjectEventPic_UltraRecon1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_UltraRecon2[] = {
+    overworld_ascending_frames(gObjectEventPic_UltraRecon2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_UltraRecon3[] = {
+    overworld_ascending_frames(gObjectEventPic_UltraRecon3, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_UltraRecon4[] = {
+    overworld_ascending_frames(gObjectEventPic_UltraRecon4, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SamsonOak[] = {
+    overworld_ascending_frames(gObjectEventPic_SamsonOak, 2, 4),
+};
+
+// end UE sprites
+
 static const struct SpriteFrameImage sPicTable_SSTidal[] = {
     obj_frame_tiles(gObjectEventPic_SSTidal),
     obj_frame_tiles(gObjectEventPic_SSTidal),

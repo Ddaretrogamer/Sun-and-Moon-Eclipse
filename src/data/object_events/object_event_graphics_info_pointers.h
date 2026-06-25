@@ -422,6 +422,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneRidin
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hau;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lana;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Olea;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UltraRecon1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UltraRecon2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UltraRecon3;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UltraRecon4;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SamsonOak;
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -691,6 +696,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HAU] =                     &gObjectEventGraphicsInfo_Hau,
     [OBJ_EVENT_GFX_LANA] =                     &gObjectEventGraphicsInfo_Lana,
     [OBJ_EVENT_GFX_MINA] =                     &gObjectEventGraphicsInfo_Olea,
+    [OBJ_EVENT_GFX_ULTRA_RECON_1] =            &gObjectEventGraphicsInfo_UltraRecon1,
+    [OBJ_EVENT_GFX_ULTRA_RECON_2] =            &gObjectEventGraphicsInfo_UltraRecon2,
+    [OBJ_EVENT_GFX_ULTRA_RECON_3] =            &gObjectEventGraphicsInfo_UltraRecon3,
+    [OBJ_EVENT_GFX_ULTRA_RECON_4] =            &gObjectEventGraphicsInfo_UltraRecon4,
+    [OBJ_EVENT_GFX_SAMSON_OAK] =               &gObjectEventGraphicsInfo_SamsonOak,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,
