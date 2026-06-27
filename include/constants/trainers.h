@@ -187,6 +187,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_SKULL_GRUNT_M,
     TRAINER_PIC_SKULL_GRUNT_F,
     TRAINER_PIC_ALOLA_ACE_M,
+    TRAINER_PIC_SAMSON_OAK,
     TRAINER_PIC_COUNT,
 };
 

@@ -507,6 +507,8 @@ const u32 gTrainerFrontPic_SkullGruntF[] = INCGFX_U32("graphics/trainers/front_p
 const u16 gTrainerPalette_SkullGruntF[] = INCGFX_U16("graphics/trainers/palettes/team_skull_grunt_f.pal", ".gbapal");
 const u32 gTrainerFrontPic_AlolaAceM[] = INCGFX_U32("graphics/trainers/front_pics/alola_ace_trainer_m.png", ".4bpp.smol");
 const u16 gTrainerPalette_AlolaAceM[] = INCGFX_U16("graphics/trainers/palettes/alola_ace_trainer_m.pal", ".gbapal");
+const u32 gTrainerFrontPic_SamsonOak[] = INCGFX_U32("graphics/trainers/front_pics/samson_oak.png", ".4bpp.smol");
+const u16 gTrainerPalette_SamsonOak[] = INCGFX_U16("graphics/trainers/palettes/samson_oak.pal", ".gbapal");
 
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
@@ -1287,5 +1289,9 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_ALOLA_ACE_M] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_AlolaAceM, gTrainerPalette_AlolaAceM),
+    },
+    [TRAINER_PIC_SAMSON_OAK] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SamsonOak, gTrainerPalette_SamsonOak),
     },
 };
