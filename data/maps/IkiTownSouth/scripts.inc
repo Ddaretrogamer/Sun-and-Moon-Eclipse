@@ -884,6 +884,134 @@ Ikitown_Battle_VsYoungster::
 	end
 
 
+Ikitown_Trigger_UltraReconIntroTop::
+# 572 "data/maps/IkiTownSouth/scripts.pory"
+	lock
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_UltraReconIntroTop_Movement_0
+# 574 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 575 "data/maps/IkiTownSouth/scripts.pory"
+	call Ikitown_Trigger_UltraReconIntroScript
+	return
+
+
+Ikitown_Trigger_UltraReconIntroBottom::
+# 579 "data/maps/IkiTownSouth/scripts.pory"
+	lock
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_UltraReconIntroBottom_Movement_0
+# 581 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 582 "data/maps/IkiTownSouth/scripts.pory"
+	call Ikitown_Trigger_UltraReconIntroScript
+	return
+
+
+Ikitown_Trigger_UltraReconIntro::
+# 586 "data/maps/IkiTownSouth/scripts.pory"
+	lock
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_UltraReconIntro_Movement_0
+# 588 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 589 "data/maps/IkiTownSouth/scripts.pory"
+	call Ikitown_Trigger_UltraReconIntroScript
+	return
+
+
+Ikitown_Trigger_UltraReconIntroSkip::
+# 593 "data/maps/IkiTownSouth/scripts.pory"
+	lock
+# 594 "data/maps/IkiTownSouth/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 595 "data/maps/IkiTownSouth/scripts.pory"
+	special StopAllObjectMovements
+# 596 "data/maps/IkiTownSouth/scripts.pory"
+	special CloseScriptMenus
+# 597 "data/maps/IkiTownSouth/scripts.pory"
+	removeobject ikitown_south_UR1
+# 598 "data/maps/IkiTownSouth/scripts.pory"
+	removeobject ikitown_south_UR4
+# 599 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+# 600 "data/maps/IkiTownSouth/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 13
+# 601 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 602 "data/maps/IkiTownSouth/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 603 "data/maps/IkiTownSouth/scripts.pory"
+	release
+	end
+
+
+Ikitown_Trigger_UltraReconIntroScript::
+# 608 "data/maps/IkiTownSouth/scripts.pory"
+	startcutscene CUTSCENE_ULTRARECON_INTRO
+# 609 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 610 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 611 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR4, Ikitown_Trigger_UltraReconIntroScript_Movement_0
+# 612 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitown_south_UR4
+# 613 "data/maps/IkiTownSouth/scripts.pory"
+	speakername IkiTown_Trigger_HauGetStarter_Text_0
+# 614 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_0
+# 619 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR4, IkiTown_Trigger_HauGetStarter_Movement_5
+# 620 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitown_south_UR4
+# 621 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_1
+# 633 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR1, IkiTown_Trigger_HauGetStarter_Movement_7
+# 634 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitown_south_UR1
+# 635 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_2
+# 637 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR4, IkiTown_Trigger_HauGetStarter_Movement_5
+# 638 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement ikitown_south_UR4
+# 639 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_3
+# 644 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
+# 645 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR1, Ikitown_Trigger_UltraReconIntroScript_Movement_1
+# 646 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR4, Ikitown_Trigger_UltraReconIntroScript_Movement_2
+# 647 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 648 "data/maps/IkiTownSouth/scripts.pory"
+	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_4, MSGBOX_AUTOCLOSE
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR1, Ikitown_Trigger_UltraReconIntroScript_Movement_3
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	applymovement ikitown_south_UR4, Ikitown_Trigger_UltraReconIntroScript_Movement_4
+# 653 "data/maps/IkiTownSouth/scripts.pory"
+	waitmovement 0
+# 654 "data/maps/IkiTownSouth/scripts.pory"
+	delay 30
+# 655 "data/maps/IkiTownSouth/scripts.pory"
+	removeobject ikitown_south_UR1
+# 656 "data/maps/IkiTownSouth/scripts.pory"
+	removeobject ikitown_south_UR4
+# 657 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+# 658 "data/maps/IkiTownSouth/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 13
+# 659 "data/maps/IkiTownSouth/scripts.pory"
+	endcutscene
+# 660 "data/maps/IkiTownSouth/scripts.pory"
+	release
+	end
+
+
 # 60 "data/maps/IkiTownSouth/scripts.pory"
 IkiTown_Trigger_HauGetStarter_Movement_0:
 # 60 "data/maps/IkiTownSouth/scripts.pory"
@@ -1148,6 +1276,152 @@ Ikitown_Trigger_LeaveIkitownEarly_left_Movement_1:
 	walk_right
 	step_end
 
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroTop_Movement_0:
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_down
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 573 "data/maps/IkiTownSouth/scripts.pory"
+	face_up
+	step_end
+
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroBottom_Movement_0:
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 580 "data/maps/IkiTownSouth/scripts.pory"
+	walk_up
+	step_end
+
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntro_Movement_0:
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	walk_left
+# 587 "data/maps/IkiTownSouth/scripts.pory"
+	face_up
+	step_end
+
+# 611 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroScript_Movement_0:
+# 611 "data/maps/IkiTownSouth/scripts.pory"
+	emote_exclamation_mark
+# 611 "data/maps/IkiTownSouth/scripts.pory"
+	face_left
+	step_end
+
+# 645 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroScript_Movement_1:
+# 645 "data/maps/IkiTownSouth/scripts.pory"
+	emote_exclamation_mark
+# 645 "data/maps/IkiTownSouth/scripts.pory"
+	face_down
+	step_end
+
+# 646 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroScript_Movement_2:
+# 646 "data/maps/IkiTownSouth/scripts.pory"
+	delay_16
+# 646 "data/maps/IkiTownSouth/scripts.pory"
+	delay_16
+# 646 "data/maps/IkiTownSouth/scripts.pory"
+	face_down
+	step_end
+
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroScript_Movement_3:
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	delay_16
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	delay_16
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_down
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 651 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+	step_end
+
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+Ikitown_Trigger_UltraReconIntroScript_Movement_4:
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_down
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+# 652 "data/maps/IkiTownSouth/scripts.pory"
+	walk_right
+	step_end
+
 IkiTown_Trigger_HauGetStarter_Text_0:
 # 68 "data/maps/IkiTownSouth/scripts.pory"
 	.string "???$"
@@ -1408,3 +1682,40 @@ Ikitown_Battle_VsYoungster_Text_2:
 	.string "Great Trainers can sense promise in\n"
 	.string "other Trainers!\l"
 	.string "Did you pick up on anything?$"
+
+Ikitown_Trigger_UltraReconIntroScript_Text_0:
+# 614 "data/maps/IkiTownSouth/scripts.pory"
+	.string "Hm?! What was what?\n"
+	.string "Did you say something? I was…\p"
+	.string "Well, I was certainly not distracted\n"
+	.string "by this foolish display of festivity!$"
+
+Ikitown_Trigger_UltraReconIntroScript_Text_1:
+# 621 "data/maps/IkiTownSouth/scripts.pory"
+	.string "There are aura readings in this place…\n"
+	.string "Perhaps it may be the effects of\l"
+	.string "that one they call the island kahuna.\p"
+	.string "But everything is so bright here in\n"
+	.string "Alola…\p"
+	.string "Far brighter than we had been told it\n"
+	.string "would be.\p"
+	.string "I find it loathsome.\n"
+	.string "This awful brightness.$"
+
+Ikitown_Trigger_UltraReconIntroScript_Text_2:
+# 635 "data/maps/IkiTownSouth/scripts.pory"
+	.string "Even though this is the light we have\n"
+	.string "sought for so long?$"
+
+Ikitown_Trigger_UltraReconIntroScript_Text_3:
+# 639 "data/maps/IkiTownSouth/scripts.pory"
+	.string "Y-yes, I suppose you are right.\p"
+	.string "We must carry out our investigations to\n"
+	.string "return the light to our own world.\l"
+	.string "Before the Blinding One can awaken…$"
+
+Ikitown_Trigger_UltraReconIntroScript_Text_4:
+# 648 "data/maps/IkiTownSouth/scripts.pory"
+	.string "You- You are not native to Alola either,\n"
+	.string "are you?\l"
+	.string "You seem to have come from far away{PAUSE 15}.{PAUSE 15}.{PAUSE 15}.$"

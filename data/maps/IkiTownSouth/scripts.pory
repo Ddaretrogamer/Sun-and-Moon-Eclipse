@@ -567,3 +567,96 @@ script Ikitown_Battle_VsYoungster{
     release
     end
 }
+
+script Ikitown_Trigger_UltraReconIntroTop{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_left*2, walk_down, walk_left*4, face_up))
+    waitmovement(LOCALID_PLAYER)
+    call(Ikitown_Trigger_UltraReconIntroScript)
+}
+
+script Ikitown_Trigger_UltraReconIntroBottom{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_left*6, walk_up))
+    waitmovement(LOCALID_PLAYER)
+    call(Ikitown_Trigger_UltraReconIntroScript)
+}
+
+script Ikitown_Trigger_UltraReconIntro{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_left*6, face_up))
+    waitmovement(LOCALID_PLAYER)
+    call(Ikitown_Trigger_UltraReconIntroScript)
+}
+
+script Ikitown_Trigger_UltraReconIntroSkip{
+    lock
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    removeobject(ikitown_south_UR1)
+    removeobject(ikitown_south_UR4)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
+    setvar(VAR_IKITOWN_STATE, 13)
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script Ikitown_Trigger_UltraReconIntroScript{
+    startcutscene(CUTSCENE_ULTRARECON_INTRO)
+    delay(30)
+    playse(SE_PIN)
+    applymovement(ikitown_south_UR4, moves(emote_exclamation_mark, face_left))
+    waitmovement(ikitown_south_UR4)
+    speakername("???")
+    msgbox("Hm?! What was what?
+    Did you say something? I was\.
+    
+    Well, I was certainly not distracted
+    by this foolish display of festivity!")
+    applymovement(ikitown_south_UR4, moves(walk_in_place_left*2))
+    waitmovement(ikitown_south_UR4)
+    msgbox("There are aura readings in this place\.
+    Perhaps it may be the effects of
+    that one they call the island kahuna.
+    
+    But everything is so bright here in
+    Alola\.
+    
+    Far brighter than we had been told it
+    would be.
+    
+    I find it loathsome.
+    This awful brightness.")
+    applymovement(ikitown_south_UR1, moves(walk_in_place_right*2))
+    waitmovement(ikitown_south_UR1)
+    msgbox("Even though this is the light we have
+    sought for so long?")
+    applymovement(ikitown_south_UR4, moves(walk_in_place_left*2))
+    waitmovement(ikitown_south_UR4)
+    msgbox("Y-yes, I suppose you are right.
+    
+    We must carry out our investigations to
+    return the light to our own world.
+    Before the Blinding One can awaken\.")
+    playse(SE_PIN)
+    applymovement(ikitown_south_UR1, moves(emote_exclamation_mark, face_down))
+    applymovement(ikitown_south_UR4, moves(delay_16*2, face_down))
+    waitmovement(0)
+    msgbox("You- You are not native to Alola either,
+    are you?
+    You seem to have come from far away{PAUSE 15}.{PAUSE 15}.{PAUSE 15}.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_south_UR1, moves(delay_16*2, walk_down, walk_right*12))
+    applymovement(ikitown_south_UR4, moves(walk_down, walk_right*12))
+    waitmovement(0)
+    delay(30)
+    removeobject(ikitown_south_UR1)
+    removeobject(ikitown_south_UR4)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
+    setvar(VAR_IKITOWN_STATE, 13)
+    endcutscene
+    release
+    end
+}

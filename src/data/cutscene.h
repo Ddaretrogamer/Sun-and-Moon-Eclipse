@@ -16,6 +16,7 @@ extern const u8 IkiTown_Trigger_HauGetStarterSkip[];
 extern const u8 Route1NN_Trigger_GetStartersSkip[];
 extern const u8 Route1NN_Trigger_GetStartersSkipPart2[];
 extern const u8 Ikitown_trigger_WecomeToIkitownSkip[];
+extern const u8 Ikitown_Trigger_UltraReconIntroSkip[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -60,6 +61,10 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_WELCOME_TO_IKITOWN] =
     {
         .scriptCutsceneSkipPtr = Ikitown_trigger_WecomeToIkitownSkip,
+    },
+    [CUTSCENE_ULTRARECON_INTRO] =
+    {
+        .scriptCutsceneSkipPtr = Ikitown_Trigger_UltraReconIntroSkip,
     },
 };
 
