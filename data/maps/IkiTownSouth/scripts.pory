@@ -590,13 +590,13 @@ script Ikitown_Trigger_UltraReconIntro{
 }
 
 script Ikitown_Trigger_UltraReconIntroSkip{
-    lock
+    closemessage
     fadescreenswapbuffers(FADE_TO_BLACK)
-    special(StopAllObjectMovements)
     special(CloseScriptMenus)
     removeobject(ikitown_south_UR1)
     removeobject(ikitown_south_UR4)
-    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
+    setflag(FLAG_HIDE_INTRO_UR)
+    setflag(FLAG_IKITOWN_MAN_BLOCKING_DOOR)
     setvar(VAR_IKITOWN_STATE, 13)
     waitmovement(0)
     fadescreenswapbuffers(FADE_FROM_BLACK)
@@ -654,7 +654,8 @@ script Ikitown_Trigger_UltraReconIntroScript{
     delay(30)
     removeobject(ikitown_south_UR1)
     removeobject(ikitown_south_UR4)
-    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
+    setflag(FLAG_HIDE_INTRO_UR)
+    setflag(FLAG_IKITOWN_MAN_BLOCKING_DOOR)
     setvar(VAR_IKITOWN_STATE, 13)
     endcutscene
     release

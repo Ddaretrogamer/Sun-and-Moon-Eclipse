@@ -922,19 +922,19 @@ Ikitown_Trigger_UltraReconIntro::
 
 Ikitown_Trigger_UltraReconIntroSkip::
 # 593 "data/maps/IkiTownSouth/scripts.pory"
-	lock
+	closemessage
 # 594 "data/maps/IkiTownSouth/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
 # 595 "data/maps/IkiTownSouth/scripts.pory"
-	special StopAllObjectMovements
-# 596 "data/maps/IkiTownSouth/scripts.pory"
 	special CloseScriptMenus
-# 597 "data/maps/IkiTownSouth/scripts.pory"
+# 596 "data/maps/IkiTownSouth/scripts.pory"
 	removeobject ikitown_south_UR1
-# 598 "data/maps/IkiTownSouth/scripts.pory"
+# 597 "data/maps/IkiTownSouth/scripts.pory"
 	removeobject ikitown_south_UR4
+# 598 "data/maps/IkiTownSouth/scripts.pory"
+	setflag FLAG_HIDE_INTRO_UR
 # 599 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+	setflag FLAG_IKITOWN_MAN_BLOCKING_DOOR
 # 600 "data/maps/IkiTownSouth/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 13
 # 601 "data/maps/IkiTownSouth/scripts.pory"
@@ -1002,12 +1002,14 @@ Ikitown_Trigger_UltraReconIntroScript::
 # 656 "data/maps/IkiTownSouth/scripts.pory"
 	removeobject ikitown_south_UR4
 # 657 "data/maps/IkiTownSouth/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+	setflag FLAG_HIDE_INTRO_UR
 # 658 "data/maps/IkiTownSouth/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 13
+	setflag FLAG_IKITOWN_MAN_BLOCKING_DOOR
 # 659 "data/maps/IkiTownSouth/scripts.pory"
-	endcutscene
+	setvar VAR_IKITOWN_STATE, 13
 # 660 "data/maps/IkiTownSouth/scripts.pory"
+	endcutscene
+# 661 "data/maps/IkiTownSouth/scripts.pory"
 	release
 	end
 

@@ -113,6 +113,9 @@ script LittleGirlChasesMeowthIntro{
     playmoncry(SPECIES_MEOWTH, 0)
     msgbox("Meow?")
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    setflag(FLAG_HIDE_INTRO_UR)
     warp(MAP_PLAYER_ROOM, 12, 10)
     waitstate
     release
@@ -156,6 +159,10 @@ script Route1_KukuiCatchingTutorial{
     setvar(VAR_IKITOWN_STATE, 11)
     setflag(FLAG_KUKUI_CATCHING_TUTORIAL1)
     clearflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
+    clearflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    clearflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    setflag(FLAG_HIDE_IKITOWN_REGULARNPCS)
+    clearflag(FLAG_HIDE_INTRO_UR)
     release
     end
 }

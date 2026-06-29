@@ -12,8 +12,45 @@ mapscripts IkiTown_MapScripts{
             addobject(ikitownintrohau)
             setobjectxy(ikitownintrohau, 9, 14)
     }]
-    MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 6: Ikitown_GetPokedex]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 6: Ikitown_GetPokedex
+    VAR_IKITOWN_STATE, 13: Ikitown_StartFestival]
 }
+
+script Ikitown_StartFestival{
+    lockplayer
+    applymovement(LOCALID_PLAYER, moves(walk_up*4, delay_16*2))
+    applymovement(ikitown_exeggutor_festival, moves(delay_16*2, walk_up*7))
+    applymovement(ikitown_oldman_festival, moves(delay_16*1, walk_up*7))
+    waitmovement(0)
+    special(SpawnCameraObject)
+    delay(30)
+    removeobject(ikitown_exeggutor_festival)
+    removeobject(ikitown_oldman_festival)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*5))
+    waitmovement(0)
+    delay(30)
+    applymovement(ikitown_woman_festival, moves(walk_in_place_up*2))
+    waitmovement(0)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right*7))
+    waitmovement(0)
+    delay(30)
+    applymovement(ikitown_rockruff_festival, moves(face_right))
+    applymovement(ikitown_littlegirl_festival, moves(jump_in_place_left*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    delay(30)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*2))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 14)
+    release
+    end
+}
+
 
 script Ikitown_trigger_right{
     lock

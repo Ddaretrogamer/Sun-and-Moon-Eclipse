@@ -664,25 +664,25 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_1N_POKE_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_EXP_SHARE_TOGGLE  0x264 // Unused Flag change to toggle EXP Share
-#define FLAG_SMART_WILD_AI  0x265 // Unused Flag change to toggle Smart Wild AI
-#define FLAG_NO_WILD_CATCHING  0x266 // Unused Flag change to toggle No Catching
-#define FLAG_NO_WILD_RUNNING  0x267 // Unused Flag change to toggle No Running
+#define FLAG_EXP_SHARE_TOGGLE  0x264 // toggle EXP Share
+#define FLAG_SMART_WILD_AI  0x265 // toggle Smart Wild AI
+#define FLAG_NO_WILD_CATCHING  0x266 // toggle No Catching
+#define FLAG_NO_WILD_RUNNING  0x267 // toggle No Running
 #define FLAG_SHINY_RIDE    0x268 // shiny ride mons toggle
 #define FLAG_ENABLE_ROTOM_PHONE  0x269 // enables rotom phone when true
-#define FLAG_RIDE_TAUROS  0x26A // Unused Flag
-#define FLAG_RIDE_MACHAMP  0x26B // Unused Flag
-#define FLAG_RIDE_MUDSDALE  0x26C // Unused Flag
-#define FLAG_RIDE_STOUTLAND  0x26D // Unused Flag
-#define FLAG_PLAYER_IS_POKEMON 0x26E // Unused Flag
-#define FLAG_DEFER_TRANSFORM 0x26F // Unused Flag
+#define FLAG_RIDE_TAUROS  0x26A // riding tauros
+#define FLAG_RIDE_MACHAMP  0x26B // riding machamp
+#define FLAG_RIDE_MUDSDALE  0x26C // riding mudsdale
+#define FLAG_RIDE_STOUTLAND  0x26D // riding stoutland
+#define FLAG_PLAYER_IS_POKEMON 0x26E // is riding in general
+#define FLAG_DEFER_TRANSFORM 0x26F // i forget
 #define FLAG_DETRANSFORM_NO_FOLLOWER  0x270 //no followers when detransforming before surfing
 #define FLAG_RIDE_PAGER_SHINY  0x271 // Set when Ride Pager uses a shiny Pokemon
 #define FLAG_SHINY_RIDE_SET  0x272 // temp for using shiny ride with pager so party rides dont become shiny
 #define FLAG_SHINY_SURF  0x273 // separating surfing and riding pals so we dont get conficts.
-#define FLAG_HAUOLI_OUTSKIRTS_NEWGAME  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_HAUOLI_OUTSKIRTS_NEWGAME  0x274 // hiding shit
+#define FLAG_HIDE_INTRO_UR  0x275 // hiding other shit
+#define FLAG_IKITOWN_MAN_BLOCKING_DOOR  0x276 // hiding more peeps
 #define FLAG_DISABLE_FOLLOWERS  0x277 // Follower toggle
 #define FLAG_OW_NO_ENCOUNTER  0x278 // OW_FLAG_NO_ENCOUNTER
 #define FLAG_NO_COLLISON  0x279 // no collision
@@ -712,9 +712,9 @@
 #define FLAG_IKITOWN_FESTIVAL_COMPLETE  0x291 // flag for if ikitown festivalis complete, opens map to kukuis lab
 #define FLAG_HIDE_IKITOWN_SOUTH_LASS  0x292 // hide the lass in ikitown south
 #define FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER  0x293 // hide the youngster in ikitown south
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
+#define FLAG_HIDE_IKITOWN_REGULARNPCS  0x294 // hide the ikitown regular NPCs
+#define FLAG_HIDE_IKITOWN_FESTIVALNPCS  0x295 // hide the ikitown festival NPCs
+#define FLAG_HIDE_IKITOWN_FESTIVALNPCS2  0x296 // hide the ikitown festival NPCs for little kids running around
 #define FLAG_UNUSED_0x297  0x297 // Unused Flag
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
