@@ -361,8 +361,8 @@
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 22,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGUTOR_ALOLA)",
+      "x": 21,
       "y": 17,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -413,21 +413,9 @@
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_1_FRLG",
-      "x": 19,
-      "y": 12,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
-    },
-    {
+      "local_id": "ikitown_mom_festival",
       "graphics_id": "OBJ_EVENT_GFX_MOM",
-      "x": 21,
+      "x": 20,
       "y": 11,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -439,35 +427,10 @@
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-      "x": 24,
-      "y": 11,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
-      "x": 26,
-      "y": 12,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
-    },
-    {
+      "local_id": "ikitown_hau_festival",
       "graphics_id": "OBJ_EVENT_GFX_HAU",
       "x": 32,
-      "y": 13,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -476,6 +439,62 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
+    },
+    {
+      "local_id": "ikitown_hala_festival",
+      "graphics_id": "OBJ_EVENT_GFX_HALA",
+      "x": 33,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
+    },
+    {
+      "local_id": "ikitown_kukui_festival",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 32,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS3"
+    },
+    {
+      "local_id": "ikitown_dynhaumon_festival",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_1",
+      "x": 31,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
+    },
+    {
+      "local_id": "ikitown_lillie_festival",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE_HAT",
+      "x": 31,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS3"
     }
   ],
   "warp_events": [
@@ -592,6 +611,33 @@
       "var": "VAR_IKITOWN_STATE",
       "var_value": "7",
       "script": "Ikitown_trigger_GiveHalaSparklingStone"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "14",
+      "script": "Ikitown_Trigger_FestivalBattleMiddle"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "14",
+      "script": "Ikitown_Trigger_FestivalBattleleft"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "14",
+      "script": "Ikitown_Trigger_FestivalBattleRight"
     }
   ],
   "bg_events": [

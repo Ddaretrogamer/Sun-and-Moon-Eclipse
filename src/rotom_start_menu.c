@@ -2211,7 +2211,7 @@ static void RotomPhone_OverworldMenu_PrintHintPrompt(u8 taskId)
 
     StringCopy(textBuffer, COMPOUND_STRING("Feeling lost? Press "));
     StringAppend(textBuffer, sRotomMenuRButtonIcon);
-    StringAppend(textBuffer, COMPOUND_STRING(" for a hint!"));
+    StringAppend(textBuffer, COMPOUND_STRING(" for a tip!"));
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, TRUE, TRUE);
     tRotomUpdateMessage = RP_MESSAGE_TIME;
 }
@@ -2275,8 +2275,8 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
     }
     else
     {
-        StringCopy(textBufferTop, COMPOUND_STRING("Try checking the next"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("route or talking to nearby people."));
+        StringCopy(textBufferTop, COMPOUND_STRING("Head to Iki Town."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("They're holding a festival!"));
     }
 
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTop, TRUE, FALSE);

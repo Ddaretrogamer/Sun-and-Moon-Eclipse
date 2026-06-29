@@ -1,5 +1,29 @@
 mapscripts IkiTown_MapScripts{
     MAP_SCRIPT_ON_TRANSITION{
+        if (var(VAR_STARTER_MON) == 0){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(POPPLIO))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(POPPLIO))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 1){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(ROWLET))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(ROWLET))
+            }
+        }
+        elif (var(VAR_STARTER_MON) == 2){
+            if (flag(FLAG_RIVAL_SHINY)){
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES_SHINY(LITTEN))
+            }
+            else{
+                setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(LITTEN))
+            }
+        }
         end
     }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 6 {
@@ -14,6 +38,450 @@ mapscripts IkiTown_MapScripts{
     }]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 6: Ikitown_GetPokedex
     VAR_IKITOWN_STATE, 13: Ikitown_StartFestival]
+}
+
+script Ikitown_Trigger_FestivalBattleleft{
+    lock
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(walk_fast_right, walk_up*3))
+    waitmovement(0)
+    call(Ikitown_Trigger_FestivalBattle)
+}
+
+script Ikitown_Trigger_FestivalBattleRight{
+    lock
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(walk_fast_left, walk_up*3))
+    waitmovement(0)
+    call(Ikitown_Trigger_FestivalBattle)
+}
+
+script Ikitown_Trigger_FestivalBattleMiddle{
+    lock
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(walk_up*3))
+    waitmovement(0)
+    call(Ikitown_Trigger_FestivalBattle)
+}
+
+script Ikitown_Trigger_FestivalBattle{
+    delay(30)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    speakername("Hala")
+    msgbox("The Alola Region is made up of our
+    four islands.
+    
+    And each island has its own guardian
+    Pokémon.
+    
+    Our festival today is help to express
+    our thanks to these great Pokémon
+    guardian dieties for always
+    remaining by our sides.
+    
+    Well, we may call it a festival, but it's
+    just this little thing you see here.
+    
+    There may not be many of us, but at
+    least every last one of us here goes
+    all out.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hau_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hau")
+    if (var(VAR_STARTER_MON)==0)
+    {
+        msgbox("Man, I thought you'd never make it!
+        Me and Popplio've been waiting for ages!", MSGBOX_AUTOCLOSE)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
+        waitmovement(0)
+        playmoncry(SPECIES_POPPLIO, 0)
+        msgbox("Bwark!", MSGBOX_AUTOCLOSE)
+        waitmoncry
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    }
+    elif (var(VAR_STARTER_MON) == 1)
+    {
+        msgbox("Man, I thought you'd never make it!
+        Me and Rowlet've been waiting for ages!", MSGBOX_AUTOCLOSE)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
+        waitmovement(0)
+        playmoncry(SPECIES_ROWLET, 0)
+        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        waitmoncry
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    }
+    elif (var(VAR_STARTER_MON) == 2)
+    {
+        msgbox("Man, I thought you'd never make it!
+        Me and Litten've been waiting for ages!", MSGBOX_AUTOCLOSE)
+        setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
+        waitmovement(0)
+        playmoncry(SPECIES_LITTEN, 0)
+        msgbox("Grrr!", MSGBOX_AUTOCLOSE)
+        waitmoncry
+        clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    }
+    speakername("Hau")
+    msgbox("Hold on\. Didn't anyone explain to
+    you about tonight?!", MSGBOX_AUTOCLOSE)
+    addobject(ikitown_kukui_festival)
+    addobject(ikitown_lillie_festival)
+    applymovement(LOCALID_PLAYER, moves(delay_16*4,face_down))
+    applymovement(ikitown_kukui_festival, moves(walk_up*4))
+    applymovement(ikitown_lillie_festival, moves(walk_up*4))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Oh yeah, right on time!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_kukui_festival, moves(face_left))
+    applymovement(ikitown_lillie_festival, moves(face_right))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("But to what exactly?", MSGBOX_AUTOCLOSE)
+    playmoncry(SPECIES_COSMOG, 0)
+    applymovement(ikitown_lillie_festival, moves(shake_horizontal))
+    waitmovement(0)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Pew!!", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    delay(30)
+    speakername("Kukui")
+    msgbox("A full-powered festival for Pokemon
+    battling!
+    
+    We battle in the name of Tapu Koko,
+    pitting our best move against one
+    another in friendly competition to
+    please our guardian. Woo!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_lillie_festival, moves(face_up))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("So, you two will be taking part in
+    battle?
+    
+    I don't like seeing Pok\emon fight one
+    another\.they often end up hurt.
+    
+    But\.I'll be sure to watch you both.")
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Your Pok\emon have fought for you, so
+    show them the same care in return,
+    {PLAYER}.
+    
+    Allow me to heal them for you this time.")
+    applymovement(ikitown_hala_festival, moves(walk_left, face_down))
+    waitmovement(0)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(HealPlayerParty)
+    playfanfare(MUS_HEAL)
+    waitfanfare
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    speakername("Hala")
+    msgbox("Are you ready for this Pok\emon battle?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        speakername("Hala")
+        msgbox("Then let's begin!", MSGBOX_AUTOCLOSE)
+        call(Ikitown_FestivalBattleOnStage)
+    }
+    else{
+        speakername("Hala")
+        msgbox("Oh come on!
+        It's the festival!", MSGBOX_AUTOCLOSE)
+        call(Ikitown_FestivalBattleSaidNo)
+    }
+    
+}
+
+script Ikitown_FestivalBattleSaidNo{
+    speakername("Hala")
+    msgbox("Are you ready for this Pok\emon battle?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        speakername("Hala")
+        msgbox("Then let's begin!", MSGBOX_AUTOCLOSE)
+        call(Ikitown_FestivalBattleOnStage)
+    }
+    else{
+        speakername("Hala")
+        msgbox("Oh come on!
+        It's the festival!", MSGBOX_AUTOCLOSE)
+        call(Ikitown_FestivalBattleSaidNo)
+    }
+}
+
+script Ikitown_FestivalBattleOnStage{
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    // setobjectxy(ikitown_kukui_festival, 24, 11)
+    applymovement(ikitown_kukui_festival, moves(walk_faster_up*6, walk_faster_left*8, face_down))
+    // setobjectxy(ikitown_lillie_festival, 25, 11)
+    applymovement(ikitown_lillie_festival, moves(walk_faster_up*6, walk_faster_left*6, face_down))
+    // setobjectxyperm(ikitown_hala_festival, 22, 12)
+    applymovement(ikitown_hala_festival, moves(walk_faster_up*3, walk_faster_left*10, face_down))
+    // setobjectxyperm(ikitown_hau_festival, 25, 13)
+    applymovement(ikitown_hau_festival, moves(walk_faster_left*7, face_left))
+    // setobjectxy(LOCALID_PLAYER, 20, 13)
+    applymovement(LOCALID_PLAYER, moves(walk_faster_up*2, walk_faster_left*12,face_right))
+    waitmovement(0)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*2))
+    waitmovement(0)
+    hideobjectat(ikitown_dynhaumon_festival, MAP_IKI_TOWN)
+    delay(30)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    delay(30)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("For all life on our islands\.
+    
+    and for those who undertake the island
+    challenge with joy in their hearts\.
+    
+    we pray for your protection\.
+    for them and all Melemele.
+    
+    May this Pokémon battle be an offering
+    to our island's guardian deity
+    Tapu Koko!
+    
+    Before you stands Hau-grandson
+    to the kahuna.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hau_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    if (var(VAR_STARTER_MON) == 0){
+        speakername("Hau")
+        msgbox("Let's have fun with this, Popplio!", MSGBOX_AUTOCLOSE)
+    }
+    elif (var(VAR_STARTER_MON) == 1){
+        speakername("Hau")
+        msgbox("Let's have fun with this, Rowlet!", MSGBOX_AUTOCLOSE)
+    }
+    elif (var(VAR_STARTER_MON) == 2){
+        speakername("Hau")
+        msgbox("Let's have fun with this, Litten!", MSGBOX_AUTOCLOSE)
+    }
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Before him stands {PLAYER}-
+    one who has met with Tapu Koko.", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("What?!
+
+    What a curious thing Tapu Koko is!
+    Hah, that's just typical of it!", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(ikitown_mom_festival, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    speakername("Mom")
+    bufferleadmonspeciesname(STR_VAR_1)
+    msgbox("{STR_VAR_1}!
+    Take good care of my little {PLAYER}!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hau_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("As long as we both have a good time,
+    then I think we can call it a great
+    battle, eh?", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("{PLAYER}! Hau!
+    Bring forth the power of your Pokémon!", MSGBOX_AUTOCLOSE)
+    if (var(VAR_STARTER_MON) == 0){
+        if (flag(FLAG_RIVAL_SHINY))
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_POPPLIOSHINY,"What? It's already over?!")
+        }
+        else
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_POPPLIO,"What? It's already over?!")
+        }
+    }
+    elif (var(VAR_STARTER_MON) == 1){
+        if (flag(FLAG_RIVAL_SHINY))
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_ROWLETSHINY,"What? It's already over?!")
+        }
+        else
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_ROWLET,"What? It's already over?!")
+        }
+    }
+    elif (var(VAR_STARTER_MON) == 2){
+        if (flag(FLAG_RIVAL_SHINY))
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_LITTENSHINY,"What? It's already over?!")
+        }
+        else
+        {
+            trainerbattle_no_intro(TRAINER_HAU_IKITOWNFESTIVAL_LITTEN,"What? It's already over?!")
+        }
+    }
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    special(SpawnCameraObject)
+    msgbox("Hoo-ee! Another great battle this year.
+    
+    I bet Tapu Koko liked it, too.", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    speakername("Hau")
+    applymovement(ikitown_hau_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    msgbox("Phew\.
+    That was awesome, {PLAYER}!")
+    applymovement(ikitown_hau_festival, moves(jump_in_place_left*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    msgbox("That was a really great battle!
+    I had a blast fighting you!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("It was a good battle.
+    With this, even Tapu Koko\.")
+    closemessage
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playmoncry(SPECIES_TAPU_KOKO, 0)
+    msgbox("Ko-ko-kooo!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Ho! You heard it yourself!
+    Tapu Koko's song of approval.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hala_festival, moves(walk_down*2, walk_left))
+    waitmovement(0)
+    msgbox("Oh, I nearly forgot! I think its
+    time you take this, {PLAYER}.", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    giveitem(ITEM_Z_POWER_RING)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    speakername("Hala")
+    msgbox("Your {COLOR RED}Z-Power Ring{COLOR DARK_GRAY}, a mysterious armband
+    that can draw out the power that
+    lies deep within Pok\emon\.
+    
+    It can bring forth their {COLOR RED}Z-Power{COLOR DARK_GRAY}!
+    
+    We kahunas can make Z-Power rings
+    using stones like the Sparkling
+    Stone you received from Tapu Koko.
+    
+    Though you will need to undergo the
+    island challenge and collect
+    Z-Crystals for yourself, if you wish
+    to draw forth Pok\emon's Z-Power!
+    
+    And yet you have already received that
+    Sparkling Stone\.
+    
+    It seems that Tapu Koko took quite a
+    liking to you\.
+    or perhaps it has a mission for you.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_kukui_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Well, it's time for you to get out there
+    and start your {COLOR RED}island challenge{COLOR DARK_GRAY}!
+    
+    If you visit every island, maybe you'll
+    figure out what that mission is.")
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "The island challenge?", "Every Island?")
+    if (var(VAR_RESULT) == 0){
+        speakername("Kukui")
+        msgbox("Four Islands!
+        
+        You'll travel to each of the four
+        islands here in the Alola Region.")
+    }
+    else{
+        speakername("Kukui")
+        msgbox("Four Islands!
+        
+        You'll travel to each of the four
+        islands here in the Alola Region.")
+    }
+    speakername("Kukui")
+    msgbox("The island challenge is about aiming to
+    be the strongest Trainer-
+    the {COLOR RED}island challenge champion{COLOR DARK_GRAY}. Woo!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hau_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("Sounds great, right?
+    I can't wait to have a real adventure!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hala_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("The island challenge Kukui spoke of\.
+    
+    It is a journey to overcome your own
+    limitations, as you travel the far
+    corners of Alola and meet with
+    others along the path.
+    
+    It's a great adventure that children
+    in the Alola region embark upon,
+    along with their Pok\emon,
+    once they reach 11 years of age!")
+    applymovement(ikitown_hala_festival, moves(walk_right*3))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("Allow me to give you both the island
+    challenge amulets you will need.", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hau_festival, moves(walk_in_place_left*2))
+    waitmovement(0)
+    speakername("Hau")
+    msgbox("Awesome!
+    Thanks, Tutu!
+    
+    I'm gonna make it through the island
+    challenge to try to become an island
+    challenge champion!", MSGBOX_AUTOCLOSE)
+    applymovement(ikitown_hala_festival, moves(walk_left*3))
+    waitmovement(0)
+    speakername("Hala")
+    msgbox("There is one for you was well,
+    {PLAYER}.
+
+    Please do give the island challenge
+    a try.", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playfanfare(MUS_OBTAIN_SYMBOL)
+    msgbox("You received the {COLOR RED}Island Challenge
+    Amulet{COLOR DARK_GRAY}!", MSGBOX_AUTOCLOSE)
+    waitfanfare
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(ikitown_kukui_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Yeah, doing the island challenge is the
+    best way to really get to know Alola!")
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*2))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    release
+    end
+
 }
 
 script Ikitown_StartFestival{

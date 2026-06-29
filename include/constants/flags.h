@@ -715,7 +715,7 @@
 #define FLAG_HIDE_IKITOWN_REGULARNPCS  0x294 // hide the ikitown regular NPCs
 #define FLAG_HIDE_IKITOWN_FESTIVALNPCS  0x295 // hide the ikitown festival NPCs
 #define FLAG_HIDE_IKITOWN_FESTIVALNPCS2  0x296 // hide the ikitown festival NPCs for little kids running around
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
+#define FLAG_HIDE_IKITOWN_FESTIVALNPCS3  0x297 // hide the ikitown festival NPCs part 3
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag

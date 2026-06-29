@@ -115,6 +115,7 @@ script LittleGirlChasesMeowthIntro{
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS3)
     setflag(FLAG_HIDE_INTRO_UR)
     warp(MAP_PLAYER_ROOM, 12, 10)
     waitstate
