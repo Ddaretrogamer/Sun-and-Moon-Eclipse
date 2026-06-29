@@ -115,7 +115,8 @@ struct
     [CHAR_DPAD_RIGHT]     = { 0x0F,  8, 12 },
     [CHAR_DPAD_UPDOWN]    = { 0x20,  8, 12 },
     [CHAR_DPAD_LEFTRIGHT] = { 0x21,  8, 12 },
-    [CHAR_DPAD_NONE]      = { 0x22,  8, 12 }
+    [CHAR_DPAD_NONE]      = { 0x22,  8, 12 },
+    [CHAR_R_BUTTON_ROTOM_MENU] = { 0x23, 16, 12 }
 };
 
 static const u8 sKeypadIconTiles[] = INCGFX_U8("graphics/fonts/keypad_icons.png", ".4bpp");

@@ -2207,8 +2207,11 @@ static void RotomPhone_OverworldMenu_PrintAdventure(u8 taskId)
 static void RotomPhone_OverworldMenu_PrintHintPrompt(u8 taskId)
 {
     u8 textBuffer[80];
+    static const u8 sRotomMenuRButtonIcon[] = {CHAR_KEYPAD_ICON, CHAR_R_BUTTON_ROTOM_MENU, EOS};
 
-    StringCopy(textBuffer, COMPOUND_STRING("Feeling lost? Press {R_BUTTON} for a hint!"));
+    StringCopy(textBuffer, COMPOUND_STRING("Feeling lost? Press "));
+    StringAppend(textBuffer, sRotomMenuRButtonIcon);
+    StringAppend(textBuffer, COMPOUND_STRING(" for a hint!"));
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, TRUE, TRUE);
     tRotomUpdateMessage = RP_MESSAGE_TIME;
 }
