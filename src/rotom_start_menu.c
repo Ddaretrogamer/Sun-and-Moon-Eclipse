@@ -120,6 +120,8 @@ static void RotomPhone_OverworldMenu_PrintDateWeather(u8 taskId);
 static void RotomPhone_OverworldMenu_PrintHaveFun(u8 taskId);
 static void RotomPhone_OverworldMenu_Personality(u8 taskId);
 static void RotomPhone_OverworldMenu_PrintAdventure(u8 taskId);
+static void RotomPhone_OverworldMenu_PrintHintPrompt(u8 taskId);
+static void RotomPhone_OverworldMenu_PrintHint(u8 taskId);
 static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId);
 
 
@@ -555,6 +557,7 @@ enum RotomPhone_Overworld_Messages
     RP_MESSAGE_PERSONALITY,
     RP_MESSAGE_FUN,
     RP_MESSAGE_ADVENTURE,
+    RP_MESSAGE_HINT_PROMPT,
     RP_MESSAGE_COUNT,
 };
 
@@ -1440,6 +1443,8 @@ static const u8 *RotomPhone_OverworldMenu_GetWeatherAction(u32 weatherId)
 #define tPhoneComfyAnimId gTasks[taskId].data[6]
 #define tPhoneCloseParameterSaveSafariFade gTasks[taskId].data[7]
 #define tPhoneHighlightComfyAnimId gTasks[taskId].data[8]
+#define tRotomHintActive gTasks[taskId].data[9]
+#define tRotomHintPromptState gTasks[taskId].data[10]
 static void RotomPhone_OverworldMenu_Init(bool32 firstInit)
 {
     u8 taskId;
@@ -1534,6 +1539,8 @@ static void RotomPhone_OverworldMenu_ContinueInit(bool32 firstInit)
 
     tRotomUpdateTimer = ROTOM_PHONE_OW_MESSGAGE_TIMER / RP_CONFIG_NUM_MINUTES_TO_UPDATE;
     tRotomUpdateMessage = RP_MESSAGE_TIME;
+    tRotomHintActive = FALSE;
+    tRotomHintPromptState = 0;
 
     if (GetSafariZoneFlag())
         tRotomUpdateMessage = RP_MESSAGE_SAFARI;
@@ -1864,14 +1871,16 @@ static void RotomPhone_OverworldMenu_PrintGreeting(void)
 
 static enum RotomPhone_Overworld_Messages RotomPhone_OverworldMenu_GetRandomMessage(void)
 {
+    enum RotomPhone_Overworld_Messages messageRandom;
+
     if (!RP_CONFIG_UPDATE_MESSAGE)
         return RP_MESSAGE_TIME;
-    
-    enum RotomPhone_Overworld_Messages messageRandom;
+
     messageRandom = Random() % RP_MESSAGE_COUNT;
     while (messageRandom == RP_MESSAGE_GOODBYE
     || messageRandom == RP_MESSAGE_TIME
-    || messageRandom == RP_MESSAGE_SAFARI)
+    || messageRandom == RP_MESSAGE_SAFARI
+    || messageRandom == RP_MESSAGE_HINT_PROMPT)
     {
         messageRandom = Random() % RP_MESSAGE_COUNT;
     }
@@ -1883,6 +1892,8 @@ static void RotomPhone_OverworldMenu_CheckUpdateMessage(u8 taskId)
 {
     if (!tRotomUpdateTimer && RP_CONFIG_ROTOM_ACTIVE)
     {
+        bool32 hadHintActive = tRotomHintActive;
+
         switch (tRotomUpdateMessage)
         {
         case RP_MESSAGE_GOODBYE:
@@ -1913,6 +1924,10 @@ static void RotomPhone_OverworldMenu_CheckUpdateMessage(u8 taskId)
         case RP_MESSAGE_ADVENTURE:
             RotomPhone_OverworldMenu_PrintAdventure(taskId);
             break;
+
+        case RP_MESSAGE_HINT_PROMPT:
+            RotomPhone_OverworldMenu_PrintHintPrompt(taskId);
+            break;
         }
         tRotomUpdateTimer = ROTOM_PHONE_OW_MESSGAGE_TIMER;
         if (!RP_CONFIG_UPDATE_MESSAGE && !GetSafariZoneFlag() && tRotomUpdateMessage != RP_MESSAGE_GOODBYE)
@@ -1921,6 +1936,12 @@ static void RotomPhone_OverworldMenu_CheckUpdateMessage(u8 taskId)
         if (RP_CONFIG_UPDATE_MESSAGE_SOUND && tRotomUpdateMessage != RP_MESSAGE_GOODBYE)
             tRotomMessageSoundEffect = SE_SELECT;
         
+        if (hadHintActive)
+        {
+            tRotomHintActive = FALSE;
+            RotomPhone_OverworldMenu_UpdateMenuPrompt(taskId);
+        }
+
         RotomPhone_StartMenu_UpdateRotomFaceAnim(FALSE);
     }
 }
@@ -1997,7 +2018,19 @@ static void RotomPhone_OverworldMenu_PrintTime(u8 taskId)
     StringAppend(textBuffer, sRotomPhone_Overworld_DayNames[(gLocalTime.days % WEEKDAY_COUNT)]);
     StringAppend(textBuffer, COMPOUND_STRING("."));
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, TRUE, TRUE);
-    tRotomUpdateMessage = RotomPhone_OverworldMenu_GetRandomMessage();
+
+    if (tRotomHintPromptState == 1)
+    {
+        tRotomUpdateMessage = RP_MESSAGE_HINT_PROMPT;
+        tRotomHintPromptState = 2;
+    }
+    else
+    {
+        tRotomUpdateMessage = RotomPhone_OverworldMenu_GetRandomMessage();
+        if (tRotomHintPromptState == 0)
+            tRotomHintPromptState = 1;
+    }
+
     if (GetSafariZoneFlag())
         tRotomUpdateMessage = RP_MESSAGE_SAFARI;
 }
@@ -2169,6 +2202,88 @@ static void RotomPhone_OverworldMenu_PrintAdventure(u8 taskId)
     
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, TRUE, TRUE);
     tRotomUpdateMessage = RP_MESSAGE_TIME;
+}
+
+static void RotomPhone_OverworldMenu_PrintHintPrompt(u8 taskId)
+{
+    u8 textBuffer[80];
+
+    StringCopy(textBuffer, COMPOUND_STRING("Feeling lost? Press {R_BUTTON} for a hint!"));
+    RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, TRUE, TRUE);
+    tRotomUpdateMessage = RP_MESSAGE_TIME;
+}
+
+static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
+{
+    u8 textBufferTop[80];
+    u8 textBufferBottom[80];
+    u16 ikiTownState;
+
+    if (!RP_CONFIG_ROTOM_ACTIVE)
+        return;
+
+    ikiTownState = VarGet(VAR_IKITOWN_STATE);
+    StringCopy(textBufferBottom, COMPOUND_STRING(""));
+
+    if (GetSafariZoneFlag())
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Focus on the Safari hunt"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("for now."));
+    }
+    else if (ikiTownState == 2)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Try heading through Iki"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Town and up Mahalo Trail."));
+    }
+    else if (ikiTownState == 3 || ikiTownState == 4)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Lillie needs help on"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Mahalo Bridge. Better hurry."));
+    }
+    else if (ikiTownState == 5)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Keep pushing up the"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("bridge and protect Nebby."));
+    }
+    else if (ikiTownState == 6)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Head back to Iki Town."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Kukui and Hala are waiting."));
+    }
+    else if (ikiTownState == 7)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Looks like it is time to"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("head home from Iki Town."));
+    }
+    else if (ikiTownState == 8)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Go home and get ready"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("for the festival tomorrow."));
+    }
+    else if (!FlagGet(FLAG_SYS_POKEDEX_GET))
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Keep following Kukui."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("You are still early in the journey."));
+    }
+    else if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Anywhere sounds good now."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Pick a goal and chase it!"));
+    }
+    else
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Try checking the next"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("route or talking to nearby people."));
+    }
+
+    RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTop, TRUE, FALSE);
+    RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferBottom, FALSE, FALSE);
+    CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechTopWindowId, COPYWIN_GFX);
+    CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechBottomWindowId, COPYWIN_GFX);
+    tRotomHintActive = TRUE;
+    tRotomUpdateTimer = ROTOM_PHONE_OW_MESSGAGE_TIMER;
+    tRotomMessageSoundEffect = SE_SELECT;
+    RotomPhone_StartMenu_UpdateRotomFaceAnim(TRUE);
 }
 
 static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
@@ -2412,6 +2527,12 @@ static void RotomPhone_OverworldMenu_HandleDPAD(u8 taskId)
     if (menuSelectedOverworld != sRotomPhone_StartMenu->menuOverworldOptions[nextIndex]
         && sRotomPhone_StartMenu->menuOverworldLoading == FALSE && !gPaletteFade.active)
         RotomPhone_OverworldMenu_LoadIconSpritePalette(FALSE);
+
+    if (tRotomHintActive)
+    {
+        tRotomUpdateTimer = FALSE;
+        RotomPhone_OverworldMenu_CheckUpdateMessage(taskId);
+    }
     
     gComfyAnims[tPhoneHighlightComfyAnimId].config.data.spring.to = Q_24_8(FADE_COLOUR_MAX);
     gComfyAnims[tPhoneHighlightComfyAnimId].position = 0;
@@ -2565,6 +2686,10 @@ static void Task_RotomPhone_OverworldMenu_HandleMainInput(u8 taskId)
             gTasks[taskId].func = Task_RotomPhone_OverworldMenu_PhoneSlideClose;
         }
         return;
+    }
+    else if (JOY_NEW(R_BUTTON) && sRotomPhone_StartMenu->menuOverworldLoading == FALSE && RP_CONFIG_ROTOM_ACTIVE)
+    {
+        RotomPhone_OverworldMenu_PrintHint(taskId);
     }
     else if (gMain.newKeys & DPAD_ANY && sRotomPhone_StartMenu->menuOverworldLoading == FALSE)
     {
@@ -4492,6 +4617,8 @@ static void RotomPhone_StartMenu_SelectedFunc_Daycare(void)
 #undef tPhoneY
 #undef tPhoneCloseParameterSaveSafariFade
 #undef tPhoneHighlightComfyAnimId
+#undef tRotomHintActive
+#undef tRotomHintPromptState
 #undef sFrameNumComfyAnimId
 #undef sComfyAnimIdX
 #undef sComfyAnimIdY

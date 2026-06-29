@@ -1172,16 +1172,12 @@ Ikitown_StartFestival_Movement_1:
 	walk_up
 # 22 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 22 "data/maps/IkiTown/scripts.pory"
-	walk_up
 	step_end
 
 # 23 "data/maps/IkiTown/scripts.pory"
 Ikitown_StartFestival_Movement_2:
 # 23 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 23 "data/maps/IkiTown/scripts.pory"
-	walk_up
 # 23 "data/maps/IkiTown/scripts.pory"
 	walk_up
 # 23 "data/maps/IkiTown/scripts.pory"
