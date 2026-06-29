@@ -479,6 +479,7 @@ script Ikitown_FestivalBattleOnStage{
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*2))
     waitmovement(0)
     special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 15)
     release
     end
 
