@@ -75,6 +75,7 @@ script Ikitown_Trigger_FestivalBattleMiddle{
 
 script Ikitown_Trigger_FestivalBattle{
     delay(30)
+    startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_1)
     applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
     speakername("Hala")
     msgbox("The Alola Region is made up of our
@@ -190,6 +191,7 @@ script Ikitown_Trigger_FestivalBattle{
     playfanfare(MUS_HEAL)
     waitfanfare
     fadescreenswapbuffers(FADE_FROM_BLACK)
+    endcutscene
     speakername("Hala")
     msgbox("Are you ready for this Pok\emon battle?", MSGBOX_YESNO)
     if (var(VAR_RESULT) == YES){
@@ -204,6 +206,24 @@ script Ikitown_Trigger_FestivalBattle{
         call(Ikitown_FestivalBattleSaidNo)
     }
     
+}
+
+script Ikitown_Trigger_FestivalBattleSkip1{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    addobject(ikitown_kukui_festival)
+    addobject(ikitown_lillie_festival)
+    setobjectxy(ikitown_kukui_festival, 32, 17)
+    setobjectxy(ikitown_lillie_festival, 31, 17)
+    addobject(ikitown_hala_festival)
+    addobject(ikitown_hau_festival)
+    setobjectxy(ikitown_hala_festival, 32, 15)
+    setobjectxy(ikitown_hau_festival, 32, 14)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    call(Ikitown_FestivalBattleSaidNo)
 }
 
 script Ikitown_FestivalBattleSaidNo{
@@ -222,6 +242,15 @@ script Ikitown_FestivalBattleSaidNo{
     }
 }
 
+script Ikitown_Trigger_FestivalBattleSkip2{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    call(Ikitown_FestivalBattleOnStage2)
+}
+
 script Ikitown_FestivalBattleOnStage{
     fadescreenswapbuffers(FADE_TO_BLACK)
     // setobjectxy(ikitown_kukui_festival, 24, 11)
@@ -235,6 +264,7 @@ script Ikitown_FestivalBattleOnStage{
     // setobjectxy(LOCALID_PLAYER, 20, 13)
     applymovement(LOCALID_PLAYER, moves(walk_faster_up*2, walk_faster_left*12,face_right))
     waitmovement(0)
+    startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_2)
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right*2))
     waitmovement(0)
@@ -301,6 +331,11 @@ script Ikitown_FestivalBattleOnStage{
     battle, eh?", MSGBOX_AUTOCLOSE)
     applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
     waitmovement(0)
+    endcutscene
+    call(Ikitown_FestivalBattleOnStage2)
+}
+
+script Ikitown_FestivalBattleOnStage2{
     speakername("Hala")
     msgbox("{PLAYER}! Hau!
     Bring forth the power of your Pokémon!", MSGBOX_AUTOCLOSE)
@@ -335,6 +370,7 @@ script Ikitown_FestivalBattleOnStage{
         }
     }
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_3)
     special(SpawnCameraObject)
     msgbox("Hoo-ee! Another great battle this year.
     
@@ -479,14 +515,33 @@ script Ikitown_FestivalBattleOnStage{
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*2))
     waitmovement(0)
     special(RemoveCameraObject)
+    endcutscene
     setvar(VAR_IKITOWN_STATE, 15)
+    warp(MAP_PLAYER_HOUSE, 8, 15)
+    waitstate
     release
     end
 
 }
 
+script Ikitown_Trigger_FestivalBattleSkip3{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(SpawnCameraObject)
+    special(SnapCameraToPlayer)
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 15)
+    warp(MAP_PLAYER_HOUSE, 8, 15)
+    waitstate
+    release
+    end
+}
+
 script Ikitown_StartFestival{
     lockplayer
+    special(ShowCutsceneCinematicBars)
     applymovement(LOCALID_PLAYER, moves(walk_up*4, delay_16*2))
     applymovement(ikitown_exeggutor_festival, moves(delay_16*2, walk_up*7))
     applymovement(ikitown_oldman_festival, moves(delay_16*1, walk_up*7))
@@ -515,6 +570,7 @@ script Ikitown_StartFestival{
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*2))
     waitmovement(0)
     special(RemoveCameraObject)
+    special(HideCutsceneCinematicBars)
     setvar(VAR_IKITOWN_STATE, 14)
     release
     end
