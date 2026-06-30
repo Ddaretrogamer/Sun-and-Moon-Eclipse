@@ -517,6 +517,11 @@ script Ikitown_FestivalBattleOnStage2{
     special(RemoveCameraObject)
     endcutscene
     setvar(VAR_IKITOWN_STATE, 15)
+    setflag(FLAG_IKITOWN_FESTIVAL_COMPLETE)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS3)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    clearflag(FLAG_HIDE_IKITOWN_REGULARNPCS)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate
     release
@@ -533,6 +538,11 @@ script Ikitown_Trigger_FestivalBattleSkip3{
     special(SnapCameraToPlayer)
     special(RemoveCameraObject)
     setvar(VAR_IKITOWN_STATE, 15)
+    setflag(FLAG_IKITOWN_FESTIVAL_COMPLETE)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS3)
+    setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    clearflag(FLAG_HIDE_IKITOWN_REGULARNPCS)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate
     release
