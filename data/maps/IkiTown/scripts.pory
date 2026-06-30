@@ -521,7 +521,9 @@ script Ikitown_FestivalBattleOnStage2{
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS3)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
     clearflag(FLAG_HIDE_IKITOWN_REGULARNPCS)
+    clearflag(FLAG_HIDE_IKITOWN_SOUTH_LASS)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate
     release
@@ -542,7 +544,9 @@ script Ikitown_Trigger_FestivalBattleSkip3{
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS3)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS)
+    setflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
     clearflag(FLAG_HIDE_IKITOWN_REGULARNPCS)
+    clearflag(FLAG_HIDE_IKITOWN_SOUTH_LASS)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate
     release
