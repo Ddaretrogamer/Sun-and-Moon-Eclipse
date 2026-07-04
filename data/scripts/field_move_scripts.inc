@@ -70,21 +70,9 @@ EventScript_UseRockSmash::
 @ Interact with smashable rock
 EventScript_RockSmash::
 	lockall
-@ Start qol_field_moves
-	//	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
-    checkitem ITEM_ROCKSMASH_TOOL,1
-    goto_if_eq VAR_RESULT, TRUE, EventScript_UseRockSmashTool
-    checkpartylearnknowsfieldmove ITEM_HM06
-	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
-@ End qol_field_moves
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
-	msgbox Text_WantToSmash, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
-	closemessage
+	checkitem ITEM_ROCKSMASH_TOOL, 1
+	goto_if_eq VAR_RESULT, TRUE, EventScript_UseRockSmashTool
+	goto EventScript_CantSmashRock
 EventScript_RockSmashCommon:
 	@ check if follower should use the field move
 	isfollowerfieldmoveuser VAR_0x8004
