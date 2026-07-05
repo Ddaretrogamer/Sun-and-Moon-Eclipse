@@ -106,6 +106,7 @@ script Playerhouse_WelcomeHomeAfterFestival{
     setvar(VAR_IKITOWN_STATE, 16)
     delay(30)
     warpsilent(MAP_PLAYER_ROOM, 12, 10)
+    waitstate
     release
     end
 }
