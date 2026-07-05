@@ -952,11 +952,11 @@ Ikitown_Trigger_UltraReconIntroScript::
 # 609 "data/maps/IkiTownSouth/scripts.pory"
 	delay 30
 # 610 "data/maps/IkiTownSouth/scripts.pory"
-	playse SE_PIN
-# 611 "data/maps/IkiTownSouth/scripts.pory"
 	speakername IkiTown_Trigger_HauGetStarter_Text_0
-# 612 "data/maps/IkiTownSouth/scripts.pory"
+# 611 "data/maps/IkiTownSouth/scripts.pory"
 	msgbox Ikitown_Trigger_UltraReconIntroScript_Text_0, MSGBOX_AUTOCLOSE
+# 615 "data/maps/IkiTownSouth/scripts.pory"
+	playse SE_PIN
 # 616 "data/maps/IkiTownSouth/scripts.pory"
 	applymovement ikitown_south_UR4, Ikitown_Trigger_UltraReconIntroScript_Movement_0
 # 617 "data/maps/IkiTownSouth/scripts.pory"
@@ -1690,7 +1690,7 @@ Ikitown_Battle_VsYoungster_Text_2:
 	.string "Did you pick up on anything?$"
 
 Ikitown_Trigger_UltraReconIntroScript_Text_0:
-# 612 "data/maps/IkiTownSouth/scripts.pory"
+# 611 "data/maps/IkiTownSouth/scripts.pory"
 	.string "Measuring the aura readings here…\n"
 	.string "the numbers appear to be a bit high.\p"
 	.string "What do you think, Captain?$"

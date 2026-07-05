@@ -105,9 +105,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Popplio've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
+        waitmovement(0)
         playmoncry(SPECIES_POPPLIO, 0)
         msgbox("Bwark!", MSGBOX_AUTOCLOSE)
-        waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 1)
@@ -115,9 +115,9 @@ script Ikitown_Trigger_FestivalBattle{
         msgbox("Man, I thought you'd never make it!
         Me and Rowlet've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
         playmoncry(SPECIES_ROWLET, 0)
         msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
         waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
@@ -127,9 +127,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Litten've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
+        waitmovement(0)
         playmoncry(SPECIES_LITTEN, 0)
         msgbox("Grrr!", MSGBOX_AUTOCLOSE)
-        waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     speakername("Hau")
@@ -1098,7 +1098,7 @@ script Ikitown_GetPokedex{
     waitmovement(0)
     speakername("Kukui")
     msgbox("There you are, Kahuna Hala!
-    Was there some kind of trouble?")
+    Was there some kind of trouble?", MSGBOX_AUTOCLOSE)
     applymovement(ikitownhala, moves(walk_left*4, walk_diag_northwest, walk_left*3))
     waitmovement(0)
     applymovement(ikitownintrokukui2, moves(face_down))
@@ -1159,13 +1159,13 @@ script Ikitown_GetPokedex{
     coming.
     
     I'm glad we had the chance to meet
-    today.")
+    today.", MSGBOX_AUTOCLOSE)
     applymovement(ikitownintrokukui2, moves(walk_down, walk_left))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*2))
     waitmovement(0)
     speakername("Kukui")
     msgbox("All right, here's a lovely gift to
-    help make today special {PLAYER}!")
+    help make today special {PLAYER}!", MSGBOX_AUTOCLOSE)
     setvar(VAR_ROTOM_PHONE_ENABLE, 1)
     setflag(FLAG_SYS_POKEDEX_GET)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)

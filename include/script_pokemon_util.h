@@ -8,6 +8,7 @@ void CreateScriptedDoubleWildMon(enum Species species, u8 level, enum Item item,
 void ScriptSetMonMoveSlot(u8 monIndex, enum Move move, u8 slot);
 void ReducePlayerPartyToSelectedMons(void);
 void HealPlayerParty(void);
+u16 IsPlayerPartyFullyHealed(void);
 void Script_GetChosenMonOffensiveEVs(void);
 void Script_GetChosenMonDefensiveEVs(void);
 void Script_GetChosenMonOffensiveIVs(void);

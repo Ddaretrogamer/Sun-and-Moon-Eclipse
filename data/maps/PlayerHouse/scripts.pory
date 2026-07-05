@@ -30,12 +30,85 @@ mapscripts PlayerHouse_MapScripts{
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(playerhousemom2, MAP_PLAYER_HOUSE)
     hideobjectat(playerhousemeowth2, MAP_PLAYER_HOUSE)}
     VAR_IKITOWN_STATE, 8 {clearflag(FLAG_HIDE_PLAYERHOUSE_STARTER)
-    addobject(playerhousestarter)}]
+    addobject(playerhousestarter)
+    setobjectxy(playerhousemom3, 5, 10)}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 1: PlayerHouse_MomNewgame
     VAR_MOM_IN_HOUSE_INTRO, 3: PlayerHouse_GotRunningShoes
-    VAR_IKITOWN_STATE, 8: PlayerHouse_ShowMomPokemon]
+    VAR_IKITOWN_STATE, 8: PlayerHouse_ShowMomPokemon
+    VAR_IKITOWN_STATE, 15: Playerhouse_WelcomeHomeAfterFestival
+    ]
 }
 
+script Playerhouse_WelcomeHomeAfterFestival{
+    lock
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    speakername("Mom")
+    msgbox("Honey, I'm home!", MSGBOX_AUTOCLOSE)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playmoncry(SPECIES_MEOWTH, 0)
+    applymovement(playerhousemeowth3, moves(face_right))
+    msgbox("Mrawr!", MSGBOX_AUTOCLOSE)
+    waitmovement(playerhousemeowth3)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playse(SE_PIN)
+    applymovement(playerhousemom3, moves(emote_exclamation_mark, face_down))
+    waitmovement(playerhousemom3)
+    speakername("Mom")
+    msgbox("Oh, {PLAYER}! You're back already?
+    I thought you'd want to stay in
+    Iki Town longer\.", MSGBOX_AUTOCLOSE)
+    applymovement(playerhousemom3, moves(walk_down*2, walk_left*4, face_down))
+    applymovement(playerhousemeowth3, moves(delay_16*5, walk_down, walk_left, face_down))
+    waitmovement(0)
+    checkplayergender
+    if (var(VAR_RESULT) == 0){
+        speakername("Mom")
+        msgbox("Especially right after that great
+        Pokémon battle!
+
+        Ooh, I was just captivated to see my
+        own boy fighting in such perfect
+        sync with his partner!")
+    }
+    else{
+        speakername("Mom")
+        msgbox("Especially right after that great
+        Pokémon battle!
+
+        Ooh, I was just captivated to see my
+        own girl fighting in such perfect
+        sync with her partner!")
+    }
+    msgbox("Maybe it would be a good idea for you
+    to try that island challenge thing\.
+    
+    It's something you can only do in Alola,
+    right?
+    
+    But right now, I've got a date with my
+    bed.
+    
+    I danced my feet off at that
+    festival!
+
+    Night-night, sweetie.
+    You get some sleep, too!", MSGBOX_AUTOCLOSE)
+    special(HealPlayerParty)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    setvar(VAR_0x8000, 3)
+    setvar(VAR_RESULT, 1)
+    fadescreen(FADE_TO_BLACK)
+    delay(30)
+    playfanfare(MUS_HEAL)
+    callnative(OpenScreenshotsFromScript)
+    waitstate
+    waitfanfare
+    setvar(VAR_IKITOWN_STATE, 16)
+    delay(30)
+    warpsilent(MAP_PLAYER_ROOM, 12, 10)
+    release
+    end
+}
 
 script PlayerHouse_MomNewGoGetPokemon{
     lock
@@ -347,11 +420,32 @@ script PlayerHouse_TalkToMomAfterDoorbell{
         Go see who it is, {PLAYER}.")
     }
     else{
-        speakername("Mom")
-        msgbox("Sleep does the body good!
-        Traveling is a true education!
-        
-        And unpacking\. will be the death of me!")
+        specialvar(VAR_RESULT, IsPlayerPartyFullyHealed)
+        if(var(VAR_RESULT) == TRUE){
+            speakername("Mom")
+            msgbox("Sleep does the body good!
+            Traveling is a true education!
+            
+            And unpacking\. will be the death of me!")
+        }
+        else{
+            speakername("Mom")
+            msgbox("Have you been having a good time?
+            You look a bit tired but happy.
+            
+            Take a little break before you head out
+            there again, sweetie.", MSGBOX_AUTOCLOSE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            playfanfare(MUS_HEAL)
+            special(HealPlayerParty)
+            waitfanfare
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+            speakername("Mom")
+            msgbox("Here, Take a Pok\e Ball, too, sweetie.
+            I hope you'll encounter someone
+            special today!", MSGBOX_AUTOCLOSE)
+            giveitem(ITEM_POKE_BALL, 1)
+        }
     }
     release
     end

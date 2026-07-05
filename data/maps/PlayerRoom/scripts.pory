@@ -10,7 +10,8 @@ mapscripts PlayerRoom_MapScripts{
     setflag(FLAG_HIDE_PLAYERHOUSE_STARTER)}
     VAR_IKITOWN_STATE, 9 {applymovement(LOCALID_PLAYER, moves(face_up))}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_MOM_IN_HOUSE_INTRO, 0: RoomIntroSequence
-    VAR_IKITOWN_STATE, 9: PlayerRoomDoorbell]
+    VAR_IKITOWN_STATE, 9: PlayerRoomDoorbell
+    VAR_IKITOWN_STATE, 16: PlayerRoomDoorbell2]
 }
 
 script PlayerRoom_Wii{  
@@ -122,3 +123,22 @@ script PlayerRoomDoorbell{
     release
     end
 }
+script PlayerRoomDoorbell2{
+    lock
+    playse(SE_DING_DONG)
+    playbgm(MUS_USUM_IKITOWN_DAY, FALSE)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_down))
+    waitmovement(LOCALID_PLAYER)
+    waitse
+    delay(90)
+    speakername("Mom")
+    msgbox("A visitor!
+    
+    If it was Kukui, he'd probably let
+    himself in without even waiting for
+    us to open the door!")
+    setvar(VAR_IKITOWN_STATE, 17)
+    waitmessage
+    release
+    end
+    }

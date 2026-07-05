@@ -18,6 +18,7 @@
 gSpecials::
 .endif
 	def_special HealPlayerParty
+	def_special IsPlayerPartyFullyHealed
 	def_special Script_RollShiny
 	def_special Script_IsLeadMonShiny
 	def_special SetCableClubWarp

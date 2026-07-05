@@ -607,12 +607,12 @@ script Ikitown_Trigger_UltraReconIntroSkip{
 script Ikitown_Trigger_UltraReconIntroScript{
     startcutscene(CUTSCENE_ULTRARECON_INTRO)
     delay(30)
-    playse(SE_PIN)
     speakername("???")
     msgbox("Measuring the aura readings here\.
     the numbers appear to be a bit high.
     
     What do you think, Captain?", MSGBOX_AUTOCLOSE)
+    playse(SE_PIN)
     applymovement(ikitown_south_UR4, moves(emote_exclamation_mark, face_left))
     waitmovement(ikitown_south_UR4)
     speakername("???")

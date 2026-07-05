@@ -282,11 +282,11 @@ Ikitown_Trigger_FestivalBattle_2:
 # 107 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_0
 # 108 "data/maps/IkiTown/scripts.pory"
-	playmoncry SPECIES_POPPLIO, 0
-# 109 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_Trigger_FestivalBattle_Text_4, MSGBOX_AUTOCLOSE
-# 110 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
+# 109 "data/maps/IkiTown/scripts.pory"
+	playmoncry SPECIES_POPPLIO, 0
+# 110 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_Trigger_FestivalBattle_Text_4, MSGBOX_AUTOCLOSE
 # 111 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	goto Ikitown_Trigger_FestivalBattle_1
@@ -297,11 +297,11 @@ Ikitown_Trigger_FestivalBattle_3:
 # 117 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 118 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_1
-# 119 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_ROWLET, 0
-# 120 "data/maps/IkiTown/scripts.pory"
+# 119 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_6, MSGBOX_AUTOCLOSE
+# 120 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_1
 # 121 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
 # 122 "data/maps/IkiTown/scripts.pory"
@@ -316,11 +316,11 @@ Ikitown_Trigger_FestivalBattle_4:
 # 129 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_0
 # 130 "data/maps/IkiTown/scripts.pory"
-	playmoncry SPECIES_LITTEN, 0
-# 131 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_Trigger_FestivalBattle_Text_8, MSGBOX_AUTOCLOSE
-# 132 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
+# 131 "data/maps/IkiTown/scripts.pory"
+	playmoncry SPECIES_LITTEN, 0
+# 132 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_Trigger_FestivalBattle_Text_8, MSGBOX_AUTOCLOSE
 # 133 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	goto Ikitown_Trigger_FestivalBattle_1
@@ -1580,7 +1580,7 @@ Ikitown_GetPokedex_1:
 # 1099 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
 # 1100 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_8
+	msgbox Ikitown_GetPokedex_Text_8, MSGBOX_AUTOCLOSE
 # 1102 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_GetPokedex_Movement_9
 # 1103 "data/maps/IkiTown/scripts.pory"
@@ -1622,7 +1622,7 @@ Ikitown_GetPokedex_1:
 # 1146 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
 # 1147 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_13
+	msgbox Ikitown_GetPokedex_Text_13, MSGBOX_AUTOCLOSE
 # 1163 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_10
 # 1164 "data/maps/IkiTown/scripts.pory"
@@ -1632,7 +1632,7 @@ Ikitown_GetPokedex_1:
 # 1166 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
 # 1167 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_14
+	msgbox Ikitown_GetPokedex_Text_14, MSGBOX_AUTOCLOSE
 # 1169 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 1
 # 1170 "data/maps/IkiTown/scripts.pory"
@@ -2212,15 +2212,15 @@ Ikitown_Trigger_FestivalBattle_Movement_0:
 	walk_in_place_down
 	step_end
 
-# 118 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_1:
-# 118 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	face_left
-# 118 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	face_up
-# 118 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	face_right
-# 118 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	face_down
 	step_end
 
@@ -3544,7 +3544,7 @@ Ikitown_Trigger_FestivalBattle_Text_3:
 	.string "Me and Popplio've been waiting for ages!$"
 
 Ikitown_Trigger_FestivalBattle_Text_4:
-# 109 "data/maps/IkiTown/scripts.pory"
+# 110 "data/maps/IkiTown/scripts.pory"
 	.string "Bwark!$"
 
 Ikitown_Trigger_FestivalBattle_Text_5:
@@ -3553,7 +3553,7 @@ Ikitown_Trigger_FestivalBattle_Text_5:
 	.string "Me and Rowlet've been waiting for ages!$"
 
 Ikitown_Trigger_FestivalBattle_Text_6:
-# 120 "data/maps/IkiTown/scripts.pory"
+# 119 "data/maps/IkiTown/scripts.pory"
 	.string "Hoo!$"
 
 Ikitown_Trigger_FestivalBattle_Text_7:
@@ -3562,7 +3562,7 @@ Ikitown_Trigger_FestivalBattle_Text_7:
 	.string "Me and Litten've been waiting for ages!$"
 
 Ikitown_Trigger_FestivalBattle_Text_8:
-# 131 "data/maps/IkiTown/scripts.pory"
+# 132 "data/maps/IkiTown/scripts.pory"
 	.string "Grrr!$"
 
 Ikitown_Trigger_FestivalBattle_Text_9:

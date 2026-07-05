@@ -48,6 +48,56 @@ void HealPlayerParty(void)
         FlagSet(B_FLAG_TERA_ORB_CHARGED);
 }
 
+u16 IsPlayerPartyFullyHealed(void)
+{
+    u32 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+
+    gSpecialVar_Result = TRUE;
+    for (i = 0; i < partyCount; i++)
+    {
+        u32 j;
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+        u16 hp;
+        u16 maxHp;
+
+        if (species == SPECIES_NONE || species == SPECIES_EGG)
+            continue;
+
+        hp = GetMonData(mon, MON_DATA_HP);
+        maxHp = GetMonData(mon, MON_DATA_MAX_HP);
+        if (hp < maxHp || GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_NONE)
+        {
+            gSpecialVar_Result = FALSE;
+            return FALSE;
+        }
+
+        {
+            u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+            for (j = 0; j < MAX_MON_MOVES; j++)
+            {
+                enum Move move = GetMonData(mon, MON_DATA_MOVE1 + j);
+                u16 maxPp;
+                u16 currPp;
+
+                if (move == MOVE_NONE)
+                    continue;
+
+                maxPp = CalculatePPWithBonus(move, ppBonuses, j);
+                currPp = GetMonData(mon, MON_DATA_PP1 + j);
+                if (currPp < maxPp)
+                {
+                    gSpecialVar_Result = FALSE;
+                    return FALSE;
+                }
+            }
+        }
+    }
+
+    return TRUE;
+}
+
 static void HealPlayerBoxes(void)
 {
     int boxId, boxPosition;
