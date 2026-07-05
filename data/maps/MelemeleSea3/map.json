@@ -15,17 +15,17 @@
   "connections": [
     {
       "map": "MAP_MELEMELE_SEA2",
-      "offset": 12,
+      "offset": 18,
       "direction": "down"
     },
     {
       "map": "MAP_HAUOLI_CITY_BEACHFRONT",
-      "offset": -8,
+      "offset": -2,
       "direction": "up"
     },
     {
       "map": "MAP_ROUTE1N",
-      "offset": 32,
+      "offset": 43,
       "direction": "up"
     }
   ],

@@ -5515,7 +5515,7 @@
     {
       "id": "LAYOUT_ROUTE1",
       "name": "Route1_Layout",
-      "width": 44,
+      "width": 51,
       "height": 38,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_BattleFrontierOutsideEast",
@@ -5545,7 +5545,7 @@
     {
       "id": "LAYOUT_HAUOLI_OUTSKIRTS",
       "name": "HauoliOutskirts_Layout",
-      "width": 64,
+      "width": 66,
       "height": 30,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_IslandHarbor",
@@ -5555,7 +5555,7 @@
     {
       "id": "LAYOUT_ROUTE1N",
       "name": "Route1N_Layout",
-      "width": 40,
+      "width": 35,
       "height": 40,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_TrainerSchool",
@@ -5585,7 +5585,7 @@
     {
       "id": "LAYOUT_MELEMELE_SEA",
       "name": "MelemeleSea_Layout",
-      "width": 50,
+      "width": 53,
       "height": 25,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_TrainerSchool",
@@ -5605,7 +5605,7 @@
     {
       "id": "LAYOUT_MELEMELE_SEA3",
       "name": "MelemeleSea3_Layout",
-      "width": 46,
+      "width": 52,
       "height": 15,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_HauoliBeachfront",
@@ -5615,7 +5615,7 @@
     {
       "id": "LAYOUT_HAUOLI_CITY_BEACHFRONT",
       "name": "HauoliCityBeachfront_Layout",
-      "width": 40,
+      "width": 45,
       "height": 38,
       "primary_tileset": "gTileset_orangeislands",
       "secondary_tileset": "gTileset_HauoliBeachfront",
