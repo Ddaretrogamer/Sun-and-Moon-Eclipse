@@ -87,7 +87,7 @@ script Playerhouse_WelcomeHomeAfterFestival{
     
     But right now, I've got a date with my
     bed.
-    
+
     I danced my feet off at that
     festival!
 
@@ -429,22 +429,38 @@ script PlayerHouse_TalkToMomAfterDoorbell{
             And unpacking\. will be the death of me!")
         }
         else{
-            speakername("Mom")
-            msgbox("Have you been having a good time?
-            You look a bit tired but happy.
-            
-            Take a little break before you head out
-            there again, sweetie.", MSGBOX_AUTOCLOSE)
-            fadescreenswapbuffers(FADE_TO_BLACK)
-            playfanfare(MUS_HEAL)
-            special(HealPlayerParty)
-            waitfanfare
-            fadescreenswapbuffers(FADE_FROM_BLACK)
-            speakername("Mom")
-            msgbox("Here, Take a Pok\e Ball, too, sweetie.
-            I hope you'll encounter someone
-            special today!", MSGBOX_AUTOCLOSE)
-            giveitem(ITEM_POKE_BALL, 1)
+            if(flag(FLAG_DAILY_MOM_HEAL_POKEBALL)){
+                speakername("Mom")
+                msgbox("Have you been having a good time?
+                You look a bit tired but happy.
+                
+                Take a little break before you head out
+                there again, sweetie.", MSGBOX_AUTOCLOSE)
+                fadescreenswapbuffers(FADE_TO_BLACK)
+                playfanfare(MUS_HEAL)
+                special(HealPlayerParty)
+                waitfanfare
+                fadescreenswapbuffers(FADE_FROM_BLACK)
+            }
+            else{
+                speakername("Mom")
+                msgbox("Have you been having a good time?
+                You look a bit tired but happy.
+                
+                Take a little break before you head out
+                there again, sweetie.", MSGBOX_AUTOCLOSE)
+                fadescreenswapbuffers(FADE_TO_BLACK)
+                playfanfare(MUS_HEAL)
+                special(HealPlayerParty)
+                waitfanfare
+                fadescreenswapbuffers(FADE_FROM_BLACK)
+                speakername("Mom")
+                msgbox("Here, Take a Pok\e Ball, too, sweetie.
+                I hope you'll encounter someone
+                special today!", MSGBOX_AUTOCLOSE)
+                giveitem(ITEM_POKE_BALL, 1)
+                setflag(FLAG_DAILY_MOM_HEAL_POKEBALL)
+            }
         }
     }
     release

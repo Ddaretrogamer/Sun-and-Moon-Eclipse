@@ -651,27 +651,31 @@ PlayerHouse_TalkToMomAfterDoorbell::
 	compare VAR_RESULT, TRUE
 	goto_if_eq PlayerHouse_TalkToMomAfterDoorbell_5
 # 432 "data/maps/PlayerHouse/scripts.pory"
+	goto_if_set FLAG_DAILY_MOM_HEAL_POKEBALL, PlayerHouse_TalkToMomAfterDoorbell_8
+# 446 "data/maps/PlayerHouse/scripts.pory"
 	speakername Playerhouse_WelcomeHomeAfterFestival_Text_0
-# 433 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_2, MSGBOX_AUTOCLOSE
-# 438 "data/maps/PlayerHouse/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 439 "data/maps/PlayerHouse/scripts.pory"
-	playfanfare MUS_HEAL
-# 440 "data/maps/PlayerHouse/scripts.pory"
-	special HealPlayerParty
-# 441 "data/maps/PlayerHouse/scripts.pory"
-	waitfanfare
-# 442 "data/maps/PlayerHouse/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
-# 443 "data/maps/PlayerHouse/scripts.pory"
-	speakername Playerhouse_WelcomeHomeAfterFestival_Text_0
-# 444 "data/maps/PlayerHouse/scripts.pory"
-	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_3, MSGBOX_AUTOCLOSE
 # 447 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_2, MSGBOX_AUTOCLOSE
+# 452 "data/maps/PlayerHouse/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 453 "data/maps/PlayerHouse/scripts.pory"
+	playfanfare MUS_HEAL
+# 454 "data/maps/PlayerHouse/scripts.pory"
+	special HealPlayerParty
+# 455 "data/maps/PlayerHouse/scripts.pory"
+	waitfanfare
+# 456 "data/maps/PlayerHouse/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 457 "data/maps/PlayerHouse/scripts.pory"
+	speakername Playerhouse_WelcomeHomeAfterFestival_Text_0
+# 458 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_3, MSGBOX_AUTOCLOSE
+# 461 "data/maps/PlayerHouse/scripts.pory"
 	giveitem ITEM_POKE_BALL, 1
+# 462 "data/maps/PlayerHouse/scripts.pory"
+	setflag FLAG_DAILY_MOM_HEAL_POKEBALL
 PlayerHouse_TalkToMomAfterDoorbell_1:
-# 450 "data/maps/PlayerHouse/scripts.pory"
+# 466 "data/maps/PlayerHouse/scripts.pory"
 	release
 	end
 
@@ -689,15 +693,32 @@ PlayerHouse_TalkToMomAfterDoorbell_5:
 	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_1
 	goto PlayerHouse_TalkToMomAfterDoorbell_1
 
+PlayerHouse_TalkToMomAfterDoorbell_8:
+# 433 "data/maps/PlayerHouse/scripts.pory"
+	speakername Playerhouse_WelcomeHomeAfterFestival_Text_0
+# 434 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_TalkToMomAfterDoorbell_Text_2, MSGBOX_AUTOCLOSE
+# 439 "data/maps/PlayerHouse/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 440 "data/maps/PlayerHouse/scripts.pory"
+	playfanfare MUS_HEAL
+# 441 "data/maps/PlayerHouse/scripts.pory"
+	special HealPlayerParty
+# 442 "data/maps/PlayerHouse/scripts.pory"
+	waitfanfare
+# 443 "data/maps/PlayerHouse/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto PlayerHouse_TalkToMomAfterDoorbell_1
+
 
 PlayerHouse_MomHealPlayer::
-# 455 "data/maps/PlayerHouse/scripts.pory"
+# 471 "data/maps/PlayerHouse/scripts.pory"
 	lock
-# 456 "data/maps/PlayerHouse/scripts.pory"
+# 472 "data/maps/PlayerHouse/scripts.pory"
 	faceplayer
-# 457 "data/maps/PlayerHouse/scripts.pory"
+# 473 "data/maps/PlayerHouse/scripts.pory"
 	speakername Playerhouse_WelcomeHomeAfterFestival_Text_0
-# 458 "data/maps/PlayerHouse/scripts.pory"
+# 474 "data/maps/PlayerHouse/scripts.pory"
 	msgbox PlayerHouse_MomHealPlayer_Text_0
 	return
 
@@ -1092,18 +1113,18 @@ PlayerHouse_TalkToMomAfterDoorbell_Text_1:
 	.string "And unpacking… will be the death of me!$"
 
 PlayerHouse_TalkToMomAfterDoorbell_Text_2:
-# 433 "data/maps/PlayerHouse/scripts.pory"
+# 434 "data/maps/PlayerHouse/scripts.pory"
 	.string "Have you been having a good time?\n"
 	.string "You look a bit tired but happy.\p"
 	.string "Take a little break before you head out\n"
 	.string "there again, sweetie.$"
 
 PlayerHouse_TalkToMomAfterDoorbell_Text_3:
-# 444 "data/maps/PlayerHouse/scripts.pory"
+# 458 "data/maps/PlayerHouse/scripts.pory"
 	.string "Here, Take a Poké Ball, too, sweetie.\n"
 	.string "I hope you'll encounter someone\l"
 	.string "special today!$"
 
 PlayerHouse_MomHealPlayer_Text_0:
-# 458 "data/maps/PlayerHouse/scripts.pory"
+# 474 "data/maps/PlayerHouse/scripts.pory"
 	.string "Sleep does the$"

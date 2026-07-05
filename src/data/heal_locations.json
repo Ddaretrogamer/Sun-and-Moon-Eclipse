@@ -379,8 +379,8 @@
       "y": 12,
       "respawn_map": "MAP_PLAYER_HOUSE",
       "respawn_npc": "playerhousemom2",
-      "respawn_x": 11,
-      "respawn_y": 13
+      "respawn_x": 12,
+      "respawn_y": 12
     }
   ]
 }
