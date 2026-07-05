@@ -50,6 +50,7 @@ script Playerhouse_WelcomeHomeAfterFestival{
     msgbox("Mrawr!", MSGBOX_AUTOCLOSE)
     waitmovement(playerhousemeowth3)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    delay(60)
     playse(SE_PIN)
     applymovement(playerhousemom3, moves(emote_exclamation_mark, face_down))
     waitmovement(playerhousemom3)
