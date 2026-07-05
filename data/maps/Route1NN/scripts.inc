@@ -1952,6 +1952,20 @@ Route1NN_dialog_RockruffFriendly::
 	end
 
 
+Route1NN_Trigger_HeadToIkitown::
+# 1238 "data/maps/Route1NN/scripts.pory"
+	lock
+# 1239 "data/maps/Route1NN/scripts.pory"
+	msgbox Route1NN_Trigger_HeadToIkitown_Text_0, MSGBOX_AUTOCLOSE
+# 1241 "data/maps/Route1NN/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1NN_Trigger_HeadToIkitown_Movement_0
+# 1242 "data/maps/Route1NN/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 1243 "data/maps/Route1NN/scripts.pory"
+	release
+	end
+
+
 # 10 "data/maps/Route1NN/scripts.pory"
 YungoosMeowth_Blocking_Movement_0:
 # 10 "data/maps/Route1NN/scripts.pory"
@@ -2624,6 +2638,12 @@ Route1NN_CatchingTutorial_Movement_6:
 	walk_up
 	step_end
 
+# 1241 "data/maps/Route1NN/scripts.pory"
+Route1NN_Trigger_HeadToIkitown_Movement_0:
+# 1241 "data/maps/Route1NN/scripts.pory"
+	walk_left
+	step_end
+
 YungoosMeowth_Blocking_Text_0:
 # 7 "data/maps/Route1NN/scripts.pory"
 	.string "We can win this! We can win this!\n"
@@ -2958,3 +2978,8 @@ Route1NN_dialog_RockruffFriendly_Text_0:
 # 1231 "data/maps/Route1NN/scripts.pory"
 	.string "Rockruff is a really friendly Pokémon!\n"
 	.string "you should try playing with it a bit!$"
+
+Route1NN_Trigger_HeadToIkitown_Text_0:
+# 1239 "data/maps/Route1NN/scripts.pory"
+	.string "Iki Town is just up ahead!\n"
+	.string "Let's go, cousin!$"

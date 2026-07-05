@@ -276,7 +276,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_Rockruff",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -289,7 +289,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_LittleBoyFestivalRockruffDialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -303,7 +303,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_LittleGirlFestivalRockruffDialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -317,7 +317,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_FestivalNPC6Dialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -331,7 +331,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_FestivalNPC5Dialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -344,7 +344,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_FestivalNPC4Dialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
@@ -357,11 +357,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Ikitown_FestivalNPC3Dialog",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGUTOR_ALOLA)",
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
       "x": 21,
       "y": 17,
       "elevation": 0,
@@ -495,6 +495,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_IKITOWN_FESTIVALNPCS3"
+    },
+    {
+      "local_id": "ikitownfestivalur1",
+      "graphics_id": "OBJ_EVENT_GFX_ULTRA_RECON_1",
+      "x": 39,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "local_id": "ikitownfestivalur4",
+      "graphics_id": "OBJ_EVENT_GFX_ULTRA_RECON_4",
+      "x": 38,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [

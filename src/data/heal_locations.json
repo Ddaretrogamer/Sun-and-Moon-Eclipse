@@ -375,8 +375,8 @@
     {
       "id": "HEAL_LOCATION_PLAYER_HOUSE",
       "map": "MAP_PLAYER_HOUSE",
-      "x": 11,
-      "y": 13,
+      "x": 12,
+      "y": 12,
       "respawn_map": "MAP_PLAYER_HOUSE",
       "respawn_npc": "playerhousemom2",
       "respawn_x": 11,

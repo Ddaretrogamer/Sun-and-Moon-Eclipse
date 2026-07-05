@@ -74,7 +74,7 @@ void StartSkippableCutscene(struct ScriptContext *ctx)
             {
                 LoadSpriteSheets(sCutsceneSkipButtonSpriteSheets);
                 LoadSpritePalette(&sCutsceneSkipButtonPalette);
-                spriteId = CreateSprite(&sCutsceneSkipButtonTemplate, 20, 30, 0xFF);
+                spriteId = CreateSprite(&sCutsceneSkipButtonTemplate, 20, 50, 0xFF);
                 gSprites[spriteId].oam.priority = 0;
                 gTasks[taskId].tSpriteId = spriteId;
             }

@@ -571,6 +571,18 @@ PlayerHouse_TalkToMomAfterDoorbell_2:
 	goto PlayerHouse_TalkToMomAfterDoorbell_1
 
 
+PlayerHouse_MomHealPlayer::
+# 361 "data/maps/PlayerHouse/scripts.pory"
+	lock
+# 362 "data/maps/PlayerHouse/scripts.pory"
+	faceplayer
+# 363 "data/maps/PlayerHouse/scripts.pory"
+	speakername PlayerHouse_MomNewGoGetPokemon_Text_0
+# 364 "data/maps/PlayerHouse/scripts.pory"
+	msgbox PlayerHouse_MomHealPlayer_Text_0
+	return
+
+
 # 79 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_MomNewgame_Movement_0:
 # 79 "data/maps/PlayerHouse/scripts.pory"
@@ -864,3 +876,7 @@ PlayerHouse_TalkToMomAfterDoorbell_Text_1:
 	.string "Sleep does the body good!\n"
 	.string "Traveling is a true education!\p"
 	.string "And unpacking… will be the death of me!$"
+
+PlayerHouse_MomHealPlayer_Text_0:
+# 364 "data/maps/PlayerHouse/scripts.pory"
+	.string "Sleep does the$"

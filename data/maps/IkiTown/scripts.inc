@@ -156,137 +156,137 @@ Ikitown_Trigger_FestivalBattle::
 # 79 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_hala_festival, Ikitown_Trigger_FestivalBattle_Movement_0
 # 80 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 81 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_Trigger_FestivalBattle_Text_1, MSGBOX_AUTOCLOSE
-# 98 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_hau_festival, Ikitown_Trigger_FestivalBattle_Movement_0
-# 99 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
+# 81 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 82 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_Trigger_FestivalBattle_Text_1, MSGBOX_AUTOCLOSE
+# 99 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_hau_festival, Ikitown_Trigger_FestivalBattle_Movement_0
 # 100 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_2
+	waitmovement 0
 # 101 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_2
+# 102 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 0
 	goto_if_eq Ikitown_Trigger_FestivalBattle_2
 # 113 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 1
 	goto_if_eq Ikitown_Trigger_FestivalBattle_3
-# 125 "data/maps/IkiTown/scripts.pory"
+# 124 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 2
 	goto_if_eq Ikitown_Trigger_FestivalBattle_4
 Ikitown_Trigger_FestivalBattle_1:
-# 137 "data/maps/IkiTown/scripts.pory"
+# 135 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 138 "data/maps/IkiTown/scripts.pory"
+# 136 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_9, MSGBOX_AUTOCLOSE
-# 140 "data/maps/IkiTown/scripts.pory"
+# 138 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_kukui_festival
-# 141 "data/maps/IkiTown/scripts.pory"
+# 139 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_lillie_festival
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_2
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_kukui_festival, Ikitown_Trigger_FestivalBattle_Movement_3
-# 144 "data/maps/IkiTown/scripts.pory"
+# 142 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_3
+# 143 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 144 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
 # 145 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 146 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 147 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_11, MSGBOX_AUTOCLOSE
-# 148 "data/maps/IkiTown/scripts.pory"
+# 146 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_kukui_festival, Ikitown_Trigger_FestivalBattle_Movement_4
-# 149 "data/maps/IkiTown/scripts.pory"
+# 147 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_5
+# 148 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 149 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
 # 150 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 151 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 152 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_13, MSGBOX_AUTOCLOSE
-# 153 "data/maps/IkiTown/scripts.pory"
+# 151 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_COSMOG, 0
-# 154 "data/maps/IkiTown/scripts.pory"
+# 152 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_6
-# 155 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 156 "data/maps/IkiTown/scripts.pory"
+# 153 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 157 "data/maps/IkiTown/scripts.pory"
+# 154 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_14, MSGBOX_AUTOCLOSE
-# 158 "data/maps/IkiTown/scripts.pory"
+# 155 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 159 "data/maps/IkiTown/scripts.pory"
+# 156 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 157 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 160 "data/maps/IkiTown/scripts.pory"
+# 158 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 161 "data/maps/IkiTown/scripts.pory"
+# 159 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_15, MSGBOX_AUTOCLOSE
-# 168 "data/maps/IkiTown/scripts.pory"
+# 166 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_7
-# 169 "data/maps/IkiTown/scripts.pory"
+# 167 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 170 "data/maps/IkiTown/scripts.pory"
+# 168 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 171 "data/maps/IkiTown/scripts.pory"
+# 169 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_16
-# 178 "data/maps/IkiTown/scripts.pory"
+# 176 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_7
-# 179 "data/maps/IkiTown/scripts.pory"
+# 177 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_hala_festival, Ikitown_Trigger_FestivalBattle_Movement_0
+# 178 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 179 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
 # 180 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 181 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 182 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_17
-# 187 "data/maps/IkiTown/scripts.pory"
+# 185 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_hala_festival, Ikitown_Trigger_FestivalBattle_Movement_8
-# 188 "data/maps/IkiTown/scripts.pory"
+# 186 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 189 "data/maps/IkiTown/scripts.pory"
+# 187 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 190 "data/maps/IkiTown/scripts.pory"
+# 188 "data/maps/IkiTown/scripts.pory"
 	special HealPlayerParty
-# 191 "data/maps/IkiTown/scripts.pory"
+# 189 "data/maps/IkiTown/scripts.pory"
 	playfanfare MUS_HEAL
-# 192 "data/maps/IkiTown/scripts.pory"
+# 190 "data/maps/IkiTown/scripts.pory"
 	waitfanfare
-# 193 "data/maps/IkiTown/scripts.pory"
+# 191 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 194 "data/maps/IkiTown/scripts.pory"
+# 192 "data/maps/IkiTown/scripts.pory"
 	endcutscene
-# 195 "data/maps/IkiTown/scripts.pory"
+# 193 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 196 "data/maps/IkiTown/scripts.pory"
+# 194 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_18, MSGBOX_YESNO
-# 197 "data/maps/IkiTown/scripts.pory"
+# 195 "data/maps/IkiTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq Ikitown_Trigger_FestivalBattle_8
-# 203 "data/maps/IkiTown/scripts.pory"
+# 201 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 204 "data/maps/IkiTown/scripts.pory"
+# 202 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_20, MSGBOX_AUTOCLOSE
-# 206 "data/maps/IkiTown/scripts.pory"
+# 204 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleSaidNo
 	return
 
 Ikitown_Trigger_FestivalBattle_2:
-# 103 "data/maps/IkiTown/scripts.pory"
+# 104 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_3, MSGBOX_AUTOCLOSE
-# 105 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 106 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_0
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 107 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
+	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_0
 # 108 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_POPPLIO, 0
 # 109 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_4, MSGBOX_AUTOCLOSE
 # 110 "data/maps/IkiTown/scripts.pory"
-	waitmoncry
+	waitmovement 0
 # 111 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	goto Ikitown_Trigger_FestivalBattle_1
@@ -299,115 +299,115 @@ Ikitown_Trigger_FestivalBattle_3:
 # 118 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_1
 # 119 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 120 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_ROWLET, 0
-# 121 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_6, MSGBOX_AUTOCLOSE
+# 121 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
 # 122 "data/maps/IkiTown/scripts.pory"
-	waitmoncry
-# 123 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	goto Ikitown_Trigger_FestivalBattle_1
 
 Ikitown_Trigger_FestivalBattle_4:
-# 127 "data/maps/IkiTown/scripts.pory"
+# 126 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_7, MSGBOX_AUTOCLOSE
-# 129 "data/maps/IkiTown/scripts.pory"
+# 128 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 130 "data/maps/IkiTown/scripts.pory"
+# 129 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_dynhaumon_festival, Ikitown_Trigger_FestivalBattle_Movement_0
-# 131 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 132 "data/maps/IkiTown/scripts.pory"
+# 130 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_LITTEN, 0
-# 133 "data/maps/IkiTown/scripts.pory"
+# 131 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_8, MSGBOX_AUTOCLOSE
-# 134 "data/maps/IkiTown/scripts.pory"
-	waitmoncry
-# 135 "data/maps/IkiTown/scripts.pory"
+# 132 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 133 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	goto Ikitown_Trigger_FestivalBattle_1
 
 Ikitown_Trigger_FestivalBattle_8:
-# 198 "data/maps/IkiTown/scripts.pory"
+# 196 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 199 "data/maps/IkiTown/scripts.pory"
+# 197 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_19, MSGBOX_AUTOCLOSE
-# 200 "data/maps/IkiTown/scripts.pory"
+# 198 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleOnStage
 	return
 
 
 Ikitown_Trigger_FestivalBattleSkip1::
-# 212 "data/maps/IkiTown/scripts.pory"
+# 210 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 213 "data/maps/IkiTown/scripts.pory"
+# 211 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 214 "data/maps/IkiTown/scripts.pory"
+# 212 "data/maps/IkiTown/scripts.pory"
 	special StopAllObjectMovements
-# 215 "data/maps/IkiTown/scripts.pory"
+# 213 "data/maps/IkiTown/scripts.pory"
 	special CloseScriptMenus
-# 216 "data/maps/IkiTown/scripts.pory"
+# 214 "data/maps/IkiTown/scripts.pory"
+	special HealPlayerParty
+# 215 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_kukui_festival
-# 217 "data/maps/IkiTown/scripts.pory"
+# 216 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_lillie_festival
-# 218 "data/maps/IkiTown/scripts.pory"
+# 217 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitown_kukui_festival, 32, 17
-# 219 "data/maps/IkiTown/scripts.pory"
+# 218 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitown_lillie_festival, 31, 17
-# 220 "data/maps/IkiTown/scripts.pory"
+# 219 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_hala_festival
-# 221 "data/maps/IkiTown/scripts.pory"
+# 220 "data/maps/IkiTown/scripts.pory"
 	addobject ikitown_hau_festival
-# 222 "data/maps/IkiTown/scripts.pory"
+# 221 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitown_hala_festival, 32, 15
-# 223 "data/maps/IkiTown/scripts.pory"
+# 222 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitown_hau_festival, 32, 14
-# 224 "data/maps/IkiTown/scripts.pory"
+# 223 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_7
-# 225 "data/maps/IkiTown/scripts.pory"
+# 224 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 226 "data/maps/IkiTown/scripts.pory"
+# 225 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleSaidNo
 	return
 
 
 Ikitown_FestivalBattleSaidNo::
-# 230 "data/maps/IkiTown/scripts.pory"
+# 229 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 231 "data/maps/IkiTown/scripts.pory"
+# 230 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_18, MSGBOX_YESNO
-# 232 "data/maps/IkiTown/scripts.pory"
+# 231 "data/maps/IkiTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq Ikitown_FestivalBattleSaidNo_1
-# 238 "data/maps/IkiTown/scripts.pory"
+# 237 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 239 "data/maps/IkiTown/scripts.pory"
+# 238 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_20, MSGBOX_AUTOCLOSE
-# 241 "data/maps/IkiTown/scripts.pory"
+# 240 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleSaidNo
 	return
 
 Ikitown_FestivalBattleSaidNo_1:
-# 233 "data/maps/IkiTown/scripts.pory"
+# 232 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 234 "data/maps/IkiTown/scripts.pory"
+# 233 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Trigger_FestivalBattle_Text_19, MSGBOX_AUTOCLOSE
-# 235 "data/maps/IkiTown/scripts.pory"
+# 234 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleOnStage
 	return
 
 
 Ikitown_Trigger_FestivalBattleSkip2::
-# 246 "data/maps/IkiTown/scripts.pory"
+# 245 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 247 "data/maps/IkiTown/scripts.pory"
+# 246 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 248 "data/maps/IkiTown/scripts.pory"
+# 247 "data/maps/IkiTown/scripts.pory"
 	special StopAllObjectMovements
-# 249 "data/maps/IkiTown/scripts.pory"
+# 248 "data/maps/IkiTown/scripts.pory"
 	special CloseScriptMenus
+# 249 "data/maps/IkiTown/scripts.pory"
+	special RemoveCameraObject
 # 250 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
 # 251 "data/maps/IkiTown/scripts.pory"
@@ -511,8 +511,10 @@ Ikitown_FestivalBattleOnStage_1:
 # 333 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
 # 334 "data/maps/IkiTown/scripts.pory"
-	endcutscene
+	special RemoveCameraObject
 # 335 "data/maps/IkiTown/scripts.pory"
+	endcutscene
+# 336 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_FestivalBattleOnStage2
 	return
 
@@ -539,26 +541,24 @@ Ikitown_FestivalBattleOnStage_4:
 
 
 Ikitown_FestivalBattleOnStage2::
-# 339 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
 # 340 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 341 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_0, MSGBOX_AUTOCLOSE
-# 342 "data/maps/IkiTown/scripts.pory"
+# 343 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 0
 	goto_if_eq Ikitown_FestivalBattleOnStage2_2
-# 352 "data/maps/IkiTown/scripts.pory"
+# 353 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 1
 	goto_if_eq Ikitown_FestivalBattleOnStage2_3
-# 362 "data/maps/IkiTown/scripts.pory"
+# 363 "data/maps/IkiTown/scripts.pory"
 	compare VAR_STARTER_MON, 2
 	goto_if_eq Ikitown_FestivalBattleOnStage2_4
 Ikitown_FestivalBattleOnStage2_1:
-# 372 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 373 "data/maps/IkiTown/scripts.pory"
-	startcutscene CUTSCENE_IKITOWN_FESTIVAL_BATTLE_3
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 # 374 "data/maps/IkiTown/scripts.pory"
-	special SpawnCameraObject
+	startcutscene CUTSCENE_IKITOWN_FESTIVAL_BATTLE_3
 # 375 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_2, MSGBOX_AUTOCLOSE
 # 378 "data/maps/IkiTown/scripts.pory"
@@ -628,1295 +628,1538 @@ Ikitown_FestivalBattleOnStage2_1:
 # 415 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_9, MSGBOX_AUTOCLOSE
 # 436 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_kukui_festival, Ikitown_Trigger_FestivalBattle_Movement_0
+	applymovement ikitown_kukui_festival, Ikitown_FestivalBattleOnStage_Movement_7
 # 437 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
+	playse SE_LEDGE
 # 438 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
+	waitse
 # 439 "data/maps/IkiTown/scripts.pory"
+	playse SE_LEDGE
+# 440 "data/maps/IkiTown/scripts.pory"
+	waitse
+# 441 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 442 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_10
-# 444 "data/maps/IkiTown/scripts.pory"
+# 447 "data/maps/IkiTown/scripts.pory"
 	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Ikitown_FestivalBattleOnStage2_Text_11, Ikitown_FestivalBattleOnStage2_Text_12
-# 445 "data/maps/IkiTown/scripts.pory"
+# 448 "data/maps/IkiTown/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq Ikitown_FestivalBattleOnStage2_9
-# 453 "data/maps/IkiTown/scripts.pory"
+# 456 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 454 "data/maps/IkiTown/scripts.pory"
+# 457 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_13
 Ikitown_FestivalBattleOnStage2_8:
-# 459 "data/maps/IkiTown/scripts.pory"
+# 462 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 460 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_14, MSGBOX_AUTOCLOSE
 # 463 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_hau_festival, Ikitown_FestivalBattleOnStage_Movement_6
-# 464 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 465 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_2
+	msgbox Ikitown_FestivalBattleOnStage2_Text_14, MSGBOX_AUTOCLOSE
 # 466 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_15, MSGBOX_AUTOCLOSE
-# 468 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage_Movement_6
-# 469 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 470 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 471 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_16
-# 482 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage2_Movement_2
-# 483 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 484 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 485 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_17, MSGBOX_AUTOCLOSE
-# 487 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_hau_festival, Ikitown_FestivalBattleOnStage_Movement_6
-# 488 "data/maps/IkiTown/scripts.pory"
+# 467 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 489 "data/maps/IkiTown/scripts.pory"
+# 468 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 490 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_18, MSGBOX_AUTOCLOSE
-# 496 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage2_Movement_3
-# 497 "data/maps/IkiTown/scripts.pory"
+# 469 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalBattleOnStage2_Text_15, MSGBOX_AUTOCLOSE
+# 471 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage_Movement_6
+# 472 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 498 "data/maps/IkiTown/scripts.pory"
+# 473 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 474 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalBattleOnStage2_Text_16, MSGBOX_AUTOCLOSE
+# 485 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage2_Movement_2
+# 486 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 487 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 488 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalBattleOnStage2_Text_17, MSGBOX_AUTOCLOSE
+# 490 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_hau_festival, Ikitown_FestivalBattleOnStage_Movement_6
+# 491 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 492 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_2
+# 493 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalBattleOnStage2_Text_18, MSGBOX_AUTOCLOSE
 # 499 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_hala_festival, Ikitown_FestivalBattleOnStage2_Movement_3
+# 500 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 501 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 502 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_19, MSGBOX_AUTOCLOSE
-# 504 "data/maps/IkiTown/scripts.pory"
+# 507 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 505 "data/maps/IkiTown/scripts.pory"
-	playfanfare MUS_OBTAIN_SYMBOL
-# 506 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_20, MSGBOX_AUTOCLOSE
 # 508 "data/maps/IkiTown/scripts.pory"
-	waitfanfare
+	playfanfare MUS_OBTAIN_SYMBOL
 # 509 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 510 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_kukui_festival, Ikitown_Trigger_FestivalBattle_Movement_0
+	msgbox Ikitown_FestivalBattleOnStage2_Text_20, MSGBOX_AUTOCLOSE
 # 511 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
+	waitfanfare
 # 512 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 513 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_FestivalBattleOnStage2_Text_21
+	applymovement ikitown_kukui_festival, Ikitown_FestivalBattleOnStage_Movement_7
+# 514 "data/maps/IkiTown/scripts.pory"
+	playse SE_LEDGE
 # 515 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_FestivalBattleOnStage2_Movement_4
+	waitse
 # 516 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
+	playse SE_LEDGE
 # 517 "data/maps/IkiTown/scripts.pory"
-	special RemoveCameraObject
+	waitse
 # 518 "data/maps/IkiTown/scripts.pory"
-	endcutscene
+	waitmovement 0
 # 519 "data/maps/IkiTown/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 15
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
 # 520 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_IKITOWN_FESTIVAL_COMPLETE
-# 521 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS2
+	msgbox Ikitown_FestivalBattleOnStage2_Text_21, MSGBOX_AUTOCLOSE
 # 522 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS3
+	fadescreenswapbuffers FADE_TO_BLACK
 # 523 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS
+	endcutscene
 # 524 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
-# 525 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_HIDE_IKITOWN_REGULARNPCS
-# 526 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_HIDE_IKITOWN_SOUTH_LASS
-# 527 "data/maps/IkiTown/scripts.pory"
-	warp MAP_PLAYER_HOUSE, 8, 15
-# 528 "data/maps/IkiTown/scripts.pory"
-	waitstate
-# 529 "data/maps/IkiTown/scripts.pory"
-	release
-	end
+	call Ikitown_LeavingIkitownFestival
+	return
 
 Ikitown_FestivalBattleOnStage2_2:
-# 343 "data/maps/IkiTown/scripts.pory"
+# 344 "data/maps/IkiTown/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, Ikitown_FestivalBattleOnStage2_12
-# 349 "data/maps/IkiTown/scripts.pory"
+# 350 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_POPPLIO, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 Ikitown_FestivalBattleOnStage2_3:
-# 353 "data/maps/IkiTown/scripts.pory"
+# 354 "data/maps/IkiTown/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, Ikitown_FestivalBattleOnStage2_15
-# 359 "data/maps/IkiTown/scripts.pory"
+# 360 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_ROWLET, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 Ikitown_FestivalBattleOnStage2_4:
-# 363 "data/maps/IkiTown/scripts.pory"
+# 364 "data/maps/IkiTown/scripts.pory"
 	goto_if_set FLAG_RIVAL_SHINY, Ikitown_FestivalBattleOnStage2_18
-# 369 "data/maps/IkiTown/scripts.pory"
+# 370 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_LITTEN, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 Ikitown_FestivalBattleOnStage2_9:
-# 446 "data/maps/IkiTown/scripts.pory"
+# 449 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 447 "data/maps/IkiTown/scripts.pory"
+# 450 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_FestivalBattleOnStage2_Text_13
 	goto Ikitown_FestivalBattleOnStage2_8
 
 Ikitown_FestivalBattleOnStage2_12:
-# 345 "data/maps/IkiTown/scripts.pory"
+# 346 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_POPPLIOSHINY, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 Ikitown_FestivalBattleOnStage2_15:
-# 355 "data/maps/IkiTown/scripts.pory"
+# 356 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_ROWLETSHINY, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 Ikitown_FestivalBattleOnStage2_18:
-# 365 "data/maps/IkiTown/scripts.pory"
+# 366 "data/maps/IkiTown/scripts.pory"
 	trainerbattle_no_intro TRAINER_HAU_IKITOWNFESTIVAL_LITTENSHINY, Ikitown_FestivalBattleOnStage2_Text_1
 	goto Ikitown_FestivalBattleOnStage2_1
 
 
-Ikitown_Trigger_FestivalBattleSkip3::
-# 535 "data/maps/IkiTown/scripts.pory"
-	closemessage
-# 536 "data/maps/IkiTown/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 537 "data/maps/IkiTown/scripts.pory"
-	special StopAllObjectMovements
-# 538 "data/maps/IkiTown/scripts.pory"
-	special CloseScriptMenus
-# 539 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival::
+# 528 "data/maps/IkiTown/scripts.pory"
 	special SpawnCameraObject
-# 540 "data/maps/IkiTown/scripts.pory"
-	special SnapCameraToPlayer
-# 541 "data/maps/IkiTown/scripts.pory"
+# 529 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_LeavingIkitownFestival_Movement_0
+# 530 "data/maps/IkiTown/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 531 "data/maps/IkiTown/scripts.pory"
 	special RemoveCameraObject
+# 532 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_kukui_festival, Ikitown_LeavingIkitownFestival_Movement_1
+# 533 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_lillie_festival, Ikitown_LeavingIkitownFestival_Movement_2
+# 534 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_LeavingIkitownFestival_Movement_3
+# 535 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 536 "data/maps/IkiTown/scripts.pory"
+	delay 15
+# 537 "data/maps/IkiTown/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 538 "data/maps/IkiTown/scripts.pory"
+	startcutscene CUTSCENE_IKITOWN_FESTIVAL_BATTLE_4
+# 539 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_lillie_festival, Ikitown_LeavingIkitownFestival_Movement_4
+# 540 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_LeavingIkitownFestival_Movement_4
+# 541 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_kukui_festival, Ikitown_LeavingIkitownFestival_Movement_4
 # 542 "data/maps/IkiTown/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 15
+	waitmovement 0
 # 543 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_IKITOWN_FESTIVAL_COMPLETE
+	delay 30
 # 544 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS2
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_5
 # 545 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS3
+	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_4
 # 546 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS
+	waitmovement 0
 # 547 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
 # 548 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_HIDE_IKITOWN_REGULARNPCS
-# 549 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_HIDE_IKITOWN_SOUTH_LASS
-# 550 "data/maps/IkiTown/scripts.pory"
-	warp MAP_PLAYER_HOUSE, 8, 15
-# 551 "data/maps/IkiTown/scripts.pory"
-	waitstate
+	msgbox Ikitown_LeavingIkitownFestival_Text_0, MSGBOX_AUTOCLOSE
 # 552 "data/maps/IkiTown/scripts.pory"
+	playmoncry SPECIES_COSMOG, 0
+# 553 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_lillie_festival, Ikitown_Trigger_FestivalBattle_Movement_6
+# 554 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 555 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_1
+# 556 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 557 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 558 "data/maps/IkiTown/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Ikitown_LeavingIkitownFestival_Text_2, Ikitown_LeavingIkitownFestival_Text_3
+# 559 "data/maps/IkiTown/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_eq Ikitown_LeavingIkitownFestival_2
+# 568 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
+# 569 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_4, MSGBOX_AUTOCLOSE
+Ikitown_LeavingIkitownFestival_1:
+# 575 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 576 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_kukui_festival, Ikitown_Trigger_FestivalBattleMiddle_Movement_0
+# 577 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_lillie_festival, Ikitown_LeavingIkitownFestival_Movement_5
+# 578 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_LeavingIkitownFestival_Movement_5
+# 579 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 580 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 581 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 582 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_5, MSGBOX_AUTOCLOSE
+# 584 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
+# 585 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_6, MSGBOX_AUTOCLOSE
+# 588 "data/maps/IkiTown/scripts.pory"
+	special SpawnCameraObject
+# 589 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_lillie_festival, Ikitown_LeavingIkitownFestival_Movement_6
+# 590 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_LeavingIkitownFestival_Movement_7
+# 591 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_kukui_festival, Ikitown_LeavingIkitownFestival_Movement_8
+# 592 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 593 "data/maps/IkiTown/scripts.pory"
+	setobjectxy ikitownfestivalur4, 31, 20
+# 594 "data/maps/IkiTown/scripts.pory"
+	setobjectxy ikitownfestivalur1, 33, 20
+# 595 "data/maps/IkiTown/scripts.pory"
+	delay 90
+# 596 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_Trigger_FestivalBattle_Movement_3
+# 597 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownfestivalur4, Ikitown_LeavingIkitownFestival_Movement_9
+# 598 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownfestivalur1, Ikitown_LeavingIkitownFestival_Movement_9
+# 599 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 600 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_LeavingIkitownFestival_Text_7
+# 601 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_8
+# 616 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownfestivalur1, Ikitown_Trigger_FestivalBattle_Movement_4
+# 617 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 618 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_9
+# 621 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownfestivalur4, Ikitown_Trigger_FestivalBattle_Movement_0
+# 622 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 623 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_10
+# 629 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 630 "data/maps/IkiTown/scripts.pory"
+	endcutscene
+# 631 "data/maps/IkiTown/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 15
+# 632 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_IKITOWN_FESTIVAL_COMPLETE
+# 633 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS2
+# 634 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS3
+# 635 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS
+# 636 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+# 637 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_HIDE_IKITOWN_REGULARNPCS
+# 638 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_HIDE_IKITOWN_SOUTH_LASS
+# 639 "data/maps/IkiTown/scripts.pory"
+	warp MAP_PLAYER_HOUSE, 8, 15
+# 640 "data/maps/IkiTown/scripts.pory"
+	waitstate
+# 641 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+Ikitown_LeavingIkitownFestival_2:
+# 560 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
+# 561 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LeavingIkitownFestival_Text_4, MSGBOX_AUTOCLOSE
+	goto Ikitown_LeavingIkitownFestival_1
+
+
+Ikitown_Trigger_FestivalBattleSkip3::
+# 647 "data/maps/IkiTown/scripts.pory"
+	closemessage
+# 648 "data/maps/IkiTown/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 649 "data/maps/IkiTown/scripts.pory"
+	special StopAllObjectMovements
+# 650 "data/maps/IkiTown/scripts.pory"
+	special CloseScriptMenus
+# 651 "data/maps/IkiTown/scripts.pory"
+	call Ikitown_LeavingIkitownFestival
+	return
+
+
+Ikitown_Trigger_FestivalBattleSkip4::
+# 655 "data/maps/IkiTown/scripts.pory"
+	closemessage
+# 656 "data/maps/IkiTown/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 657 "data/maps/IkiTown/scripts.pory"
+	special StopAllObjectMovements
+# 658 "data/maps/IkiTown/scripts.pory"
+	special CloseScriptMenus
+# 659 "data/maps/IkiTown/scripts.pory"
+	special SpawnCameraObject
+# 660 "data/maps/IkiTown/scripts.pory"
+	special SnapCameraToPlayer
+# 661 "data/maps/IkiTown/scripts.pory"
+	special RemoveCameraObject
+# 662 "data/maps/IkiTown/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 15
+# 663 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_IKITOWN_FESTIVAL_COMPLETE
+# 664 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS2
+# 665 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS3
+# 666 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS
+# 667 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER
+# 668 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_HIDE_IKITOWN_REGULARNPCS
+# 669 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_HIDE_IKITOWN_SOUTH_LASS
+# 670 "data/maps/IkiTown/scripts.pory"
+	warp MAP_PLAYER_HOUSE, 8, 15
+# 671 "data/maps/IkiTown/scripts.pory"
+	waitstate
+# 672 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_StartFestival::
-# 557 "data/maps/IkiTown/scripts.pory"
+# 677 "data/maps/IkiTown/scripts.pory"
 	lockplayer
-# 558 "data/maps/IkiTown/scripts.pory"
+# 678 "data/maps/IkiTown/scripts.pory"
 	special ShowCutsceneCinematicBars
-# 559 "data/maps/IkiTown/scripts.pory"
+# 679 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_StartFestival_Movement_0
-# 560 "data/maps/IkiTown/scripts.pory"
+# 680 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_exeggutor_festival, Ikitown_StartFestival_Movement_1
-# 561 "data/maps/IkiTown/scripts.pory"
+# 681 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_oldman_festival, Ikitown_StartFestival_Movement_2
-# 562 "data/maps/IkiTown/scripts.pory"
+# 682 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 563 "data/maps/IkiTown/scripts.pory"
+# 683 "data/maps/IkiTown/scripts.pory"
 	special SpawnCameraObject
-# 564 "data/maps/IkiTown/scripts.pory"
+# 684 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 565 "data/maps/IkiTown/scripts.pory"
+# 685 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitown_exeggutor_festival
-# 566 "data/maps/IkiTown/scripts.pory"
+# 686 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitown_oldman_festival
-# 567 "data/maps/IkiTown/scripts.pory"
+# 687 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_FESTIVALNPCS2
-# 568 "data/maps/IkiTown/scripts.pory"
+# 688 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_4
+# 689 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 690 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_3
-# 569 "data/maps/IkiTown/scripts.pory"
+# 691 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 570 "data/maps/IkiTown/scripts.pory"
+# 692 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 571 "data/maps/IkiTown/scripts.pory"
+# 693 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitown_woman_festival, Ikitown_StartFestival_Movement_4
-# 572 "data/maps/IkiTown/scripts.pory"
+# 694 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 573 "data/maps/IkiTown/scripts.pory"
+# 695 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 574 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_5
-# 575 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 576 "data/maps/IkiTown/scripts.pory"
-	delay 30
-# 577 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_rockruff_festival, Ikitown_Trigger_FestivalBattle_Movement_5
-# 578 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitown_littlegirl_festival, Ikitown_FestivalBattleOnStage2_Movement_0
-# 579 "data/maps/IkiTown/scripts.pory"
-	playse SE_LEDGE
-# 580 "data/maps/IkiTown/scripts.pory"
-	waitse
-# 581 "data/maps/IkiTown/scripts.pory"
-	playse SE_LEDGE
-# 582 "data/maps/IkiTown/scripts.pory"
-	waitse
-# 583 "data/maps/IkiTown/scripts.pory"
-	delay 30
-# 584 "data/maps/IkiTown/scripts.pory"
+# 696 "data/maps/IkiTown/scripts.pory"
+	applymovement LOCALID_PLAYER, Ikitown_StartFestival_Movement_5
+# 697 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_6
-# 585 "data/maps/IkiTown/scripts.pory"
+# 698 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 586 "data/maps/IkiTown/scripts.pory"
+# 699 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 700 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_rockruff_festival, Ikitown_Trigger_FestivalBattle_Movement_5
+# 701 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitown_littlegirl_festival, Ikitown_FestivalBattleOnStage2_Movement_0
+# 702 "data/maps/IkiTown/scripts.pory"
+	playse SE_LEDGE
+# 703 "data/maps/IkiTown/scripts.pory"
+	waitse
+# 704 "data/maps/IkiTown/scripts.pory"
+	playse SE_LEDGE
+# 705 "data/maps/IkiTown/scripts.pory"
+	waitse
+# 706 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 707 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_7
+# 708 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 709 "data/maps/IkiTown/scripts.pory"
 	special RemoveCameraObject
-# 587 "data/maps/IkiTown/scripts.pory"
+# 710 "data/maps/IkiTown/scripts.pory"
 	special HideCutsceneCinematicBars
-# 588 "data/maps/IkiTown/scripts.pory"
+# 711 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 14
-# 589 "data/maps/IkiTown/scripts.pory"
+# 712 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_trigger_right::
-# 595 "data/maps/IkiTown/scripts.pory"
+# 718 "data/maps/IkiTown/scripts.pory"
 	lock
-# 596 "data/maps/IkiTown/scripts.pory"
+# 719 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_right_Movement_0
-# 597 "data/maps/IkiTown/scripts.pory"
+# 720 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 598 "data/maps/IkiTown/scripts.pory"
+# 721 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_trigger_WecomeToIkitown
 	return
 
 
 Ikitown_trigger_left::
-# 602 "data/maps/IkiTown/scripts.pory"
+# 725 "data/maps/IkiTown/scripts.pory"
 	lock
-# 603 "data/maps/IkiTown/scripts.pory"
+# 726 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_left_Movement_0
-# 604 "data/maps/IkiTown/scripts.pory"
+# 727 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 605 "data/maps/IkiTown/scripts.pory"
+# 728 "data/maps/IkiTown/scripts.pory"
 	call Ikitown_trigger_WecomeToIkitown
 	return
 
 
 Ikitown_trigger_WecomeToIkitownSkip::
-# 609 "data/maps/IkiTown/scripts.pory"
+# 732 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 610 "data/maps/IkiTown/scripts.pory"
+# 733 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 611 "data/maps/IkiTown/scripts.pory"
+# 734 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
-# 612 "data/maps/IkiTown/scripts.pory"
+# 735 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_IKITOWN_INTRO_HAU
-# 613 "data/maps/IkiTown/scripts.pory"
+# 736 "data/maps/IkiTown/scripts.pory"
 	special StopAllObjectMovements
-# 614 "data/maps/IkiTown/scripts.pory"
+# 737 "data/maps/IkiTown/scripts.pory"
 	special CloseScriptMenus
-# 615 "data/maps/IkiTown/scripts.pory"
+# 738 "data/maps/IkiTown/scripts.pory"
 	special SnapCameraToPlayer
-# 616 "data/maps/IkiTown/scripts.pory"
+# 739 "data/maps/IkiTown/scripts.pory"
 	special RemoveCameraObject
-# 617 "data/maps/IkiTown/scripts.pory"
+# 740 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 2
-# 618 "data/maps/IkiTown/scripts.pory"
+# 741 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrokukui
-# 619 "data/maps/IkiTown/scripts.pory"
+# 742 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrokukui, 33, 28
-# 620 "data/maps/IkiTown/scripts.pory"
+# 743 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 621 "data/maps/IkiTown/scripts.pory"
+# 744 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 622 "data/maps/IkiTown/scripts.pory"
+# 745 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitownintrohau, MAP_IKI_TOWN
-# 623 "data/maps/IkiTown/scripts.pory"
+# 746 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
-# 624 "data/maps/IkiTown/scripts.pory"
+# 747 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 625 "data/maps/IkiTown/scripts.pory"
+# 748 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_trigger_WecomeToIkitown::
-# 630 "data/maps/IkiTown/scripts.pory"
+# 753 "data/maps/IkiTown/scripts.pory"
 	lock
-# 631 "data/maps/IkiTown/scripts.pory"
+# 754 "data/maps/IkiTown/scripts.pory"
 	special SpawnCameraObject
-# 632 "data/maps/IkiTown/scripts.pory"
+# 755 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 633 "data/maps/IkiTown/scripts.pory"
+# 756 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_IKITOWN_INTRO_KUKUI
-# 634 "data/maps/IkiTown/scripts.pory"
+# 757 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_IKITOWN_INTRO_HAU
-# 635 "data/maps/IkiTown/scripts.pory"
+# 758 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitownhau, MAP_IKI_TOWN_SOUTH
-# 636 "data/maps/IkiTown/scripts.pory"
+# 759 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitownkukui, MAP_IKI_TOWN_SOUTH
-# 637 "data/maps/IkiTown/scripts.pory"
+# 760 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrohau
-# 638 "data/maps/IkiTown/scripts.pory"
+# 761 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrokukui
-# 639 "data/maps/IkiTown/scripts.pory"
+# 762 "data/maps/IkiTown/scripts.pory"
 	startcutscene CUTSCENE_WELCOME_TO_IKITOWN
-# 640 "data/maps/IkiTown/scripts.pory"
+# 763 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_WecomeToIkitown_Movement_0
-# 641 "data/maps/IkiTown/scripts.pory"
+# 764 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_trigger_WecomeToIkitown_Movement_1
-# 642 "data/maps/IkiTown/scripts.pory"
+# 765 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 643 "data/maps/IkiTown/scripts.pory"
+# 766 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 644 "data/maps/IkiTown/scripts.pory"
+# 767 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_trigger_WecomeToIkitown_Movement_2
-# 645 "data/maps/IkiTown/scripts.pory"
+# 768 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_WecomeToIkitown_Movement_3
-# 646 "data/maps/IkiTown/scripts.pory"
+# 769 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 647 "data/maps/IkiTown/scripts.pory"
+# 770 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 648 "data/maps/IkiTown/scripts.pory"
+# 771 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 649 "data/maps/IkiTown/scripts.pory"
+# 772 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 650 "data/maps/IkiTown/scripts.pory"
+# 773 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 651 "data/maps/IkiTown/scripts.pory"
+# 774 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 652 "data/maps/IkiTown/scripts.pory"
+# 775 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 653 "data/maps/IkiTown/scripts.pory"
+# 776 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_Trigger_FestivalBattle_Movement_0
-# 654 "data/maps/IkiTown/scripts.pory"
+# 777 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 655 "data/maps/IkiTown/scripts.pory"
+# 778 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 656 "data/maps/IkiTown/scripts.pory"
+# 779 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_0, MSGBOX_AUTOCLOSE
-# 658 "data/maps/IkiTown/scripts.pory"
+# 781 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 659 "data/maps/IkiTown/scripts.pory"
+# 782 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_trigger_WecomeToIkitown_Movement_4
-# 660 "data/maps/IkiTown/scripts.pory"
+# 783 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 661 "data/maps/IkiTown/scripts.pory"
+# 784 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_trigger_WecomeToIkitown_Movement_5
-# 662 "data/maps/IkiTown/scripts.pory"
+# 785 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 663 "data/maps/IkiTown/scripts.pory"
+# 786 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 664 "data/maps/IkiTown/scripts.pory"
+# 787 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_1
-# 670 "data/maps/IkiTown/scripts.pory"
+# 793 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 671 "data/maps/IkiTown/scripts.pory"
+# 794 "data/maps/IkiTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_trigger_WecomeToIkitown_Movement_6
-# 672 "data/maps/IkiTown/scripts.pory"
+# 795 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 673 "data/maps/IkiTown/scripts.pory"
+# 796 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 674 "data/maps/IkiTown/scripts.pory"
+# 797 "data/maps/IkiTown/scripts.pory"
 	playse SE_PIN
-# 675 "data/maps/IkiTown/scripts.pory"
+# 798 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_trigger_WecomeToIkitown_Movement_7
-# 676 "data/maps/IkiTown/scripts.pory"
+# 799 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 677 "data/maps/IkiTown/scripts.pory"
+# 800 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 678 "data/maps/IkiTown/scripts.pory"
+# 801 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_2
-# 684 "data/maps/IkiTown/scripts.pory"
+# 807 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_Trigger_FestivalBattle_Movement_0
-# 685 "data/maps/IkiTown/scripts.pory"
+# 808 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 686 "data/maps/IkiTown/scripts.pory"
+# 809 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 687 "data/maps/IkiTown/scripts.pory"
+# 810 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_3
-# 690 "data/maps/IkiTown/scripts.pory"
+# 813 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_FestivalBattleOnStage_Movement_7
-# 691 "data/maps/IkiTown/scripts.pory"
+# 814 "data/maps/IkiTown/scripts.pory"
 	playse SE_LEDGE
-# 692 "data/maps/IkiTown/scripts.pory"
+# 815 "data/maps/IkiTown/scripts.pory"
 	waitse
-# 693 "data/maps/IkiTown/scripts.pory"
+# 816 "data/maps/IkiTown/scripts.pory"
 	playse SE_LEDGE
-# 694 "data/maps/IkiTown/scripts.pory"
+# 817 "data/maps/IkiTown/scripts.pory"
 	waitse
-# 695 "data/maps/IkiTown/scripts.pory"
+# 818 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 696 "data/maps/IkiTown/scripts.pory"
+# 819 "data/maps/IkiTown/scripts.pory"
 	switch VAR_STARTER_MON
-# 697 "data/maps/IkiTown/scripts.pory"
+# 820 "data/maps/IkiTown/scripts.pory"
 	case 0, Ikitown_trigger_WecomeToIkitown_3
-# 701 "data/maps/IkiTown/scripts.pory"
+# 824 "data/maps/IkiTown/scripts.pory"
 	case 1, Ikitown_trigger_WecomeToIkitown_4
-# 705 "data/maps/IkiTown/scripts.pory"
+# 828 "data/maps/IkiTown/scripts.pory"
 	case 2, Ikitown_trigger_WecomeToIkitown_5
 Ikitown_trigger_WecomeToIkitown_1:
-# 710 "data/maps/IkiTown/scripts.pory"
+# 833 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_WecomeToIkitown_Movement_8
-# 711 "data/maps/IkiTown/scripts.pory"
+# 834 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 712 "data/maps/IkiTown/scripts.pory"
+# 835 "data/maps/IkiTown/scripts.pory"
 	removeobject ikitownintrohau
-# 713 "data/maps/IkiTown/scripts.pory"
+# 836 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_Trigger_FestivalBattle_Movement_0
-# 714 "data/maps/IkiTown/scripts.pory"
+# 837 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 715 "data/maps/IkiTown/scripts.pory"
+# 838 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 716 "data/maps/IkiTown/scripts.pory"
+# 839 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_7
-# 728 "data/maps/IkiTown/scripts.pory"
+# 851 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_FestivalBattleOnStage_Movement_7
-# 729 "data/maps/IkiTown/scripts.pory"
+# 852 "data/maps/IkiTown/scripts.pory"
 	playse SE_LEDGE
-# 730 "data/maps/IkiTown/scripts.pory"
+# 853 "data/maps/IkiTown/scripts.pory"
 	waitse
-# 731 "data/maps/IkiTown/scripts.pory"
+# 854 "data/maps/IkiTown/scripts.pory"
 	playse SE_LEDGE
-# 732 "data/maps/IkiTown/scripts.pory"
+# 855 "data/maps/IkiTown/scripts.pory"
 	waitse
-# 733 "data/maps/IkiTown/scripts.pory"
+# 856 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 734 "data/maps/IkiTown/scripts.pory"
+# 857 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_8
-# 740 "data/maps/IkiTown/scripts.pory"
+# 863 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 2
-# 741 "data/maps/IkiTown/scripts.pory"
+# 864 "data/maps/IkiTown/scripts.pory"
 	special RemoveCameraObject
-# 742 "data/maps/IkiTown/scripts.pory"
+# 865 "data/maps/IkiTown/scripts.pory"
 	endcutscene
-# 743 "data/maps/IkiTown/scripts.pory"
+# 866 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 Ikitown_trigger_WecomeToIkitown_3:
-# 698 "data/maps/IkiTown/scripts.pory"
+# 821 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_4, MSGBOX_AUTOCLOSE
 	goto Ikitown_trigger_WecomeToIkitown_1
 
 Ikitown_trigger_WecomeToIkitown_4:
-# 702 "data/maps/IkiTown/scripts.pory"
+# 825 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_5, MSGBOX_AUTOCLOSE
 	goto Ikitown_trigger_WecomeToIkitown_1
 
 Ikitown_trigger_WecomeToIkitown_5:
-# 706 "data/maps/IkiTown/scripts.pory"
+# 829 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_WecomeToIkitown_Text_6, MSGBOX_AUTOCLOSE
 	goto Ikitown_trigger_WecomeToIkitown_1
 
 
 Ikitown_KukuiSeeTapuKoko::
-# 748 "data/maps/IkiTown/scripts.pory"
+# 871 "data/maps/IkiTown/scripts.pory"
 	lock
-# 749 "data/maps/IkiTown/scripts.pory"
+# 872 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 750 "data/maps/IkiTown/scripts.pory"
+# 873 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 751 "data/maps/IkiTown/scripts.pory"
+# 874 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_KukuiSeeTapuKoko_Text_0
-# 753 "data/maps/IkiTown/scripts.pory"
+# 876 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_Trigger_KukuiSeeTapuKoko::
-# 759 "data/maps/IkiTown/scripts.pory"
+# 882 "data/maps/IkiTown/scripts.pory"
 	lock
-# 760 "data/maps/IkiTown/scripts.pory"
+# 883 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 761 "data/maps/IkiTown/scripts.pory"
+# 884 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 762 "data/maps/IkiTown/scripts.pory"
+# 885 "data/maps/IkiTown/scripts.pory"
 	playse SE_PIN
-# 763 "data/maps/IkiTown/scripts.pory"
+# 886 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui, Ikitown_Trigger_KukuiSeeTapuKoko_Movement_0
-# 764 "data/maps/IkiTown/scripts.pory"
+# 887 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_7
-# 765 "data/maps/IkiTown/scripts.pory"
+# 888 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 766 "data/maps/IkiTown/scripts.pory"
+# 889 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_KukuiSeeTapuKoko_Text_0
-# 768 "data/maps/IkiTown/scripts.pory"
+# 891 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_KukuiSeeTapuKoko_Movement_1
-# 769 "data/maps/IkiTown/scripts.pory"
+# 892 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_MainSign::
-# 774 "data/maps/IkiTown/scripts.pory"
+# 897 "data/maps/IkiTown/scripts.pory"
 	lock
-# 775 "data/maps/IkiTown/scripts.pory"
+# 898 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_MainSign_Text_0
-# 778 "data/maps/IkiTown/scripts.pory"
+# 901 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 779 "data/maps/IkiTown/scripts.pory"
+# 902 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_LittleBoyWRockruff::
-# 784 "data/maps/IkiTown/scripts.pory"
+# 907 "data/maps/IkiTown/scripts.pory"
 	lock
-# 785 "data/maps/IkiTown/scripts.pory"
+# 908 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 786 "data/maps/IkiTown/scripts.pory"
+# 909 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_LittleBoyWRockruff_Text_0
-# 790 "data/maps/IkiTown/scripts.pory"
+# 913 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 791 "data/maps/IkiTown/scripts.pory"
+# 914 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_Rockruff::
-# 796 "data/maps/IkiTown/scripts.pory"
+# 919 "data/maps/IkiTown/scripts.pory"
 	lock
-# 797 "data/maps/IkiTown/scripts.pory"
+# 920 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 798 "data/maps/IkiTown/scripts.pory"
+# 921 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_ROCKRUFF, 0
-# 799 "data/maps/IkiTown/scripts.pory"
+# 922 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Rockruff_Text_0
-# 800 "data/maps/IkiTown/scripts.pory"
+# 923 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 801 "data/maps/IkiTown/scripts.pory"
+# 924 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_LeftSideGuy::
-# 806 "data/maps/IkiTown/scripts.pory"
+# 929 "data/maps/IkiTown/scripts.pory"
 	lock
-# 807 "data/maps/IkiTown/scripts.pory"
+# 930 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 808 "data/maps/IkiTown/scripts.pory"
+# 931 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_LeftSideGuy_Text_0
-# 810 "data/maps/IkiTown/scripts.pory"
+# 933 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 811 "data/maps/IkiTown/scripts.pory"
+# 934 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_MomwithChild::
-# 816 "data/maps/IkiTown/scripts.pory"
+# 939 "data/maps/IkiTown/scripts.pory"
 	lock
-# 817 "data/maps/IkiTown/scripts.pory"
+# 940 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 818 "data/maps/IkiTown/scripts.pory"
+# 941 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_MomwithChild_Text_0
-# 824 "data/maps/IkiTown/scripts.pory"
+# 947 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 825 "data/maps/IkiTown/scripts.pory"
+# 948 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_ChildwithMom::
-# 830 "data/maps/IkiTown/scripts.pory"
+# 953 "data/maps/IkiTown/scripts.pory"
 	lock
-# 831 "data/maps/IkiTown/scripts.pory"
+# 954 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 832 "data/maps/IkiTown/scripts.pory"
+# 955 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_ChildwithMom_Text_0
-# 836 "data/maps/IkiTown/scripts.pory"
+# 959 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 837 "data/maps/IkiTown/scripts.pory"
+# 960 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_DontForgetToSave::
-# 842 "data/maps/IkiTown/scripts.pory"
+# 965 "data/maps/IkiTown/scripts.pory"
 	lock
-# 843 "data/maps/IkiTown/scripts.pory"
+# 966 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 844 "data/maps/IkiTown/scripts.pory"
+# 967 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_DontForgetToSave_Text_0
-# 849 "data/maps/IkiTown/scripts.pory"
+# 972 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 850 "data/maps/IkiTown/scripts.pory"
+# 973 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_KahunaGivesWisdom::
-# 855 "data/maps/IkiTown/scripts.pory"
+# 978 "data/maps/IkiTown/scripts.pory"
 	lock
-# 856 "data/maps/IkiTown/scripts.pory"
+# 979 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 857 "data/maps/IkiTown/scripts.pory"
+# 980 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_KahunaGivesWisdom_Text_0
-# 860 "data/maps/IkiTown/scripts.pory"
+# 983 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_ManBlockingDoor::
-# 865 "data/maps/IkiTown/scripts.pory"
+# 988 "data/maps/IkiTown/scripts.pory"
 	lock
-# 866 "data/maps/IkiTown/scripts.pory"
+# 989 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 867 "data/maps/IkiTown/scripts.pory"
+# 990 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_ManBlockingDoor_Text_0
-# 875 "data/maps/IkiTown/scripts.pory"
+# 998 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_Meowth::
-# 880 "data/maps/IkiTown/scripts.pory"
+# 1003 "data/maps/IkiTown/scripts.pory"
 	lock
-# 881 "data/maps/IkiTown/scripts.pory"
+# 1004 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 882 "data/maps/IkiTown/scripts.pory"
+# 1005 "data/maps/IkiTown/scripts.pory"
 	playmoncry SPECIES_MEOWTH_ALOLA, 0
-# 883 "data/maps/IkiTown/scripts.pory"
+# 1006 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_Meowth_Text_0
-# 884 "data/maps/IkiTown/scripts.pory"
+# 1007 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 885 "data/maps/IkiTown/scripts.pory"
+# 1008 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_sign_Ruinsofconflict::
-# 890 "data/maps/IkiTown/scripts.pory"
+# 1013 "data/maps/IkiTown/scripts.pory"
 	lock
-# 891 "data/maps/IkiTown/scripts.pory"
+# 1014 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_sign_Ruinsofconflict_Text_0
-# 892 "data/maps/IkiTown/scripts.pory"
+# 1015 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 893 "data/maps/IkiTown/scripts.pory"
+# 1016 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_GetPokedex::
-# 898 "data/maps/IkiTown/scripts.pory"
+# 1021 "data/maps/IkiTown/scripts.pory"
 	lock
-# 899 "data/maps/IkiTown/scripts.pory"
+# 1022 "data/maps/IkiTown/scripts.pory"
 	startcutscene CUTSCENE_IKITOWN_GET_POKEDEX
-# 900 "data/maps/IkiTown/scripts.pory"
+# 1023 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_GetPokedex_Movement_0
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_GetPokedex_Movement_1
-# 902 "data/maps/IkiTown/scripts.pory"
+# 1025 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 903 "data/maps/IkiTown/scripts.pory"
+# 1026 "data/maps/IkiTown/scripts.pory"
 	playse SE_PIN
-# 904 "data/maps/IkiTown/scripts.pory"
+# 1027 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_2
-# 905 "data/maps/IkiTown/scripts.pory"
+# 1028 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 906 "data/maps/IkiTown/scripts.pory"
+# 1029 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 907 "data/maps/IkiTown/scripts.pory"
+# 1030 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_GetPokedex_Text_0
-# 911 "data/maps/IkiTown/scripts.pory"
+# 1034 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_FestivalBattleOnStage_Movement_6
-# 912 "data/maps/IkiTown/scripts.pory"
+# 1035 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 913 "data/maps/IkiTown/scripts.pory"
+# 1036 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_GetPokedex_Text_1
-# 915 "data/maps/IkiTown/scripts.pory"
+# 1038 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_GetPokedex_Movement_3
-# 916 "data/maps/IkiTown/scripts.pory"
+# 1039 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 917 "data/maps/IkiTown/scripts.pory"
+# 1040 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 918 "data/maps/IkiTown/scripts.pory"
+# 1041 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_GetPokedex_Text_2
-# 925 "data/maps/IkiTown/scripts.pory"
+# 1048 "data/maps/IkiTown/scripts.pory"
 	checkplayergender
-# 926 "data/maps/IkiTown/scripts.pory"
+# 1049 "data/maps/IkiTown/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq Ikitown_GetPokedex_2
-# 935 "data/maps/IkiTown/scripts.pory"
+# 1058 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 936 "data/maps/IkiTown/scripts.pory"
+# 1059 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_GetPokedex_Text_4
 Ikitown_GetPokedex_1:
-# 942 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_0
-# 943 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 944 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 945 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_5, MSGBOX_AUTOCLOSE
-# 949 "data/maps/IkiTown/scripts.pory"
-	special SpawnCameraObject
-# 950 "data/maps/IkiTown/scripts.pory"
-	delay 30
-# 952 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_4
-# 953 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 954 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownman1, Ikitown_GetPokedex_Movement_5
-# 955 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownoldman1, Ikitown_GetPokedex_Movement_5
-# 956 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 957 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 958 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 959 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_6, MSGBOX_AUTOCLOSE
-# 966 "data/maps/IkiTown/scripts.pory"
-	delay 30
-# 967 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_6
-# 968 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownhala, Ikitown_GetPokedex_Movement_7
-# 969 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 970 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 971 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_7, MSGBOX_AUTOCLOSE
-# 972 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_8
-# 973 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 974 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownintrokukui2, Ikitown_Trigger_FestivalBattle_Movement_5
-# 975 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 976 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 977 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_8
-# 979 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownhala, Ikitown_GetPokedex_Movement_9
-# 980 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 981 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownintrokukui2, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 982 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_5
-# 983 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 984 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_9
-# 993 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownlillie, Ikitown_GetPokedex_Movement_3
-# 994 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 995 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 996 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_10
-# 1010 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownintrokukui2, Ikitown_FestivalBattleOnStage_Movement_6
-# 1011 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 1012 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 1013 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_11
-# 1015 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownhala, Ikitown_FestivalBattleOnStage_Movement_6
-# 1016 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 1017 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1018 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_12
-# 1022 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownhala, Ikitown_FestivalBattleOnStage_Movement_6
-# 1023 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 1024 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_13
-# 1040 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_10
-# 1041 "data/maps/IkiTown/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_6
-# 1042 "data/maps/IkiTown/scripts.pory"
-	waitmovement 0
-# 1043 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 1044 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_14
-# 1046 "data/maps/IkiTown/scripts.pory"
-	setvar VAR_ROTOM_PHONE_ENABLE, 1
-# 1047 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_SYS_POKEDEX_GET
-# 1048 "data/maps/IkiTown/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 1049 "data/maps/IkiTown/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 1050 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_15
-# 1051 "data/maps/IkiTown/scripts.pory"
-	waitfanfare
-# 1052 "data/maps/IkiTown/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 1053 "data/maps/IkiTown/scripts.pory"
-	bufferleadmonspeciesname STR_VAR_1
-# 1054 "data/maps/IkiTown/scripts.pory"
-	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 1055 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_16
 # 1065 "data/maps/IkiTown/scripts.pory"
-	msgbox Ikitown_GetPokedex_Text_17, MSGBOX_AUTOCLOSE
-# 1069 "data/maps/IkiTown/scripts.pory"
-	special RemoveCameraObject
-# 1070 "data/maps/IkiTown/scripts.pory"
-	fadescreenswapbuffers FADE_TO_BLACK
-# 1071 "data/maps/IkiTown/scripts.pory"
-	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_11
+	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_0
+# 1066 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1067 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
+# 1068 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_5, MSGBOX_AUTOCLOSE
 # 1072 "data/maps/IkiTown/scripts.pory"
-	delay 60
+	special SpawnCameraObject
 # 1073 "data/maps/IkiTown/scripts.pory"
-	fadescreenswapbuffers FADE_FROM_BLACK
-# 1074 "data/maps/IkiTown/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 7
+	delay 30
 # 1075 "data/maps/IkiTown/scripts.pory"
-	endcutscene
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_4
 # 1076 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1077 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownman1, Ikitown_GetPokedex_Movement_5
+# 1078 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownoldman1, Ikitown_GetPokedex_Movement_5
+# 1079 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1080 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1081 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1082 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_6, MSGBOX_AUTOCLOSE
+# 1089 "data/maps/IkiTown/scripts.pory"
+	delay 30
+# 1090 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_6
+# 1091 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownhala, Ikitown_GetPokedex_Movement_7
+# 1092 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1093 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 1094 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_7, MSGBOX_AUTOCLOSE
+# 1095 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_GetPokedex_Movement_8
+# 1096 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1097 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownintrokukui2, Ikitown_Trigger_FestivalBattle_Movement_5
+# 1098 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1099 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 1100 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_8
+# 1102 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownhala, Ikitown_GetPokedex_Movement_9
+# 1103 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1104 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownintrokukui2, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
+# 1105 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_5
+# 1106 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 1107 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_9
+# 1116 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownlillie, Ikitown_GetPokedex_Movement_3
+# 1117 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1118 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_12
+# 1119 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_10
+# 1133 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownintrokukui2, Ikitown_FestivalBattleOnStage_Movement_6
+# 1134 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1135 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 1136 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_11
+# 1138 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownhala, Ikitown_FestivalBattleOnStage_Movement_6
+# 1139 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1140 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_0
+# 1141 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_12
+# 1145 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownhala, Ikitown_FestivalBattleOnStage_Movement_6
+# 1146 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1147 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_13
+# 1163 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_10
+# 1164 "data/maps/IkiTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Ikitown_StartFestival_Movement_7
+# 1165 "data/maps/IkiTown/scripts.pory"
+	waitmovement 0
+# 1166 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 1167 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_14
+# 1169 "data/maps/IkiTown/scripts.pory"
+	setvar VAR_ROTOM_PHONE_ENABLE, 1
+# 1170 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_SYS_POKEDEX_GET
+# 1171 "data/maps/IkiTown/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1172 "data/maps/IkiTown/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 1173 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_15
+# 1174 "data/maps/IkiTown/scripts.pory"
+	waitfanfare
+# 1175 "data/maps/IkiTown/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 1176 "data/maps/IkiTown/scripts.pory"
+	bufferleadmonspeciesname STR_VAR_1
+# 1177 "data/maps/IkiTown/scripts.pory"
+	speakername Ikitown_Trigger_FestivalBattle_Text_10
+# 1178 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_16
+# 1188 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_GetPokedex_Text_17, MSGBOX_AUTOCLOSE
+# 1192 "data/maps/IkiTown/scripts.pory"
+	special RemoveCameraObject
+# 1193 "data/maps/IkiTown/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 1194 "data/maps/IkiTown/scripts.pory"
+	applymovement ikitownintrokukui2, Ikitown_GetPokedex_Movement_11
+# 1195 "data/maps/IkiTown/scripts.pory"
+	delay 60
+# 1196 "data/maps/IkiTown/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 1197 "data/maps/IkiTown/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 7
+# 1198 "data/maps/IkiTown/scripts.pory"
+	endcutscene
+# 1199 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 Ikitown_GetPokedex_2:
-# 927 "data/maps/IkiTown/scripts.pory"
+# 1050 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 928 "data/maps/IkiTown/scripts.pory"
+# 1051 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_GetPokedex_Text_3
 	goto Ikitown_GetPokedex_1
 
 
 Ikitown_GetPokedexSkip::
-# 1081 "data/maps/IkiTown/scripts.pory"
+# 1204 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 1082 "data/maps/IkiTown/scripts.pory"
+# 1205 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 1083 "data/maps/IkiTown/scripts.pory"
+# 1206 "data/maps/IkiTown/scripts.pory"
 	special StopAllObjectMovements
-# 1084 "data/maps/IkiTown/scripts.pory"
+# 1207 "data/maps/IkiTown/scripts.pory"
 	special CloseScriptMenus
-# 1085 "data/maps/IkiTown/scripts.pory"
+# 1208 "data/maps/IkiTown/scripts.pory"
 	special HideCutsceneCinematicBars
-# 1086 "data/maps/IkiTown/scripts.pory"
+# 1209 "data/maps/IkiTown/scripts.pory"
 	special RemoveCameraObject
-# 1087 "data/maps/IkiTown/scripts.pory"
+# 1210 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_ROTOM_PHONE_ENABLE, 1
-# 1088 "data/maps/IkiTown/scripts.pory"
+# 1211 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_SYS_POKEDEX_GET
-# 1089 "data/maps/IkiTown/scripts.pory"
+# 1212 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 7
-# 1091 "data/maps/IkiTown/scripts.pory"
+# 1214 "data/maps/IkiTown/scripts.pory"
 	setobjectxy LOCALID_PLAYER, 21, 14
-# 1092 "data/maps/IkiTown/scripts.pory"
+# 1215 "data/maps/IkiTown/scripts.pory"
 	special SnapCameraToPlayer
-# 1097 "data/maps/IkiTown/scripts.pory"
+# 1220 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownlillie
-# 1098 "data/maps/IkiTown/scripts.pory"
+# 1221 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownhala
-# 1099 "data/maps/IkiTown/scripts.pory"
+# 1222 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrokukui2
-# 1100 "data/maps/IkiTown/scripts.pory"
+# 1223 "data/maps/IkiTown/scripts.pory"
 	showobjectat LOCALID_PLAYER, MAP_IKI_TOWN
-# 1101 "data/maps/IkiTown/scripts.pory"
+# 1224 "data/maps/IkiTown/scripts.pory"
 	showobjectat ikitownlillie, MAP_IKI_TOWN
-# 1102 "data/maps/IkiTown/scripts.pory"
+# 1225 "data/maps/IkiTown/scripts.pory"
 	showobjectat ikitownhala, MAP_IKI_TOWN
-# 1103 "data/maps/IkiTown/scripts.pory"
+# 1226 "data/maps/IkiTown/scripts.pory"
 	showobjectat ikitownintrokukui2, MAP_IKI_TOWN
-# 1104 "data/maps/IkiTown/scripts.pory"
+# 1227 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownlillie, 21, 13
-# 1105 "data/maps/IkiTown/scripts.pory"
+# 1228 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownhala, 24, 14
-# 1106 "data/maps/IkiTown/scripts.pory"
+# 1229 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrokukui2, 23, 13
-# 1107 "data/maps/IkiTown/scripts.pory"
+# 1230 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_5
-# 1108 "data/maps/IkiTown/scripts.pory"
+# 1231 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_5
-# 1109 "data/maps/IkiTown/scripts.pory"
+# 1232 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_Trigger_FestivalBattle_Movement_4
-# 1110 "data/maps/IkiTown/scripts.pory"
+# 1233 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 1111 "data/maps/IkiTown/scripts.pory"
+# 1234 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1112 "data/maps/IkiTown/scripts.pory"
+# 1235 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 1113 "data/maps/IkiTown/scripts.pory"
+# 1236 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 ikitown_lilliedialog2::
-# 1118 "data/maps/IkiTown/scripts.pory"
+# 1241 "data/maps/IkiTown/scripts.pory"
 	lock
-# 1119 "data/maps/IkiTown/scripts.pory"
+# 1242 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 1120 "data/maps/IkiTown/scripts.pory"
+# 1243 "data/maps/IkiTown/scripts.pory"
 	bufferleadmonspeciesname STR_VAR_1
-# 1121 "data/maps/IkiTown/scripts.pory"
+# 1244 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 1122 "data/maps/IkiTown/scripts.pory"
+# 1245 "data/maps/IkiTown/scripts.pory"
 	msgbox ikitown_lilliedialog2_Text_0
-# 1126 "data/maps/IkiTown/scripts.pory"
+# 1249 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 1127 "data/maps/IkiTown/scripts.pory"
+# 1250 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 ikitown_kukuidialog2::
-# 1132 "data/maps/IkiTown/scripts.pory"
+# 1255 "data/maps/IkiTown/scripts.pory"
 	lock
-# 1133 "data/maps/IkiTown/scripts.pory"
+# 1256 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 1134 "data/maps/IkiTown/scripts.pory"
+# 1257 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 1135 "data/maps/IkiTown/scripts.pory"
+# 1258 "data/maps/IkiTown/scripts.pory"
 	msgbox ikitown_kukuidialog2_Text_0
-# 1138 "data/maps/IkiTown/scripts.pory"
+# 1261 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 1139 "data/maps/IkiTown/scripts.pory"
+# 1262 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 ikitown_haladialog2::
-# 1144 "data/maps/IkiTown/scripts.pory"
+# 1267 "data/maps/IkiTown/scripts.pory"
 	lock
-# 1145 "data/maps/IkiTown/scripts.pory"
+# 1268 "data/maps/IkiTown/scripts.pory"
 	faceplayer
-# 1146 "data/maps/IkiTown/scripts.pory"
+# 1269 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1147 "data/maps/IkiTown/scripts.pory"
+# 1270 "data/maps/IkiTown/scripts.pory"
 	msgbox ikitown_haladialog2_Text_0
-# 1150 "data/maps/IkiTown/scripts.pory"
+# 1273 "data/maps/IkiTown/scripts.pory"
 	waitmessage
-# 1151 "data/maps/IkiTown/scripts.pory"
+# 1274 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
 
 Ikitown_trigger_GiveHalaSparklingStone::
-# 1156 "data/maps/IkiTown/scripts.pory"
+# 1279 "data/maps/IkiTown/scripts.pory"
 	lock
-# 1157 "data/maps/IkiTown/scripts.pory"
+# 1280 "data/maps/IkiTown/scripts.pory"
 	startcutscene CUTSCENE_IKITOWN_GIVE_HALA_SPARKLING_STONE
-# 1158 "data/maps/IkiTown/scripts.pory"
+# 1281 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 1159 "data/maps/IkiTown/scripts.pory"
+# 1282 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_0, MSGBOX_AUTOCLOSE
-# 1161 "data/maps/IkiTown/scripts.pory"
+# 1284 "data/maps/IkiTown/scripts.pory"
 	playse SE_PIN
-# 1162 "data/maps/IkiTown/scripts.pory"
+# 1285 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_WecomeToIkitown_Movement_7
-# 1163 "data/maps/IkiTown/scripts.pory"
+# 1286 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1164 "data/maps/IkiTown/scripts.pory"
+# 1287 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 1165 "data/maps/IkiTown/scripts.pory"
+# 1288 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownhala, 24, 12
-# 1166 "data/maps/IkiTown/scripts.pory"
+# 1289 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrokukui2, 23, 12
-# 1167 "data/maps/IkiTown/scripts.pory"
+# 1290 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 1168 "data/maps/IkiTown/scripts.pory"
+# 1291 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 1169 "data/maps/IkiTown/scripts.pory"
+# 1292 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_5
-# 1170 "data/maps/IkiTown/scripts.pory"
+# 1293 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1171 "data/maps/IkiTown/scripts.pory"
+# 1294 "data/maps/IkiTown/scripts.pory"
 	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-# 1172 "data/maps/IkiTown/scripts.pory"
+# 1295 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_1, 28
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_3
 Ikitown_trigger_GiveHalaSparklingStone_1:
-# 1180 "data/maps/IkiTown/scripts.pory"
+# 1303 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_1, 28
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_8
 Ikitown_trigger_GiveHalaSparklingStone_6:
-# 1188 "data/maps/IkiTown/scripts.pory"
+# 1311 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_1, 17
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_13
 Ikitown_trigger_GiveHalaSparklingStone_11:
-# 1194 "data/maps/IkiTown/scripts.pory"
+# 1317 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_1, 17
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_18
 Ikitown_trigger_GiveHalaSparklingStone_16:
-# 1200 "data/maps/IkiTown/scripts.pory"
+# 1323 "data/maps/IkiTown/scripts.pory"
 	delay 30
-# 1201 "data/maps/IkiTown/scripts.pory"
+# 1324 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_GiveHalaSparklingStone_Movement_5
-# 1203 "data/maps/IkiTown/scripts.pory"
+# 1326 "data/maps/IkiTown/scripts.pory"
 	delay 60
-# 1204 "data/maps/IkiTown/scripts.pory"
+# 1327 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_trigger_GiveHalaSparklingStone_Movement_6
-# 1205 "data/maps/IkiTown/scripts.pory"
+# 1328 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1206 "data/maps/IkiTown/scripts.pory"
+# 1329 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_Trigger_FestivalBattle_Movement_5
-# 1207 "data/maps/IkiTown/scripts.pory"
+# 1330 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1208 "data/maps/IkiTown/scripts.pory"
+# 1331 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1209 "data/maps/IkiTown/scripts.pory"
+# 1332 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_1
-# 1211 "data/maps/IkiTown/scripts.pory"
+# 1334 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_GetPokedex_Movement_3
-# 1212 "data/maps/IkiTown/scripts.pory"
+# 1335 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1213 "data/maps/IkiTown/scripts.pory"
+# 1336 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 1214 "data/maps/IkiTown/scripts.pory"
+# 1337 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_2
-# 1220 "data/maps/IkiTown/scripts.pory"
+# 1343 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_RESULT, 1
-# 1221 "data/maps/IkiTown/scripts.pory"
+# 1344 "data/maps/IkiTown/scripts.pory"
 	playse SE_M_DETECT
-# 1222 "data/maps/IkiTown/scripts.pory"
+# 1345 "data/maps/IkiTown/scripts.pory"
 	dofieldeffectsparkle 24, 14, 0
-# 1223 "data/maps/IkiTown/scripts.pory"
+# 1346 "data/maps/IkiTown/scripts.pory"
 	waitfieldeffect FLDEFF_SPARKLE
-# 1224 "data/maps/IkiTown/scripts.pory"
+# 1347 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 1225 "data/maps/IkiTown/scripts.pory"
+# 1348 "data/maps/IkiTown/scripts.pory"
 	playse SE_PIN
-# 1226 "data/maps/IkiTown/scripts.pory"
+# 1349 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_Trigger_FestivalBattleleft_Movement_0
-# 1227 "data/maps/IkiTown/scripts.pory"
+# 1350 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1228 "data/maps/IkiTown/scripts.pory"
+# 1351 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_trigger_WecomeToIkitownSkip_Movement_0
-# 1229 "data/maps/IkiTown/scripts.pory"
+# 1352 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_Trigger_FestivalBattle_Movement_7
-# 1230 "data/maps/IkiTown/scripts.pory"
+# 1353 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1231 "data/maps/IkiTown/scripts.pory"
+# 1354 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1232 "data/maps/IkiTown/scripts.pory"
+# 1355 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_3
-# 1238 "data/maps/IkiTown/scripts.pory"
+# 1361 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_StartFestival_Movement_4
-# 1239 "data/maps/IkiTown/scripts.pory"
+# 1362 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1240 "data/maps/IkiTown/scripts.pory"
+# 1363 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1241 "data/maps/IkiTown/scripts.pory"
+# 1364 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_4
-# 1242 "data/maps/IkiTown/scripts.pory"
+# 1365 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_GetPokedex_Movement_3
-# 1243 "data/maps/IkiTown/scripts.pory"
+# 1366 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1244 "data/maps/IkiTown/scripts.pory"
+# 1367 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_2
-# 1245 "data/maps/IkiTown/scripts.pory"
+# 1368 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_5
-# 1246 "data/maps/IkiTown/scripts.pory"
+# 1369 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownhala, Ikitown_Trigger_FestivalBattle_Movement_0
-# 1247 "data/maps/IkiTown/scripts.pory"
+# 1370 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1248 "data/maps/IkiTown/scripts.pory"
+# 1371 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1249 "data/maps/IkiTown/scripts.pory"
+# 1372 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_6
-# 1252 "data/maps/IkiTown/scripts.pory"
+# 1375 "data/maps/IkiTown/scripts.pory"
 	dynmultichoice 18, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, Ikitown_trigger_GiveHalaSparklingStone_Text_7, Ikitown_trigger_GiveHalaSparklingStone_Text_8
-# 1253 "data/maps/IkiTown/scripts.pory"
+# 1376 "data/maps/IkiTown/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_22
-# 1274 "data/maps/IkiTown/scripts.pory"
+# 1397 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1275 "data/maps/IkiTown/scripts.pory"
+# 1398 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_9
 Ikitown_trigger_GiveHalaSparklingStone_21:
-# 1293 "data/maps/IkiTown/scripts.pory"
+# 1416 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_trigger_GiveHalaSparklingStone_Movement_7
-# 1294 "data/maps/IkiTown/scripts.pory"
+# 1417 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1295 "data/maps/IkiTown/scripts.pory"
+# 1418 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_10
-# 1296 "data/maps/IkiTown/scripts.pory"
+# 1419 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_10
-# 1298 "data/maps/IkiTown/scripts.pory"
+# 1421 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrokukui2, Ikitown_Trigger_FestivalBattle_Movement_4
-# 1299 "data/maps/IkiTown/scripts.pory"
+# 1422 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_11
-# 1305 "data/maps/IkiTown/scripts.pory"
+# 1428 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownlillie, Ikitown_GetPokedex_Movement_3
-# 1306 "data/maps/IkiTown/scripts.pory"
+# 1429 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1307 "data/maps/IkiTown/scripts.pory"
+# 1430 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_12
-# 1308 "data/maps/IkiTown/scripts.pory"
+# 1431 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_12
-# 1310 "data/maps/IkiTown/scripts.pory"
+# 1433 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 1311 "data/maps/IkiTown/scripts.pory"
+# 1434 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_HALA
-# 1312 "data/maps/IkiTown/scripts.pory"
+# 1435 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
-# 1313 "data/maps/IkiTown/scripts.pory"
+# 1436 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 8
-# 1314 "data/maps/IkiTown/scripts.pory"
+# 1437 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_HAUOLI_OUTSKIRTS_STATE, 1
-# 1315 "data/maps/IkiTown/scripts.pory"
+# 1438 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HAUOLI_OUTSKIRTS_NEWGAME
-# 1316 "data/maps/IkiTown/scripts.pory"
+# 1439 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_MOM_IN_HOUSE_INTRO
-# 1317 "data/maps/IkiTown/scripts.pory"
+# 1440 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_PLAYER_MOM3
-# 1318 "data/maps/IkiTown/scripts.pory"
+# 1441 "data/maps/IkiTown/scripts.pory"
 	removeitem ITEM_SPARKLING_STONE, 1
-# 1319 "data/maps/IkiTown/scripts.pory"
+# 1442 "data/maps/IkiTown/scripts.pory"
 	endcutscene
-# 1320 "data/maps/IkiTown/scripts.pory"
+# 1443 "data/maps/IkiTown/scripts.pory"
 	warp MAP_PLAYER_HOUSE, 8, 15
-# 1321 "data/maps/IkiTown/scripts.pory"
+# 1444 "data/maps/IkiTown/scripts.pory"
 	waitstate
 	return
 
 Ikitown_trigger_GiveHalaSparklingStone_2:
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_GiveHalaSparklingStone_Movement_0
-# 1174 "data/maps/IkiTown/scripts.pory"
+# 1297 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1175 "data/maps/IkiTown/scripts.pory"
+# 1298 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrohau
-# 1176 "data/maps/IkiTown/scripts.pory"
+# 1299 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrohau, 27, 15
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_GiveHalaSparklingStone_Movement_1
-# 1178 "data/maps/IkiTown/scripts.pory"
+# 1301 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
 	goto Ikitown_trigger_GiveHalaSparklingStone_1
 
 Ikitown_trigger_GiveHalaSparklingStone_3:
-# 1172 "data/maps/IkiTown/scripts.pory"
+# 1295 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_2, 14
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_2
 	goto Ikitown_trigger_GiveHalaSparklingStone_1
 
 Ikitown_trigger_GiveHalaSparklingStone_7:
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_GiveHalaSparklingStone_Movement_2
-# 1182 "data/maps/IkiTown/scripts.pory"
+# 1305 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1183 "data/maps/IkiTown/scripts.pory"
+# 1306 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrohau
-# 1184 "data/maps/IkiTown/scripts.pory"
+# 1307 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrohau, 27, 15
-# 1185 "data/maps/IkiTown/scripts.pory"
+# 1308 "data/maps/IkiTown/scripts.pory"
 	applymovement ikitownintrohau, Ikitown_trigger_GiveHalaSparklingStone_Movement_1
-# 1186 "data/maps/IkiTown/scripts.pory"
+# 1309 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
 	goto Ikitown_trigger_GiveHalaSparklingStone_6
 
 Ikitown_trigger_GiveHalaSparklingStone_8:
-# 1180 "data/maps/IkiTown/scripts.pory"
+# 1303 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_2, 15
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_7
 	goto Ikitown_trigger_GiveHalaSparklingStone_6
 
 Ikitown_trigger_GiveHalaSparklingStone_12:
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_GiveHalaSparklingStone_Movement_3
-# 1190 "data/maps/IkiTown/scripts.pory"
+# 1313 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1191 "data/maps/IkiTown/scripts.pory"
+# 1314 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrohau
-# 1192 "data/maps/IkiTown/scripts.pory"
+# 1315 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrohau, 16, 15
 	goto Ikitown_trigger_GiveHalaSparklingStone_11
 
 Ikitown_trigger_GiveHalaSparklingStone_13:
-# 1188 "data/maps/IkiTown/scripts.pory"
+# 1311 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_2, 14
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_12
 	goto Ikitown_trigger_GiveHalaSparklingStone_11
 
 Ikitown_trigger_GiveHalaSparklingStone_17:
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	applymovement LOCALID_PLAYER, Ikitown_trigger_GiveHalaSparklingStone_Movement_4
-# 1196 "data/maps/IkiTown/scripts.pory"
+# 1319 "data/maps/IkiTown/scripts.pory"
 	waitmovement 0
-# 1197 "data/maps/IkiTown/scripts.pory"
+# 1320 "data/maps/IkiTown/scripts.pory"
 	addobject ikitownintrohau
-# 1198 "data/maps/IkiTown/scripts.pory"
+# 1321 "data/maps/IkiTown/scripts.pory"
 	setobjectxy ikitownintrohau, 16, 15
 	goto Ikitown_trigger_GiveHalaSparklingStone_16
 
 Ikitown_trigger_GiveHalaSparklingStone_18:
-# 1194 "data/maps/IkiTown/scripts.pory"
+# 1317 "data/maps/IkiTown/scripts.pory"
 	compare VAR_TEMP_2, 15
 	goto_if_eq Ikitown_trigger_GiveHalaSparklingStone_17
 	goto Ikitown_trigger_GiveHalaSparklingStone_16
 
 Ikitown_trigger_GiveHalaSparklingStone_22:
-# 1254 "data/maps/IkiTown/scripts.pory"
+# 1377 "data/maps/IkiTown/scripts.pory"
 	speakername Ikitown_Trigger_FestivalBattle_Text_0
-# 1255 "data/maps/IkiTown/scripts.pory"
+# 1378 "data/maps/IkiTown/scripts.pory"
 	msgbox Ikitown_trigger_GiveHalaSparklingStone_Text_9
 	goto Ikitown_trigger_GiveHalaSparklingStone_21
 
 
 Ikitown_trigger_GiveHalaSparklingStoneSkip::
-# 1325 "data/maps/IkiTown/scripts.pory"
+# 1448 "data/maps/IkiTown/scripts.pory"
 	closemessage
-# 1326 "data/maps/IkiTown/scripts.pory"
+# 1449 "data/maps/IkiTown/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 1327 "data/maps/IkiTown/scripts.pory"
+# 1450 "data/maps/IkiTown/scripts.pory"
 	special StopAllObjectMovements
-# 1328 "data/maps/IkiTown/scripts.pory"
+# 1451 "data/maps/IkiTown/scripts.pory"
 	special CloseScriptMenus
-# 1329 "data/maps/IkiTown/scripts.pory"
+# 1452 "data/maps/IkiTown/scripts.pory"
 	special HideCutsceneCinematicBars
-# 1330 "data/maps/IkiTown/scripts.pory"
+# 1453 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_HALA
-# 1331 "data/maps/IkiTown/scripts.pory"
+# 1454 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HIDE_IKITOWN_INTRO_HAU
-# 1332 "data/maps/IkiTown/scripts.pory"
+# 1455 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 8
-# 1333 "data/maps/IkiTown/scripts.pory"
+# 1456 "data/maps/IkiTown/scripts.pory"
 	setvar VAR_HAUOLI_OUTSKIRTS_STATE, 1
-# 1334 "data/maps/IkiTown/scripts.pory"
+# 1457 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_HAUOLI_OUTSKIRTS_NEWGAME
-# 1335 "data/maps/IkiTown/scripts.pory"
+# 1458 "data/maps/IkiTown/scripts.pory"
 	setflag FLAG_MOM_IN_HOUSE_INTRO
-# 1336 "data/maps/IkiTown/scripts.pory"
+# 1459 "data/maps/IkiTown/scripts.pory"
 	clearflag FLAG_HIDE_PLAYER_MOM3
-# 1337 "data/maps/IkiTown/scripts.pory"
+# 1460 "data/maps/IkiTown/scripts.pory"
 	removeitem ITEM_SPARKLING_STONE, 1
-# 1338 "data/maps/IkiTown/scripts.pory"
+# 1461 "data/maps/IkiTown/scripts.pory"
 	warp MAP_PLAYER_HOUSE, 8, 15
-# 1339 "data/maps/IkiTown/scripts.pory"
+# 1462 "data/maps/IkiTown/scripts.pory"
 	waitstate
-# 1340 "data/maps/IkiTown/scripts.pory"
+# 1463 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_LittleBoyFestivalRockruffDialog::
+# 1469 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1470 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1471 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LittleBoyFestivalRockruffDialog_Text_0
+# 1473 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_LittleGirlFestivalRockruffDialog::
+# 1478 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1479 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1480 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_LittleGirlFestivalRockruffDialog_Text_0
+# 1482 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_FestivalNPC3Dialog::
+# 1487 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1488 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1489 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalNPC3Dialog_Text_0
+# 1491 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_FestivalNPC4Dialog::
+# 1496 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1497 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1498 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalNPC4Dialog_Text_0
+# 1500 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_FestivalNPC5Dialog::
+# 1505 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1506 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1507 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalNPC5Dialog_Text_0
+# 1510 "data/maps/IkiTown/scripts.pory"
+	release
+	end
+
+
+Ikitown_FestivalNPC6Dialog::
+# 1515 "data/maps/IkiTown/scripts.pory"
+	lock
+# 1516 "data/maps/IkiTown/scripts.pory"
+	faceplayer
+# 1517 "data/maps/IkiTown/scripts.pory"
+	msgbox Ikitown_FestivalNPC6Dialog_Text_0
+# 1519 "data/maps/IkiTown/scripts.pory"
 	release
 	end
 
@@ -1981,61 +2224,61 @@ Ikitown_Trigger_FestivalBattle_Movement_1:
 	face_down
 	step_end
 
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_2:
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 142 "data/maps/IkiTown/scripts.pory"
+# 140 "data/maps/IkiTown/scripts.pory"
 	face_down
 	step_end
 
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_3:
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 143 "data/maps/IkiTown/scripts.pory"
+# 141 "data/maps/IkiTown/scripts.pory"
 	walk_up
 	step_end
 
-# 148 "data/maps/IkiTown/scripts.pory"
+# 146 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_4:
-# 148 "data/maps/IkiTown/scripts.pory"
+# 146 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 149 "data/maps/IkiTown/scripts.pory"
+# 147 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_5:
-# 149 "data/maps/IkiTown/scripts.pory"
+# 147 "data/maps/IkiTown/scripts.pory"
 	face_right
 	step_end
 
-# 154 "data/maps/IkiTown/scripts.pory"
+# 152 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_6:
-# 154 "data/maps/IkiTown/scripts.pory"
+# 152 "data/maps/IkiTown/scripts.pory"
 	shake_horizontal
 	step_end
 
-# 168 "data/maps/IkiTown/scripts.pory"
+# 166 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_7:
-# 168 "data/maps/IkiTown/scripts.pory"
+# 166 "data/maps/IkiTown/scripts.pory"
 	face_up
 	step_end
 
-# 187 "data/maps/IkiTown/scripts.pory"
+# 185 "data/maps/IkiTown/scripts.pory"
 Ikitown_Trigger_FestivalBattle_Movement_8:
-# 187 "data/maps/IkiTown/scripts.pory"
+# 185 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 187 "data/maps/IkiTown/scripts.pory"
+# 185 "data/maps/IkiTown/scripts.pory"
 	face_down
 	step_end
 
@@ -2231,795 +2474,1059 @@ Ikitown_FestivalBattleOnStage2_Movement_1:
 	walk_left
 	step_end
 
-# 482 "data/maps/IkiTown/scripts.pory"
+# 485 "data/maps/IkiTown/scripts.pory"
 Ikitown_FestivalBattleOnStage2_Movement_2:
-# 482 "data/maps/IkiTown/scripts.pory"
+# 485 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 482 "data/maps/IkiTown/scripts.pory"
+# 485 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 482 "data/maps/IkiTown/scripts.pory"
+# 485 "data/maps/IkiTown/scripts.pory"
 	walk_right
 	step_end
 
-# 496 "data/maps/IkiTown/scripts.pory"
+# 499 "data/maps/IkiTown/scripts.pory"
 Ikitown_FestivalBattleOnStage2_Movement_3:
-# 496 "data/maps/IkiTown/scripts.pory"
+# 499 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 496 "data/maps/IkiTown/scripts.pory"
+# 499 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 496 "data/maps/IkiTown/scripts.pory"
-	walk_left
-	step_end
-
-# 515 "data/maps/IkiTown/scripts.pory"
-Ikitown_FestivalBattleOnStage2_Movement_4:
-# 515 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 515 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-	step_end
-
-# 559 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_0:
-# 559 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 559 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 559 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 559 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 559 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 559 "data/maps/IkiTown/scripts.pory"
-	delay_16
-	step_end
-
-# 560 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_1:
-# 560 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 560 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 560 "data/maps/IkiTown/scripts.pory"
-	walk_up
-	step_end
-
-# 561 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_2:
-# 561 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 561 "data/maps/IkiTown/scripts.pory"
-	walk_up
-	step_end
-
-# 568 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_3:
-# 568 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 568 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 568 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 568 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 568 "data/maps/IkiTown/scripts.pory"
+# 499 "data/maps/IkiTown/scripts.pory"
 	walk_left
 	step_end
 
-# 571 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_4:
-# 571 "data/maps/IkiTown/scripts.pory"
-	walk_in_place_up
-# 571 "data/maps/IkiTown/scripts.pory"
-	walk_in_place_up
-	step_end
-
-# 574 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_5:
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 574 "data/maps/IkiTown/scripts.pory"
-	walk_right
-	step_end
-
-# 584 "data/maps/IkiTown/scripts.pory"
-Ikitown_StartFestival_Movement_6:
-# 584 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 584 "data/maps/IkiTown/scripts.pory"
-	walk_left
-	step_end
-
-# 596 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_right_Movement_0:
-# 596 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 596 "data/maps/IkiTown/scripts.pory"
-	face_up
-	step_end
-
-# 603 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_left_Movement_0:
-# 603 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 603 "data/maps/IkiTown/scripts.pory"
-	face_up
-	step_end
-
-# 620 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitownSkip_Movement_0:
-# 620 "data/maps/IkiTown/scripts.pory"
-	face_down
-	step_end
-
-# 640 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_0:
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 640 "data/maps/IkiTown/scripts.pory"
-	walk_faster_right
-# 640 "data/maps/IkiTown/scripts.pory"
-	face_down
-	step_end
-
-# 641 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_1:
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 641 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-	step_end
-
-# 644 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_2:
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 644 "data/maps/IkiTown/scripts.pory"
-	walk_up
-	step_end
-
-# 645 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_3:
-# 645 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 645 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 645 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 645 "data/maps/IkiTown/scripts.pory"
-	delay_16
-# 645 "data/maps/IkiTown/scripts.pory"
+# 529 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_0:
+# 529 "data/maps/IkiTown/scripts.pory"
 	walk_fast_left
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 645 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
+# 529 "data/maps/IkiTown/scripts.pory"
+	walk_fast_left
 	step_end
 
-# 659 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_4:
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_left
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-# 659 "data/maps/IkiTown/scripts.pory"
-	walk_faster_up
-	step_end
-
-# 661 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_5:
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-# 661 "data/maps/IkiTown/scripts.pory"
-	walk_up
-	step_end
-
-# 671 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_6:
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_1:
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_right
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
-	walk_faster_down
-# 671 "data/maps/IkiTown/scripts.pory"
+# 532 "data/maps/IkiTown/scripts.pory"
 	walk_faster_down
 	step_end
 
-# 675 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_7:
-# 675 "data/maps/IkiTown/scripts.pory"
-	emote_question_mark
+# 533 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_2:
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 533 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
 	step_end
 
-# 710 "data/maps/IkiTown/scripts.pory"
-Ikitown_trigger_WecomeToIkitown_Movement_8:
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
-# 710 "data/maps/IkiTown/scripts.pory"
-	walk_fast_up
+# 534 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_3:
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 534 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
 	step_end
 
-# 763 "data/maps/IkiTown/scripts.pory"
-Ikitown_Trigger_KukuiSeeTapuKoko_Movement_0:
-# 763 "data/maps/IkiTown/scripts.pory"
+# 539 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_4:
+# 539 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 539 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 539 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 539 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 539 "data/maps/IkiTown/scripts.pory"
+	walk_down
+	step_end
+
+# 577 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_5:
+# 577 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 577 "data/maps/IkiTown/scripts.pory"
 	face_down
-# 763 "data/maps/IkiTown/scripts.pory"
-	emote_exclamation_mark
 	step_end
 
-# 768 "data/maps/IkiTown/scripts.pory"
-Ikitown_Trigger_KukuiSeeTapuKoko_Movement_1:
-# 768 "data/maps/IkiTown/scripts.pory"
+# 589 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_6:
+# 589 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 589 "data/maps/IkiTown/scripts.pory"
+	walk_down
+	step_end
+
+# 590 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_7:
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 590 "data/maps/IkiTown/scripts.pory"
+	walk_down
+	step_end
+
+# 591 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_8:
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 591 "data/maps/IkiTown/scripts.pory"
+	walk_down
+	step_end
+
+# 597 "data/maps/IkiTown/scripts.pory"
+Ikitown_LeavingIkitownFestival_Movement_9:
+# 597 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 597 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 597 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 597 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 597 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 597 "data/maps/IkiTown/scripts.pory"
+	walk_down
+	step_end
+
+# 679 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_0:
+# 679 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 679 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 679 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 679 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 679 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 679 "data/maps/IkiTown/scripts.pory"
+	delay_16
+	step_end
+
+# 680 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_1:
+# 680 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 680 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 680 "data/maps/IkiTown/scripts.pory"
 	walk_up
 	step_end
 
-# 900 "data/maps/IkiTown/scripts.pory"
-Ikitown_GetPokedex_Movement_0:
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_left
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_down
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_diag_northeast
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 900 "data/maps/IkiTown/scripts.pory"
-	walk_right
-# 900 "data/maps/IkiTown/scripts.pory"
+# 681 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_2:
+# 681 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 681 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 900 "data/maps/IkiTown/scripts.pory"
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 681 "data/maps/IkiTown/scripts.pory"
+	walk_up
+	step_end
+
+# 690 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_3:
+# 690 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 690 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 690 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 690 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 690 "data/maps/IkiTown/scripts.pory"
+	walk_left
+	step_end
+
+# 693 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_4:
+# 693 "data/maps/IkiTown/scripts.pory"
+	walk_in_place_up
+# 693 "data/maps/IkiTown/scripts.pory"
+	walk_in_place_up
+	step_end
+
+# 696 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_5:
+# 696 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 696 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 696 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 696 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 696 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 696 "data/maps/IkiTown/scripts.pory"
 	face_right
 	step_end
 
-# 901 "data/maps/IkiTown/scripts.pory"
+# 697 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_6:
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 697 "data/maps/IkiTown/scripts.pory"
+	walk_right
+	step_end
+
+# 707 "data/maps/IkiTown/scripts.pory"
+Ikitown_StartFestival_Movement_7:
+# 707 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 707 "data/maps/IkiTown/scripts.pory"
+	walk_left
+	step_end
+
+# 719 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_right_Movement_0:
+# 719 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 719 "data/maps/IkiTown/scripts.pory"
+	face_up
+	step_end
+
+# 726 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_left_Movement_0:
+# 726 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 726 "data/maps/IkiTown/scripts.pory"
+	face_up
+	step_end
+
+# 743 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitownSkip_Movement_0:
+# 743 "data/maps/IkiTown/scripts.pory"
+	face_down
+	step_end
+
+# 763 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_0:
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 763 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 763 "data/maps/IkiTown/scripts.pory"
+	face_down
+	step_end
+
+# 764 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_1:
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 764 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+	step_end
+
+# 767 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_2:
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 767 "data/maps/IkiTown/scripts.pory"
+	walk_up
+	step_end
+
+# 768 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_3:
+# 768 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 768 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 768 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 768 "data/maps/IkiTown/scripts.pory"
+	delay_16
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_left
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 768 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+	step_end
+
+# 782 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_4:
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_left
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+# 782 "data/maps/IkiTown/scripts.pory"
+	walk_faster_up
+	step_end
+
+# 784 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_5:
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 784 "data/maps/IkiTown/scripts.pory"
+	walk_up
+	step_end
+
+# 794 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_6:
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_right
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+# 794 "data/maps/IkiTown/scripts.pory"
+	walk_faster_down
+	step_end
+
+# 798 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_7:
+# 798 "data/maps/IkiTown/scripts.pory"
+	emote_question_mark
+	step_end
+
+# 833 "data/maps/IkiTown/scripts.pory"
+Ikitown_trigger_WecomeToIkitown_Movement_8:
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+# 833 "data/maps/IkiTown/scripts.pory"
+	walk_fast_up
+	step_end
+
+# 886 "data/maps/IkiTown/scripts.pory"
+Ikitown_Trigger_KukuiSeeTapuKoko_Movement_0:
+# 886 "data/maps/IkiTown/scripts.pory"
+	face_down
+# 886 "data/maps/IkiTown/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 891 "data/maps/IkiTown/scripts.pory"
+Ikitown_Trigger_KukuiSeeTapuKoko_Movement_1:
+# 891 "data/maps/IkiTown/scripts.pory"
+	walk_up
+	step_end
+
+# 1023 "data/maps/IkiTown/scripts.pory"
+Ikitown_GetPokedex_Movement_0:
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_left
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_down
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_diag_northeast
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_right
+# 1023 "data/maps/IkiTown/scripts.pory"
+	walk_up
+# 1023 "data/maps/IkiTown/scripts.pory"
+	face_right
+	step_end
+
+# 1024 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_1:
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_diag_northeast
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 901 "data/maps/IkiTown/scripts.pory"
+# 1024 "data/maps/IkiTown/scripts.pory"
 	walk_right
 	step_end
 
-# 904 "data/maps/IkiTown/scripts.pory"
+# 1027 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_2:
-# 904 "data/maps/IkiTown/scripts.pory"
+# 1027 "data/maps/IkiTown/scripts.pory"
 	emote_exclamation_mark
-# 904 "data/maps/IkiTown/scripts.pory"
+# 1027 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 904 "data/maps/IkiTown/scripts.pory"
+# 1027 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 915 "data/maps/IkiTown/scripts.pory"
+# 1038 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_3:
-# 915 "data/maps/IkiTown/scripts.pory"
+# 1038 "data/maps/IkiTown/scripts.pory"
 	walk_in_place_right
-# 915 "data/maps/IkiTown/scripts.pory"
+# 1038 "data/maps/IkiTown/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_4:
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_fast_right
-# 952 "data/maps/IkiTown/scripts.pory"
+# 1075 "data/maps/IkiTown/scripts.pory"
 	walk_diag_northeast
 	step_end
 
-# 954 "data/maps/IkiTown/scripts.pory"
+# 1077 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_5:
-# 954 "data/maps/IkiTown/scripts.pory"
+# 1077 "data/maps/IkiTown/scripts.pory"
 	emote_exclamation_mark
-# 954 "data/maps/IkiTown/scripts.pory"
+# 1077 "data/maps/IkiTown/scripts.pory"
 	face_down
 	step_end
 
-# 967 "data/maps/IkiTown/scripts.pory"
+# 1090 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_6:
-# 967 "data/maps/IkiTown/scripts.pory"
+# 1090 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 967 "data/maps/IkiTown/scripts.pory"
+# 1090 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 967 "data/maps/IkiTown/scripts.pory"
+# 1090 "data/maps/IkiTown/scripts.pory"
 	delay_16
-# 967 "data/maps/IkiTown/scripts.pory"
+# 1090 "data/maps/IkiTown/scripts.pory"
 	delay_16
 	step_end
 
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_7:
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 	walk_up
-# 968 "data/maps/IkiTown/scripts.pory"
+# 1091 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_8:
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 972 "data/maps/IkiTown/scripts.pory"
+# 1095 "data/maps/IkiTown/scripts.pory"
 	walk_left
 	step_end
 
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_9:
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_diag_northwest
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
-# 979 "data/maps/IkiTown/scripts.pory"
+# 1102 "data/maps/IkiTown/scripts.pory"
 	walk_left
 	step_end
 
-# 1040 "data/maps/IkiTown/scripts.pory"
+# 1163 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_10:
-# 1040 "data/maps/IkiTown/scripts.pory"
+# 1163 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 1040 "data/maps/IkiTown/scripts.pory"
+# 1163 "data/maps/IkiTown/scripts.pory"
 	walk_left
 	step_end
 
-# 1071 "data/maps/IkiTown/scripts.pory"
+# 1194 "data/maps/IkiTown/scripts.pory"
 Ikitown_GetPokedex_Movement_11:
-# 1071 "data/maps/IkiTown/scripts.pory"
+# 1194 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1071 "data/maps/IkiTown/scripts.pory"
+# 1194 "data/maps/IkiTown/scripts.pory"
 	walk_faster_up
-# 1071 "data/maps/IkiTown/scripts.pory"
+# 1194 "data/maps/IkiTown/scripts.pory"
 	face_down
 	step_end
 
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_0:
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1173 "data/maps/IkiTown/scripts.pory"
+# 1296 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
 	step_end
 
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_1:
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1177 "data/maps/IkiTown/scripts.pory"
+# 1300 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
 	step_end
 
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_2:
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	walk_faster_left
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	walk_faster_up
-# 1181 "data/maps/IkiTown/scripts.pory"
+# 1304 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_3:
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1189 "data/maps/IkiTown/scripts.pory"
+# 1312 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_4:
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_right
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	walk_faster_up
-# 1195 "data/maps/IkiTown/scripts.pory"
+# 1318 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_5:
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 	walk_diag_northeast
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 	walk_right
-# 1202 "data/maps/IkiTown/scripts.pory"
+# 1325 "data/maps/IkiTown/scripts.pory"
 	walk_right
 	step_end
 
-# 1204 "data/maps/IkiTown/scripts.pory"
+# 1327 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_6:
-# 1204 "data/maps/IkiTown/scripts.pory"
+# 1327 "data/maps/IkiTown/scripts.pory"
 	walk_down
-# 1204 "data/maps/IkiTown/scripts.pory"
+# 1327 "data/maps/IkiTown/scripts.pory"
 	delay_8
-# 1204 "data/maps/IkiTown/scripts.pory"
+# 1327 "data/maps/IkiTown/scripts.pory"
 	face_left
 	step_end
 
-# 1293 "data/maps/IkiTown/scripts.pory"
+# 1416 "data/maps/IkiTown/scripts.pory"
 Ikitown_trigger_GiveHalaSparklingStone_Movement_7:
-# 1293 "data/maps/IkiTown/scripts.pory"
+# 1416 "data/maps/IkiTown/scripts.pory"
 	walk_down
 	step_end
 
 Ikitown_Trigger_FestivalBattle_Text_0:
-# 80 "data/maps/IkiTown/scripts.pory"
+# 81 "data/maps/IkiTown/scripts.pory"
 	.string "Hala$"
 
 Ikitown_Trigger_FestivalBattle_Text_1:
-# 81 "data/maps/IkiTown/scripts.pory"
+# 82 "data/maps/IkiTown/scripts.pory"
 	.string "The Alola Region is made up of our\n"
 	.string "four islands.\p"
 	.string "And each island has its own guardian\n"
 	.string "Pokémon.\p"
 	.string "Our festival today is help to express\n"
 	.string "our thanks to these great Pokémon\l"
-	.string "guardian dieties for always\l"
+	.string "guardian deities for always\l"
 	.string "remaining by our sides.\p"
 	.string "Well, we may call it a festival, but it's\n"
 	.string "just this little thing you see here.\p"
@@ -3028,11 +3535,11 @@ Ikitown_Trigger_FestivalBattle_Text_1:
 	.string "all out.$"
 
 Ikitown_Trigger_FestivalBattle_Text_2:
-# 100 "data/maps/IkiTown/scripts.pory"
+# 101 "data/maps/IkiTown/scripts.pory"
 	.string "Hau$"
 
 Ikitown_Trigger_FestivalBattle_Text_3:
-# 103 "data/maps/IkiTown/scripts.pory"
+# 104 "data/maps/IkiTown/scripts.pory"
 	.string "Man, I thought you'd never make it!\n"
 	.string "Me and Popplio've been waiting for ages!$"
 
@@ -3046,45 +3553,45 @@ Ikitown_Trigger_FestivalBattle_Text_5:
 	.string "Me and Rowlet've been waiting for ages!$"
 
 Ikitown_Trigger_FestivalBattle_Text_6:
-# 121 "data/maps/IkiTown/scripts.pory"
+# 120 "data/maps/IkiTown/scripts.pory"
 	.string "Hoo!$"
 
 Ikitown_Trigger_FestivalBattle_Text_7:
-# 127 "data/maps/IkiTown/scripts.pory"
+# 126 "data/maps/IkiTown/scripts.pory"
 	.string "Man, I thought you'd never make it!\n"
 	.string "Me and Litten've been waiting for ages!$"
 
 Ikitown_Trigger_FestivalBattle_Text_8:
-# 133 "data/maps/IkiTown/scripts.pory"
+# 131 "data/maps/IkiTown/scripts.pory"
 	.string "Grrr!$"
 
 Ikitown_Trigger_FestivalBattle_Text_9:
-# 138 "data/maps/IkiTown/scripts.pory"
+# 136 "data/maps/IkiTown/scripts.pory"
 	.string "Hold on… Didn't anyone explain to\n"
 	.string "you about tonight?!$"
 
 Ikitown_Trigger_FestivalBattle_Text_10:
-# 146 "data/maps/IkiTown/scripts.pory"
+# 144 "data/maps/IkiTown/scripts.pory"
 	.string "Kukui$"
 
 Ikitown_Trigger_FestivalBattle_Text_11:
-# 147 "data/maps/IkiTown/scripts.pory"
+# 145 "data/maps/IkiTown/scripts.pory"
 	.string "Oh yeah, right on time!$"
 
 Ikitown_Trigger_FestivalBattle_Text_12:
-# 151 "data/maps/IkiTown/scripts.pory"
+# 149 "data/maps/IkiTown/scripts.pory"
 	.string "Lillie$"
 
 Ikitown_Trigger_FestivalBattle_Text_13:
-# 152 "data/maps/IkiTown/scripts.pory"
+# 150 "data/maps/IkiTown/scripts.pory"
 	.string "But to what exactly?$"
 
 Ikitown_Trigger_FestivalBattle_Text_14:
-# 157 "data/maps/IkiTown/scripts.pory"
+# 154 "data/maps/IkiTown/scripts.pory"
 	.string "Pew!!$"
 
 Ikitown_Trigger_FestivalBattle_Text_15:
-# 161 "data/maps/IkiTown/scripts.pory"
+# 159 "data/maps/IkiTown/scripts.pory"
 	.string "A full-powered festival for Pokemon\n"
 	.string "battling!\p"
 	.string "We battle in the name of Tapu Koko,\n"
@@ -3093,7 +3600,7 @@ Ikitown_Trigger_FestivalBattle_Text_15:
 	.string "please our guardian. Woo!$"
 
 Ikitown_Trigger_FestivalBattle_Text_16:
-# 171 "data/maps/IkiTown/scripts.pory"
+# 169 "data/maps/IkiTown/scripts.pory"
 	.string "So, you two will be taking part in\n"
 	.string "battle?\p"
 	.string "I don't like seeing Pokémon fight one\n"
@@ -3101,22 +3608,22 @@ Ikitown_Trigger_FestivalBattle_Text_16:
 	.string "But…I'll be sure to watch you both.$"
 
 Ikitown_Trigger_FestivalBattle_Text_17:
-# 182 "data/maps/IkiTown/scripts.pory"
+# 180 "data/maps/IkiTown/scripts.pory"
 	.string "Your Pokémon have fought for you, so\n"
 	.string "show them the same care in return,\l"
 	.string "{PLAYER}.\p"
 	.string "Allow me to heal them for you this time.$"
 
 Ikitown_Trigger_FestivalBattle_Text_18:
-# 196 "data/maps/IkiTown/scripts.pory"
+# 194 "data/maps/IkiTown/scripts.pory"
 	.string "Are you ready for this Pokémon battle?$"
 
 Ikitown_Trigger_FestivalBattle_Text_19:
-# 199 "data/maps/IkiTown/scripts.pory"
+# 197 "data/maps/IkiTown/scripts.pory"
 	.string "Then let's begin!$"
 
 Ikitown_Trigger_FestivalBattle_Text_20:
-# 204 "data/maps/IkiTown/scripts.pory"
+# 202 "data/maps/IkiTown/scripts.pory"
 	.string "Oh come on!\n"
 	.string "It's the festival!$"
 
@@ -3172,12 +3679,12 @@ Ikitown_FestivalBattleOnStage_Text_8:
 	.string "battle, eh?$"
 
 Ikitown_FestivalBattleOnStage2_Text_0:
-# 340 "data/maps/IkiTown/scripts.pory"
+# 341 "data/maps/IkiTown/scripts.pory"
 	.string "{PLAYER}! Hau!\n"
 	.string "Bring forth the power of your Pokémon!$"
 
 Ikitown_FestivalBattleOnStage2_Text_1:
-# 345 "data/maps/IkiTown/scripts.pory"
+# 346 "data/maps/IkiTown/scripts.pory"
 	.string "What? It's already over?!$"
 
 Ikitown_FestivalBattleOnStage2_Text_2:
@@ -3234,39 +3741,39 @@ Ikitown_FestivalBattleOnStage2_Text_9:
 	.string "or perhaps it has a mission for you.$"
 
 Ikitown_FestivalBattleOnStage2_Text_10:
-# 439 "data/maps/IkiTown/scripts.pory"
+# 442 "data/maps/IkiTown/scripts.pory"
 	.string "Well, it's time for you to get out there\n"
 	.string "and start your {COLOR RED}island challenge{COLOR DARK_GRAY}!\p"
 	.string "If you visit every island, maybe you'll\n"
 	.string "figure out what that mission is.$"
 
 Ikitown_FestivalBattleOnStage2_Text_11:
-# 444 "data/maps/IkiTown/scripts.pory"
+# 447 "data/maps/IkiTown/scripts.pory"
 	.string "The island challenge?$"
 
 Ikitown_FestivalBattleOnStage2_Text_12:
-# 444 "data/maps/IkiTown/scripts.pory"
+# 447 "data/maps/IkiTown/scripts.pory"
 	.string "Every Island?$"
 
 Ikitown_FestivalBattleOnStage2_Text_13:
-# 447 "data/maps/IkiTown/scripts.pory"
+# 450 "data/maps/IkiTown/scripts.pory"
 	.string "Four Islands!\p"
 	.string "You'll travel to each of the four\n"
 	.string "islands here in the Alola Region.$"
 
 Ikitown_FestivalBattleOnStage2_Text_14:
-# 460 "data/maps/IkiTown/scripts.pory"
+# 463 "data/maps/IkiTown/scripts.pory"
 	.string "The island challenge is about aiming to\n"
 	.string "be the strongest Trainer-\l"
 	.string "the {COLOR RED}island challenge champion{COLOR DARK_GRAY}. Woo!$"
 
 Ikitown_FestivalBattleOnStage2_Text_15:
-# 466 "data/maps/IkiTown/scripts.pory"
+# 469 "data/maps/IkiTown/scripts.pory"
 	.string "Sounds great, right?\n"
 	.string "I can't wait to have a real adventure!$"
 
 Ikitown_FestivalBattleOnStage2_Text_16:
-# 471 "data/maps/IkiTown/scripts.pory"
+# 474 "data/maps/IkiTown/scripts.pory"
 	.string "The island challenge Kukui spoke of…\p"
 	.string "It is a journey to overcome your own\n"
 	.string "limitations, as you travel the far\l"
@@ -3278,12 +3785,12 @@ Ikitown_FestivalBattleOnStage2_Text_16:
 	.string "once they reach 11 years of age!$"
 
 Ikitown_FestivalBattleOnStage2_Text_17:
-# 485 "data/maps/IkiTown/scripts.pory"
+# 488 "data/maps/IkiTown/scripts.pory"
 	.string "Allow me to give you both the island\n"
 	.string "challenge amulets you will need.$"
 
 Ikitown_FestivalBattleOnStage2_Text_18:
-# 490 "data/maps/IkiTown/scripts.pory"
+# 493 "data/maps/IkiTown/scripts.pory"
 	.string "Awesome!\n"
 	.string "Thanks, Tutu!\p"
 	.string "I'm gonna make it through the island\n"
@@ -3291,29 +3798,98 @@ Ikitown_FestivalBattleOnStage2_Text_18:
 	.string "challenge champion!$"
 
 Ikitown_FestivalBattleOnStage2_Text_19:
-# 499 "data/maps/IkiTown/scripts.pory"
+# 502 "data/maps/IkiTown/scripts.pory"
 	.string "There is one for you was well,\n"
 	.string "{PLAYER}.\p"
 	.string "Please do give the island challenge\n"
 	.string "a try.$"
 
 Ikitown_FestivalBattleOnStage2_Text_20:
-# 506 "data/maps/IkiTown/scripts.pory"
+# 509 "data/maps/IkiTown/scripts.pory"
 	.string "You received the {COLOR RED}Island Challenge\n"
 	.string "Amulet{COLOR DARK_GRAY}!$"
 
 Ikitown_FestivalBattleOnStage2_Text_21:
-# 513 "data/maps/IkiTown/scripts.pory"
+# 520 "data/maps/IkiTown/scripts.pory"
 	.string "Yeah, doing the island challenge is the\n"
 	.string "best way to really get to know Alola!$"
 
+Ikitown_LeavingIkitownFestival_Text_0:
+# 548 "data/maps/IkiTown/scripts.pory"
+	.string "Tapu Koko is amazing, isn't it?\p"
+	.string "I hope I can meet it again someday\n"
+	.string "and thank it for saving Nebby…$"
+
+Ikitown_LeavingIkitownFestival_Text_1:
+# 555 "data/maps/IkiTown/scripts.pory"
+	.string "Pew!$"
+
+Ikitown_LeavingIkitownFestival_Text_2:
+# 558 "data/maps/IkiTown/scripts.pory"
+	.string "Me, too$"
+
+Ikitown_LeavingIkitownFestival_Text_3:
+# 558 "data/maps/IkiTown/scripts.pory"
+	.string "Oh yeah?$"
+
+Ikitown_LeavingIkitownFestival_Text_4:
+# 561 "data/maps/IkiTown/scripts.pory"
+	.string "It saved you as well, didn't it?\n"
+	.string "And left you with that Sparkling\l"
+	.string "Stone…\l"
+	.string "even though you're a stranger to\l"
+	.string "this place.$"
+
+Ikitown_LeavingIkitownFestival_Text_5:
+# 582 "data/maps/IkiTown/scripts.pory"
+	.string "Suppose it's time we get you kids home,\n"
+	.string "yeah?$"
+
+Ikitown_LeavingIkitownFestival_Text_6:
+# 585 "data/maps/IkiTown/scripts.pory"
+	.string "Nebby…\n"
+	.string "Alola is full of all kinds of wonders,\l"
+	.string "isn't it?$"
+
+Ikitown_LeavingIkitownFestival_Text_7:
+# 600 "data/maps/IkiTown/scripts.pory"
+	.string "???$"
+
+Ikitown_LeavingIkitownFestival_Text_8:
+# 601 "data/maps/IkiTown/scripts.pory"
+	.string "Captain…\p"
+	.string "I was able to detect high levels of\n"
+	.string "aura at this full-powered festival.\p"
+	.string "I suppose you would…\p"
+	.string "According to our earlier research it\n"
+	.string "seems that the Z-Power Ring and this\l"
+	.string "Tapu Koko creature are bathed in a\l"
+	.string "great deal of light.\p"
+	.string "Alola overflows with the light that\n"
+	.string "was released by the Blinding One…\l"
+	.string "I find myself rather envious.$"
+
+Ikitown_LeavingIkitownFestival_Text_9:
+# 618 "data/maps/IkiTown/scripts.pory"
+	.string "I wonder if we can't find some way\n"
+	.string "to use the great power that fills\l"
+	.string "Alola for ourselves…$"
+
+Ikitown_LeavingIkitownFestival_Text_10:
+# 623 "data/maps/IkiTown/scripts.pory"
+	.string "That is precisely what we, the Ultra\n"
+	.string "Recon Squad, are here to make clear.\p"
+	.string "Onward! There is still so much of\n"
+	.string "Alola we have not seen, and we must\l"
+	.string "investigate it all!$"
+
 Ikitown_trigger_WecomeToIkitown_Text_0:
-# 656 "data/maps/IkiTown/scripts.pory"
+# 779 "data/maps/IkiTown/scripts.pory"
 	.string "And we're here!\n"
 	.string "This right here is Iki Town!$"
 
 Ikitown_trigger_WecomeToIkitown_Text_1:
-# 664 "data/maps/IkiTown/scripts.pory"
+# 787 "data/maps/IkiTown/scripts.pory"
 	.string "This town is where folks come to\n"
 	.string "worship the Pokemon that watches\l"
 	.string "over Melemele Island.\p"
@@ -3321,7 +3897,7 @@ Ikitown_trigger_WecomeToIkitown_Text_1:
 	.string "happy, see!$"
 
 Ikitown_trigger_WecomeToIkitown_Text_2:
-# 678 "data/maps/IkiTown/scripts.pory"
+# 801 "data/maps/IkiTown/scripts.pory"
 	.string "Looks like the kahuna's nowhere to be\n"
 	.string "found, though…\p"
 	.string "I guess there must be some trouble\n"
@@ -3329,28 +3905,28 @@ Ikitown_trigger_WecomeToIkitown_Text_2:
 	.string "fixing, yeah?$"
 
 Ikitown_trigger_WecomeToIkitown_Text_3:
-# 687 "data/maps/IkiTown/scripts.pory"
+# 810 "data/maps/IkiTown/scripts.pory"
 	.string "Yeah, the kahuna wandered off without\n"
 	.string "a word to anybody, singing a little\l"
 	.string "ditty or something.$"
 
 Ikitown_trigger_WecomeToIkitown_Text_4:
-# 698 "data/maps/IkiTown/scripts.pory"
+# 821 "data/maps/IkiTown/scripts.pory"
 	.string "I'm gonna go stop by home for a sec.\n"
 	.string "I've gotta show my mom Popplio!$"
 
 Ikitown_trigger_WecomeToIkitown_Text_5:
-# 702 "data/maps/IkiTown/scripts.pory"
+# 825 "data/maps/IkiTown/scripts.pory"
 	.string "I'm gonna go stop by home for a sec.\n"
 	.string "I've gotta show my mom Rowlet!$"
 
 Ikitown_trigger_WecomeToIkitown_Text_6:
-# 706 "data/maps/IkiTown/scripts.pory"
+# 829 "data/maps/IkiTown/scripts.pory"
 	.string "I'm gonna go stop by home for a sec.\n"
 	.string "I've gotta show my mom Litten!$"
 
 Ikitown_trigger_WecomeToIkitown_Text_7:
-# 716 "data/maps/IkiTown/scripts.pory"
+# 839 "data/maps/IkiTown/scripts.pory"
 	.string "Hey, I've got an idea for you,\n"
 	.string "{PLAYER}.\p"
 	.string "If you head through the village and\n"
@@ -3362,7 +3938,7 @@ Ikitown_trigger_WecomeToIkitown_Text_7:
 	.string "yourself?$"
 
 Ikitown_trigger_WecomeToIkitown_Text_8:
-# 734 "data/maps/IkiTown/scripts.pory"
+# 857 "data/maps/IkiTown/scripts.pory"
 	.string "If you're really lucky, maybe you'll\n"
 	.string "actually get a glimpse of the\l"
 	.string "guardian deity yourself!\p"
@@ -3370,33 +3946,33 @@ Ikitown_trigger_WecomeToIkitown_Text_8:
 	.string "kahuna comes back.$"
 
 Ikitown_KukuiSeeTapuKoko_Text_0:
-# 751 "data/maps/IkiTown/scripts.pory"
+# 874 "data/maps/IkiTown/scripts.pory"
 	.string "I'll stick around and see if the\n"
 	.string "kahuna comes back.$"
 
 Ikitown_MainSign_Text_0:
-# 775 "data/maps/IkiTown/scripts.pory"
+# 898 "data/maps/IkiTown/scripts.pory"
 	.string "Iki Town\n"
 	.string "“The place where we give thanks to\l"
 	.string "Pokémon.”$"
 
 Ikitown_LittleBoyWRockruff_Text_0:
-# 786 "data/maps/IkiTown/scripts.pory"
+# 909 "data/maps/IkiTown/scripts.pory"
 	.string "Hey, you've got a Pokémon! I want one,\n"
 	.string "too!\p"
 	.string "Where'd you get yours?$"
 
 Ikitown_Rockruff_Text_0:
-# 799 "data/maps/IkiTown/scripts.pory"
-	.string "Ruff ruff!$"
+# 922 "data/maps/IkiTown/scripts.pory"
+	.string "Wroof!$"
 
 Ikitown_LeftSideGuy_Text_0:
-# 808 "data/maps/IkiTown/scripts.pory"
+# 931 "data/maps/IkiTown/scripts.pory"
 	.string "Welcome to Iki Town, the town watched\n"
 	.string "over by Pokémon!$"
 
 Ikitown_MomwithChild_Text_0:
-# 818 "data/maps/IkiTown/scripts.pory"
+# 941 "data/maps/IkiTown/scripts.pory"
 	.string "If you treat your Pokémon wrong, the\n"
 	.string "guardian deity will strike you down\l"
 	.string "with lightning!\p"
@@ -3404,26 +3980,26 @@ Ikitown_MomwithChild_Text_0:
 	.string "them that.$"
 
 Ikitown_ChildwithMom_Text_0:
-# 832 "data/maps/IkiTown/scripts.pory"
+# 955 "data/maps/IkiTown/scripts.pory"
 	.string "I want to meet the guardian deity!\p"
 	.string "Maybe I should cause some mischief for\n"
 	.string "a Pokémon…$"
 
 Ikitown_DontForgetToSave_Text_0:
-# 844 "data/maps/IkiTown/scripts.pory"
+# 967 "data/maps/IkiTown/scripts.pory"
 	.string "Don't forget to save!\p"
 	.string "If you want to remember everything\n"
 	.string "that's happened, you must not\l"
 	.string "forget to save!$"
 
 Ikitown_KahunaGivesWisdom_Text_0:
-# 857 "data/maps/IkiTown/scripts.pory"
+# 980 "data/maps/IkiTown/scripts.pory"
 	.string "The kahuna gives us wisdom and\n"
 	.string "guidance and teaches us how to live\l"
 	.string "with our Pokémon.$"
 
 Ikitown_ManBlockingDoor_Text_0:
-# 867 "data/maps/IkiTown/scripts.pory"
+# 990 "data/maps/IkiTown/scripts.pory"
 	.string "Kahuna Hala is the strongest Pokémon\n"
 	.string "Trainer on all of Melemele!\p"
 	.string "There must be some trouble going down\n"
@@ -3433,26 +4009,26 @@ Ikitown_ManBlockingDoor_Text_0:
 	.string "for old Hala!” and off he went…$"
 
 Ikitown_Meowth_Text_0:
-# 883 "data/maps/IkiTown/scripts.pory"
+# 1006 "data/maps/IkiTown/scripts.pory"
 	.string "Hsss!$"
 
 Ikitown_sign_Ruinsofconflict_Text_0:
-# 891 "data/maps/IkiTown/scripts.pory"
+# 1014 "data/maps/IkiTown/scripts.pory"
 	.string "Ruins of Conflict$"
 
 Ikitown_GetPokedex_Text_0:
-# 907 "data/maps/IkiTown/scripts.pory"
+# 1030 "data/maps/IkiTown/scripts.pory"
 	.string "Oh, {PLAYER}!\n"
 	.string "You already met Lillie, huh?\p"
 	.string "She's my assistant, yeah!$"
 
 Ikitown_GetPokedex_Text_1:
-# 913 "data/maps/IkiTown/scripts.pory"
+# 1036 "data/maps/IkiTown/scripts.pory"
 	.string "Lillie, I thought you were with the\n"
 	.string "kahuna?$"
 
 Ikitown_GetPokedex_Text_2:
-# 918 "data/maps/IkiTown/scripts.pory"
+# 1041 "data/maps/IkiTown/scripts.pory"
 	.string "Kahuna Hala? He said that he had\n"
 	.string "something to attend to, so he left\l"
 	.string "town on his own.\p"
@@ -3461,27 +4037,27 @@ Ikitown_GetPokedex_Text_2:
 	.string "him to return…$"
 
 Ikitown_GetPokedex_Text_3:
-# 928 "data/maps/IkiTown/scripts.pory"
+# 1051 "data/maps/IkiTown/scripts.pory"
 	.string "And that's how you met our new neighbor\n"
 	.string "{PLAYER}, huh?\p"
 	.string "He just got to Alola yesterday.\n"
 	.string "Help him find his way around, yeah?$"
 
 Ikitown_GetPokedex_Text_4:
-# 936 "data/maps/IkiTown/scripts.pory"
+# 1059 "data/maps/IkiTown/scripts.pory"
 	.string "And that's how you met our new neighbor\n"
 	.string "{PLAYER}, huh?\p"
 	.string "She just got to Alola yesterday.\n"
 	.string "Help her find her way around, yeah?$"
 
 Ikitown_GetPokedex_Text_5:
-# 945 "data/maps/IkiTown/scripts.pory"
+# 1068 "data/maps/IkiTown/scripts.pory"
 	.string "So…you're also one of\n"
 	.string "the professor's acquaintances?\p"
 	.string "It's nice to meet you.$"
 
 Ikitown_GetPokedex_Text_6:
-# 959 "data/maps/IkiTown/scripts.pory"
+# 1082 "data/maps/IkiTown/scripts.pory"
 	.string "The kahuna is back!\n"
 	.string "Kahuna Hala has returned!\p"
 	.string "Our guardian's chosen one is back!\p"
@@ -3489,16 +4065,16 @@ Ikitown_GetPokedex_Text_6:
 	.string "users in all Alola, yeah!$"
 
 Ikitown_GetPokedex_Text_7:
-# 971 "data/maps/IkiTown/scripts.pory"
+# 1094 "data/maps/IkiTown/scripts.pory"
 	.string "Have I missed something?$"
 
 Ikitown_GetPokedex_Text_8:
-# 977 "data/maps/IkiTown/scripts.pory"
+# 1100 "data/maps/IkiTown/scripts.pory"
 	.string "There you are, Kahuna Hala!\n"
 	.string "Was there some kind of trouble?$"
 
 Ikitown_GetPokedex_Text_9:
-# 984 "data/maps/IkiTown/scripts.pory"
+# 1107 "data/maps/IkiTown/scripts.pory"
 	.string "Ahaha! Just got caught up in the\n"
 	.string "middle of some brawling Rockruff,\l"
 	.string "that's all!\p"
@@ -3508,7 +4084,7 @@ Ikitown_GetPokedex_Text_9:
 	.string "Tapu Koko flying about…$"
 
 Ikitown_GetPokedex_Text_10:
-# 996 "data/maps/IkiTown/scripts.pory"
+# 1119 "data/maps/IkiTown/scripts.pory"
 	.string "Oh, um…\n"
 	.string "Yes, Kahuna Hala…\p"
 	.string "Nebby got attacked by some Wingull\n"
@@ -3521,19 +4097,19 @@ Ikitown_GetPokedex_Text_10:
 	.string "deity, swooped in to save them!$"
 
 Ikitown_GetPokedex_Text_11:
-# 1013 "data/maps/IkiTown/scripts.pory"
+# 1136 "data/maps/IkiTown/scripts.pory"
 	.string "Woo! That's something you don't hear\n"
 	.string "every day!$"
 
 Ikitown_GetPokedex_Text_12:
-# 1018 "data/maps/IkiTown/scripts.pory"
+# 1141 "data/maps/IkiTown/scripts.pory"
 	.string "Ho! Although it is said to protect us,\n"
 	.string "our Tapu Koko is a rather fickle\l"
 	.string "creature.\l"
 	.string "Yet our guardian was moved to save you.$"
 
 Ikitown_GetPokedex_Text_13:
-# 1024 "data/maps/IkiTown/scripts.pory"
+# 1147 "data/maps/IkiTown/scripts.pory"
 	.string "Kukui, my boy, I think we have\n"
 	.string "cause to celebrate!\p"
 	.string "Looks like we have a brave and kind new\n"
@@ -3548,16 +4124,16 @@ Ikitown_GetPokedex_Text_13:
 	.string "today.$"
 
 Ikitown_GetPokedex_Text_14:
-# 1044 "data/maps/IkiTown/scripts.pory"
+# 1167 "data/maps/IkiTown/scripts.pory"
 	.string "All right, here's a lovely gift to\n"
 	.string "help make today special {PLAYER}!$"
 
 Ikitown_GetPokedex_Text_15:
-# 1050 "data/maps/IkiTown/scripts.pory"
+# 1173 "data/maps/IkiTown/scripts.pory"
 	.string "You obtained a {COLOR RED}Rotom Phone{COLOR DARK_GRAY}!$"
 
 Ikitown_GetPokedex_Text_16:
-# 1055 "data/maps/IkiTown/scripts.pory"
+# 1178 "data/maps/IkiTown/scripts.pory"
 	.string "The Rotom Phone comes equipped with a\n"
 	.string "Pokédex, which is a really high-tech\l"
 	.string "kinda tool, that can automatically\l"
@@ -3568,41 +4144,41 @@ Ikitown_GetPokedex_Text_16:
 	.string "check it out!$"
 
 Ikitown_GetPokedex_Text_17:
-# 1065 "data/maps/IkiTown/scripts.pory"
+# 1188 "data/maps/IkiTown/scripts.pory"
 	.string "Well, you got to meet the kahuna\n"
 	.string "at least.\p"
 	.string "Ready to head home now, {PLAYER}?$"
 
 ikitown_lilliedialog2_Text_0:
-# 1122 "data/maps/IkiTown/scripts.pory"
+# 1245 "data/maps/IkiTown/scripts.pory"
 	.string "I really, um, really appreciate what you\n"
 	.string "did for us on the Plank Bridge.\p"
 	.string "I won't forget you and {STR_VAR_1}…$"
 
 ikitown_kukuidialog2_Text_0:
-# 1135 "data/maps/IkiTown/scripts.pory"
+# 1258 "data/maps/IkiTown/scripts.pory"
 	.string "Now that you met Tapu Koko, I can't\n"
 	.string "wait to see how far you can go as a\l"
 	.string "Pokémon Trainer!$"
 
 ikitown_haladialog2_Text_0:
-# 1147 "data/maps/IkiTown/scripts.pory"
+# 1270 "data/maps/IkiTown/scripts.pory"
 	.string "If you two can work in harmony with\n"
 	.string "each other, you can go anywhere\l"
 	.string "together!$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_0:
-# 1159 "data/maps/IkiTown/scripts.pory"
+# 1282 "data/maps/IkiTown/scripts.pory"
 	.string "Oh yeah! {PLAYER}!\n"
 	.string "Hold up a sec!$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_1:
-# 1209 "data/maps/IkiTown/scripts.pory"
+# 1332 "data/maps/IkiTown/scripts.pory"
 	.string "What is it Hau? Did you forget\n"
 	.string "something?$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_2:
-# 1214 "data/maps/IkiTown/scripts.pory"
+# 1337 "data/maps/IkiTown/scripts.pory"
 	.string "You're seriously asking me that?!\p"
 	.string "Who's the one here who forgot to tell\n"
 	.string "anyone before wandering off for a\l"
@@ -3610,7 +4186,7 @@ Ikitown_trigger_GiveHalaSparklingStone_Text_2:
 	.string "word, huh?$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_3:
-# 1232 "data/maps/IkiTown/scripts.pory"
+# 1355 "data/maps/IkiTown/scripts.pory"
 	.string "Hm?\n"
 	.string "{PLAYER}…\p"
 	.string "Would you be so kind as to give me a\n"
@@ -3618,29 +4194,29 @@ Ikitown_trigger_GiveHalaSparklingStone_Text_3:
 	.string "have there?$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_4:
-# 1241 "data/maps/IkiTown/scripts.pory"
+# 1364 "data/maps/IkiTown/scripts.pory"
 	.string "Could it be?!$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_5:
-# 1245 "data/maps/IkiTown/scripts.pory"
+# 1368 "data/maps/IkiTown/scripts.pory"
 	.string "Tutu, isn't that…$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_6:
-# 1249 "data/maps/IkiTown/scripts.pory"
+# 1372 "data/maps/IkiTown/scripts.pory"
 	.string "You were rescued by Tapu Koko at the\n"
 	.string "bridge-isn't that what I heard,\l"
 	.string "{PLAYER}?$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_7:
-# 1252 "data/maps/IkiTown/scripts.pory"
+# 1375 "data/maps/IkiTown/scripts.pory"
 	.string "Yeah, it rescued me$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_8:
-# 1252 "data/maps/IkiTown/scripts.pory"
+# 1375 "data/maps/IkiTown/scripts.pory"
 	.string "It gave me a stone$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_9:
-# 1255 "data/maps/IkiTown/scripts.pory"
+# 1378 "data/maps/IkiTown/scripts.pory"
 	.string "So it even deigned to give you a stone…\p"
 	.string "Perhaps you are here in Alola,\n"
 	.string "{PLAYER}, because this is where\l"
@@ -3655,12 +4231,12 @@ Ikitown_trigger_GiveHalaSparklingStone_Text_9:
 	.string "our festival tomorrow!$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_10:
-# 1296 "data/maps/IkiTown/scripts.pory"
+# 1419 "data/maps/IkiTown/scripts.pory"
 	.string "First I'll make sure you get back home\n"
 	.string "safe today, though, {PLAYER}.$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_11:
-# 1299 "data/maps/IkiTown/scripts.pory"
+# 1422 "data/maps/IkiTown/scripts.pory"
 	.string "Lillie, you two should come with us\n"
 	.string "too, yeah.\p"
 	.string "Wouldn't want to go losing you twice\n"
@@ -3668,6 +4244,37 @@ Ikitown_trigger_GiveHalaSparklingStone_Text_11:
 	.string "You or that precious Pokémon of yours!$"
 
 Ikitown_trigger_GiveHalaSparklingStone_Text_12:
-# 1308 "data/maps/IkiTown/scripts.pory"
+# 1431 "data/maps/IkiTown/scripts.pory"
 	.string "Yes…\n"
 	.string "I will key an eye on Nebby$"
+
+Ikitown_LittleBoyFestivalRockruffDialog_Text_0:
+# 1471 "data/maps/IkiTown/scripts.pory"
+	.string "Woo-hoo, A festival!\n"
+	.string "I wish everyday was a festival!$"
+
+Ikitown_LittleGirlFestivalRockruffDialog_Text_0:
+# 1480 "data/maps/IkiTown/scripts.pory"
+	.string "What kinds of Pokémon are going to\n"
+	.string "battle? I'm so excited!$"
+
+Ikitown_FestivalNPC3Dialog_Text_0:
+# 1489 "data/maps/IkiTown/scripts.pory"
+	.string "If anyone can have a good battle that\n"
+	.string "makes the Pokémon happy, it's Hau!$"
+
+Ikitown_FestivalNPC4Dialog_Text_0:
+# 1498 "data/maps/IkiTown/scripts.pory"
+	.string "I ate every last bite of my Alola\n"
+	.string "yakisoba!$"
+
+Ikitown_FestivalNPC5Dialog_Text_0:
+# 1507 "data/maps/IkiTown/scripts.pory"
+	.string "Sometimes, I get this feeling…\n"
+	.string "this sense of being watched over by\l"
+	.string "the guardian deity.$"
+
+Ikitown_FestivalNPC6Dialog_Text_0:
+# 1517 "data/maps/IkiTown/scripts.pory"
+	.string "Tapu Koko just loves Pokémon battles.\n"
+	.string "Watching them and having them!$"

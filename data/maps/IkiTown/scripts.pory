@@ -77,6 +77,7 @@ script Ikitown_Trigger_FestivalBattle{
     delay(30)
     startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_1)
     applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
+    waitmovement(0)
     speakername("Hala")
     msgbox("The Alola Region is made up of our
     four islands.
@@ -86,7 +87,7 @@ script Ikitown_Trigger_FestivalBattle{
     
     Our festival today is help to express
     our thanks to these great Pokémon
-    guardian dieties for always
+    guardian deities for always
     remaining by our sides.
     
     Well, we may call it a festival, but it's
@@ -104,10 +105,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Popplio've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
-        waitmovement(0)
         playmoncry(SPECIES_POPPLIO, 0)
         msgbox("Bwark!", MSGBOX_AUTOCLOSE)
-        waitmoncry
+        waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 1)
@@ -116,10 +116,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Rowlet've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
-        waitmovement(0)
         playmoncry(SPECIES_ROWLET, 0)
         msgbox("Hoo!", MSGBOX_AUTOCLOSE)
-        waitmoncry
+        waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 2)
@@ -128,10 +127,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Litten've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
-        waitmovement(0)
         playmoncry(SPECIES_LITTEN, 0)
         msgbox("Grrr!", MSGBOX_AUTOCLOSE)
-        waitmoncry
+        waitmovement(0)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     speakername("Hau")
@@ -152,10 +150,10 @@ script Ikitown_Trigger_FestivalBattle{
     msgbox("But to what exactly?", MSGBOX_AUTOCLOSE)
     playmoncry(SPECIES_COSMOG, 0)
     applymovement(ikitown_lillie_festival, moves(shake_horizontal))
-    waitmovement(0)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     msgbox("Pew!!", MSGBOX_AUTOCLOSE)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    waitmovement(0)
     delay(30)
     speakername("Kukui")
     msgbox("A full-powered festival for Pokemon
@@ -213,6 +211,7 @@ script Ikitown_Trigger_FestivalBattleSkip1{
     fadescreenswapbuffers(FADE_TO_BLACK)
     special(StopAllObjectMovements)
     special(CloseScriptMenus)
+    special(HealPlayerParty)
     addobject(ikitown_kukui_festival)
     addobject(ikitown_lillie_festival)
     setobjectxy(ikitown_kukui_festival, 32, 17)
@@ -247,6 +246,7 @@ script Ikitown_Trigger_FestivalBattleSkip2{
     fadescreenswapbuffers(FADE_TO_BLACK)
     special(StopAllObjectMovements)
     special(CloseScriptMenus)
+    special(RemoveCameraObject)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     call(Ikitown_FestivalBattleOnStage2)
 }
@@ -331,6 +331,7 @@ script Ikitown_FestivalBattleOnStage{
     battle, eh?", MSGBOX_AUTOCLOSE)
     applymovement(ikitown_hala_festival, moves(walk_in_place_down*2))
     waitmovement(0)
+    special(RemoveCameraObject)
     endcutscene
     call(Ikitown_FestivalBattleOnStage2)
 }
@@ -371,7 +372,6 @@ script Ikitown_FestivalBattleOnStage2{
     }
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_3)
-    special(SpawnCameraObject)
     msgbox("Hoo-ee! Another great battle this year.
     
     I bet Tapu Koko liked it, too.", MSGBOX_AUTOCLOSE)
@@ -433,8 +433,11 @@ script Ikitown_FestivalBattleOnStage2{
     It seems that Tapu Koko took quite a
     liking to you\.
     or perhaps it has a mission for you.", MSGBOX_AUTOCLOSE)
-    applymovement(ikitown_kukui_festival, moves(walk_in_place_down*2))
-    waitmovement(0)
+    applymovement(ikitown_kukui_festival, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
     speakername("Kukui")
     msgbox("Well, it's time for you to get out there
     and start your {COLOR RED}island challenge{COLOR DARK_GRAY}!
@@ -478,7 +481,7 @@ script Ikitown_FestivalBattleOnStage2{
     It's a great adventure that children
     in the Alola region embark upon,
     along with their Pok\emon,
-    once they reach 11 years of age!")
+    once they reach 11 years of age!", MSGBOX_AUTOCLOSE)
     applymovement(ikitown_hala_festival, moves(walk_right*3))
     waitmovement(0)
     speakername("Hala")
@@ -507,14 +510,123 @@ script Ikitown_FestivalBattleOnStage2{
     Amulet{COLOR DARK_GRAY}!", MSGBOX_AUTOCLOSE)
     waitfanfare
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-    applymovement(ikitown_kukui_festival, moves(walk_in_place_down*2))
+    applymovement(ikitown_kukui_festival, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
     waitmovement(0)
     speakername("Kukui")
     msgbox("Yeah, doing the island challenge is the
-    best way to really get to know Alola!")
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left*2))
-    waitmovement(0)
+    best way to really get to know Alola!", MSGBOX_AUTOCLOSE)
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    endcutscene
+    call(Ikitown_LeavingIkitownFestival)
+}
+
+script Ikitown_LeavingIkitownFestival{
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left*2))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
     special(RemoveCameraObject)
+    applymovement(ikitown_kukui_festival, moves(walk_faster_right*8, walk_faster_down*15))
+    applymovement(ikitown_lillie_festival, moves(walk_faster_right*8, walk_faster_down *11))
+    applymovement(LOCALID_PLAYER, moves(walk_faster_right*12, walk_faster_down*8))
+    waitmovement(0)
+    delay(15)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    startcutscene(CUTSCENE_IKITOWN_FESTIVAL_BATTLE_4)
+    applymovement(ikitown_lillie_festival, moves(delay_16, walk_down*4))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_down*4))
+    applymovement(ikitown_kukui_festival, moves(delay_16, walk_down*4))
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    applymovement(ikitown_lillie_festival, moves(face_left))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Tapu Koko is amazing, isn't it?
+    
+    I hope I can meet it again someday
+    and thank it for saving Nebby\.", MSGBOX_AUTOCLOSE)
+    playmoncry(SPECIES_COSMOG, 0)
+    applymovement(ikitown_lillie_festival, moves(shake_horizontal))
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Pew!")
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    waitmovement(0)
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Me, too", "Oh yeah?")
+    if (var(VAR_RESULT) == 0){
+        speakername("Lillie")
+        msgbox("It saved you as well, didn't it?
+        And left you with that Sparkling
+        Stone\.
+        even though you're a stranger to
+        this place.", MSGBOX_AUTOCLOSE)
+    }
+    else{
+        speakername("Lillie")
+        msgbox("It saved you as well, didn't it?
+        And left you with that Sparkling
+        Stone\.
+        even though you're a stranger to
+        this place.", MSGBOX_AUTOCLOSE)
+    }
+    delay(30)
+    applymovement(ikitown_kukui_festival, moves(walk_up*3))
+    applymovement(ikitown_lillie_festival, moves(delay_16, face_down))
+    applymovement(LOCALID_PLAYER, moves(delay_16, face_down))
+    waitmovement(0)
+    delay(30)
+    speakername("Kukui")
+    msgbox("Suppose it's time we get you kids home,
+    yeah?", MSGBOX_AUTOCLOSE)
+    speakername("Lillie")
+    msgbox("Nebby\.
+    Alola is full of all kinds of wonders,
+    isn't it?", MSGBOX_AUTOCLOSE)
+    special(SpawnCameraObject)
+    applymovement(ikitown_lillie_festival, moves(delay_16, walk_down*8))
+    applymovement(LOCALID_PLAYER, moves(delay_16*6, walk_down*8))
+    applymovement(ikitown_kukui_festival, moves(walk_down*8))
+    waitmovement(0)
+    setobjectxy(ikitownfestivalur4, 31, 20)
+    setobjectxy(ikitownfestivalur1, 33, 20)
+    delay(90)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*4))
+    applymovement(ikitownfestivalur4, moves(delay_16*3, walk_down*3))
+    applymovement(ikitownfestivalur1, moves(delay_16*3, walk_down*3))
+    waitmovement(0)
+    speakername("???")
+    msgbox("Captain\.
+    
+    I was able to detect high levels of
+    aura at this full-powered festival.
+    
+    I suppose you would\.
+    
+    According to our earlier research it
+    seems that the Z-Power Ring and this
+    Tapu Koko creature are bathed in a
+    great deal of light.
+    
+    Alola overflows with the light that
+    was released by the Blinding One\.
+    I find myself rather envious.")
+    applymovement(ikitownfestivalur1, moves(face_left))
+    waitmovement(0)
+    msgbox("I wonder if we can't find some way
+    to use the great power that fills
+    Alola for ourselves\.")
+    applymovement(ikitownfestivalur4, moves(walk_in_place_down*2))
+    waitmovement(0)
+    msgbox("That is precisely what we, the Ultra
+    Recon Squad, are here to make clear.
+
+    Onward! There is still so much of
+    Alola we have not seen, and we must
+    investigate it all!")
+    delay(30)
     endcutscene
     setvar(VAR_IKITOWN_STATE, 15)
     setflag(FLAG_IKITOWN_FESTIVAL_COMPLETE)
@@ -532,6 +644,14 @@ script Ikitown_FestivalBattleOnStage2{
 }
 
 script Ikitown_Trigger_FestivalBattleSkip3{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    call(Ikitown_LeavingIkitownFestival)
+}
+
+script Ikitown_Trigger_FestivalBattleSkip4{
     closemessage
     fadescreenswapbuffers(FADE_TO_BLACK)
     special(StopAllObjectMovements)
@@ -565,12 +685,15 @@ script Ikitown_StartFestival{
     removeobject(ikitown_exeggutor_festival)
     removeobject(ikitown_oldman_festival)
     setflag(FLAG_HIDE_IKITOWN_FESTIVALNPCS2)
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    waitmovement(0)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*5))
     waitmovement(0)
     delay(30)
     applymovement(ikitown_woman_festival, moves(walk_in_place_up*2))
     waitmovement(0)
     delay(30)
+    applymovement(LOCALID_PLAYER, moves(delay_16*5, face_right))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right*7))
     waitmovement(0)
     delay(30)
@@ -796,7 +919,7 @@ script Ikitown_Rockruff{
     lock
     faceplayer
     playmoncry(SPECIES_ROCKRUFF, 0)
-    msgbox("Ruff ruff!")
+    msgbox("Wroof!")
     waitmessage
     release
     end
@@ -1306,7 +1429,7 @@ script Ikitown_trigger_GiveHalaSparklingStone{
     waitmovement(0)
     speakername("Lillie")
     msgbox("Yes\.
-    I will key an eye on Nebby")
+    I will keep an eye on Nebby")
     fadescreenswapbuffers(FADE_TO_BLACK)
     setflag(FLAG_HIDE_IKITOWN_HALA)
     setflag(FLAG_HIDE_IKITOWN_INTRO_HAU)
@@ -1337,6 +1460,62 @@ script Ikitown_trigger_GiveHalaSparklingStoneSkip{
     removeitem(ITEM_SPARKLING_STONE, 1)
     warp(MAP_PLAYER_HOUSE, 8, 15)
     waitstate
+    release
+    end
+}
+
+
+script Ikitown_LittleBoyFestivalRockruffDialog{
+    lock
+    faceplayer
+    msgbox("Woo-hoo, A festival!
+    I wish everyday was a festival!")
+    release
+    end
+}
+
+script Ikitown_LittleGirlFestivalRockruffDialog{
+    lock
+    faceplayer
+    msgbox("What kinds of Pokémon are going to
+    battle? I'm so excited!")
+    release
+    end
+}
+
+script Ikitown_FestivalNPC3Dialog{
+    lock
+    faceplayer
+    msgbox("If anyone can have a good battle that
+    makes the Pokémon happy, it's Hau!")
+    release
+    end
+}
+
+script Ikitown_FestivalNPC4Dialog{
+    lock
+    faceplayer
+    msgbox("I ate every last bite of my Alola
+    yakisoba!")
+    release
+    end
+}
+
+script Ikitown_FestivalNPC5Dialog{
+    lock
+    faceplayer
+    msgbox("Sometimes, I get this feeling\.
+    this sense of being watched over by
+    the guardian deity.")
+    release
+    end
+}
+
+script Ikitown_FestivalNPC6Dialog{
+    lock
+    faceplayer
+    msgbox("Tapu Koko just loves Pok\emon battles.
+    Watching them and having them!")
     release
     end
 }

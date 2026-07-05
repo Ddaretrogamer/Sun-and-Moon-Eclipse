@@ -20,6 +20,7 @@ extern const u8 Ikitown_Trigger_UltraReconIntroSkip[];
 extern const u8 Ikitown_Trigger_FestivalBattleSkip1[];
 extern const u8 Ikitown_Trigger_FestivalBattleSkip2[];
 extern const u8 Ikitown_Trigger_FestivalBattleSkip3[];
+extern const u8 Ikitown_Trigger_FestivalBattleSkip4[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -80,6 +81,10 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_IKITOWN_FESTIVAL_BATTLE_3] =
     {
         .scriptCutsceneSkipPtr = Ikitown_Trigger_FestivalBattleSkip3,
+    },
+    [CUTSCENE_IKITOWN_FESTIVAL_BATTLE_4] =
+    {
+        .scriptCutsceneSkipPtr = Ikitown_Trigger_FestivalBattleSkip4,
     },
 };
 

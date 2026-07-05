@@ -366,6 +366,20 @@ testscript::
 	end
 
 
+Route1_Trigger_HeadEastToIkiTown::
+# 255 "data/maps/Route1/scripts.pory"
+	lock
+# 256 "data/maps/Route1/scripts.pory"
+	msgbox Route1_Trigger_HeadEastToIkiTown_Text_0, MSGBOX_AUTOCLOSE
+# 258 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1_trigger_kukui_catching_tutorial_Movement_0
+# 259 "data/maps/Route1/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 260 "data/maps/Route1/scripts.pory"
+	release
+	end
+
+
 # 38 "data/maps/Route1/scripts.pory"
 Route1_Trigger_BlockRightPath_Movement_0:
 # 38 "data/maps/Route1/scripts.pory"
@@ -674,3 +688,8 @@ testscript_Text_0:
 	.string "Trop Kick right to the head! Woo!\p"
 	.string "Can't wait to see you here in person then,\n"
 	.string "cousin!$"
+
+Route1_Trigger_HeadEastToIkiTown_Text_0:
+# 256 "data/maps/Route1/scripts.pory"
+	.string "The Iki Town Festival awaits!\n"
+	.string "Head east, cousin!$"

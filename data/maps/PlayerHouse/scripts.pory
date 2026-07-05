@@ -356,3 +356,10 @@ script PlayerHouse_TalkToMomAfterDoorbell{
     release
     end
 }
+
+script PlayerHouse_MomHealPlayer{
+    lock
+    faceplayer
+    speakername("Mom")
+    msgbox("Sleep does the") 
+}

@@ -229,6 +229,33 @@
       "var": "VAR_IKITOWN_STATE",
       "var_value": "11",
       "script": "Route1_trigger_kukui_catching_tutorial"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "12",
+      "script": "Route1_Trigger_HeadEastToIkiTown"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "12",
+      "script": "Route1_Trigger_HeadEastToIkiTown"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "12",
+      "script": "Route1_Trigger_HeadEastToIkiTown"
     }
   ],
   "bg_events": [

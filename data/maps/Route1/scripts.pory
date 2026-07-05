@@ -250,3 +250,13 @@ script testscript{
     cousin!", MSGBOX_NPC)
     end
 }
+
+script Route1_Trigger_HeadEastToIkiTown{
+    lock
+    msgbox("The Iki Town Festival awaits!
+    Head east, cousin!", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_right))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}

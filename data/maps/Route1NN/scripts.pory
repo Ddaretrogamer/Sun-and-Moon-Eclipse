@@ -1233,3 +1233,13 @@ script Route1NN_dialog_RockruffFriendly{
     release
     end
 }
+
+script Route1NN_Trigger_HeadToIkitown{
+    lock
+    msgbox("Iki Town is just up ahead!
+    Let's go, cousin!", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_left))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}
