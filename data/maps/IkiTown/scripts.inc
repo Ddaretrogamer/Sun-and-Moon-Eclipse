@@ -4246,7 +4246,7 @@ Ikitown_trigger_GiveHalaSparklingStone_Text_11:
 Ikitown_trigger_GiveHalaSparklingStone_Text_12:
 # 1431 "data/maps/IkiTown/scripts.pory"
 	.string "Yes…\n"
-	.string "I will key an eye on Nebby$"
+	.string "I will keep an eye on Nebby$"
 
 Ikitown_LittleBoyFestivalRockruffDialog_Text_0:
 # 1471 "data/maps/IkiTown/scripts.pory"

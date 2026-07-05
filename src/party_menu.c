@@ -7764,7 +7764,7 @@ static u8 GetPartyLayoutFromBattleType(void)
         return PARTY_LAYOUT_MULTI_FULL;
     if (!IsDoubleBattle() || gPartiesCount[B_TRAINER_PLAYER] == 1) // Draw the single layout in a double battle where the player has only one Pokémon.
         return PARTY_LAYOUT_SINGLE;
-    return PARTY_LAYOUT_DOUBLE;
+    return PARTY_LAYOUT_SINGLE;
 }
 
 void OpenPartyMenuInBattle(u8 partyAction)
