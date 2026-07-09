@@ -120,6 +120,7 @@ script AetherIntroSequence{
     setflag(FLAG_SHOW_LILLIE_INTRO)
     setflag(FLAG_KUKUI_CATCHING_TUTORIAL1)
     setflag(FLAG_KUKUI_CATCHING_TUTORIAL2)
+    setflag(FLAG_HIDE_ROUTE1_LILLIE)
     setvar(VAR_RESULT, 1)
     playse(SE_M_COSMIC_POWER)
     callnative(OpenScreenshotsFromScript)

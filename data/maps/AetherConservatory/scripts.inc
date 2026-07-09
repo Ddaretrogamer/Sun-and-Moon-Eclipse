@@ -215,26 +215,28 @@ AetherIntroSequence::
 # 122 "data/maps/AetherConservatory/scripts.pory"
 	setflag FLAG_KUKUI_CATCHING_TUTORIAL2
 # 123 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_RESULT, 1
+	setflag FLAG_HIDE_ROUTE1_LILLIE
 # 124 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_M_COSMIC_POWER
+	setvar VAR_RESULT, 1
 # 125 "data/maps/AetherConservatory/scripts.pory"
-	callnative OpenScreenshotsFromScript
+	playse SE_M_COSMIC_POWER
 # 126 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
-# 127 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_0x8000, 1
-# 128 "data/maps/AetherConservatory/scripts.pory"
 	callnative OpenScreenshotsFromScript
+# 127 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
+# 128 "data/maps/AetherConservatory/scripts.pory"
+	setvar VAR_0x8000, 1
 # 129 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
+	callnative OpenScreenshotsFromScript
 # 130 "data/maps/AetherConservatory/scripts.pory"
-	delay 30
-# 131 "data/maps/AetherConservatory/scripts.pory"
-	warpsilent MAP_ROUTE1, 27, 19
-# 132 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
+# 131 "data/maps/AetherConservatory/scripts.pory"
+	delay 30
+# 132 "data/maps/AetherConservatory/scripts.pory"
+	warpsilent MAP_ROUTE1, 27, 19
 # 133 "data/maps/AetherConservatory/scripts.pory"
+	waitstate
+# 134 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 

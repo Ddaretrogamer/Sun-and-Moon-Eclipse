@@ -105,6 +105,7 @@ script Playerhouse_WelcomeHomeAfterFestival{
     waitstate
     waitfanfare
     setvar(VAR_IKITOWN_STATE, 16)
+    clearflag(FLAG_HIDE_ROUTE1_LILLIE)
     delay(30)
     warpsilent(MAP_PLAYER_ROOM, 12, 10)
     waitstate

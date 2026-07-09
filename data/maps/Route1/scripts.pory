@@ -10,7 +10,104 @@ mapscripts Route1_MapScripts{
         }
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}]
     MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro
-    VAR_IKITOWN_STATE, 10 {call(Route1_KukuiCatchingTutorial)}]
+    VAR_IKITOWN_STATE, 10 {call(Route1_KukuiCatchingTutorial)}
+    VAR_IKITOWN_STATE, 17: Route1_LillieWalkToLab]
+}
+
+script Route1_LillieWalkToLab{
+    lock
+    playse(SE_PIN)
+    hideobjectat(route1_mom, MAP_ROUTE1)
+    applymovement(route1_lillie, moves(emote_exclamation_mark, face_up))
+    waitmovement(route1_lillie)
+    applymovement(LOCALID_PLAYER, moves(walk_down*3, face_left))
+    applymovement(route1_lillie, moves(delay_16*3, face_right))
+    applymovement(route1_mom, moves(walk_down*2))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Oh, Um\.
+    
+    The professor said\.")
+    applymovement(route1_lillie, moves(face_down))
+    waitmovement(route1_lillie)
+    msgbox("\qoHey there, Lillie!
+    Bring me that great new Trainer. Woo!\qc")
+    applymovement(route1_lillie, moves(face_right))
+    waitmovement(route1_lillie)
+    msgbox("So I'm here to show you the way to his
+    Pokémon Lab, if you'll come with me!
+    
+    It's, um\. It's this way.", MSGBOX_AUTOCLOSE)
+    opendoor(16, 20)
+    waitdooranim()
+    showobjectat(route1_mom, MAP_ROUTE1)
+    applymovement(route1_mom, moves(walk_down))
+    waitmovement(route1_mom)
+    closedoor(16, 20)
+    waitdooranim()
+    applymovement(route1_lillie, moves(face_up))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    speakername("Mom")
+    msgbox("{PLAYER}!", MSGBOX_AUTOCLOSE)
+    applymovement(route1_mom, moves(walk_down*2))
+    waitmovement(route1_mom)
+    msgbox("Here. A little pocket money for you.
+    Don't go wasting it on anything silly!")
+    addmoney(1000)
+    delay(30)
+    applymovement(route1_mom, moves(walk_left, face_down))
+    waitmovement(route1_mom)
+    msgbox("Oh! Well done, {PLAYER}.
+    You're already making friends?
+    And what a cute friend you've found!
+    
+    I knew Alola would be a great place for
+    us. We keep meeting wonderful people!")
+    applymovement(route1_lillie, moves(walk_in_place_up*2))
+    waitmovement(route1_lillie)
+    speakername("Lillie")
+    msgbox("M-me? Well, thank you\.
+    
+    My name is Lillie.
+    It's very nice to meet you.", MSGBOX_AUTOCLOSE)
+    applymovement(route1_mom, moves(walk_right, face_down))
+    waitmovement(route1_mom)
+    bufferleadmonspeciesname(STR_VAR_1)
+    msgbox("Looks like its finally your time to
+    shine, sweetie!
+    
+    Enjoy yourself out there with
+    {STR_VAR_1}.
+    And don't be gone too long!", MSGBOX_AUTOCLOSE)
+    applymovement(route1_mom, moves(walk_up*2))
+    waitmovement(route1_mom)
+    opendoor(16, 20)
+    waitdooranim()
+    applymovement(route1_mom, moves(walk_up))
+    waitmovement(route1_mom)
+    hideobjectat(route1_mom, MAP_ROUTE1)
+    closedoor(16, 20)
+    waitdooranim()
+    applymovement(route1_mom, moves(walk_up*2))
+    waitmovement(route1_mom)
+    delay(30)
+    applymovement(route1_lillie, moves(face_right))
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    waitmovement(0)
+    msgbox("You\.have a very nice mother, don't you?
+    
+    We should get going.
+
+    It's just south to the Pokémon
+    Research Lab.", MSGBOX_AUTOCLOSE)
+    applymovement(route1_lillie, moves(walk_left*6, walk_down*9))
+    removeobject(route1_lillie)
+    setflag(FLAG_HIDE_ROUTE1_LILLIE)
+    waitmovement(0)
+    setvar(VAR_IKITOWN_STATE, 18)
+    release
+    end
 }
 
 script Route1_AlolanMeowthNPC{
