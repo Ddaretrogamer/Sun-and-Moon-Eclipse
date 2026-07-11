@@ -16,10 +16,12 @@ mapscripts Route1_MapScripts{
 
 script Route1_LillieWalkToLab{
     lock
+    startcutscene(CUTSCENE_ROUTE1_LILLIE_WALK_TO_LAB)
     playse(SE_PIN)
     hideobjectat(route1_mom, MAP_ROUTE1)
     applymovement(route1_lillie, moves(emote_exclamation_mark, face_up))
     waitmovement(route1_lillie)
+    delay(30)
     applymovement(LOCALID_PLAYER, moves(walk_down*3, face_left))
     applymovement(route1_lillie, moves(delay_16*3, face_right))
     applymovement(route1_mom, moves(walk_down*2))
@@ -106,6 +108,27 @@ script Route1_LillieWalkToLab{
     setflag(FLAG_HIDE_ROUTE1_LILLIE)
     waitmovement(0)
     setvar(VAR_IKITOWN_STATE, 18)
+    endcutscene
+    release
+    end
+}
+
+script Lillie_WalktoLabSkip{
+    lock
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    setobjectxy(LOCALID_PLAYER, 16, 24)
+    applymovement(LOCALID_PLAYER, moves(face_down))
+    waitmovement(LOCALID_PLAYER)
+    setobjectxy(route1_mom, 16, 18)
+    removeobject(route1_lillie)
+    setflag(FLAG_HIDE_ROUTE1_LILLIE)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    special(SnapCameraToPlayer)
+    special(RemoveCameraObject)
+    setvar(VAR_IKITOWN_STATE, 18)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
     release
     end
 }
