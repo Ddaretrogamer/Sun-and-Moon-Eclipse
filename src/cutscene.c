@@ -6,11 +6,13 @@
 #include "data/cutscene.h"
 #include "event_data.h"
 #include "main.h"
+#include "palette.h"
 #include "script.h"
 #include "sprite.h"
 #include "task.h"
 
 #define TAG_CUTSCENE_SKIP_BUTTON 5550
+#define TAG_CUTSCENE_SKIP_BUTTON_PAL (TAG_CUTSCENE_SKIP_BUTTON | BLEND_IMMUNE_FLAG)
 
 static const u16 sCutsceneSkipButton_Gfx[] = INCGFX_U16("graphics/cutscene/skip_button.png", ".4bpp");
 static const u16 sCutsceneSkipButton_Pal[] = INCGFX_U16("graphics/cutscene/skip_button.png", ".gbapal");
@@ -30,7 +32,7 @@ static const union AnimCmd *const sCutsceneSkipButtonAnimTable[] = {
     sCutsceneSkipButtonAnim
 };
 
-static const struct SpritePalette sCutsceneSkipButtonPalette = {sCutsceneSkipButton_Pal, TAG_CUTSCENE_SKIP_BUTTON};
+static const struct SpritePalette sCutsceneSkipButtonPalette = {sCutsceneSkipButton_Pal, TAG_CUTSCENE_SKIP_BUTTON_PAL};
 
 static const struct OamData sCutsceneSkipButtonOamData = {
     .shape = ST_OAM_H_RECTANGLE,
@@ -39,7 +41,7 @@ static const struct OamData sCutsceneSkipButtonOamData = {
 
 static const struct SpriteTemplate sCutsceneSkipButtonTemplate = {
     TAG_CUTSCENE_SKIP_BUTTON,
-    TAG_CUTSCENE_SKIP_BUTTON,
+    TAG_CUTSCENE_SKIP_BUTTON_PAL,
     &sCutsceneSkipButtonOamData,
     sCutsceneSkipButtonAnimTable,
     NULL,
@@ -113,7 +115,7 @@ void EndSkippableCutscene(struct ScriptContext *ctx)
         {
             DestroySprite(&gSprites[gTasks[taskId].tSpriteId]);
             FreeSpriteTilesByTag(TAG_CUTSCENE_SKIP_BUTTON);
-            FreeSpritePaletteByTag(TAG_CUTSCENE_SKIP_BUTTON);
+            FreeSpritePaletteByTag(TAG_CUTSCENE_SKIP_BUTTON_PAL);
         }
         DestroyTask(taskId);
     }
