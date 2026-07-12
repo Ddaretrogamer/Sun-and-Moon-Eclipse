@@ -17,15 +17,16 @@ script AlolaLaboratory_FirstTimeIntro{
     // startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     addobject(lab_lillie)
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest, walk_left*5))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*4))
     waitmovement(0)
     delay(60)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast*5, walk_right))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast*4))
     waitmovement(0)
-    delay(60)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
     applymovement(lab_lillie, moves(walk_up*3))
     applymovement(LOCALID_PLAYER, moves(walk_up*3))
     waitmovement(0)
+    delay(60)
     playmoncry(SPECIES_ROCKRUFF, 0)
     applymovement(lab_rockruff, moves(walk_in_place_right*2))
     waitmovement(0)
@@ -78,17 +79,19 @@ script AlolaLaboratory_FirstTimeIntro{
     delay(30)
     applymovement(lab_kukui, moves(face_left))
     waitmovement(0)
+    speakername("Kukui")
     msgbox("So what do you think of the place?
     Not bad right?", MSGBOX_AUTOCLOSE)
     delay(30)
     playse(SE_PIN)
     applymovement(lab_lillie, moves(emote_question_mark))
     waitmovement(0)
+    delay(30)
     speakername("Kukui")
     msgbox("But that's not why I called you here,
     eh?
     
-    Here! It finally arrived!", MSGBOX_AUTOCLOSE)
+    Here! It finally arrived!")
     speakername("Lillie")
     msgbox("\qoIt\qc\.?")
     applymovement(lab_kukui, moves(face_down))
@@ -162,9 +165,9 @@ script AlolaLaboratory_FirstTimeIntro{
     waitmovement(0)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playmoncry(SPECIES_ROTOM, 0)
-    msgbox("\.Kzzzt?")
     applymovement(lab_rotom, moves(walk_in_place_down*2))
     waitmovement(0)
+    msgbox("\.Kzzzt?")
     waitmoncry
     waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
@@ -173,9 +176,9 @@ script AlolaLaboratory_FirstTimeIntro{
     Guess I surprised you?")
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playmoncry(SPECIES_ROTOM, 0)
-    msgbox("ZZ-zzt\.", MSGBOX_AUTOCLOSE)
     applymovement(lab_rotom, moves(walk_in_place_down*2))
     waitmovement(0)
+    msgbox("Zz-zzt\.", MSGBOX_AUTOCLOSE)
     waitmoncry
     waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
@@ -189,9 +192,9 @@ script AlolaLaboratory_FirstTimeIntro{
     yeah?")
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playmoncry(SPECIES_ROTOM, 0)
-    msgbox("Kzzzt\.", MSGBOX_AUTOCLOSE)
     applymovement(lab_rotom, moves(walk_in_place_down*2))
     waitmovement(0)
+    msgbox("Kzzzt\.", MSGBOX_AUTOCLOSE)
     waitmoncry
     waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
@@ -247,7 +250,7 @@ script AlolaLaboratory_FirstTimeIntro{
         speakername("Kukui")
         msgbox("You can see ask Rotom for directions
         by opening the Rotom Phone and
-        pressing the {L_BUTTON}.
+        pressing {L_BUTTON}.
         
         You can also press the Rotom Reality
         feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
