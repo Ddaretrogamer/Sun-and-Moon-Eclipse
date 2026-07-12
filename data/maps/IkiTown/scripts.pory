@@ -116,9 +116,9 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Rowlet've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         playmoncry(SPECIES_ROWLET, 0)
-        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
         applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
         waitmovement(0)
+        msgbox("Hoo!", MSGBOX_AUTOCLOSE)
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 2)
@@ -555,6 +555,7 @@ script Ikitown_LeavingIkitownFestival{
     msgbox("Pew!")
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     waitmovement(0)
+    delay(30)
     dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Me, too", "Oh yeah?")
     if (var(VAR_RESULT) == 0){
         speakername("Lillie")

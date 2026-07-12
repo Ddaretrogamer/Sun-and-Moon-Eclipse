@@ -26,6 +26,7 @@ script Route1_LillieWalkToLab{
     applymovement(route1_lillie, moves(delay_16*3, face_right))
     applymovement(route1_mom, moves(walk_down*2))
     waitmovement(0)
+    delay(15)
     speakername("Lillie")
     msgbox("Oh, Um\.
     
@@ -104,6 +105,7 @@ script Route1_LillieWalkToLab{
     It's just south to the Pokémon
     Research Lab.", MSGBOX_AUTOCLOSE)
     applymovement(route1_lillie, moves(walk_left*6, walk_down*9))
+    waitmovement(route1_lillie)
     removeobject(route1_lillie)
     setflag(FLAG_HIDE_ROUTE1_LILLIE)
     waitmovement(0)
@@ -127,6 +129,8 @@ script Lillie_WalktoLabSkip{
     special(CloseScriptMenus)
     special(SnapCameraToPlayer)
     special(RemoveCameraObject)
+    setobjectxy(route1_mom, 16, 18)
+    setobjectxy(HauoliOutskirtsLittleBoy, 14, 31)
     setvar(VAR_IKITOWN_STATE, 18)
     fadescreenswapbuffers(FADE_FROM_BLACK)
     release

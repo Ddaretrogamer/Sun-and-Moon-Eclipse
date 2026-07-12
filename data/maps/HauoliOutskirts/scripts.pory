@@ -1,14 +1,170 @@
 mapscripts HauoliOutskirts_MapScripts{}
 
+script HauoliOutskirts_LillieOutsideLab{
+    lock
+    startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_LILLIE_OUTSIDE_LAB)
+    applymovement(lillie_outside_lab, moves(face_player))
+    waitmovement(lillie_outside_lab)
+    getplayerxy(VAR_TEMP_3, VAR_TEMP_4)
+    speakername("Lillie")
+    msgbox("Hey {PLAYER}.
+    You made it.
+    
+    Since I'm not a Trainer, I have to rely
+    on using Repels all the time.
+    
+    You do know that using a Repel keeps
+    Pok\emon from attacking, right?
+    
+    A-and about Nebby\.
+    
+    Oh. I mean\.Cosmog.
+    
+    Cosmog seems to be a very rare Pokémon.
+    It came from far, far away.", MSGBOX_AUTOCLOSE)
+    playmoncry(SPECIES_COSMOG, 0)
+    applymovement(lillie_outside_lab, moves(shake_horizontal))
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Pew!", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    waitmovement(0)
+    delay(30)
+    speakername("Lillie")
+    msgbox("It seems to have a very strange power\.
+    
+    It used that power to save me once
+    when I was in danger.
+    
+    But some\.other people want Cosmog for
+    themselves, to use that power.
+    
+    That's why only the professor and
+    Kahuna Hala and other people I can
+    trust know about it\.
+    
+    Can you keep a secret?
+    
+    Can you not tell anyone else about
+    Nebby or what happened on that
+    Bridge?
+
+    Please\.", MSGBOX_AUTOCLOSE)
+    setvar(VAR_0x8004, 1)
+    setvar(VAR_0x8005, 1)
+    setvar(VAR_0x8006, 8)
+    setvar(VAR_0x8007, 5)
+    special(ShakeCamera)
+    waitstate
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_up))
+    applymovement(lillie_outside_lab, moves(emote_exclamation_mark, face_up))
+    waitmovement(0)
+    speakername("Kukui")
+    msgbox("Oh yeah, Rockruff! Lets go!
+    Give it everything you've got!
+    My body is ready. Woo!", MSGBOX_AUTOCLOSE)
+    applymovement(lillie_outside_lab, moves(face_player))
+    if (var(VAR_TEMP_3) ==24 && var(VAR_TEMP_4) == 15){
+        applymovement(LOCALID_PLAYER, moves(face_right))
+    }
+    if (var(VAR_TEMP_3) ==25 && var(VAR_TEMP_4) == 16){
+        applymovement(LOCALID_PLAYER, moves(face_up))
+    }
+    else{
+        applymovement(LOCALID_PLAYER, moves(face_left))
+    }
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("Ah\.
+    There they go again\.
+    
+    The Pok\emon Research Lab has its own
+    unique charm, as you might agree.
+    
+    I've actually been, um, imposing on
+    the professor here for the last few
+    months.
+    
+    I'm not much of an assistant, but it's
+    the least I can do to pay him back
+    for letting me stay.
+    
+    Maybe I'd be more help if I were a real
+    Pok\emon Trainer, too.", MSGBOX_AUTOCLOSE)
+    setvar(VAR_0x8004, 1)
+    setvar(VAR_0x8005, 1)
+    setvar(VAR_0x8006, 8)
+    setvar(VAR_0x8007, 5)
+    special(ShakeCamera)
+    waitstate
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, face_up))
+    applymovement(lillie_outside_lab, moves(emote_exclamation_mark, face_up))
+    waitmovement(0)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Raaaa-oooooohhh! Raff ruff!", MSGBOX_AUTOCLOSE)
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    applymovement(lillie_outside_lab, moves(face_player))
+    if (var(VAR_TEMP_3) ==24 && var(VAR_TEMP_4) == 15){
+        applymovement(LOCALID_PLAYER, moves(face_right))
+    }
+    if (var(VAR_TEMP_3) ==25 && var(VAR_TEMP_4) == 16){
+        applymovement(LOCALID_PLAYER, moves(face_up))
+    }
+    else{
+        applymovement(LOCALID_PLAYER, moves(face_left))
+    }
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("The professor\.
+    
+    He never stops researching moves.
+    Not even\.inside the lab itself.
+    
+    Looks like we'll have to patch up
+    the roof again\.
+    
+    And I had just washed his lab coat
+    and finally gotten it clean, too.
+    Now it'll be in shreds\.
+    and I'm no good at mending clothes\.
+    
+    He'll just have to buy another new one\.
+
+    We should probably go in before he does
+    any more damage\.", MSGBOX_AUTOCLOSE)
+    applymovement(lillie_outside_lab, moves(walk_up*2))
+    waitmovement(lillie_outside_lab)
+    opendoor(25,12)
+    waitdooranim()
+    applymovement(lillie_outside_lab, moves(walk_up))
+    waitmovement(lillie_outside_lab)
+    hideobjectat(lillie_outside_lab, MAP_HAUOLI_OUTSKIRTS)
+    removeobject(lillie_outside_lab)
+    setflag(FLAG_HIDE_LILLIE_HAUOLI_LAB)
+    closedoor(25,12)
+    waitdooranim()
+    endcutscene
+    release
+    end
+}
+
+script HauoliOutskirts_LillieOutsideLabSkip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    removeobject(lillie_outside_lab)
+    setflag(FLAG_HIDE_LILLIE_HAUOLI_LAB)
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
 script LabSign{
     lock
     msgbox("Pokémon Research Lab")
     release
-end
-}
-
-script LabOutsideNPC{
-    msgbox("This is Professor Kukui's Lab.", MSGBOX_NPC)
 end
 }
 

@@ -717,7 +717,7 @@
 #define FLAG_HIDE_IKITOWN_FESTIVALNPCS2  0x296 // hide the ikitown festival NPCs for little kids running around
 #define FLAG_HIDE_IKITOWN_FESTIVALNPCS3  0x297 // hide the ikitown festival NPCs part 3
 #define FLAG_HIDE_ROUTE1_LILLIE  0x298 // hide lillie on route 1 for walk to lab
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
+#define FLAG_HIDE_LILLIE_HAUOLI_LAB  0x299 // hide Lillie outside Hauoli Lab
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
