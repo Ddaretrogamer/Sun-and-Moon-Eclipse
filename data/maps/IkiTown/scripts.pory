@@ -104,10 +104,11 @@ script Ikitown_Trigger_FestivalBattle{
         msgbox("Man, I thought you'd never make it!
         Me and Popplio've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+        playmoncry(SPECIES_POPPLIO, 0)
+        msgbox("Arf!", MSGBOX_AUTOCLOSE)
         applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
         waitmovement(0)
-        playmoncry(SPECIES_POPPLIO, 0)
-        msgbox("Bwark!", MSGBOX_AUTOCLOSE)
+        waitmessage
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 1)
@@ -116,9 +117,10 @@ script Ikitown_Trigger_FestivalBattle{
         Me and Rowlet've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
         playmoncry(SPECIES_ROWLET, 0)
-        applymovement(ikitown_dynhaumon_festival, moves(face_left, face_up, face_right, face_down))
-        waitmovement(0)
         msgbox("Hoo!", MSGBOX_AUTOCLOSE)
+        applymovement(ikitown_dynhaumon_festival, moves(face_left, delay_16, face_up, delay_16, face_right, delay_16, face_down, walk_in_place_down*2))
+        waitmovement(0)
+        waitmessage
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     elif (var(VAR_STARTER_MON) == 2)
@@ -126,10 +128,11 @@ script Ikitown_Trigger_FestivalBattle{
         msgbox("Man, I thought you'd never make it!
         Me and Litten've been waiting for ages!", MSGBOX_AUTOCLOSE)
         setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-        applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
-        waitmovement(0)
         playmoncry(SPECIES_LITTEN, 0)
         msgbox("Grrr!", MSGBOX_AUTOCLOSE)
+        applymovement(ikitown_dynhaumon_festival, moves(walk_in_place_down*2))
+        waitmovement(0)
+        waitmessage
         clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     }
     speakername("Hau")
@@ -154,7 +157,7 @@ script Ikitown_Trigger_FestivalBattle{
     msgbox("Pew!!", MSGBOX_AUTOCLOSE)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     waitmovement(0)
-    delay(30)
+    waitmessage
     speakername("Kukui")
     msgbox("A full-powered festival for Pokemon
     battling!
@@ -507,8 +510,9 @@ script Ikitown_FestivalBattleOnStage2{
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playfanfare(MUS_OBTAIN_SYMBOL)
     msgbox("You received the {COLOR RED}Island Challenge
-    Amulet{COLOR DARK_GRAY}!", MSGBOX_AUTOCLOSE)
+    Amulet{COLOR DARK_GRAY}!")
     waitfanfare
+    waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     applymovement(ikitown_kukui_festival, moves(jump_in_place_down*2))
     playse(SE_LEDGE)
@@ -555,7 +559,7 @@ script Ikitown_LeavingIkitownFestival{
     msgbox("Pew!")
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     waitmovement(0)
-    delay(30)
+    waitmessage
     dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Me, too", "Oh yeah?")
     if (var(VAR_RESULT) == 0){
         speakername("Lillie")
@@ -567,8 +571,10 @@ script Ikitown_LeavingIkitownFestival{
     }
     else{
         speakername("Lillie")
-        msgbox("It saved you as well, didn't it?
-        And left you with that Sparkling
+        msgbox("You know, {PLAYER}\.
+        it did save your life, too.
+        
+        And it even gifted you that Sparkling
         Stone\.
         even though you're a stranger to
         this place.", MSGBOX_AUTOCLOSE)

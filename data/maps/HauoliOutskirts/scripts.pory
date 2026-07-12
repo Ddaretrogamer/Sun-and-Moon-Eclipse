@@ -28,7 +28,7 @@ script HauoliOutskirts_LillieOutsideLab{
     msgbox("Pew!", MSGBOX_AUTOCLOSE)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     waitmovement(0)
-    delay(30)
+    waitmessage
     speakername("Lillie")
     msgbox("It seems to have a very strange power\.
     

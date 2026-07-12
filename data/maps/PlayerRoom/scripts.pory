@@ -78,7 +78,9 @@ script PlayerRoom_CheckBox{
         waitmessage
         delay(30)
         playfanfare(MUS_OBTAIN_ITEM)
-        msgbox("And grabbed your running shoes!", MSGBOX_AUTOCLOSE)
+        msgbox("And grabbed your running shoes!")
+        waitfanfare
+        waitmessage
         setflag(FLAG_SYS_B_DASH)
         setflag(FLAG_LILLIE_INTRO_PLAYED)
         clearflag(FLAG_MOM_IN_HOUSE_INTRO)

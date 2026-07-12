@@ -140,10 +140,10 @@ PlayerRoom_CheckBox::
 # 74 "data/maps/PlayerRoom/scripts.pory"
 	compare VAR_MOM_IN_HOUSE_INTRO, 2
 	goto_if_eq PlayerRoom_CheckBox_3
-# 89 "data/maps/PlayerRoom/scripts.pory"
+# 91 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoom_CheckBox_Text_3
 PlayerRoom_CheckBox_1:
-# 92 "data/maps/PlayerRoom/scripts.pory"
+# 94 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
@@ -166,94 +166,98 @@ PlayerRoom_CheckBox_3:
 # 80 "data/maps/PlayerRoom/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
 # 81 "data/maps/PlayerRoom/scripts.pory"
-	msgbox PlayerRoom_CheckBox_Text_2, MSGBOX_AUTOCLOSE
+	msgbox PlayerRoom_CheckBox_Text_2
 # 82 "data/maps/PlayerRoom/scripts.pory"
-	setflag FLAG_SYS_B_DASH
+	waitfanfare
 # 83 "data/maps/PlayerRoom/scripts.pory"
-	setflag FLAG_LILLIE_INTRO_PLAYED
+	waitmessage
 # 84 "data/maps/PlayerRoom/scripts.pory"
-	clearflag FLAG_MOM_IN_HOUSE_INTRO
+	setflag FLAG_SYS_B_DASH
 # 85 "data/maps/PlayerRoom/scripts.pory"
-	setvar VAR_MOM_IN_HOUSE_INTRO, 3
+	setflag FLAG_LILLIE_INTRO_PLAYED
 # 86 "data/maps/PlayerRoom/scripts.pory"
+	clearflag FLAG_MOM_IN_HOUSE_INTRO
+# 87 "data/maps/PlayerRoom/scripts.pory"
+	setvar VAR_MOM_IN_HOUSE_INTRO, 3
+# 88 "data/maps/PlayerRoom/scripts.pory"
 	removeobject PlayerRoomMeowth
 	goto PlayerRoom_CheckBox_1
 
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes::
-# 97 "data/maps/PlayerRoom/scripts.pory"
+# 99 "data/maps/PlayerRoom/scripts.pory"
 	compare VAR_MOM_IN_HOUSE_INTRO, 2
 	goto_if_eq PlayerRoom_Trigger_TryingToLeaveWithoutShoes_2
 	end
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_2:
-# 98 "data/maps/PlayerRoom/scripts.pory"
+# 100 "data/maps/PlayerRoom/scripts.pory"
 	lock
-# 99 "data/maps/PlayerRoom/scripts.pory"
-	msgbox PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0
 # 101 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0
-# 102 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	msgbox PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0
 # 103 "data/maps/PlayerRoom/scripts.pory"
+	applymovement LOCALID_PLAYER, PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0
+# 104 "data/maps/PlayerRoom/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 105 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
 
 PlayerRoomDoorbell::
-# 110 "data/maps/PlayerRoom/scripts.pory"
-	lock
-# 111 "data/maps/PlayerRoom/scripts.pory"
-	playse SE_DING_DONG
 # 112 "data/maps/PlayerRoom/scripts.pory"
-	playbgm MUS_USUM_IKITOWN_DAY, FALSE
+	lock
 # 113 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
+	playse SE_DING_DONG
 # 114 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	playbgm MUS_USUM_IKITOWN_DAY, FALSE
 # 115 "data/maps/PlayerRoom/scripts.pory"
-	waitse
+	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
 # 116 "data/maps/PlayerRoom/scripts.pory"
-	delay 90
+	waitmovement LOCALID_PLAYER
 # 117 "data/maps/PlayerRoom/scripts.pory"
-	speakername PlayerRoomDoorbell_Text_0
+	waitse
 # 118 "data/maps/PlayerRoom/scripts.pory"
-	msgbox PlayerRoomDoorbell_Text_1
+	delay 90
+# 119 "data/maps/PlayerRoom/scripts.pory"
+	speakername PlayerRoomDoorbell_Text_0
 # 120 "data/maps/PlayerRoom/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 10
-# 121 "data/maps/PlayerRoom/scripts.pory"
-	clearflag FLAG_KUKUI_CATCHING_TUTORIAL1
+	msgbox PlayerRoomDoorbell_Text_1
 # 122 "data/maps/PlayerRoom/scripts.pory"
-	waitmessage
+	setvar VAR_IKITOWN_STATE, 10
 # 123 "data/maps/PlayerRoom/scripts.pory"
+	clearflag FLAG_KUKUI_CATCHING_TUTORIAL1
+# 124 "data/maps/PlayerRoom/scripts.pory"
+	waitmessage
+# 125 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
 
 PlayerRoomDoorbell2::
-# 127 "data/maps/PlayerRoom/scripts.pory"
-	lock
-# 128 "data/maps/PlayerRoom/scripts.pory"
-	playse SE_DING_DONG
 # 129 "data/maps/PlayerRoom/scripts.pory"
-	playbgm MUS_USUM_IKITOWN_DAY, FALSE
+	lock
 # 130 "data/maps/PlayerRoom/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
+	playse SE_DING_DONG
 # 131 "data/maps/PlayerRoom/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	playbgm MUS_USUM_IKITOWN_DAY, FALSE
 # 132 "data/maps/PlayerRoom/scripts.pory"
-	waitse
+	applymovement LOCALID_PLAYER, PlayerRoomDoorbell_Movement_0
 # 133 "data/maps/PlayerRoom/scripts.pory"
-	delay 90
+	waitmovement LOCALID_PLAYER
 # 134 "data/maps/PlayerRoom/scripts.pory"
-	speakername PlayerRoomDoorbell_Text_0
+	waitse
 # 135 "data/maps/PlayerRoom/scripts.pory"
+	delay 90
+# 136 "data/maps/PlayerRoom/scripts.pory"
+	speakername PlayerRoomDoorbell_Text_0
+# 137 "data/maps/PlayerRoom/scripts.pory"
 	msgbox PlayerRoomDoorbell2_Text_0
-# 140 "data/maps/PlayerRoom/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 17
-# 141 "data/maps/PlayerRoom/scripts.pory"
-	waitmessage
 # 142 "data/maps/PlayerRoom/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 17
+# 143 "data/maps/PlayerRoom/scripts.pory"
+	waitmessage
+# 144 "data/maps/PlayerRoom/scripts.pory"
 	release
 	end
 
@@ -308,17 +312,17 @@ RoomIntroSequence_Movement_4:
 	walk_down
 	step_end
 
-# 101 "data/maps/PlayerRoom/scripts.pory"
+# 103 "data/maps/PlayerRoom/scripts.pory"
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Movement_0:
-# 101 "data/maps/PlayerRoom/scripts.pory"
+# 103 "data/maps/PlayerRoom/scripts.pory"
 	walk_up
 	step_end
 
-# 113 "data/maps/PlayerRoom/scripts.pory"
+# 115 "data/maps/PlayerRoom/scripts.pory"
 PlayerRoomDoorbell_Movement_0:
-# 113 "data/maps/PlayerRoom/scripts.pory"
+# 115 "data/maps/PlayerRoom/scripts.pory"
 	emote_exclamation_mark
-# 113 "data/maps/PlayerRoom/scripts.pory"
+# 115 "data/maps/PlayerRoom/scripts.pory"
 	face_down
 	step_end
 
@@ -345,26 +349,26 @@ PlayerRoom_CheckBox_Text_2:
 	.string "And grabbed your running shoes!$"
 
 PlayerRoom_CheckBox_Text_3:
-# 89 "data/maps/PlayerRoom/scripts.pory"
+# 91 "data/maps/PlayerRoom/scripts.pory"
 	.string "The box is empty.\n"
 	.string "You unpacked it already.$"
 
 PlayerRoom_Trigger_TryingToLeaveWithoutShoes_Text_0:
-# 99 "data/maps/PlayerRoom/scripts.pory"
+# 101 "data/maps/PlayerRoom/scripts.pory"
 	.string "Mom said you should unpack the box\n"
 	.string "in your room to find your shoes!$"
 
 PlayerRoomDoorbell_Text_0:
-# 117 "data/maps/PlayerRoom/scripts.pory"
+# 119 "data/maps/PlayerRoom/scripts.pory"
 	.string "Mom$"
 
 PlayerRoomDoorbell_Text_1:
-# 118 "data/maps/PlayerRoom/scripts.pory"
+# 120 "data/maps/PlayerRoom/scripts.pory"
 	.string "Was that the doorbell?\n"
 	.string "Go see who it is, {PLAYER}.$"
 
 PlayerRoomDoorbell2_Text_0:
-# 135 "data/maps/PlayerRoom/scripts.pory"
+# 137 "data/maps/PlayerRoom/scripts.pory"
 	.string "A visitor!\p"
 	.string "If it was Kukui, he'd probably let\n"
 	.string "himself in without even waiting for\l"

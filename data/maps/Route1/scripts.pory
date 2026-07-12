@@ -77,6 +77,7 @@ script Route1_LillieWalkToLab{
     applymovement(route1_mom, moves(walk_right, face_down))
     waitmovement(route1_mom)
     bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Mom")
     msgbox("Looks like its finally your time to
     shine, sweetie!
     
@@ -98,6 +99,7 @@ script Route1_LillieWalkToLab{
     applymovement(route1_lillie, moves(face_right))
     applymovement(LOCALID_PLAYER, moves(face_left))
     waitmovement(0)
+    speakername("Lillie")
     msgbox("You\.have a very nice mother, don't you?
     
     We should get going.

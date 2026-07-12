@@ -30,7 +30,7 @@ HauoliOutskirts_LillieOutsideLab::
 # 30 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
 # 31 "data/maps/HauoliOutskirts/scripts.pory"
-	delay 30
+	waitmessage
 # 32 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_LillieOutsideLab_Text_0
 # 33 "data/maps/HauoliOutskirts/scripts.pory"
