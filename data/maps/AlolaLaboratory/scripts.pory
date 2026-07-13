@@ -2,7 +2,7 @@ mapscripts AlolaLaboratory_MapScripts {
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, TRUE {
         hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
         if (var(VAR_IKITOWN_STATE) > 18) {
-            setobjectxy(lab_lillie, 14, 16)
+            setobjectxy(lab_lillie, 14, 17)
             hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
         }
     }]
@@ -187,8 +187,9 @@ script AlolaLaboratory_FirstTimeIntro{
     to communicate. Woo!
     
     And there's only a few of these
-    beauties out in the world so far!")
-    msgbox("And now if I power up your Rotom Phone
+    beauties out in the world so far!
+    
+    And now if I power up your Rotom Phone
     with the parts that I just got in\.", MSGBOX_AUTOCLOSE)
     applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*4))
     playse(SE_SWITCH)
@@ -322,7 +323,7 @@ script AlolaLaboratory_FirstTimeIntro{
     Rotom, you look after {PLAYER}, yeah?
     
     All right then, {PLAYER}!
-    Get a move on!}")
+    Get a move on!")
     dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "OK!", "What?")
     if (var(VAR_RESULT) == 0){
         applymovement(lab_kukui, moves(jump_in_place_down*2))

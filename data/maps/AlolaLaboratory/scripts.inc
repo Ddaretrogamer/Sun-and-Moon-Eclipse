@@ -12,15 +12,15 @@ AlolaLaboratory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 
 AlolaLaboratory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0:
 # 3 "data/maps/AlolaLaboratory/scripts.pory"
-	hideobjectat lab_hau, MAP_ALOLA_LABORATORY
-# 4 "data/maps/AlolaLaboratory/scripts.pory"
 	hideobjectat lab_rotom, MAP_ALOLA_LABORATORY
-# 5 "data/maps/AlolaLaboratory/scripts.pory"
+# 4 "data/maps/AlolaLaboratory/scripts.pory"
 	compare VAR_IKITOWN_STATE, 18
 	goto_if_gt AlolaLaboratory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0_1
 	return
 
 AlolaLaboratory_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0_1:
+# 5 "data/maps/AlolaLaboratory/scripts.pory"
+	setobjectxy lab_lillie, 14, 17
 # 6 "data/maps/AlolaLaboratory/scripts.pory"
 	hideobjectat lab_lillie, MAP_ALOLA_LABORATORY
 	return
@@ -31,621 +31,784 @@ AlolaLaboratory_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-AlolaLaboratory_FirstTimeIntro::
+AlolaLaboratory_Kukui::
 # 14 "data/maps/AlolaLaboratory/scripts.pory"
 	lock
 # 15 "data/maps/AlolaLaboratory/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 19
+	faceplayer
 # 16 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectmovementtype lab_stufful, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
+	speakername AlolaLaboratory_Kukui_Text_0
 # 17 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectmovementtype lab_snubbull, MOVEMENT_TYPE_WALK_IN_PLACE_UP
-# 18 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_0
-# 19 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_1
-# 20 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	msgbox AlolaLaboratory_Kukui_Text_1
 # 22 "data/maps/AlolaLaboratory/scripts.pory"
-	addobject lab_lillie
-# 23 "data/maps/AlolaLaboratory/scripts.pory"
-	special SpawnCameraObject
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_2
-# 25 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 26 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 60
+	release
+	end
+
+
+AlolaLaboratory_Stufful::
 # 27 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_3
+	lock
 # 28 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	faceplayer
 # 29 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_4
+	playmoncry SPECIES_STUFFUL, 0
 # 30 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_5
+	msgbox AlolaLaboratory_Stufful_Text_0
 # 31 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement LOCALID_PLAYER, AlolaLaboratory_FirstTimeIntro_Movement_5
+	waitmessage
 # 32 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 33 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 60
-# 34 "data/maps/AlolaLaboratory/scripts.pory"
-	playmoncry SPECIES_ROCKRUFF, 0
-# 35 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_6
-# 36 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	release
+	end
+
+
+AlolaLaboratory_Snubull::
 # 37 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmoncry
+	lock
 # 38 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
+	faceplayer
 # 39 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_PIN
+	playmoncry SPECIES_SNUBBULL, 0
 # 40 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_7
+	msgbox AlolaLaboratory_Snubull_Text_0
 # 41 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_8
+	waitmessage
 # 42 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 43 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
-# 44 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_9
-# 45 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 46 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
+	release
+	end
+
+
+AlolaLaboratory_Rockruff::
 # 47 "data/maps/AlolaLaboratory/scripts.pory"
-	special RemoveCameraObject
+	lock
 # 48 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
+	faceplayer
 # 49 "data/maps/AlolaLaboratory/scripts.pory"
-	checkplayergender
+	playmoncry SPECIES_ROCKRUFF, 0
 # 50 "data/maps/AlolaLaboratory/scripts.pory"
-	compare VAR_RESULT, MALE
-	goto_if_eq AlolaLaboratory_FirstTimeIntro_2
+	msgbox AlolaLaboratory_Rockruff_Text_0
+# 51 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmessage
+# 52 "data/maps/AlolaLaboratory/scripts.pory"
+	release
+	end
+
+
+AlolaLaboratory_FirstTimeIntro::
+# 57 "data/maps/AlolaLaboratory/scripts.pory"
+	lock
+# 58 "data/maps/AlolaLaboratory/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 19
+# 59 "data/maps/AlolaLaboratory/scripts.pory"
+	setobjectmovementtype lab_stufful, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
 # 60 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
+	setobjectmovementtype lab_snubbull, MOVEMENT_TYPE_WALK_IN_PLACE_UP
 # 61 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_LEDGE
+	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_0
 # 62 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 63 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_LEDGE
-# 64 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 65 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_2, MSGBOX_AUTOCLOSE
-AlolaLaboratory_FirstTimeIntro_1:
-# 68 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_11
-# 69 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_12
-# 70 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 71 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_3
-# 72 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_4, MSGBOX_AUTOCLOSE
-# 74 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 75 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_5, MSGBOX_AUTOCLOSE
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement LOCALID_PLAYER, AlolaLaboratory_FirstTimeIntro_Movement_13
-# 82 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 83 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
-# 84 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_1
+# 63 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 65 "data/maps/AlolaLaboratory/scripts.pory"
+	showobjectat lab_lillie, MAP_ALOLA_LABORATORY
+# 66 "data/maps/AlolaLaboratory/scripts.pory"
+	special SpawnCameraObject
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_2
+# 68 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 69 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 60
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_3
+# 71 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 72 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_4
+# 73 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_5
+# 74 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement LOCALID_PLAYER, AlolaLaboratory_FirstTimeIntro_Movement_5
+# 75 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 76 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 60
+# 77 "data/maps/AlolaLaboratory/scripts.pory"
+	playmoncry SPECIES_ROCKRUFF, 0
+# 78 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_6
+# 79 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 80 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmoncry
+# 81 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 30
+# 82 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_PIN
+# 83 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_7
+# 84 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_8
 # 85 "data/maps/AlolaLaboratory/scripts.pory"
 	waitmovement 0
 # 86 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
+	delay 30
 # 87 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_6, MSGBOX_AUTOCLOSE
+	applymovement OBJ_EVENT_ID_CAMERA, AlolaLaboratory_FirstTimeIntro_Movement_9
+# 88 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
 # 89 "data/maps/AlolaLaboratory/scripts.pory"
 	delay 30
 # 90 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_PIN
+	special RemoveCameraObject
 # 91 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_14
+	speakername AlolaLaboratory_Kukui_Text_0
 # 92 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	checkplayergender
 # 93 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
-# 94 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 95 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_7
-# 99 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_3
-# 100 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_8
-# 101 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_15
-# 102 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	compare VAR_RESULT, MALE
+	goto_if_eq AlolaLaboratory_FirstTimeIntro_2
 # 103 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
 # 104 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_9
-# 109 "data/maps/AlolaLaboratory/scripts.pory"
-	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, AlolaLaboratory_FirstTimeIntro_Text_10, AlolaLaboratory_FirstTimeIntro_Text_11
-# 110 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 105 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 106 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 107 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 108 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_1, MSGBOX_AUTOCLOSE
+AlolaLaboratory_FirstTimeIntro_1:
+# 111 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_11
+# 112 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rockruff, AlolaLaboratory_FirstTimeIntro_Movement_12
+# 113 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 114 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 115 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_3, MSGBOX_AUTOCLOSE
+# 117 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 118 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_4, MSGBOX_AUTOCLOSE
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement LOCALID_PLAYER, AlolaLaboratory_FirstTimeIntro_Movement_13
+# 125 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 126 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 30
+# 127 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_1
+# 128 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 129 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 130 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_5, MSGBOX_AUTOCLOSE
+# 132 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 30
+# 133 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_PIN
+# 134 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_14
+# 135 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 136 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 30
+# 137 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 138 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_6
+# 142 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 143 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_7
+# 144 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_15
+# 145 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 146 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 147 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_8
+# 152 "data/maps/AlolaLaboratory/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, AlolaLaboratory_FirstTimeIntro_Text_9, AlolaLaboratory_FirstTimeIntro_Text_10
+# 153 "data/maps/AlolaLaboratory/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq AlolaLaboratory_FirstTimeIntro_6
-# 123 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_16
-# 124 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 125 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_3
-# 126 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_12
-AlolaLaboratory_FirstTimeIntro_5:
-# 133 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 134 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 135 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_13
-# 148 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_14, MSGBOX_AUTOCLOSE
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_18
-# 151 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_SWITCH
-# 152 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 153 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_SWITCH
-# 154 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 155 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_CLICK
-# 156 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 157 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 158 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_TO_WHITE
-# 159 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_M_MEGA_KICK
-# 160 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 161 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_M_SELF_DESTRUCT
-# 162 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 163 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_BALL_OPEN
-# 164 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 165 "data/maps/AlolaLaboratory/scripts.pory"
-	showobjectat lab_rotom, MAP_ALOLA_LABORATORY
 # 166 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectxy lab_rotom, 14, 11
-# 167 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_FROM_WHITE
-# 168 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_1
-# 169 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 170 "data/maps/AlolaLaboratory/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 171 "data/maps/AlolaLaboratory/scripts.pory"
-	playmoncry SPECIES_ROTOM, 0
-# 172 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 173 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 174 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_15
-# 175 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmoncry
-# 176 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmessage
-# 177 "data/maps/AlolaLaboratory/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 178 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 179 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_16
-# 181 "data/maps/AlolaLaboratory/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 182 "data/maps/AlolaLaboratory/scripts.pory"
-	playmoncry SPECIES_ROTOM, 0
-# 183 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 184 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 185 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_17, MSGBOX_AUTOCLOSE
-# 186 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmoncry
-# 187 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmessage
-# 188 "data/maps/AlolaLaboratory/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 189 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 190 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_18
-# 197 "data/maps/AlolaLaboratory/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 198 "data/maps/AlolaLaboratory/scripts.pory"
-	playmoncry SPECIES_ROTOM, 0
-# 199 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 200 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 201 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_19, MSGBOX_AUTOCLOSE
-# 202 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmoncry
-# 203 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmessage
-# 204 "data/maps/AlolaLaboratory/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 205 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_TO_WHITE
-# 206 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_SWITCH
-# 207 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 208 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_SWITCH
-# 209 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 210 "data/maps/AlolaLaboratory/scripts.pory"
-	playse SE_CLICK
-# 211 "data/maps/AlolaLaboratory/scripts.pory"
-	waitse
-# 212 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectxy lab_rotom, 15, 17
-# 213 "data/maps/AlolaLaboratory/scripts.pory"
-	hideobjectat lab_rotom, MAP_ALOLA_LABORATORY
-# 214 "data/maps/AlolaLaboratory/scripts.pory"
-	setvar VAR_ROTOM_PHONE_ENABLE, 2
-# 215 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_FROM_WHITE
-# 216 "data/maps/AlolaLaboratory/scripts.pory"
-	delay 30
-# 217 "data/maps/AlolaLaboratory/scripts.pory"
-	rotommenudisplay AlolaLaboratory_FirstTimeIntro_Text_20
-# 218 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_15
-# 219 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 220 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 221 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_21
-# 227 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_16
+# 167 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 168 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 169 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_11
+AlolaLaboratory_FirstTimeIntro_5:
+# 176 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
+# 177 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 178 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_12, MSGBOX_AUTOCLOSE
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_18
+# 195 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_SWITCH
+# 196 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 197 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_SWITCH
+# 198 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 199 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_CLICK
+# 200 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 201 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 202 "data/maps/AlolaLaboratory/scripts.pory"
+	fadescreen FADE_TO_WHITE
+# 203 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_M_MEGA_KICK
+# 204 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 205 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_M_SELF_DESTRUCT
+# 206 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 207 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_BALL_OPEN
+# 208 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 209 "data/maps/AlolaLaboratory/scripts.pory"
+	showobjectat lab_rotom, MAP_ALOLA_LABORATORY
+# 210 "data/maps/AlolaLaboratory/scripts.pory"
+	setobjectxy lab_rotom, 14, 11
+# 211 "data/maps/AlolaLaboratory/scripts.pory"
+	fadescreen FADE_FROM_WHITE
+# 212 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_1
+# 213 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 214 "data/maps/AlolaLaboratory/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 215 "data/maps/AlolaLaboratory/scripts.pory"
+	playmoncry SPECIES_ROTOM, 0
+# 216 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
+# 217 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 218 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_13
+# 219 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmoncry
+# 220 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmessage
+# 221 "data/maps/AlolaLaboratory/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 222 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 223 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_14
+# 225 "data/maps/AlolaLaboratory/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 226 "data/maps/AlolaLaboratory/scripts.pory"
+	playmoncry SPECIES_ROTOM, 0
+# 227 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
 # 228 "data/maps/AlolaLaboratory/scripts.pory"
 	waitmovement 0
 # 229 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_3
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_15, MSGBOX_AUTOCLOSE
 # 230 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_22
+	waitmoncry
 # 231 "data/maps/AlolaLaboratory/scripts.pory"
-	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
+	waitmessage
 # 232 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 233 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
+	speakername AlolaLaboratory_Kukui_Text_0
 # 234 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_16
+# 241 "data/maps/AlolaLaboratory/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 242 "data/maps/AlolaLaboratory/scripts.pory"
+	playmoncry SPECIES_ROTOM, 0
+# 243 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_rotom, AlolaLaboratory_FirstTimeIntro_Movement_17
+# 244 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 245 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_17, MSGBOX_AUTOCLOSE
+# 246 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmoncry
+# 247 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmessage
+# 248 "data/maps/AlolaLaboratory/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
+# 249 "data/maps/AlolaLaboratory/scripts.pory"
+	fadescreen FADE_TO_WHITE
+# 250 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_SWITCH
+# 251 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 252 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_SWITCH
+# 253 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 254 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_CLICK
+# 255 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 256 "data/maps/AlolaLaboratory/scripts.pory"
+	setobjectxy lab_rotom, 15, 17
+# 257 "data/maps/AlolaLaboratory/scripts.pory"
+	hideobjectat lab_rotom, MAP_ALOLA_LABORATORY
+# 258 "data/maps/AlolaLaboratory/scripts.pory"
+	setvar VAR_ROTOM_PHONE_ENABLE, 2
+# 259 "data/maps/AlolaLaboratory/scripts.pory"
+	fadescreen FADE_FROM_WHITE
+# 260 "data/maps/AlolaLaboratory/scripts.pory"
+	delay 30
+# 261 "data/maps/AlolaLaboratory/scripts.pory"
+	rotommenudisplay AlolaLaboratory_FirstTimeIntro_Text_18
+# 262 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_15
+# 263 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 264 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 265 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_19
+# 271 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_16
+# 272 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 273 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 274 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_20
+# 275 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
+# 276 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 277 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 278 "data/maps/AlolaLaboratory/scripts.pory"
 	checkplayergender
-# 235 "data/maps/AlolaLaboratory/scripts.pory"
+# 279 "data/maps/AlolaLaboratory/scripts.pory"
 	compare VAR_RESULT, MALE
 	goto_if_eq AlolaLaboratory_FirstTimeIntro_10
-# 245 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_24
+# 289 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_22
 AlolaLaboratory_FirstTimeIntro_9:
-# 251 "data/maps/AlolaLaboratory/scripts.pory"
-	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, AlolaLaboratory_FirstTimeIntro_Text_25, AlolaLaboratory_FirstTimeIntro_Text_26
-# 252 "data/maps/AlolaLaboratory/scripts.pory"
+# 295 "data/maps/AlolaLaboratory/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, AlolaLaboratory_FirstTimeIntro_Text_23, AlolaLaboratory_FirstTimeIntro_Text_24
+# 296 "data/maps/AlolaLaboratory/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq AlolaLaboratory_FirstTimeIntro_14
-# 265 "data/maps/AlolaLaboratory/scripts.pory"
+# 309 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 266 "data/maps/AlolaLaboratory/scripts.pory"
+# 310 "data/maps/AlolaLaboratory/scripts.pory"
 	waitmovement 0
-# 267 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 268 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_27
+# 311 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 312 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_25
 AlolaLaboratory_FirstTimeIntro_13:
-# 275 "data/maps/AlolaLaboratory/scripts.pory"
+# 319 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 320 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_26
+# 327 "data/maps/AlolaLaboratory/scripts.pory"
+	dynmultichoice 20, 8, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, AlolaLaboratory_FirstTimeIntro_Text_27, AlolaLaboratory_FirstTimeIntro_Text_28
+# 328 "data/maps/AlolaLaboratory/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_eq AlolaLaboratory_FirstTimeIntro_18
+# 346 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
+# 347 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 348 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 349 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 350 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 351 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 352 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_29
+AlolaLaboratory_FirstTimeIntro_17:
+# 362 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_16
+# 363 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 364 "data/maps/AlolaLaboratory/scripts.pory"
+	bufferleadmonspeciesname STR_VAR_1
+# 365 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 366 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_30
+# 379 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
+# 380 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement 0
+# 381 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 382 "data/maps/AlolaLaboratory/scripts.pory"
+	checkplayergender
+# 383 "data/maps/AlolaLaboratory/scripts.pory"
+	compare VAR_RESULT, MALE
+	goto_if_eq AlolaLaboratory_FirstTimeIntro_22
+# 393 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_32
+AlolaLaboratory_FirstTimeIntro_21:
+# 399 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 400 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_33, MSGBOX_AUTOCLOSE
+# 402 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_9
+# 403 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_EXIT
+# 404 "data/maps/AlolaLaboratory/scripts.pory"
+	hideobjectat lab_lillie, MAP_ALOLA_LABORATORY
+# 405 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 406 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_11
+# 407 "data/maps/AlolaLaboratory/scripts.pory"
 	release
 	end
 
 AlolaLaboratory_FirstTimeIntro_2:
-# 51 "data/maps/AlolaLaboratory/scripts.pory"
+# 94 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
-# 52 "data/maps/AlolaLaboratory/scripts.pory"
+# 95 "data/maps/AlolaLaboratory/scripts.pory"
 	playse SE_LEDGE
-# 53 "data/maps/AlolaLaboratory/scripts.pory"
+# 96 "data/maps/AlolaLaboratory/scripts.pory"
 	waitse
-# 54 "data/maps/AlolaLaboratory/scripts.pory"
+# 97 "data/maps/AlolaLaboratory/scripts.pory"
 	playse SE_LEDGE
-# 55 "data/maps/AlolaLaboratory/scripts.pory"
+# 98 "data/maps/AlolaLaboratory/scripts.pory"
 	waitse
-# 56 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_1, MSGBOX_AUTOCLOSE
+# 99 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_0, MSGBOX_AUTOCLOSE
 	goto AlolaLaboratory_FirstTimeIntro_1
 
 AlolaLaboratory_FirstTimeIntro_6:
-# 111 "data/maps/AlolaLaboratory/scripts.pory"
+# 154 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_16
-# 112 "data/maps/AlolaLaboratory/scripts.pory"
+# 155 "data/maps/AlolaLaboratory/scripts.pory"
 	waitmovement 0
-# 113 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_3
-# 114 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_12
+# 156 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_FirstTimeIntro_Text_2
+# 157 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_11
 	goto AlolaLaboratory_FirstTimeIntro_5
 
 AlolaLaboratory_FirstTimeIntro_10:
-# 237 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_23
+# 281 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_21
 	goto AlolaLaboratory_FirstTimeIntro_9
 
 AlolaLaboratory_FirstTimeIntro_14:
-# 253 "data/maps/AlolaLaboratory/scripts.pory"
+# 297 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_17
-# 254 "data/maps/AlolaLaboratory/scripts.pory"
+# 298 "data/maps/AlolaLaboratory/scripts.pory"
 	waitmovement 0
-# 255 "data/maps/AlolaLaboratory/scripts.pory"
-	speakername AlolaLaboratory_FirstTimeIntro_Text_0
-# 256 "data/maps/AlolaLaboratory/scripts.pory"
-	msgbox AlolaLaboratory_FirstTimeIntro_Text_27
+# 299 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 300 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_25
 	goto AlolaLaboratory_FirstTimeIntro_13
 
+AlolaLaboratory_FirstTimeIntro_18:
+# 329 "data/maps/AlolaLaboratory/scripts.pory"
+	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
+# 330 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 331 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 332 "data/maps/AlolaLaboratory/scripts.pory"
+	playse SE_LEDGE
+# 333 "data/maps/AlolaLaboratory/scripts.pory"
+	waitse
+# 334 "data/maps/AlolaLaboratory/scripts.pory"
+	speakername AlolaLaboratory_Kukui_Text_0
+# 335 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_29
+	goto AlolaLaboratory_FirstTimeIntro_17
 
-# 18 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_22:
+# 385 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FirstTimeIntro_Text_31
+	goto AlolaLaboratory_FirstTimeIntro_21
+
+
+# 61 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_0:
-# 18 "data/maps/AlolaLaboratory/scripts.pory"
+# 61 "data/maps/AlolaLaboratory/scripts.pory"
 	face_right
 	step_end
 
-# 19 "data/maps/AlolaLaboratory/scripts.pory"
+# 62 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_1:
-# 19 "data/maps/AlolaLaboratory/scripts.pory"
+# 62 "data/maps/AlolaLaboratory/scripts.pory"
 	face_left
 	step_end
 
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_2:
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_left
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_left
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_left
-# 24 "data/maps/AlolaLaboratory/scripts.pory"
+# 67 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_left
 	step_end
 
-# 27 "data/maps/AlolaLaboratory/scripts.pory"
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_3:
-# 27 "data/maps/AlolaLaboratory/scripts.pory"
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_diag_northeast
-# 27 "data/maps/AlolaLaboratory/scripts.pory"
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_diag_northeast
-# 27 "data/maps/AlolaLaboratory/scripts.pory"
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_diag_northeast
-# 27 "data/maps/AlolaLaboratory/scripts.pory"
+# 70 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_diag_northeast
 	step_end
 
-# 29 "data/maps/AlolaLaboratory/scripts.pory"
+# 72 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_4:
-# 29 "data/maps/AlolaLaboratory/scripts.pory"
+# 72 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
-# 29 "data/maps/AlolaLaboratory/scripts.pory"
+# 72 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
 	step_end
 
-# 30 "data/maps/AlolaLaboratory/scripts.pory"
+# 73 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_5:
-# 30 "data/maps/AlolaLaboratory/scripts.pory"
+# 73 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
-# 30 "data/maps/AlolaLaboratory/scripts.pory"
+# 73 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
-# 30 "data/maps/AlolaLaboratory/scripts.pory"
+# 73 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
 	step_end
 
-# 35 "data/maps/AlolaLaboratory/scripts.pory"
+# 78 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_6:
-# 35 "data/maps/AlolaLaboratory/scripts.pory"
+# 78 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_right
-# 35 "data/maps/AlolaLaboratory/scripts.pory"
+# 78 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 40 "data/maps/AlolaLaboratory/scripts.pory"
+# 83 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_7:
-# 40 "data/maps/AlolaLaboratory/scripts.pory"
+# 83 "data/maps/AlolaLaboratory/scripts.pory"
 	emote_exclamation_mark
-# 40 "data/maps/AlolaLaboratory/scripts.pory"
+# 83 "data/maps/AlolaLaboratory/scripts.pory"
 	face_down
 	step_end
 
-# 41 "data/maps/AlolaLaboratory/scripts.pory"
+# 84 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_8:
-# 41 "data/maps/AlolaLaboratory/scripts.pory"
+# 84 "data/maps/AlolaLaboratory/scripts.pory"
 	delay_16
-# 41 "data/maps/AlolaLaboratory/scripts.pory"
+# 84 "data/maps/AlolaLaboratory/scripts.pory"
 	delay_16
-# 41 "data/maps/AlolaLaboratory/scripts.pory"
+# 84 "data/maps/AlolaLaboratory/scripts.pory"
 	face_down
 	step_end
 
-# 44 "data/maps/AlolaLaboratory/scripts.pory"
+# 87 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_9:
-# 44 "data/maps/AlolaLaboratory/scripts.pory"
+# 87 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
-# 44 "data/maps/AlolaLaboratory/scripts.pory"
+# 87 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
-# 44 "data/maps/AlolaLaboratory/scripts.pory"
+# 87 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
 	step_end
 
-# 51 "data/maps/AlolaLaboratory/scripts.pory"
+# 94 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_10:
-# 51 "data/maps/AlolaLaboratory/scripts.pory"
+# 94 "data/maps/AlolaLaboratory/scripts.pory"
 	jump_in_place_down
-# 51 "data/maps/AlolaLaboratory/scripts.pory"
+# 94 "data/maps/AlolaLaboratory/scripts.pory"
 	jump_in_place_down
 	step_end
 
-# 68 "data/maps/AlolaLaboratory/scripts.pory"
+# 111 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_11:
-# 68 "data/maps/AlolaLaboratory/scripts.pory"
+# 111 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
 	step_end
 
-# 69 "data/maps/AlolaLaboratory/scripts.pory"
+# 112 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_12:
-# 69 "data/maps/AlolaLaboratory/scripts.pory"
+# 112 "data/maps/AlolaLaboratory/scripts.pory"
 	delay_8
-# 69 "data/maps/AlolaLaboratory/scripts.pory"
+# 112 "data/maps/AlolaLaboratory/scripts.pory"
 	face_down
 	step_end
 
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_13:
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_up
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
 	delay_16
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
-# 81 "data/maps/AlolaLaboratory/scripts.pory"
+# 124 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 91 "data/maps/AlolaLaboratory/scripts.pory"
+# 134 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_14:
-# 91 "data/maps/AlolaLaboratory/scripts.pory"
+# 134 "data/maps/AlolaLaboratory/scripts.pory"
 	emote_question_mark
 	step_end
 
-# 101 "data/maps/AlolaLaboratory/scripts.pory"
+# 144 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_15:
-# 101 "data/maps/AlolaLaboratory/scripts.pory"
+# 144 "data/maps/AlolaLaboratory/scripts.pory"
 	face_down
 	step_end
 
-# 111 "data/maps/AlolaLaboratory/scripts.pory"
+# 154 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_16:
-# 111 "data/maps/AlolaLaboratory/scripts.pory"
+# 154 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
-# 111 "data/maps/AlolaLaboratory/scripts.pory"
+# 154 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 133 "data/maps/AlolaLaboratory/scripts.pory"
+# 176 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_17:
-# 133 "data/maps/AlolaLaboratory/scripts.pory"
+# 176 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_down
-# 133 "data/maps/AlolaLaboratory/scripts.pory"
+# 176 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_18:
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	face_up
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	delay_16
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
-# 150 "data/maps/AlolaLaboratory/scripts.pory"
+# 194 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_in_place_up
 	step_end
 
-AlolaLaboratory_FirstTimeIntro_Text_0:
-# 48 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_Kukui_Text_0:
+# 16 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Kukui$"
 
-AlolaLaboratory_FirstTimeIntro_Text_1:
-# 56 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_Kukui_Text_1:
+# 17 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Pokémon are my totally necessary\n"
+	.string "partners in my research.\p"
+	.string "Plus we all live here together.\n"
+	.string "I guess I'd have to call them family!$"
+
+AlolaLaboratory_Stufful_Text_0:
+# 30 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Huff!$"
+
+AlolaLaboratory_Snubull_Text_0:
+# 40 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Wroo!$"
+
+AlolaLaboratory_Rockruff_Text_0:
+# 50 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Wroof!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_0:
+# 99 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Hey there, {PLAYER}!\n"
 	.string "Thanks for getting him for me, Lillie!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_2:
-# 65 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_1:
+# 108 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Hey there, {PLAYER}!\n"
 	.string "Thanks for getting her for me, Lillie!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_3:
-# 71 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_2:
+# 114 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Lillie$"
 
-AlolaLaboratory_FirstTimeIntro_Text_4:
-# 72 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_3:
+# 115 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Of course. However I can be a help…\n"
 	.string "I am supposed to be your assistant.$"
 
-AlolaLaboratory_FirstTimeIntro_Text_5:
-# 75 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_4:
+# 118 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Rockruff's moves were just so stylin',\n"
 	.string "and I was making good progress with\l"
 	.string "my research.\p"
 	.string "Say, {PLAYER}, lemme see your Rotom\n"
 	.string "Phone for a second, yeah?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_6:
-# 87 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_5:
+# 130 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "So what do you think of the place?\n"
 	.string "Not bad right?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_7:
-# 95 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_6:
+# 138 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "But that's not why I called you here,\n"
 	.string "eh?\p"
 	.string "Here! It finally arrived!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_8:
-# 100 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_7:
+# 143 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "“It”…?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_9:
-# 104 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_8:
+# 147 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "What's wrong, Lillie? Dont make me\n"
 	.string "do all the talking?\p"
 	.string "See, there's this Pokémon inside your\n"
 	.string "Phone called Rotom…$"
 
-AlolaLaboratory_FirstTimeIntro_Text_10:
-# 109 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_9:
+# 152 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Really?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_11:
-# 109 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_10:
+# 152 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Rotom?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_12:
-# 114 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_11:
+# 157 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Oh, I can tell you about Rotom.\p"
 	.string "It's a peculiar Pokémon, with a body\n"
 	.string "made up of something like\l"
 	.string "electricity.\l"
 	.string "It can take up residence in machines.$"
 
-AlolaLaboratory_FirstTimeIntro_Text_13:
-# 135 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_12:
+# 178 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Yeah, buddy! And to put that crazy skill\n"
 	.string "of Rotom's to work…\p"
 	.string "It's the next generation of Phones, but\n"
@@ -655,80 +818,135 @@ AlolaLaboratory_FirstTimeIntro_Text_13:
 	.string "A whole new way for people and Pokémon\n"
 	.string "to communicate. Woo!\p"
 	.string "And there's only a few of these\n"
-	.string "beauties out in the world so far!$"
-
-AlolaLaboratory_FirstTimeIntro_Text_14:
-# 148 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "beauties out in the world so far!\p"
 	.string "And now if I power up your Rotom Phone\n"
 	.string "with the parts that I just got in…$"
 
-AlolaLaboratory_FirstTimeIntro_Text_15:
-# 174 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_13:
+# 218 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "…Kzzzt?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_16:
-# 179 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_14:
+# 223 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Hey now! Sorry 'bout that, Rotom.\n"
 	.string "Guess I surprised you?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_17:
-# 185 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_15:
+# 229 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Zz-zzt…$"
 
-AlolaLaboratory_FirstTimeIntro_Text_18:
-# 190 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_16:
+# 234 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Rotom!\p"
 	.string "Here, boy!\n"
 	.string "I powered up your favorite Phone!\p"
 	.string "Give {PLAYER} here a Helping Hand,\n"
 	.string "yeah?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_19:
-# 201 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_17:
+# 245 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Kzzzt…$"
 
-AlolaLaboratory_FirstTimeIntro_Text_20:
-# 217 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_18:
+# 261 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.$"
 
-AlolaLaboratory_FirstTimeIntro_Text_21:
-# 221 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_19:
+# 265 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Check it out, {PLAYER}!\n"
 	.string "Now Rotom can talk right to you!\p"
 	.string "It may take it a little while to get\n"
 	.string "used to its new job, but I'd say\l"
 	.string "Rotom's taken a liking to you!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_22:
-# 230 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_20:
+# 274 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "And this will help how exactly?$"
 
-AlolaLaboratory_FirstTimeIntro_Text_23:
-# 237 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_21:
+# 281 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "{PLAYER} hasn't been here in Alola\n"
 	.string "too long yet.\p"
 	.string "So I decided to give him this special\n"
 	.string "Phone to help him navigate around.$"
 
-AlolaLaboratory_FirstTimeIntro_Text_24:
-# 245 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_22:
+# 289 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "{PLAYER} hasn't been here in Alola\n"
 	.string "too long yet.\p"
 	.string "So I decided to give her this special\n"
 	.string "Phone to help her navigate around.$"
 
-AlolaLaboratory_FirstTimeIntro_Text_25:
-# 251 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_23:
+# 295 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Thank you!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_26:
-# 251 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_24:
+# 295 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Hi, Rotom!$"
 
-AlolaLaboratory_FirstTimeIntro_Text_27:
-# 256 "data/maps/AlolaLaboratory/scripts.pory"
+AlolaLaboratory_FirstTimeIntro_Text_25:
+# 300 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "You can see ask Rotom for directions\n"
 	.string "by opening the Rotom Phone and\l"
 	.string "pressing {R_BUTTON}.\p"
 	.string "You can also press the Rotom Reality\n"
 	.string "feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_26:
+# 320 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "So, {PLAYER}, I'm leaving this Rotom\n"
+	.string "Phone in your hands!\p"
+	.string "Rotom, you look after {PLAYER}, yeah?\p"
+	.string "All right then, {PLAYER}!\n"
+	.string "Get a move on!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_27:
+# 327 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "OK!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_28:
+# 327 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "What?$"
+
+AlolaLaboratory_FirstTimeIntro_Text_29:
+# 335 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "To the Trainers' School!\p"
+	.string "You've gotta learn the basics of being\n"
+	.string "a Pokémon Trainer through Pokémon\l"
+	.string "battling.\p"
+	.string "It's a long road to becoming the island\n"
+	.string "challenge champion, and the Trainers'\l"
+	.string "School is the first step!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_30:
+# 366 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "So this is how the people of Alola\n"
+	.string "connect with the world around them.\p"
+	.string "And then there's the way that you and\n"
+	.string "{STR_VAR_1} both chose one another.\p"
+	.string "And now with Rotom helping you out as\n"
+	.string "well…\p"
+	.string "Even Nebby likes you! I guess there's\n"
+	.string "something about you that makes\l"
+	.string "Pokémon feel comfortable when\l"
+	.string "they're by your side.$"
+
+AlolaLaboratory_FirstTimeIntro_Text_31:
+# 385 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Lillie!\n"
+	.string "You take care of {PLAYER}, yeah?\p"
+	.string "Until he gets used to Rotom,\n"
+	.string "help him find his way around!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_32:
+# 393 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Lillie!\n"
+	.string "You take care of {PLAYER}, yeah?\p"
+	.string "Until she gets used to Rotom,\n"
+	.string "help her find her way around!$"
+
+AlolaLaboratory_FirstTimeIntro_Text_33:
+# 400 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Of course, Professor Kukui!\n"
+	.string "I'll wait outside.$"
