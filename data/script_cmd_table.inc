@@ -261,6 +261,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_QUESTMENU                     ScrCmd_questmenu,					requests_effects=1  @ 0xeb
     script_cmd_table_entry SCR_OP_SUBQUESTMENU                  ScrCmd_subquestmenu,				requests_effects=1  @ 0xec
     script_cmd_table_entry SCR_OP_RETURNQUESTSTATE              ScrCmd_returnqueststate,			requests_effects=1  @ 0xed
+	script_cmd_table_entry SCR_OP_ROTOMMENUSHOW                 ScrCmd_rotommenushow,              requests_effects=1  @ 0xee
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

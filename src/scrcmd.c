@@ -46,6 +46,7 @@
 #include "random.h"
 #include "overworld.h"
 #include "rotating_tile_puzzle.h"
+#include "rotom_start_menu.h"
 #include "rtc.h"
 #include "script.h"
 #include "script_menu.h"
@@ -90,6 +91,7 @@ extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
 static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
+static bool8 WaitForRotomMenuScriptClose(void);
 
 static const u8 sScriptConditionTable[6][3] =
 {
@@ -3613,4 +3615,20 @@ bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)
     }
 
     return TRUE;
+}
+
+bool8 ScrCmd_rotommenushow(struct ScriptContext *ctx)
+{
+    u16 menuItem = VarGet(ScriptReadHalfword(ctx));
+    const u8 *customPromptText = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    RotomPhone_StartMenu_OpenForScript(menuItem, customPromptText);
+    SetupNativeScript(ctx, WaitForRotomMenuScriptClose);
+    return TRUE;
+}
+
+static bool8 WaitForRotomMenuScriptClose(void)
+{
+    return !RotomPhone_StartMenu_IsScriptDisplayActive();
 }

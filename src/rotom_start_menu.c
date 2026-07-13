@@ -41,6 +41,7 @@
 #include "trig.h"
 #include "union_room.h"
 #include "wallclock.h"
+#include "constants/characters.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
@@ -194,6 +195,7 @@ static bool32 RotomPhone_StartMenu_UnlockedFunc_RotomReality(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_DexNav(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Clock(void);
 static bool32 RotomPhone_StartMenu_UnlockedFunc_Shortcut(void);
+static bool32 RotomPhone_StartMenu_IsValidScriptTarget(u16 menuItem);
 
 static void RotomPhone_StartMenu_SelectedFunc_Shortcut(void);
 static void RotomPhone_StartMenu_SelectedFunc_Pokedex(void);
@@ -209,6 +211,12 @@ static void RotomPhone_StartMenu_SelectedFunc_RotomReality(void);
 static void RotomPhone_StartMenu_SelectedFunc_DexNav(void);
 static void RotomPhone_StartMenu_SelectedFunc_Clock(void);
 static void RotomPhone_StartMenu_SelectedFunc_Daycare(void);
+static void RotomPhone_StartMenu_ClearScriptState(void);
+
+static EWRAM_DATA bool32 sRotomPhone_RotomReality;
+static EWRAM_DATA bool32 sRotomPhone_StartMenuFromScript;
+static EWRAM_DATA u16 sRotomPhone_StartMenuScriptTarget;
+static EWRAM_DATA const u8 *sRotomPhone_StartMenuScriptPrompt;
 
 
 // Init Rotom Start Menu
@@ -225,6 +233,20 @@ void RotomPhone_StartMenu_Open(bool32 firstInit)
     {
         RotomPhone_RotomRealityMenu_Init();
     }
+}
+
+void RotomPhone_StartMenu_OpenForScript(u16 menuItem, const u8 *customPromptText)
+{
+    sRotomPhone_StartMenuFromScript = TRUE;
+    sRotomPhone_StartMenuScriptTarget = menuItem;
+    sRotomPhone_StartMenuScriptPrompt = customPromptText;
+    sRotomPhone_RotomReality = FALSE;
+    RotomPhone_StartMenu_Open(TRUE);
+}
+
+bool32 RotomPhone_StartMenu_IsScriptDisplayActive(void)
+{
+    return sRotomPhone_StartMenuFromScript;
 }
 
 
@@ -802,10 +824,36 @@ static EWRAM_DATA enum RotomPhone_FaceExpressions rotomFaceExpression;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 
-static EWRAM_DATA bool32 sRotomPhone_RotomReality;
 static bool32 RotomPhone_StartMenu_IsRotomReality(void)
 {
     return sRotomPhone_RotomReality;
+}
+
+static void RotomPhone_StartMenu_ClearScriptState(void)
+{
+    sRotomPhone_StartMenuFromScript = FALSE;
+    sRotomPhone_StartMenuScriptTarget = RP_MENU_FIRST_OPTION;
+    sRotomPhone_StartMenuScriptPrompt = NULL;
+}
+
+static bool32 RotomPhone_StartMenu_IsValidScriptTarget(u16 menuItem)
+{
+    switch (menuItem)
+    {
+    case ROTOM_SCRIPT_MENU_ROTOM_REALITY:
+    case ROTOM_SCRIPT_MENU_FLAG:
+    case ROTOM_SCRIPT_MENU_SHORTCUT:
+    case ROTOM_SCRIPT_MENU_CLOCK:
+    case ROTOM_SCRIPT_MENU_POKEDEX:
+    case ROTOM_SCRIPT_MENU_PARTY:
+    case ROTOM_SCRIPT_MENU_BAG:
+    case ROTOM_SCRIPT_MENU_DEXNAV:
+    case ROTOM_SCRIPT_MENU_SAVE:
+    case ROTOM_SCRIPT_MENU_OPTIONS:
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 
@@ -1472,6 +1520,8 @@ static void RotomPhone_OverworldMenu_Init(bool32 firstInit)
 
     if (sRotomPhone_StartMenu == NULL)
     {
+        if (sRotomPhone_StartMenuFromScript)
+            RotomPhone_StartMenu_ClearScriptState();
         SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
         return;
     }
@@ -1522,6 +1572,15 @@ static void RotomPhone_OverworldMenu_ContinueInit(bool32 firstInit)
     if (!sRotomPhoneOptions[menuSelectedOverworld].unlockedFunc || !sRotomPhoneOptions[menuSelectedOverworld].unlockedFunc())
         menuSelectedOverworld = RotomPhone_StartMenu_SetFirstSelectedMenu();
 
+    if (sRotomPhone_StartMenuFromScript)
+    {
+        enum RotomPhone_MenuItems target = (enum RotomPhone_MenuItems)sRotomPhone_StartMenuScriptTarget;
+        if (sRotomPhone_StartMenuScriptTarget != ROTOM_SCRIPT_MENU_NONE
+         && RotomPhone_StartMenu_IsValidScriptTarget(sRotomPhone_StartMenuScriptTarget)
+         && target < RP_MENU_COUNT)
+            menuSelectedOverworld = target;
+    }
+
     if (firstInit)
         gTasks[taskId].func = Task_RotomPhone_OverworldMenu_HandleMainInput;
     else
@@ -1549,6 +1608,9 @@ static void RotomPhone_OverworldMenu_ContinueInit(bool32 firstInit)
         RotomPhone_OverworldMenu_PrintGreeting();
     else
         tRotomUpdateTimer = FALSE;
+
+    if (sRotomPhone_StartMenuFromScript)
+        tRotomUpdateTimer = 0x7FFF;
 
     RotomPhone_OverworldMenu_UpdateMenuPrompt(taskId);
 }
@@ -2233,35 +2295,10 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
         StringCopy(textBufferTop, COMPOUND_STRING("Focus on the Safari hunt"));
         StringCopy(textBufferBottom, COMPOUND_STRING("for now."));
     }
-    else if (ikiTownState == 2)
+    else if (ikiTownState == 19)
     {
-        StringCopy(textBufferTop, COMPOUND_STRING("Try heading through Iki"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("Town and up Mahalo Trail."));
-    }
-    else if (ikiTownState == 3 || ikiTownState == 4)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Lillie needs help on"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("Mahalo Bridge. Better hurry."));
-    }
-    else if (ikiTownState == 5)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Keep pushing up the"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("bridge and protect Nebby."));
-    }
-    else if (ikiTownState == 6)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Head back to Iki Town."));
-        StringCopy(textBufferBottom, COMPOUND_STRING("Kukui and Hala are waiting."));
-    }
-    else if (ikiTownState == 7)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Looks like it is time to"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("head home from Iki Town."));
-    }
-    else if (ikiTownState == 8)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Go home and get ready"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("for the festival tomorrow."));
+        StringCopy(textBufferTop, COMPOUND_STRING("Head towards the Trainer's School."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("It's just west of your house!"));
     }
     else if (!FlagGet(FLAG_SYS_POKEDEX_GET))
     {
@@ -2275,8 +2312,8 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
     }
     else
     {
-        StringCopy(textBufferTop, COMPOUND_STRING("Head to Iki Town."));
-        StringCopy(textBufferBottom, COMPOUND_STRING("They're holding a festival!"));
+        StringCopy(textBufferTop, COMPOUND_STRING("I don't have any tips right now."));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Continue exploring Alola!"));
     }
 
     RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTop, TRUE, FALSE);
@@ -2292,6 +2329,81 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
 static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
 {
     u8 fontId;
+    if (sRotomPhone_StartMenuFromScript && sRotomPhone_StartMenuScriptPrompt != NULL)
+    {
+        const u8 *src = sRotomPhone_StartMenuScriptPrompt;
+        u8 textBufferTop[80];
+        u8 textBufferBottom[80];
+        u8 i = 0;
+        u8 j = 0;
+        bool32 hasTopWindow = (sRotomPhone_StartMenu->menuOverworldRotomSpeechTopWindowId != WINDOW_NONE);
+        bool32 hasBottomWindow = (sRotomPhone_StartMenu->menuOverworldRotomSpeechBottomWindowId != WINDOW_NONE);
+
+        while (src[i] != EOS && src[i] != CHAR_NEWLINE && i < sizeof(textBufferTop) - 1)
+        {
+            textBufferTop[i] = src[i];
+            i++;
+        }
+        textBufferTop[i] = EOS;
+
+        if (src[i] == CHAR_NEWLINE)
+        {
+            src = src + i + 1;
+            while (src[j] != EOS && src[j] != CHAR_NEWLINE && j < sizeof(textBufferBottom) - 1)
+            {
+                textBufferBottom[j] = src[j];
+                j++;
+            }
+            textBufferBottom[j] = EOS;
+
+            if (hasTopWindow)
+            {
+                RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTop, TRUE, FALSE);
+                CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechTopWindowId, COPYWIN_GFX);
+            }
+
+            if (hasBottomWindow)
+            {
+                RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferBottom, FALSE, FALSE);
+                CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechBottomWindowId, COPYWIN_GFX);
+            }
+        }
+        else
+        {
+            u8 textBufferTopDefault[80];
+
+            if (sRotomPhoneOptions[menuSelectedOverworld].rotomSpeech == NULL)
+            {
+                StringCopy(textBufferTopDefault, COMPOUND_STRING("Invalid Option"));
+            }
+            else
+            {
+                if (Random() % 2 == TRUE)
+                    StringCopy(textBufferTopDefault, COMPOUND_STRING("Would you like "));
+                else
+                    StringCopy(textBufferTopDefault, COMPOUND_STRING("Do you want "));
+
+                if (menuSelectedOverworld == RP_MENU_SHORTCUT)
+                    StringAppend(textBufferTopDefault, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].rotomSpeech);
+                else
+                    StringAppend(textBufferTopDefault, sRotomPhoneOptions[menuSelectedOverworld].rotomSpeech);
+            }
+
+            if (hasTopWindow)
+            {
+                RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTopDefault, TRUE, FALSE);
+                CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechTopWindowId, COPYWIN_GFX);
+            }
+
+            if (hasBottomWindow)
+            {
+                RotomPhone_OverworldMenu_PrintRotomSpeech(textBufferTop, FALSE, FALSE);
+                CopyWindowToVram(sRotomPhone_StartMenu->menuOverworldRotomSpeechBottomWindowId, COPYWIN_GFX);
+            }
+        }
+        return;
+    }
+
     if (RP_CONFIG_ROTOM_ACTIVE)
     {
         u8 textBuffer[80];
@@ -2624,6 +2736,8 @@ static void Task_RotomPhone_OverworldMenu_PhoneSlideClose(u8 taskId)
     {
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
         ReleaseComfyAnim(tPhoneComfyAnimId);
+        if (sRotomPhone_StartMenuFromScript)
+            RotomPhone_StartMenu_ClearScriptState();
         if (taskId != TASK_NONE) DestroyTask(taskId);
     }
 }
@@ -2658,6 +2772,28 @@ static void Task_RotomPhone_OverworldMenu_HandleMainInput(u8 taskId)
     tRotomMessageSoundEffect = MUS_DUMMY;
     RotomPhone_OverworldMenu_CheckUpdateMessage(taskId);
     RotomPhone_OverworldMenu_UpdateIconPaletteFade(taskId);
+
+    if (sRotomPhone_StartMenuFromScript)
+    {
+        if (JOY_NEW(A_BUTTON | B_BUTTON) && sRotomPhone_StartMenu->menuOverworldLoading == FALSE)
+        {
+            if (RP_CONFIG_ROTOM_ACTIVE)
+            {
+                gTasks[taskId].func = Task_RotomPhone_OverworldMenu_RotomShutdown;
+                RotomPhone_StartMenu_RotomShutdownPreparation(taskId, TRUE);
+            }
+            else
+            {
+                PlaySE(SE_BALL_TRAY_ENTER);
+                tPhoneY = FALSE;
+                gTasks[taskId].func = Task_RotomPhone_OverworldMenu_PhoneSlideClose;
+            }
+        }
+
+        if (tRotomMessageSoundEffect && !IsSEPlaying())
+            PlaySE(tRotomMessageSoundEffect);
+        return;
+    }
 
     if (tRotomUpdateTimer && sRotomPhone_StartMenu->menuOverworldLoading == FALSE && !gPaletteFade.active)
         tRotomUpdateTimer--;

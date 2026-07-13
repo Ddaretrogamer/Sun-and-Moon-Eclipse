@@ -3041,6 +3041,33 @@
     .byte \questId
     .endm
 
+	@ Rotom menu item ids for rotommenushow.
+	ROTOM_SCRIPT_MENU_NONE           = 0xFFFF
+	ROTOM_SCRIPT_MENU_ROTOM_REALITY  = 0
+	ROTOM_SCRIPT_MENU_FLAG           = 1
+	ROTOM_SCRIPT_MENU_SHORTCUT       = 2
+	ROTOM_SCRIPT_MENU_CLOCK          = 3
+	ROTOM_SCRIPT_MENU_POKEDEX        = 4
+	ROTOM_SCRIPT_MENU_PARTY          = 5
+	ROTOM_SCRIPT_MENU_BAG            = 7
+	ROTOM_SCRIPT_MENU_DEXNAV         = 8
+	ROTOM_SCRIPT_MENU_SAVE           = 12
+	ROTOM_SCRIPT_MENU_OPTIONS        = 13
+
+	@ Opens Rotom start menu in script mode, optionally focuses a specific menu item, and waits until it is closed.
+	@ In script mode, A or B closes the menu. Set text to 0 to use the normal generated prompt.
+	@ Use ROTOM_SCRIPT_MENU_NONE for display-only mode. Targets are overworld-relevant only.
+	.macro rotommenushow menu=ROTOM_SCRIPT_MENU_NONE, text=0
+	.byte SCR_OP_ROTOMMENUSHOW
+	.2byte \menu
+	.4byte \text
+	.endm
+
+	@ Display-only helper: no menu selection/highlight override.
+	.macro rotommenudisplay text=0
+	rotommenushow ROTOM_SCRIPT_MENU_NONE, \text
+	.endm
+
     .macro subquestmenu case:req, parentId:req, childId:req
     .byte SCR_OP_SUBQUESTMENU
     .byte \case

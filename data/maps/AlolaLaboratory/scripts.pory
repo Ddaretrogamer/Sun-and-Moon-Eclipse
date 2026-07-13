@@ -1,21 +1,68 @@
 mapscripts AlolaLaboratory_MapScripts {
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, TRUE {
-        hideobjectat(lab_hau, MAP_ALOLA_LABORATORY)
         hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
+        if (var(VAR_IKITOWN_STATE) > 18) {
+            setobjectxy(lab_lillie, 14, 16)
+            hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
+        }
     }]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 18: AlolaLaboratory_FirstTimeIntro]
 }
 
 
+script AlolaLaboratory_Kukui{
+    lock
+    faceplayer
+    speakername("Kukui")
+    msgbox("Pok\emon are my totally necessary
+    partners in my research.
+    
+    Plus we all live here together.
+    I guess I'd have to call them family!")
+    release
+    end
+}
+
+script AlolaLaboratory_Stufful{
+    lock
+    faceplayer
+    playmoncry(SPECIES_STUFFUL, 0)
+    msgbox("Huff!")
+    waitmessage
+    release
+    end
+}
+
+script AlolaLaboratory_Snubull{
+    lock
+    faceplayer
+    playmoncry(SPECIES_SNUBBULL, 0)
+    msgbox("Wroo!")
+    waitmessage
+    release
+    end
+}
+
+script AlolaLaboratory_Rockruff{
+    lock
+    faceplayer
+    playmoncry(SPECIES_ROCKRUFF, 0)
+    msgbox("Wroof!")
+    waitmessage
+    release
+    end
+}
+
 script AlolaLaboratory_FirstTimeIntro{
     lock
+    setvar(VAR_IKITOWN_STATE, 19)
     setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_WALK_IN_PLACE_UP)
     applymovement(lab_rockruff, moves(face_right))
     applymovement(lab_kukui, moves(face_left))
     waitmovement(0)
     // startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
-    addobject(lab_lillie)
+    showobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*4))
     waitmovement(0)
@@ -209,7 +256,8 @@ script AlolaLaboratory_FirstTimeIntro{
     hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_WHITE)
-    // insert new macro/special to open rotom phone and say hi
+    delay(30)
+    rotommenudisplay("Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.")
     applymovement(lab_kukui, moves(face_down))
     waitmovement(0)
     speakername("Kukui")
@@ -250,7 +298,7 @@ script AlolaLaboratory_FirstTimeIntro{
         speakername("Kukui")
         msgbox("You can see ask Rotom for directions
         by opening the Rotom Phone and
-        pressing {L_BUTTON}.
+        pressing {R_BUTTON}.
         
         You can also press the Rotom Reality
         feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
@@ -262,12 +310,99 @@ script AlolaLaboratory_FirstTimeIntro{
         speakername("Kukui")
         msgbox("You can see ask Rotom for directions
         by opening the Rotom Phone and
-        pressing {L_BUTTON}.
+        pressing {R_BUTTON}.
         
         You can also press the Rotom Reality
         feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
     }
-    setvar(VAR_IKITOWN_STATE, 19)
+    speakername("Kukui")
+    msgbox("So, {PLAYER}, I'm leaving this Rotom
+    Phone in your hands!
+    
+    Rotom, you look after {PLAYER}, yeah?
+    
+    All right then, {PLAYER}!
+    Get a move on!}")
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "OK!", "What?")
+    if (var(VAR_RESULT) == 0){
+        applymovement(lab_kukui, moves(jump_in_place_down*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Kukui")
+        msgbox("To the Trainers' School!
+        
+        You've gotta learn the basics of being
+        a Pok\emon Trainer through Pok\emon
+        battling.
+        
+        It's a long road to becoming the island
+        challenge champion, and the Trainers'
+        School is the first step!")
+    }
+    else{
+        applymovement(lab_kukui, moves(jump_in_place_down*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        speakername("Kukui")
+        msgbox("To the Trainers' School!
+        
+        You've gotta learn the basics of being
+        a Pok\emon Trainer through Pok\emon
+        battling.
+        
+        It's a long road to becoming the island
+        challenge champion, and the Trainers'
+        School is the first step!")
+    }
+    applymovement(lab_lillie, moves(walk_in_place_up*2))
+    waitmovement(0)
+    bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Lillie")
+    msgbox("So this is how the people of Alola
+    connect with the world around them.
+    
+    And then there's the way that you and
+    {STR_VAR_1} both chose one another.
+
+    And now with Rotom helping you out as
+    well\.
+    
+    Even Nebby likes you! I guess there's
+    something about you that makes
+    Pok\emon feel comfortable when
+    they're by your side.")
+    applymovement(lab_kukui, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    checkplayergender
+    if (var(VAR_RESULT)==MALE)
+    {
+        msgbox("Lillie!
+        You take care of {PLAYER}, yeah?
+        
+        Until he gets used to Rotom,
+        help him find his way around!")
+    }
+    else
+    {
+        msgbox("Lillie!
+        You take care of {PLAYER}, yeah?
+        
+        Until she gets used to Rotom,
+        help her find her way around!")
+    }
+    speakername("Lillie")
+    msgbox("Of course, Professor Kukui!
+    I'll wait outside.", MSGBOX_AUTOCLOSE)
+    applymovement(lab_lillie, moves(walk_down*3))
+    playse(SE_EXIT)
+    hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
+    waitse
+    applymovement(lab_lillie, moves(walk_down))
     release
     end
 }

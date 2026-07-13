@@ -231,7 +231,24 @@ enum RotomPhone_Colours
 #define RP_CONFIG_UPDATE_MESSAGE_SOUND    TRUE
 #define RP_CONFIG_FACE_UPDATE_PERCENT     100
 
+enum RotomPhoneScriptMenuItems
+{
+    ROTOM_SCRIPT_MENU_NONE = 0xFFFF,
+    ROTOM_SCRIPT_MENU_ROTOM_REALITY = 0,
+    ROTOM_SCRIPT_MENU_FLAG = 1,
+    ROTOM_SCRIPT_MENU_SHORTCUT = 2,
+    ROTOM_SCRIPT_MENU_CLOCK = 3,
+    ROTOM_SCRIPT_MENU_POKEDEX = 4,
+    ROTOM_SCRIPT_MENU_PARTY = 5,
+    ROTOM_SCRIPT_MENU_BAG = 7,
+    ROTOM_SCRIPT_MENU_DEXNAV = 8,
+    ROTOM_SCRIPT_MENU_SAVE = 12,
+    ROTOM_SCRIPT_MENU_OPTIONS = 13,
+};
+
 void RotomPhone_StartMenu_Open(bool32 firstInit);
+void RotomPhone_StartMenu_OpenForScript(u16 menuItem, const u8 *customPromptText);
+bool32 RotomPhone_StartMenu_IsScriptDisplayActive(void);
 
 const u16 *RotomPhone_StartMenu_GetPhoneColour(void);
 
