@@ -11,6 +11,7 @@
 #include "event_object_lock.h"
 #include "fake_rtc.h"
 #include "field_player_avatar.h"
+#include "fieldmap.h"
 #include "field_weather.h"
 #include "frontier_pass.h"
 #include "gpu_regs.h"
@@ -211,6 +212,7 @@ static void RotomPhone_StartMenu_SelectedFunc_RotomReality(void);
 static void RotomPhone_StartMenu_SelectedFunc_DexNav(void);
 static void RotomPhone_StartMenu_SelectedFunc_Clock(void);
 static void RotomPhone_StartMenu_SelectedFunc_Daycare(void);
+static void RotomPhone_StartMenu_CB2_OpenRegionMapFromRotomReality(void);
 static void RotomPhone_StartMenu_ClearScriptState(void);
 
 static EWRAM_DATA bool32 sRotomPhone_RotomReality;
@@ -537,11 +539,16 @@ enum RotomPhone_MenuItems
 };
 #define RP_MENU_FIRST_OPTION RP_MENU_COUNT - RP_MENU_COUNT
 #define RP_MENU_LAST_OPTION  RP_MENU_COUNT - 1
-static enum RotomPhone_MenuItems RotomPhone_StartMenu_GetShortcutOption(void)
+static enum RotomPhone_MenuItems RotomPhone_StartMenu_GetShortcutOption_Overworld(void)
 {
     return RP_MENU_POKEDEX;
 }
-#define RP_GET_SHORTCUT_OPTION RotomPhone_StartMenu_GetShortcutOption()
+static enum RotomPhone_MenuItems RotomPhone_StartMenu_GetShortcutOption_RotomReality(void)
+{
+    return RP_MENU_CLOCK;
+}
+#define RP_GET_SHORTCUT_OPTION_OW RotomPhone_StartMenu_GetShortcutOption_Overworld()
+#define RP_GET_SHORTCUT_OPTION_RR RotomPhone_StartMenu_GetShortcutOption_RotomReality()
 
 enum RotomPhone_Overworld_Options
 {
@@ -1394,7 +1401,7 @@ static const struct RotomPhone_MenuOptions sRotomPhoneOptions[RP_MENU_COUNT] =
         .rotomSpeech = COMPOUND_STRING("to check the time?"),
         .unlockedFunc = RotomPhone_StartMenu_UnlockedFunc_Clock,
         .selectedFunc = RotomPhone_StartMenu_SelectedFunc_Clock,
-        .owIconPalSlot = PAL_ICON_MONOCHROME,
+        .owIconPalSlot = PAL_ICON_GREEN,
         .owAnim = RP_ICON_ANIM_THREE,
         .rrAnim = RP_ICON_ANIM_ONE,
         .rrSpriteTemplate = &sSpriteTemplate_RotomRealityIcons_One,
@@ -1674,7 +1681,7 @@ static void RotomPhone_OverworldMenu_CreateIconSprite(enum RotomPhone_MenuItems 
     if (menuItem != RP_MENU_SHORTCUT)
         animNum = sRotomPhoneOptions[menuItem].owAnim;
     else
-        animNum = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].owAnim;
+        animNum = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].owAnim;
 
     if (!RP_CONFIG_USE_ROTOM_PHONE)
     {
@@ -2297,7 +2304,7 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
     }
     else if (ikiTownState == 19)
     {
-        StringCopy(textBufferTop, COMPOUND_STRING("Head towards the Trainer's School."));
+        StringCopy(textBufferTop, COMPOUND_STRING("Head to the Trainer's School."));
         StringCopy(textBufferBottom, COMPOUND_STRING("It's just west of your house!"));
     }
     else if (!FlagGet(FLAG_SYS_POKEDEX_GET))
@@ -2384,7 +2391,7 @@ static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
                     StringCopy(textBufferTopDefault, COMPOUND_STRING("Do you want "));
 
                 if (menuSelectedOverworld == RP_MENU_SHORTCUT)
-                    StringAppend(textBufferTopDefault, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].rotomSpeech);
+                    StringAppend(textBufferTopDefault, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].rotomSpeech);
                 else
                     StringAppend(textBufferTopDefault, sRotomPhoneOptions[menuSelectedOverworld].rotomSpeech);
             }
@@ -2421,7 +2428,7 @@ static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
             StringCopy(textBuffer, COMPOUND_STRING("Do you want "));
         
         if (menuSelectedOverworld == RP_MENU_SHORTCUT)
-            StringAppend(textBuffer, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].rotomSpeech);
+            StringAppend(textBuffer, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].rotomSpeech);
         else
             StringAppend(textBuffer, sRotomPhoneOptions[menuSelectedOverworld].rotomSpeech);
         RotomPhone_OverworldMenu_PrintRotomSpeech(textBuffer, FALSE, TRUE);
@@ -2431,7 +2438,7 @@ static void RotomPhone_OverworldMenu_UpdateMenuPrompt(u8 taskId)
         u8 menuName[24];
         StringCopy(menuName, sRotomPhoneOptions[menuSelectedOverworld].menuName);
         if (!StringCompare(menuName, sRotomPhoneOptions[RP_MENU_SHORTCUT].menuName))
-            StringCopy(menuName, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].menuName);
+            StringCopy(menuName, sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].menuName);
 
         fontId = GetFontIdToFit(menuName, FONT_SHORT, 0, sWindowTemplate_FlipPhone.width * 8);
         FillWindowPixelBuffer(sRotomPhone_StartMenu->menuOverworldFlipPhoneWindowId, PIXEL_FILL(OW_FLIP_PHONE_TEXT_BG_COLOUR));
@@ -2750,7 +2757,11 @@ static void RotomPhone_OverworldMenu_UpdateIconPaletteFade(u8 taskId)
     u32 iconPal = sRotomPhoneOptions[menuSelectedOverworld].owIconPalSlot;
 
     if (menuSelectedOverworld == RP_MENU_SHORTCUT)
-        iconPal = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].owIconPalSlot;
+        iconPal = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].owIconPalSlot;
+
+    // Flip-phone mode uses monochrome icon palettes, so keep the clock highlight consistent there.
+    if (!RP_CONFIG_USE_ROTOM_PHONE && menuSelectedOverworld == RP_MENU_CLOCK)
+        iconPal = PAL_ICON_MONOCHROME;
     
     TryAdvanceComfyAnim(&gComfyAnims[tPhoneHighlightComfyAnimId]);
     u32 frameNum = ReadComfyAnimValueSmooth(&gComfyAnims[tPhoneHighlightComfyAnimId]);
@@ -3206,7 +3217,7 @@ static void Task_RotomPhone_RotomRealityMenu_HandleMainInput(u8 taskId)
     {
         if (JOY_NEW(START_BUTTON) && RP_CONFIG_ROTOM_REALITY_SHORTCUT)
         {
-            menuSelectedRotomReality = RP_GET_SHORTCUT_OPTION;
+            menuSelectedRotomReality = RP_GET_SHORTCUT_OPTION_RR;
             RotomPhone_RotomRealityMenu_PrintMenuName();
         }
         else if (JOY_NEW(START_BUTTON) && !RP_CONFIG_ROTOM_REALITY_SHORTCUT)
@@ -3501,8 +3512,8 @@ static void RotomPhone_RotomRealityMenu_CreateIconSprites(void)
             }
             else
             {
-                animNum = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].rrAnim;
-                spriteTemplate = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].rrSpriteTemplate;
+                animNum = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_RR].rrAnim;
+                spriteTemplate = sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_RR].rrSpriteTemplate;
             }
 
             sRotomPhone_StartMenu->menuRotomRealityIconSpriteId[optionSlot] = CreateSprite(
@@ -3533,7 +3544,7 @@ static void RotomPhone_RotomRealityMenu_ShortcutIconCallback(struct Sprite *spri
 
     for (enum RotomPhone_RotomReality_Options i = RP_RR_OPTION_1; i < RP_RR_OPTION_COUNT; i++)
     {
-        if (sRotomPhone_StartMenu->menuRotomRealityOptions[i] == RP_GET_SHORTCUT_OPTION)
+        if (sRotomPhone_StartMenu->menuRotomRealityOptions[i] == RP_GET_SHORTCUT_OPTION_RR)
         {
             optionCurrent = i;
 
@@ -3748,12 +3759,17 @@ static void RotomPhone_RotomRealityMenu_PrintTime(void)
 
 static void RotomPhone_RotomRealityMenu_PrintMenuName(void)
 {
+    const u8 *menuName = sRotomPhoneOptions[menuSelectedRotomReality].menuName;
+
+    if (menuSelectedRotomReality == RP_MENU_CLOCK)
+        menuName = COMPOUND_STRING("Map");
+
     FillWindowPixelBuffer(RP_RR_WIN_MENU_NAME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     AddTextPrinterParameterized4(RP_RR_WIN_MENU_NAME, FONT_SMALL_NARROWER,
-        GetStringCenterAlignXOffset(FONT_SMALL_NARROWER, sRotomPhoneOptions[menuSelectedRotomReality].menuName, sRotomPhone_RotomRealityMenuWindowTemplates[RP_RR_WIN_MENU_NAME].width * 8),
+        GetStringCenterAlignXOffset(FONT_SMALL_NARROWER, menuName, sRotomPhone_RotomRealityMenuWindowTemplates[RP_RR_WIN_MENU_NAME].width * 8),
         0, 0, 0,
-        sRotomPhone_StartMenu_FontColours[FONT_RR_ROTOM_PHONE], TEXT_SKIP_DRAW, sRotomPhoneOptions[menuSelectedRotomReality].menuName);
+        sRotomPhone_StartMenu_FontColours[FONT_RR_ROTOM_PHONE], TEXT_SKIP_DRAW, menuName);
 
     CopyWindowToVram(RP_RR_WIN_MENU_NAME, COPYWIN_GFX);
 }
@@ -4280,7 +4296,10 @@ static bool32 RotomPhone_StartMenu_UnlockedFunc_Shortcut(void)
 
 static void RotomPhone_StartMenu_SelectedFunc_Shortcut(void)
 {
-    sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION].selectedFunc();
+    if (RotomPhone_StartMenu_IsRotomReality())
+        sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_RR].selectedFunc();
+    else
+        sRotomPhoneOptions[RP_GET_SHORTCUT_OPTION_OW].selectedFunc();
 }
 
 static void RotomPhone_StartMenu_SelectedFunc_Pokedex(void)
@@ -4392,6 +4411,11 @@ static void RotomPhone_StartMenu_SelectedFunc_DexNav(void)
         RotomPhone_StartMenu_DoCleanUpAndCreateTask(Task_OpenDexNavFromStartMenu, 0);
 }
 
+static void RotomPhone_StartMenu_CB2_OpenRegionMapFromRotomReality(void)
+{
+    FieldInitRegionMap(RotomPhone_RotomRealityMenu_Init);
+}
+
 static void RotomPhone_StartMenu_SelectedFunc_Clock(void)
 {
     if (!RotomPhone_StartMenu_IsRotomReality())
@@ -4415,7 +4439,7 @@ static void RotomPhone_StartMenu_SelectedFunc_Clock(void)
     }
     else
     {
-        RotomPhone_StartMenu_DoCleanUpAndChangeCallback(CB2_ViewWallClock);
+        RotomPhone_StartMenu_DoCleanUpAndChangeCallback(RotomPhone_StartMenu_CB2_OpenRegionMapFromRotomReality);
     }
 }
 
