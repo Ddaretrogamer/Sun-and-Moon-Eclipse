@@ -56,20 +56,21 @@ script AlolaLaboratory_Rockruff{
 script AlolaLaboratory_FirstTimeIntro{
     lock
     setvar(VAR_IKITOWN_STATE, 19)
-    setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
-    setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_WALK_IN_PLACE_UP)
+    // setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+    // setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_WALK_IN_PLACE_UP)
     applymovement(lab_rockruff, moves(face_right))
     applymovement(lab_kukui, moves(face_left))
     waitmovement(0)
     // startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     showobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
-    special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*4))
-    waitmovement(0)
-    delay(60)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast*4))
-    waitmovement(0)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
+    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
+    // special(SpawnCameraObject)
+    // applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left*4))
+    // waitmovement(0)
+    // delay(60)
+    // applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast*4))
+    // waitmovement(0)
+    // applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
     applymovement(lab_lillie, moves(walk_up*3))
     applymovement(LOCALID_PLAYER, moves(walk_up*3))
     waitmovement(0)
@@ -83,11 +84,11 @@ script AlolaLaboratory_FirstTimeIntro{
     applymovement(lab_kukui, moves(emote_exclamation_mark,face_down))
     applymovement(lab_rockruff, moves(delay_16*2, face_down))
     waitmovement(0)
+    // delay(30)
+    // applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down*3))
+    // waitmovement(0)
     delay(30)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down*3))
-    waitmovement(0)
-    delay(30)
-    special(RemoveCameraObject)
+    // special(RemoveCameraObject)
     speakername("Kukui")
     checkplayergender
     if (var(VAR_RESULT)==MALE){
@@ -298,7 +299,8 @@ script AlolaLaboratory_FirstTimeIntro{
         waitmovement(0)
         speakername("Kukui")
         msgbox("You can ask Rotom for directions by
-        opening the Rotom Phone and pressing {R_BUTTON}.
+        opening the Rotom Phone and
+        pressing {R_BUTTON}!
         
         You can also press the Rotom Reality
         feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
@@ -310,7 +312,7 @@ script AlolaLaboratory_FirstTimeIntro{
         speakername("Kukui")
         msgbox("You can see ask Rotom for directions
         by opening the Rotom Phone and
-        pressing {R_BUTTON}.
+        pressing {R_BUTTON}!
         
         You can also press the Rotom Reality
         feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
@@ -400,6 +402,7 @@ script AlolaLaboratory_FirstTimeIntro{
     speakername("Lillie")
     msgbox("Of course, Professor Kukui!
     I'll wait outside.", MSGBOX_AUTOCLOSE)
+    waitmessage
     applymovement(lab_lillie, moves(walk_down*3))
     waitmovement(0)
     playse(SE_EXIT)
@@ -409,6 +412,29 @@ script AlolaLaboratory_FirstTimeIntro{
     setobjectmovementtype(lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
+    endcutscene
+    release
+    end
+}
+
+script AlolaLaboratory_FirstTimeIntroSkip{
+    lock
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
+    setobjectxy(lab_lillie, 14, 17)
+    hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
+    setobjectxy(lab_rotom, 15, 17)
+    setobjectxy(LOCALID_PLAYER, 15, 13)
+    setvar(VAR_IKITOWN_STATE, 19)
+    applymovement(lab_rockruff, moves(face_right))
+    waitmovement(0)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    // special(SnapCameraToPlayer)
+    // special(RemoveCameraObject)
+    setvar(VAR_ROTOM_PHONE_ENABLE, 2)
+    fadescreen(FADE_FROM_BLACK)
     release
     end
 }

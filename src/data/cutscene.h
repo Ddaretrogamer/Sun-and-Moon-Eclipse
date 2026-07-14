@@ -23,6 +23,7 @@ extern const u8 Ikitown_Trigger_FestivalBattleSkip3[];
 extern const u8 Ikitown_Trigger_FestivalBattleSkip4[];
 extern const u8 Lillie_WalktoLabSkip[];
 extern const u8 HauoliOutskirts_LillieOutsideLabSkip[];
+extern const u8 AlolaLaboratory_FirstTimeIntroSkip[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -95,6 +96,10 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_HAUOLI_OUTSKIRTS_LILLIE_OUTSIDE_LAB] =
     {
         .scriptCutsceneSkipPtr = HauoliOutskirts_LillieOutsideLabSkip,
+    },
+    [CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO] =
+    {
+        .scriptCutsceneSkipPtr = AlolaLaboratory_FirstTimeIntroSkip,
     },
 };
 

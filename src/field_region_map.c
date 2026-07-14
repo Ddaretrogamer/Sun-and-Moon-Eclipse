@@ -10,6 +10,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "region_map.h"
+#include "regions.h"
 #include "sound.h"
 #include "strings.h"
 #include "text.h"
@@ -233,9 +234,28 @@ static void PrintTitleWindowText(void)
     static const u8 FlyPromptText[] = _("{R_BUTTON} FLY");
     const u8 *region;
     if (IS_FRLG)
+    {
         region = gText_Kanto;
+    }
     else
-        region = gText_Hoenn;
+    {
+        switch (GetCurrentRegion())
+        {
+        case REGION_KANTO:
+            region = gText_Kanto;
+            break;
+        case REGION_ALOLA:
+            if (GetAlolaSubregion(gMapHeader.regionMapSectionId) == ALOLA_SUBREGION_MELEMELE)
+                region = gText_Melemele;
+            else
+                region = gText_Alola;
+            break;
+        case REGION_HOENN:
+        default:
+            region = gText_Hoenn;
+            break;
+        }
+    }
     u32 hoennOffset = GetStringCenterAlignXOffset(FONT_NORMAL, region, 0x38);
     u32 flyOffset = GetStringCenterAlignXOffset(FONT_NORMAL, FlyPromptText, 0x38);
 
