@@ -24,6 +24,8 @@
 #include "main.h"
 #include "trainer_hill.h"
 #include "test_runner.h"
+#include "field_message_box.h"
+#include "script_menu.h"
 #include "constants/rgb.h"
 #include "emulator_check.h"
 
@@ -313,6 +315,11 @@ static void ReadKeys(void)
 
     if (JOY_NEW(gMain.watchedKeysMask))
         gMain.watchedKeysPressed = TRUE;
+
+    // Turns R into Turbo A during field dialogue, so long as no Yes/No or
+    // multichoice task has taken over input handling.
+    if (JOY_HELD(R_BUTTON) && !gMain.inBattle && !IsFieldMessageBoxHidden() && !HandlingFieldDialogInput())
+        gMain.newKeys ^= A_BUTTON;
 }
 
 void InitIntrHandlers(void)

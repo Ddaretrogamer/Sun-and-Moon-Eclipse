@@ -596,6 +596,16 @@ bool8 ScriptMenu_YesNo(u8 left, u8 top)
     }
 }
 
+bool32 HandlingFieldDialogInput(void)
+{
+    if (FuncIsActiveTask(Task_HandleYesNoInput)
+        || FuncIsActiveTask(Task_HandleMultichoiceInput)
+        || FuncIsActiveTask(Task_HandleMultichoiceGridInput)
+        || FuncIsActiveTask(Task_HandleScrollingMultichoiceInput))
+        return TRUE;
+    return FALSE;
+}
+
 // Unused
 bool8 IsScriptActive(void)
 {
