@@ -402,9 +402,8 @@ script AlolaLaboratory_FirstTimeIntro{
     speakername("Lillie")
     msgbox("Of course, Professor Kukui!
     I'll wait outside.", MSGBOX_AUTOCLOSE)
-    waitmessage
     applymovement(lab_lillie, moves(walk_down*3))
-    waitmovement(0)
+    waitmovement(lab_lillie)
     playse(SE_EXIT)
     hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
     waitse
@@ -413,6 +412,7 @@ script AlolaLaboratory_FirstTimeIntro{
     setobjectmovementtype(lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
+    helpwindow(HELP_ROTOM_PHONE_GUIDE)
     endcutscene
     release
     end
@@ -436,6 +436,7 @@ script AlolaLaboratory_FirstTimeIntroSkip{
     setflag(FLAG_OPEN_TRAINER_SCHOOL)
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_BLACK)
+    helpwindow(HELP_ROTOM_PHONE_GUIDE)
     release
     end
 }

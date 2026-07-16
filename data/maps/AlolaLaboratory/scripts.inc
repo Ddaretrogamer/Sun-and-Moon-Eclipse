@@ -451,27 +451,27 @@ AlolaLaboratory_FirstTimeIntro_21:
 # 403 "data/maps/AlolaLaboratory/scripts.pory"
 	msgbox AlolaLaboratory_FirstTimeIntro_Text_34, MSGBOX_AUTOCLOSE
 # 405 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmessage
-# 406 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_15
+# 406 "data/maps/AlolaLaboratory/scripts.pory"
+	waitmovement lab_lillie
 # 407 "data/maps/AlolaLaboratory/scripts.pory"
-	waitmovement 0
-# 408 "data/maps/AlolaLaboratory/scripts.pory"
 	playse SE_EXIT
-# 409 "data/maps/AlolaLaboratory/scripts.pory"
+# 408 "data/maps/AlolaLaboratory/scripts.pory"
 	hideobjectat lab_lillie, MAP_ALOLA_LABORATORY
-# 410 "data/maps/AlolaLaboratory/scripts.pory"
+# 409 "data/maps/AlolaLaboratory/scripts.pory"
 	waitse
-# 411 "data/maps/AlolaLaboratory/scripts.pory"
+# 410 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_7
-# 412 "data/maps/AlolaLaboratory/scripts.pory"
+# 411 "data/maps/AlolaLaboratory/scripts.pory"
 	setflag FLAG_OPEN_TRAINER_SCHOOL
-# 413 "data/maps/AlolaLaboratory/scripts.pory"
+# 412 "data/maps/AlolaLaboratory/scripts.pory"
 	setobjectmovementtype lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND
-# 414 "data/maps/AlolaLaboratory/scripts.pory"
+# 413 "data/maps/AlolaLaboratory/scripts.pory"
 	setobjectmovementtype lab_stufful, MOVEMENT_TYPE_LOOK_AROUND
-# 415 "data/maps/AlolaLaboratory/scripts.pory"
+# 414 "data/maps/AlolaLaboratory/scripts.pory"
 	setobjectmovementtype lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND
+# 415 "data/maps/AlolaLaboratory/scripts.pory"
+	helpwindow HELP_ROTOM_PHONE_GUIDE
 # 416 "data/maps/AlolaLaboratory/scripts.pory"
 	endcutscene
 # 417 "data/maps/AlolaLaboratory/scripts.pory"
@@ -577,6 +577,8 @@ AlolaLaboratory_FirstTimeIntroSkip::
 # 438 "data/maps/AlolaLaboratory/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 # 439 "data/maps/AlolaLaboratory/scripts.pory"
+	helpwindow HELP_ROTOM_PHONE_GUIDE
+# 440 "data/maps/AlolaLaboratory/scripts.pory"
 	release
 	end
 
@@ -709,13 +711,13 @@ AlolaLaboratory_FirstTimeIntro_Movement_14:
 	walk_in_place_up
 	step_end
 
-# 406 "data/maps/AlolaLaboratory/scripts.pory"
+# 405 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_FirstTimeIntro_Movement_15:
-# 406 "data/maps/AlolaLaboratory/scripts.pory"
+# 405 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
-# 406 "data/maps/AlolaLaboratory/scripts.pory"
+# 405 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
-# 406 "data/maps/AlolaLaboratory/scripts.pory"
+# 405 "data/maps/AlolaLaboratory/scripts.pory"
 	walk_down
 	step_end
 
