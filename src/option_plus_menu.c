@@ -53,6 +53,7 @@ enum
     MENUITEM_OW_ENCOUNTERS,
     MENUITEM_AUTORUN,
     MENUITEM_TITLESCREEN,
+    MENUITEM_R_TEXT_AUTOSCROLL,
     MENUITEM_CUTSCENE_SKIP_BUTTON,
     MENUITEM_CANCEL_PG2,
     MENUITEM_COUNT_PG2,
@@ -191,6 +192,7 @@ static void SoundMode_DrawChoices(int selection, int y);
 static void DrawChoices_Follower(int selection, int y);
 static void BattleSpeed_DrawChoices(int selection, int y);
 static void DrawChoices_AutoRun(int selection, int y);
+static void DrawChoices_RTextAutoscroll(int selection, int y);
 static int ProcessInput_AutoRun(int selection);
 static void DrawChoices_CutsceneSkipButton(int selection, int y);
 static int UNUSED ProcessInput_MenuPal(int selection);
@@ -281,6 +283,7 @@ static const MenuItemFunctions sItemFunctionsCustom[MENUITEM_COUNT_PG2] =
     [MENUITEM_OW_ENCOUNTERS] = {DrawChoices_OW_Encounters,    TwoOptions_ProcessInput},
     [MENUITEM_AUTORUN]  = {DrawChoices_AutoRun,    ProcessInput_AutoRun},
     [MENUITEM_TITLESCREEN] = {DrawChoices_TitleScreen,    FiveOptions_ProcessInput},
+    [MENUITEM_R_TEXT_AUTOSCROLL] = {DrawChoices_RTextAutoscroll, TwoOptions_ProcessInput},
     [MENUITEM_CUTSCENE_SKIP_BUTTON] = {DrawChoices_CutsceneSkipButton,    ThreeOptions_ProcessInput},
     [MENUITEM_CANCEL_PG2]       = {NULL, NULL},
 };
@@ -304,6 +307,7 @@ static const u8 *const sOptionMenuItemsNamesCustom[MENUITEM_COUNT_PG2] =
     [MENUITEM_OW_ENCOUNTERS]   = gText_OW_Encounter,
     [MENUITEM_AUTORUN]         = gText_AutoRun,
     [MENUITEM_TITLESCREEN]     = gText_TitleScreen,
+    [MENUITEM_R_TEXT_AUTOSCROLL] = COMPOUND_STRING("R TEXT SCROLL"),
     [MENUITEM_CUTSCENE_SKIP_BUTTON] = gText_CutsceneSkipButton,
     [MENUITEM_CANCEL_PG2]        = gText_OptionMenuSave,
 };
@@ -346,6 +350,7 @@ static bool8 CheckConditions(int selection)
         case MENUITEM_FOLLOWER:
         case MENUITEM_BATTLESPEED:
         case MENUITEM_AUTORUN:
+        case MENUITEM_R_TEXT_AUTOSCROLL:
         case MENUITEM_TITLESCREEN:
         case MENUITEM_CUTSCENE_SKIP_BUTTON:
         case MENUITEM_CANCEL_PG2:
@@ -382,6 +387,8 @@ static const u8 sText_Desc_MatchCallOn[]        = _("TRAINERs will be able to ca
 static const u8 sText_Desc_MatchCallOff[]       = _("You will not receive calls.\nSpecial events will still occur.");
 static const u8 sText_Desc_Autorun_Toggle[]     = _("Toggle between running and walking\nby pressing the {B_BUTTON} button.");
 static const u8 sText_Desc_Autorun_Hold[]       = _("Hold the {B_BUTTON} button to run.");
+static const u8 sText_Desc_RTextAutoscroll_On[]  = _("Hold {R_BUTTON} to fast-forward\ndialog to end of text box.");
+static const u8 sText_Desc_RTextAutoscroll_Off[] = _("Holding {R_BUTTON} will not\nfast-forward dialog.");
 static const u8 sText_Desc_CutsceneSkip_Disabled[] = _("Cutscenes cannot be skipped.");
 static const u8 sText_Desc_CutsceneSkip_On[]    = _("The skip button is shown\nduring cutscenes.");
 static const u8 sText_Desc_CutsceneSkip_Off[]   = _("The skip button is hidden\nduring cutscenes.");
@@ -428,6 +435,7 @@ static const u8 *const sOptionMenuItemDescriptionsCustom[MENUITEM_COUNT_PG2][5] 
     [MENUITEM_BATTLESPEED]  = {sText_Desc_BattleSpeed_1x,       sText_Desc_BattleSpeed_2x,        sText_Desc_BattleSpeed_3x,      sText_Desc_BattleSpeed_4x, sText_Empty,},
     [MENUITEM_OW_ENCOUNTERS] = {sText_Desc_OW_On,            sText_Desc_OW_Off,                sText_Empty,                    sText_Empty, sText_Empty,},
     [MENUITEM_AUTORUN] = {sText_Desc_Autorun_Hold,     sText_Desc_Autorun_Toggle,          sText_Empty,                    sText_Empty, sText_Empty,},
+    [MENUITEM_R_TEXT_AUTOSCROLL] = {sText_Desc_RTextAutoscroll_On, sText_Desc_RTextAutoscroll_Off, sText_Empty, sText_Empty, sText_Empty,},
     [MENUITEM_TITLESCREEN] = {sText_Desc_TS_Necrozma,            sText_Desc_TS_Solgaleo,              sText_Desc_TS_Lunala,                    sText_Desc_TS_Random, sText_Desc_TS_Time,},
     [MENUITEM_CUTSCENE_SKIP_BUTTON] = {sText_Desc_CutsceneSkip_Disabled, sText_Desc_CutsceneSkip_On, sText_Desc_CutsceneSkip_Off,    sText_Empty, sText_Empty,},
     [MENUITEM_CANCEL_PG2]       = {sText_Desc_Save,                 sText_Empty,                      sText_Empty,                    sText_Empty, sText_Empty,},
@@ -454,6 +462,7 @@ static const u8 *const sOptionMenuItemDescriptionsDisabledCustom[MENUITEM_COUNT_
     [MENUITEM_BATTLESPEED] = sText_Empty,
     [MENUITEM_OW_ENCOUNTERS] = sText_Empty,
     [MENUITEM_AUTORUN]     = sText_Empty,
+    [MENUITEM_R_TEXT_AUTOSCROLL] = sText_Empty,
     [MENUITEM_TITLESCREEN] = sText_Empty,
     [MENUITEM_CUTSCENE_SKIP_BUTTON] = sText_Empty,
     [MENUITEM_CANCEL_PG2]      = sText_Empty,
@@ -846,6 +855,7 @@ void CB2_InitOptionPlusMenu(void)
             ? FlagGet(FLAG_OW_MON_SPAWN)
             : 1;
         sOptions->sel_custom[MENUITEM_AUTORUN]      = FlagGet(FLAG_AUTORUN_MENU_TOGGLE) ? 0 : 1;
+        sOptions->sel_custom[MENUITEM_R_TEXT_AUTOSCROLL] = FlagGet(FLAG_ENABLE_R_TEXT_AUTOSCROLL) ? 0 : 1;
         sOptions->sel_custom[MENUITEM_TITLESCREEN]  = gSaveBlock2Ptr->optionsTitleScreenPokemon;
         if (!FlagGet(FLAG_CUTSCENE_SKIP_ENABLED))
             sOptions->sel_custom[MENUITEM_CUTSCENE_SKIP_BUTTON] = 0;
@@ -1133,6 +1143,11 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagSet(FLAG_OW_MON_SPAWN);   // Disable OW encounters
         FlagClear(FLAG_OW_NO_ENCOUNTER); // Re-enable random encounters when OW encounters are OFF
     }
+
+    if (sOptions->sel_custom[MENUITEM_R_TEXT_AUTOSCROLL] == 0)
+        FlagSet(FLAG_ENABLE_R_TEXT_AUTOSCROLL);
+    else
+        FlagClear(FLAG_ENABLE_R_TEXT_AUTOSCROLL);
 
     // The fade-out and task function assignment remain the same.
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
@@ -1561,6 +1576,18 @@ static void DrawChoices_AutoRun(int selection, int y)
 
     DrawOptionMenuChoice(gText_AutoRunOff, 104, y, styles[0], active);
     DrawOptionMenuChoice(gText_AutoRunOn, GetStringRightAlignXOffset(FONT_NORMAL, gText_AutoRunOn, 198), y, styles[1], active);
+}
+
+static void DrawChoices_RTextAutoscroll(int selection, int y)
+{
+    static const u8 sText_On[] = _("ON");
+    static const u8 sText_Off[] = _("OFF");
+    bool8 active = CheckConditions(MENUITEM_R_TEXT_AUTOSCROLL);
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(sText_On, 104, y, styles[0], active);
+    DrawOptionMenuChoice(sText_Off, GetStringRightAlignXOffset(FONT_NORMAL, sText_Off, 198), y, styles[1], active);
 }
 
 static void DrawChoices_CutsceneSkipButton(int selection, int y)

@@ -843,6 +843,15 @@ static void RotomPhone_StartMenu_ClearScriptState(void)
     sRotomPhone_StartMenuScriptPrompt = NULL;
 }
 
+static void RotomPhone_StartMenu_FinishScriptDisplay(void)
+{
+    // Clear buffered confirm/cancel input before the script resumes on the next frame.
+    gMain.newKeys = 0;
+    gMain.newAndRepeatedKeys = 0;
+    gMain.newKeysRaw = 0;
+    RotomPhone_StartMenu_ClearScriptState();
+}
+
 static bool32 RotomPhone_StartMenu_IsValidScriptTarget(u16 menuItem)
 {
     switch (menuItem)
@@ -1528,7 +1537,7 @@ static void RotomPhone_OverworldMenu_Init(bool32 firstInit)
     if (sRotomPhone_StartMenu == NULL)
     {
         if (sRotomPhone_StartMenuFromScript)
-            RotomPhone_StartMenu_ClearScriptState();
+            RotomPhone_StartMenu_FinishScriptDisplay();
         SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
         return;
     }
@@ -2744,7 +2753,7 @@ static void Task_RotomPhone_OverworldMenu_PhoneSlideClose(u8 taskId)
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
         ReleaseComfyAnim(tPhoneComfyAnimId);
         if (sRotomPhone_StartMenuFromScript)
-            RotomPhone_StartMenu_ClearScriptState();
+            RotomPhone_StartMenu_FinishScriptDisplay();
         if (taskId != TASK_NONE) DestroyTask(taskId);
     }
 }

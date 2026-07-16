@@ -36,6 +36,7 @@ bool8 ScriptMenu_Multichoice(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPre
 bool8 ScriptMenu_MultichoiceWithDefault(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 defaultChoice);
 void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count);
 bool8 ScriptMenu_YesNo(u8 left, u8 top);
+bool32 HandlingFieldDialogInput(void);
 bool8 ScriptMenu_MultichoiceGrid(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 columnCount);
 bool8 ScriptMenu_ShowPokemonPic(enum Species species, u8 x, u8 y);
 bool8 (*ScriptMenu_HidePokemonPic(void))(void);
