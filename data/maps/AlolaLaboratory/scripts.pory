@@ -409,6 +409,7 @@ script AlolaLaboratory_FirstTimeIntro{
     hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
     waitse
     applymovement(lab_lillie, moves(walk_down))
+    setflag(FLAG_OPEN_TRAINER_SCHOOL)
     setobjectmovementtype(lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
@@ -433,6 +434,7 @@ script AlolaLaboratory_FirstTimeIntroSkip{
     special(CloseScriptMenus)
     // special(SnapCameraToPlayer)
     // special(RemoveCameraObject)
+    setflag(FLAG_OPEN_TRAINER_SCHOOL)
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_BLACK)
     release
