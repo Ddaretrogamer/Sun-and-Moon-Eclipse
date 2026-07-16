@@ -77,5 +77,19 @@ const struct HelpWindow gHelpWindowInfo[] =
                             ),
         .headerFont = FONT_NARROW,
     },
+    [HELP_ROTOM_PHONE_GUIDE] =
+    {
+        .header = COMPOUND_STRING("ROTOM PHONE GUIDE"),
+        .desc = COMPOUND_STRING("ABOUT THE ROTOM PHONE:\n"
+                                "The Rotom Phone is a device that allows you\n"
+                                "to access various features, such as the\n"
+                                "Pokédex, map, and more.\n"
+                                "ROTOM REALITY:\n"
+                                "The Rotom Phone has a feature called\n"
+                                "Rotom Reality, which opens a larger\n"
+                                "display with more applications."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
     // Add more entries
 };
