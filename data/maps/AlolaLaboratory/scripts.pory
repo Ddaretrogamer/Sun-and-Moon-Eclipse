@@ -426,7 +426,6 @@ script AlolaLaboratory_FirstTimeIntroSkip{
     setobjectxy(lab_lillie, 14, 17)
     hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
     setobjectxy(lab_rotom, 15, 17)
-    setobjectxy(LOCALID_PLAYER, 15, 13)
     setvar(VAR_IKITOWN_STATE, 19)
     applymovement(lab_rockruff, moves(face_right))
     waitmovement(0)

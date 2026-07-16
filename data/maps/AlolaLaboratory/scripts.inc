@@ -465,14 +465,16 @@ AlolaLaboratory_FirstTimeIntro_21:
 # 411 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_lillie, AlolaLaboratory_FirstTimeIntro_Movement_7
 # 412 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectmovementtype lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND
+	setflag FLAG_OPEN_TRAINER_SCHOOL
 # 413 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectmovementtype lab_stufful, MOVEMENT_TYPE_LOOK_AROUND
+	setobjectmovementtype lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND
 # 414 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectmovementtype lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND
+	setobjectmovementtype lab_stufful, MOVEMENT_TYPE_LOOK_AROUND
 # 415 "data/maps/AlolaLaboratory/scripts.pory"
-	endcutscene
+	setobjectmovementtype lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND
 # 416 "data/maps/AlolaLaboratory/scripts.pory"
+	endcutscene
+# 417 "data/maps/AlolaLaboratory/scripts.pory"
 	release
 	end
 
@@ -544,22 +546,20 @@ AlolaLaboratory_FirstTimeIntro_22:
 
 
 AlolaLaboratory_FirstTimeIntroSkip::
-# 421 "data/maps/AlolaLaboratory/scripts.pory"
-	lock
 # 422 "data/maps/AlolaLaboratory/scripts.pory"
-	closemessage
+	lock
 # 423 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	closemessage
 # 424 "data/maps/AlolaLaboratory/scripts.pory"
-	hideobjectat lab_lillie, MAP_ALOLA_LABORATORY
+	fadescreen FADE_TO_BLACK
 # 425 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectxy lab_lillie, 14, 17
+	hideobjectat lab_lillie, MAP_ALOLA_LABORATORY
 # 426 "data/maps/AlolaLaboratory/scripts.pory"
-	hideobjectat lab_rotom, MAP_ALOLA_LABORATORY
+	setobjectxy lab_lillie, 14, 17
 # 427 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectxy lab_rotom, 15, 17
+	hideobjectat lab_rotom, MAP_ALOLA_LABORATORY
 # 428 "data/maps/AlolaLaboratory/scripts.pory"
-	setobjectxy LOCALID_PLAYER, 15, 13
+	setobjectxy lab_rotom, 15, 17
 # 429 "data/maps/AlolaLaboratory/scripts.pory"
 	setvar VAR_IKITOWN_STATE, 19
 # 430 "data/maps/AlolaLaboratory/scripts.pory"
@@ -571,10 +571,12 @@ AlolaLaboratory_FirstTimeIntroSkip::
 # 433 "data/maps/AlolaLaboratory/scripts.pory"
 	special CloseScriptMenus
 # 436 "data/maps/AlolaLaboratory/scripts.pory"
-	setvar VAR_ROTOM_PHONE_ENABLE, 2
+	setflag FLAG_OPEN_TRAINER_SCHOOL
 # 437 "data/maps/AlolaLaboratory/scripts.pory"
-	fadescreen FADE_FROM_BLACK
+	setvar VAR_ROTOM_PHONE_ENABLE, 2
 # 438 "data/maps/AlolaLaboratory/scripts.pory"
+	fadescreen FADE_FROM_BLACK
+# 439 "data/maps/AlolaLaboratory/scripts.pory"
 	release
 	end
 
