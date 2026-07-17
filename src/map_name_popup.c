@@ -218,7 +218,7 @@ static const u16 sMapPopUpPalette_USUM[] = {0};
 #endif
 
 // bg, fg, shadow indices into usum.png's palette
-static const u8 sMapPopUpTextColors_USUM[] = {0, 2, 3};
+static const u8 sMapPopUpTextColors_USUM[] = {0, 1, 2};
 
 static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping_BW[] =
 {
@@ -712,7 +712,7 @@ static void ShowMapNamePopUpWindow(void)
     else if (OW_POPUP_GENERATION == GEN_7)
     {
         x = GetStringRightAlignXOffset(FONT_SHORT, withoutPrefixPtr, DISPLAY_WIDTH - 8);
-        AddTextPrinterParameterized3(GetMapNamePopUpWindowId(), FONT_SHORT, x, 8, sMapPopUpTextColors_USUM, TEXT_SKIP_DRAW, withoutPrefixPtr);
+        AddTextPrinterParameterized3(GetMapNamePopUpWindowId(), FONT_SHORT, x, 12, sMapPopUpTextColors_USUM, TEXT_SKIP_DRAW, withoutPrefixPtr);
         CopyWindowToVram(GetMapNamePopUpWindowId(), COPYWIN_FULL);
     }
     else
