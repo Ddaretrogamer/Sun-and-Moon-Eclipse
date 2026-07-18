@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle_pyramid.h"
 #include "bg.h"
+#include "comfy_anim.h"
 #include "event_data.h"
 #include "field_weather.h"
 #include "gpu_regs.h"
@@ -207,6 +208,18 @@ static const u16 sMapPopUpTilesPalette_BW_Black[] = {0};
 static const u16 sMapPopUpTilesPalette_BW_White[] = {0};
 #endif
 
+#if OW_POPUP_GENERATION == GEN_7
+// Gen7 assets
+static const u8 sMapPopUpTiles_USUM[] = INCGFX_U8("graphics/map_popup/usum.png", ".4bpp");
+static const u16 sMapPopUpPalette_USUM[16] = INCGFX_U16("graphics/map_popup/usum.png", ".gbapal");
+#else
+static const u8 sMapPopUpTiles_USUM[] = {0};
+static const u16 sMapPopUpPalette_USUM[] = {0};
+#endif
+
+// bg, fg, shadow indices into usum.png's palette
+static const u8 sMapPopUpTextColors_USUM[] = {0, 1, 2};
+
 static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping_BW[] =
 {
     [MAPSEC_LITTLEROOT_TOWN] = MAPPOPUP_THEME_BW_DEFAULT,
@@ -354,14 +367,43 @@ enum {
     STATE_PRINT, // For some reason the first state is numerically last.
 };
 
-#define POPUP_OFFSCREEN_Y  ((OW_POPUP_GENERATION == GEN_5) ? 24 : 40)
+#define POPUP_OFFSCREEN_Y  ((OW_POPUP_GENERATION == GEN_5) ? 24 : (OW_POPUP_GENERATION == GEN_7) ? 32 : 40)
 #define POPUP_SLIDE_SPEED  2
+
+// Gen7 comfy-anim slide durations
+#define POPUP_SLIDE_IN_FRAMES  20
+#define POPUP_SLIDE_OUT_FRAMES 12
+
+// The Gen7 pop-up sits at the bottom edge and rises up from below,
+// so the BG0 vertical scroll is negated (mod 512).
+#define POPUP_BG0_VOFS(y)  ((OW_POPUP_GENERATION == GEN_7) ? 512 - (y) : (y))
 
 #define tState         data[0]
 #define tOnscreenTimer data[1]
 #define tYOffset       data[2]
 #define tIncomingPopUp data[3]
 #define tPrintTimer    data[4]
+#define tComfyAnimId   data[5]
+
+static void StartPopupSlideAnim(struct Task *task, s32 to, u32 durationFrames)
+{
+    struct ComfyAnimEasingConfig config;
+
+    InitComfyAnimConfig_Easing(&config);
+    config.durationFrames = durationFrames;
+    config.to = Q_24_8(to);
+    config.easingFunc = ComfyAnimEasing_EaseOutCubic;
+    if (task->tComfyAnimId == INVALID_COMFY_ANIM)
+    {
+        config.from = Q_24_8(task->tYOffset);
+        task->tComfyAnimId = CreateComfyAnim_Easing(&config);
+    }
+    else
+    {
+        config.from = gComfyAnims[task->tComfyAnimId].position;
+        InitComfyAnim_Easing(&config, &gComfyAnims[task->tComfyAnimId]);
+    }
+}
 
 void ShowMapNamePopup(void)
 {
@@ -380,18 +422,23 @@ void ShowMapNamePopup(void)
             else
             {
                 gPopupTaskId = CreateTask(Task_MapNamePopUpWindow, 90);
-                SetGpuReg(REG_OFFSET_BG0VOFS, POPUP_OFFSCREEN_Y);
+                SetGpuReg(REG_OFFSET_BG0VOFS, POPUP_BG0_VOFS(POPUP_OFFSCREEN_Y));
             }
 
             gTasks[gPopupTaskId].tState = STATE_PRINT;
             gTasks[gPopupTaskId].tYOffset = POPUP_OFFSCREEN_Y;
+            gTasks[gPopupTaskId].tComfyAnimId = INVALID_COMFY_ANIM;
         }
         else
         {
             // There's already a pop up window running.
             // Hurry the old pop up offscreen so the new one can appear.
             if (gTasks[gPopupTaskId].tState != STATE_SLIDE_OUT)
+            {
+                if (OW_POPUP_GENERATION == GEN_7)
+                    StartPopupSlideAnim(&gTasks[gPopupTaskId], POPUP_OFFSCREEN_Y, POPUP_SLIDE_OUT_FRAMES);
                 gTasks[gPopupTaskId].tState = STATE_SLIDE_OUT;
+            }
             gTasks[gPopupTaskId].tIncomingPopUp = TRUE;
         }
     }
@@ -415,16 +462,33 @@ static void Task_MapNamePopUpWindow(u8 taskId)
                 EnableInterrupts(INTR_FLAG_HBLANK);
                 SetHBlankCallback(HBlankCB_DoublePopupWindow);
             }
+            else if (OW_POPUP_GENERATION == GEN_7)
+            {
+                StartPopupSlideAnim(task, 0, POPUP_SLIDE_IN_FRAMES);
+            }
         }
         break;
     case STATE_SLIDE_IN:
         // Slide the window onscreen.
-        task->tYOffset -= POPUP_SLIDE_SPEED;
-        if (task->tYOffset <= 0 )
+        if (OW_POPUP_GENERATION == GEN_7)
         {
-            task->tYOffset = 0;
-            task->tState = STATE_WAIT;
-            gTasks[gPopupTaskId].tOnscreenTimer = 0;
+            TryAdvanceComfyAnim(&gComfyAnims[task->tComfyAnimId]);
+            task->tYOffset = ReadComfyAnimValueSmooth(&gComfyAnims[task->tComfyAnimId]);
+            if (gComfyAnims[task->tComfyAnimId].completed)
+            {
+                task->tState = STATE_WAIT;
+                gTasks[gPopupTaskId].tOnscreenTimer = 0;
+            }
+        }
+        else
+        {
+            task->tYOffset -= POPUP_SLIDE_SPEED;
+            if (task->tYOffset <= 0 )
+            {
+                task->tYOffset = 0;
+                task->tState = STATE_WAIT;
+                gTasks[gPopupTaskId].tOnscreenTimer = 0;
+            }
         }
         break;
     case STATE_WAIT:
@@ -432,28 +496,40 @@ static void Task_MapNamePopUpWindow(u8 taskId)
         if (++task->tOnscreenTimer > 120)
         {
             task->tOnscreenTimer = 0;
+            if (OW_POPUP_GENERATION == GEN_7)
+                StartPopupSlideAnim(task, POPUP_OFFSCREEN_Y, POPUP_SLIDE_OUT_FRAMES);
             task->tState = STATE_SLIDE_OUT;
         }
         break;
     case STATE_SLIDE_OUT:
         // Slide the window offscreen.
-        task->tYOffset += POPUP_SLIDE_SPEED;
-        if (task->tYOffset >= POPUP_OFFSCREEN_Y)
+        if (OW_POPUP_GENERATION == GEN_7)
         {
+            TryAdvanceComfyAnim(&gComfyAnims[task->tComfyAnimId]);
+            task->tYOffset = ReadComfyAnimValueSmooth(&gComfyAnims[task->tComfyAnimId]);
+            if (!gComfyAnims[task->tComfyAnimId].completed)
+                break;
+        }
+        else
+        {
+            task->tYOffset += POPUP_SLIDE_SPEED;
+            if (task->tYOffset < POPUP_OFFSCREEN_Y)
+                break;
             task->tYOffset = POPUP_OFFSCREEN_Y;
-            if (task->tIncomingPopUp)
-            {
-                // A new pop up window is incoming,
-                // return to the first state to show it.
-                task->tState = STATE_PRINT;
-                task->tPrintTimer = 0;
-                task->tIncomingPopUp = FALSE;
-            }
-            else
-            {
-                task->tState = STATE_ERASE;
-                return;
-            }
+        }
+
+        if (task->tIncomingPopUp)
+        {
+            // A new pop up window is incoming,
+            // return to the first state to show it.
+            task->tState = STATE_PRINT;
+            task->tPrintTimer = 0;
+            task->tIncomingPopUp = FALSE;
+        }
+        else
+        {
+            task->tState = STATE_ERASE;
+            return;
         }
         break;
     case STATE_ERASE:
@@ -467,7 +543,7 @@ static void Task_MapNamePopUpWindow(u8 taskId)
         return;
     }
     if (OW_POPUP_GENERATION != GEN_5)
-        SetGpuReg(REG_OFFSET_BG0VOFS, task->tYOffset);
+        SetGpuReg(REG_OFFSET_BG0VOFS, POPUP_BG0_VOFS(task->tYOffset));
 }
 
 void HideMapNamePopUpWindow(void)
@@ -499,6 +575,11 @@ void HideMapNamePopUpWindow(void)
                 SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_EFFECT_BLEND);
                 SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(8, 10));
             }
+        }
+        else if (OW_POPUP_GENERATION == GEN_7)
+        {
+            // No-op if no slide anim is running (tComfyAnimId is INVALID_COMFY_ANIM).
+            ReleaseComfyAnim(gTasks[gPopupTaskId].tComfyAnimId);
         }
 
         SetGpuReg_ForcedBlank(REG_OFFSET_BG0VOFS, 0);
@@ -628,6 +709,12 @@ static void ShowMapNamePopUpWindow(void)
         CopyWindowToVram(mapNamePopUpWindowId, COPYWIN_FULL);
         UpdateSecondaryPopUpWindow(secondaryPopUpWindowId);
     }
+    else if (OW_POPUP_GENERATION == GEN_7)
+    {
+        x = GetStringRightAlignXOffset(FONT_SHORT, withoutPrefixPtr, DISPLAY_WIDTH - 8);
+        AddTextPrinterParameterized3(GetMapNamePopUpWindowId(), FONT_SHORT, x, 12, sMapPopUpTextColors_USUM, TEXT_SKIP_DRAW, withoutPrefixPtr);
+        CopyWindowToVram(GetMapNamePopUpWindowId(), COPYWIN_FULL);
+    }
     else
     {
         u32 fontId = GetFontIdToFit(withoutPrefixPtr, FONT_NORMAL, -1, 80);
@@ -706,6 +793,12 @@ static void LoadMapNamePopUpWindowBg(void)
 
         PutWindowTilemap(popupWindowId);
         PutWindowTilemap(secondaryPopUpWindowId);
+    }
+    else if (OW_POPUP_GENERATION == GEN_7)
+    {
+        LoadPalette(sMapPopUpPalette_USUM, BG_PLTT_ID(14), sizeof(sMapPopUpPalette_USUM));
+        CopyToWindowPixelBuffer(popupWindowId, sMapPopUpTiles_USUM, sizeof(sMapPopUpTiles_USUM), 0);
+        PutWindowTilemap(popupWindowId);
     }
     else
     {
