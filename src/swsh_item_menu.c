@@ -316,6 +316,7 @@ static void BagMenu_ItemPrintCallback(u8, u32, u8);
 static void ItemMenu_UseOutOfBattle(u8);
 static void ItemMenu_Toss(u8);
 static void ItemMenu_Register(u8);
+static s32 RegisteredItemIndexInArray(u16 item, u16 *array);
 static void ItemMenu_Give(u8);
 static void ItemMenu_Cancel(u8);
 static void ItemMenu_UseInBattle(u8);
@@ -460,6 +461,7 @@ static const u8 *const sPocketNamesStringsTable[] =
     [POCKET_TM_HM]                  = COMPOUND_STRING("TMs & HMs"),
     [POCKET_BERRIES]                = COMPOUND_STRING("Berries"),
     [POCKET_KEY_ITEMS]              = COMPOUND_STRING("Key Items"),
+    [POCKET_POKERIDE]               = COMPOUND_STRING("Poké Ride"),
 #if SWSH_ITEM_MENU_BATTLE_POCKETS
     [BATTLE_POCKET_MEDICINE]        = COMPOUND_STRING("Medicine"),
     [BATTLE_POCKET_POKE_BALLS]      = COMPOUND_STRING("Poké Balls"),
@@ -626,6 +628,11 @@ static const u8 sContextMenuItems_ItemsPocket[] = {
 };
 
 static const u8 sContextMenuItems_KeyItemsPocket[] = {
+    ACTION_USE,         ACTION_REGISTER,
+    ACTION_DUMMY,       ACTION_CANCEL
+};
+
+static const u8 sContextMenuItems_PokeRidePocket[] = {
     ACTION_USE,         ACTION_REGISTER,
     ACTION_DUMMY,       ACTION_CANCEL
 };
@@ -2676,7 +2683,12 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         else
         {
             // Print registered icon
-            if (gSaveBlock1Ptr->registeredItemCompat != ITEM_NONE && gSaveBlock1Ptr->registeredItemCompat == itemSlot.itemId)
+            if (gBagPosition.pocket == POCKET_POKERIDE)
+            {
+                if (RegisteredItemIndexInArray(itemSlot.itemId, gSaveBlock1Ptr->registeredPokerideItems) >= 0)
+                    BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 102, y + 4, 16, 16);
+            }
+            else if (gSaveBlock1Ptr->registeredItemCompat != ITEM_NONE && gSaveBlock1Ptr->registeredItemCompat == itemSlot.itemId)
                 BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 102, y + 4, 16, 16);
         }
 
@@ -3635,6 +3647,13 @@ static void OpenContextMenu(u8 taskId)
                 gBagMenu->contextMenuItemsPtr = sContextMenuItems_BerriesPocket;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_BerriesPocket);
                 break;
+            case POCKET_POKERIDE:
+                gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_PokeRidePocket);
+                memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_PokeRidePocket, sizeof(sContextMenuItems_PokeRidePocket));
+                if (RegisteredItemIndexInArray(gSpecialVar_ItemId, gSaveBlock1Ptr->registeredPokerideItems) >= 0)
+                    gBagMenu->contextMenuItemsBuffer[1] = ACTION_DESELECT;
+                break;
             }
         }
     }
@@ -3920,7 +3939,24 @@ static void ItemMenu_Register(u8 taskId)
     u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
     u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
 
-    if (gSaveBlock1Ptr->registeredItemCompat == gSpecialVar_ItemId)
+    if (gBagPosition.pocket == POCKET_POKERIDE)
+    {
+        // Single-slot registration until the D-pad slot UI is ported:
+        // toggle off if registered, otherwise fill the first open slot.
+        s32 slot = RegisteredItemIndexInArray(gSpecialVar_ItemId, gSaveBlock1Ptr->registeredPokerideItems);
+        if (slot >= 0)
+        {
+            gSaveBlock1Ptr->registeredPokerideItems[slot] = ITEM_NONE;
+        }
+        else
+        {
+            for (slot = 0; slot < MAX_REGISTERED_ITEMS - 1; slot++)
+                if (gSaveBlock1Ptr->registeredPokerideItems[slot] == ITEM_NONE)
+                    break;
+            gSaveBlock1Ptr->registeredPokerideItems[slot] = gSpecialVar_ItemId;
+        }
+    }
+    else if (gSaveBlock1Ptr->registeredItemCompat == gSpecialVar_ItemId)
         gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
     else
         gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
@@ -4143,6 +4179,16 @@ bool8 UseRegisteredPokerideItemOnField(void)
 
     ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
     return TRUE;
+}
+
+// if passed ITEM_NONE, finds the first registered item's index in the given array
+static s32 RegisteredItemIndexInArray(u16 item, u16 *array)
+{
+    s32 i;
+    for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
+        if (array[i] && (!item || array[i] == item))
+            return i;
+    return -1;
 }
 
 // if passed ITEM_NONE, finds the first registered item's index
