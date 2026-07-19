@@ -316,7 +316,6 @@ static void BagMenu_ItemPrintCallback(u8, u32, u8);
 static void ItemMenu_UseOutOfBattle(u8);
 static void ItemMenu_Toss(u8);
 static void ItemMenu_Register(u8);
-static s32 RegisteredItemIndexInArray(u16 item, u16 *array);
 static void ItemMenu_Give(u8);
 static void ItemMenu_Cancel(u8);
 static void ItemMenu_UseInBattle(u8);
@@ -4101,110 +4100,6 @@ static void Task_ItemContext_GiveToPC(u8 taskId)
     else
         PrintItemCantBeHeld(taskId);
 }
-
-#define tUsingRegisteredKeyItem data[3] // See usage in item_use.c
-
-bool8 UseRegisteredKeyItemOnField(void)
-{
-    u8 taskId;
-
-    if (InUnionRoom() == TRUE || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InBattlePike() || InMultiPartnerRoom() == TRUE)
-        return FALSE;
-    HideMapNamePopUpWindow();
-    ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
-    if (gSaveBlock1Ptr->registeredItemCompat != ITEM_NONE)
-    {
-        if (CheckBagHasItem(gSaveBlock1Ptr->registeredItemCompat, 1) == TRUE)
-        {
-            LockPlayerFieldControls();
-            FreezeObjectEvents();
-            PlayerFreeze();
-            StopPlayerAvatar();
-            gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItemCompat;
-            taskId = CreateTask(GetItemFieldFunc(gSaveBlock1Ptr->registeredItemCompat), 8);
-            gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
-            return TRUE;
-        }
-        else
-        {
-            gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
-        }
-    }
-    ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
-    return TRUE;
-}
-
-// TODO: port the key item/pokeride wheel from item_menu.c; until then this
-// uses the first registered pokeride item without showing the wheel.
-bool8 UseRegisteredPokerideItemOnField(void)
-{
-    u32 taskId;
-    u32 j;
-    ItemUseFunc func = NULL;
-
-    if (InUnionRoom() == TRUE || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InBattlePike() || InMultiPartnerRoom() == TRUE)
-        return FALSE;
-
-    HideMapNamePopUpWindow();
-    ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
-
-    // Find first registered item
-    for (j = 0; j < MAX_REGISTERED_ITEMS; j++)
-    {
-        if (gSaveBlock1Ptr->registeredPokerideItems[j] != ITEM_NONE)
-        {
-            if (CheckBagHasItem(gSaveBlock1Ptr->registeredPokerideItems[j], 1) == TRUE)
-            {
-                gSpecialVar_ItemId = gSaveBlock1Ptr->registeredPokerideItems[j];
-                func = GetItemFieldFunc(gSaveBlock1Ptr->registeredPokerideItems[j]);
-            }
-            else
-            {
-                gSaveBlock1Ptr->registeredPokerideItems[j] = ITEM_NONE;
-            }
-            break;
-        }
-    }
-
-    if (func)
-    {
-        LockPlayerFieldControls();
-        FreezeObjectEvents();
-        PlayerFreeze();
-        StopPlayerAvatar();
-        taskId = CreateTask(func, 8);
-        gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
-        return TRUE;
-    }
-
-    ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
-    return TRUE;
-}
-
-// if passed ITEM_NONE, finds the first registered item's index in the given array
-static s32 RegisteredItemIndexInArray(u16 item, u16 *array)
-{
-    s32 i;
-    for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
-        if (array[i] && (!item || array[i] == item))
-            return i;
-    return -1;
-}
-
-// if passed ITEM_NONE, finds the first registered item's index
-s32 RegisteredItemIndex(u16 item) {
-    s32 i;
-    for (i = 0; i < ARRAY_COUNT(gSaveBlock1Ptr->registeredItems); i++)
-        if (gSaveBlock1Ptr->registeredItems[i] && (!item || gSaveBlock1Ptr->registeredItems[i] == item))
-            return i;
-    if (item && item == gSaveBlock1Ptr->registeredItemCompat) {
-        gSaveBlock1Ptr->registeredItems[0] = item;
-        return 0;
-    }
-    return -1;
-}
-
-#undef tUsingRegisteredKeyItem
 
 static void Task_ItemContext_Sell(u8 taskId)
 {
