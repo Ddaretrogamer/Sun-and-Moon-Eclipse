@@ -316,6 +316,7 @@ static void BagMenu_ItemPrintCallback(u8, u32, u8);
 static void ItemMenu_UseOutOfBattle(u8);
 static void ItemMenu_Toss(u8);
 static void ItemMenu_Register(u8);
+static void Task_RegisterUsingDpad(u8);
 static void ItemMenu_Give(u8);
 static void ItemMenu_Cancel(u8);
 static void ItemMenu_UseInBattle(u8);
@@ -734,7 +735,16 @@ static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
     .palNum = 0,
 };
 
-static const u8 sRegisteredSelect_Gfx[]         = INCGFX_U8("graphics/bag/swsh/select_button.png", ".4bpp");
+static const u8 sRegisterUp_Gfx[]               = INCGFX_U8("graphics/bag/select_button.png", ".4bpp");
+static const u8 sRegisterRight_Gfx[]            = INCGFX_U8("graphics/bag/select_button_right.png", ".4bpp");
+static const u8 sRegisterDown_Gfx[]             = INCGFX_U8("graphics/bag/select_button_down.png", ".4bpp");
+static const u8 sRegisterLeft_Gfx[]             = INCGFX_U8("graphics/bag/select_button_left.png", ".4bpp");
+static const u8 sRegisterUpL_Gfx[]              = INCGFX_U8("graphics/bag/l_button.png", ".4bpp");
+static const u8 sRegisterRightL_Gfx[]           = INCGFX_U8("graphics/bag/l_button_right.png", ".4bpp");
+static const u8 sRegisterDownL_Gfx[]            = INCGFX_U8("graphics/bag/l_button_down.png", ".4bpp");
+static const u8 sRegisterLeftL_Gfx[]            = INCGFX_U8("graphics/bag/l_button_left.png", ".4bpp");
+static const u8 *const sRegisteredSelect_Gfx[]  = {sRegisterUp_Gfx, sRegisterRight_Gfx, sRegisterDown_Gfx, sRegisterLeft_Gfx, sRegisterUp_Gfx};
+static const u8 *const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
 static const u32 sBagScreen_Gfx[]               = INCGFX_U32("graphics/bag/swsh/tiles.png", ".4bpp.smol");
 static const u16 sBagScreen_Pal[]               = INCGFX_U16("graphics/bag/swsh/tiles.png", ".gbapal");
 static const u32 sBagScreen_BG2TileMap[]        = INCGFX_U32("graphics/bag/swsh/bg2.bin", ".smolTM");
@@ -1436,11 +1446,20 @@ static const struct WindowTemplate sContextMenuWindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 475,
     },
+    [ITEMWIN_2x2_HIGH] = { // Action menu above the message box (D-pad registration)
+        .bg = 0,
+        .tilemapLeft = 15,
+        .tilemapTop = 9,
+        .width = 14,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 475,
+    },
     [ITEMWIN_MESSAGE] = {
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 15,
-        .width = 27,
+        .width = 26,
         .height = 4,
         .paletteNum = 15,
         .baseBlock = 367,
@@ -2681,14 +2700,22 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         }
         else
         {
-            // Print registered icon
-            if (gBagPosition.pocket == POCKET_POKERIDE)
+            // Print registered icon for the item's D-pad slot
+            s32 regSlot;
+            if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+                regSlot = RegisteredItemIndexInArray(itemSlot.itemId, gSaveBlock1Ptr->registeredItems);
+            else if (gBagPosition.pocket == POCKET_POKERIDE)
+                regSlot = RegisteredItemIndexInArray(itemSlot.itemId, gSaveBlock1Ptr->registeredPokerideItems);
+            else
+                regSlot = -1;
+
+            if (regSlot >= 0)
             {
-                if (RegisteredItemIndexInArray(itemSlot.itemId, gSaveBlock1Ptr->registeredPokerideItems) >= 0)
-                    BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 102, y + 4, 16, 16);
+                if (gBagPosition.pocket == POCKET_POKERIDE)
+                    BlitBitmapToWindow(windowId, sRegisteredSelectL_Gfx[regSlot], 96, y, 24, 16);
+                else
+                    BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[regSlot], 96, y, 24, 16);
             }
-            else if (gSaveBlock1Ptr->registeredItemCompat != ITEM_NONE && gSaveBlock1Ptr->registeredItemCompat == itemSlot.itemId)
-                BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 102, y + 4, 16, 16);
         }
 
         if (isHovered)
@@ -3626,7 +3653,7 @@ static void OpenContextMenu(u8 taskId)
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_KeyItemsPocket);
                 memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_KeyItemsPocket, sizeof(sContextMenuItems_KeyItemsPocket));
-                if (gSaveBlock1Ptr->registeredItemCompat == gSpecialVar_ItemId)
+                if (RegisteredItemIndex(gSpecialVar_ItemId) >= 0)
                     gBagMenu->contextMenuItemsBuffer[1] = ACTION_DESELECT;
                 if (gSpecialVar_ItemId == ITEM_MACH_BIKE || gSpecialVar_ItemId == ITEM_ACRO_BIKE || gSpecialVar_ItemId == ITEM_BICYCLE)
                 {
@@ -3937,27 +3964,90 @@ static void ItemMenu_Register(u8 taskId)
     s16 *data = gTasks[taskId].data;
     u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
     u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
+    u16 *targetArray;
+    s32 index, count;
 
+    // Only allow registration from Key Items and Pokeride pockets
+    if (gBagPosition.pocket != POCKET_KEY_ITEMS && gBagPosition.pocket != POCKET_POKERIDE)
+        return;
+
+    // Determine which array to use based on pocket
     if (gBagPosition.pocket == POCKET_POKERIDE)
-    {
-        // Single-slot registration until the D-pad slot UI is ported:
-        // toggle off if registered, otherwise fill the first open slot.
-        s32 slot = RegisteredItemIndexInArray(gSpecialVar_ItemId, gSaveBlock1Ptr->registeredPokerideItems);
-        if (slot >= 0)
-        {
-            gSaveBlock1Ptr->registeredPokerideItems[slot] = ITEM_NONE;
+        targetArray = gSaveBlock1Ptr->registeredPokerideItems;
+    else // POCKET_KEY_ITEMS
+        targetArray = gSaveBlock1Ptr->registeredItems;
+
+    index = RegisteredItemIndexInArray(gSpecialVar_ItemId, targetArray);
+    count = CountRegisteredItemsInArray(targetArray);
+
+    // unregister/deselect item
+    if (index >= 0) {
+        targetArray[index] = ITEM_NONE;
+        // Update registeredItemCompat for key items (backwards compatibility)
+        if (gBagPosition.pocket == POCKET_KEY_ITEMS) {
+            if (--count == 0 || (index = RegisteredItemIndexInArray(ITEM_NONE, targetArray)) < 0)
+                gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
+            else
+                gSaveBlock1Ptr->registeredItemCompat = targetArray[index];
         }
-        else
-        {
-            for (slot = 0; slot < MAX_REGISTERED_ITEMS - 1; slot++)
-                if (gSaveBlock1Ptr->registeredPokerideItems[slot] == ITEM_NONE)
-                    break;
-            gSaveBlock1Ptr->registeredPokerideItems[slot] = gSpecialVar_ItemId;
-        }
+        index = 1; // ensure menu is closed
+    // no items registered; register this one in slot 0
+    } else if (count == 0) {
+        targetArray[0] = gSpecialVar_ItemId;
+        if (gBagPosition.pocket == POCKET_KEY_ITEMS)
+            gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
     }
-    else if (gSaveBlock1Ptr->registeredItemCompat == gSpecialVar_ItemId)
-        gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
-    else
+
+    // no DPAD required; just close the menu
+    if (index >= 0 || count == 0) {
+        DestroyListMenuTask(tListTaskId, scrollPos, cursorPos);
+        LoadBagItemListBuffers(gBagPosition.pocket);
+        tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
+        ScheduleBgCopyTilemapToVram(1);
+        ItemMenu_Cancel(taskId);
+        return;
+    }
+
+    // DPAD registration: move the action menu above the message box
+    RemoveContextWindow();
+    {
+        u8 windowId = BagMenu_AddWindow(ITEMWIN_2x2_HIGH);
+        PrintMenuActionGrid(windowId, FONT_NARROW, 8, 1, 56, 2, 2, sItemMenuActions, gBagMenu->contextMenuItemsPtr);
+        InitMenuActionGrid(windowId, 56, 2, 2, 1); // keep the cursor on Register
+    }
+    DisplayItemMessage(taskId, FONT_NORMAL, gText_PressAnyDpadKey, Task_RegisterUsingDpad);
+}
+
+static void Task_RegisterUsingDpad(u8 taskId) {
+    s16 *data = gTasks[taskId].data;
+    u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
+    u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
+    u16 *targetArray;
+    u32 i = 0;
+    if (JOY_NEW(B_BUTTON)) {
+        PlaySE(SE_SELECT);
+        BagMenu_RemoveWindow(ITEMWIN_2x2_HIGH);
+        RemoveItemMessageWindow(ITEMWIN_MESSAGE);
+        ItemMenu_Cancel(taskId);
+        return;
+    }
+    i = DpadInputToRegisteredItemIndex(FALSE);
+    if (i == 0)
+        return;
+    PlaySE(SE_SELECT);
+    BagMenu_RemoveWindow(ITEMWIN_2x2_HIGH);
+    RemoveItemMessageWindow(ITEMWIN_MESSAGE);
+
+    // Determine which array to use based on pocket
+    if (gBagPosition.pocket == POCKET_POKERIDE)
+        targetArray = gSaveBlock1Ptr->registeredPokerideItems;
+    else // POCKET_KEY_ITEMS
+        targetArray = gSaveBlock1Ptr->registeredItems;
+
+    // register and refresh menu
+    targetArray[i - 1] = gSpecialVar_ItemId;
+    // Only update registeredItemCompat for key items (backwards compatibility)
+    if (gBagPosition.pocket == POCKET_KEY_ITEMS)
         gSaveBlock1Ptr->registeredItemCompat = gSpecialVar_ItemId;
     DestroyListMenuTask(tListTaskId, scrollPos, cursorPos);
     LoadBagItemListBuffers(gBagPosition.pocket);

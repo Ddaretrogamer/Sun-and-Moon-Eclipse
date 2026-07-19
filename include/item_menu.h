@@ -38,6 +38,7 @@ enum {
     ITEMWIN_MONEY,
 #if SWSH_ITEM_MENU
     ITEMWIN_SELL_PRICE,
+    ITEMWIN_2x2_HIGH, // Action menu above a message box (D-pad registration)
 #endif
 #if SWSH_ITEM_MENU_IN_BAG_USE
     ITEMWIN_PP_MOVE_SELECT,
