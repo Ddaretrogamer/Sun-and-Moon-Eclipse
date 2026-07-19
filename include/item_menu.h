@@ -4,7 +4,7 @@
 #include "item.h"
 #include "main.h"
 #include "menu_helpers.h"
-#include "swsh_item_menu.h"
+#include "usum_item_menu.h"
 #include "field_item_wheel.h"
 
 enum {
@@ -36,11 +36,11 @@ enum {
     ITEMWIN_QUANTITY,
     ITEMWIN_QUANTITY_WIDE,
     ITEMWIN_MONEY,
-#if SWSH_ITEM_MENU
+#if USUM_ITEM_MENU
     ITEMWIN_SELL_PRICE,
     ITEMWIN_2x2_HIGH, // Action menu above a message box (D-pad registration)
 #endif
-#if SWSH_ITEM_MENU_IN_BAG_USE
+#if USUM_ITEM_MENU_IN_BAG_USE
     ITEMWIN_PP_MOVE_SELECT,
     ITEMWIN_LEVEL_UP_STATS,
     ITEMWIN_ROTOM_CATALOG,
@@ -58,7 +58,7 @@ enum BagSortOptions
     SORT_BY_INDEX,
 };
 
-#if SWSH_ITEM_MENU_BATTLE_POCKETS
+#if USUM_ITEM_MENU_BATTLE_POCKETS
 // battle pocket ids start at POCKETS_COUNT so that during battle
 // gBagPosition.pocket never collides with a field POCKET_* value
 // (e.g. POCKET_TM_HM checks for move-info mode)
@@ -80,7 +80,7 @@ enum BattlePocket
 #endif
 
 #define ITEMMENU_SWAP_LINE_LENGTH 8  // Swap line is 8 sprites long
-#if SWSH_ITEM_MENU
+#if USUM_ITEM_MENU
 #define HOVER_SLOT_SPRITES_COUNT     5
 #define FRAME_QUANTITY_SPRITES_COUNT 2
 #endif
@@ -98,7 +98,7 @@ struct BagPosition
     MainCallback exitCallback;
     u8 location;
     u8 pocket;
-#if SWSH_ITEM_MENU_PYRAMID
+#if USUM_ITEM_MENU_PYRAMID
     bool8 isPyramid; // Battle Pyramid bag from frontier.pyramidBag
 #endif
     u16 pocketSwitchArrowPos;
@@ -111,7 +111,7 @@ extern struct BagPosition gBagPosition;
 struct BagMenu
 {
     MainCallback newScreenCallback;
-#if SWSH_ITEM_MENU
+#if USUM_ITEM_MENU
     u8 bg0TilemapBuffer[BG_SCREEN_SIZE];
     u8 mainTilemapBuffer[BG_SCREEN_SIZE];
     u8 scrollingBgTilemapBuffer[BG_SCREEN_SIZE];
@@ -137,7 +137,7 @@ struct BagMenu
     u8 unused2[14];
     u8 ALIGNED(4) pocketNameBuffer[32][32];
     u8 unused3[4];
-#if SWSH_ITEM_MENU
+#if USUM_ITEM_MENU
     u8 partyMonIconSpriteIds[PARTY_SIZE];
     u8 cursorSpriteId;
     u8 swapCursorSpriteId;
@@ -155,10 +155,10 @@ struct BagMenu
     s32 hoveredItemIndex;
     u16 *moveTypeIconTilesPtr;
     u8 *moveTypeIconsCache;
-#if SWSH_ITEM_MENU_BERRY_STAT
+#if USUM_ITEM_MENU_BERRY_STAT
     u8 berryInfoMode;
 #endif
-#if SWSH_ITEM_MENU_IN_BAG_USE
+#if USUM_ITEM_MENU_IN_BAG_USE
     const struct YesNoFuncTable *partyYesNoFuncs;
     bool8 partyGiveMode;
     bool8 partyBlendActive;
@@ -171,15 +171,15 @@ struct BagMenu
     s8 prevHPBarSlot;
     bool8 hpBarWindowMapped;
     u8 multiFullPage; // 0 = player team, 1 = partner team (12v12 multi battle)
-#if SWSH_ITEM_MENU_IN_BATTLE_USE
+#if USUM_ITEM_MENU_IN_BATTLE_USE
     u8 multiSwapPromptSpriteIds[2];
 #endif
 #endif
-#if SWSH_ITEM_MENU_PYRAMID
+#if USUM_ITEM_MENU_PYRAMID
     struct ItemSlot pyramidScratch[PYRAMID_BAG_ITEMS_COUNT];
     struct BagPocket pyramidScratchPocket;
 #endif
-#if SWSH_ITEM_MENU_BATTLE_POCKETS
+#if USUM_ITEM_MENU_BATTLE_POCKETS
     // (srcPocket << 8) | srcSlot for each entry of each battle pocket
     u16 battlePocketRefs[BATTLE_POCKETS_COUNT][BATTLE_POCKET_CAPACITY];
 #endif

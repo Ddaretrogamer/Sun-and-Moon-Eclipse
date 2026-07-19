@@ -29,7 +29,7 @@
 #include "move.h"
 #include "random.h" // for rng_value_t
 #include "trainer_slide.h"
-#include "swsh_item_menu.h"
+#include "usum_item_menu.h"
 
 // Used to exclude moves learned temporarily by Transform or Mimic
 #define MOVE_IS_PERMANENT(battler, moveSlot)                        \
@@ -683,7 +683,7 @@ struct BattleStruct
     enum FlungItem flungItem:2;
     u8 itemPartyIndex[MAX_BATTLERS_COUNT];
     u8 itemMoveIndex[MAX_BATTLERS_COUNT];
-#if SWSH_ITEM_MENU_IN_BATTLE_USE
+#if USUM_ITEM_MENU_IN_BATTLE_USE
     bool8 itemTargetPartner[MAX_BATTLERS_COUNT];
 #endif
     s32 aiDelayTimer; // Counts number of frames AI takes to choose an action.
