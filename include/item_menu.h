@@ -81,7 +81,6 @@ enum BattlePocket
 
 #define ITEMMENU_SWAP_LINE_LENGTH 8  // Swap line is 8 sprites long
 #if USUM_ITEM_MENU
-#define HOVER_SLOT_SPRITES_COUNT     5
 #define FRAME_QUANTITY_SPRITES_COUNT 2
 #endif
 enum {
@@ -141,8 +140,6 @@ struct BagMenu
     u8 partyMonIconSpriteIds[PARTY_SIZE];
     u8 cursorSpriteId;
     u8 swapCursorSpriteId;
-    u8 hoverSlotSpriteIds[HOVER_SLOT_SPRITES_COUNT];
-    u8 pocketScrollArrowSpriteIds[2];
     u8 frameQuantityIds[FRAME_QUANTITY_SPRITES_COUNT];
     u8 moveInfoMode;
     u8 moveTypeIconSpriteId;
@@ -150,7 +147,6 @@ struct BagMenu
     u16 showItemIconId;
     u32 cursorAnimId;
     u32 scrollThumbAnimId;
-    u32 pocketScrollArrowAnimIds[2];
     u32 partyItemIconAnimId;
     s32 hoveredItemIndex;
     u16 *moveTypeIconTilesPtr;

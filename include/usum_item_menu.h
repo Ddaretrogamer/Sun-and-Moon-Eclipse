@@ -3,10 +3,10 @@
 
 #define USUM_ITEM_MENU                  TRUE  // Use USUM bag menu
 
-#define USUM_ITEM_MENU_CONTEST_INFO     (USUM_ITEM_MENU && TRUE)                // Show contest info for TMs/HMs in the item menu
+#define USUM_ITEM_MENU_CONTEST_INFO     (USUM_ITEM_MENU && FALSE)               // Show contest info for TMs/HMs in the item menu
 #define USUM_ITEM_MENU_BERRY_STAT       (USUM_ITEM_MENU && FALSE)               // Show berry stat (flavors, size, etc.) in the item menu
 #define USUM_ITEM_MENU_BERRY_TAG        (USUM_ITEM_MENU_BERRY_STAT && FALSE)    // Show berry tag info
-#define USUM_ITEM_MENU_SCROLLING_BG     (USUM_ITEM_MENU && TRUE)                // Enable scrolling background (BG3)
+#define USUM_ITEM_MENU_SCROLLING_BG     (USUM_ITEM_MENU && FALSE)               // Enable scrolling background (BG3)
 
 #define USUM_ITEM_MENU_IN_BAG_USE       (USUM_ITEM_MENU && TRUE)                // Perform item actions (Use/Give) in bag (skip party menu)
 #define USUM_ITEM_MENU_IN_BAG_REUSE     (USUM_ITEM_MENU_IN_BAG_USE && TRUE)     // Keep item cursor in party after use/give
