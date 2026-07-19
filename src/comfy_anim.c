@@ -148,7 +148,7 @@ void InitComfyAnimConfig_Spring(struct ComfyAnimSpringConfig *config)
 }
 
 void InitComfyAnim_Easing(struct ComfyAnimEasingConfig *config, struct ComfyAnim *out)
-{    
+{
     out->inUse = TRUE;
     out->completed = FALSE;
     out->velocity = 0;
@@ -166,7 +166,6 @@ u32 CreateComfyAnim_Easing(struct ComfyAnimEasingConfig *config)
 
     if (i == INVALID_COMFY_ANIM)
         return i;
-    
     anim = &gComfyAnims[i];
     InitComfyAnim_Easing(config, anim);
     return i;
@@ -191,7 +190,6 @@ u32 CreateComfyAnim_Spring(struct ComfyAnimSpringConfig *config)
 
     if (i == INVALID_COMFY_ANIM)
         return i;
-    
     anim = &gComfyAnims[i];
     InitComfyAnim_Spring(config, anim);
     return i;
