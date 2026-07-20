@@ -83,9 +83,19 @@
 #define TAG_PARTY_HELD_ITEM      120
 #define TAG_STATUS_ICON          121
 #define TAG_SWAP_PROMPT          122
+#define TAG_POCKET_TAB           123
 
 #define FRAME_MONEY_SPRITES_COUNT    3
 #define FRAME_PRICE_SPRITES_COUNT    3
+#define POCKET_TAB_SPRITES_COUNT     3
+
+#define POCKET_TAB_TEXT_X        16
+#define POCKET_TAB_TEXT_Y        5
+#define POCKET_TAB_TEXT_WIDTH    64
+#define POCKET_TAB_SPRITE_WIDTH  32
+#define POCKET_TAB_BASE_X        72
+#define POCKET_TAB_STEP_X        16
+#define POCKET_TAB_SLIDE_FRAMES  20
 
 // The buffer for the bag item list needs to be large enough to hold the maximum
 // number of item slots that could fit in a single pocket, + 1 for Cancel.
@@ -131,7 +141,6 @@ enum {
 enum {
     WIN_ITEM_LIST,
     WIN_DESCRIPTION,
-    WIN_POCKET_NAME,
     WIN_PP_LABEL,
     WIN_POW_ACC_LABEL,
     WIN_PP_INFO,
@@ -216,6 +225,8 @@ static bool8 LoadBagMenu_Graphics(void);
 static void LoadBagMenuTextWindows(void);
 static void AllocateBagItemListBuffers(void);
 static void LoadBagItemListBuffers(u8);
+static void CreatePocketTabSprites(void);
+static void SlidePocketTab(u8);
 static void PrintPocketName(const u8 *);
 static void DrawItemListBgRow(u8);
 static void SpriteCB_SlideCursorY(struct Sprite *);
@@ -734,6 +745,8 @@ static const u32 sCategoryIcons_Gfx[]           = INCGFX_U32("graphics/bag/usum/
 static const u32 sSwapCursor_Gfx[]              = INCGFX_U32("graphics/bag/usum/swap_cursor.png", ".4bpp.smol");
 static const u32 sFrameMoney_Gfx[]              = INCGFX_U32("graphics/bag/usum/frame_money.png", ".4bpp.smol");
 static const u32 sFramePriceQuantity_Gfx[]      = INCGFX_U32("graphics/bag/usum/frame_price_quantity.png", ".4bpp.smol");
+// Uncompressed: FillSpriteRectSprite reads this directly to erase the pocket name text.
+static const u32 sPocketTab_Gfx[]               = INCGFX_U32("graphics/bag/usum/pocket_tab.png", ".4bpp");
 static const u8 sBagMenuHMIcon_Gfx[]            = INCGFX_U8("graphics/bag/usum/hm.png", ".4bpp");
 static const u16 sCursor_Pal[]                  = INCGFX_U16("graphics/bag/usum/cursor.png", ".gbapal");
 static const u32 sMoveTypeIcons_Gfx[]           = INCGFX_U32("graphics/bag/usum/move_types.png", ".4bpp.smol");
@@ -1155,9 +1168,59 @@ static const struct SpriteTemplate sSpriteTemplate_FramePriceQuantity = {
     .anims = sSpriteAnimTable_FramePriceQuantity,
 };
 
+static const struct OamData sOamData_PocketTab =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 2,
+};
+
+static const union AnimCmd sSpriteAnim_PocketTab_0[] = {
+    ANIMCMD_FRAME(0, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_PocketTab_1[] = {
+    ANIMCMD_FRAME(16, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_PocketTab_2[] = {
+    ANIMCMD_FRAME(32, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd *const sSpriteAnimTable_PocketTab[] = {
+    sSpriteAnim_PocketTab_0,
+    sSpriteAnim_PocketTab_1,
+    sSpriteAnim_PocketTab_2,
+};
+
+static const struct SpriteSheet sSpriteSheet_PocketTab = {
+    .data = sPocketTab_Gfx,
+    .size = (32 * 96) / 2,
+    .tag = TAG_POCKET_TAB,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_PocketTab = {
+    .tileTag = TAG_POCKET_TAB,
+    .paletteTag = TAG_ITEM_CURSOR,
+    .oam = &sOamData_PocketTab,
+    .anims = sSpriteAnimTable_PocketTab,
+};
+
+static const union TextColor sPocketTabTextColor =
+{
+    .background = 0,
+    .foreground = 1,
+    .shadow = 12,
+};
+
 static u8 sScrollThumbSpriteId;
 static u8 sFrameMoneyIds[FRAME_MONEY_SPRITES_COUNT];
 static u8 sFramePriceIds[FRAME_PRICE_SPRITES_COUNT];
+static u8 sPocketTabIds[POCKET_TAB_SPRITES_COUNT];
+static u32 sPocketTabAnimId;
 
 enum {
     COLORID_NORMAL,
@@ -1203,15 +1266,6 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .height = 4,
         .paletteNum = 2,
         .baseBlock = 219,
-    },
-    [WIN_POCKET_NAME] = {
-        .bg = 1,
-        .tilemapLeft = 18,
-        .tilemapTop = 0,
-        .width = 10,
-        .height = 3,
-        .paletteNum = 2,
-        .baseBlock = 291,
     },
     [WIN_PP_LABEL] = {
         .bg = 1,
@@ -1538,6 +1592,8 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback)
         memset(gBagMenu->multiSwapPromptSpriteIds, SPRITE_NONE, sizeof(gBagMenu->multiSwapPromptSpriteIds));
 #endif
         sScrollThumbSpriteId = SPRITE_NONE;
+        memset(sPocketTabIds, SPRITE_NONE, sizeof(sPocketTabIds));
+        sPocketTabAnimId = INVALID_COMFY_ANIM;
         memset(gBagMenu->frameQuantityIds, SPRITE_NONE, sizeof(gBagMenu->frameQuantityIds));
         gBagMenu->cursorAnimId = INVALID_COMFY_ANIM;
         gBagMenu->scrollThumbAnimId = INVALID_COMFY_ANIM;
@@ -1605,7 +1661,7 @@ static void CB2_Bag(void)
 #define PARTY_MON_ICON_X            26
 #define PARTY_MON_ICON_Y(slot)      (24 * (slot) + 24)
 #define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 18)
-#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 4)
+#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 3)
 #define PARTY_HELD_ITEM_X           (PARTY_MON_ICON_X + 16)
 #define PARTY_HELD_ITEM_Y(slot)     (PARTY_MON_ICON_Y(slot) + 12)
 #define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 12)
@@ -1733,6 +1789,7 @@ static bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 13:
+        CreatePocketTabSprites();
 #if USUM_ITEM_MENU_PYRAMID
         if (gBagPosition.isPyramid)
             PrintPocketName(COMPOUND_STRING("Pyramid"));
@@ -1929,6 +1986,10 @@ static bool8 LoadBagMenu_Graphics(void)
         break;
     case 11:
         LoadCompressedSpriteSheet(&sSpriteSheet_FramePriceQuantity);
+        gBagMenu->graphicsLoadState++;
+        break;
+    case 12:
+        LoadSpriteSheet(&sSpriteSheet_PocketTab);
         gBagMenu->graphicsLoadState++;
         break;
     default:
@@ -2655,6 +2716,7 @@ static void Task_CloseBagMenu(u8 taskId)
 
         ReleaseComfyAnim(gBagMenu->cursorAnimId);
         ReleaseComfyAnim(gBagMenu->scrollThumbAnimId);
+        ReleaseComfyAnim(sPocketTabAnimId);
         if (gBagMenu->partyItemIconAnimId != INVALID_COMFY_ANIM)
         {
             ReleaseComfyAnim(gBagMenu->partyItemIconAnimId);
@@ -3097,6 +3159,7 @@ static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseLis
         gSprites[gBagMenu->spriteIds[ITEMMENUSPRITE_ITEM + (gBagMenu->itemIconSlot ^ 1)]].invisible = TRUE;
     }
     PrintPocketName(sPocketNamesStringsTable[newPocket]);
+    SlidePocketTab(newPocket);
     for (u8 slot = 0; slot < MAX_ITEMS_SHOWN; slot++)
         BagMenu_DrawItemListSlot(slot, sItemListEmpty_Tilemap);
     ScheduleBgCopyTilemapToVram(2);
@@ -3140,7 +3203,6 @@ static void Task_SwitchBagPocket(u8 taskId)
         tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, gBagPosition.scrollPosition[gBagPosition.pocket], gBagPosition.cursorPosition[gBagPosition.pocket]);
         UpdateEmptyPocket();
         PutWindowTilemap(WIN_DESCRIPTION);
-        PutWindowTilemap(WIN_POCKET_NAME);
         ScheduleBgCopyTilemapToVram(1);
         if (gBagMenu->numItemStacks[gBagPosition.pocket] != (u8)(!gBagMenu->hideCloseBagText))
         {
@@ -4256,13 +4318,71 @@ static void CB2_QuizLadyExitBagMenu(void)
     SetMainCallback2(CB2_ReturnToField);
 }
 
+static u32 GetPocketTabX(u32 pocket)
+{
+#if USUM_ITEM_MENU_BATTLE_POCKETS
+    if (UsingBattlePockets())
+        pocket -= POCKETS_COUNT;
+#endif
+    return POCKET_TAB_BASE_X + pocket * POCKET_TAB_STEP_X;
+}
+
+static void SpriteCB_PocketTabSlide(struct Sprite *sprite)
+{
+    s16 x = ReadComfyAnimValueSmooth(&gComfyAnims[sPocketTabAnimId]);
+
+    for (u32 i = 0; i < POCKET_TAB_SPRITES_COUNT; i++)
+        gSprites[sPocketTabIds[i]].x = x + i * POCKET_TAB_SPRITE_WIDTH;
+}
+
+static void SlidePocketTab(u8 pocket)
+{
+    struct ComfyAnimEasingConfig animConfig;
+
+    InitComfyAnimConfig_Easing(&animConfig);
+    animConfig.from = gComfyAnims[sPocketTabAnimId].position;
+    animConfig.to = Q_24_8(GetPocketTabX(pocket));
+    animConfig.durationFrames = POCKET_TAB_SLIDE_FRAMES;
+    animConfig.easingFunc = ComfyAnimEasing_EaseOutCubic;
+    InitComfyAnim_Easing(&animConfig, &gComfyAnims[sPocketTabAnimId]);
+}
+
+static void CreatePocketTabSprites(void)
+{
+    const u32 *srcs[POCKET_TAB_SPRITES_COUNT];
+    u32 x = GetPocketTabX(gBagPosition.pocket);
+    struct ComfyAnimEasingConfig animConfig;
+
+    InitComfyAnimConfig_Easing(&animConfig);
+    animConfig.from = Q_24_8(x);
+    animConfig.to = Q_24_8(x);
+    animConfig.durationFrames = 1;
+    animConfig.easingFunc = ComfyAnimEasing_EaseOutCubic;
+    sPocketTabAnimId = CreateComfyAnim_Easing(&animConfig);
+
+    for (u32 i = 0; i < POCKET_TAB_SPRITES_COUNT; i++)
+    {
+        sPocketTabIds[i] = CreateSprite(&sSpriteTemplate_PocketTab, x + i * POCKET_TAB_SPRITE_WIDTH, 16, 3);
+        StartSpriteAnim(&gSprites[sPocketTabIds[i]], i);
+        SetSpriteSheetFrameTileNum(&gSprites[sPocketTabIds[i]]);
+        srcs[i] = sPocketTab_Gfx + i * ((32 * 32 / 2) / sizeof(u32));
+    }
+    gSprites[sPocketTabIds[0]].callback = SpriteCB_PocketTabSlide;
+    SetupSpritesForTextPrinting(sPocketTabIds, srcs, POCKET_TAB_SPRITES_COUNT, 1);
+}
+
 static void PrintPocketName(const u8 *name)
 {
-    u8 offset = GetStringCenterAlignXOffset(FONT_SHORT_NARROW, name, 80);
-    FillWindowPixelBuffer(WIN_POCKET_NAME, PIXEL_FILL(0));
-    BagMenu_Print(WIN_POCKET_NAME, FONT_SHORT_NARROW, name, offset, 5, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
-    PutWindowTilemap(WIN_POCKET_NAME);
-    CopyWindowToVram(WIN_POCKET_NAME, COPYWIN_GFX);
+    u32 x;
+
+    if (sPocketTabIds[0] == SPRITE_NONE)
+        return;
+    FillSpriteRectSprite(sPocketTabIds[0], POCKET_TAB_TEXT_X, POCKET_TAB_TEXT_Y,
+                         POCKET_TAB_TEXT_WIDTH, GetFontAttribute(FONT_SHORT_NARROW, FONTATTR_MAX_LETTER_HEIGHT));
+    x = POCKET_TAB_TEXT_X + GetStringCenterAlignXOffset(FONT_SHORT_NARROW, name, POCKET_TAB_TEXT_WIDTH);
+    AddSpriteTextPrinterParameterized6(sPocketTabIds[x / POCKET_TAB_SPRITE_WIDTH], FONT_SHORT_NARROW,
+                                       x % POCKET_TAB_SPRITE_WIDTH, POCKET_TAB_TEXT_Y, 0, 0,
+                                       sPocketTabTextColor, 0, name);
 }
 
 static void LoadBagMenuTextWindows(void)
@@ -4275,7 +4395,7 @@ static void LoadBagMenuTextWindows(void)
     LoadMessageBoxGfx(0, 10, BG_PLTT_ID(13));
     ListMenuLoadStdPalAt(BG_PLTT_ID(12), 1);
     LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
-    for (i = 0; i <= WIN_POCKET_NAME; i++)
+    for (i = 0; i <= WIN_DESCRIPTION; i++)
     {
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
         PutWindowTilemap(i);
@@ -5370,14 +5490,15 @@ static void SwitchBerryInfoMode(s32 itemIndex)
 // Party Panel
 // ============================================================
 
-#define PARTY_PANEL_START_COL   0
-#define PARTY_PANEL_START_ROW   2
-#define PARTY_PANEL_SLOT_WIDTH  8
-#define PARTY_PANEL_SLOT_HEIGHT 3
-#define PARTY_HP_BAR_Y_OFFSET   2   // pixel offset of the HP bar fill rows
-#define PARTY_HP_BAR_X_OFFSET   2   // 1px margin + 1px border left of the fill
-#define PARTY_HP_BAR_MAX_WIDTH  36  // fill width in pixels
-#define PARTY_HP_BAR_BORDER_COLOR 11
+#define PARTY_PANEL_START_COL       0
+#define PARTY_PANEL_START_ROW       2
+#define PARTY_PANEL_SLOT_WIDTH      8
+#define PARTY_PANEL_SLOT_HEIGHT     3
+#define PARTY_HP_BAR_Y_OFFSET       1   // pixel offset of the HP bar fill rows
+#define PARTY_HP_BAR_X_OFFSET       2   // 1px margin + 1px border left of the fill
+#define PARTY_HP_BAR_MAX_WIDTH      36  // fill width in pixels
+#define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
+#define PARTY_HP_BAR_BORDER_COLOR   11
 
 // coming from the party menu, only show the target mon
 // drawn with slot 0's graphics shifted this many tile rows down
@@ -5588,18 +5709,18 @@ static void BagMenu_MoveHPBarWindow(u8 slot)
     gBagMenu->prevHPBarSlot = (s8)slot;
 }
 
-// Draws the static 1px border and the 2px fill rows inside it.
+// Draws the static 1px border and the fill rows inside it.
 // Layout across the 40px window: [1px empty][1px border][36px fill][1px border][1px empty]
 static void BagMenu_DrawPartyHPBarFill(u8 colorIdx, u8 filledWidth)
 {
     FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(PARTY_HP_BAR_BORDER_COLOR),
-                        PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, 4);
+                        PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, PARTY_HP_BAR_FILL_HEIGHT + 2);
     if (filledWidth > 0)
         FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(colorIdx),
-                            PARTY_HP_BAR_X_OFFSET, PARTY_HP_BAR_Y_OFFSET, filledWidth, 2);
+                            PARTY_HP_BAR_X_OFFSET, PARTY_HP_BAR_Y_OFFSET, filledWidth, PARTY_HP_BAR_FILL_HEIGHT);
     if (filledWidth < PARTY_HP_BAR_MAX_WIDTH)
         FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(15),
-                            PARTY_HP_BAR_X_OFFSET + filledWidth, PARTY_HP_BAR_Y_OFFSET, PARTY_HP_BAR_MAX_WIDTH - filledWidth, 2);
+                            PARTY_HP_BAR_X_OFFSET + filledWidth, PARTY_HP_BAR_Y_OFFSET, PARTY_HP_BAR_MAX_WIDTH - filledWidth, PARTY_HP_BAR_FILL_HEIGHT);
 }
 
 static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth)
@@ -5667,7 +5788,7 @@ static void BagMenu_DrawPartyHPBar(s8 slot)
         if (GetMonData(mon, MON_DATA_IS_EGG))
         {
             FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(0),
-                                PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, 4);
+                                PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, PARTY_HP_BAR_FILL_HEIGHT + 2);
         }
         else
         {
