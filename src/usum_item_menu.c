@@ -270,6 +270,7 @@ static void ReturnToItemList(u8);
 static u8 BagMenu_AddWindow(u8);
 static u8 GetSwitchBagPocketDirection(void);
 static void SwitchBagPocket(u8, s16, bool16);
+static void LoadPocketPalette(u8 pocket);
 static bool8 CanSwapItems(void);
 static void StartItemSwap(u8 taskId);
 static void Task_SwitchBagPocket(u8);
@@ -590,9 +591,9 @@ static const struct ListMenuTemplate sItemListMenu =
     .item_X = 8,
     .cursor_X = 0,
     .upText_Y = 1,
-    .cursorPal = 1,
+    .cursorPal = 9,
     .fillValue = 0,
-    .cursorShadowPal = 2,
+    .cursorShadowPal = 5,
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
@@ -738,6 +739,7 @@ static const u8 *const sRegisteredSelect_Gfx[]  = {sRegisterUp_Gfx, sRegisterRig
 static const u8 *const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
 static const u32 sBagScreen_Gfx[]               = INCGFX_U32("graphics/bag/usum/tiles.png", ".4bpp.smol");
 static const u16 sBagScreen_Pal[]               = INCGFX_U16("graphics/bag/usum/tiles.png", ".gbapal");
+static const u16 sPockets_Pal[]                 = INCGFX_U16("graphics/bag/usum/pockets.pal", ".gbapal");
 static const u32 sBagScreen_BG2TileMap[]        = INCGFX_U32("graphics/bag/usum/bg2.bin", ".smolTM");
 static const u32 sBagScreen_BG3TileMap[]        = INCGFX_U32("graphics/bag/usum/bg3.bin", ".smolTM");
 static const u32 sCursor_Gfx[]                  = INCGFX_U32("graphics/bag/usum/cursor.png", ".4bpp.smol");
@@ -1238,13 +1240,13 @@ enum {
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {0,  1,  3},
-    [COLORID_ITEM_LIST]   = {0,  1,  2},
-    [COLORID_DESCRIPTION] = {0,  3,  4},
+    [COLORID_ITEM_LIST]   = {0,  9,  5},
+    [COLORID_DESCRIPTION] = {0, 10,  2},
     [COLORID_HOVER_NAME]  = {0,  2,  4},
     [COLORID_HOVER_QTY]   = {0,  2,  5},
     [COLORID_POCKET_NAME] = {0,  1,  5},
     [COLORID_GRAY_CURSOR] = {0,  3,  6},
-    [COLORID_TMHM_INFO]   = {0, 14, 10},
+    [COLORID_TMHM_INFO]   = {0, 10,  2},
     [COLORID_NO_FLAVOR]   = {0,  3,  7}
 };
 
@@ -1256,7 +1258,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 3,
         .width = 15,
         .height = 12,
-        .paletteNum = 2,
+        .paletteNum = 1,
         .baseBlock = 39,
     },
     [WIN_DESCRIPTION] = {
@@ -1265,7 +1267,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 16,
         .width = 18,
         .height = 4,
-        .paletteNum = 2,
+        .paletteNum = 1,
         .baseBlock = 219,
     },
     [WIN_PP_LABEL] = {
@@ -1958,6 +1960,7 @@ static bool8 LoadBagMenu_Graphics(void)
         break;
     case 4:
         LoadPalette(sBagScreen_Pal, BG_PLTT_ID(0), 6 * PLTT_SIZE_4BPP);
+        LoadPocketPalette(gBagPosition.pocket);
         gBagMenu->graphicsLoadState++;
         break;
     case 5:
@@ -3131,6 +3134,11 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
         *bagPocketId += deltaBagPocketId;
 }
 
+static void LoadPocketPalette(u8 pocket)
+{
+    LoadPalette(&sPockets_Pal[pocket * 16], BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+}
+
 static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseList)
 {
     s16 *data = gTasks[taskId].data;
@@ -3225,6 +3233,7 @@ static void Task_SwitchBagPocket(u8 taskId)
             BagMenu_DisableTMHMPartyBlend();
 #endif
         ChangeBagPocketId(&gBagPosition.pocket, tPocketSwitchDir);
+        LoadPocketPalette(gBagPosition.pocket);
         LoadBagItemListBuffers(gBagPosition.pocket);
         tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, gBagPosition.scrollPosition[gBagPosition.pocket], gBagPosition.cursorPosition[gBagPosition.pocket]);
         UpdateEmptyPocket();
@@ -4656,11 +4665,11 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
     if (itemIndex == LIST_CANCEL)
     {
         BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
         CopyWindowToVram(WIN_POW_ACC_INFO, COPYWIN_GFX);
         gSprites[gBagMenu->moveTypeIconSpriteId].invisible = TRUE;
@@ -4673,7 +4682,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
     // PP
     ConvertIntToDecimalStringN(gStringVar1, GetMovePP(move), STR_CONV_MODE_LEFT_ALIGN, 3);
     BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gStringVar1,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
     CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
 
     // Power
@@ -4686,7 +4695,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
         text = gStringVar1;
     }
     BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, text,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
 
     // Accuracy
     accuracy = GetMoveAccuracy(move);
@@ -4698,7 +4707,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
         text = gStringVar1;
     }
     BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, text,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
     CopyWindowToVram(WIN_POW_ACC_INFO, COPYWIN_GFX);
 
     gSprites[gBagMenu->moveTypeIconSpriteId].x = 112;
@@ -4756,16 +4765,16 @@ static void SwitchMoveInfoMode(s32 itemIndex)
         gBagMenu->categoryIconSpriteId = CreateSprite(&sSpriteTemplate_CategoryIcon, 80, 136, 0);
 
         FillWindowPixelBuffer(WIN_PP_LABEL, PIXEL_FILL(0));
-        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         CopyWindowToVram(WIN_PP_LABEL, COPYWIN_GFX);
 
         {
             int winWidth = WindowWidthPx(WIN_POW_ACC_LABEL);
             FillWindowPixelBuffer(WIN_POW_ACC_LABEL, PIXEL_FILL(0));
             BagMenu_Print(WIN_POW_ACC_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPower,
-                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoPower, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoPower, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
             BagMenu_Print(WIN_POW_ACC_LABEL, FONT_SHORT_NARROW, sText_MoveInfoAccuracy,
-                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAccuracy, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAccuracy, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
             CopyWindowToVram(WIN_POW_ACC_LABEL, COPYWIN_GFX);
         }
 
@@ -4813,15 +4822,15 @@ static void SwitchMoveInfoMode(s32 itemIndex)
         ClearWindowTilemap(WIN_DESCRIPTION);
 
         FillWindowPixelBuffer(WIN_PP_LABEL, PIXEL_FILL(0));
-        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         CopyWindowToVram(WIN_PP_LABEL, COPYWIN_GFX);
 
         winWidth = WindowWidthPx(WIN_APP_JAM_LABEL);
         FillWindowPixelBuffer(WIN_APP_JAM_LABEL, PIXEL_FILL(0));
         BagMenu_Print(WIN_APP_JAM_LABEL, FONT_SHORT_NARROW, sText_MoveInfoAppeal,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAppeal, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAppeal, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         BagMenu_Print(WIN_APP_JAM_LABEL, FONT_SHORT_NARROW, sText_MoveInfoJam,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoJam, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoJam, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
         CopyWindowToVram(WIN_APP_JAM_LABEL, COPYWIN_GFX);
 
         UpdateMoveContestInfo(itemIndex);
@@ -4889,7 +4898,7 @@ static void UpdateMoveContestInfo(s32 itemIndex)
     // PP
     ConvertIntToDecimalStringN(gStringVar1, GetMovePP(move), STR_CONV_MODE_LEFT_ALIGN, 3);
     BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gStringVar1,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
     CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
 
     // Contest type icon
