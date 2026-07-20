@@ -119,10 +119,10 @@ script HauoliOutskirts_LillieOutsideLab{
     msgbox("The professor\.
     
     He never stops researching moves.
-    Not even\.inside the lab itself.
+    Not even\.{PAUSE 30}inside the lab itself.
     
     Looks like we'll have to patch up
-    the roof again\.
+    the roof again\.  
     
     And I had just washed his lab coat
     and finally gotten it clean, too.
