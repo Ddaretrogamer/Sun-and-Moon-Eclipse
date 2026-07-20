@@ -259,8 +259,9 @@ script AlolaLaboratory_FirstTimeIntro{
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_WHITE)
     delay(30)
-    applymovement(lab_kukui, moves(face_down))
+    applymovement(lab_kukui, moves(delay_16, walk_in_place_down*2))
     waitmovement(0)
+    delay(30)
     rotommenudisplay("Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.")
     // waitstate
     speakername("Kukui")
