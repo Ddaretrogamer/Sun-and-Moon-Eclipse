@@ -187,6 +187,7 @@ script AlolaLaboratory_CloseRotomPhoneBackup{
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
     endcutscene
     helpwindow(HELP_ROTOM_PHONE_GUIDE)
+    setvar(VAR_IKITOWN_STATE, 20)
     delay(30)
     release
     end
