@@ -2911,9 +2911,13 @@
 
 
   @ Shows the message box containing the help window and its header and description.
-  .macro showhelpwindow id:req
+  @ mode = 0: Normal behavior.
+  @ mode = 1: Redraw in-place if already open.
+  @ mode = 2: Redraw in-place if already open and close after confirmation.
+  .macro showhelpwindow id:req, mode=0
   callnative ShowHelpInfoWindow, requests_effects=1
   .2byte \id
+  .byte \mode
   .endm
 	
   @ Destroys the help window.
@@ -2922,11 +2926,24 @@
   .endm
 
   @ Creates a help window.
-  .macro helpwindow id:req
-  showhelpwindow \id
-  waitbuttonpress
+  @ mode = 0: Normal behavior. Open, wait for confirmation, then close.
+  @ mode = 1: Redraw in-place if already open, then stay open for the next helpwindow.
+  @ mode = 2: Redraw in-place if already open, then close after confirmation.
+  .macro helpwindow id:req, mode=0
+  .if \mode == 0
+  showhelpwindow \id, 0
+  .elseif \mode == 1
+  showhelpwindow \id, 1
+  .elseif \mode == 2
+  showhelpwindow \id, 2
+  .else
+  .error "helpwindow mode must be 0, 1, or 2"
+  .endif
+  callnative WaitForHelpWindowButtonPress, requests_effects=1
+  .if \mode != 1
   hidehelpwindow
   closemessage
+  .endif
   .endm
   
 	@ Manually buffer a string as the speaker's name for namebox.
