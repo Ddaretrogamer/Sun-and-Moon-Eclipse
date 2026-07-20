@@ -4504,7 +4504,7 @@ static void HandleTurnActionSelectionState(void)
                     else
                     {
                         gLastUsedItem = (gBattleResources->bufferB[battler][1] | (gBattleResources->bufferB[battler][2] << 8));
-                        if (GetItemPocket(gLastUsedItem) == POCKET_POKE_BALLS)
+                        if (IsItemBall(gLastUsedItem))
                             gBattleStruct->throwingPokeBall = TRUE;
                         gBattleCommunication[battler]++;
                     }

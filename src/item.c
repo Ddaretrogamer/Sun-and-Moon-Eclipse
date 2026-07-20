@@ -95,10 +95,11 @@ struct ItemSlot NONNULL BagPocket_GetSlotData(struct BagPocket *pocket, u32 pock
 {
     switch (pocket->id)
     {
+    case POCKET_MEDICINE:
     case POCKET_ITEMS:
     case POCKET_KEY_ITEMS:
     case POCKET_POKERIDE:
-    case POCKET_POKE_BALLS:
+    case POCKET_Z_CRYSTALS:
     case POCKET_TM_HM:
     case POCKET_BERRIES:
         return BagPocket_GetSlotDataGeneric(pocket, pocketPos);
@@ -119,10 +120,11 @@ void NONNULL BagPocket_SetSlotData(struct BagPocket *pocket, u32 pocketPos, stru
 
     switch (pocket->id)
     {
+    case POCKET_MEDICINE:
     case POCKET_ITEMS:
     case POCKET_KEY_ITEMS:
     case POCKET_POKERIDE:
-    case POCKET_POKE_BALLS:
+    case POCKET_Z_CRYSTALS:
     case POCKET_TM_HM:
     case POCKET_BERRIES:
         BagPocket_SetSlotDataGeneric(pocket, pocketPos, newSlot);
@@ -146,6 +148,10 @@ void ApplyNewEncryptionKeyToBagItems(u32 newKey)
 
 void SetBagItemsPointers(void)
 {
+    gBagPockets[POCKET_MEDICINE].itemSlots = gSaveBlock1Ptr->bag.medicine;
+    gBagPockets[POCKET_MEDICINE].capacity = BAG_MEDICINE_COUNT;
+    gBagPockets[POCKET_MEDICINE].id = POCKET_MEDICINE;
+
     gBagPockets[POCKET_ITEMS].itemSlots = gSaveBlock1Ptr->bag.items;
     gBagPockets[POCKET_ITEMS].capacity = BAG_ITEMS_COUNT;
     gBagPockets[POCKET_ITEMS].id = POCKET_ITEMS;
@@ -154,9 +160,9 @@ void SetBagItemsPointers(void)
     gBagPockets[POCKET_KEY_ITEMS].capacity = BAG_KEYITEMS_COUNT;
     gBagPockets[POCKET_KEY_ITEMS].id = POCKET_KEY_ITEMS;
 
-    gBagPockets[POCKET_POKE_BALLS].itemSlots = gSaveBlock1Ptr->bag.pokeBalls;
-    gBagPockets[POCKET_POKE_BALLS].capacity = BAG_POKEBALLS_COUNT;
-    gBagPockets[POCKET_POKE_BALLS].id = POCKET_POKE_BALLS;
+    gBagPockets[POCKET_Z_CRYSTALS].itemSlots = gSaveBlock1Ptr->bag.zCrystals;
+    gBagPockets[POCKET_Z_CRYSTALS].capacity = BAG_ZCRYSTALS_COUNT;
+    gBagPockets[POCKET_Z_CRYSTALS].id = POCKET_Z_CRYSTALS;
 
     gBagPockets[POCKET_TM_HM].itemSlots = gSaveBlock1Ptr->bag.TMsHMs;
     gBagPockets[POCKET_TM_HM].capacity = BAG_TMHM_COUNT;
@@ -322,6 +328,7 @@ static bool32 NONNULL BagPocket_AddItem(struct BagPocket *pocket, enum Item item
     {
     case POCKET_TM_HM:
     case POCKET_BERRIES:
+    case POCKET_Z_CRYSTALS:
         for (itemLookupIndex = 0; itemLookupIndex < pocket->capacity && count > 0; itemLookupIndex++)
         {
             // Check if we found a slot to store the item but weren't able to reduce count to 0
@@ -874,9 +881,47 @@ u8 GetItemConsumability(enum Item itemId)
     return !gItemsInfo[SanitizeItemId(itemId)].notConsumed;
 }
 
+// Upstream data keeps medicine and Z-Crystals in POCKET_ITEMS. 
+// Reclassify them into the USUM pockets here, using sort type, 
+// so src/data/items.h stays identical to upstream
 enum Pocket GetItemPocket(enum Item itemId)
 {
-    return gItemsInfo[SanitizeItemId(itemId)].pocket;
+    enum Item item = SanitizeItemId(itemId);
+
+    if (gItemsInfo[item].pocket != POCKET_ITEMS)
+        return gItemsInfo[item].pocket;
+
+    switch (gItemsInfo[item].sortType)
+    {
+    case ITEM_TYPE_Z_CRYSTAL:
+        return POCKET_Z_CRYSTALS;
+    case ITEM_TYPE_STATUS_RECOVERY:
+        return POCKET_MEDICINE;
+    case ITEM_TYPE_HEALTH_RECOVERY:
+    case ITEM_TYPE_PP_RECOVERY:
+    case ITEM_TYPE_NATURE_MINT:
+    case ITEM_TYPE_STAT_BOOST_DRINK:
+    case ITEM_TYPE_STAT_BOOST_FEATHER:
+    case ITEM_TYPE_STAT_BOOST_MOCHI:
+    case ITEM_TYPE_LEVEL_UP_ITEM:
+        return POCKET_MEDICINE;
+    case ITEM_TYPE_FLUTE:
+        // Only status-curing flutes are medicine; the BW
+        // encounter-rate flutes stay with the field items.
+        switch (item)
+        {
+        case ITEM_BLUE_FLUTE:
+        case ITEM_RED_FLUTE:
+        case ITEM_YELLOW_FLUTE:
+            return POCKET_MEDICINE;
+        default:
+            return POCKET_ITEMS;
+        }
+    case ITEM_TYPE_FIELD_USE:
+        return (item == ITEM_ABILITY_CAPSULE || item == ITEM_ABILITY_PATCH) ? POCKET_MEDICINE : POCKET_ITEMS;
+    default:
+        return POCKET_ITEMS;
+    }
 }
 
 enum ItemType GetItemType(enum Item itemId)
@@ -919,6 +964,12 @@ enum EffectItem GetItemBattleUsage(enum Item itemId)
     }
     else
         return gItemsInfo[item].battleUsage;
+}
+
+// Poké Balls share the Items pocket, so identify them by battle usage.
+bool32 IsItemBall(enum Item itemId)
+{
+    return GetItemBattleUsage(itemId) == EFFECT_ITEM_THROW_BALL;
 }
 
 u32 GetItemSecondaryId(enum Item itemId)

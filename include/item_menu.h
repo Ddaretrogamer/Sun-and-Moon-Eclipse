@@ -72,8 +72,8 @@ enum BattlePocket
     BATTLE_POCKETS_END,
 };
 #define BATTLE_POCKETS_COUNT (BATTLE_POCKETS_END - POCKETS_COUNT)
-// take the largest pocket count possible (about 124 bytes wasteful)
-#define BATTLE_POCKET_CAPACITY max(BAG_ITEMS_COUNT, max(BAG_POKEBALLS_COUNT, BAG_BERRIES_COUNT))
+// take the largest source pocket count possible
+#define BATTLE_POCKET_CAPACITY max(BAG_ITEMS_COUNT, max(BAG_MEDICINE_COUNT, BAG_BERRIES_COUNT))
 #define BAG_POCKET_IDS_COUNT BATTLE_POCKETS_END
 #else
 #define BAG_POCKET_IDS_COUNT POCKETS_COUNT

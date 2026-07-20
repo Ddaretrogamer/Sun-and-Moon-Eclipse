@@ -76,12 +76,6 @@ static const union AnimCmd sSpriteAnim_Bag_PokeRide[] =
     ANIMCMD_END
 };
 
-static const union AnimCmd sSpriteAnim_Bag_Pokeballs[] =
-{
-    ANIMCMD_FRAME(192, 4),
-    ANIMCMD_END
-};
-
 static const union AnimCmd sSpriteAnim_Bag_TMsHMs[] =
 {
     ANIMCMD_FRAME(256, 4),
@@ -96,13 +90,14 @@ static const union AnimCmd sSpriteAnim_Bag_Berries[] =
 
 static const union AnimCmd *const sBagSpriteAnimTable[] =
 {
+    [POCKET_MEDICINE]   = sSpriteAnim_Bag_Items,
     [POCKET_ITEMS]      = sSpriteAnim_Bag_Items,
-    [POCKET_POKE_BALLS] = sSpriteAnim_Bag_Pokeballs,
     [POCKET_TM_HM]      = sSpriteAnim_Bag_TMsHMs,
     [POCKET_BERRIES]    = sSpriteAnim_Bag_Berries,
     [POCKET_KEY_ITEMS]  = sSpriteAnim_Bag_KeyItems,
+    [POCKET_Z_CRYSTALS] = sSpriteAnim_Bag_Items,
     [POCKET_POKERIDE]   = sSpriteAnim_Bag_PokeRide,
-    [POCKET_DUMMY]       = sSpriteAnim_Bag_Closed,
+    [POCKET_DUMMY]      = sSpriteAnim_Bag_Closed,
 };
 
 static const union AffineAnimCmd sSpriteAffineAnim_BagNormal[] =

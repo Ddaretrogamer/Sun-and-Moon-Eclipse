@@ -1099,7 +1099,7 @@ static void BagAction_UseOnField(u8 taskId)
     u8 pocketId = GetItemPocket(gSpecialVar_ItemId);
 
     if (pocketId == POCKET_KEY_ITEMS
-        || pocketId == POCKET_POKE_BALLS
+        || IsItemBall(gSpecialVar_ItemId)
         || pocketId == POCKET_TM_HM
         || ItemIsMail(gSpecialVar_ItemId) == TRUE)
     {

@@ -225,6 +225,8 @@ enum
 #define STDSTRING_COINS            38
 
 #define STDSTRING_POKERIDE         39
+#define STDSTRING_MEDICINE         40
+#define STDSTRING_ZCRYSTALS        41
 
 // Dynamic Multichoice Callbacks
 
