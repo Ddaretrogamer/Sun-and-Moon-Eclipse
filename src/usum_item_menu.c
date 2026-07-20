@@ -73,7 +73,6 @@
 
 #if USUM_ITEM_MENU
 
-#define TAG_BAG_SCROLL_ARROW     111
 #define TAG_ITEM_CURSOR          112
 #define TAG_BAG_SCROLL_THUMB     114
 #define TAG_MOVE_TYPE_ICON       115
@@ -715,20 +714,6 @@ static const struct YesNoFuncTable sYesNoTossFunctions = {ConfirmToss, CancelTos
 
 static const struct YesNoFuncTable sYesNoSellItemFunctions = {ConfirmSell, CancelSell};
 
-static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
-    .firstArrowType = SCROLL_ARROW_LEFT,
-    .firstX = 28,
-    .firstY = 16,
-    .secondArrowType = SCROLL_ARROW_RIGHT,
-    .secondX = 100,
-    .secondY = 16,
-    .fullyUpThreshold = -1,
-    .fullyDownThreshold = -1,
-    .tileTag = TAG_BAG_SCROLL_ARROW,
-    .palTag = TAG_BAG_SCROLL_ARROW,
-    .palNum = 0,
-};
-
 static const u8 sRegisterUp_Gfx[]               = INCGFX_U8("graphics/bag/select_button.png", ".4bpp");
 static const u8 sRegisterRight_Gfx[]            = INCGFX_U8("graphics/bag/select_button_right.png", ".4bpp");
 static const u8 sRegisterDown_Gfx[]             = INCGFX_U8("graphics/bag/select_button_down.png", ".4bpp");
@@ -760,6 +745,7 @@ static const u8 sItemListEmpty_Tilemap[]        = INCBIN_U8("graphics/bag/usum/i
 #if USUM_ITEM_MENU_IN_BAG_USE
 static const u8 sPartySlots_Tilemap[]           = INCBIN_U8("graphics/bag/usum/party_slots.bin");
 static const u32 sStatusIcons_Gfx[]             = INCGFX_U32("graphics/bag/usum/status_icons.png", ".4bpp.smol");
+static const u16 sStatusIcons_Pal[]             = INCGFX_U16("graphics/bag/usum/status_icons.png", ".gbapal");
 #if USUM_ITEM_MENU_IN_BATTLE_USE
 static const u32 sMultiBattleSwapPrompt_Gfx[]   = INCGFX_U32("graphics/bag/usum/prompt_swap.png", ".4bpp.smol");
 #endif
@@ -1006,10 +992,16 @@ static const struct CompressedSpriteSheet sSpriteSheet_StatusIcon =
     .tag = TAG_STATUS_ICON,
 };
 
+static const struct SpritePalette sSpritePalette_StatusIcon =
+{
+    .data = sStatusIcons_Pal,
+    .tag = TAG_STATUS_ICON,
+};
+
 static const struct SpriteTemplate sSpriteTemplate_StatusIcon =
 {
     .tileTag = TAG_STATUS_ICON,
-    .paletteTag = TAG_ITEM_CURSOR,
+    .paletteTag = TAG_STATUS_ICON,
     .oam = &sOamData_StatusIcon,
     .anims = sSpriteAnims_StatusIcon,
 };
@@ -1612,11 +1604,11 @@ static void CB2_Bag(void)
 // RowOffset (bag opened from party menu) is added at the call sites that need it.
 #define PARTY_MON_ICON_X            26
 #define PARTY_MON_ICON_Y(slot)      (24 * (slot) + 24)
-#define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 14)
-#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 7)
+#define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 18)
+#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 4)
 #define PARTY_HELD_ITEM_X           (PARTY_MON_ICON_X + 16)
 #define PARTY_HELD_ITEM_Y(slot)     (PARTY_MON_ICON_Y(slot) + 12)
-#define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 10)
+#define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 12)
 #define PARTY_ITEM_ICON_Y(slot)     PARTY_MON_ICON_Y(slot)
 
 enum {
@@ -2214,9 +2206,9 @@ static void BagList_MoveSlot(u8 pocketId, u32 from, u32 to)
 }
 #endif
 
-#define ITEM_LIST_SLOT_START_COL 9
+#define ITEM_LIST_SLOT_START_COL 10
 #define ITEM_LIST_SLOT_START_ROW 3
-#define ITEM_LIST_SLOT_WIDTH     20
+#define ITEM_LIST_SLOT_WIDTH     19
 #define ITEM_LIST_SLOT_HEIGHT    2
 #define ITEM_LIST_SLOT_PAL       1
 
@@ -2329,7 +2321,7 @@ static void CreateCursorSprite(void)
     animConfig.easingFunc = ComfyAnimEasing_EaseOutCubic;
     gBagMenu->cursorAnimId = CreateComfyAnim_Easing(&animConfig);
 
-    gBagMenu->cursorSpriteId = CreateSprite(&sSpriteTemplate_Cursor, 73, initialY, 0);
+    gBagMenu->cursorSpriteId = CreateSprite(&sSpriteTemplate_Cursor, 81, initialY, 1);
     gSprites[gBagMenu->cursorSpriteId].callback = SpriteCB_SlideCursorY;
 }
 
@@ -2360,7 +2352,7 @@ static void SpriteCB_SlideCursorY(struct Sprite *sprite)
     {
         u8 iconSpriteId = gBagMenu->spriteIds[ITEMMENUSPRITE_ITEM + (gBagMenu->itemIconSlot ^ 1)];
         if (iconSpriteId != SPRITE_NONE)
-            gSprites[iconSpriteId].y2 = y + 4;
+            gSprites[iconSpriteId].y2 = y + 3;
         if (gBagMenu->swapCursorSpriteId != SPRITE_NONE)
             gSprites[gBagMenu->swapCursorSpriteId].y = y;
     }
@@ -2384,7 +2376,7 @@ static s16 BagMenu_GetListRowSpriteY(struct ListMenu *list)
 {
     u8 rowHeight = GetFontAttribute(FONT_NARROW, FONTATTR_MAX_LETTER_HEIGHT) + list->template.itemVerticalPadding;
     u8 windowTop = sDefaultBagWindows[WIN_ITEM_LIST].tilemapTop * 8;
-    return windowTop + list->template.upText_Y + list->selectedRow * rowHeight + 8;
+    return windowTop + list->template.upText_Y + list->selectedRow * rowHeight + 7;
 }
 
 static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListMenu *list)
@@ -2459,7 +2451,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
             {
                 struct Sprite *spr = &gSprites[iconSpriteId];
                 spr->x2 = 102;
-                spr->y2 = spriteY + 4;
+                spr->y2 = spriteY + 3;
                 if (gBagMenu->toSwapPos == NOT_SWAPPING)
                 {
                     spr->oam.affineMode = ST_OAM_AFFINE_NORMAL;
@@ -2475,7 +2467,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
             // change): keep the live sprite, just resync its position
             struct Sprite *spr = &gSprites[iconSpriteId];
             spr->x2 = 102;
-            spr->y2 = spriteY + 4;
+            spr->y2 = spriteY + 3;
             spr->invisible = FALSE;
         }
     }
@@ -5479,6 +5471,7 @@ static void BagMenu_CreatePartyIcons(void)
     memset(gBagMenu->partyMonIconSpriteIds, SPRITE_NONE, sizeof(gBagMenu->partyMonIconSpriteIds));
     LoadMonIconPalettes();
     LoadCompressedSpriteSheet(&sSpriteSheet_StatusIcon);
+    LoadSpritePalette(&sSpritePalette_StatusIcon);
 
     if (AllocItemIconTemporaryBuffers())
     {
@@ -5536,6 +5529,7 @@ static void BagMenu_FreePartyIcons(void)
         }
     }
     FreeSpriteTilesByTag(TAG_STATUS_ICON);
+    FreeSpritePaletteByTag(TAG_STATUS_ICON);
 }
 
 static u8 BagMenu_GetMonAilment(u8 slot)
@@ -5578,8 +5572,7 @@ static void BagMenu_UpdateStatusIconPos(u8 hoveredSlot)
     {
         if (gBagMenu->statusIconSpriteIds[i] == SPRITE_NONE)
             continue;
-        gSprites[gBagMenu->statusIconSpriteIds[i]].y = PARTY_STATUS_ICON_Y(i) + 8 * BagMenu_PanelRowOffset()
-            + (BagMenu_ShouldShowHPBar() && i == hoveredSlot ? 0 : 4);
+        gSprites[gBagMenu->statusIconSpriteIds[i]].y = PARTY_STATUS_ICON_Y(i) + 8 * BagMenu_PanelRowOffset();
     }
 }
 
@@ -6155,7 +6148,7 @@ static void BagMenu_ClosePartySelect(u8 taskId)
     {
         struct Sprite *spr = &gSprites[iconSpriteId];
         spr->x2 = 102;
-        spr->y2 = BagMenu_GetListRowSpriteY((void *) gTasks[tListTaskId].data) + 4;
+        spr->y2 = BagMenu_GetListRowSpriteY((void *) gTasks[tListTaskId].data) + 3;
         spr->invisible = FALSE;
     }
 
