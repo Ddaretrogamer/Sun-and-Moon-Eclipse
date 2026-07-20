@@ -1,5 +1,56 @@
-mapscripts HauoliOutskirts_MapScripts{}
+mapscripts HauoliOutskirts_MapScripts{
+    // MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 20 {fwdtime (DAY_HOUR_BEGIN, 0)}]
+    MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 20: HauoliOutskirts_ExitLabEclipse]
+}
 
+
+script HauoliOutskirts_ExitLabEclipse{
+    lock
+    hideobjectat(kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS)
+    applymovement(kukui_outside_lab, moves(walk_down*2))
+    waitmovement(kukui_outside_lab)
+    playse(SE_PIN)
+    applymovement(lillie_outside_lab, moves(face_up, emote_exclamation_mark))
+    waitmovement(lillie_outside_lab)
+    delay(30)
+    applymovement(lillie_outside_lab, moves(delay_8, walk_left, face_right))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_down*2, face_left))
+    waitmovement(0)
+    delay(30)
+    opendoor(25, 12)
+    waitdooranim()
+    showobjectat(kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS)
+    applymovement(kukui_outside_lab, moves(walk_down))
+    waitmovement(kukui_outside_lab)
+    closedoor(25, 12)
+    waitdooranim()
+    applymovement(lillie_outside_lab, moves(face_up))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    applymovement(lillie_outside_lab, moves(face_right))
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("The Pok\emon Center is practically right
+    next to your house, isn't it?", MSGBOX_AUTOCLOSE)
+    setweather(WEATHER_SHADE)
+    doweather
+    special(WaitWeather)
+    delay(30)
+    // setvar(VAR_0x8000, 4)
+    // setvar(VAR_RESULT, 0)
+    // callnative(OpenScreenshotsFromScript)
+    // waitstate
+
+
+
+
+
+    setvar(VAR_IKITOWN_STATE, 21)
+    release
+    end
+
+}
 script HauoliOutskirts_LillieOutsideLab{
     lock
     startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_LILLIE_OUTSIDE_LAB)
