@@ -27,6 +27,7 @@ script HauoliOutskirts_ExitLabEclipse{
     applymovement(lillie_outside_lab, moves(face_up))
     applymovement(LOCALID_PLAYER, moves(face_up))
     waitmovement(0)
+    delay(60)
     applymovement(lillie_outside_lab, moves(face_right))
     applymovement(LOCALID_PLAYER, moves(face_left))
     waitmovement(0)
@@ -36,11 +37,11 @@ script HauoliOutskirts_ExitLabEclipse{
     setweather(WEATHER_SHADE)
     doweather
     special(WaitWeather)
-    delay(30)
-    // setvar(VAR_0x8000, 4)
-    // setvar(VAR_RESULT, 0)
-    // callnative(OpenScreenshotsFromScript)
-    // waitstate
+    delay(120)
+    setvar(VAR_0x8000, 4)
+    setvar(VAR_RESULT, 0)
+    callnative(OpenScreenshotsFromScript)
+    waitstate
 
 
 
