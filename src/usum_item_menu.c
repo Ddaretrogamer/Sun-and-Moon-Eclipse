@@ -591,9 +591,9 @@ static const struct ListMenuTemplate sItemListMenu =
     .item_X = 8,
     .cursor_X = 0,
     .upText_Y = 1,
-    .cursorPal = 9,
+    .cursorPal = 10,
     .fillValue = 0,
-    .cursorShadowPal = 5,
+    .cursorShadowPal = 3,
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
@@ -739,7 +739,7 @@ static const u8 *const sRegisteredSelect_Gfx[]  = {sRegisterUp_Gfx, sRegisterRig
 static const u8 *const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
 static const u32 sBagScreen_Gfx[]               = INCGFX_U32("graphics/bag/usum/tiles.png", ".4bpp.smol");
 static const u16 sBagScreen_Pal[]               = INCGFX_U16("graphics/bag/usum/tiles.png", ".gbapal");
-static const u16 sPockets_Pal[]                 = INCGFX_U16("graphics/bag/usum/pockets.pal", ".gbapal");
+static const u16 sPockets_Pal[]                 = INCGFX_U16("graphics/bag/usum/pockets.png", ".gbapal");
 static const u32 sBagScreen_BG2TileMap[]        = INCGFX_U32("graphics/bag/usum/bg2.bin", ".smolTM");
 static const u32 sBagScreen_BG3TileMap[]        = INCGFX_U32("graphics/bag/usum/bg3.bin", ".smolTM");
 static const u32 sCursor_Gfx[]                  = INCGFX_U32("graphics/bag/usum/cursor.png", ".4bpp.smol");
@@ -1240,13 +1240,13 @@ enum {
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {0,  1,  3},
-    [COLORID_ITEM_LIST]   = {0,  9,  5},
-    [COLORID_DESCRIPTION] = {0, 10,  2},
+    [COLORID_ITEM_LIST]   = {0, 10,  3},
+    [COLORID_DESCRIPTION] = {0,  5,  7},
     [COLORID_HOVER_NAME]  = {0,  2,  4},
     [COLORID_HOVER_QTY]   = {0,  2,  5},
     [COLORID_POCKET_NAME] = {0,  1,  5},
     [COLORID_GRAY_CURSOR] = {0,  3,  6},
-    [COLORID_TMHM_INFO]   = {0, 10,  2},
+    [COLORID_TMHM_INFO]   = {0,  5,  7},
     [COLORID_NO_FLAVOR]   = {0,  3,  7}
 };
 
@@ -1263,7 +1263,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
     },
     [WIN_DESCRIPTION] = {
         .bg = 1,
-        .tilemapLeft = 9,
+        .tilemapLeft = 11,
         .tilemapTop = 16,
         .width = 18,
         .height = 4,
