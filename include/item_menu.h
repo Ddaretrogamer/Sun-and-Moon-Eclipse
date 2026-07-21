@@ -143,7 +143,6 @@ struct BagMenu
     u8 frameQuantityIds[FRAME_QUANTITY_SPRITES_COUNT];
     u8 moveInfoMode;
     u8 moveTypeIconSpriteId;
-    u8 categoryIconSpriteId;
     u16 showItemIconId;
     u32 cursorAnimId;
     u32 scrollThumbAnimId;
@@ -167,9 +166,6 @@ struct BagMenu
     s8 prevHPBarSlot;
     bool8 hpBarWindowMapped;
     u8 multiFullPage; // 0 = player team, 1 = partner team (12v12 multi battle)
-#if USUM_ITEM_MENU_IN_BATTLE_USE
-    u8 multiSwapPromptSpriteIds[2];
-#endif
 #endif
 #if USUM_ITEM_MENU_PYRAMID
     struct ItemSlot pyramidScratch[PYRAMID_BAG_ITEMS_COUNT];
