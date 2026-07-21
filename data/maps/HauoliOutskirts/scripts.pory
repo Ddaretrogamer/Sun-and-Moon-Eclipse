@@ -1,5 +1,5 @@
 mapscripts HauoliOutskirts_MapScripts{
-    // MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 20 {fwdtime (DAY_HOUR_BEGIN, 0)}]
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 20 {fwdtime (DAY_HOUR_BEGIN, 0)}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 20: HauoliOutskirts_ExitLabEclipse]
 }
 
@@ -37,12 +37,26 @@ script HauoliOutskirts_ExitLabEclipse{
     setweather(WEATHER_SHADE)
     doweather
     special(WaitWeather)
+    msgbox("Ah\.")
     delay(120)
-    openscreenshot(4)
+    openscreenshot(4, 0, HauoliOutskirts_ExitLabEclipse_ScreenshotTextboxTest)
     waitstate
-
-
-
+    setweather(WEATHER_NONE)
+    doweather
+    special(WaitWeather)
+    delay(60)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playmoncry(SPECIES_COSMOG, 0)
+    msgbox("Pew\.")
+    waitmoncry
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    speakername("Lillie")
+    msgbox("Nebby\.
+    {PAUSE_UNTIL_PRESS}Don't worry-it's OK.
+    
+    This must be what they call a solar
+    eclipse. It happens when the sun gets
+    covered up.")
 
 
     setvar(VAR_IKITOWN_STATE, 21)
@@ -50,6 +64,11 @@ script HauoliOutskirts_ExitLabEclipse{
     end
 
 }
+text HauoliOutskirts_ExitLabEclipse_ScreenshotTextboxTest{
+    "Textbox test.\p"
+    "Thiasdasdflkajsdfads."
+}
+
 script HauoliOutskirts_LillieOutsideLab{
     lock
     startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_LILLIE_OUTSIDE_LAB)

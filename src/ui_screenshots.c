@@ -27,6 +27,7 @@
 #include "string_util.h"
 #include "strings.h"
 #include "task.h"
+#include "text.h"
 #include "text_window.h"
 #include "overworld.h"
 #include "event_data.h"
@@ -47,6 +48,7 @@ struct ScreenshotsResources
 {
     MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
+    const u8 *messageText;
     u16 playerIconSpriteId;
     u16 nameplateSpriteId[2];
     u16 cursorIconSpriteId;
@@ -60,8 +62,10 @@ enum WindowIds
 
 //==========EWRAM==========//
 static EWRAM_DATA struct ScreenshotsResources *sScreenshotsDataPtr = NULL;
+static EWRAM_DATA u8 *sBg0TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
+static EWRAM_DATA const u8 *sPendingMessageText = NULL;
 
 //==========STATIC=DEFINES==========//
 static void Screenshots_RunSetup(void);
@@ -70,10 +74,13 @@ static bool8 Screenshots_InitBgs(void);
 static void Screenshots_FadeAndBail(void);
 static bool8 Screenshots_LoadGraphics(void);
 static void Screenshots_InitWindows(void);
-static void PrintToWindow(u16 seaSectionId);
+static void PrintToWindow(void);
 static void Task_ScreenshotsWaitFadeIn(u8 taskId);
 static void Task_ScreenshotsMain(u8 taskId);
 static void Task_ScreenshotsFadeToBlackExit(u8 taskId);
+
+#define SCREENSHOT_TILE_OFFSET 0
+#define SCREENSHOT_TEXTBOX_BASE_TILE 0
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sScreenshotsBgTemplates[] =
@@ -81,14 +88,14 @@ static const struct BgTemplate sScreenshotsBgTemplates[] =
     {
         .bg = 0,    // windows, etc
         .charBaseIndex = 0,
-        .mapBaseIndex = 31,
-        .priority = 1
+        .mapBaseIndex = 30,
+        .priority = 0
     }, 
     {
         .bg = 1,    // this bg loads the UI tilemap
-        .charBaseIndex = 0,
+        .charBaseIndex = 1,
         .mapBaseIndex = 31,
-        .priority = 0,
+        .priority = 1,
         .paletteMode = 1,
     },
     {
@@ -206,8 +213,13 @@ static const u8 sScreenshotsWindowFontColors[][3] =
 //     }
 // }
 
-void OpenScreenshotsFromScript(void)
+void OpenScreenshotsFromScript(struct ScriptContext *ctx)
 {
+    if (ctx != NULL)
+        sPendingMessageText = (const u8 *)ScriptReadWord(ctx);
+    else
+        sPendingMessageText = NULL;
+
 	CleanupOverworldWindowsAndTilemaps();
 	Screenshots_Init(CB2_ReturnToFieldContinueScript);
 }
@@ -224,6 +236,7 @@ void Screenshots_Init(MainCallback callback)
     // initialize stuff
     sScreenshotsDataPtr->gfxLoadState = 0;
     sScreenshotsDataPtr->savedCallback = callback;
+    sScreenshotsDataPtr->messageText = sPendingMessageText;
     
     SetMainCallback2(Screenshots_RunSetup);
 }
@@ -240,6 +253,7 @@ static void Screenshots_RunSetup(void)
 static void Screenshots_MainCB(void)
 {
     RunTasks();
+    RunTextPrinters();
     AdvanceComfyAnimations();
     AnimateSprites();
     BuildOamBuffer();
@@ -321,6 +335,7 @@ static bool8 Screenshots_DoGfxSetup(void)
 static void Screenshots_FreeResources(void)
 {
     try_free(sScreenshotsDataPtr);
+    try_free(sBg0TilemapBuffer);
     try_free(sBg1TilemapBuffer);
     try_free(sBg2TilemapBuffer);
     ReleaseComfyAnims();
@@ -349,6 +364,11 @@ static void Screenshots_FadeAndBail(void)
 static bool8 Screenshots_InitBgs(void)
 {
     ResetAllBgsCoordinates();
+    sBg0TilemapBuffer = Alloc(0x800);
+    if (sBg0TilemapBuffer == NULL)
+        return FALSE;
+    memset(sBg0TilemapBuffer, 0, 0x800);
+
     sBg1TilemapBuffer = Alloc(0x800);
     if (sBg1TilemapBuffer == NULL)
         return FALSE;
@@ -361,10 +381,11 @@ static bool8 Screenshots_InitBgs(void)
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sScreenshotsBgTemplates, NELEMS(sScreenshotsBgTemplates));
+    SetBgTilemapBuffer(0, sBg0TilemapBuffer);
     SetBgTilemapBuffer(1, sBg1TilemapBuffer);
     SetBgTilemapBuffer(2, sBg2TilemapBuffer);
+    HideBg(0);
     ScheduleBgCopyTilemapToVram(1);
-    //ScheduleBgCopyTilemapToVram(2);
     ShowBg(1);
     return TRUE;
 }
@@ -375,13 +396,15 @@ static bool8 Screenshots_LoadGraphics(void)
     {
     case 0:
         ResetTempTileDataBuffers();
-        DecompressAndCopyTileDataToVram(1, sScreenshotData[gSpecialVar_0x8000].screenshotTiles, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(1, sScreenshotData[gSpecialVar_0x8000].screenshotTiles, 0, SCREENSHOT_TILE_OFFSET, 0);
         sScreenshotsDataPtr->gfxLoadState++;
         break;
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
             DecompressDataWithHeaderWram(sScreenshotData[gSpecialVar_0x8000].screenshotTilemap, sBg1TilemapBuffer);
+            if (SCREENSHOT_TILE_OFFSET != 0)
+                AddValToTilemapBuffer(sBg1TilemapBuffer, SCREENSHOT_TILE_OFFSET, 32, 20, FALSE);
             sScreenshotsDataPtr->gfxLoadState++;
         }
         break;
@@ -398,13 +421,27 @@ static bool8 Screenshots_LoadGraphics(void)
 
 static void Screenshots_InitWindows(void)
 {
+    if (sScreenshotsDataPtr->messageText == NULL)
+        return;
 
+    InitStandardTextBoxWindows();
+    ChangeBgX(0, 0, BG_COORD_SET);
+    ChangeBgY(0, 0, BG_COORD_SET);
+    DeactivateAllTextPrinters();
+    LoadMessageBoxGfx(0, SCREENSHOT_TEXTBOX_BASE_TILE, BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
+    FillBgTilemapBufferRect(0, 0, 0, 0, 32, 32, 0);
+    CopyBgTilemapBufferToVram(0);
+    DrawDialogFrameWithCustomTileAndPalette(0, TRUE, SCREENSHOT_TEXTBOX_BASE_TILE, DLG_WINDOW_PALETTE_NUM);
+    PrintToWindow();
+    CopyWindowToVram(0, COPYWIN_FULL);
+    ShowBg(0);
 }
 
 
-static void PrintToWindow(u16 seaSectionId)
+static void PrintToWindow(void)
 {
-
+    StringExpandPlaceholders(gStringVar4, sScreenshotsDataPtr->messageText);
+    AddTextPrinterForMessage(TRUE);
 }
 
 static void Task_ScreenshotsWaitFadeIn(u8 taskId)
@@ -433,6 +470,9 @@ static void Task_ScreenshotsMain(u8 taskId)
     // Auto-close timer
     #define AUTOCLOSE_TIMER data[0]
     #define AUTOCLOSE_DURATION 240 // 4 seconds cause 60fps
+
+    if (sScreenshotsDataPtr->messageText != NULL && IsTextPrinterActiveOnWindow(0))
+        return;
     
     AUTOCLOSE_TIMER++;
     
@@ -475,5 +515,3 @@ static void Task_ScreenshotsFadeToBlackExit(u8 taskId)
         DestroyTask(taskId);
     }
 }
-
-
