@@ -2780,6 +2780,12 @@
 	.2byte \duration
 	.endm
 
+	.macro openscreenshot screenshotId:req, result=0
+	setvar VAR_0x8000, \screenshotId
+	setvar VAR_RESULT, \result
+	callnative OpenScreenshotsFromScript
+	.endm
+
 	.macro tryspecialevo evoArg:req, canStopEvo=TRUE, tryMultiple=FALSE
 	setvar VAR_0x8000, \canStopEvo
 	setvar VAR_0x8005, \evoArg

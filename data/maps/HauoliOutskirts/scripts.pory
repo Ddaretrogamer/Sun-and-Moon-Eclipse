@@ -38,9 +38,7 @@ script HauoliOutskirts_ExitLabEclipse{
     doweather
     special(WaitWeather)
     delay(120)
-    setvar(VAR_0x8000, 4)
-    setvar(VAR_RESULT, 0)
-    callnative(OpenScreenshotsFromScript)
+    openscreenshot(4)
     waitstate
 
 

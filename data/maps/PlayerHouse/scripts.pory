@@ -96,12 +96,10 @@ script Playerhouse_WelcomeHomeAfterFestival{
     You get some sleep, too!", MSGBOX_AUTOCLOSE)
     special(HealPlayerParty)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-    setvar(VAR_0x8000, 3)
-    setvar(VAR_RESULT, 1)
     fadescreen(FADE_TO_BLACK)
     delay(30)
     playfanfare(MUS_HEAL)
-    callnative(OpenScreenshotsFromScript)
+    openscreenshot(3, 1)
     waitstate
     waitfanfare
     setvar(VAR_IKITOWN_STATE, 16)
@@ -382,12 +380,10 @@ script PlayerHouse_ShowMomPokemon{
     delay(30)
     special(HealPlayerParty)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-    setvar(VAR_0x8000, 3)
-    setvar(VAR_RESULT, 1)
     fadescreen(FADE_TO_BLACK)
     delay(30)
     playfanfare(MUS_HEAL)
-    callnative(OpenScreenshotsFromScript)
+    openscreenshot(3, 1)
     waitstate
     waitfanfare
     endcutscene

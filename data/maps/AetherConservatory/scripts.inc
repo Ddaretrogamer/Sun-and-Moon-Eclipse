@@ -221,22 +221,20 @@ AetherIntroSequence::
 # 125 "data/maps/AetherConservatory/scripts.pory"
 	playse SE_M_COSMIC_POWER
 # 126 "data/maps/AetherConservatory/scripts.pory"
-	callnative OpenScreenshotsFromScript
+	openscreenshot 0, 1
 # 127 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
 # 128 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_0x8000, 1
+	openscreenshot 1, 1
 # 129 "data/maps/AetherConservatory/scripts.pory"
-	callnative OpenScreenshotsFromScript
+	waitstate
 # 130 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
-# 131 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
-# 132 "data/maps/AetherConservatory/scripts.pory"
+# 131 "data/maps/AetherConservatory/scripts.pory"
 	warpsilent MAP_ROUTE1, 27, 19
-# 133 "data/maps/AetherConservatory/scripts.pory"
+# 132 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
-# 134 "data/maps/AetherConservatory/scripts.pory"
+# 133 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 
