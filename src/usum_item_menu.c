@@ -91,6 +91,15 @@
 #define CATEGORY_ICON_FIRST_TILE   64
 #define CATEGORY_ICON_PALETTE      1
 
+// non-current pocket labels: 2x2 BG2 tile blocks
+#define POCKET_LABEL_FIRST_TILE    28
+#define POCKET_LABEL_TILE_WIDTH    2
+#define POCKET_LABEL_TILE_HEIGHT   2
+#define POCKET_LABEL_TILE_Y        0
+#define POCKET_LABEL_PALETTE       2
+#define POCKET_LABEL_BAND_X        8   // leftmost possible label slot
+#define POCKET_LABEL_BAND_WIDTH    22  // widest (field) label layout
+
 #define FRAME_MONEY_SPRITES_COUNT    3
 #define FRAME_PRICE_SPRITES_COUNT    3
 #define POCKET_TAB_SPRITES_COUNT     3
@@ -234,6 +243,7 @@ static void AllocateBagItemListBuffers(void);
 static void LoadBagItemListBuffers(u8);
 static void CreatePocketTabSprites(void);
 static void SlidePocketTab(u8);
+static void DrawPocketLabels(u8);
 static void PrintPocketName(const u8 *);
 static void DrawItemListBgRow(u8);
 static void SpriteCB_SlideCursorY(struct Sprite *);
@@ -484,6 +494,24 @@ static const u8 *const sPocketNamesStringsTable[] =
     [BATTLE_POCKET_POKE_BALLS]      = COMPOUND_STRING("Poké Balls"),
     [BATTLE_POCKET_BATTLE_ITEMS]    = COMPOUND_STRING("Battle Items"),
     [BATTLE_POCKET_BERRIES]         = COMPOUND_STRING("Berries"),
+#endif
+};
+
+// order of each pocket's 2x2 label (tile = base + id*4)
+static const u8 sPocketLabelIds[] =
+{
+    [POCKET_MEDICINE]               = 0,
+    [POCKET_ITEMS]                  = 1,
+    [POCKET_TM_HM]                  = 2,
+    [POCKET_BERRIES]                = 3,
+    [POCKET_KEY_ITEMS]              = 4,
+    [POCKET_Z_CRYSTALS]             = 5,
+    [POCKET_POKERIDE]               = 6,
+#if USUM_ITEM_MENU_BATTLE_POCKETS
+    [BATTLE_POCKET_MEDICINE]        = 0,
+    [BATTLE_POCKET_POKE_BALLS]      = 7,
+    [BATTLE_POCKET_BATTLE_ITEMS]    = 8,
+    [BATTLE_POCKET_BERRIES]         = 3,
 #endif
 };
 
@@ -1721,6 +1749,7 @@ static bool8 SetupBagMenu(void)
         else
 #endif
             PrintPocketName(sPocketNamesStringsTable[gBagPosition.pocket]);
+        DrawPocketLabels(gBagPosition.pocket);
         gMain.state++;
         break;
     case 14:
@@ -3106,6 +3135,7 @@ static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseLis
     }
     PrintPocketName(sPocketNamesStringsTable[newPocket]);
     SlidePocketTab(newPocket);
+    DrawPocketLabels(newPocket);
     for (u8 slot = 0; slot < MAX_ITEMS_SHOWN; slot++)
         BagMenu_DrawItemListSlot(slot, sItemListEmpty_Tilemap);
     ScheduleBgCopyTilemapToVram(2);
@@ -4300,6 +4330,51 @@ static void SlidePocketTab(u8 pocket)
     animConfig.durationFrames = POCKET_TAB_SLIDE_FRAMES;
     animConfig.easingFunc = ComfyAnimEasing_EaseOutCubic;
     InitComfyAnim_Easing(&animConfig, &gComfyAnims[sPocketTabAnimId]);
+}
+
+// Show labels for every pocket except current one, laid out around the pocket tab: 
+// pockets left of current at x = 8 + 2*local, 
+// pockets right of current at x = 16 + 2*local, with 10-tile gap for the tab
+static void DrawPocketLabels(u8 pocket)
+{
+    u32 base, count, currentLocal, p;
+
+    FillBgTilemapBufferRect_Palette0(2, 0, POCKET_LABEL_BAND_X, POCKET_LABEL_TILE_Y,
+        POCKET_LABEL_BAND_WIDTH, POCKET_LABEL_TILE_HEIGHT);
+
+    if (gBagMenu->pocketSwitchDisabled)
+    {
+        ScheduleBgCopyTilemapToVram(2);
+        return;
+    }
+
+#if USUM_ITEM_MENU_BATTLE_POCKETS
+    if (UsingBattlePockets())
+    {
+        base = POCKETS_COUNT;
+        count = BATTLE_POCKETS_COUNT;
+    }
+    else
+#endif
+    {
+        base = 0;
+        count = POCKETS_COUNT;
+    }
+    currentLocal = pocket - base;
+
+    for (p = 0; p < count; p++)
+    {
+        u32 x;
+        u16 tile;
+
+        if (p == currentLocal)
+            continue;
+        x = (p < currentLocal) ? 8 + 2 * p : 16 + 2 * p;
+        tile = POCKET_LABEL_FIRST_TILE + sPocketLabelIds[base + p] * (POCKET_LABEL_TILE_WIDTH * POCKET_LABEL_TILE_HEIGHT);
+        WriteSequenceToBgTilemapBuffer(2, tile, x, POCKET_LABEL_TILE_Y,
+            POCKET_LABEL_TILE_WIDTH, POCKET_LABEL_TILE_HEIGHT, POCKET_LABEL_PALETTE, 1);
+    }
+    ScheduleBgCopyTilemapToVram(2);
 }
 
 static void CreatePocketTabSprites(void)
