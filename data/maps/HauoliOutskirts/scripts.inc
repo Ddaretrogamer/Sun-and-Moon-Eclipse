@@ -1,7 +1,7 @@
 HauoliOutskirts_MapScripts::
 # 2 "data/maps/HauoliOutskirts/scripts.pory"
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, HauoliOutskirts_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
-# 3 "data/maps/HauoliOutskirts/scripts.pory"
+# 5 "data/maps/HauoliOutskirts/scripts.pory"
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, HauoliOutskirts_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
@@ -11,552 +11,778 @@ HauoliOutskirts_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
 	.2byte 0
 
 HauoliOutskirts_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0:
-# 2 "data/maps/HauoliOutskirts/scripts.pory"
+# 3 "data/maps/HauoliOutskirts/scripts.pory"
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+# 4 "data/maps/HauoliOutskirts/scripts.pory"
 	fwdtime DAY_HOUR_BEGIN, 0
 	return
 
 HauoliOutskirts_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-# 3 "data/maps/HauoliOutskirts/scripts.pory"
+# 5 "data/maps/HauoliOutskirts/scripts.pory"
 	map_script_2 VAR_IKITOWN_STATE, 20, HauoliOutskirts_ExitLabEclipse
 	.2byte 0
 
 
 HauoliOutskirts_ExitLabEclipse::
-# 8 "data/maps/HauoliOutskirts/scripts.pory"
-	lock
-# 9 "data/maps/HauoliOutskirts/scripts.pory"
-	hideobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
 # 10 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_0
+	lock
 # 11 "data/maps/HauoliOutskirts/scripts.pory"
-	waitmovement kukui_outside_lab
+	hideobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
 # 12 "data/maps/HauoliOutskirts/scripts.pory"
-	playse SE_PIN
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_0
 # 13 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_1
+	waitmovement kukui_outside_lab
 # 14 "data/maps/HauoliOutskirts/scripts.pory"
-	waitmovement lillie_outside_lab
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
 # 15 "data/maps/HauoliOutskirts/scripts.pory"
-	delay 30
+	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE
 # 16 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_2
+	playse SE_PIN
 # 17 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_3
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_1
 # 18 "data/maps/HauoliOutskirts/scripts.pory"
-	waitmovement 0
+	waitmovement lillie_outside_lab
 # 19 "data/maps/HauoliOutskirts/scripts.pory"
 	delay 30
 # 20 "data/maps/HauoliOutskirts/scripts.pory"
-	opendoor 25, 12
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_2
 # 21 "data/maps/HauoliOutskirts/scripts.pory"
-	waitdooranim
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_3
 # 22 "data/maps/HauoliOutskirts/scripts.pory"
-	showobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
-# 23 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_4
-# 24 "data/maps/HauoliOutskirts/scripts.pory"
-	waitmovement kukui_outside_lab
-# 25 "data/maps/HauoliOutskirts/scripts.pory"
-	closedoor 25, 12
-# 26 "data/maps/HauoliOutskirts/scripts.pory"
-	waitdooranim
-# 27 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_5
-# 28 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_5
-# 29 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
+# 23 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 30
+# 24 "data/maps/HauoliOutskirts/scripts.pory"
+	opendoor 25, 12
+# 25 "data/maps/HauoliOutskirts/scripts.pory"
+	waitdooranim
+# 26 "data/maps/HauoliOutskirts/scripts.pory"
+	showobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
+# 27 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_4
+# 28 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement kukui_outside_lab
+# 29 "data/maps/HauoliOutskirts/scripts.pory"
+	closedoor 25, 12
 # 30 "data/maps/HauoliOutskirts/scripts.pory"
-	delay 60
+	waitdooranim
 # 31 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_6
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_5
 # 32 "data/maps/HauoliOutskirts/scripts.pory"
-	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_5
 # 33 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
 # 34 "data/maps/HauoliOutskirts/scripts.pory"
-	speakername HauoliOutskirts_ExitLabEclipse_Text_0
-# 35 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_ExitLabEclipse_Text_1, MSGBOX_AUTOCLOSE
-# 37 "data/maps/HauoliOutskirts/scripts.pory"
-	setweather WEATHER_SHADE
-# 38 "data/maps/HauoliOutskirts/scripts.pory"
-	doweather
-# 39 "data/maps/HauoliOutskirts/scripts.pory"
-	special WaitWeather
-# 40 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_ExitLabEclipse_Text_2
-# 41 "data/maps/HauoliOutskirts/scripts.pory"
-	delay 120
-# 42 "data/maps/HauoliOutskirts/scripts.pory"
-	openscreenshot 4, 0, HauoliOutskirts_ExitLabEclipse_ScreenshotTextboxTest
-# 43 "data/maps/HauoliOutskirts/scripts.pory"
-	waitstate
-# 44 "data/maps/HauoliOutskirts/scripts.pory"
-	setweather WEATHER_NONE
-# 45 "data/maps/HauoliOutskirts/scripts.pory"
-	doweather
-# 46 "data/maps/HauoliOutskirts/scripts.pory"
-	special WaitWeather
-# 47 "data/maps/HauoliOutskirts/scripts.pory"
 	delay 60
-# 48 "data/maps/HauoliOutskirts/scripts.pory"
-	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 49 "data/maps/HauoliOutskirts/scripts.pory"
-	playmoncry SPECIES_COSMOG, 0
-# 50 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_ExitLabEclipse_Text_3
-# 51 "data/maps/HauoliOutskirts/scripts.pory"
-	waitmoncry
-# 52 "data/maps/HauoliOutskirts/scripts.pory"
-	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 53 "data/maps/HauoliOutskirts/scripts.pory"
+# 35 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_6
+# 36 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
+# 37 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 38 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_ExitLabEclipse_Text_0
+# 39 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_1
+# 41 "data/maps/HauoliOutskirts/scripts.pory"
+	setweather WEATHER_SHADE
+# 42 "data/maps/HauoliOutskirts/scripts.pory"
+	doweather
+# 43 "data/maps/HauoliOutskirts/scripts.pory"
+	special WaitWeather
+# 44 "data/maps/HauoliOutskirts/scripts.pory"
+	fadeoutbgm 1
+# 45 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_2, MSGBOX_AUTOCLOSE
+# 46 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 30
+# 47 "data/maps/HauoliOutskirts/scripts.pory"
+	endcutscene
+# 48 "data/maps/HauoliOutskirts/scripts.pory"
+	openscreenshot 4, 0
+# 49 "data/maps/HauoliOutskirts/scripts.pory"
+	waitstate
+# 50 "data/maps/HauoliOutskirts/scripts.pory"
+	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE
+# 51 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 30
+# 52 "data/maps/HauoliOutskirts/scripts.pory"
+	setweather WEATHER_NONE
+# 53 "data/maps/HauoliOutskirts/scripts.pory"
+	doweather
 # 54 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_ExitLabEclipse_Text_4
+	special WaitWeather
+# 55 "data/maps/HauoliOutskirts/scripts.pory"
+	fadeinbgm 1
+# 56 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 60
+# 57 "data/maps/HauoliOutskirts/scripts.pory"
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
+# 58 "data/maps/HauoliOutskirts/scripts.pory"
+	playmoncry SPECIES_COSMOG, 0
+# 59 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_3
+# 60 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmoncry
+# 61 "data/maps/HauoliOutskirts/scripts.pory"
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 # 62 "data/maps/HauoliOutskirts/scripts.pory"
-	setvar VAR_IKITOWN_STATE, 21
+	speakername HauoliOutskirts_ExitLabEclipse_Text_0
 # 63 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_4
+# 69 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_8
+# 70 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 71 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_5
+# 72 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_6
+# 76 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_5
+# 77 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_5
+# 78 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 79 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_0
+# 80 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_7
+# 82 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_9
+# 83 "data/maps/HauoliOutskirts/scripts.pory"
+	playse SE_LEDGE
+# 84 "data/maps/HauoliOutskirts/scripts.pory"
+	waitse
+# 85 "data/maps/HauoliOutskirts/scripts.pory"
+	playse SE_LEDGE
+# 86 "data/maps/HauoliOutskirts/scripts.pory"
+	waitse
+# 87 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 88 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_5
+# 89 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_8, MSGBOX_AUTOCLOSE
+# 100 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_9
+# 101 "data/maps/HauoliOutskirts/scripts.pory"
+	playse SE_LEDGE
+# 102 "data/maps/HauoliOutskirts/scripts.pory"
+	waitse
+# 103 "data/maps/HauoliOutskirts/scripts.pory"
+	playse SE_LEDGE
+# 104 "data/maps/HauoliOutskirts/scripts.pory"
+	waitse
+# 105 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 106 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_5
+# 107 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_9, MSGBOX_AUTOCLOSE
+# 115 "data/maps/HauoliOutskirts/scripts.pory"
+	checkplayergender
+# 116 "data/maps/HauoliOutskirts/scripts.pory"
+	compare VAR_RESULT, MALE
+	goto_if_eq HauoliOutskirts_ExitLabEclipse_2
+# 129 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_0
+# 130 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_12
+# 132 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_6
+# 133 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
+# 134 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 135 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_11, MSGBOX_AUTOCLOSE
+HauoliOutskirts_ExitLabEclipse_1:
+# 138 "data/maps/HauoliOutskirts/scripts.pory"
+	endcutscene
+# 139 "data/maps/HauoliOutskirts/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 140 "data/maps/HauoliOutskirts/scripts.pory"
+	removeobject lillie_outside_lab
+# 141 "data/maps/HauoliOutskirts/scripts.pory"
+	setflag FLAG_HIDE_LILLIE_HAUOLI_LAB
+# 142 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement kukui_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_10
+# 143 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement kukui_outside_lab
+# 144 "data/maps/HauoliOutskirts/scripts.pory"
+	hideobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
+# 145 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 30
+# 146 "data/maps/HauoliOutskirts/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 147 "data/maps/HauoliOutskirts/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 21
+# 148 "data/maps/HauoliOutskirts/scripts.pory"
+	release
+	end
+
+HauoliOutskirts_ExitLabEclipse_2:
+# 118 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_0
+# 119 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_10
+# 121 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement lillie_outside_lab, HauoliOutskirts_ExitLabEclipse_Movement_6
+# 122 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
+# 123 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement 0
+# 124 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_11, MSGBOX_AUTOCLOSE
+	goto HauoliOutskirts_ExitLabEclipse_1
+
+
+HauoliOutskirts_ExitLabEclipseSkip::
+# 154 "data/maps/HauoliOutskirts/scripts.pory"
+	closemessage
+# 155 "data/maps/HauoliOutskirts/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 156 "data/maps/HauoliOutskirts/scripts.pory"
+	setweather WEATHER_NONE
+# 157 "data/maps/HauoliOutskirts/scripts.pory"
+	removeobject lillie_outside_lab
+# 158 "data/maps/HauoliOutskirts/scripts.pory"
+	setflag FLAG_HIDE_LILLIE_HAUOLI_LAB
+# 159 "data/maps/HauoliOutskirts/scripts.pory"
+	setobjectxy kukui_outside_lab, 25, 10
+# 160 "data/maps/HauoliOutskirts/scripts.pory"
+	hideobjectat kukui_outside_lab, MAP_HAUOLI_OUTSKIRTS
+# 161 "data/maps/HauoliOutskirts/scripts.pory"
+	special StopAllObjectMovements
+# 162 "data/maps/HauoliOutskirts/scripts.pory"
+	special CloseScriptMenus
+# 163 "data/maps/HauoliOutskirts/scripts.pory"
+	setvar VAR_IKITOWN_STATE, 21
+# 164 "data/maps/HauoliOutskirts/scripts.pory"
+	doweather
+# 165 "data/maps/HauoliOutskirts/scripts.pory"
+	delay 30
+# 166 "data/maps/HauoliOutskirts/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 167 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 HauoliOutskirts_LillieOutsideLab::
-# 73 "data/maps/HauoliOutskirts/scripts.pory"
+# 177 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 74 "data/maps/HauoliOutskirts/scripts.pory"
+# 178 "data/maps/HauoliOutskirts/scripts.pory"
 	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_LILLIE_OUTSIDE_LAB
-# 75 "data/maps/HauoliOutskirts/scripts.pory"
+# 179 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_0
-# 76 "data/maps/HauoliOutskirts/scripts.pory"
+# 180 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement lillie_outside_lab
-# 77 "data/maps/HauoliOutskirts/scripts.pory"
+# 181 "data/maps/HauoliOutskirts/scripts.pory"
 	getplayerxy VAR_TEMP_3, VAR_TEMP_4
-# 78 "data/maps/HauoliOutskirts/scripts.pory"
+# 182 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_ExitLabEclipse_Text_0
-# 79 "data/maps/HauoliOutskirts/scripts.pory"
+# 183 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirts_LillieOutsideLab_Text_0, MSGBOX_AUTOCLOSE
-# 94 "data/maps/HauoliOutskirts/scripts.pory"
+# 198 "data/maps/HauoliOutskirts/scripts.pory"
 	playmoncry SPECIES_COSMOG, 0
-# 95 "data/maps/HauoliOutskirts/scripts.pory"
+# 199 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_1
-# 96 "data/maps/HauoliOutskirts/scripts.pory"
+# 200 "data/maps/HauoliOutskirts/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 97 "data/maps/HauoliOutskirts/scripts.pory"
+# 201 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirts_LillieOutsideLab_Text_1, MSGBOX_AUTOCLOSE
-# 98 "data/maps/HauoliOutskirts/scripts.pory"
+# 202 "data/maps/HauoliOutskirts/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 99 "data/maps/HauoliOutskirts/scripts.pory"
+# 203 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
-# 100 "data/maps/HauoliOutskirts/scripts.pory"
+# 204 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmessage
-# 101 "data/maps/HauoliOutskirts/scripts.pory"
+# 205 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_ExitLabEclipse_Text_0
-# 102 "data/maps/HauoliOutskirts/scripts.pory"
+# 206 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirts_LillieOutsideLab_Text_2, MSGBOX_AUTOCLOSE
-# 121 "data/maps/HauoliOutskirts/scripts.pory"
+# 225 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8004, 1
-# 122 "data/maps/HauoliOutskirts/scripts.pory"
+# 226 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8005, 1
-# 123 "data/maps/HauoliOutskirts/scripts.pory"
+# 227 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8006, 8
-# 124 "data/maps/HauoliOutskirts/scripts.pory"
+# 228 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8007, 5
-# 125 "data/maps/HauoliOutskirts/scripts.pory"
+# 229 "data/maps/HauoliOutskirts/scripts.pory"
 	special ShakeCamera
-# 126 "data/maps/HauoliOutskirts/scripts.pory"
+# 230 "data/maps/HauoliOutskirts/scripts.pory"
 	waitstate
-# 127 "data/maps/HauoliOutskirts/scripts.pory"
+# 231 "data/maps/HauoliOutskirts/scripts.pory"
 	playse SE_PIN
-# 128 "data/maps/HauoliOutskirts/scripts.pory"
+# 232 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_LillieOutsideLab_Movement_2
-# 129 "data/maps/HauoliOutskirts/scripts.pory"
+# 233 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_2
-# 130 "data/maps/HauoliOutskirts/scripts.pory"
+# 234 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
-# 131 "data/maps/HauoliOutskirts/scripts.pory"
-	speakername HauoliOutskirts_LillieOutsideLab_Text_3
-# 132 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_LillieOutsideLab_Text_4, MSGBOX_AUTOCLOSE
-# 135 "data/maps/HauoliOutskirts/scripts.pory"
+# 235 "data/maps/HauoliOutskirts/scripts.pory"
+	speakername HauoliOutskirts_ExitLabEclipse_Text_5
+# 236 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_LillieOutsideLab_Text_3, MSGBOX_AUTOCLOSE
+# 239 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_0
-# 136 "data/maps/HauoliOutskirts/scripts.pory"
+# 240 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_3, 24
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_3
 HauoliOutskirts_LillieOutsideLab_1:
-# 139 "data/maps/HauoliOutskirts/scripts.pory"
+# 243 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_3, 25
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_9
 HauoliOutskirts_LillieOutsideLab_8:
-# 143 "data/maps/HauoliOutskirts/scripts.pory"
+# 247 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
 HauoliOutskirts_LillieOutsideLab_6:
-# 145 "data/maps/HauoliOutskirts/scripts.pory"
+# 249 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
-# 146 "data/maps/HauoliOutskirts/scripts.pory"
+# 250 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_ExitLabEclipse_Text_0
-# 147 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_LillieOutsideLab_Text_5, MSGBOX_AUTOCLOSE
-# 163 "data/maps/HauoliOutskirts/scripts.pory"
+# 251 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_LillieOutsideLab_Text_4, MSGBOX_AUTOCLOSE
+# 267 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8004, 1
-# 164 "data/maps/HauoliOutskirts/scripts.pory"
+# 268 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8005, 1
-# 165 "data/maps/HauoliOutskirts/scripts.pory"
+# 269 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8006, 8
-# 166 "data/maps/HauoliOutskirts/scripts.pory"
+# 270 "data/maps/HauoliOutskirts/scripts.pory"
 	setvar VAR_0x8007, 5
-# 167 "data/maps/HauoliOutskirts/scripts.pory"
+# 271 "data/maps/HauoliOutskirts/scripts.pory"
 	special ShakeCamera
-# 168 "data/maps/HauoliOutskirts/scripts.pory"
+# 272 "data/maps/HauoliOutskirts/scripts.pory"
 	waitstate
-# 169 "data/maps/HauoliOutskirts/scripts.pory"
+# 273 "data/maps/HauoliOutskirts/scripts.pory"
 	playse SE_PIN
-# 170 "data/maps/HauoliOutskirts/scripts.pory"
+# 274 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_LillieOutsideLab_Movement_2
-# 171 "data/maps/HauoliOutskirts/scripts.pory"
+# 275 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_2
-# 172 "data/maps/HauoliOutskirts/scripts.pory"
+# 276 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
-# 173 "data/maps/HauoliOutskirts/scripts.pory"
+# 277 "data/maps/HauoliOutskirts/scripts.pory"
 	setflag FLAG_SUPPRESS_SPEAKER_NAME
-# 174 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_LillieOutsideLab_Text_6, MSGBOX_AUTOCLOSE
-# 175 "data/maps/HauoliOutskirts/scripts.pory"
+# 278 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_LillieOutsideLab_Text_5, MSGBOX_AUTOCLOSE
+# 279 "data/maps/HauoliOutskirts/scripts.pory"
 	clearflag FLAG_SUPPRESS_SPEAKER_NAME
-# 176 "data/maps/HauoliOutskirts/scripts.pory"
+# 280 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_0
-# 177 "data/maps/HauoliOutskirts/scripts.pory"
+# 281 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_3, 24
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_14
 HauoliOutskirts_LillieOutsideLab_12:
-# 180 "data/maps/HauoliOutskirts/scripts.pory"
+# 284 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_3, 25
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_20
 HauoliOutskirts_LillieOutsideLab_19:
-# 184 "data/maps/HauoliOutskirts/scripts.pory"
+# 288 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_7
 HauoliOutskirts_LillieOutsideLab_17:
-# 186 "data/maps/HauoliOutskirts/scripts.pory"
+# 290 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
-# 187 "data/maps/HauoliOutskirts/scripts.pory"
+# 291 "data/maps/HauoliOutskirts/scripts.pory"
 	speakername HauoliOutskirts_ExitLabEclipse_Text_0
-# 188 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_LillieOutsideLab_Text_7, MSGBOX_AUTOCLOSE
-# 205 "data/maps/HauoliOutskirts/scripts.pory"
+# 292 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_LillieOutsideLab_Text_6, MSGBOX_AUTOCLOSE
+# 309 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_3
-# 206 "data/maps/HauoliOutskirts/scripts.pory"
+# 310 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement lillie_outside_lab
-# 207 "data/maps/HauoliOutskirts/scripts.pory"
+# 311 "data/maps/HauoliOutskirts/scripts.pory"
 	opendoor 25, 12
-# 208 "data/maps/HauoliOutskirts/scripts.pory"
+# 312 "data/maps/HauoliOutskirts/scripts.pory"
 	waitdooranim
-# 209 "data/maps/HauoliOutskirts/scripts.pory"
+# 313 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement lillie_outside_lab, HauoliOutskirts_LillieOutsideLab_Movement_4
-# 210 "data/maps/HauoliOutskirts/scripts.pory"
+# 314 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement lillie_outside_lab
-# 211 "data/maps/HauoliOutskirts/scripts.pory"
+# 315 "data/maps/HauoliOutskirts/scripts.pory"
 	hideobjectat lillie_outside_lab, MAP_HAUOLI_OUTSKIRTS
-# 212 "data/maps/HauoliOutskirts/scripts.pory"
+# 316 "data/maps/HauoliOutskirts/scripts.pory"
 	removeobject lillie_outside_lab
-# 213 "data/maps/HauoliOutskirts/scripts.pory"
+# 317 "data/maps/HauoliOutskirts/scripts.pory"
 	setflag FLAG_HIDE_LILLIE_HAUOLI_LAB
-# 214 "data/maps/HauoliOutskirts/scripts.pory"
+# 318 "data/maps/HauoliOutskirts/scripts.pory"
 	closedoor 25, 12
-# 215 "data/maps/HauoliOutskirts/scripts.pory"
+# 319 "data/maps/HauoliOutskirts/scripts.pory"
 	waitdooranim
-# 216 "data/maps/HauoliOutskirts/scripts.pory"
+# 320 "data/maps/HauoliOutskirts/scripts.pory"
 	endcutscene
-# 217 "data/maps/HauoliOutskirts/scripts.pory"
+# 321 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 HauoliOutskirts_LillieOutsideLab_2:
-# 137 "data/maps/HauoliOutskirts/scripts.pory"
+# 241 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_6
 	goto HauoliOutskirts_LillieOutsideLab_1
 
 HauoliOutskirts_LillieOutsideLab_3:
-# 136 "data/maps/HauoliOutskirts/scripts.pory"
+# 240 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_4, 15
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_2
 	goto HauoliOutskirts_LillieOutsideLab_1
 
 HauoliOutskirts_LillieOutsideLab_7:
-# 140 "data/maps/HauoliOutskirts/scripts.pory"
+# 244 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_5
 	goto HauoliOutskirts_LillieOutsideLab_6
 
 HauoliOutskirts_LillieOutsideLab_9:
-# 139 "data/maps/HauoliOutskirts/scripts.pory"
+# 243 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_4, 16
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_7
 	goto HauoliOutskirts_LillieOutsideLab_8
 
 HauoliOutskirts_LillieOutsideLab_13:
-# 178 "data/maps/HauoliOutskirts/scripts.pory"
+# 282 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_6
 	goto HauoliOutskirts_LillieOutsideLab_12
 
 HauoliOutskirts_LillieOutsideLab_14:
-# 177 "data/maps/HauoliOutskirts/scripts.pory"
+# 281 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_4, 15
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_13
 	goto HauoliOutskirts_LillieOutsideLab_12
 
 HauoliOutskirts_LillieOutsideLab_18:
-# 181 "data/maps/HauoliOutskirts/scripts.pory"
+# 285 "data/maps/HauoliOutskirts/scripts.pory"
 	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_5
 	goto HauoliOutskirts_LillieOutsideLab_17
 
 HauoliOutskirts_LillieOutsideLab_20:
-# 180 "data/maps/HauoliOutskirts/scripts.pory"
+# 284 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_TEMP_4, 16
 	goto_if_eq HauoliOutskirts_LillieOutsideLab_18
 	goto HauoliOutskirts_LillieOutsideLab_19
 
 
 HauoliOutskirts_LillieOutsideLabSkip::
-# 222 "data/maps/HauoliOutskirts/scripts.pory"
+# 326 "data/maps/HauoliOutskirts/scripts.pory"
 	closemessage
-# 223 "data/maps/HauoliOutskirts/scripts.pory"
+# 327 "data/maps/HauoliOutskirts/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
-# 224 "data/maps/HauoliOutskirts/scripts.pory"
+# 328 "data/maps/HauoliOutskirts/scripts.pory"
 	special StopAllObjectMovements
-# 225 "data/maps/HauoliOutskirts/scripts.pory"
+# 329 "data/maps/HauoliOutskirts/scripts.pory"
 	special CloseScriptMenus
-# 226 "data/maps/HauoliOutskirts/scripts.pory"
+# 330 "data/maps/HauoliOutskirts/scripts.pory"
 	removeobject lillie_outside_lab
-# 227 "data/maps/HauoliOutskirts/scripts.pory"
+# 331 "data/maps/HauoliOutskirts/scripts.pory"
 	setflag FLAG_HIDE_LILLIE_HAUOLI_LAB
-# 228 "data/maps/HauoliOutskirts/scripts.pory"
+# 332 "data/maps/HauoliOutskirts/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
-# 229 "data/maps/HauoliOutskirts/scripts.pory"
+# 333 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 LabSign::
-# 234 "data/maps/HauoliOutskirts/scripts.pory"
+# 338 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 235 "data/maps/HauoliOutskirts/scripts.pory"
+# 339 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox LabSign_Text_0
-# 236 "data/maps/HauoliOutskirts/scripts.pory"
+# 340 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 OutsideTenCarrotHill::
-# 241 "data/maps/HauoliOutskirts/scripts.pory"
+# 345 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 242 "data/maps/HauoliOutskirts/scripts.pory"
+# 346 "data/maps/HauoliOutskirts/scripts.pory"
 	faceplayer
-# 243 "data/maps/HauoliOutskirts/scripts.pory"
+# 347 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox OutsideTenCarrotHill_Text_0
-# 244 "data/maps/HauoliOutskirts/scripts.pory"
+# 348 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 TenCarrotHillSign::
-# 248 "data/maps/HauoliOutskirts/scripts.pory"
+# 352 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 249 "data/maps/HauoliOutskirts/scripts.pory"
+# 353 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox TenCarrotHillSign_Text_0
-# 250 "data/maps/HauoliOutskirts/scripts.pory"
+# 354 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 HauoliOutskirtLittleGirlNPC::
-# 254 "data/maps/HauoliOutskirts/scripts.pory"
+# 358 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 255 "data/maps/HauoliOutskirts/scripts.pory"
+# 359 "data/maps/HauoliOutskirts/scripts.pory"
 	faceplayer
-# 256 "data/maps/HauoliOutskirts/scripts.pory"
+# 360 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirtLittleGirlNPC_Text_0
-# 257 "data/maps/HauoliOutskirts/scripts.pory"
+# 361 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 HauoliOustkirtsTrainerTipsSign::
-# 262 "data/maps/HauoliOutskirts/scripts.pory"
+# 366 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 263 "data/maps/HauoliOutskirts/scripts.pory"
+# 367 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsTrainerTipsSign_Text_0
-# 264 "data/maps/HauoliOutskirts/scripts.pory"
+# 368 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 
 HauoliOutskirtLassNPC::
-# 269 "data/maps/HauoliOutskirts/scripts.pory"
+# 373 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirtLassNPC_Text_0, MSGBOX_NPC
 	end
 
 
 HauoliOustkirtsFishingSpot1::
-# 274 "data/maps/HauoliOutskirts/scripts.pory"
+# 378 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 275 "data/maps/HauoliOutskirts/scripts.pory"
+# 379 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_SURF_MON_SLOT, 0
 	goto_if_eq HauoliOustkirtsFishingSpot1_2
-# 296 "data/maps/HauoliOutskirts/scripts.pory"
+# 400 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_2
 HauoliOustkirtsFishingSpot1_1:
-# 298 "data/maps/HauoliOutskirts/scripts.pory"
+# 402 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 HauoliOustkirtsFishingSpot1_2:
-# 277 "data/maps/HauoliOutskirts/scripts.pory"
+# 381 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_0, MSGBOX_YESNO
-# 278 "data/maps/HauoliOutskirts/scripts.pory"
+# 382 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_5
-# 290 "data/maps/HauoliOutskirts/scripts.pory"
+# 394 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 HauoliOustkirtsFishingSpot1_5:
-# 280 "data/maps/HauoliOutskirts/scripts.pory"
+# 384 "data/maps/HauoliOutskirts/scripts.pory"
 	checkitem ITEM_SUPER_ROD
-# 281 "data/maps/HauoliOutskirts/scripts.pory"
+# 385 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_8
-# 286 "data/maps/HauoliOutskirts/scripts.pory"
+# 390 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_1
 	goto HauoliOustkirtsFishingSpot1_1
 
 HauoliOustkirtsFishingSpot1_8:
-# 283 "data/maps/HauoliOutskirts/scripts.pory"
+# 387 "data/maps/HauoliOutskirts/scripts.pory"
 	startfishing
 	goto HauoliOustkirtsFishingSpot1_1
 
 
-# 10 "data/maps/HauoliOutskirts/scripts.pory"
+# 12 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_0:
-# 10 "data/maps/HauoliOutskirts/scripts.pory"
+# 12 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_down
-# 10 "data/maps/HauoliOutskirts/scripts.pory"
+# 12 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_down
 	step_end
 
-# 13 "data/maps/HauoliOutskirts/scripts.pory"
+# 17 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_1:
-# 13 "data/maps/HauoliOutskirts/scripts.pory"
+# 17 "data/maps/HauoliOutskirts/scripts.pory"
 	face_up
-# 13 "data/maps/HauoliOutskirts/scripts.pory"
+# 17 "data/maps/HauoliOutskirts/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 16 "data/maps/HauoliOutskirts/scripts.pory"
+# 20 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_2:
-# 16 "data/maps/HauoliOutskirts/scripts.pory"
+# 20 "data/maps/HauoliOutskirts/scripts.pory"
 	delay_8
-# 16 "data/maps/HauoliOutskirts/scripts.pory"
+# 20 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_left
-# 16 "data/maps/HauoliOutskirts/scripts.pory"
+# 20 "data/maps/HauoliOutskirts/scripts.pory"
 	face_right
 	step_end
 
-# 17 "data/maps/HauoliOutskirts/scripts.pory"
+# 21 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_3:
-# 17 "data/maps/HauoliOutskirts/scripts.pory"
+# 21 "data/maps/HauoliOutskirts/scripts.pory"
 	delay_16
-# 17 "data/maps/HauoliOutskirts/scripts.pory"
+# 21 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_down
-# 17 "data/maps/HauoliOutskirts/scripts.pory"
+# 21 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_down
-# 17 "data/maps/HauoliOutskirts/scripts.pory"
+# 21 "data/maps/HauoliOutskirts/scripts.pory"
 	face_left
 	step_end
 
-# 23 "data/maps/HauoliOutskirts/scripts.pory"
+# 27 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_4:
-# 23 "data/maps/HauoliOutskirts/scripts.pory"
+# 27 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_down
 	step_end
 
-# 27 "data/maps/HauoliOutskirts/scripts.pory"
+# 31 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_5:
-# 27 "data/maps/HauoliOutskirts/scripts.pory"
+# 31 "data/maps/HauoliOutskirts/scripts.pory"
 	face_up
 	step_end
 
-# 31 "data/maps/HauoliOutskirts/scripts.pory"
+# 35 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_6:
-# 31 "data/maps/HauoliOutskirts/scripts.pory"
+# 35 "data/maps/HauoliOutskirts/scripts.pory"
 	face_right
 	step_end
 
-# 32 "data/maps/HauoliOutskirts/scripts.pory"
+# 36 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_7:
-# 32 "data/maps/HauoliOutskirts/scripts.pory"
+# 36 "data/maps/HauoliOutskirts/scripts.pory"
 	face_left
 	step_end
 
-# 75 "data/maps/HauoliOutskirts/scripts.pory"
+# 69 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_ExitLabEclipse_Movement_8:
+# 69 "data/maps/HauoliOutskirts/scripts.pory"
+	walk_in_place_down
+# 69 "data/maps/HauoliOutskirts/scripts.pory"
+	walk_in_place_down
+	step_end
+
+# 82 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_ExitLabEclipse_Movement_9:
+# 82 "data/maps/HauoliOutskirts/scripts.pory"
+	jump_in_place_down
+# 82 "data/maps/HauoliOutskirts/scripts.pory"
+	jump_in_place_down
+	step_end
+
+# 142 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_ExitLabEclipse_Movement_10:
+# 142 "data/maps/HauoliOutskirts/scripts.pory"
+	walk_faster_up
+# 142 "data/maps/HauoliOutskirts/scripts.pory"
+	walk_faster_up
+# 142 "data/maps/HauoliOutskirts/scripts.pory"
+	walk_faster_up
+	step_end
+
+# 179 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_LillieOutsideLab_Movement_0:
-# 75 "data/maps/HauoliOutskirts/scripts.pory"
+# 179 "data/maps/HauoliOutskirts/scripts.pory"
 	face_player
 	step_end
 
-# 95 "data/maps/HauoliOutskirts/scripts.pory"
+# 199 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_LillieOutsideLab_Movement_1:
-# 95 "data/maps/HauoliOutskirts/scripts.pory"
+# 199 "data/maps/HauoliOutskirts/scripts.pory"
 	shake_horizontal
 	step_end
 
-# 128 "data/maps/HauoliOutskirts/scripts.pory"
+# 232 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_LillieOutsideLab_Movement_2:
-# 128 "data/maps/HauoliOutskirts/scripts.pory"
+# 232 "data/maps/HauoliOutskirts/scripts.pory"
 	emote_exclamation_mark
-# 128 "data/maps/HauoliOutskirts/scripts.pory"
+# 232 "data/maps/HauoliOutskirts/scripts.pory"
 	face_up
 	step_end
 
-# 205 "data/maps/HauoliOutskirts/scripts.pory"
+# 309 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_LillieOutsideLab_Movement_3:
-# 205 "data/maps/HauoliOutskirts/scripts.pory"
+# 309 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_up
-# 205 "data/maps/HauoliOutskirts/scripts.pory"
+# 309 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_up
 	step_end
 
-# 209 "data/maps/HauoliOutskirts/scripts.pory"
+# 313 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_LillieOutsideLab_Movement_4:
-# 209 "data/maps/HauoliOutskirts/scripts.pory"
+# 313 "data/maps/HauoliOutskirts/scripts.pory"
 	walk_up
 	step_end
 
 HauoliOutskirts_ExitLabEclipse_Text_0:
-# 34 "data/maps/HauoliOutskirts/scripts.pory"
+# 38 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Lillie$"
 
 HauoliOutskirts_ExitLabEclipse_Text_1:
-# 35 "data/maps/HauoliOutskirts/scripts.pory"
+# 39 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "The Pokémon Center is practically right\n"
 	.string "next to your house, isn't it?$"
 
 HauoliOutskirts_ExitLabEclipse_Text_2:
-# 40 "data/maps/HauoliOutskirts/scripts.pory"
+# 45 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Ah…$"
 
 HauoliOutskirts_ExitLabEclipse_Text_3:
-# 50 "data/maps/HauoliOutskirts/scripts.pory"
+# 59 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Pew…$"
 
 HauoliOutskirts_ExitLabEclipse_Text_4:
-# 54 "data/maps/HauoliOutskirts/scripts.pory"
+# 63 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Nebby…\n"
 	.string "{PAUSE_UNTIL_PRESS}Don't worry-it's OK.\p"
 	.string "This must be what they call a solar\n"
-	.string "eclipse. It happens when the sun gets\l"
-	.string "covered up.$"
+	.string "eclipse. It happens when the sun\l"
+	.string "gets covered up.$"
+
+HauoliOutskirts_ExitLabEclipse_Text_5:
+# 71 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Kukui$"
+
+HauoliOutskirts_ExitLabEclipse_Text_6:
+# 72 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Was a solar eclipse forcast for today?\p"
+	.string "Ah, well. It must be some kind of\n"
+	.string "good omen, yeah!$"
+
+HauoliOutskirts_ExitLabEclipse_Text_7:
+# 80 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "An omen?\n"
+	.string "You think something good will happen?$"
+
+HauoliOutskirts_ExitLabEclipse_Text_8:
+# 89 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Sure! A long, long time ago, Alola was\n"
+	.string "cloaked in darkness, yeah…\p"
+	.string "But people say that's when Alola's\n"
+	.string "people and Pokémon blasted all that\l"
+	.string "darkness away with light!\p"
+	.string "And they also say that was why people\n"
+	.string "started gathering Z-Crystals, and\l"
+	.string "that custom turned into the island\l"
+	.string "challenge.$"
+
+HauoliOutskirts_ExitLabEclipse_Text_9:
+# 107 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "{PLAYER}!\p"
+	.string "Now that you've got that Z-Power Ring,\n"
+	.string "I hope you'll collect tons of\l"
+	.string "Z-Crystals! Woo!\p"
+	.string "That's exactly what a move researcher\n"
+	.string "like me needs to uncover new secrets!$"
+
+HauoliOutskirts_ExitLabEclipse_Text_10:
+# 119 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Professor, that's not why he's supposed\n"
+	.string "to be doing it…$"
+
+HauoliOutskirts_ExitLabEclipse_Text_11:
+# 124 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Come on, {PLAYER}.\n"
+	.string "I'll show you to the Pokémon Center.$"
+
+HauoliOutskirts_ExitLabEclipse_Text_12:
+# 130 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Professor, that's not why she's\n"
+	.string "supposed to be doing it…$"
 
 HauoliOutskirts_LillieOutsideLab_Text_0:
-# 79 "data/maps/HauoliOutskirts/scripts.pory"
+# 183 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Hey {PLAYER}.\n"
 	.string "You made it.\p"
 	.string "Since I'm not a Trainer, I have to rely\n"
@@ -569,11 +795,11 @@ HauoliOutskirts_LillieOutsideLab_Text_0:
 	.string "It came from far, far away.$"
 
 HauoliOutskirts_LillieOutsideLab_Text_1:
-# 97 "data/maps/HauoliOutskirts/scripts.pory"
+# 201 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Pew!$"
 
 HauoliOutskirts_LillieOutsideLab_Text_2:
-# 102 "data/maps/HauoliOutskirts/scripts.pory"
+# 206 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "It seems to have a very strange power…\p"
 	.string "It used that power to save me once\n"
 	.string "when I was in danger.\p"
@@ -589,17 +815,13 @@ HauoliOutskirts_LillieOutsideLab_Text_2:
 	.string "Please…$"
 
 HauoliOutskirts_LillieOutsideLab_Text_3:
-# 131 "data/maps/HauoliOutskirts/scripts.pory"
-	.string "Kukui$"
-
-HauoliOutskirts_LillieOutsideLab_Text_4:
-# 132 "data/maps/HauoliOutskirts/scripts.pory"
+# 236 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Oh yeah, Rockruff! Lets go!\n"
 	.string "Give it everything you've got!\l"
 	.string "My body is ready. Woo!$"
 
-HauoliOutskirts_LillieOutsideLab_Text_5:
-# 147 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_LillieOutsideLab_Text_4:
+# 251 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Ah…\n"
 	.string "There they go again…\p"
 	.string "The Pokémon Research Lab has its own\n"
@@ -613,12 +835,12 @@ HauoliOutskirts_LillieOutsideLab_Text_5:
 	.string "Maybe I'd be more help if I were a real\n"
 	.string "Pokémon Trainer, too.$"
 
-HauoliOutskirts_LillieOutsideLab_Text_6:
-# 174 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_LillieOutsideLab_Text_5:
+# 278 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Raaaa-oooooohhh! Raff ruff!$"
 
-HauoliOutskirts_LillieOutsideLab_Text_7:
-# 188 "data/maps/HauoliOutskirts/scripts.pory"
+HauoliOutskirts_LillieOutsideLab_Text_6:
+# 292 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "The professor…\p"
 	.string "He never stops researching moves.\n"
 	.string "Not even…{PAUSE 30}inside the lab itself.\p"
@@ -633,11 +855,11 @@ HauoliOutskirts_LillieOutsideLab_Text_7:
 	.string "any more damage…$"
 
 LabSign_Text_0:
-# 235 "data/maps/HauoliOutskirts/scripts.pory"
+# 339 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Pokémon Research Lab$"
 
 OutsideTenCarrotHill_Text_0:
-# 243 "data/maps/HauoliOutskirts/scripts.pory"
+# 347 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Wa ha ha!\n"
 	.string "You're a strong Trainer, all right!\l"
 	.string "Go on! You take on Ten Carrot Hill,\l"
@@ -646,11 +868,11 @@ OutsideTenCarrotHill_Text_0:
 	.string "within!$"
 
 TenCarrotHillSign_Text_0:
-# 249 "data/maps/HauoliOutskirts/scripts.pory"
+# 353 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Ten Carrot Hill$"
 
 HauoliOutskirtLittleGirlNPC_Text_0:
-# 256 "data/maps/HauoliOutskirts/scripts.pory"
+# 360 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "The Pokémon I've got with me are all\n"
 	.string "Grass-type.\p"
 	.string "I'm looking for Water-type Pokémon\l"
@@ -658,7 +880,7 @@ HauoliOutskirtLittleGirlNPC_Text_0:
 	.string "too.$"
 
 HauoliOustkirtsTrainerTipsSign_Text_0:
-# 263 "data/maps/HauoliOutskirts/scripts.pory"
+# 367 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Trainer Tips\p"
 	.string "The Pokémon that will appear first in\n"
 	.string "battle will be the one you've put in\l"
@@ -666,22 +888,17 @@ HauoliOustkirtsTrainerTipsSign_Text_0:
 	.string "party.$"
 
 HauoliOutskirtLassNPC_Text_0:
-# 269 "data/maps/HauoliOutskirts/scripts.pory"
+# 373 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "If you see a Pokémon Trainer, you've\ngotta show off the Pokémon you like!$"
 
 HauoliOustkirtsFishingSpot1_Text_0:
-# 277 "data/maps/HauoliOutskirts/scripts.pory"
+# 381 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Would you like to fish here?$"
 
 HauoliOustkirtsFishingSpot1_Text_1:
-# 286 "data/maps/HauoliOutskirts/scripts.pory"
+# 390 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You don't have a Fishing Rod.$"
 
 HauoliOustkirtsFishingSpot1_Text_2:
-# 296 "data/maps/HauoliOutskirts/scripts.pory"
+# 400 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You can't fish while riding a Sharpedo!$"
-
-HauoliOutskirts_ExitLabEclipse_ScreenshotTextboxTest::
-# 67 "data/maps/HauoliOutskirts/scripts.pory"
-	.string "Textbox test.\p"
-	.string "Thiasdasdflkajsdfads.$"

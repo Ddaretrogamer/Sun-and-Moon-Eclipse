@@ -1,5 +1,6 @@
 mapscripts AlolaLaboratory_MapScripts {
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, TRUE {
+        setobjectxy(lab_rotom, 14, 17)
         hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
         if (var(VAR_IKITOWN_STATE) > 18) {
             setobjectxy(lab_lillie, 14, 17)
