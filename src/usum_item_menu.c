@@ -77,8 +77,7 @@
 #define TAG_BAG_SCROLL_THUMB     114
 #define TAG_MOVE_TYPE_ICON       115
 #define TAG_SWAP_CURSOR          117
-#define TAG_FRAME_MONEY          118
-#define TAG_FRAME_PRICE_QUANTITY 119
+#define TAG_QUANTITY_BOX         118
 #define TAG_PARTY_HELD_ITEM      120
 #define TAG_STATUS_ICON          121
 #define TAG_POCKET_TAB           123
@@ -91,6 +90,16 @@
 #define CATEGORY_ICON_FIRST_TILE   65
 #define CATEGORY_ICON_PALETTE      1
 
+// current pocket tab: 3 sprites, name printed via sprite text
+#define POCKET_TAB_SPRITES_COUNT 3
+#define POCKET_TAB_TEXT_X        16
+#define POCKET_TAB_TEXT_Y        5
+#define POCKET_TAB_TEXT_WIDTH    64
+#define POCKET_TAB_SPRITE_WIDTH  32
+#define POCKET_TAB_BASE_X        72
+#define POCKET_TAB_STEP_X        16
+#define POCKET_TAB_SLIDE_FRAMES  20
+
 // non-current pocket labels: 2x2 BG2 tile blocks
 #define POCKET_LABEL_FIRST_TILE    29
 #define POCKET_LABEL_TILE_WIDTH    2
@@ -100,17 +109,25 @@
 #define POCKET_LABEL_BAND_X        8   // leftmost possible label slot
 #define POCKET_LABEL_BAND_WIDTH    22  // widest (field) label layout
 
-#define FRAME_MONEY_SPRITES_COUNT    3
-#define FRAME_PRICE_SPRITES_COUNT    3
-#define POCKET_TAB_SPRITES_COUNT     3
+#define SELL_BOX_PALETTE        3
+#define WALLET_BOX_WIDTH        8
+#define WALLET_BOX_HEIGHT       4
+#define SELL_PRICE_BOX_WIDTH    8
+#define SELL_PRICE_BOX_HEIGHT   6
+#define SELL_PRICE_BOX_TILE_Y   5
 
-#define POCKET_TAB_TEXT_X        16
-#define POCKET_TAB_TEXT_Y        5
-#define POCKET_TAB_TEXT_WIDTH    64
-#define POCKET_TAB_SPRITE_WIDTH  32
-#define POCKET_TAB_BASE_X        72
-#define POCKET_TAB_STEP_X        16
-#define POCKET_TAB_SLIDE_FRAMES  20
+#define QUANTITY_BOX_TEXT_X      16
+#define QUANTITY_BOX_TEXT_Y      8
+#define QUANTITY_BOX_TEXT_WIDTH  32
+#define QUANTITY_BOX_TEXT_HEIGHT 16
+
+enum {
+    QUANTITY_BOX_SPRITE,
+    SELL_PRICE_BOX_SPRITE,
+    QUANTITY_BOX_SPRITE_COUNT,
+};
+#define QUANTITY_BOX_FRAME_TILES  32
+#define QUANTITY_BOX_FRAME_U32    (QUANTITY_BOX_FRAME_TILES * TILE_SIZE_4BPP / sizeof(u32))
 
 // The buffer for the bag item list needs to be large enough to hold the maximum
 // number of item slots that could fit in a single pocket, + 1 for Cancel.
@@ -315,13 +332,13 @@ static void ItemMenu_Cancel(u8);
 static void HandleErrorMessage(u8);
 static void PrintItemCantBeHeld(u8);
 static u8 BagMenu_AddWindowNoFrame(u8 windowType);
-static void CreateQuantityFrameSprites(u8 y);
-static void DestroyQuantityFrameSprites(void);
+static void CreateQuantityBoxSprite(u8 y, bool8 isSell);
+static void DestroyQuantityBoxSprite(void);
 static void SetupSellWindows(void);
-static void PrintSellPrice(u16 itemId, int qty);
-static void PrintQuantity(u8 windowId, s16 quantity);
+static void PrintSellPrice(u16 itemId);
+static void PrintQuantity(s16 quantity);
+static void PrintSellTotalPrice(s16 quantity);
 static void PrintMoney(u8 windowId);
-static void UpdateSellPrice(u16 itemId);
 static void DisplaySellItemPriceAndConfirm(u8);
 static void InitSellHowManyInput(u8);
 static void AskSellItems(u8);
@@ -782,9 +799,7 @@ static const u32 sBagScreen_BG3TileMap[]        = INCGFX_U32("graphics/bag/usum/
 static const u32 sCursor_Gfx[]                  = INCGFX_U32("graphics/bag/usum/cursor.png", ".4bpp.smol");
 static const u32 sScrollThumb_Gfx[]             = INCGFX_U32("graphics/bag/usum/scroll_thumb.png", ".4bpp.smol");
 static const u32 sSwapCursor_Gfx[]              = INCGFX_U32("graphics/bag/usum/swap_cursor.png", ".4bpp.smol");
-static const u32 sFrameMoney_Gfx[]              = INCGFX_U32("graphics/bag/usum/frame_money.png", ".4bpp.smol");
-static const u32 sFramePriceQuantity_Gfx[]      = INCGFX_U32("graphics/bag/usum/frame_price_quantity.png", ".4bpp.smol");
-// Uncompressed: FillSpriteRectSprite reads this directly to erase the pocket name text.
+static const u32 sQuantityBox_Gfx[]             = INCGFX_U32("graphics/bag/usum/quantity_box.png", ".4bpp");
 static const u32 sPocketTab_Gfx[]               = INCGFX_U32("graphics/bag/usum/pocket_tab.png", ".4bpp");
 static const u8 sBagMenuHMIcon_Gfx[]            = INCGFX_U8("graphics/bag/usum/hm.png", ".4bpp");
 static const u8 sButtonR_Gfx[]                  = INCGFX_U8("graphics/bag/usum/button_r.png", ".4bpp");
@@ -795,6 +810,8 @@ static const u16 sMoveTypeIcons_Pal[]           = INCGFX_U16("graphics/bag/usum/
 static const u8 sInfoPrompt_Tilemap[]           = INCBIN_U8("graphics/bag/usum/info_prompt.bin");
 static const u8 sItemListPill_Tilemap[]         = INCBIN_U8("graphics/bag/usum/item_list_pill.bin");
 static const u8 sItemListEmpty_Tilemap[]        = INCBIN_U8("graphics/bag/usum/item_list_empty.bin");
+static const u8 sWallet_Tilemap[]               = INCBIN_U8("graphics/bag/usum/wallet.bin");
+static const u8 sSellPrice_Tilemap[]            = INCBIN_U8("graphics/bag/usum/sell_price.bin");
 
 #if USUM_ITEM_MENU_IN_BAG_USE
 static const u8 sPartySlots_Tilemap[]           = INCBIN_U8("graphics/bag/usum/party_slots.bin");
@@ -1032,84 +1049,47 @@ static const struct SpriteTemplate sSpriteTemplate_MoveTypeIcon =
     .callback = SpriteCB_MoveTypeIcon,
 };
 
-static const struct OamData sOamData_FrameMoney =
+static const struct OamData sOamData_QuantityBox =
 {
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
     .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x16),
-    .size = SPRITE_SIZE(32x16),
-    .priority = 2,
-};
-
-static const union AnimCmd sSpriteAnim_FrameMoney_0[] = {
-    ANIMCMD_FRAME(0, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_FrameMoney_1[] = {
-    ANIMCMD_FRAME(8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd *const sSpriteAnimTable_FrameMoney[] = {
-    sSpriteAnim_FrameMoney_0,
-    sSpriteAnim_FrameMoney_1,
-};
-static const u8 sFrameMoneyAnims[FRAME_MONEY_SPRITES_COUNT] = {0, 0, 1};
-
-static const struct CompressedSpriteSheet sSpriteSheet_FrameMoney = {
-    .data = sFrameMoney_Gfx,
-    .size = (32 * 32) / 2,
-    .tag = TAG_FRAME_MONEY,
-};
-
-static const struct SpriteTemplate sSpriteTemplate_FrameMoney = {
-    .tileTag = TAG_FRAME_MONEY,
-    .paletteTag = TAG_ITEM_CURSOR,
-    .oam = &sOamData_FrameMoney,
-    .anims = sSpriteAnimTable_FrameMoney,
-};
-
-static const struct OamData sOamData_FramePriceQuantity =
-{
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x32),
-    .size = SPRITE_SIZE(32x32),
+    .shape = SPRITE_SHAPE(64x32),
+    .size = SPRITE_SIZE(64x32),
     .priority = 1,
 };
 
-static const union AnimCmd sSpriteAnim_FramePriceQuantity_0[] = {
+static const struct SpriteSheet sSpriteSheet_QuantityBox = {
+    .data = sQuantityBox_Gfx,
+    .size = (64 * 64) / 2,
+    .tag = TAG_QUANTITY_BOX,
+};
+
+static const union AnimCmd sSpriteAnim_QuantityBox_0[] = {
     ANIMCMD_FRAME(0, 0, FALSE, FALSE),
     ANIMCMD_END
 };
-static const union AnimCmd sSpriteAnim_FramePriceQuantity_1[] = {
-    ANIMCMD_FRAME(16, 0, FALSE, FALSE),
+static const union AnimCmd sSpriteAnim_QuantityBox_1[] = {
+    ANIMCMD_FRAME(QUANTITY_BOX_FRAME_TILES, 0, FALSE, FALSE),
     ANIMCMD_END
 };
-static const union AnimCmd sSpriteAnim_FramePriceQuantity_2[] = {
-    ANIMCMD_FRAME(16, 0, TRUE, TRUE),
-    ANIMCMD_END
-};
-static const union AnimCmd *const sSpriteAnimTable_FramePriceQuantity[] = {
-    sSpriteAnim_FramePriceQuantity_0,
-    sSpriteAnim_FramePriceQuantity_1,
-    sSpriteAnim_FramePriceQuantity_2,
-};
-static const u8 sFramePriceAnims[FRAME_PRICE_SPRITES_COUNT]       = {0, 0, 1};
-static const u8 sFrameQuantityAnims[FRAME_QUANTITY_SPRITES_COUNT] = {2, 0};
-
-static const struct CompressedSpriteSheet sSpriteSheet_FramePriceQuantity = {
-    .data = sFramePriceQuantity_Gfx,
-    .size = (32 * 64) / 2,
-    .tag = TAG_FRAME_PRICE_QUANTITY,
+static const union AnimCmd *const sSpriteAnimTable_QuantityBox[] = {
+    sSpriteAnim_QuantityBox_0,
+    sSpriteAnim_QuantityBox_1,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_FramePriceQuantity = {
-    .tileTag = TAG_FRAME_PRICE_QUANTITY,
+static const struct SpriteTemplate sSpriteTemplate_QuantityBox = {
+    .tileTag = TAG_QUANTITY_BOX,
     .paletteTag = TAG_ITEM_CURSOR,
-    .oam = &sOamData_FramePriceQuantity,
-    .anims = sSpriteAnimTable_FramePriceQuantity,
+    .oam = &sOamData_QuantityBox,
+    .anims = sSpriteAnimTable_QuantityBox,
+};
+
+static const union TextColor sQuantityBoxTextColor =
+{
+    .background = 0,
+    .foreground = 4,
+    .shadow = 11,
 };
 
 static const struct OamData sOamData_PocketTab =
@@ -1157,12 +1137,10 @@ static const union TextColor sPocketTabTextColor =
 {
     .background = 0,
     .foreground = 1,
-    .shadow = 12,
+    .shadow = 10,
 };
 
 static u8 sScrollThumbSpriteId;
-static u8 sFrameMoneyIds[FRAME_MONEY_SPRITES_COUNT];
-static u8 sFramePriceIds[FRAME_PRICE_SPRITES_COUNT];
 static u8 sPocketTabIds[POCKET_TAB_SPRITES_COUNT];
 static u32 sPocketTabAnimId;
 
@@ -1170,13 +1148,12 @@ enum {
     COLORID_NORMAL,
     COLORID_ITEM_LIST,
     COLORID_DESCRIPTION,
-    COLORID_HOVER_NAME,
-    COLORID_HOVER_QTY,
     COLORID_POCKET_NAME,
-    COLORID_GRAY_CURSOR,
     COLORID_TMHM_INFO,
-    COLORID_NO_FLAVOR,
     COLORID_PROMPT,
+    COLORID_MONEY,
+    COLORID_SELL_PRICE,
+    COLORID_NO_FLAVOR,
     COLORID_NONE = 0xFF
 };
 static const u8 sFontColorTable[][3] = {
@@ -1184,13 +1161,12 @@ static const u8 sFontColorTable[][3] = {
     [COLORID_NORMAL]      = {0,  1,  3},
     [COLORID_ITEM_LIST]   = {0, 12,  5},
     [COLORID_DESCRIPTION] = {0,  7,  9},
-    [COLORID_HOVER_NAME]  = {0,  2,  4},
-    [COLORID_HOVER_QTY]   = {0,  2,  5},
     [COLORID_POCKET_NAME] = {0,  1,  5},
-    [COLORID_GRAY_CURSOR] = {0,  3,  6},
     [COLORID_TMHM_INFO]   = {0,  7,  9},
     [COLORID_PROMPT]      = {0,  1,  3},
-    [COLORID_NO_FLAVOR]   = {0,  3,  7}
+    [COLORID_MONEY]       = {0,  7,  2},
+    [COLORID_SELL_PRICE]  = {0,  7,  8},
+    [COLORID_NO_FLAVOR]   = {0,  3,  7},
 };
 
 static const struct WindowTemplate sDefaultBagWindows[] =
@@ -1287,7 +1263,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop  = 4,
         .width       = 5,
         .height      = 1,
-        .paletteNum  = 3,
+        .paletteNum  = 4,
         .baseBlock   = 687,
     },
 #endif
@@ -1297,7 +1273,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .tilemapTop = 16,
         .width = 3,
         .height = 4,
-        .paletteNum = 3,
+        .paletteNum = 4,
         .baseBlock = 692,
     },
     DUMMY_WIN_TEMPLATE,
@@ -1371,29 +1347,20 @@ static const struct WindowTemplate sContextMenuWindowTemplates[] =
     [ITEMWIN_SELL_PRICE] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 4,
-        .width = 6,
+        .tilemapTop = 6,
+        .width = 5,
         .height = 4,
         .paletteNum = 3,
         .baseBlock = 559,
     },
     [ITEMWIN_MONEY] = {
         .bg = 0,
-        .tilemapLeft = 1,
+        .tilemapLeft = 0,
         .tilemapTop = 0,
-        .width = 8,
-        .height = 2,
+        .width = 7,
+        .height = 4,
         .paletteNum = 3,
         .baseBlock = 583,
-    },
-    [ITEMWIN_QUANTITY] = { // Quantity input (toss/deposit/sell/multi-use), sits above the message box
-        .bg = 0,
-        .tilemapLeft = 24,
-        .tilemapTop = 11,
-        .width = 4,
-        .height = 2,
-        .paletteNum = 3,
-        .baseBlock = 599,
     },
 #if USUM_ITEM_MENU_IN_BAG_USE
     [ITEMWIN_PP_MOVE_SELECT] = {
@@ -1546,7 +1513,8 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback)
         sScrollThumbSpriteId = SPRITE_NONE;
         memset(sPocketTabIds, SPRITE_NONE, sizeof(sPocketTabIds));
         sPocketTabAnimId = INVALID_COMFY_ANIM;
-        memset(gBagMenu->frameQuantityIds, SPRITE_NONE, sizeof(gBagMenu->frameQuantityIds));
+        gBagMenu->quantityBoxSpriteIds[QUANTITY_BOX_SPRITE] = SPRITE_NONE;
+        gBagMenu->quantityBoxSpriteIds[SELL_PRICE_BOX_SPRITE] = SPRITE_NONE;
         gBagMenu->cursorAnimId = INVALID_COMFY_ANIM;
         gBagMenu->scrollThumbAnimId = INVALID_COMFY_ANIM;
         gBagMenu->partyItemIconAnimId = INVALID_COMFY_ANIM;
@@ -1618,6 +1586,21 @@ static void CB2_Bag(void)
 #define PARTY_HELD_ITEM_Y(slot)     (PARTY_MON_ICON_Y(slot) + 12)
 #define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 12)
 #define PARTY_ITEM_ICON_Y(slot)     PARTY_MON_ICON_Y(slot)
+
+// Party panel slot backgrounds: 8x3 BG2 tile blocks the sprites sit on
+#define PARTY_PANEL_START_COL       0
+#define PARTY_PANEL_START_ROW       2
+#define PARTY_PANEL_SLOT_WIDTH      8
+#define PARTY_PANEL_SLOT_HEIGHT     3
+#define PARTY_HP_BAR_Y_OFFSET       1   // pixel offset of the HP bar fill rows
+#define PARTY_HP_BAR_X_OFFSET       2   // 1px margin + 1px border left of the fill
+#define PARTY_HP_BAR_MAX_WIDTH      36  // fill width in pixels
+#define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
+#define PARTY_HP_BAR_BORDER_COLOR   11
+
+// coming from the party menu, only show the target mon
+// drawn with slot 0's graphics shifted this many tile rows down
+#define PARTY_PANEL_TARGET_ROW_OFFSET 2
 
 enum {
     BAG_REENTRY_NONE,
@@ -1825,7 +1808,7 @@ static bool8 SetupBagMenu(void)
         if (gBagPosition.location == ITEMMENULOCATION_SHOP)
         {
             SetupSellWindows();
-            UpdateSellPrice(BagList_GetItemId(gBagPosition.pocket,
+            PrintSellPrice(BagList_GetItemId(gBagPosition.pocket,
                 gBagPosition.cursorPosition[gBagPosition.pocket]));
         }
         gMain.state++;
@@ -1929,14 +1912,10 @@ static bool8 LoadBagMenu_Graphics(void)
         gBagMenu->graphicsLoadState++;
         break;
     case 10:
-        LoadCompressedSpriteSheet(&sSpriteSheet_FrameMoney);
+        LoadSpriteSheet(&sSpriteSheet_QuantityBox);
         gBagMenu->graphicsLoadState++;
         break;
     case 11:
-        LoadCompressedSpriteSheet(&sSpriteSheet_FramePriceQuantity);
-        gBagMenu->graphicsLoadState++;
-        break;
-    case 12:
         LoadSpriteSheet(&sSpriteSheet_PocketTab);
         gBagMenu->graphicsLoadState++;
         break;
@@ -2534,7 +2513,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
     {
         u16 itemId = (itemIndex != LIST_CANCEL)
             ? BagList_GetItemId(gBagPosition.pocket, itemIndex) : ITEM_NONE;
-        UpdateSellPrice(itemId);
+        PrintSellPrice(itemId);
     }
 }
 
@@ -2842,8 +2821,8 @@ void CloseItemMessage(u8 taskId)
 
 static void AddItemQuantityWindow(void)
 {
-    CreateQuantityFrameSprites(96);
-    PrintQuantity(BagMenu_AddWindowNoFrame(ITEMWIN_QUANTITY), 1);
+    CreateQuantityBoxSprite(96, FALSE);
+    PrintQuantity(1);
 }
 
 static bool8 BagMenu_TryWraparoundScroll(u8 listTaskId, u16 *scrollPos, u16 *cursorPos)
@@ -3663,20 +3642,18 @@ static void Task_ChooseHowManyToToss(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
+        PrintQuantity(tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         AskTossItems(taskId);
     }
     else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         CancelToss(taskId);
     }
 }
@@ -3995,11 +3972,7 @@ static void DisplaySellItemPriceAndConfirm(u8 taskId)
 
 static void AskSellItems(u8 taskId)
 {
-    if (gBagMenu->windowIds[ITEMWIN_QUANTITY] != WINDOW_NONE)
-    {
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
-    }
+    DestroyQuantityBoxSprite();
     BagMenu_YesNo(taskId, ITEMWIN_YESNO_HIGH, &sYesNoSellItemFunctions);
 }
 
@@ -4014,13 +3987,9 @@ static void CancelSell(u8 taskId)
 
 static void InitSellHowManyInput(u8 taskId)
 {
-    u8 windowId;
-
-    CreateQuantityFrameSprites(96);
-    windowId = BagMenu_AddWindowNoFrame(ITEMWIN_QUANTITY);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
-    PrintQuantity(windowId, 1);
-    PrintSellPrice(gSpecialVar_ItemId, 1);
+    CreateQuantityBoxSprite(96, TRUE);
+    PrintQuantity(1);
+    PrintSellTotalPrice(1);
     gTasks[taskId].func = Task_ChooseHowManyToSell;
 }
 
@@ -4030,8 +3999,8 @@ static void Task_ChooseHowManyToSell(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
-        PrintSellPrice(gSpecialVar_ItemId, tItemCount);
+        PrintQuantity(tItemCount);
+        PrintSellTotalPrice(tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -4042,9 +4011,7 @@ static void Task_ChooseHowManyToSell(u8 taskId)
     {
         PlaySE(SE_SELECT);
         BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
-        PrintSellPrice(gSpecialVar_ItemId, 1);
+        DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         ReturnToItemList(taskId);
     }
@@ -4111,20 +4078,18 @@ static void Task_ChooseHowManyToDeposit(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
+        PrintQuantity(tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         TryDepositItem(taskId);
     }
     else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
         ReturnToItemList(taskId);
@@ -4500,45 +4465,56 @@ void BagMenu_YesNo(u8 taskId, u8 windowType, const struct YesNoFuncTable *funcTa
     CreateYesNoMenuWithCallbacks(taskId, &sContextMenuWindowTemplates[windowType], 1, 0, 2, 1, 14, funcTable);
 }
 
-static void CreateMoneyFrameSprites(void)
+static void BagMenu_DrawSellBox(const u8 *tilemap, u8 top, u8 width, u8 height)
 {
-    u8 i;
-    for (i = 0; i < FRAME_MONEY_SPRITES_COUNT; i++)
+    u16 *buf = (u16 *)gBagMenu->mainTilemapBuffer;
+    u8 row, col;
+
+    for (row = 0; row < height; row++)
+        for (col = 0; col < width; col++)
+            buf[(top + row) * 32 + col] = tilemap[row * width + col] | (SELL_BOX_PALETTE << 12);
+    ScheduleBgCopyTilemapToVram(2);
+}
+
+static void CreateQuantityBoxSprite(u8 y, bool8 isSell)
+{
+    u8 *ids = gBagMenu->quantityBoxSpriteIds;
+
+    if (isSell)
     {
-        sFrameMoneyIds[i] = CreateSprite(&sSpriteTemplate_FrameMoney, i * 32, 8, 3);
-        StartSpriteAnim(&gSprites[sFrameMoneyIds[i]], sFrameMoneyAnims[i]);
+        const u32 *srcs[QUANTITY_BOX_SPRITE_COUNT];
+        srcs[QUANTITY_BOX_SPRITE]   = sQuantityBox_Gfx;
+        srcs[SELL_PRICE_BOX_SPRITE]  = sQuantityBox_Gfx + QUANTITY_BOX_FRAME_U32;
+
+        ids[QUANTITY_BOX_SPRITE]   = CreateSprite(&sSpriteTemplate_QuantityBox, 144, y, 3);
+        ids[SELL_PRICE_BOX_SPRITE] = CreateSprite(&sSpriteTemplate_QuantityBox, 208, y, 3);
+
+        // Show the bottom frame (sell-price box) on the second sprite.
+        StartSpriteAnim(&gSprites[ids[SELL_PRICE_BOX_SPRITE]], SELL_PRICE_BOX_SPRITE);
+        SetSpriteSheetFrameTileNum(&gSprites[ids[SELL_PRICE_BOX_SPRITE]]);
+
+        SetupSpritesForTextPrinting(ids, srcs, QUANTITY_BOX_SPRITE_COUNT, 1);
+    }
+    else
+    {
+        const u32 *src = sQuantityBox_Gfx;
+
+        ids[QUANTITY_BOX_SPRITE]   = CreateSprite(&sSpriteTemplate_QuantityBox, 208, y, 3);
+        ids[SELL_PRICE_BOX_SPRITE] = SPRITE_NONE;
+        SetupSpritesForTextPrinting(ids, &src, 1, 1);
     }
 }
 
-static void CreatePriceFrameSprites(void)
+static void DestroyQuantityBoxSprite(void)
 {
-    u8 i;
-    for (i = 0; i < FRAME_PRICE_SPRITES_COUNT; i++)
-    {
-        sFramePriceIds[i] = CreateSprite(&sSpriteTemplate_FramePriceQuantity, i * 32, 48, 3);
-        StartSpriteAnim(&gSprites[sFramePriceIds[i]], sFramePriceAnims[i]);
-    }
-}
+    u32 i;
 
-static void CreateQuantityFrameSprites(u8 y)
-{
-    u8 i;
-    for (i = 0; i < FRAME_QUANTITY_SPRITES_COUNT; i++)
+    for (i = 0; i < QUANTITY_BOX_SPRITE_COUNT; i++)
     {
-        gBagMenu->frameQuantityIds[i] = CreateSprite(&sSpriteTemplate_FramePriceQuantity, 192 + i * 32, y, 3);
-        StartSpriteAnim(&gSprites[gBagMenu->frameQuantityIds[i]], sFrameQuantityAnims[i]);
-    }
-}
-
-static void DestroyQuantityFrameSprites(void)
-{
-    u8 i;
-    for (i = 0; i < FRAME_QUANTITY_SPRITES_COUNT; i++)
-    {
-        if (gBagMenu->frameQuantityIds[i] != SPRITE_NONE)
+        if (gBagMenu->quantityBoxSpriteIds[i] != SPRITE_NONE)
         {
-            DestroySprite(&gSprites[gBagMenu->frameQuantityIds[i]]);
-            gBagMenu->frameQuantityIds[i] = SPRITE_NONE;
+            DestroySprite(&gSprites[gBagMenu->quantityBoxSpriteIds[i]]);
+            gBagMenu->quantityBoxSpriteIds[i] = SPRITE_NONE;
         }
     }
 }
@@ -4553,7 +4529,7 @@ static u8 BagMenu_AddWindowNoFrame(u8 windowType)
     return *windowId;
 }
 
-static void PrintSellPrice(u16 itemId, int qty)
+static void PrintSellPrice(u16 itemId)
 {
     u8 windowId = gBagMenu->windowIds[ITEMWIN_SELL_PRICE];
     u8 windowWidthPx = sContextMenuWindowTemplates[ITEMWIN_SELL_PRICE].width * 8;
@@ -4561,58 +4537,75 @@ static void PrintSellPrice(u16 itemId, int qty)
     FillWindowPixelRect(windowId, PIXEL_FILL(0), 0, 16, windowWidthPx, 16);
 
     if (itemId == ITEM_NONE || GetItemPrice(itemId) == 0 || GetItemImportance(itemId))
-    {
         StringCopy(gStringVar1, gText_ThreeDashes);
-    }
     else
-    {
-        u32 total = GetItemSellPrice(itemId) * qty;
-        ConvertIntToDecimalStringN(gStringVar1, total, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
-    }
+        ConvertIntToDecimalStringN(gStringVar1, GetItemSellPrice(itemId), STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
     BagMenu_Print(windowId, FONT_NORMAL, gStringVar4,
-        GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, windowWidthPx), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
+        GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, windowWidthPx), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_SELL_PRICE);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
 static void SetupSellWindows(void)
 {
     u8 windowId;
-    CreatePriceFrameSprites();
-    CreateMoneyFrameSprites();
+    BagMenu_DrawSellBox(sWallet_Tilemap, 0, WALLET_BOX_WIDTH, WALLET_BOX_HEIGHT);
+    BagMenu_DrawSellBox(sSellPrice_Tilemap, SELL_PRICE_BOX_TILE_Y, SELL_PRICE_BOX_WIDTH, SELL_PRICE_BOX_HEIGHT);
 
     windowId = BagMenu_AddWindowNoFrame(ITEMWIN_SELL_PRICE);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
-    BagMenu_Print(windowId, FONT_NORMAL, sText_Price, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
+    BagMenu_Print(windowId, FONT_NORMAL, sText_Price, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_SELL_PRICE);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 
     windowId = BagMenu_AddWindowNoFrame(ITEMWIN_MONEY);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+    BagMenu_Print(windowId, FONT_NORMAL, COMPOUND_STRING("Money"), 8, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_MONEY);
     PrintMoney(windowId);
 }
 
-static void UpdateSellPrice(u16 itemId)
+static void PrintQuantity(s16 quantity)
 {
-    PrintSellPrice(itemId, 1);
-}
+    u8 spriteId = gBagMenu->quantityBoxSpriteIds[QUANTITY_BOX_SPRITE];
 
-static void PrintQuantity(u8 windowId, s16 quantity)
-{
-    u8 windowWidthPx = sContextMenuWindowTemplates[ITEMWIN_QUANTITY].width * 8;
-
+    if (spriteId == SPRITE_NONE)
+        return;
+    FillSpriteRectSprite(spriteId, QUANTITY_BOX_TEXT_X, QUANTITY_BOX_TEXT_Y,
+                         QUANTITY_BOX_TEXT_WIDTH, QUANTITY_BOX_TEXT_HEIGHT);
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
-    BagMenu_Print(windowId, FONT_NORMAL, gStringVar4,
-        GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, windowWidthPx), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
-    CopyWindowToVram(windowId, COPYWIN_GFX);
+    AddSpriteTextPrinterParameterized6(spriteId, FONT_NORMAL,
+        QUANTITY_BOX_TEXT_X + GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, QUANTITY_BOX_TEXT_WIDTH),
+        QUANTITY_BOX_TEXT_Y, 0, 0, sQuantityBoxTextColor, 0, gStringVar4);
+}
+
+static void PrintSellTotalPrice(s16 quantity)
+{
+    u8 priceSpriteId = gBagMenu->quantityBoxSpriteIds[SELL_PRICE_BOX_SPRITE];
+
+    if (priceSpriteId == SPRITE_NONE)
+        return;
+    FillSpriteRectSprite(priceSpriteId, 0, QUANTITY_BOX_TEXT_Y,
+                         QUANTITY_BOX_TEXT_X + QUANTITY_BOX_TEXT_WIDTH, QUANTITY_BOX_TEXT_HEIGHT);
+    ConvertIntToDecimalStringN(gStringVar1, GetItemSellPrice(gSpecialVar_ItemId) * quantity, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
+    StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
+    // Right-align on the sell-price sprite itself, ending at the same inset the
+    // quantity uses. Printing here (not via the chained head sprite) keeps the
+    // starting x within the sprite width; a combined-space x past the head
+    // sprite's edge underflows the glyph copier and leaves stray pixels.
+    AddSpriteTextPrinterParameterized6(priceSpriteId, FONT_NORMAL,
+        (QUANTITY_BOX_TEXT_X + QUANTITY_BOX_TEXT_WIDTH) - GetStringWidth(FONT_NORMAL, gStringVar4, 0),
+        QUANTITY_BOX_TEXT_Y, 0, 0, sQuantityBoxTextColor, 0, gStringVar4);
 }
 
 static void PrintMoney(u8 windowId)
 {
+    u8 windowWidthPx = sContextMenuWindowTemplates[ITEMWIN_MONEY].width * 8;
+
+    FillWindowPixelRect(windowId, PIXEL_FILL(0), 0, 16, windowWidthPx, 16);
     ConvertIntToDecimalStringN(gStringVar1, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
-    BagMenu_Print(windowId, FONT_NORMAL, gStringVar4, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_HOVER_NAME);
+    BagMenu_Print(windowId, FONT_NORMAL, gStringVar4,
+        GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, windowWidthPx), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_MONEY);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
@@ -5549,20 +5542,6 @@ static void SwitchBerryInfoMode(s32 itemIndex)
 // Party Panel
 // ============================================================
 
-#define PARTY_PANEL_START_COL       0
-#define PARTY_PANEL_START_ROW       2
-#define PARTY_PANEL_SLOT_WIDTH      8
-#define PARTY_PANEL_SLOT_HEIGHT     3
-#define PARTY_HP_BAR_Y_OFFSET       1   // pixel offset of the HP bar fill rows
-#define PARTY_HP_BAR_X_OFFSET       2   // 1px margin + 1px border left of the fill
-#define PARTY_HP_BAR_MAX_WIDTH      36  // fill width in pixels
-#define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
-#define PARTY_HP_BAR_BORDER_COLOR   11
-
-// coming from the party menu, only show the target mon
-// drawn with slot 0's graphics shifted this many tile rows down
-#define PARTY_PANEL_TARGET_ROW_OFFSET 2
-
 static u8 BagMenu_PanelRowOffset(void)
 {
     return gBagPosition.location == ITEMMENULOCATION_PARTY ? PARTY_PANEL_TARGET_ROW_OFFSET : 0;
@@ -5952,6 +5931,9 @@ static void BagMenu_SetPartyIconBlend(bool8 enable)
 static void BagMenu_UpdateTMHMPartyBlend(s32 itemIndex)
 {
     u8 i;
+
+    if (!BagMenu_ShouldLoadPartyPanel())
+        return;
 
     // empty pocket, nothing to teach, so don't alpha blend the party
     if (gBagMenu->numItemStacks[gBagPosition.pocket] == (u8)(!gBagMenu->hideCloseBagText))
@@ -8455,8 +8437,8 @@ static void BagMenu_TryMultiUse(u8 taskId)
 
 static void BagMenu_InitMultiUseInput(u8 taskId)
 {
-    CreateQuantityFrameSprites(96);
-    PrintQuantity(BagMenu_AddWindowNoFrame(ITEMWIN_QUANTITY), 1);
+    CreateQuantityBoxSprite(96, FALSE);
+    PrintQuantity(1);
     gTasks[taskId].func = Task_BagMenu_MultiUseInput;
 }
 
@@ -8466,21 +8448,19 @@ static void Task_BagMenu_MultiUseInput(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tMultiUseMax) == TRUE)
     {
-        PrintQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
+        PrintQuantity(tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         BagMenu_UseItem(taskId);
     }
     else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        DestroyQuantityFrameSprites();
-        BagMenu_RemoveWindow(ITEMWIN_QUANTITY);
+        DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         tItemCount = 1;
         gTasks[taskId].func = Task_BagMenu_PartyInput;
