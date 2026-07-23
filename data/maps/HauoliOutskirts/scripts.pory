@@ -46,11 +46,9 @@ script HauoliOutskirts_ExitLabEclipse{
     gettimeofday
     if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
         openscreenshot(4, 0)
-        waitstate
     }
     else{
         openscreenshot(5, 0)
-        waitstate
     }
     startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     delay(30)

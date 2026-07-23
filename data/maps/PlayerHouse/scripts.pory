@@ -100,7 +100,6 @@ script Playerhouse_WelcomeHomeAfterFestival{
     delay(30)
     playfanfare(MUS_HEAL)
     openscreenshot(3, 1)
-    waitstate
     waitfanfare
     setvar(VAR_IKITOWN_STATE, 16)
     clearflag(FLAG_HIDE_ROUTE1_LILLIE)
@@ -384,7 +383,6 @@ script PlayerHouse_ShowMomPokemon{
     delay(30)
     playfanfare(MUS_HEAL)
     openscreenshot(3, 1)
-    waitstate
     waitfanfare
     endcutscene
     setvar(VAR_IKITOWN_STATE, 9)

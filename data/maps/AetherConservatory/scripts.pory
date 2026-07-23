@@ -124,9 +124,7 @@ script AetherIntroSequence{
     setvar(VAR_RESULT, 1)
     playse(SE_M_COSMIC_POWER)
     openscreenshot(0, 1)
-    waitstate
     openscreenshot(1, 1)
-    waitstate
     delay(30)
     warpsilent(MAP_ROUTE1, 27, 19)
     waitstate

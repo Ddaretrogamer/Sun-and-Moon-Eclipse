@@ -223,18 +223,14 @@ AetherIntroSequence::
 # 126 "data/maps/AetherConservatory/scripts.pory"
 	openscreenshot 0, 1
 # 127 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
-# 128 "data/maps/AetherConservatory/scripts.pory"
 	openscreenshot 1, 1
-# 129 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
-# 130 "data/maps/AetherConservatory/scripts.pory"
+# 128 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
-# 131 "data/maps/AetherConservatory/scripts.pory"
+# 129 "data/maps/AetherConservatory/scripts.pory"
 	warpsilent MAP_ROUTE1, 27, 19
-# 132 "data/maps/AetherConservatory/scripts.pory"
+# 130 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
-# 133 "data/maps/AetherConservatory/scripts.pory"
+# 131 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 

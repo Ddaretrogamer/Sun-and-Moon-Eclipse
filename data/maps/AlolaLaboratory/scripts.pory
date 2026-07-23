@@ -345,24 +345,12 @@ script AlolaLaboratory_FirstTimeIntro{
         It can take up residence in machines.")
     }
     applymovement(lab_kukui, moves(walk_in_place_down*2))
-    speakername("Kukui")
-    msgbox("Yeah, buddy! And to put that crazy skill
-    of Rotom's to work\.
-    
-    It's the next generation of Phones, but
-    it's only complete once Rotom has
-    gone into this body specially
-    developed for it!
-    
-    A whole new way for people and Pokémon
-    to communicate. Woo!
-    
-    And there's only a few of these
-    beauties out in the world so far!
-    
-    And now if I power up your Rotom Phone
-    with the parts that I just got in\.", MSGBOX_AUTOCLOSE)
+    endcutscene
+    openscreenshot(6, 2, AlolaLaboratory_RotomPhoneIntro1)
+    openscreenshot(7, 2, AlolaLaboratory_RotomPhoneIntro2)
+    openscreenshot(8, 0, AlolaLaboratory_RotomPhoneIntro3)
     applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*3))
+    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     playse(SE_SWITCH)
     waitse
     playse(SE_SWITCH)
@@ -434,7 +422,6 @@ script AlolaLaboratory_FirstTimeIntro{
     waitmovement(0)
     delay(30)
     rotommenudisplay("Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.")
-    // waitstate
     speakername("Kukui")
     msgbox("Check it out, {PLAYER}!
     Now Rotom can talk right to you!
@@ -595,6 +582,30 @@ script AlolaLaboratory_FirstTimeIntro{
     release
     end
 }
+
+text AlolaLaboratory_RotomPhoneIntro1{
+    "Yeah, buddy! And to put that crazy skill
+    of Rotom's to work\."
+}
+
+text AlolaLaboratory_RotomPhoneIntro2{
+    "It's the next generation of Phones, but
+    it's only complete once Rotom has
+    gone into this body specially
+    developed for it!"
+}
+
+text AlolaLaboratory_RotomPhoneIntro3{
+    "A whole new way for people and Pokémon
+    to communicate. Woo!
+    
+    And there's only a few of these
+    beauties out in the world so far!
+    
+    And now if I power up your Rotom Phone
+    with the parts that I just got in\."
+}
+
 
 script AlolaLaboratory_FirstTimeIntroSkip{
     lock
