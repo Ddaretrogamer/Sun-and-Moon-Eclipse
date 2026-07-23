@@ -1,7 +1,5 @@
 mapscripts HauoliOutskirts_MapScripts{
-    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 20 {
-        setflag(FLAG_HIDE_MAP_NAME_POPUP)
-        fwdtime (DAY_HOUR_BEGIN, 0)}]
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[VAR_IKITOWN_STATE, 20 {setflag(FLAG_HIDE_MAP_NAME_POPUP)}]
     MAP_SCRIPT_ON_FRAME_TABLE[VAR_IKITOWN_STATE, 20: HauoliOutskirts_ExitLabEclipse]
 }
 
@@ -45,8 +43,15 @@ script HauoliOutskirts_ExitLabEclipse{
     msgbox("Ah\.", MSGBOX_AUTOCLOSE)
     delay(30)
     endcutscene
-    openscreenshot(4, 0)
-    waitstate
+    gettimeofday
+    if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
+        openscreenshot(4, 0)
+        waitstate
+    }
+    else{
+        openscreenshot(5, 0)
+        waitstate
+    }
     startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     delay(30)
     setweather(WEATHER_NONE)
@@ -60,19 +65,37 @@ script HauoliOutskirts_ExitLabEclipse{
     waitmoncry
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     speakername("Lillie")
-    msgbox("Nebby\.
-    {PAUSE_UNTIL_PRESS}Don't worry-it's OK.
-    
-    This must be what they call a solar
-    eclipse. It happens when the sun
-    gets covered up.")
-    applymovement(kukui_outside_lab, moves(walk_in_place_down*2))
-    waitmovement(0)
-    speakername("Kukui")
-    msgbox("Was a solar eclipse forcast for today?
-    
-    Ah, well. It must be some kind of
-    good omen, yeah!")
+    gettimeofday
+    if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
+        msgbox("Nebby\.
+        {PAUSE_UNTIL_PRESS}Don't worry-it's OK.
+        
+        This must be what they call a lunar
+        eclipse. It happens when the moon
+        gets covered up.")
+        applymovement(kukui_outside_lab, moves(walk_in_place_down*2))
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("Was a lunar eclipse forcast for today?
+
+        Ah, well. It must be some kind of
+        good omen, yeah!")
+    }
+    else{
+        msgbox("Nebby\.
+        {PAUSE_UNTIL_PRESS}Don't worry-it's OK.
+        
+        This must be what they call a solar
+        eclipse. It happens when the sun
+        gets covered up.")
+        applymovement(kukui_outside_lab, moves(walk_in_place_down*2))
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("Was a solar eclipse forcast for today?
+        
+        Ah, well. It must be some kind of
+        good omen, yeah!")
+    }
     applymovement(lillie_outside_lab, moves(face_up))
     applymovement(LOCALID_PLAYER, moves(face_up))
     waitmovement(0)

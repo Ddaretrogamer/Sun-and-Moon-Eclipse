@@ -81,6 +81,7 @@ static void Task_ScreenshotsFadeToBlackExit(u8 taskId);
 
 #define SCREENSHOT_TILE_OFFSET 0
 #define SCREENSHOT_TEXTBOX_BASE_TILE 0
+#define SCREENSHOT_FADE_IN_DELAY 1
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sScreenshotsBgTemplates[] =
@@ -138,9 +139,13 @@ static const u32 sTheNextDayScreenshotsTiles[] = INCGFX_U32("graphics/ui_screens
 static const u32 sTheNextDayScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/TheNextDay_tiles.bin", ".lz");
 static const u16 sTheNextDayScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/TheNextDay_tiles.png", ".gbapal");
 
-static const u32 sEclipseOutsideLabScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles2.png", ".8bpp.lz");
-static const u32 sEclipseOutsideLabScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles2.bin", ".lz");
-static const u16 sEclipseOutsideLabScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/eclipse_at_lab_tiles2.png", ".gbapal");
+static const u32 sEclipseOutsideLabScreenshotsTiles[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles.png", ".8bpp.lz");
+static const u32 sEclipseOutsideLabScreenshotsTilemap[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles.bin", ".lz");
+static const u16 sEclipseOutsideLabScreenshotsPalette[] = INCGFX_U16("graphics/ui_screenshots/eclipse_at_lab_tiles.png", ".gbapal");
+
+static const u32 sEclipseOutsideLabScreenshotsTiles2[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles2.png", ".8bpp.lz");
+static const u32 sEclipseOutsideLabScreenshotsTilemap2[] = INCGFX_U32("graphics/ui_screenshots/eclipse_at_lab_tiles2.bin", ".lz");
+static const u16 sEclipseOutsideLabScreenshotsPalette2[] = INCGFX_U16("graphics/ui_screenshots/eclipse_at_lab_tiles2.png", ".gbapal");
 
 // static const u32 sTabletScreenshotsTiles[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.8bpp.smol");
 // static const u32 sTabletScreenshotsTilemap[] = INCBIN_U32("graphics/ui_screenshots/seacrown_tablet_tiles.bin.smolTM");
@@ -181,6 +186,11 @@ static const struct Screenshot sScreenshotData[] = {
         .screenshotTiles = sEclipseOutsideLabScreenshotsTiles,
         .screenshotTilemap = sEclipseOutsideLabScreenshotsTilemap,
         .screenshotPalette = sEclipseOutsideLabScreenshotsPalette,
+    },
+    [SCREENSHOT_ECLIPSE_OUTSIDE_LAB2] = {
+        .screenshotTiles = sEclipseOutsideLabScreenshotsTiles2,
+        .screenshotTilemap = sEclipseOutsideLabScreenshotsTilemap2,
+        .screenshotPalette = sEclipseOutsideLabScreenshotsPalette2,
     },
 };
 
@@ -315,7 +325,7 @@ static bool8 Screenshots_DoGfxSetup(void)
         gMain.state++;
         break;
     case 6:
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, SCREENSHOT_FADE_IN_DELAY, 16, 0, RGB_BLACK);
         gMain.state++;
         break;
     default:
@@ -489,10 +499,10 @@ static void Task_ScreenshotsMain(u8 taskId)
         }
         else
         {
-            //Return to field normally
-            SetMainCallback2(sScreenshotsDataPtr->savedCallback);
-            Screenshots_FreeResources();
-            DestroyTask(taskId);
+            // Fade out before restoring the field so the regular field callback
+            // can handle the fade-in cleanly.
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_ScreenshotsTurnOff;
         }
     }
     
