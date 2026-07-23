@@ -88,11 +88,11 @@
 #define CATEGORY_ICON_TILE_Y       16
 #define CATEGORY_ICON_TILE_WIDTH   4
 #define CATEGORY_ICON_TILE_HEIGHT  2
-#define CATEGORY_ICON_FIRST_TILE   64
+#define CATEGORY_ICON_FIRST_TILE   65
 #define CATEGORY_ICON_PALETTE      1
 
 // non-current pocket labels: 2x2 BG2 tile blocks
-#define POCKET_LABEL_FIRST_TILE    28
+#define POCKET_LABEL_FIRST_TILE    29
 #define POCKET_LABEL_TILE_WIDTH    2
 #define POCKET_LABEL_TILE_HEIGHT   2
 #define POCKET_LABEL_TILE_Y        0
@@ -630,9 +630,7 @@ static const struct ListMenuTemplate sItemListMenu =
     .item_X = 8,
     .cursor_X = 0,
     .upText_Y = 1,
-    .cursorPal = 10,
-    .fillValue = 0,
-    .cursorShadowPal = 3,
+    // fillValue/cursorPal/cursorShadowPal defined from COLORID_ITEM_LIST in LoadBagItemListBuffers
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
@@ -1184,13 +1182,13 @@ enum {
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {0,  1,  3},
-    [COLORID_ITEM_LIST]   = {0, 10,  3},
-    [COLORID_DESCRIPTION] = {0,  5,  7},
+    [COLORID_ITEM_LIST]   = {0, 12,  5},
+    [COLORID_DESCRIPTION] = {0,  7,  9},
     [COLORID_HOVER_NAME]  = {0,  2,  4},
     [COLORID_HOVER_QTY]   = {0,  2,  5},
     [COLORID_POCKET_NAME] = {0,  1,  5},
     [COLORID_GRAY_CURSOR] = {0,  3,  6},
-    [COLORID_TMHM_INFO]   = {0,  5,  7},
+    [COLORID_TMHM_INFO]   = {0,  7,  9},
     [COLORID_PROMPT]      = {0,  1,  3},
     [COLORID_NO_FLAVOR]   = {0,  3,  7}
 };
@@ -2280,6 +2278,9 @@ static void LoadBagItemListBuffers(u8 pocketId)
         }
     }
     gMultiuseListMenuTemplate = sItemListMenu;
+    gMultiuseListMenuTemplate.fillValue = sFontColorTable[COLORID_ITEM_LIST][0];
+    gMultiuseListMenuTemplate.cursorPal = sFontColorTable[COLORID_ITEM_LIST][1];
+    gMultiuseListMenuTemplate.cursorShadowPal = sFontColorTable[COLORID_ITEM_LIST][2];
     gMultiuseListMenuTemplate.totalItems = gBagMenu->numItemStacks[pocketId];
     gMultiuseListMenuTemplate.items = sListBuffer1->subBuffers;
     gMultiuseListMenuTemplate.maxShowed = gBagMenu->numShownItems[pocketId];
