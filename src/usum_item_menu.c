@@ -4,6 +4,7 @@
 #include "battle_controllers.h"
 #include "battle_message.h"
 #include "battle_pyramid.h"
+#include "battle_z_move.h"
 #include "frontier_util.h"
 #include "battle_pyramid_bag.h"
 #include "berry.h"
@@ -387,6 +388,9 @@ static void BagMenu_CreatePartyIcons(void);
 static void BagMenu_FreePartyIcons(void);
 static void BagMenu_UpdateTMHMPartyBlend(s32 itemIndex);
 static void BagMenu_DisableTMHMPartyBlend(void);
+static void BagMenu_UpdateZCrystalPartyBlend(s32 itemIndex);
+static void BagMenu_SetPartyIconBlend(bool8 enable);
+static void BagMenu_DisablePartyBlend(void);
 static void BagMenu_ApplyPartyBlend(bool8 (*isEligible)(u8 partySlot));
 static bool8 BagMenu_MonHoldsItem(u8 partySlot);
 static void BagMenu_UseSacredAsh(u8);
@@ -444,6 +448,9 @@ static void BagMenu_RareCandyCleanupAndReturn(u8);
 static void BagMenu_CB2_AfterEvoStoneEvolution(void);
 static void BagMenu_DoGiveMail(u8, struct Pokemon *, u16);
 static void BagMenu_GiveItem(u8);
+static void BagMenu_DoGiveItem(u8);
+static void BagMenu_GiveZCrystalYes(u8);
+static void BagMenu_GiveZCrystalNo(u8);
 static void BagMenu_GiveSwapYes(u8);
 static void BagMenu_GiveSwapNo(u8);
 static void Task_BagMenu_AfterGiveFormChange(u8);
@@ -569,6 +576,7 @@ static const struct YesNoFuncTable sPartyAbilityChangeYesNo    = {BagMenu_Abilit
 static const struct YesNoFuncTable sPartyMintYesNo             = {BagMenu_MintYes, BagMenu_MintNo};
 static const struct YesNoFuncTable sPartyRareCandyReplaceYesNo = {BagMenu_RareCandyReplaceYes, BagMenu_RareCandyReplaceNo};
 static const struct YesNoFuncTable sPartyGiveSwapYesNo         = {BagMenu_GiveSwapYes, BagMenu_GiveSwapNo};
+static const struct YesNoFuncTable sPartyGiveZCrystalYesNo     = {BagMenu_GiveZCrystalYes, BagMenu_GiveZCrystalNo};
 static const struct YesNoFuncTable sPartyRotomMoveReplaceYesNo = {BagMenu_RotomMoveReplaceYes, BagMenu_RotomMoveReplaceNo};
 #endif // USUM_ITEM_MENU_IN_BAG_USE
 
@@ -1790,6 +1798,9 @@ static bool8 SetupBagMenu(void)
         else if (gBagPosition.pocket == POCKET_TM_HM
          && gBagMenu->numItemStacks[gBagPosition.pocket] != (u8)(!gBagMenu->hideCloseBagText))
             BagMenu_UpdateTMHMPartyBlend(gBagPosition.cursorPosition[gBagPosition.pocket]);
+        else if (gBagPosition.pocket == POCKET_Z_CRYSTALS
+         && gBagMenu->numItemStacks[gBagPosition.pocket] != (u8)(!gBagMenu->hideCloseBagText))
+            BagMenu_UpdateZCrystalPartyBlend(gBagPosition.cursorPosition[gBagPosition.pocket]);
 #endif
         if (gBagMenu->numItemStacks[gBagPosition.pocket] != (u8)(!gBagMenu->hideCloseBagText))
         {
@@ -2443,6 +2454,8 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
 #if USUM_ITEM_MENU_IN_BAG_USE
     if (gBagPosition.pocket == POCKET_TM_HM && gBagPosition.location != ITEMMENULOCATION_PARTY)
         BagMenu_UpdateTMHMPartyBlend(itemIndex);
+    else if (gBagPosition.pocket == POCKET_Z_CRYSTALS && gBagPosition.location != ITEMMENULOCATION_PARTY)
+        BagMenu_UpdateZCrystalPartyBlend(itemIndex);
 #endif
 
     if (onInit != TRUE)
@@ -3153,6 +3166,8 @@ static void Task_SwitchBagPocket(u8 taskId)
 #if USUM_ITEM_MENU_IN_BAG_USE
         if (gBagPosition.pocket == POCKET_TM_HM && gBagPosition.location != ITEMMENULOCATION_PARTY)
             BagMenu_DisableTMHMPartyBlend();
+        else if (gBagPosition.pocket == POCKET_Z_CRYSTALS && gBagPosition.location != ITEMMENULOCATION_PARTY)
+            BagMenu_DisablePartyBlend();
 #endif
         ChangeBagPocketId(&gBagPosition.pocket, tPocketSwitchDir);
         LoadPocketPalette(gBagPosition.pocket);
@@ -5984,6 +5999,69 @@ static void BagMenu_DisableTMHMPartyBlend(void)
     }
 }
 
+static bool8 BagMenu_IsMonCompatibleWithZCrystal(struct Pokemon *mon, enum Item itemId)
+{
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 secondaryId = GetItemSecondaryId(itemId);
+    u32 i;
+
+    if (species == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+
+    if (itemId == ITEM_ULTRANECROZIUM_Z)
+        return species == SPECIES_NECROZMA_DUSK_MANE || species == SPECIES_NECROZMA_DAWN_WINGS;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        enum Move move = GetMonData(mon, MON_DATA_MOVE1 + i);
+        if (move == MOVE_NONE)
+            continue;
+        if (secondaryId < NUMBER_OF_MON_TYPES)
+        {
+            if (GetMoveType(move) == secondaryId)
+                return TRUE;
+        }
+        else if (GetSignatureZMove(move, species, itemId) != MOVE_NONE)
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static void BagMenu_UpdateZCrystalPartyBlend(s32 itemIndex)
+{
+    u8 i;
+
+    if (!BagMenu_ShouldLoadPartyPanel())
+        return;
+
+    // empty pocket, nothing to power up, so don't alpha blend the party
+    if (gBagMenu->numItemStacks[gBagPosition.pocket] == (u8)(!gBagMenu->hideCloseBagText))
+    {
+        BagMenu_DisablePartyBlend();
+        return;
+    }
+
+    BagMenu_SetPartyIconBlend(TRUE);
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u8 spriteId = gBagMenu->partyMonIconSpriteIds[i];
+        bool8 eligible;
+
+        if (spriteId == SPRITE_NONE)
+            continue;
+
+        if (itemIndex == LIST_CANCEL)
+            eligible = FALSE;
+        else
+            eligible = BagMenu_IsMonCompatibleWithZCrystal(&gParties[B_TRAINER_PLAYER][i],
+                                                        BagList_GetItemId(gBagPosition.pocket, itemIndex));
+
+        gSprites[spriteId].oam.objMode = eligible ? ST_OAM_OBJ_NORMAL : ST_OAM_OBJ_BLEND;
+    }
+}
+
 static bool8 BagMenu_IsMonEligibleForItem(u8 partySlot)
 {
     struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][partySlot];
@@ -6297,6 +6375,8 @@ static void BagMenu_ClosePartySelect(u8 taskId)
     }
     if (gBagPosition.pocket == POCKET_TM_HM)
         BagMenu_UpdateTMHMPartyBlend(gBagMenu->hoveredItemIndex);
+    else if (gBagPosition.pocket == POCKET_Z_CRYSTALS)
+        BagMenu_UpdateZCrystalPartyBlend(gBagMenu->hoveredItemIndex);
 
     if (gBagMenu->partyItemIconAnimId != INVALID_COMFY_ANIM)
     {
@@ -7398,6 +7478,38 @@ static void BagMenu_DoGiveMail(u8 taskId, struct Pokemon *mon, u16 item)
 #define tAnimSpecies data[9]
 
 static void BagMenu_GiveItem(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][tPartySlot];
+    u16 item = gSpecialVar_ItemId;
+
+    if (GetItemHoldEffect(item) == HOLD_EFFECT_Z_CRYSTAL
+     && !BagMenu_IsMonCompatibleWithZCrystal(mon, item))
+    {
+        PlaySE(SE_SELECT);
+        tPartyTemp = 0;
+        gBagMenu->partyYesNoFuncs = &sPartyGiveZCrystalYesNo;
+        DisplayItemMessage(taskId, FONT_NORMAL,
+            COMPOUND_STRING("This Pokémon currently can't use this\ncrystal's Z-Power. Is that OK?"),
+            Task_BagMenu_PartyYesNo);
+        return;
+    }
+
+    BagMenu_DoGiveItem(taskId);
+}
+
+static void BagMenu_GiveZCrystalYes(u8 taskId)
+{
+    BagMenu_DoGiveItem(taskId);
+}
+
+static void BagMenu_GiveZCrystalNo(u8 taskId)
+{
+    RemoveItemMessageWindow(ITEMWIN_MESSAGE);
+    gTasks[taskId].func = Task_BagMenu_PartyInput;
+}
+
+static void BagMenu_DoGiveItem(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][tPartySlot];
