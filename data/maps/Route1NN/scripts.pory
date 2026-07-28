@@ -255,24 +255,23 @@ script Route1NN_Trigger_GetStarters{
     msgbox("Hey there, cousin!", MSGBOX_AUTOCLOSE)
     applymovement(LOCALID_PLAYER, moves(walk_right*3))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right*3))
-    waitmovement(0)
     if (var(VAR_TEMP_1) == SHINY_MODE_ALWAYS){
-        applymovement(rowletshiny, moves(walk_right*3))
+        applymovement(rowletshiny, moves(delay_16, walk_right*3))
     }
     else{
-        applymovement(rowlet, moves(walk_right*3))
+        applymovement(rowlet, moves(delay_16,walk_right*3))
     }
     if (var(VAR_TEMP_2) == SHINY_MODE_ALWAYS){
-        applymovement(littenshiny, moves(walk_right*3))
+        applymovement(littenshiny, moves(delay_8, walk_right*3))
     }
     else{
-        applymovement(litten, moves(walk_right*3))
+        applymovement(litten, moves(delay_8, walk_right*3))
     }
     if (var(VAR_TEMP_3) == SHINY_MODE_ALWAYS){
-        applymovement(popplioshiny, moves(walk_right*3))
+        applymovement(popplioshiny, moves(delay_16,walk_right*3))
     }
     else{
-        applymovement(popplio, moves(walk_right*3))
+        applymovement(popplio, moves(delay_16,walk_right*3))
     }
     waitmovement(0)
     speakername("Kukui")
