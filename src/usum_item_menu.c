@@ -809,7 +809,6 @@ static const u32 sScrollThumb_Gfx[]             = INCGFX_U32("graphics/bag/usum/
 static const u32 sQuantityBox_Gfx[]             = INCGFX_U32("graphics/bag/usum/quantity_box.png", ".4bpp");
 static const u32 sPocketTab_Gfx[]               = INCGFX_U32("graphics/bag/usum/pocket_tab.png", ".4bpp");
 static const u8 sBagMenuHMIcon_Gfx[]            = INCGFX_U8("graphics/bag/usum/hm.png", ".4bpp");
-static const u8 sButtonR_Gfx[]                  = INCGFX_U8("graphics/bag/usum/button_r.png", ".4bpp");
 static const u8 sButtonSelect_Gfx[]             = INCGFX_U8("graphics/bag/usum/button_select.png", ".4bpp");
 static const u16 sCursor_Pal[]                  = INCGFX_U16("graphics/bag/usum/cursor.png", ".gbapal");
 static const u32 sMoveTypeIcons_Gfx[]           = INCGFX_U32("graphics/bag/usum/move_types.png", ".4bpp.smol");
