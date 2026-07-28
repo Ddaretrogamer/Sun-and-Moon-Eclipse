@@ -136,7 +136,7 @@ struct BagMenu
 #if USUM_ITEM_MENU
     u8 partyMonIconSpriteIds[PARTY_SIZE];
     u8 cursorSpriteId;
-    u8 swapCursorSpriteId;
+    u8 swapHighlightSlot;
     u8 quantityBoxSpriteIds[2];
     u8 moveInfoMode;
     u8 moveTypeIconSpriteId;

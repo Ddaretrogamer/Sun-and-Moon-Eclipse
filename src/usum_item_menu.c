@@ -77,7 +77,6 @@
 #define TAG_ITEM_CURSOR          112
 #define TAG_BAG_SCROLL_THUMB     114
 #define TAG_MOVE_TYPE_ICON       115
-#define TAG_SWAP_CURSOR          117
 #define TAG_QUANTITY_BOX         118
 #define TAG_PARTY_HELD_ITEM      120
 #define TAG_STATUS_ICON          121
@@ -203,6 +202,7 @@ enum {
 
 // Item list ID for toSwapPos to indicate an item is not currently being swapped
 #define NOT_SWAPPING 0xFF
+#define NO_SWAP_HIGHLIGHT 0xFF
 
 struct ListBuffer1 {
     struct ListMenuItem subBuffers[MAX_POCKET_ITEMS];
@@ -801,11 +801,11 @@ static const u8 sRegisterIconFrames[MAX_REGISTERED_ITEMS] = {0, 3, 1, 2};
 static const u32 sBagScreen_Gfx[]               = INCGFX_U32("graphics/bag/usum/tiles.png", ".4bpp.smol");
 static const u16 sBagScreen_Pal[]               = INCGFX_U16("graphics/bag/usum/tiles.png", ".gbapal");
 static const u16 sPockets_Pal[]                 = INCGFX_U16("graphics/bag/usum/pockets.png", ".gbapal");
+static const u16 sPocketsSwap_Pal[]             = INCGFX_U16("graphics/bag/usum/pockets_swap.png", ".gbapal");
 static const u32 sBagScreen_BG2TileMap[]        = INCGFX_U32("graphics/bag/usum/bg2.bin", ".smolTM");
 static const u32 sBagScreen_BG3TileMap[]        = INCGFX_U32("graphics/bag/usum/bg3.bin", ".smolTM");
 static const u32 sCursor_Gfx[]                  = INCGFX_U32("graphics/bag/usum/cursor.png", ".4bpp.smol");
 static const u32 sScrollThumb_Gfx[]             = INCGFX_U32("graphics/bag/usum/scroll_thumb.png", ".4bpp.smol");
-static const u32 sSwapCursor_Gfx[]              = INCGFX_U32("graphics/bag/usum/swap_cursor.png", ".4bpp.smol");
 static const u32 sQuantityBox_Gfx[]             = INCGFX_U32("graphics/bag/usum/quantity_box.png", ".4bpp");
 static const u32 sPocketTab_Gfx[]               = INCGFX_U32("graphics/bag/usum/pocket_tab.png", ".4bpp");
 static const u8 sBagMenuHMIcon_Gfx[]            = INCGFX_U8("graphics/bag/usum/hm.png", ".4bpp");
@@ -868,45 +868,6 @@ static const struct SpriteTemplate sSpriteTemplate_Cursor =
 static const struct SpritePalette sSpritePalette_Cursor = {
     .data = sCursor_Pal,
     .tag = TAG_ITEM_CURSOR
-};
-
-static const struct CompressedSpriteSheet sSpriteSheet_SwapCursor =
-{
-    .data = sSwapCursor_Gfx,
-    .size = (16 * 32 * 3) / 2,
-    .tag = TAG_SWAP_CURSOR,
-};
-
-static const struct OamData sOamData_SwapCursor =
-{
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(16x32),
-    .size = SPRITE_SIZE(16x32),
-    .priority = 1,
-};
-
-static const union AnimCmd sAnim_SwapCursor[] =
-{
-    ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(8, 8),
-    ANIMCMD_FRAME(16, 8),
-    ANIMCMD_FRAME(8, 8),
-    ANIMCMD_JUMP(0)
-};
-
-static const union AnimCmd *const sAnims_SwapCursor[] =
-{
-    sAnim_SwapCursor,
-};
-
-static const struct SpriteTemplate sSpriteTemplate_SwapCursor =
-{
-    .tileTag = TAG_SWAP_CURSOR,
-    .paletteTag = TAG_ITEM_CURSOR,
-    .oam = &sOamData_SwapCursor,
-    .anims = sAnims_SwapCursor,
 };
 
 static const struct OamData sOamData_ScrollThumb =
@@ -1516,7 +1477,7 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback)
         gBagMenu->toSwapPos = NOT_SWAPPING;
         memset(gBagMenu->spriteIds, SPRITE_NONE, sizeof(gBagMenu->spriteIds));
         gBagMenu->cursorSpriteId = SPRITE_NONE;
-        gBagMenu->swapCursorSpriteId = SPRITE_NONE;
+        gBagMenu->swapHighlightSlot = NO_SWAP_HIGHLIGHT;
         sScrollThumbSpriteId = SPRITE_NONE;
         memset(sPocketTabIds, SPRITE_NONE, sizeof(sPocketTabIds));
         sPocketTabAnimId = INVALID_COMFY_ANIM;
@@ -1924,14 +1885,10 @@ static bool8 LoadBagMenu_Graphics(void)
         gBagMenu->graphicsLoadState++;
         break;
     case 9:
-        LoadCompressedSpriteSheet(&sSpriteSheet_SwapCursor);
-        gBagMenu->graphicsLoadState++;
-        break;
-    case 10:
         LoadSpriteSheet(&sSpriteSheet_QuantityBox);
         gBagMenu->graphicsLoadState++;
         break;
-    case 11:
+    case 10:
         LoadSpriteSheet(&sSpriteSheet_PocketTab);
         gBagMenu->graphicsLoadState++;
         break;
@@ -2217,6 +2174,7 @@ static void BagList_MoveSlot(u8 pocketId, u32 from, u32 to)
 #define ITEM_LIST_SLOT_WIDTH     19
 #define ITEM_LIST_SLOT_HEIGHT    2
 #define ITEM_LIST_SLOT_PAL       1
+#define ITEM_LIST_SLOT_SWAP_PAL  9
 
 #define REGISTER_ICON_WIDTH      24
 #define REGISTER_ICON_HEIGHT     16
@@ -2236,6 +2194,33 @@ static void BagMenu_DrawItemListSlot(u8 slot, const u8 *tilemap)
     }
 }
 
+static void BagMenu_SetItemListSlotPal(u8 slot, u8 pal)
+{
+    u16 *buf = (u16 *)gBagMenu->mainTilemapBuffer;
+    u8 baseRow = ITEM_LIST_SLOT_START_ROW + slot * ITEM_LIST_SLOT_HEIGHT;
+    u8 row, col;
+
+    for (row = 0; row < ITEM_LIST_SLOT_HEIGHT; row++)
+        for (col = 0; col < ITEM_LIST_SLOT_WIDTH; col++)
+        {
+            u16 *entry = &buf[(baseRow + row) * 32 + (ITEM_LIST_SLOT_START_COL + col)];
+            *entry = (*entry & 0x0FFF) | ((u16)pal << 12);
+        }
+    ScheduleBgCopyTilemapToVram(2);
+}
+
+static void BagMenu_SetSwapHighlight(u8 slot)
+{
+    if (gBagMenu->swapHighlightSlot == slot)
+        return;
+
+    if (gBagMenu->swapHighlightSlot != NO_SWAP_HIGHLIGHT)
+        BagMenu_SetItemListSlotPal(gBagMenu->swapHighlightSlot, ITEM_LIST_SLOT_PAL);
+    if (slot != NO_SWAP_HIGHLIGHT)
+        BagMenu_SetItemListSlotPal(slot, ITEM_LIST_SLOT_SWAP_PAL);
+    gBagMenu->swapHighlightSlot = slot;
+}
+
 static void BagMenu_DrawItemListSlots(u8 pocketId)
 {
     u8 slot;
@@ -2244,6 +2229,7 @@ static void BagMenu_DrawItemListSlots(u8 pocketId)
         BagMenu_DrawItemListSlot(
             slot,
             slot < gBagMenu->numShownItems[pocketId] ? sItemListPill_Tilemap : sItemListEmpty_Tilemap);
+    gBagMenu->swapHighlightSlot = NO_SWAP_HIGHLIGHT;
     ScheduleBgCopyTilemapToVram(2);
 }
 
@@ -2367,8 +2353,6 @@ static void SpriteCB_SlideCursorY(struct Sprite *sprite)
         u8 iconSpriteId = gBagMenu->spriteIds[ITEMMENUSPRITE_ITEM + (gBagMenu->itemIconSlot ^ 1)];
         if (iconSpriteId != SPRITE_NONE)
             gSprites[iconSpriteId].y2 = y + 3;
-        if (gBagMenu->swapCursorSpriteId != SPRITE_NONE)
-            gSprites[gBagMenu->swapCursorSpriteId].y = y;
     }
 }
 
@@ -3083,7 +3067,8 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
 
 static void LoadPocketPalette(u8 pocket)
 {
-    LoadPalette(&sPockets_Pal[pocket * 16], BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+    LoadPalette(&sPockets_Pal[pocket * 16], BG_PLTT_ID(ITEM_LIST_SLOT_PAL), PLTT_SIZE_4BPP);
+    LoadPalette(&sPocketsSwap_Pal[pocket * 16], BG_PLTT_ID(ITEM_LIST_SLOT_SWAP_PAL), PLTT_SIZE_4BPP);
 }
 
 static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseList)
@@ -3229,12 +3214,10 @@ static bool8 CanSwapItems(void)
 static void StartItemSwap(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    s16 cursorY = ReadComfyAnimValueSmooth(&gComfyAnims[gBagMenu->cursorAnimId]);
 
     tListPosition = gBagPosition.scrollPosition[gBagPosition.pocket] + gBagPosition.cursorPosition[gBagPosition.pocket];
     gBagMenu->toSwapPos = tListPosition;
-    gSprites[gBagMenu->cursorSpriteId].invisible = TRUE;
-    gBagMenu->swapCursorSpriteId = CreateSprite(&sSpriteTemplate_SwapCursor, 84, cursorY, 1);
+    BagMenu_SetSwapHighlight(gBagPosition.cursorPosition[gBagPosition.pocket]);
     gTasks[taskId].func = Task_HandleSwappingItemsInput;
 }
 
@@ -3269,9 +3252,7 @@ static void Task_HandleSwappingItemsInput(u8 taskId)
         {
             PlaySE(SE_SELECT);
             gBagMenu->toSwapPos = NOT_SWAPPING;
-            DestroySprite(&gSprites[gBagMenu->swapCursorSpriteId]);
-            gBagMenu->swapCursorSpriteId = SPRITE_NONE;
-            gSprites[gBagMenu->cursorSpriteId].invisible = FALSE;
+            BagMenu_SetSwapHighlight(NO_SWAP_HIGHLIGHT);
             gTasks[taskId].func = Task_BagMenu_HandleInput;
         }
         else if (JOY_REPEAT(DPAD_DOWN) && tListPosition < lastRealPos)
@@ -3308,6 +3289,9 @@ static void Task_HandleSwappingItemsInput(u8 taskId)
             LoadBagItemListBuffers(pocket);
             BagMenu_SetSwapListSelection(tListTaskId, lastRealPos, scrollPos, cursorPos);
         }
+
+        if (gBagMenu->toSwapPos != NOT_SWAPPING)
+            BagMenu_SetSwapHighlight(*cursorPos);
     }
 }
 
