@@ -11,6 +11,7 @@
 #define USUM_ITEM_MENU_IN_BAG_USE       (USUM_ITEM_MENU && TRUE)                // Perform item actions (Use/Give) in bag (skip party menu)
 #define USUM_ITEM_MENU_IN_BAG_REUSE     (USUM_ITEM_MENU_IN_BAG_USE && TRUE)     // Keep item cursor in party after use/give
 #define USUM_ITEM_MENU_IN_BATTLE_USE    (USUM_ITEM_MENU_IN_BAG_USE && TRUE)     // Use items in bag during battle (skip party menu)
+#define USUM_ITEM_MENU_MULTI_PARTNER    (USUM_ITEM_MENU_IN_BATTLE_USE && TRUE)  // In a full multi battle (12v12), press Select to swap between player and partner teams
 #define USUM_ITEM_MENU_PARTY_HP_BAR     (USUM_ITEM_MENU_IN_BAG_USE && TRUE)     // Show HP bar in party slot for certain items usage
 
 #define USUM_ITEM_MENU_PYRAMID          (USUM_ITEM_MENU && TRUE)                // Use USUM bag menu for the Battle Pyramid

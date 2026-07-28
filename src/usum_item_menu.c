@@ -384,6 +384,7 @@ static void CancelSell(u8);
 static void Task_FadeAndCloseBagMenuIfMulch(u8 taskId);
 #if USUM_ITEM_MENU_IN_BAG_USE
 static void BagMenu_DrawPartySlots(void);
+static void BagMenu_SetPartySlotPalette(u8 slot, u8 pal);
 static void BagMenu_CreatePartyIcons(void);
 static void BagMenu_FreePartyIcons(void);
 static void BagMenu_UpdateTMHMPartyBlend(s32 itemIndex);
@@ -497,10 +498,12 @@ static void BagMenu_CreatePanelMonIcon(u8, s16);
 static void BagMenu_UseBattleItem(u8);
 static void BagMenu_BattleApplyItem(u8, u8, bool8);
 static void BagMenu_BattleUsePPOnMove(u8, u8);
-static bool8 BagMenu_IsMultiFull(void);
 static u8 BagMenu_FullMultiPartyId(u8);
+#if USUM_ITEM_MENU_MULTI_PARTNER
+static bool8 BagMenu_IsMultiFull(void);
 static void BagMenu_StartMultiFullSwap(u8);
 static void Task_BagMenu_MultiFullSwap(u8);
+#endif
 #endif
 #endif // USUM_ITEM_MENU_IN_BAG_USE
 
@@ -1606,6 +1609,11 @@ static void CB2_Bag(void)
 #define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
 #define PARTY_HP_BAR_BORDER_COLOR   11
 
+#define PARTY_SLOT_NORMAL_PAL           0
+#define PARTY_SLOT_FOCUS_PAL            6
+#define PARTY_SLOT_NORMAL_PARTNER_PAL   7
+#define PARTY_SLOT_FOCUS_PARTNER_PAL    8
+
 // coming from the party menu, only show the target mon
 // drawn with slot 0's graphics shifted this many tile rows down
 #define PARTY_PANEL_TARGET_ROW_OFFSET 2
@@ -1786,6 +1794,7 @@ static bool8 SetupBagMenu(void)
         if (sBagItemUseState != NULL && sBagItemUseState->reentryPhase != BAG_REENTRY_NONE)
         {
             BagMenu_ApplyItemUseBlend();
+            BagMenu_SetPartySlotPalette(sBagItemUseState->slot, PARTY_SLOT_FOCUS_PAL);
             BagMenu_UpdateStatusIconPos(sBagItemUseState->slot);
         }
         else if (gBagPosition.location == ITEMMENULOCATION_PARTY)
@@ -1897,7 +1906,7 @@ static bool8 LoadBagMenu_Graphics(void)
         gBagMenu->graphicsLoadState++;
         break;
     case 4:
-        LoadPalette(sBagScreen_Pal, BG_PLTT_ID(0), 6 * PLTT_SIZE_4BPP);
+        LoadPalette(sBagScreen_Pal, BG_PLTT_ID(0), 9 * PLTT_SIZE_4BPP);
         LoadPocketPalette(gBagPosition.pocket);
         gBagMenu->graphicsLoadState++;
         break;
@@ -2326,7 +2335,7 @@ static void CreateCursorSprite(void)
     animConfig.easingFunc = ComfyAnimEasing_EaseOutCubic;
     gBagMenu->cursorAnimId = CreateComfyAnim_Easing(&animConfig);
 
-    gBagMenu->cursorSpriteId = CreateSprite(&sSpriteTemplate_Cursor, 81, initialY, 1);
+    gBagMenu->cursorSpriteId = CreateSprite(&sSpriteTemplate_Cursor, 82, initialY, 1);
     gSprites[gBagMenu->cursorSpriteId].callback = SpriteCB_SlideCursorY;
 }
 
@@ -2887,8 +2896,8 @@ static void Task_BagMenu_HandleInput(u8 taskId)
 
     if (MenuHelpers_ShouldWaitForLinkRecv() != TRUE && !gPaletteFade.active)
     {
-#if USUM_ITEM_MENU_IN_BATTLE_USE
-        if (BagMenu_IsMultiFull() && GetLRKeysPressed())
+#if USUM_ITEM_MENU_MULTI_PARTNER
+        if (BagMenu_IsMultiFull() && JOY_NEW(SELECT_BUTTON))
         {
             BagMenu_StartMultiFullSwap(taskId);
             return;
@@ -4639,8 +4648,8 @@ static void ShowInfoPrompt(u8 index)
 static void ShowButtonPrompt(const u8 *buttonGfx, const u8 *label)
 {
     FillWindowPixelBuffer(WIN_PROMPT, PIXEL_FILL(0));
-    BlitBitmapToWindow(WIN_PROMPT, buttonGfx, 4, 4, 16, 8);
-    BagMenu_Print(WIN_PROMPT, FONT_SMALL_NARROWER, label, 3, 12, 0, 0, TEXT_SKIP_DRAW, COLORID_PROMPT);
+    BlitBitmapToWindow(WIN_PROMPT, buttonGfx, 2, 1, 16, 8);
+    BagMenu_Print(WIN_PROMPT, FONT_SMALL_NARROWER, label, 2, 7, 0, 3, TEXT_SKIP_DRAW, COLORID_PROMPT);
     PutWindowTilemap(WIN_PROMPT);
     CopyWindowToVram(WIN_PROMPT, COPYWIN_GFX);
     ScheduleBgCopyTilemapToVram(1);
@@ -4655,10 +4664,10 @@ static void HideButtonPrompt(void)
 
 static void UpdateBagPrompt(void)
 {
-#if USUM_ITEM_MENU_IN_BATTLE_USE
+#if USUM_ITEM_MENU_MULTI_PARTNER
     if (BagMenu_IsMultiFull())
     {
-        ShowButtonPrompt(sButtonR_Gfx, COMPOUND_STRING("Swap"));
+        ShowButtonPrompt(sButtonSelect_Gfx, COMPOUND_STRING("Swap\nParty"));
         return;
     }
 #endif
@@ -5589,15 +5598,64 @@ static void BagMenu_DrawPartySlots(void)
     {
         if (!BagMenu_PanelSlotOccupied(slot))
             continue;
+        u8 binSlot = (gBagPosition.location == ITEMMENULOCATION_PARTY) ? 1 : slot;
+        u16 palBits = (BagMenu_SlotIsPartner(slot) ? PARTY_SLOT_NORMAL_PARTNER_PAL : PARTY_SLOT_NORMAL_PAL) << 12;
+
         for (row = 0; row < PARTY_PANEL_SLOT_HEIGHT; row++)
         {
             u8 panelRow = PARTY_PANEL_START_ROW + BagMenu_PanelRowOffset() + slot * PARTY_PANEL_SLOT_HEIGHT + row;
-            u8 binRow = slot * PARTY_PANEL_SLOT_HEIGHT + row;
+            u8 binRow = binSlot * PARTY_PANEL_SLOT_HEIGHT + row;
             for (col = 0; col < PARTY_PANEL_SLOT_WIDTH; col++)
                 buf[panelRow * 32 + (PARTY_PANEL_START_COL + col)]
-                    = sPartySlots_Tilemap[binRow * PARTY_PANEL_SLOT_WIDTH + col];
+                    = sPartySlots_Tilemap[binRow * PARTY_PANEL_SLOT_WIDTH + col] | palBits;
         }
     }
+}
+
+static void BagMenu_SetPartySlotPalette(u8 slot, u8 pal)
+{
+    u16 *buf = (u16 *)gBagMenu->mainTilemapBuffer;
+    u8 baseRow = PARTY_PANEL_START_ROW + BagMenu_PanelRowOffset() + slot * PARTY_PANEL_SLOT_HEIGHT;
+    u8 row, col;
+
+    if (BagMenu_SlotIsPartner(slot))
+        pal = (pal == PARTY_SLOT_NORMAL_PAL) ? PARTY_SLOT_NORMAL_PARTNER_PAL : PARTY_SLOT_FOCUS_PARTNER_PAL;
+
+    for (row = 0; row < PARTY_PANEL_SLOT_HEIGHT; row++)
+        for (col = 0; col < PARTY_PANEL_SLOT_WIDTH; col++)
+        {
+            u16 *entry = &buf[(baseRow + row) * 32 + (PARTY_PANEL_START_COL + col)];
+            *entry = (*entry & 0x0FFF) | ((u16)pal << 12);
+        }
+    ScheduleBgCopyTilemapToVram(2);
+}
+
+static void BagMenu_RedrawPartyPanel(void)
+{
+    u16 *buf = (u16 *)gBagMenu->mainTilemapBuffer;
+    u8 *base = Alloc(BG_SCREEN_SIZE);
+
+    if (base != NULL)
+    {
+        u16 *src = (u16 *)base;
+        u8 firstRow = PARTY_PANEL_START_ROW + BagMenu_PanelRowOffset();
+        u8 row, col;
+
+        DecompressDataWithHeaderWram(sBagScreen_BG2TileMap, base);
+        for (row = firstRow; row < firstRow + PARTY_SIZE * PARTY_PANEL_SLOT_HEIGHT; row++)
+            for (col = PARTY_PANEL_START_COL; col < PARTY_PANEL_START_COL + PARTY_PANEL_SLOT_WIDTH; col++)
+                buf[row * 32 + col] = src[row * 32 + col];
+        Free(base);
+    }
+    else
+    {
+        DecompressDataWithHeaderWram(sBagScreen_BG2TileMap, gBagMenu->mainTilemapBuffer);
+        BagMenu_DrawItemListSlots(gBagPosition.pocket);
+        DrawPocketLabels(gBagPosition.pocket);
+    }
+
+    BagMenu_DrawPartySlots();
+    ScheduleBgCopyTilemapToVram(2);
 }
 
 static void BagMenu_CreatePanelMonIcon(u8 slot, s16 x2)
@@ -6254,6 +6312,7 @@ void BagMenu_OpenPartySelect(u8 taskId)
                 gSprites[gBagMenu->statusIconSpriteIds[si]].invisible = TRUE;
     }
     gSprites[gBagMenu->cursorSpriteId].invisible = TRUE;
+    BagMenu_SetPartySlotPalette(0, PARTY_SLOT_FOCUS_PAL);
     BagMenu_UpdateStatusIconPos(0);
 
     if (BagMenu_ShouldShowHPBar())
@@ -6288,8 +6347,8 @@ static void Task_BagMenu_PartyInput(u8 taskId)
     if (gBagMenu->partyItemIconAnimId != INVALID_COMFY_ANIM && !gComfyAnims[gBagMenu->partyItemIconAnimId].completed)
         return;
 
-#if USUM_ITEM_MENU_IN_BATTLE_USE
-    if (BagMenu_IsMultiFull() && GetLRKeysPressed())
+#if USUM_ITEM_MENU_MULTI_PARTNER
+    if (BagMenu_IsMultiFull() && JOY_NEW(SELECT_BUTTON))
     {
         BagMenu_ClosePartySelect(taskId);
         BagMenu_StartMultiFullSwap(taskId);
@@ -6299,7 +6358,9 @@ static void Task_BagMenu_PartyInput(u8 taskId)
 
     if (JOY_NEW(DPAD_DOWN))
     {
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_NORMAL_PAL);
         tPartySlot = BagMenu_StepSlot(tPartySlot, +1, slotLimit);
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_FOCUS_PAL);
         BagMenu_UpdateStatusIconPos(tPartySlot);
         PlaySE(SE_SELECT);
         if (iconSpriteId != SPRITE_NONE)
@@ -6311,7 +6372,9 @@ static void Task_BagMenu_PartyInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_UP))
     {
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_NORMAL_PAL);
         tPartySlot = BagMenu_StepSlot(tPartySlot, -1, slotLimit);
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_FOCUS_PAL);
         BagMenu_UpdateStatusIconPos(tPartySlot);
         PlaySE(SE_SELECT);
         if (iconSpriteId != SPRITE_NONE)
@@ -6394,6 +6457,7 @@ static void BagMenu_ClosePartySelect(u8 taskId)
         spr->invisible = FALSE;
     }
 
+    BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_NORMAL_PAL);
     UpdateEmptyPocket();
     ReturnToItemList(taskId);
 }
@@ -6457,10 +6521,12 @@ static void Task_BagMenu_PartyAfterItemUse(u8 taskId)
     if (gBagMenu->partyGiveMode)
     {
         BagMenu_ApplyPartyBlend(BagMenu_MonHoldsItem);
+        BagMenu_SetPartySlotPalette(gTasks[taskId].data[4], PARTY_SLOT_FOCUS_PAL);
         BagMenu_UpdateHeldItemIcon(gTasks[taskId].data[4]);
     }
     else
     {
+        BagMenu_SetPartySlotPalette(gTasks[taskId].data[4], PARTY_SLOT_FOCUS_PAL);
         BagMenu_UpdateStatusIcons();
         BagMenu_UpdateStatusIconPos(gTasks[taskId].data[4]);
     }
@@ -8138,11 +8204,9 @@ static void Task_BagMenu_FusionAnim(u8 taskId)
                 sBagFusionState->firstFusionSlot--;
             }
             BagMenu_FreePartyIcons();
-            DecompressDataWithHeaderWram(sBagScreen_BG2TileMap, gBagMenu->mainTilemapBuffer);
-            BagMenu_DrawPartySlots();
+            BagMenu_RedrawPartyPanel();
             UpdateBagPrompt();
             BagMenu_CreatePartyIcons();
-            ScheduleBgCopyTilemapToVram(2);
             tAnimState++;
         }
         break;
@@ -8313,14 +8377,18 @@ static void Task_BagMenu_FusionAwaitSecond(u8 taskId)
 
     if (JOY_NEW(DPAD_DOWN))
     {
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_NORMAL_PAL);
         tPartySlot = (tPartySlot == partyCount - 1) ? 0 : tPartySlot + 1;
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_FOCUS_PAL);
         PlaySE(SE_SELECT);
         if (iconSpriteId != SPRITE_NONE)
             BagMenu_PartyStartItemIconYAnim(&gSprites[iconSpriteId], PARTY_ITEM_ICON_Y(tPartySlot));
     }
     else if (JOY_NEW(DPAD_UP))
     {
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_NORMAL_PAL);
         tPartySlot = (tPartySlot == 0) ? partyCount - 1 : tPartySlot - 1;
+        BagMenu_SetPartySlotPalette(tPartySlot, PARTY_SLOT_FOCUS_PAL);
         PlaySE(SE_SELECT);
         if (iconSpriteId != SPRITE_NONE)
             BagMenu_PartyStartItemIconYAnim(&gSprites[iconSpriteId], PARTY_ITEM_ICON_Y(tPartySlot));
@@ -8597,10 +8665,12 @@ static bool8 BagMenu_InBattleSelect(void)
 }
 
 #if USUM_ITEM_MENU_IN_BATTLE_USE
+#if USUM_ITEM_MENU_MULTI_PARTNER
 static bool8 BagMenu_IsMultiFull(void)
 {
     return BagMenu_InBattleSelect() && IsMultiBattle() && AreMultiPartiesFullTeams();
 }
+#endif
 
 static u8 BagMenu_FullMultiPartyId(u8 slot)
 {
@@ -8706,7 +8776,7 @@ static u8 BagMenu_StepSlot(u8 cur, s8 dir, u8 limit)
     return cur;
 }
 
-#if USUM_ITEM_MENU_IN_BATTLE_USE
+#if USUM_ITEM_MENU_MULTI_PARTNER
 #define MULTI_FULL_SWAP_TILES 12
 #define tSwapPhase  tPartyTemp  // data[6]: 0 = sliding out, 1 = sliding in
 #define tSwapFrame  data[7]
@@ -8748,10 +8818,8 @@ static void BagMenu_MultiFullFlipPage(void)
         }
     }
 
-    DecompressDataWithHeaderWram(sBagScreen_BG2TileMap, gBagMenu->mainTilemapBuffer);
-    BagMenu_DrawPartySlots();
+    BagMenu_RedrawPartyPanel();
     UpdateBagPrompt();
-    ScheduleBgCopyTilemapToVram(2);
 
     for (i = 0; i < PARTY_SIZE; i++)
         BagMenu_CreatePanelMonIcon(i, -8 * MULTI_FULL_SWAP_TILES);
@@ -8811,7 +8879,7 @@ static void Task_BagMenu_MultiFullSwap(u8 taskId)
 
 #undef tSwapPhase
 #undef tSwapFrame
-#endif // USUM_ITEM_MENU_IN_BATTLE_USE
+#endif // USUM_ITEM_MENU_MULTI_PARTNER
 
 #if USUM_ITEM_MENU_IN_BATTLE_USE
 static u8 BagMenu_BattleTargetSlotId(bool8 partner, u8 partyIndex)
