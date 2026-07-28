@@ -792,16 +792,12 @@ static const struct YesNoFuncTable sYesNoTossFunctions = {ConfirmToss, CancelTos
 
 static const struct YesNoFuncTable sYesNoSellItemFunctions = {ConfirmSell, CancelSell};
 
-static const u8 sRegisterUp_Gfx[]               = INCGFX_U8("graphics/bag/select_button.png", ".4bpp");
-static const u8 sRegisterRight_Gfx[]            = INCGFX_U8("graphics/bag/select_button_right.png", ".4bpp");
-static const u8 sRegisterDown_Gfx[]             = INCGFX_U8("graphics/bag/select_button_down.png", ".4bpp");
-static const u8 sRegisterLeft_Gfx[]             = INCGFX_U8("graphics/bag/select_button_left.png", ".4bpp");
-static const u8 sRegisterUpL_Gfx[]              = INCGFX_U8("graphics/bag/l_button.png", ".4bpp");
-static const u8 sRegisterRightL_Gfx[]           = INCGFX_U8("graphics/bag/l_button_right.png", ".4bpp");
-static const u8 sRegisterDownL_Gfx[]            = INCGFX_U8("graphics/bag/l_button_down.png", ".4bpp");
-static const u8 sRegisterLeftL_Gfx[]            = INCGFX_U8("graphics/bag/l_button_left.png", ".4bpp");
-static const u8 *const sRegisteredSelect_Gfx[]  = {sRegisterUp_Gfx, sRegisterRight_Gfx, sRegisterDown_Gfx, sRegisterLeft_Gfx, sRegisterUp_Gfx};
-static const u8 *const sRegisteredSelectL_Gfx[] = {sRegisterUpL_Gfx, sRegisterRightL_Gfx, sRegisterDownL_Gfx, sRegisterLeftL_Gfx, sRegisterUpL_Gfx};
+// 3x2 tile frames per D-pad direction, sheet order: Up, Down, Left, Right
+static const u8 sRegisterSelect_Gfx[]           = INCGFX_U8("graphics/bag/usum/register_select.png", ".4bpp");
+static const u8 sRegisterL_Gfx[]                = INCGFX_U8("graphics/bag/usum/register_l.png", ".4bpp");
+
+// registered slots run Up, Right, Down, Left (see DpadInputToRegisteredItemIndexInArray)
+static const u8 sRegisterIconFrames[MAX_REGISTERED_ITEMS] = {0, 3, 1, 2};
 static const u32 sBagScreen_Gfx[]               = INCGFX_U32("graphics/bag/usum/tiles.png", ".4bpp.smol");
 static const u16 sBagScreen_Pal[]               = INCGFX_U16("graphics/bag/usum/tiles.png", ".gbapal");
 static const u16 sPockets_Pal[]                 = INCGFX_U16("graphics/bag/usum/pockets.png", ".gbapal");
@@ -2222,6 +2218,10 @@ static void BagList_MoveSlot(u8 pocketId, u32 from, u32 to)
 #define ITEM_LIST_SLOT_HEIGHT    2
 #define ITEM_LIST_SLOT_PAL       1
 
+#define REGISTER_ICON_WIDTH      24
+#define REGISTER_ICON_HEIGHT     16
+#define REGISTER_ICON_FRAME_SIZE ((REGISTER_ICON_WIDTH / 8) * (REGISTER_ICON_HEIGHT / 8) * TILE_SIZE_4BPP)
+
 static void BagMenu_DrawItemListSlot(u8 slot, const u8 *tilemap)
 {
     u16 *buf = (u16 *)gBagMenu->mainTilemapBuffer;
@@ -2572,10 +2572,9 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 
             if (regSlot >= 0)
             {
-                if (gBagPosition.pocket == POCKET_POKERIDE)
-                    BlitBitmapToWindow(windowId, sRegisteredSelectL_Gfx[regSlot], 96, y, 24, 16);
-                else
-                    BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx[regSlot], 96, y, 24, 16);
+                const u8 *sheet = (gBagPosition.pocket == POCKET_POKERIDE) ? sRegisterL_Gfx : sRegisterSelect_Gfx;
+                BlitBitmapToWindow(windowId, sheet + sRegisterIconFrames[regSlot] * REGISTER_ICON_FRAME_SIZE,
+                    96, y, REGISTER_ICON_WIDTH, REGISTER_ICON_HEIGHT);
             }
         }
     }
