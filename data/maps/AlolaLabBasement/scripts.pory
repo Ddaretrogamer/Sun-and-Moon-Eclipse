@@ -1,1 +1,41 @@
 mapscripts AlolaLabBasement_MapScripts {}
+
+script AlolaLabBasement_Polywhirl{
+    lock
+    faceplayer
+    playmoncry(SPECIES_POLIWHIRL, 0)
+    msgbox("Goosh!")
+    waitmoncry
+    release
+    end
+}
+
+script AlolaLabBasement_MovesBookcaseLeft{
+    lock
+    helpwindow(HELP_NUMBER_OF_MOVES_1, 1)
+    helpwindow(HELP_NUMBER_OF_MOVES_2, 1)
+    helpwindow(HELP_NUMBER_OF_MOVES_3, 2)
+    release
+    end
+}
+
+script AlolaLabBasement_MovesBookcaseRight{
+    lock
+    helpwindow(HELP_CLASSIFICATION_OF_MOVES_1, 1)
+    helpwindow(HELP_CLASSIFICATION_OF_MOVES_2, 1)
+    helpwindow(HELP_CLASSIFICATION_OF_MOVES_3, 1)
+    helpwindow(HELP_CLASSIFICATION_OF_MOVES_4, 2)
+    release
+    end
+}
+
+script AlolaLabBasement_KukuiComputer{
+    lock
+    msgbox("It's Profesor Kukui's PC!
+    
+    All the research data on Pok\emon moves
+    is very nearly organized!", MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
+}

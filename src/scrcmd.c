@@ -3630,16 +3630,27 @@ bool8 ScrCmd_rotommenushow(struct ScriptContext *ctx)
 
 static bool8 WaitForRotomMenuScriptClose(void)
 {
-    if (RotomPhone_StartMenu_IsScriptDisplayActive())
-        return FALSE;
+    static u8 sPostCloseCooldownFrames;
 
-    // Swallow close-input carryover so rapid A/B presses don't leak into the next script command.
+    if (RotomPhone_StartMenu_IsScriptDisplayActive())
+    {
+        sPostCloseCooldownFrames = 0;
+        return FALSE;
+    }
+
+    // Swallow close-input carryover for a short fixed cooldown after closing so
+    // turbo / fast-forward presses cannot immediately hit the next script command.
     gMain.newKeys = 0;
     gMain.newAndRepeatedKeys = 0;
     gMain.newKeysRaw = 0;
 
-    if (gMain.heldKeys & (A_BUTTON | B_BUTTON))
+    if (sPostCloseCooldownFrames < 4)
+    {
+        sPostCloseCooldownFrames++;
         return FALSE;
+    }
+
+    sPostCloseCooldownFrames = 0;
 
     return TRUE;
 }

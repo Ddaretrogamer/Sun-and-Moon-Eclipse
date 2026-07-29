@@ -1,5 +1,6 @@
 mapscripts AlolaLaboratory_MapScripts {
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, TRUE {
+        setobjectxy(lab_rotom, 14, 17)
         hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
         if (var(VAR_IKITOWN_STATE) > 18) {
             setobjectxy(lab_lillie, 14, 17)
@@ -13,12 +14,182 @@ mapscripts AlolaLaboratory_MapScripts {
 script AlolaLaboratory_Kukui{
     lock
     faceplayer
+    if (var(VAR_IKITOWN_STATE) < 20) {
+        goto(AlolaLaboratory_CloseRotomPhoneBackup)
+    }
+    else
+    {
+        speakername("Kukui")
+        msgbox("Pok\emon are my totally necessary
+        partners in my research.
+        
+        Plus we all live here together.
+        I guess I'd have to call them family!")
+        release
+        end
+    }
+
+}
+
+script AlolaLaboratory_CloseRotomPhoneBackup{
     speakername("Kukui")
-    msgbox("Pok\emon are my totally necessary
-    partners in my research.
+    msgbox("Check it out, {PLAYER}!
+    Now Rotom can talk right to you!
     
-    Plus we all live here together.
-    I guess I'd have to call them family!")
+    It may take it a little while to get
+    used to its new job, but I'd say
+    Rotom's taken a liking to you!")
+    applymovement(lab_lillie, moves(walk_in_place_up*2))
+    waitmovement(0)
+    speakername("Lillie")
+    msgbox("And this will help how exactly?")
+    applymovement(lab_kukui, moves(walk_in_place_down*2))
+    waitmovement(0)
+    speakername("Kukui")
+    checkplayergender
+    if (var(VAR_RESULT)==MALE)
+    {
+        msgbox("{PLAYER} hasn't been here in Alola
+        too long yet.
+        
+        So I decided to give him this special
+        Phone to help him navigate around.")
+    }
+    else
+    {
+        msgbox("{PLAYER} hasn't been here in Alola
+        too long yet.
+        
+        So I decided to give her this special
+        Phone to help her navigate around.")
+    }
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Thank you!", "Hi, Rotom!")
+    if (var(VAR_RESULT) == 0){
+        applymovement(lab_kukui, moves(walk_in_place_down*2))
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("You can ask Rotom for directions by
+        opening the Rotom Phone and
+        pressing {R_BUTTON}!
+        
+        You can also press the Rotom Reality
+        feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
+
+    }
+    else{
+        applymovement(lab_kukui, moves(walk_in_place_down*2))
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("You can see ask Rotom for directions
+        by opening the Rotom Phone and
+        pressing {R_BUTTON}!
+        
+        You can also press the Rotom Reality
+        feature to open the {COLOR RED}Town Map{COLOR DARK_GRAY}!")
+    }
+    speakername("Kukui")
+    msgbox("So, {PLAYER}, I'm leaving this Rotom
+    Phone in your hands!
+    
+    Rotom, you look after {PLAYER}, yeah?
+    
+    All right then, {PLAYER}!
+    Get a move on!")
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "OK!", "What?")
+    if (var(VAR_RESULT) == 0){
+        delay(30)
+        applymovement(lab_kukui, moves(jump_in_place_down*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("To the Trainers' School!
+        
+        You've gotta learn the basics of being
+        a Pok\emon Trainer through Pok\emon
+        battling.
+        
+        It's a long road to becoming the island
+        challenge champion, and the
+        Trainers' School is the first step!")
+    }
+    else{
+        delay(30)
+        applymovement(lab_kukui, moves(jump_in_place_down*2))
+        playse(SE_LEDGE)
+        waitse
+        playse(SE_LEDGE)
+        waitse
+        waitmovement(0)
+        speakername("Kukui")
+        msgbox("To the Trainers' School!
+        
+        You've gotta learn the basics of being
+        a Pok\emon Trainer through Pok\emon
+        battling.
+        
+        It's a long road to becoming the island
+        challenge champion, and the
+        Trainers' School is the first step!")
+    }
+    applymovement(lab_lillie, moves(walk_in_place_up*2))
+    waitmovement(0)
+    bufferleadmonspeciesname(STR_VAR_1)
+    speakername("Lillie")
+    msgbox("So this is how the people of Alola
+    connect with the world around them.
+    
+    And then there's the way that you and
+    {STR_VAR_1} both chose one another.
+
+    And now with Rotom helping you out as
+    well\.
+    
+    Even Nebby likes you! I guess there's
+    something about you that makes
+    Pok\emon feel comfortable when
+    they're by your side.")
+    applymovement(lab_kukui, moves(walk_up, delay_8, face_down))
+    waitmovement(0)
+    speakername("Kukui")
+    checkplayergender
+    if (var(VAR_RESULT)==MALE)
+    {
+        msgbox("Lillie!
+        You take care of {PLAYER}, yeah?
+        
+        Until he gets used to Rotom,
+        help him find his way around!")
+    }
+    else
+    {
+        msgbox("Lillie!
+        You take care of {PLAYER}, yeah?
+        
+        Until she gets used to Rotom,
+        help her find her way around!")
+    }
+    speakername("Lillie")
+    msgbox("Of course, Professor Kukui!
+    I'll wait outside.", MSGBOX_AUTOCLOSE)
+    applymovement(lab_lillie, moves(walk_down*3))
+    waitmovement(lab_lillie)
+    playse(SE_EXIT)
+    hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
+    waitse
+    applymovement(lab_lillie, moves(walk_down))
+    waitmovement(lab_lillie)
+    setflag(FLAG_OPEN_TRAINER_SCHOOL)
+    clearflag(FLAG_HIDE_LILLIE_HAUOLI_LAB)
+    setobjectmovementtype(lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_LOOK_AROUND)
+    setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
+    endcutscene
+    helpwindow(HELP_ROTOM_PHONE_GUIDE)
+    setvar(VAR_IKITOWN_STATE, 20)
+    delay(30)
     release
     end
 }
@@ -174,24 +345,12 @@ script AlolaLaboratory_FirstTimeIntro{
         It can take up residence in machines.")
     }
     applymovement(lab_kukui, moves(walk_in_place_down*2))
-    speakername("Kukui")
-    msgbox("Yeah, buddy! And to put that crazy skill
-    of Rotom's to work\.
-    
-    It's the next generation of Phones, but
-    it's only complete once Rotom has
-    gone into this body specially
-    developed for it!
-    
-    A whole new way for people and Pokémon
-    to communicate. Woo!
-    
-    And there's only a few of these
-    beauties out in the world so far!
-    
-    And now if I power up your Rotom Phone
-    with the parts that I just got in\.", MSGBOX_AUTOCLOSE)
-    applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*4))
+    endcutscene
+    openscreenshot(6, 2, AlolaLaboratory_RotomPhoneIntro1)
+    openscreenshot(7, 2, AlolaLaboratory_RotomPhoneIntro2)
+    openscreenshot(8, 0, AlolaLaboratory_RotomPhoneIntro3)
+    applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*3))
+    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     playse(SE_SWITCH)
     waitse
     playse(SE_SWITCH)
@@ -259,9 +418,10 @@ script AlolaLaboratory_FirstTimeIntro{
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_WHITE)
     delay(30)
-    rotommenudisplay("Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.")
-    applymovement(lab_kukui, moves(face_down))
+    applymovement(lab_kukui, moves(delay_16, walk_in_place_down*2))
     waitmovement(0)
+    delay(30)
+    rotommenudisplay("Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.")
     speakername("Kukui")
     msgbox("Check it out, {PLAYER}!
     Now Rotom can talk right to you!
@@ -327,6 +487,7 @@ script AlolaLaboratory_FirstTimeIntro{
     Get a move on!")
     dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "OK!", "What?")
     if (var(VAR_RESULT) == 0){
+        delay(30)
         applymovement(lab_kukui, moves(jump_in_place_down*2))
         playse(SE_LEDGE)
         waitse
@@ -345,6 +506,7 @@ script AlolaLaboratory_FirstTimeIntro{
         Trainers' School is the first step!")
     }
     else{
+        delay(30)
         applymovement(lab_kukui, moves(jump_in_place_down*2))
         playse(SE_LEDGE)
         waitse
@@ -379,7 +541,7 @@ script AlolaLaboratory_FirstTimeIntro{
     something about you that makes
     Pok\emon feel comfortable when
     they're by your side.")
-    applymovement(lab_kukui, moves(walk_in_place_down*2))
+    applymovement(lab_kukui, moves(walk_up, delay_8, face_down))
     waitmovement(0)
     speakername("Kukui")
     checkplayergender
@@ -408,15 +570,42 @@ script AlolaLaboratory_FirstTimeIntro{
     hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
     waitse
     applymovement(lab_lillie, moves(walk_down))
+    waitmovement(lab_lillie)
     setflag(FLAG_OPEN_TRAINER_SCHOOL)
+    clearflag(FLAG_HIDE_LILLIE_HAUOLI_LAB)
     setobjectmovementtype(lab_rockruff, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_stufful, MOVEMENT_TYPE_LOOK_AROUND)
     setobjectmovementtype(lab_snubbull, MOVEMENT_TYPE_LOOK_AROUND)
-    helpwindow(HELP_ROTOM_PHONE_GUIDE)
     endcutscene
+    helpwindow(HELP_ROTOM_PHONE_GUIDE)
+    setvar(VAR_IKITOWN_STATE, 20)
     release
     end
 }
+
+text AlolaLaboratory_RotomPhoneIntro1{
+    "Yeah, buddy! And to put that crazy skill
+    of Rotom's to work\."
+}
+
+text AlolaLaboratory_RotomPhoneIntro2{
+    "It's the next generation of Phones, but
+    it's only complete once Rotom has
+    gone into this body specially
+    developed for it!"
+}
+
+text AlolaLaboratory_RotomPhoneIntro3{
+    "A whole new way for people and Pokémon
+    to communicate. Woo!
+    
+    And there's only a few of these
+    beauties out in the world so far!
+    
+    And now if I power up your Rotom Phone
+    with the parts that I just got in\."
+}
+
 
 script AlolaLaboratory_FirstTimeIntroSkip{
     lock
@@ -425,16 +614,18 @@ script AlolaLaboratory_FirstTimeIntroSkip{
     hideobjectat(lab_lillie, MAP_ALOLA_LABORATORY)
     setobjectxy(lab_lillie, 14, 17)
     hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
-    setobjectxy(lab_rotom, 15, 17)
-    setvar(VAR_IKITOWN_STATE, 19)
+    setobjectxy(lab_rotom, 14, 17)
+    setvar(VAR_IKITOWN_STATE, 20)
     applymovement(lab_rockruff, moves(face_right))
     waitmovement(0)
+    setobjectxy(lab_kukui, 15, 10)
     special(StopAllObjectMovements)
     special(CloseScriptMenus)
     // special(SnapCameraToPlayer)
     // special(RemoveCameraObject)
     setflag(FLAG_OPEN_TRAINER_SCHOOL)
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
+    clearflag(FLAG_HIDE_LILLIE_HAUOLI_LAB)
     fadescreen(FADE_FROM_BLACK)
     helpwindow(HELP_ROTOM_PHONE_GUIDE)
     release

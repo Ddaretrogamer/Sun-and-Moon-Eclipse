@@ -91,5 +91,73 @@ const struct HelpWindow gHelpWindowInfo[] =
                             ),
         .headerFont = FONT_NARROW,
     },
+    [HELP_NUMBER_OF_MOVES_1] =
+    {
+        .header = COMPOUND_STRING("ON THE NUMBER OF POKéMON MOVES"),
+        .desc = COMPOUND_STRING("As of this writing, scholars in this field\n"
+                                "have identified more than 600 distinct moves\n"
+                                "that can be used by Pokémon in battle."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_NUMBER_OF_MOVES_2] =
+    {
+        .header = COMPOUND_STRING("ON THE NUMBER OF POKéMON MOVES"),
+        .desc = COMPOUND_STRING("Yet each Pokémon is only able to remember a\n"
+                                "maximum of four moves at a time.\n\n"
+                                "To learn a fifth move, it must forget one of\n"
+                                "the other moves it knows."
+        ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_NUMBER_OF_MOVES_3] =
+    {
+        .header = COMPOUND_STRING("ON THE NUMBER OF POKéMON MOVES"),
+        .desc = COMPOUND_STRING("Additionally, it must be noted that there are\n"
+                                "also many different ways through which\n"
+                                "Pokémon are able to learn moves.\n\n"
+                                "There is still much for us to learn about the\n"
+                                "relationship of Pokémon and their moves."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_CLASSIFICATION_OF_MOVES_1] =
+    {
+        .header = COMPOUND_STRING("ON THE CLASSIFICATION OF POKéMON MOVES"),
+        .desc = COMPOUND_STRING("Pokémon moves can be divided into three broad\n"
+                                "categories: physical moves, special moves,\n"
+                                "and of course, status moves."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_CLASSIFICATION_OF_MOVES_2] =
+    {
+        .header = COMPOUND_STRING("PHYSICAL MOVES"),
+        .desc = COMPOUND_STRING("Moves that attack an opponent, dealing\n"
+                                "damage based upon the Attack stat of the\n"
+                                "Pokémon using the move and the Defense\n"
+                                "stat of the Pokémon on the receiving side."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_CLASSIFICATION_OF_MOVES_3] =
+    {
+        .header = COMPOUND_STRING("SPECIAL MOVES"),
+        .desc = COMPOUND_STRING("Moves that attack an opponent, dealing\n"
+                                "damage based upon the Sp. Attack stat of\n"
+                                "the Pokémon using the move and the\n"
+                                "Sp. Defense stat of the Pokémon on the\n"
+                                "receiving side."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
+    [HELP_CLASSIFICATION_OF_MOVES_4] =
+    {
+        .header = COMPOUND_STRING("STATUS MOVES"),
+        .desc = COMPOUND_STRING("Moves that have effects other than directly\n"
+                                "attacking another target in battle."
+                            ),
+        .headerFont = FONT_NARROW,
+    },
     // Add more entries
 };
