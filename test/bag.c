@@ -163,3 +163,35 @@ TEST("Items are correctly sorted and compacted in the bag")
     EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_NONE);
     EXPECT_EQ(pocket->itemSlots[6].itemId, ITEM_NONE);
 }
+
+TEST("Moving item slots works in the Medicine pocket")
+{
+    struct BagPocket *pocket = &gBagPockets[POCKET_MEDICINE];
+    memset(pocket->itemSlots, 0, sizeof(gSaveBlock1Ptr->bag.medicine));
+
+    ASSUME(GetItemPocket(ITEM_POTION) == POCKET_MEDICINE);
+    ASSUME(GetItemPocket(ITEM_ANTIDOTE) == POCKET_MEDICINE);
+    ASSUME(GetItemPocket(ITEM_REVIVE) == POCKET_MEDICINE);
+    ASSUME(GetItemPocket(ITEM_ETHER) == POCKET_MEDICINE);
+
+    RUN_OVERWORLD_SCRIPT(
+        additem ITEM_POTION;
+        additem ITEM_ANTIDOTE;
+        additem ITEM_REVIVE;
+        additem ITEM_ETHER;
+    );
+
+    // Drag slot 0 down one row (the bag menu passes to = from + 2 for a one-row move)
+    MoveItemSlotInPocket(POCKET_MEDICINE, 0, 2);
+    EXPECT_EQ(pocket->itemSlots[0].itemId, ITEM_ANTIDOTE);
+    EXPECT_EQ(pocket->itemSlots[1].itemId, ITEM_POTION);
+    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_REVIVE);
+    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_ETHER);
+    EXPECT_EQ(pocket->itemSlots[1].quantity, 1);
+
+    // Drag slot 3 up one row
+    MoveItemSlotInPocket(POCKET_MEDICINE, 3, 2);
+    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_ETHER);
+    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_REVIVE);
+    EXPECT_EQ(pocket->itemSlots[2].quantity, 1);
+}

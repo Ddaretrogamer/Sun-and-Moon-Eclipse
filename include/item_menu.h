@@ -4,6 +4,8 @@
 #include "item.h"
 #include "main.h"
 #include "menu_helpers.h"
+#include "usum_item_menu.h"
+#include "field_item_wheel.h"
 
 enum {
     ITEMMENULOCATION_FIELD,
@@ -34,6 +36,18 @@ enum {
     ITEMWIN_QUANTITY,
     ITEMWIN_QUANTITY_WIDE,
     ITEMWIN_MONEY,
+#if USUM_ITEM_MENU
+    ITEMWIN_SELL_PRICE,
+    ITEMWIN_1x2_HIGH,
+    ITEMWIN_2x2_HIGH,
+    ITEMWIN_2x3_HIGH,
+#endif
+#if USUM_ITEM_MENU_IN_BAG_USE
+    ITEMWIN_PP_MOVE_SELECT,
+    ITEMWIN_LEVEL_UP_STATS,
+    ITEMWIN_ROTOM_CATALOG,
+    ITEMWIN_ZYGARDE_CUBE,
+#endif
     ITEMWIN_COUNT
 };
 
@@ -45,6 +59,27 @@ enum BagSortOptions
     SORT_BY_AMOUNT, //greatest->least
     SORT_BY_INDEX,
 };
+
+#if USUM_ITEM_MENU_BATTLE_POCKETS
+// battle pocket ids start at POCKETS_COUNT so that during battle
+// gBagPosition.pocket never collides with a field POCKET_* value
+// (e.g. POCKET_TM_HM checks for move-info mode)
+enum BattlePocket
+{
+    BATTLE_POCKET_NONE = 0, // item does not appear in the battle bag
+    BATTLE_POCKET_MEDICINE = POCKETS_COUNT,
+    BATTLE_POCKET_POKE_BALLS,
+    BATTLE_POCKET_BATTLE_ITEMS,
+    BATTLE_POCKET_BERRIES,
+    BATTLE_POCKETS_END,
+};
+#define BATTLE_POCKETS_COUNT (BATTLE_POCKETS_END - POCKETS_COUNT)
+// take the largest source pocket count possible
+#define BATTLE_POCKET_CAPACITY max(BAG_ITEMS_COUNT, max(BAG_MEDICINE_COUNT, BAG_BERRIES_COUNT))
+#define BAG_POCKET_IDS_COUNT BATTLE_POCKETS_END
+#else
+#define BAG_POCKET_IDS_COUNT POCKETS_COUNT
+#endif
 
 #define ITEMMENU_SWAP_LINE_LENGTH 8  // Swap line is 8 sprites long
 enum {
@@ -61,17 +96,27 @@ struct BagPosition
     MainCallback exitCallback;
     u8 location;
     u8 pocket;
+#if USUM_ITEM_MENU_PYRAMID
+    bool8 isPyramid; // Battle Pyramid bag from frontier.pyramidBag
+#endif
     u16 pocketSwitchArrowPos;
-    u16 cursorPosition[POCKETS_COUNT];
-    u16 scrollPosition[POCKETS_COUNT];
+    u16 cursorPosition[BAG_POCKET_IDS_COUNT];
+    u16 scrollPosition[BAG_POCKET_IDS_COUNT];
 };
 
 extern struct BagPosition gBagPosition;
 
+#define ITEM_DESCRIPTION_BUFFER_SIZE 200
 struct BagMenu
 {
     MainCallback newScreenCallback;
+#if USUM_ITEM_MENU
+    u8 bg0TilemapBuffer[BG_SCREEN_SIZE];
+    u8 mainTilemapBuffer[BG_SCREEN_SIZE];
+    u8 scrollingBgTilemapBuffer[BG_SCREEN_SIZE];
+#else
     u8 tilemapBuffer[BG_SCREEN_SIZE];
+#endif
     u8 spriteIds[ITEMMENUSPRITE_COUNT];
     u8 windowIds[ITEMWIN_COUNT];
     u8 toSwapPos;
@@ -85,12 +130,53 @@ struct BagMenu
     const u8 *contextMenuItemsPtr;
     u8 contextMenuItemsBuffer[4];
     u8 contextMenuNumItems;
-    u8 numItemStacks[POCKETS_COUNT];
-    u8 numShownItems[POCKETS_COUNT];
+    u8 numItemStacks[BAG_POCKET_IDS_COUNT];
+    u8 numShownItems[BAG_POCKET_IDS_COUNT];
     s16 graphicsLoadState;
     u8 unused2[14];
     u8 ALIGNED(4) pocketNameBuffer[32][32];
     u8 unused3[4];
+#if USUM_ITEM_MENU
+    u8 descriptionBuffer[ITEM_DESCRIPTION_BUFFER_SIZE];
+    u8 partyMonIconSpriteIds[PARTY_SIZE];
+    u8 cursorSpriteId;
+    u8 swapHighlightSlot;
+    u8 quantityBoxSpriteIds[2];
+    u8 moveInfoMode;
+    u8 moveTypeIconSpriteId;
+    u16 showItemIconId;
+    u32 cursorAnimId;
+    u32 scrollThumbAnimId;
+    u32 partyItemIconAnimId;
+    s32 hoveredItemIndex;
+    u16 *moveTypeIconTilesPtr;
+    u8 *moveTypeIconsCache;
+#if USUM_ITEM_MENU_BERRY_STAT
+    u8 berryInfoMode;
+#endif
+#if USUM_ITEM_MENU_IN_BAG_USE
+    const struct YesNoFuncTable *partyYesNoFuncs;
+    bool8 partyGiveMode;
+    bool8 partyBlendActive;
+    u16 partyGiveSwapItem;
+    u8 heldItemIconSpriteId;
+    u16 heldItemPalIndex;
+    s8 heldItemShownSlot;
+    u16 heldItemShownItem;
+    u8 statusIconSpriteIds[PARTY_SIZE];
+    s8 prevHPBarSlot;
+    bool8 hpBarWindowMapped;
+    u8 multiFullPage; // 0 = player team, 1 = partner team (12v12 multi battle)
+#endif
+#if USUM_ITEM_MENU_PYRAMID
+    struct ItemSlot pyramidScratch[PYRAMID_BAG_ITEMS_COUNT];
+    struct BagPocket pyramidScratchPocket;
+#endif
+#if USUM_ITEM_MENU_BATTLE_POCKETS
+    // (srcPocket << 8) | srcSlot for each entry of each battle pocket
+    u16 battlePocketRefs[BATTLE_POCKETS_COUNT][BATTLE_POCKET_CAPACITY];
+#endif
+#endif
 };
 
 extern struct BagMenu *gBagMenu;
@@ -105,8 +191,6 @@ void UpdatePocketListPosition(u8 pocketId);
 void CB2_ReturnToBagMenuPocket(void);
 void CB2_BagMenuFromStartMenu(void);
 u8 GetItemListPosition(u8 pocketId);
-bool8 UseRegisteredKeyItemOnField(void);
-bool8 UseRegisteredPokerideItemOnField(void);
 void CB2_GoToSellMenu(void);
 void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback);
 void DoWallyTutorialBagMenu(void);
@@ -122,7 +206,6 @@ void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void (*callback)(u8
 void DisplayItemMessageOnField(u8 taskId, const u8 *string, TaskFunc callback);
 void CloseItemMessage(u8 taskId);
 void ItemMenu_RotomCatalog(u8 taskId);
-s32 RegisteredItemIndex(u16 item);
 void SortItemsInBag(struct BagPocket *pocket, enum BagSortOptions type);
 
 #endif //GUARD_ITEM_MENU_H

@@ -2916,14 +2916,20 @@ void TryAddLastUsedBallItemSprites(void)
       || (gLastThrownBall != 0 && !CheckBagHasItem(gLastThrownBall, 1)))
     {
         // we're out of the last used ball, so just set it to the first ball in the bag
-        u16 firstBall;
-
         // we have to compact the bag first bc it is typically only compacted when you open it
-        CompactItemsInBagPocket(POCKET_POKE_BALLS);
+        CompactItemsInBagPocket(POCKET_ITEMS);
 
-        firstBall = GetBagItemId(POCKET_POKE_BALLS, 0);
-        if (firstBall > ITEM_NONE)
-            gBallToDisplay = firstBall;
+        for (u32 i = 0; i < gBagPockets[POCKET_ITEMS].capacity; i++)
+        {
+            enum Item itemId = GetBagItemId(POCKET_ITEMS, i);
+            if (itemId == ITEM_NONE)
+                break;
+            if (IsItemBall(itemId))
+            {
+                gBallToDisplay = itemId;
+                break;
+            }
+        }
     }
 
     if (!CanThrowLastUsedBall())

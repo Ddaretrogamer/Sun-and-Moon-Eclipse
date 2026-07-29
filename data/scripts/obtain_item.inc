@@ -18,11 +18,12 @@ EventScript_ObtainItemMessage::
 
 EventScript_BufferPocketNameAndTryFanfare::
 	switch VAR_RESULT
+	case POCKET_MEDICINE,   EventScript_BufferMedicinePocket
 	case POCKET_ITEMS,      EventScript_BufferItemsPocket
 	case POCKET_KEY_ITEMS,  EventScript_BufferKeyItemsPocket
-	case POCKET_POKE_BALLS, EventScript_BufferPokeballsPocket
 	case POCKET_TM_HM,      EventScript_BufferTMHMsPocket
 	case POCKET_BERRIES,    EventScript_BufferBerriesPocket
+	case POCKET_Z_CRYSTALS, EventScript_BufferZCrystalsPocket
 	case POCKET_POKERIDE,   EventScript_BufferPokeRidePocket
 	end
 
@@ -36,8 +37,13 @@ EventScript_BufferKeyItemsPocket::
 	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
 	return
 
-EventScript_BufferPokeballsPocket::
-	bufferstdstring STR_VAR_3, STDSTRING_POKEBALLS
+EventScript_BufferMedicinePocket::
+	bufferstdstring STR_VAR_3, STDSTRING_MEDICINE
+	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
+	return
+
+EventScript_BufferZCrystalsPocket::
+	bufferstdstring STR_VAR_3, STDSTRING_ZCRYSTALS
 	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
 	return
 
@@ -275,11 +281,13 @@ Std_PutItemAway::
 
 EventScript_BufferPutAwayPocketName::
 	switch VAR_RESULT
-	case POCKET_ITEMS,       EventScript_BufferPutAwayPocketItems
-	case POCKET_KEY_ITEMS,   EventScript_BufferPutAwayPocketKeyItems
-	case POCKET_POKE_BALLS,  EventScript_BufferPutAwayPocketPokeBalls
-	case POCKET_TM_HM,     EventScript_BufferPutAwayPocketTMCase
-	case POCKET_BERRIES, EventScript_BufferPutAwayPocketBerryPouch
+	case POCKET_MEDICINE,   EventScript_BufferPutAwayPocketMedicine
+	case POCKET_ITEMS,      EventScript_BufferPutAwayPocketItems
+	case POCKET_KEY_ITEMS,  EventScript_BufferPutAwayPocketKeyItems
+	case POCKET_TM_HM,      EventScript_BufferPutAwayPocketTMCase
+	case POCKET_BERRIES,    EventScript_BufferPutAwayPocketBerryPouch
+	case POCKET_Z_CRYSTALS, EventScript_BufferPutAwayPocketZCrystals
+	case POCKET_POKERIDE,   EventScript_BufferPutAwayPocketPokeRide
 	end
 
 EventScript_BufferPutAwayPocketItems::
@@ -290,8 +298,16 @@ EventScript_BufferPutAwayPocketKeyItems::
 	bufferstdstring STR_VAR_3, STDSTRING_KEYITEMS
 	return
 
-EventScript_BufferPutAwayPocketPokeBalls::
-	bufferstdstring STR_VAR_3, STDSTRING_POKEBALLS
+EventScript_BufferPutAwayPocketMedicine::
+	bufferstdstring STR_VAR_3, STDSTRING_MEDICINE
+	return
+
+EventScript_BufferPutAwayPocketZCrystals::
+	bufferstdstring STR_VAR_3, STDSTRING_ZCRYSTALS
+	return
+
+EventScript_BufferPutAwayPocketPokeRide::
+	bufferstdstring STR_VAR_3, STDSTRING_POKERIDE
 	return
 
 EventScript_BufferPutAwayPocketTMCase::

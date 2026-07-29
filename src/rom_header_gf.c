@@ -162,7 +162,7 @@ __attribute__((section(".text.header_gf"))) USED static const struct GFRomHeader
     .ribbonFlag = FLAG_SYS_RIBBON_GET,
     .bagCountItems = BAG_ITEMS_COUNT,
     .bagCountKeyItems = BAG_KEYITEMS_COUNT,
-    .bagCountPokeballs = BAG_POKEBALLS_COUNT,
+    .bagCountPokeballs = 0, // Poké Balls are stored in the Items pocket
     .bagCountTMHMs = BAG_TMHM_COUNT,
     .bagCountBerries = BAG_BERRIES_COUNT,
     .pcItemsCount = PC_ITEMS_COUNT,

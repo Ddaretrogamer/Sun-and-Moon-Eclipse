@@ -89,7 +89,6 @@ extern struct ComfyAnim gComfyAnims[NUM_COMFY_ANIMS];
 #define COMFY_ANIM_SPRING_DEFAULT_TENSION  Q_24_8(175)
 #define COMFY_ANIM_SPRING_DEFAULT_FRICTION Q_24_8(1000)
 
-
 #define sComfyAnimX         data[0]
 #define sComfyAnimY         data[1]
 

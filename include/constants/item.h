@@ -3,11 +3,13 @@
 
 enum Pocket
 {
+    POCKET_MEDICINE,
     POCKET_ITEMS,
-    POCKET_POKE_BALLS,
+    POCKET_POKE_BALLS = POCKET_ITEMS, // Balls go in Items pocket (USUM layout); IsItemBall() test for a ball
     POCKET_TM_HM,
     POCKET_BERRIES,
     POCKET_KEY_ITEMS,
+    POCKET_Z_CRYSTALS,
     POCKET_POKERIDE,
     POCKETS_COUNT,
     POCKET_DUMMY = POCKETS_COUNT,

@@ -33,6 +33,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#if !USUM_ITEM_MENU_PYRAMID
+
 #define TAG_SCROLL_ARROW  2910
 #define TAG_PYRAMID_BAG   4132
 #define TAG_ITEM_ICON     4133
@@ -1097,7 +1099,7 @@ static void BagAction_UseOnField(u8 taskId)
     u8 pocketId = GetItemPocket(gSpecialVar_ItemId);
 
     if (pocketId == POCKET_KEY_ITEMS
-        || pocketId == POCKET_POKE_BALLS
+        || IsItemBall(gSpecialVar_ItemId)
         || pocketId == POCKET_TM_HM
         || ItemIsMail(gSpecialVar_ItemId) == TRUE)
     {
@@ -1624,3 +1626,5 @@ static void UpdateSwapLinePos(u8 y)
 {
     UpdateSwapLineSpritesPos(&gPyramidBagMenu->spriteIds[PBAG_SPRITE_SWAP_LINE_START], NUM_SWAP_LINE_SPRITES | SWAP_LINE_HAS_MARGIN, 120, (y + 1) * 16);
 }
+
+#endif // !USUM_ITEM_MENU_PYRAMID
