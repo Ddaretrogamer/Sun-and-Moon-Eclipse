@@ -510,7 +510,7 @@ script Ikitown_FestivalBattleOnStage2{
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playfanfare(MUS_OBTAIN_SYMBOL)
     msgbox("You received the {COLOR RED}Island Challenge
-    Amulet{COLOR DARK_GRAY}!")
+    Amulet{COLOR DARK_GRAY}!{PAUSE 30}")
     waitfanfare
     waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
@@ -1180,6 +1180,7 @@ script Ikitown_GetPokedex{
     playfanfare(MUS_OBTAIN_ITEM)
     msgbox("You obtained a {COLOR RED}Rotom Phone{COLOR DARK_GRAY}!")
     waitfanfare
+    waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     bufferleadmonspeciesname(STR_VAR_1)
     speakername("Kukui")

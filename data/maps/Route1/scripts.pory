@@ -8,7 +8,9 @@ mapscripts Route1_MapScripts{
         setrespawn(HEAL_LOCATION_PLAYER_HOUSE)
         end
         }
-    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}]
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE {hideobjectat(LOCALID_PLAYER, MAP_ROUTE1)}
+    VAR_IKITOWN_STATE, 10 {setflag(FLAG_HIDE_MAP_NAME_POPUP)}
+    VAR_IKITOWN_STATE, 17 {setflag(FLAG_HIDE_MAP_NAME_POPUP)}]
     MAP_SCRIPT_ON_FRAME_TABLE[FLAG_LILLIE_INTRO_PLAYED, FALSE: LittleGirlChasesMeowthIntro
     VAR_IKITOWN_STATE, 10 {call(Route1_KukuiCatchingTutorial)}
     VAR_IKITOWN_STATE, 17: Route1_LillieWalkToLab]
@@ -16,12 +18,13 @@ mapscripts Route1_MapScripts{
 
 script Route1_LillieWalkToLab{
     lock
-    startcutscene(CUTSCENE_ROUTE1_LILLIE_WALK_TO_LAB)
     playse(SE_PIN)
     hideobjectat(route1_mom, MAP_ROUTE1)
     applymovement(route1_lillie, moves(emote_exclamation_mark, face_up))
     waitmovement(route1_lillie)
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     delay(30)
+    startcutscene(CUTSCENE_ROUTE1_LILLIE_WALK_TO_LAB)
     applymovement(LOCALID_PLAYER, moves(walk_down*3, face_left))
     applymovement(route1_lillie, moves(delay_16*3, face_right))
     applymovement(route1_mom, moves(walk_down*2))
@@ -256,6 +259,7 @@ script Route1_KukuiCatchingTutorial{
     applymovement(catchingintrokukui, moves(emote_exclamation_mark))
     applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16*3, walk_down*3))
     waitmovement(0)
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     speakername("Kukui")
     msgbox("Hey there, {PLAYER}!
     It's about time we set out for the

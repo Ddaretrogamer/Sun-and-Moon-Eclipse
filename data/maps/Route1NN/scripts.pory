@@ -695,7 +695,9 @@ script Route1NN_Trigger_GetStartersPart2{
     It should feel nice and cozy in there.")
     playfanfare(MUS_OBTAIN_ITEM)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
-    msgbox("Received {STR_VAR_1}'s Poké Ball!", MSGBOX_AUTOCLOSE)
+    msgbox("Received {STR_VAR_1}'s Poké Ball!")
+    waitfanfare
+    waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     speakername("Kukui")
     msgbox("All right! Then let's get going up
@@ -1184,8 +1186,9 @@ script Route1NN_CatchingTutorial{
     fadescreenswapbuffers(FADE_FROM_BLACK)
     playfanfare(MUS_OBTAIN_ITEM)
     msgbox("{COLOR RED}Overworld Pokémon encounters{COLOR DARK_GRAY} can now
-    be enabled!", MSGBOX_AUTOCLOSE)
+    be enabled!")
     waitfanfare
+    waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     setflag(FLAG_HIDE_IKITOWN_SOUTH_LASS)
     clearflag(FLAG_HIDE_IKITOWN_SOUTH_YOUNGSTER)
