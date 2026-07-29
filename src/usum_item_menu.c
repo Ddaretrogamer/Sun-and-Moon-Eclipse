@@ -301,7 +301,6 @@ static void GetItemNameFromPocket(u8 *dest, enum Item itemId);
 static void PrintItemDescription(int);
 static void UpdateEmptyPocket(void);
 static u8 FormatDescriptionByWidth(u8 *, s32, u8, const u8 *, s16);
-static void BagMenu_PrintCursorAtPos(u8, u8);
 static void BagMenu_Print(u8, u8, const u8 *, u8, u8, u8, u8, u8, u8);
 static void Task_CloseBagMenu(u8);
 static u8 AddItemMessageWindow(u8);
@@ -546,11 +545,6 @@ static const u8 sText_MoveInfoPower[]          = _("Power");
 static const u8 sText_MoveInfoAccuracy[]       = _("Accuracy");
 static const u8 sText_MoveInfoPP[]             = _("PP");
 #if USUM_ITEM_MENU_BERRY_STAT
-static const u8 sText_BerryFlavorSpicy[]       = _("Spicy");
-static const u8 sText_BerryFlavorDry[]         = _("Dry");
-static const u8 sText_BerryFlavorSweet[]       = _("Sweet");
-static const u8 sText_BerryFlavorBitter[]      = _("Bitter");
-static const u8 sText_BerryFlavorSour[]        = _("Sour");
 static const u8 *const sBerryFirmnessStrings[] =
 {
     [BERRY_FIRMNESS_UNKNOWN]    = COMPOUND_STRING("???"),
@@ -590,7 +584,6 @@ static const u8 sText_UseHowMany[]              = _("How many do you want to use
 static const u8 sText_DepositedVar2Var1s[]      = _("Deposited {STR_VAR_2}\n{STR_VAR_1}.");
 static const u8 sText_NoRoomForItems[]          = _("There's no room to\nstore items.");
 static const u8 sText_CantStoreImportantItems[] = _("Important items can't be\nstored in the PC!");
-static const u8 sText_Price[]                   = _("Price");
 static const u8 sText_ConfirmTossItems[]        = _("Throw away {STR_VAR_2} {STR_VAR_1}?");
 
 static void Task_LoadBagSortOptions(u8 taskId);
@@ -1112,28 +1105,22 @@ static u8 sPocketTabIds[POCKET_TAB_SPRITES_COUNT];
 static u32 sPocketTabAnimId;
 
 enum {
-    COLORID_NORMAL,
     COLORID_ITEM_LIST,
     COLORID_DESCRIPTION,
-    COLORID_POCKET_NAME,
-    COLORID_TMHM_INFO,
     COLORID_PROMPT,
     COLORID_MONEY,
     COLORID_SELL_PRICE,
     COLORID_NO_FLAVOR,
-    COLORID_NONE = 0xFF
 };
+
 static const u8 sFontColorTable[][3] = {
-                            // bgColor, textColor, shadowColor
-    [COLORID_NORMAL]      = {0,  1,  3},
-    [COLORID_ITEM_LIST]   = {0, 12,  5},
-    [COLORID_DESCRIPTION] = {0,  7,  9},
-    [COLORID_POCKET_NAME] = {0,  1,  5},
-    [COLORID_TMHM_INFO]   = {0,  7,  9},
-    [COLORID_PROMPT]      = {0,  1,  3},
-    [COLORID_MONEY]       = {0,  7,  2},
-    [COLORID_SELL_PRICE]  = {0,  7,  8},
-    [COLORID_NO_FLAVOR]   = {0,  3,  7},
+                          // bg, fg, sh     // target pal
+    [COLORID_ITEM_LIST]   = {0, 12,  5},    // 1
+    [COLORID_DESCRIPTION] = {0,  7,  9},    // 1
+    [COLORID_PROMPT]      = {0, 10, 11},    // 4
+    [COLORID_MONEY]       = {0,  7,  2},    // 3
+    [COLORID_SELL_PRICE]  = {0,  7,  8},    // 3
+    [COLORID_NO_FLAVOR]   = {0,  5, 11},    // 1
 };
 
 static const struct WindowTemplate sDefaultBagWindows[] =
@@ -1206,21 +1193,21 @@ static const struct WindowTemplate sDefaultBagWindows[] =
 #if USUM_ITEM_MENU_BERRY_STAT
     [WIN_BERRY_INFO] = {
         .bg = 1,
-        .tilemapLeft = 11,
-        .tilemapTop = 16,
-        .width = 6,
-        .height = 4,
+        .tilemapLeft = 12,
+        .tilemapTop = 18,
+        .width = 11,
+        .height = 2,
         .paletteNum = 1,
         .baseBlock = 619,
     },
     [WIN_BERRY_FLAVORS] = {
         .bg = 1,
-        .tilemapLeft = 18,
+        .tilemapLeft = 11,
         .tilemapTop = 16,
-        .width = 11,
-        .height = 4,
+        .width = 18,
+        .height = 2,
         .paletteNum = 1,
-        .baseBlock = 643,
+        .baseBlock = 641,
     },
 #endif
 #if USUM_ITEM_MENU_IN_BAG_USE
@@ -1231,7 +1218,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .width       = 5,
         .height      = 1,
         .paletteNum  = 4,
-        .baseBlock   = 687,
+        .baseBlock   = 677,
     },
 #endif
     [WIN_PROMPT] = {
@@ -1241,7 +1228,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .width = 3,
         .height = 4,
         .paletteNum = 4,
-        .baseBlock = 692,
+        .baseBlock = 681,
     },
     DUMMY_WIN_TEMPLATE,
 };
@@ -1284,12 +1271,30 @@ static const struct WindowTemplate sContextMenuWindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 475,
     },
-    [ITEMWIN_2x2_HIGH] = { // Action menu above the message box (D-pad registration)
+    [ITEMWIN_1x2_HIGH] = {
+        .bg = 0,
+        .tilemapLeft = 22,
+        .tilemapTop = 9,
+        .width = 7,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 475,
+    },
+    [ITEMWIN_2x2_HIGH] = {
         .bg = 0,
         .tilemapLeft = 15,
         .tilemapTop = 9,
         .width = 14,
         .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 475,
+    },
+    [ITEMWIN_2x3_HIGH] = {
+        .bg = 0,
+        .tilemapLeft = 15,
+        .tilemapTop = 7,
+        .width = 14,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 475,
     },
@@ -1336,7 +1341,7 @@ static const struct WindowTemplate sContextMenuWindowTemplates[] =
         .tilemapTop = 11,
         .width = 14,
         .height = 8,
-        .paletteNum = 5,
+        .paletteNum = 4,
         .baseBlock = 475,
     },
     [ITEMWIN_LEVEL_UP_STATS] = {
@@ -1563,12 +1568,12 @@ static void CB2_Bag(void)
 #define PARTY_HP_BAR_X_OFFSET       2   // 1px margin + 1px border left of the fill
 #define PARTY_HP_BAR_MAX_WIDTH      36  // fill width in pixels
 #define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
-#define PARTY_HP_BAR_BORDER_COLOR   11
+#define PARTY_HP_BAR_BORDER_COLOR   10
 
 #define PARTY_SLOT_NORMAL_PAL           0
-#define PARTY_SLOT_FOCUS_PAL            6
-#define PARTY_SLOT_NORMAL_PARTNER_PAL   7
-#define PARTY_SLOT_FOCUS_PARTNER_PAL    8
+#define PARTY_SLOT_FOCUS_PAL            5
+#define PARTY_SLOT_NORMAL_PARTNER_PAL   6
+#define PARTY_SLOT_FOCUS_PARTNER_PAL    7
 
 // coming from the party menu, only show the target mon
 // drawn with slot 0's graphics shifted this many tile rows down
@@ -2173,7 +2178,7 @@ static void BagList_MoveSlot(u8 pocketId, u32 from, u32 to)
 #define ITEM_LIST_SLOT_WIDTH     19
 #define ITEM_LIST_SLOT_HEIGHT    2
 #define ITEM_LIST_SLOT_PAL       1
-#define ITEM_LIST_SLOT_SWAP_PAL  9
+#define ITEM_LIST_SLOT_SWAP_PAL  8
 
 #define REGISTER_ICON_WIDTH      24
 #define REGISTER_ICON_HEIGHT     16
@@ -2566,7 +2571,7 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 static void PrintItemDescription(int itemIndex)
 {
     const u8 *str;
-    u8 desc[200];
+    u8 *desc = gBagMenu->descriptionBuffer;
     u8 fontId;
     s32 maxWidth = sDefaultBagWindows[WIN_DESCRIPTION].width * 8 - 3;
 
@@ -2583,7 +2588,7 @@ static void PrintItemDescription(int itemIndex)
     }
     fontId = FormatDescriptionByWidth(desc, maxWidth, FONT_SHORT_NARROW, str, GetFontAttribute(FONT_SHORT_NARROW, FONTATTR_LETTER_SPACING));
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
-    AddTextPrinterParameterized4(WIN_DESCRIPTION, fontId, 3, 1, 0, 1, sFontColorTable[COLORID_DESCRIPTION], 0, desc);
+    BagMenu_Print(WIN_DESCRIPTION, fontId, desc, 3, 1, 0, 1, 0, COLORID_DESCRIPTION);
 }
 
 static void UpdateEmptyPocket(void)
@@ -2606,20 +2611,6 @@ static void UpdateEmptyPocket(void)
         CopyWindowToVram(WIN_DESCRIPTION, COPYWIN_GFX);
 
     }
-}
-
-static void BagMenu_PrintCursor(u8 listTaskId, u8 colorIndex)
-{
-    BagMenu_PrintCursorAtPos(ListMenuGetYCoordForPrintingArrowCursor(listTaskId), colorIndex);
-}
-
-static void BagMenu_PrintCursorAtPos(u8 y, u8 colorIndex)
-{
-    if (colorIndex == COLORID_NONE)
-        FillWindowPixelRect(WIN_ITEM_LIST, PIXEL_FILL(0), 0, y, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), GetMenuCursorDimensionByFont(FONT_NORMAL, 1));
-    else
-        BagMenu_Print(WIN_ITEM_LIST, FONT_NORMAL, gText_SelectorArrow2, 0, y, 0, 0, 0, colorIndex);
-
 }
 
 static void FreeBagMenu(void)
@@ -2944,7 +2935,6 @@ static void Task_BagMenu_HandleInput(u8 taskId)
                         gSpecialVar_ItemId = tempItem.itemId;
 
                     PlaySE(SE_SELECT);
-                    BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
                     ListMenuGetScrollAndRow(data[0], scrollPos, cursorPos);
                     gTasks[taskId].func = Task_LoadBagSortOptions;
                     return;
@@ -2980,7 +2970,6 @@ static void Task_BagMenu_HandleInput(u8 taskId)
                 }
                 struct ItemSlot itemSlot = BagList_GetSlot(gBagPosition.pocket, listPosition);
                 PlaySE(SE_SELECT);
-                BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
                 tListPosition = listPosition;
                 gSpecialVar_ItemId = itemSlot.itemId;
                 tQuantity = itemSlot.quantity;
@@ -3549,13 +3538,24 @@ static bool8 IsValidContextMenuPos(s8 cursorPos)
 static void RemoveContextWindow(void)
 {
     if (gBagMenu->contextMenuNumItems == 1)
+    {
         BagMenu_RemoveWindow(ITEMWIN_1x1);
+    }
     else if (gBagMenu->contextMenuNumItems == 2)
+    {
         BagMenu_RemoveWindow(ITEMWIN_1x2);
+        BagMenu_RemoveWindow(ITEMWIN_1x2_HIGH);
+    }
     else if (gBagMenu->contextMenuNumItems == 4)
+    {
         BagMenu_RemoveWindow(ITEMWIN_2x2);
+        BagMenu_RemoveWindow(ITEMWIN_2x2_HIGH);
+    }
     else
+    {
         BagMenu_RemoveWindow(ITEMWIN_2x3);
+        BagMenu_RemoveWindow(ITEMWIN_2x3_HIGH);
+    }
 }
 
 // skips ItemUseOutOfBattle_TMHM boot-up/teach prompts sequences and goes straight to choosing a mon
@@ -3635,10 +3635,7 @@ static void AskTossItemsYesNo(u8 taskId)
 
 static void CancelToss(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
-
     RemoveItemMessageWindow(ITEMWIN_MESSAGE);
-    BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
     ReturnToItemList(taskId);
 }
 
@@ -3686,7 +3683,6 @@ static void RefreshListMenu(u8 taskId)
     LoadBagItemListBuffers(gBagPosition.pocket);
     tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
     UpdateEmptyPocket();
-    BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
     ScheduleBgCopyTilemapToVram(1);
 }
 
@@ -3875,10 +3871,10 @@ static void ItemMenu_Cancel(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     RemoveContextWindow();
+    RemoveItemMessageWindow(ITEMWIN_MESSAGE);
     PrintItemDescription(tListPosition);
     ScheduleBgCopyTilemapToVram(1);
     ScheduleBgCopyTilemapToVram(0);
-    BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
     ReturnToItemList(taskId);
 }
 
@@ -3984,10 +3980,7 @@ static void AskSellItems(u8 taskId)
 
 static void CancelSell(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
-
     RemoveItemMessageWindow(ITEMWIN_MESSAGE);
-    BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
     ReturnToItemList(taskId);
 }
 
@@ -4016,7 +4009,6 @@ static void Task_ChooseHowManyToSell(u8 taskId)
     else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
         DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         ReturnToItemList(taskId);
@@ -4097,7 +4089,6 @@ static void Task_ChooseHowManyToDeposit(u8 taskId)
         PlaySE(SE_SELECT);
         DestroyQuantityBoxSprite();
         RemoveItemMessageWindow(ITEMWIN_MESSAGE);
-        BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
         ReturnToItemList(taskId);
     }
 }
@@ -4209,7 +4200,6 @@ static void Task_WallyTutorialBagMenu(u8 taskId)
             break;
         case WALLY_BAG_DELAY * 2:
             PlaySE(SE_SELECT);
-            BagMenu_PrintCursor(tListTaskId, COLORID_NONE);
             gSpecialVar_ItemId = ITEM_POKE_BALL;
             OpenContextMenu(taskId);
             tTimer++;
@@ -4395,8 +4385,7 @@ static void LoadBagMenuTextWindows(void)
     DeactivateAllTextPrinters();
     LoadUserWindowBorderGfx(0, 1, BG_PLTT_ID(14));
     LoadMessageBoxGfx(0, 10, BG_PLTT_ID(13));
-    ListMenuLoadStdPalAt(BG_PLTT_ID(12), 1);
-    LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    LoadPalette(gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     for (i = 0; i <= WIN_DESCRIPTION; i++)
     {
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
@@ -4560,7 +4549,7 @@ static void SetupSellWindows(void)
 
     windowId = BagMenu_AddWindowNoFrame(ITEMWIN_SELL_PRICE);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
-    BagMenu_Print(windowId, FONT_NORMAL, sText_Price, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_SELL_PRICE);
+    BagMenu_Print(windowId, FONT_NORMAL, COMPOUND_STRING("Price"), 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_SELL_PRICE);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 
     windowId = BagMenu_AddWindowNoFrame(ITEMWIN_MONEY);
@@ -4700,11 +4689,11 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
     if (itemIndex == LIST_CANCEL)
     {
         BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, gText_ThreeDashes,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, gText_ThreeDashes, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
         CopyWindowToVram(WIN_POW_ACC_INFO, COPYWIN_GFX);
         gSprites[gBagMenu->moveTypeIconSpriteId].invisible = TRUE;
@@ -4717,7 +4706,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
     // PP
     ConvertIntToDecimalStringN(gStringVar1, GetMovePP(move), STR_CONV_MODE_LEFT_ALIGN, 3);
     BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gStringVar1,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
     CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
 
     // Power
@@ -4730,7 +4719,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
         text = gStringVar1;
     }
     BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, text,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
 
     // Accuracy
     accuracy = GetMoveAccuracy(move);
@@ -4742,7 +4731,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
         text = gStringVar1;
     }
     BagMenu_Print(WIN_POW_ACC_INFO, FONT_SHORT_NARROW, text,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, text, valInfoWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
     CopyWindowToVram(WIN_POW_ACC_INFO, COPYWIN_GFX);
 
     gSprites[gBagMenu->moveTypeIconSpriteId].x = 136;
@@ -4757,7 +4746,7 @@ static void UpdateMoveBattleInfo(s32 itemIndex)
 static void PrintContestDescription(s32 itemIndex)
 {
     const u8 *str;
-    u8 desc[200];
+    u8 *desc = gBagMenu->descriptionBuffer;
     u8 fontId;
     s32 maxWidth = sDefaultBagWindows[WIN_DESCRIPTION].width * 8 - 3;
 
@@ -4774,7 +4763,7 @@ static void PrintContestDescription(s32 itemIndex)
     }
     fontId = FormatDescriptionByWidth(desc, maxWidth, FONT_SHORT_NARROW, str, GetFontAttribute(FONT_SHORT_NARROW, FONTATTR_LETTER_SPACING));
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
-    AddTextPrinterParameterized4(WIN_DESCRIPTION, fontId, 3, 1, 0, 1, sFontColorTable[COLORID_DESCRIPTION], 0, desc);
+    BagMenu_Print(WIN_DESCRIPTION, fontId, desc, 3, 1, 0, 1, 0, COLORID_DESCRIPTION);
 }
 #endif
 
@@ -4797,16 +4786,16 @@ static void SwitchMoveInfoMode(s32 itemIndex)
         }
 
         FillWindowPixelBuffer(WIN_PP_LABEL, PIXEL_FILL(0));
-        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         CopyWindowToVram(WIN_PP_LABEL, COPYWIN_GFX);
 
         {
             int winWidth = WindowWidthPx(WIN_POW_ACC_LABEL);
             FillWindowPixelBuffer(WIN_POW_ACC_LABEL, PIXEL_FILL(0));
             BagMenu_Print(WIN_POW_ACC_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPower,
-                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoPower, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoPower, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
             BagMenu_Print(WIN_POW_ACC_LABEL, FONT_SHORT_NARROW, sText_MoveInfoAccuracy,
-                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAccuracy, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+                GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAccuracy, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
             CopyWindowToVram(WIN_POW_ACC_LABEL, COPYWIN_GFX);
         }
 
@@ -4854,15 +4843,15 @@ static void SwitchMoveInfoMode(s32 itemIndex)
         ClearWindowTilemap(WIN_DESCRIPTION);
 
         FillWindowPixelBuffer(WIN_PP_LABEL, PIXEL_FILL(0));
-        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(WIN_PP_LABEL, FONT_SHORT_NARROW, sText_MoveInfoPP, 0, 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         CopyWindowToVram(WIN_PP_LABEL, COPYWIN_GFX);
 
         winWidth = WindowWidthPx(WIN_APP_JAM_LABEL);
         FillWindowPixelBuffer(WIN_APP_JAM_LABEL, PIXEL_FILL(0));
         BagMenu_Print(WIN_APP_JAM_LABEL, FONT_SHORT_NARROW, sText_MoveInfoAppeal,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAppeal, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoAppeal, winWidth), 1, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         BagMenu_Print(WIN_APP_JAM_LABEL, FONT_SHORT_NARROW, sText_MoveInfoJam,
-            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoJam, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_MoveInfoJam, winWidth), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         CopyWindowToVram(WIN_APP_JAM_LABEL, COPYWIN_GFX);
 
         UpdateMoveContestInfo(itemIndex);
@@ -4925,7 +4914,7 @@ static void UpdateMoveContestInfo(s32 itemIndex)
     // PP
     ConvertIntToDecimalStringN(gStringVar1, GetMovePP(move), STR_CONV_MODE_LEFT_ALIGN, 3);
     BagMenu_Print(WIN_PP_INFO, FONT_SHORT_NARROW, gStringVar1,
-        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar1, ppInfoWidth), 0, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
     CopyWindowToVram(WIN_PP_INFO, COPYWIN_GFX);
 
     // Contest type icon
@@ -4988,7 +4977,7 @@ static const u8 sBagMenuSortBerriesTMsHMs[] =
     ACTION_CANCEL,
 };
 
-static void AddBagSortSubMenu(void)
+static void AddBagSortSubMenu(u8 taskId)
 {
     switch (gBagPosition.pocket)
     {
@@ -5011,25 +5000,22 @@ static void AddBagSortSubMenu(void)
         break;
     }
 
-    StringExpandPlaceholders(gStringVar4, sText_SortItemsHow);
-    FillWindowPixelBuffer(1, PIXEL_FILL(0));
-    BagMenu_Print(1, 1, gStringVar4, 3, 1, 0, 0, 0, 0);
-
     if (gBagMenu->contextMenuNumItems == 2)
-        PrintContextMenuItems(BagMenu_AddWindow(ITEMWIN_1x2));
+        PrintContextMenuItems(BagMenu_AddWindow(ITEMWIN_1x2_HIGH));
     else if (gBagMenu->contextMenuNumItems == 4)
-        PrintContextMenuItemGrid(BagMenu_AddWindow(ITEMWIN_2x2), 2, 2);
+        PrintContextMenuItemGrid(BagMenu_AddWindow(ITEMWIN_2x2_HIGH), 2, 2);
     else
-        PrintContextMenuItemGrid(BagMenu_AddWindow(ITEMWIN_2x3), 2, 3);
+        PrintContextMenuItemGrid(BagMenu_AddWindow(ITEMWIN_2x3_HIGH), 2, 3);
+
+    StringExpandPlaceholders(gStringVar4, sText_SortItemsHow);
+    DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4,
+                       gBagMenu->contextMenuNumItems <= 2 ? Task_ItemContext_SingleRow
+                                                          : Task_ItemContext_MultipleRows);
 }
 
 static void Task_LoadBagSortOptions(u8 taskId)
 {
-    AddBagSortSubMenu();
-    if (gBagMenu->contextMenuNumItems <= 2)
-        gTasks[taskId].func = Task_ItemContext_SingleRow;
-    else
-        gTasks[taskId].func = Task_ItemContext_MultipleRows;
+    AddBagSortSubMenu(taskId);
 }
 
 #define tSortType data[2]
@@ -5083,7 +5069,7 @@ static void SortBagItems(u8 taskId)
 
     StringCopy(gStringVar1, sSortTypeStrings[tSortType]);
     StringExpandPlaceholders(gStringVar4, sText_ItemsSorted);
-    DisplayItemMessage(taskId, 1, gStringVar4, Task_SortFinish);
+    DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, Task_SortFinish);
 }
 
 #undef tSortType
@@ -5092,7 +5078,7 @@ static void Task_SortFinish(u8 taskId)
 {
     if (gMain.newKeys & (A_BUTTON | B_BUTTON))
     {
-        RemoveItemMessageWindow(4);
+        RemoveItemMessageWindow(ITEMWIN_MESSAGE);
         ReturnToItemList(taskId);
     }
 }
@@ -5453,17 +5439,17 @@ static void UpdateBerryInfo(s32 itemIndex)
             ptr = ConvertIntToDecimalStringN(ptr, fraction, STR_CONV_MODE_LEFT_ALIGN, 1);
             *ptr++ = CHAR_DBL_QUOTE_RIGHT;
             *ptr = EOS;
-            BagMenu_Print(WIN_BERRY_INFO, FONT_SHORT_NARROW, gStringVar4, GetStringRightAlignXOffset(FONT_SHORT_NARROW, gStringVar4, 48), 2, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            BagMenu_Print(WIN_BERRY_INFO, FONT_SHORT_NARROW, gStringVar4, 3, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
         }
 
         if (berryInfo->firmness != BERRY_FIRMNESS_UNKNOWN)
-            BagMenu_Print(WIN_BERRY_INFO, FONT_SHORT_NARROW, sBerryFirmnessStrings[berryInfo->firmness], GetStringRightAlignXOffset(FONT_SHORT_NARROW, sBerryFirmnessStrings[berryInfo->firmness], 48), 16, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+            BagMenu_Print(WIN_BERRY_INFO, FONT_SHORT_NARROW, sBerryFirmnessStrings[berryInfo->firmness], 32, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_DESCRIPTION);
 
-        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, sText_BerryFlavorSpicy,   4,  0, 0, 0, TEXT_SKIP_DRAW, berryInfo->spicy  ? COLORID_NORMAL : COLORID_NO_FLAVOR);
-        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, sText_BerryFlavorDry,    39,  0, 0, 0, TEXT_SKIP_DRAW, berryInfo->dry    ? COLORID_NORMAL : COLORID_NO_FLAVOR);
-        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, sText_BerryFlavorSweet,  63,  0, 0, 0, TEXT_SKIP_DRAW, berryInfo->sweet  ? COLORID_NORMAL : COLORID_NO_FLAVOR);
-        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, sText_BerryFlavorBitter,  4, 16, 0, 0, TEXT_SKIP_DRAW, berryInfo->bitter ? COLORID_NORMAL : COLORID_NO_FLAVOR);
-        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, sText_BerryFlavorSour,   42, 16, 0, 0, TEXT_SKIP_DRAW, berryInfo->sour   ? COLORID_NORMAL : COLORID_NO_FLAVOR);
+        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, COMPOUND_STRING("Spicy"),   5,  1, 0, 0, TEXT_SKIP_DRAW, berryInfo->spicy  ? COLORID_DESCRIPTION : COLORID_NO_FLAVOR);
+        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, COMPOUND_STRING("Dry"),    35,  1, 0, 0, TEXT_SKIP_DRAW, berryInfo->dry    ? COLORID_DESCRIPTION : COLORID_NO_FLAVOR);
+        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, COMPOUND_STRING("Sweet"),  56,  1, 0, 0, TEXT_SKIP_DRAW, berryInfo->sweet  ? COLORID_DESCRIPTION : COLORID_NO_FLAVOR);
+        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, COMPOUND_STRING("Bitter"),  87, 1, 0, 0, TEXT_SKIP_DRAW, berryInfo->bitter ? COLORID_DESCRIPTION : COLORID_NO_FLAVOR);
+        BagMenu_Print(WIN_BERRY_FLAVORS, FONT_SHORT_NARROW, COMPOUND_STRING("Sour"),   120, 1, 0, 0, TEXT_SKIP_DRAW, berryInfo->sour   ? COLORID_DESCRIPTION : COLORID_NO_FLAVOR);
 
         CopyWindowToVram(WIN_BERRY_INFO, COPYWIN_GFX);
         CopyWindowToVram(WIN_BERRY_FLAVORS, COPYWIN_GFX);
@@ -5477,8 +5463,8 @@ static void PrintBerryDescriptionInfo(s32 itemIndex)
     if (itemIndex != LIST_CANCEL)
     {
         const struct BerryInfo *berryInfo = GetBerryInfo(ItemIdToBerryType(BagList_GetItemId(gBagPosition.pocket, itemIndex)));
-        AddTextPrinterParameterized4(WIN_DESCRIPTION, FONT_SMALL_NARROWER, 3,  2, 0, 1, sFontColorTable[COLORID_NORMAL], 0, berryInfo->description1);
-        AddTextPrinterParameterized4(WIN_DESCRIPTION, FONT_SMALL_NARROWER, 3, 15, 0, 1, sFontColorTable[COLORID_NORMAL], 0, berryInfo->description2);
+        BagMenu_Print(WIN_DESCRIPTION, FONT_SMALL_NARROWER, berryInfo->description1, 3,  2, 0, 1, 0, COLORID_DESCRIPTION);
+        BagMenu_Print(WIN_DESCRIPTION, FONT_SMALL_NARROWER, berryInfo->description2, 3, 15, 0, 1, 0, COLORID_DESCRIPTION);
     }
 }
 #endif
@@ -7012,10 +6998,19 @@ static void BagMenu_UsePPOnMove(u8 taskId, u8 moveSlot)
     DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, Task_BagMenu_PartyAfterItemUse);
 }
 
+// ordered by GetCurrentPpToMaxPpState
+enum {
+    PP_STATE_BELOW_HALF,
+    PP_STATE_BELOW_QUARTER,
+    PP_STATE_EMPTY,
+    PP_STATE_ABOVE_HALF, // no warning color, prints with the font defaults
+};
+
 static const u8 sPPMoveSelectColors[][3] = {
-    [0] = {0, 4, 5},
-    [1] = {0, 6, 7},
-    [2] = {0, 8, 9},
+                             // bg, fg, sh      // target pal
+    [PP_STATE_BELOW_HALF]    = {0, 4, 5},       // 4
+    [PP_STATE_BELOW_QUARTER] = {0, 6, 7},       // 4
+    [PP_STATE_EMPTY]         = {0, 8, 9},       // 4
 };
 
 static void BagMenu_ShowPPMoveSelectWindow(u8 taskId)
@@ -7044,7 +7039,7 @@ static void BagMenu_ShowPPMoveSelectWindow(u8 taskId)
             StringAppend(gStringVar3, gText_Slash);
             StringAppend(gStringVar3, gStringVar2);
             x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar3, WindowWidthPx(windowId));
-            if (ppState == 3)
+            if (ppState == PP_STATE_ABOVE_HALF)
                 AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar3, x, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
             else
                 AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, (i * 16) + 1, 0, 0, sPPMoveSelectColors[ppState], TEXT_SKIP_DRAW, gStringVar3);

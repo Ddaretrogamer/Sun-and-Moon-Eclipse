@@ -38,7 +38,9 @@ enum {
     ITEMWIN_MONEY,
 #if USUM_ITEM_MENU
     ITEMWIN_SELL_PRICE,
-    ITEMWIN_2x2_HIGH, // Action menu above a message box (D-pad registration)
+    ITEMWIN_1x2_HIGH,
+    ITEMWIN_2x2_HIGH,
+    ITEMWIN_2x3_HIGH,
 #endif
 #if USUM_ITEM_MENU_IN_BAG_USE
     ITEMWIN_PP_MOVE_SELECT,
@@ -104,6 +106,7 @@ struct BagPosition
 
 extern struct BagPosition gBagPosition;
 
+#define ITEM_DESCRIPTION_BUFFER_SIZE 200
 struct BagMenu
 {
     MainCallback newScreenCallback;
@@ -134,6 +137,7 @@ struct BagMenu
     u8 ALIGNED(4) pocketNameBuffer[32][32];
     u8 unused3[4];
 #if USUM_ITEM_MENU
+    u8 descriptionBuffer[ITEM_DESCRIPTION_BUFFER_SIZE];
     u8 partyMonIconSpriteIds[PARTY_SIZE];
     u8 cursorSpriteId;
     u8 swapHighlightSlot;
