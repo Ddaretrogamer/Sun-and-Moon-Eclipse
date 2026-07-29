@@ -701,6 +701,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ULTRA_RECON_3] =            &gObjectEventGraphicsInfo_UltraRecon3,
     [OBJ_EVENT_GFX_ULTRA_RECON_4] =            &gObjectEventGraphicsInfo_UltraRecon4,
     [OBJ_EVENT_GFX_SAMSON_OAK] =               &gObjectEventGraphicsInfo_SamsonOak,
+    [OBJ_EVENT_GFX_SWIMMER_M_WATER]          = &gObjectEventGraphicsInfo_SwimmerMWater,
+    [OBJ_EVENT_GFX_SWIMMER_F_WATER]          = &gObjectEventGraphicsInfo_SwimmerFWater,
+    [OBJ_EVENT_GFX_SWIMMER_M_LAND]           = &gObjectEventGraphicsInfo_SwimmerMLand,
+    [OBJ_EVENT_GFX_SWIMMER_F_LAND]           = &gObjectEventGraphicsInfo_SwimmerFLand,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,

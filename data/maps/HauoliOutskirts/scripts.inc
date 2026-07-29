@@ -570,47 +570,61 @@ HauoliOustkirtsTrainerTipsSign::
 	end
 
 
-HauoliOutskirtLassNPC::
+HauoliOutskirts_Battle_VsLassMadison::
 # 394 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirtLassNPC_Text_0, MSGBOX_NPC
+	trainerbattle_single TRAINER_LASS_MADISON, HauoliOutskirts_Battle_VsLassMadison_Text_0, HauoliOutskirts_Battle_VsLassMadison_Text_1
+# 395 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_Battle_VsLassMadison_Text_2, MSGBOX_AUTOCLOSE
+# 396 "data/maps/HauoliOutskirts/scripts.pory"
+	release
+	end
+
+
+HauoliOutskirts_Battle_VsSwimmerNatasha::
+# 401 "data/maps/HauoliOutskirts/scripts.pory"
+	trainerbattle_single TRAINER_SWIMMER_NATASHA, HauoliOutskirts_Battle_VsSwimmerNatasha_Text_0, HauoliOutskirts_Battle_VsSwimmerNatasha_Text_1
+# 402 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_Battle_VsSwimmerNatasha_Text_2, MSGBOX_AUTOCLOSE
+# 404 "data/maps/HauoliOutskirts/scripts.pory"
+	release
 	end
 
 
 HauoliOustkirtsFishingSpot1::
-# 399 "data/maps/HauoliOutskirts/scripts.pory"
+# 408 "data/maps/HauoliOutskirts/scripts.pory"
 	lock
-# 400 "data/maps/HauoliOutskirts/scripts.pory"
+# 409 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_SURF_MON_SLOT, 0
 	goto_if_eq HauoliOustkirtsFishingSpot1_2
-# 421 "data/maps/HauoliOutskirts/scripts.pory"
+# 430 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_2
 HauoliOustkirtsFishingSpot1_1:
-# 423 "data/maps/HauoliOutskirts/scripts.pory"
+# 432 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 HauoliOustkirtsFishingSpot1_2:
-# 402 "data/maps/HauoliOutskirts/scripts.pory"
+# 411 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_0, MSGBOX_YESNO
-# 403 "data/maps/HauoliOutskirts/scripts.pory"
+# 412 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_5
-# 415 "data/maps/HauoliOutskirts/scripts.pory"
+# 424 "data/maps/HauoliOutskirts/scripts.pory"
 	release
 	end
 
 HauoliOustkirtsFishingSpot1_5:
-# 405 "data/maps/HauoliOutskirts/scripts.pory"
+# 414 "data/maps/HauoliOutskirts/scripts.pory"
 	checkitem ITEM_SUPER_ROD
-# 406 "data/maps/HauoliOutskirts/scripts.pory"
+# 415 "data/maps/HauoliOutskirts/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq HauoliOustkirtsFishingSpot1_8
-# 411 "data/maps/HauoliOutskirts/scripts.pory"
+# 420 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOustkirtsFishingSpot1_Text_1
 	goto HauoliOustkirtsFishingSpot1_1
 
 HauoliOustkirtsFishingSpot1_8:
-# 408 "data/maps/HauoliOutskirts/scripts.pory"
+# 417 "data/maps/HauoliOutskirts/scripts.pory"
 	startfishing
 	goto HauoliOustkirtsFishingSpot1_1
 
@@ -933,18 +947,39 @@ HauoliOustkirtsTrainerTipsSign_Text_0:
 	.string "the left position in your Pokémon\l"
 	.string "party.$"
 
-HauoliOutskirtLassNPC_Text_0:
+HauoliOutskirts_Battle_VsLassMadison_Text_0:
 # 394 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Alola! Check out my cute Pokémon!$"
+
+HauoliOutskirts_Battle_VsLassMadison_Text_1:
+# 394 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Huh! You're kinda strong, aren't you?$"
+
+HauoliOutskirts_Battle_VsLassMadison_Text_2:
+# 395 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "If you see a Pokémon Trainer, you've\ngotta show off the Pokémon you like!$"
 
-HauoliOustkirtsFishingSpot1_Text_0:
+HauoliOutskirts_Battle_VsSwimmerNatasha_Text_0:
+# 401 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "The calm sea, or the stormy sea…\nWhich do you prefer?$"
+
+HauoliOutskirts_Battle_VsSwimmerNatasha_Text_1:
+# 401 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "I guess I prefer calm, at least for my\nopponents…$"
+
+HauoliOutskirts_Battle_VsSwimmerNatasha_Text_2:
 # 402 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "I like the sea in any of its moods…\n"
+	.string "It's always the same ocean, after all.$"
+
+HauoliOustkirtsFishingSpot1_Text_0:
+# 411 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Would you like to fish here?$"
 
 HauoliOustkirtsFishingSpot1_Text_1:
-# 411 "data/maps/HauoliOutskirts/scripts.pory"
+# 420 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You don't have a Fishing Rod.$"
 
 HauoliOustkirtsFishingSpot1_Text_2:
-# 421 "data/maps/HauoliOutskirts/scripts.pory"
+# 430 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You can't fish while riding a Sharpedo!$"

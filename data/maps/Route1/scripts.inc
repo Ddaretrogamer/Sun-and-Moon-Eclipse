@@ -566,28 +566,32 @@ Mailbox::
 	end
 
 
-Route1LittleBoyNPC::
+HauoliOutskirts_Battle_VsYoungsterKevin::
 # 360 "data/maps/Route1/scripts.pory"
-	msgbox Route1LittleBoyNPC_Text_0, MSGBOX_NPC
+	trainerbattle_single TRAINER_YOUNGSTER_KEVIN, HauoliOutskirts_Battle_VsYoungsterKevin_Text_0, HauoliOutskirts_Battle_VsYoungsterKevin_Text_1
+# 361 "data/maps/Route1/scripts.pory"
+	msgbox HauoliOutskirts_Battle_VsYoungsterKevin_Text_2, MSGBOX_AUTOCLOSE
+# 362 "data/maps/Route1/scripts.pory"
+	release
 	end
 
 
 testscript::
-# 365 "data/maps/Route1/scripts.pory"
+# 367 "data/maps/Route1/scripts.pory"
 	msgbox testscript_Text_0, MSGBOX_NPC
 	end
 
 
 Route1_Trigger_HeadEastToIkiTown::
-# 385 "data/maps/Route1/scripts.pory"
+# 387 "data/maps/Route1/scripts.pory"
 	lock
-# 386 "data/maps/Route1/scripts.pory"
-	msgbox Route1_Trigger_HeadEastToIkiTown_Text_0, MSGBOX_AUTOCLOSE
 # 388 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_PLAYER, Route1_trigger_kukui_catching_tutorial_Movement_0
-# 389 "data/maps/Route1/scripts.pory"
-	waitmovement LOCALID_PLAYER
+	msgbox Route1_Trigger_HeadEastToIkiTown_Text_0, MSGBOX_AUTOCLOSE
 # 390 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_PLAYER, Route1_trigger_kukui_catching_tutorial_Movement_0
+# 391 "data/maps/Route1/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 392 "data/maps/Route1/scripts.pory"
 	release
 	end
 
@@ -1065,12 +1069,20 @@ Mailbox_Text_0:
 # 354 "data/maps/Route1/scripts.pory"
 	.string "{PLAYER}'s House$"
 
-Route1LittleBoyNPC_Text_0:
+HauoliOutskirts_Battle_VsYoungsterKevin_Text_0:
 # 360 "data/maps/Route1/scripts.pory"
+	.string "Let's go!\nKneecaps!$"
+
+HauoliOutskirts_Battle_VsYoungsterKevin_Text_1:
+# 360 "data/maps/Route1/scripts.pory"
+	.string "Aww…\nBrought to my knees.$"
+
+HauoliOutskirts_Battle_VsYoungsterKevin_Text_2:
+# 361 "data/maps/Route1/scripts.pory"
 	.string "I gotta catch more Pokémon!\nPokémon with cool knees are so neat.$"
 
 testscript_Text_0:
-# 365 "data/maps/Route1/scripts.pory"
+# 367 "data/maps/Route1/scripts.pory"
 	.string "okay this is a test.\n"
 	.string "It seems this is a suitable line lengthc\l"
 	.string "for scripting. This is working well.\p"
@@ -1084,6 +1096,6 @@ testscript_Text_0:
 	.string "cousin!$"
 
 Route1_Trigger_HeadEastToIkiTown_Text_0:
-# 386 "data/maps/Route1/scripts.pory"
+# 388 "data/maps/Route1/scripts.pory"
 	.string "The Iki Town Festival awaits!\n"
 	.string "Head east, cousin!$"

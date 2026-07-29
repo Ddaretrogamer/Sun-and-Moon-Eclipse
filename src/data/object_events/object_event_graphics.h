@@ -525,9 +525,20 @@ const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pi
 const u16 gObjectEventPic_LassFrlg[] = INCGFX_U16("graphics/object_events/pics/people/lass_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_BeautyFrlg[] = INCGFX_U16("graphics/object_events/pics/people/beauty_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Woman1Frlg[] = INCGFX_U16("graphics/object_events/pics/people/woman_1_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SwimmerMWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_water.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SwimmerFWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_water.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SwimmerMLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_land.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_SwimmerFLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_land.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_NpcBlue[] = INCGFX_U16("graphics/object_events/palettes/npc_blue.pal", ".gbapal");
 const u16 gObjectEventPal_NpcGreen[] = INCGFX_U16("graphics/object_events/palettes/npc_green.pal", ".gbapal");
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_NpcWhite[] = INCGFX_U16("graphics/object_events/palettes/npc_white.pal", ".gbapal");
+const u16 gObjectEventPal_NpcBlueReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_blue_reflection.pal", ".gbapal");
+const u16 gObjectEventPal_NpcGreenReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_green_reflection.pal", ".gbapal");
+const u16 gObjectEventPal_NpcWhiteReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_white_reflection.pal", ".gbapal");
+
+
+
 
 #if IS_FRLG
 
@@ -551,11 +562,11 @@ const u16 gObjectEventPal_PlayerReflectionFrlg[] = INCGFX_U16("graphics/object_e
 // const u16 gObjectEventPal_NpcBlue[] = INCGFX_U16("graphics/object_events/palettes/npc_blue.pal", ".gbapal");
 const u16 gObjectEventPal_NpcPink[] = INCGFX_U16("graphics/object_events/palettes/npc_pink.pal", ".gbapal");
 // const u16 gObjectEventPal_NpcGreen[] = INCGFX_U16("graphics/object_events/palettes/npc_green.pal", ".gbapal");
-const u16 gObjectEventPal_NpcWhite[] = INCGFX_U16("graphics/object_events/palettes/npc_white.pal", ".gbapal");
-const u16 gObjectEventPal_NpcBlueReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_blue_reflection.pal", ".gbapal");
-const u16 gObjectEventPal_NpcPinkReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_pink_reflection.pal", ".gbapal");
-const u16 gObjectEventPal_NpcGreenReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_green_reflection.pal", ".gbapal");
-const u16 gObjectEventPal_NpcWhiteReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_white_reflection.pal", ".gbapal");
+// const u16 gObjectEventPal_NpcWhite[] = INCGFX_U16("graphics/object_events/palettes/npc_white.pal", ".gbapal");
+// const u16 gObjectEventPal_NpcBlueReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_blue_reflection.pal", ".gbapal");
+// const u16 gObjectEventPal_NpcPinkReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_pink_reflection.pal", ".gbapal");
+// const u16 gObjectEventPal_NpcGreenReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_green_reflection.pal", ".gbapal");
+// const u16 gObjectEventPal_NpcWhiteReflection[] = INCGFX_U16("graphics/object_events/palettes/npc_white_reflection.pal", ".gbapal");
 
 const u16 gObjectEventPic_Pokedex[] = INCGFX_U16("graphics/object_events/pics/misc/pokedex.png", ".4bpp");
 const u16 gObjectEventPic_TownMap[] = INCGFX_U16("graphics/object_events/pics/misc/town_map.png", ".4bpp", "-mwidth 2 -mheight 2");
@@ -597,10 +608,10 @@ const u16 gObjectEventPic_CooltrainerF[] = INCGFX_U16("graphics/object_events/pi
 const u16 gObjectEventPic_PokeManiacFrlg[] = INCGFX_U16("graphics/object_events/pics/people/poke_maniac_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Channeler[] = INCGFX_U16("graphics/object_events/pics/people/channeler.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_RocketF[] = INCGFX_U16("graphics/object_events/pics/people/rocket_f.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_SwimmerMWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_water.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_SwimmerFWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_water.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_SwimmerMLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_land.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_SwimmerFLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_land.png", ".4bpp", "-mwidth 2 -mheight 4");
+// const u16 gObjectEventPic_SwimmerMWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_water.png", ".4bpp", "-mwidth 2 -mheight 4");
+// const u16 gObjectEventPic_SwimmerFWater[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_water.png", ".4bpp", "-mwidth 2 -mheight 4");
+// const u16 gObjectEventPic_SwimmerMLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_m_land.png", ".4bpp", "-mwidth 2 -mheight 4");
+// const u16 gObjectEventPic_SwimmerFLand[] = INCGFX_U16("graphics/object_events/pics/people/swimmer_f_land.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_BlackBeltFrlg[] = INCGFX_U16("graphics/object_events/pics/people/black_belt_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Scientist[] = INCGFX_U16("graphics/object_events/pics/people/scientist.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_GentlemanFrlg[] = INCGFX_U16("graphics/object_events/pics/people/gentleman_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");

@@ -356,9 +356,11 @@ script Mailbox{
     end
 }
 
-script Route1LittleBoyNPC{
-msgbox("I gotta catch more Pokémon!\nPokémon with cool knees are so neat.", MSGBOX_NPC)
-end    
+script HauoliOutskirts_Battle_VsYoungsterKevin{
+    trainerbattle_single(TRAINER_YOUNGSTER_KEVIN, "Let's go!\nKneecaps!", "Aww\.\nBrought to my knees.")
+    msgbox("I gotta catch more Pokémon!\nPokémon with cool knees are so neat.", MSGBOX_AUTOCLOSE)
+    release
+    end
 }
 
 script testscript{

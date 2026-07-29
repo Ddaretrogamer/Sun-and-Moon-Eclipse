@@ -390,11 +390,20 @@ script HauoliOustkirtsTrainerTipsSign{
 end
 }
 
-script HauoliOutskirtLassNPC{
-    msgbox("If you see a Pokémon Trainer, you've\ngotta show off the Pokémon you like!",MSGBOX_NPC)
-end
+script HauoliOutskirts_Battle_VsLassMadison{
+    trainerbattle_single(TRAINER_LASS_MADISON, "Alola! Check out my cute Pok\emon!", "Huh! You're kinda strong, aren't you?")
+    msgbox("If you see a Pokémon Trainer, you've\ngotta show off the Pokémon you like!", MSGBOX_AUTOCLOSE)
+    release
+    end
 }
 
+script HauoliOutskirts_Battle_VsSwimmerNatasha{
+    trainerbattle_single(TRAINER_SWIMMER_NATASHA, "The calm sea, or the stormy sea\.\nWhich do you prefer?", "I guess I prefer calm, at least for my\nopponents\.")
+    msgbox("I like the sea in any of its moods\.
+    It's always the same ocean, after all.", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
 script HauoliOustkirtsFishingSpot1{
     lock
     if(var(VAR_SURF_MON_SLOT)==0)

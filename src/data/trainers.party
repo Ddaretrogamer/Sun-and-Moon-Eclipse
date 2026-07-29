@@ -309,52 +309,41 @@ Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Shiny: Yes
 
-=== TRAINER_GRUNT_RUSTURF_TUNNEL ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_LASS_MADISON ===
+Name: Madison
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Yungoos (F)
+Level: 6
 
-=== TRAINER_GRUNT_WEATHER_INST_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_SWIMMER_NATASHA ===
+Name: Natasha
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wingull (F)
+Level: 7
 
-Poochyena
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_WEATHER_INST_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_YOUNGSTER_KEVIN ===
+Name: Kevin
+Class: School Kid
+Pic: School Kid M
 Gender: Male
-Music: Aqua
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Inkay (M)
+Level: 6
 
 === TRAINER_GRUNT_WEATHER_INST_3 ===
 Name: GRUNT
