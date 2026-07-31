@@ -285,7 +285,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_X_SPECIAL",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_116_X_SPECIAL"
+      "flag": "FLAG_ITEM_ROUTE_1NN_POTION"
     },
     {
       "local_id": "LOCALID_ROUTE116_WANDAS_BF",
