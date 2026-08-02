@@ -413,11 +413,11 @@ AlolaLaboratory_FirstTimeIntro_5:
 # 348 "data/maps/AlolaLaboratory/scripts.pory"
 	endcutscene
 # 349 "data/maps/AlolaLaboratory/scripts.pory"
-	openscreenshot 6, 2, AlolaLaboratory_RotomPhoneIntro1
+	openscreenshot 6, 3, 1, AlolaLaboratory_RotomPhoneIntro1
 # 350 "data/maps/AlolaLaboratory/scripts.pory"
-	openscreenshot 7, 2, AlolaLaboratory_RotomPhoneIntro2
+	openscreenshot 7, 2, 1, AlolaLaboratory_RotomPhoneIntro2
 # 351 "data/maps/AlolaLaboratory/scripts.pory"
-	openscreenshot 8, 0, AlolaLaboratory_RotomPhoneIntro3
+	openscreenshot 8, 0, 1, AlolaLaboratory_RotomPhoneIntro3
 # 352 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
 # 353 "data/maps/AlolaLaboratory/scripts.pory"

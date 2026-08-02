@@ -221,7 +221,7 @@ AetherIntroSequence::
 # 125 "data/maps/AetherConservatory/scripts.pory"
 	playse SE_M_COSMIC_POWER
 # 126 "data/maps/AetherConservatory/scripts.pory"
-	openscreenshot 0, 1
+	openscreenshot 0, 3
 # 127 "data/maps/AetherConservatory/scripts.pory"
 	openscreenshot 1, 1
 # 128 "data/maps/AetherConservatory/scripts.pory"

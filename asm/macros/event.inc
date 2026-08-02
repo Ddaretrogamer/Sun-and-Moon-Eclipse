@@ -2780,9 +2780,11 @@
 	.2byte \duration
 	.endm
 
-	.macro openscreenshot screenshotId:req, result=0, text=0
-	setvar VAR_0x8003, \screenshotId
-	setvar VAR_RESULT, \result
+	.macro openscreenshot screenshotId:req, result=0, fade=0, text=0
+	setvar VAR_0x8003, \screenshotId, FALSE
+	setvar VAR_0x8004, \fade, FALSE
+	setvar VAR_0x8005, \fade, FALSE
+	setvar VAR_RESULT, \result, FALSE
 	callnative OpenScreenshotsFromScript
 	.4byte \text
 	.endm

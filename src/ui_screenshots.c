@@ -48,6 +48,11 @@ struct ScreenshotsResources
 {
     MainCallback savedCallback;
     u8 gfxLoadState;
+    u8 fadeInMode;
+    u8 fadeOutMode;
+    u8 screenshotMode;
+    bool8 textBoxShown;
+    bool8 sequenceActive;
     const u8 *messageText;
     u16 playerIconSpriteId;
     u16 nameplateSpriteId[2];
@@ -66,6 +71,7 @@ static EWRAM_DATA u8 *sBg0TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 static EWRAM_DATA const u8 *sPendingMessageText = NULL;
+static EWRAM_DATA bool8 sQueuedScreenshotReload = FALSE;
 
 //==========STATIC=DEFINES==========//
 static void Screenshots_RunSetup(void);
@@ -74,11 +80,17 @@ static bool8 Screenshots_InitBgs(void);
 static void Screenshots_FadeAndBail(void);
 static bool8 Screenshots_LoadGraphics(void);
 static void Screenshots_InitWindows(void);
+static void Screenshots_UpdateWindowsForReload(void);
+static u16 Screenshots_GetFadeInColor(void);
+static u16 Screenshots_GetFadeOutColor(void);
+static u32 Screenshots_GetFadePaletteMask(void);
 static void PrintToWindow(void);
 static void Task_ScreenshotsWaitFadeIn(u8 taskId);
 static void Task_ScreenshotsTurnOff(u8 taskId);
 static void Task_ScreenshotsMain(u8 taskId);
-static void Task_ScreenshotsFadeToBlackExit(u8 taskId);
+static void Task_ScreenshotsFadeToFieldExit(u8 taskId);
+static void Task_ScreenshotsFadeToNext(u8 taskId);
+static void Task_ScreenshotsReload(u8 taskId);
 
 #define SCREENSHOT_TILE_OFFSET 0
 #define SCREENSHOT_TEXTBOX_BASE_TILE 0
@@ -242,6 +254,19 @@ void OpenScreenshotsFromScript(struct ScriptContext *ctx)
         sPendingMessageText = NULL;
     }
 
+    if (sScreenshotsDataPtr != NULL)
+    {
+        sScreenshotsDataPtr->gfxLoadState = 0;
+        sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
+        sScreenshotsDataPtr->fadeOutMode = gSpecialVar_0x8005;
+        sScreenshotsDataPtr->screenshotMode = VarGet(VAR_RESULT);
+        if (sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP)
+            sScreenshotsDataPtr->sequenceActive = TRUE;
+        sScreenshotsDataPtr->messageText = sPendingMessageText;
+        sQueuedScreenshotReload = TRUE;
+        return;
+    }
+
     CleanupOverworldWindowsAndTilemaps();
     Screenshots_Init(CB2_ReturnToFieldContinueScript);
 }
@@ -255,8 +280,15 @@ void Screenshots_Init(MainCallback callback)
     }
 
     sScreenshotsDataPtr->gfxLoadState = 0;
+    sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
+    sScreenshotsDataPtr->fadeOutMode = gSpecialVar_0x8005;
+    sScreenshotsDataPtr->screenshotMode = VarGet(VAR_RESULT);
+    sScreenshotsDataPtr->textBoxShown = FALSE;
+    sScreenshotsDataPtr->sequenceActive = (sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP
+                                        || sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_CONTINUE);
     sScreenshotsDataPtr->savedCallback = callback;
     sScreenshotsDataPtr->messageText = sPendingMessageText;
+    sQueuedScreenshotReload = FALSE;
 
     SetMainCallback2(Screenshots_RunSetup);
 }
@@ -330,11 +362,11 @@ static bool8 Screenshots_DoGfxSetup(void)
         break;
     case 5:
         CreateTask(Task_ScreenshotsWaitFadeIn, 0);
-        BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+        BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeInColor());
         gMain.state++;
         break;
     case 6:
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
+        BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 16, 0, Screenshots_GetFadeInColor());
         gMain.state++;
         break;
     default:
@@ -374,10 +406,44 @@ static void Task_ScreenshotsWaitFadeAndBail(u8 taskId)
 
 static void Screenshots_FadeAndBail(void)
 {
-    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+    BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
     CreateTask(Task_ScreenshotsWaitFadeAndBail, 0);
     SetVBlankCallback(Screenshots_VBlankCB);
     SetMainCallback2(Screenshots_MainCB);
+}
+
+static u16 Screenshots_GetFadeInColor(void)
+{
+    if (sScreenshotsDataPtr != NULL
+     && sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP)
+        return RGB_BLACK;
+
+    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeInMode == SCREENSHOT_FADE_WHITE)
+        return RGB_WHITE;
+
+    return RGB_BLACK;
+}
+
+static u16 Screenshots_GetFadeOutColor(void)
+{
+    if (sScreenshotsDataPtr != NULL
+     && sScreenshotsDataPtr->sequenceActive
+     && sScreenshotsDataPtr->screenshotMode != SCREENSHOT_MODE_SEQUENCE_CONTINUE
+     && sScreenshotsDataPtr->screenshotMode != SCREENSHOT_MODE_SEQUENCE_SETUP)
+        return RGB_BLACK;
+
+    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeOutMode == SCREENSHOT_FADE_WHITE)
+        return RGB_WHITE;
+
+    return RGB_BLACK;
+}
+
+static u32 Screenshots_GetFadePaletteMask(void)
+{
+    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->messageText != NULL)
+        return 0x7FFF;
+
+    return 0xFFFF;
 }
 
 static bool8 Screenshots_InitBgs(void)
@@ -448,6 +514,7 @@ static void Screenshots_InitWindows(void)
         FillBgTilemapBufferRect(0, 0, 0, 0, 32, 32, 0);
         CopyBgTilemapBufferToVram(0);
         HideBg(0);
+        sScreenshotsDataPtr->textBoxShown = FALSE;
         return;
     }
 
@@ -462,6 +529,34 @@ static void Screenshots_InitWindows(void)
     PrintToWindow();
     CopyWindowToVram(0, COPYWIN_FULL);
     ShowBg(0);
+    sScreenshotsDataPtr->textBoxShown = TRUE;
+}
+
+static void Screenshots_UpdateWindowsForReload(void)
+{
+    if (sScreenshotsDataPtr->messageText == NULL)
+    {
+        if (sScreenshotsDataPtr->textBoxShown)
+        {
+            FillBgTilemapBufferRect(0, 0, 0, 0, 32, 32, 0);
+            CopyBgTilemapBufferToVram(0);
+            HideBg(0);
+            sScreenshotsDataPtr->textBoxShown = FALSE;
+        }
+        return;
+    }
+
+    if (!sScreenshotsDataPtr->textBoxShown)
+    {
+        Screenshots_InitWindows();
+        return;
+    }
+
+    LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM), PLTT_SIZE_4BPP);
+    DeactivateAllTextPrinters();
+    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+    PrintToWindow();
+    CopyWindowToVram(0, COPYWIN_FULL);
 }
 
 static void PrintToWindow(void)
@@ -502,14 +597,19 @@ static void Task_ScreenshotsMain(u8 taskId)
 
     if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON) || (!hasMessage && AUTOCLOSE_TIMER >= AUTOCLOSE_DURATION))
     {
-        switch (VarGet(VAR_RESULT))
+        switch (sScreenshotsDataPtr->screenshotMode)
         {
-        case 1:
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-            gTasks[taskId].func = Task_ScreenshotsFadeToBlackExit;
+        case SCREENSHOT_MODE_EXIT_TO_FIELD:
+            BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
+            gTasks[taskId].func = Task_ScreenshotsFadeToFieldExit;
+            break;
+        case SCREENSHOT_MODE_SEQUENCE_CONTINUE:
+        case SCREENSHOT_MODE_SEQUENCE_SETUP:
+            BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
+            gTasks[taskId].func = Task_ScreenshotsFadeToNext;
             break;
         default:
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+            BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
             gTasks[taskId].func = Task_ScreenshotsTurnOff;
             break;
         }
@@ -519,16 +619,45 @@ static void Task_ScreenshotsMain(u8 taskId)
     #undef AUTOCLOSE_DURATION
 }
 
-static void Task_ScreenshotsFadeToBlackExit(u8 taskId)
+static void Task_ScreenshotsFadeToFieldExit(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
-        *(u16 *)PLTT = RGB_BLACK;
+        BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeOutColor());
+        *(vu16 *)PLTT = Screenshots_GetFadeOutColor();
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
         ScriptContext_Enable();
         SetMainCallback2(CB2_Overworld);
         Screenshots_FreeResources();
         DestroyTask(taskId);
+    }
+}
+
+static void Task_ScreenshotsFadeToNext(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        sQueuedScreenshotReload = FALSE;
+        ScriptContext_RunScript();
+        if (sQueuedScreenshotReload)
+        {
+            gTasks[taskId].func = Task_ScreenshotsReload;
+        }
+        else
+        {
+            gTasks[taskId].func = Task_ScreenshotsTurnOff;
+        }
+    }
+}
+
+static void Task_ScreenshotsReload(u8 taskId)
+{
+    if (Screenshots_LoadGraphics() == TRUE)
+    {
+        gTasks[taskId].data[0] = 0;
+        Screenshots_UpdateWindowsForReload();
+        BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeInColor());
+        BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 16, 0, Screenshots_GetFadeInColor());
+        gTasks[taskId].func = Task_ScreenshotsWaitFadeIn;
     }
 }

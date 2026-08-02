@@ -123,7 +123,7 @@ script AetherIntroSequence{
     setflag(FLAG_HIDE_ROUTE1_LILLIE)
     setvar(VAR_RESULT, 1)
     playse(SE_M_COSMIC_POWER)
-    openscreenshot(0, 1)
+    openscreenshot(0, 3)
     openscreenshot(1, 1)
     delay(30)
     warpsilent(MAP_ROUTE1, 27, 19)
