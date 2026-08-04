@@ -1122,7 +1122,7 @@ static const u8 sFontColorTable[][3] = {
     [COLORID_MONEY]       = {0,  7,  2},    // 3
     [COLORID_SELL_PRICE]  = {0,  7,  8},    // 3
     [COLORID_NO_FLAVOR]   = {0,  5, 11},    // 1
-    [COLORID_PARTY_HP]    = {0,  1,  0},    // 4
+    [COLORID_PARTY_HP]    = {0,  1, 10},    // 4, shadow is the glyph outline; accent (backdrop) falls out as bg
 };
 
 static const struct WindowTemplate sDefaultBagWindows[] =
@@ -1555,7 +1555,7 @@ static void CB2_Bag(void)
 #define PARTY_MON_ICON_X            26
 #define PARTY_MON_ICON_Y(slot)      (24 * (slot) + 24)
 #define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 19)
-#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 1)
+#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 0)
 #define PARTY_HELD_ITEM_X           (PARTY_MON_ICON_X + 16)
 #define PARTY_HELD_ITEM_Y(slot)     (PARTY_MON_ICON_Y(slot) + 12)
 #define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 12)
@@ -1567,10 +1567,10 @@ static void CB2_Bag(void)
 #define PARTY_PANEL_SLOT_WIDTH      8
 #define PARTY_PANEL_SLOT_HEIGHT     3
 
-#define PARTY_HP_BAR_Y_OFFSET       7   // pixel offset of the HP bar fill rows
+#define PARTY_HP_BAR_Y_OFFSET       6   // pixel offset of the HP bar fill rows
 #define PARTY_HP_BAR_X_OFFSET       1   // 1px border left of the fill
 #define PARTY_HP_BAR_MAX_WIDTH      46  // fill width in pixels
-#define PARTY_HP_BAR_FILL_HEIGHT    6   // fill height in pixels, excluding the 1px borders
+#define PARTY_HP_BAR_FILL_HEIGHT    7   // fill height in pixels, excluding the 1px borders
 #define PARTY_HP_BAR_BORDER_COLOR   10
 #define PARTY_HP_BAR_GREEN_COLOR    12
 #define PARTY_HP_BAR_YELLOW_COLOR   13
@@ -1580,7 +1580,7 @@ static void CB2_Bag(void)
 #define PARTY_HP_BAR_GREEN_WIDTH    (PARTY_HP_BAR_MAX_WIDTH * 50 / 100)
 #define PARTY_HP_BAR_YELLOW_WIDTH   (PARTY_HP_BAR_MAX_WIDTH * 20 / 100)
 
-#define PARTY_HP_BAR_TEXT_Y         4
+#define PARTY_HP_BAR_TEXT_Y         3
 #define PARTY_HP_BAR_TEXT_RIGHT     (PARTY_HP_BAR_X_OFFSET + PARTY_HP_BAR_MAX_WIDTH)
 
 #define PARTY_SLOT_NORMAL_PAL           0
@@ -5825,12 +5825,12 @@ static void BagMenu_PrintPartyHPValues(u16 hp, u16 maxHp)
     maxText[0] = CHAR_SLASH;
     ConvertIntToDecimalStringN(&maxText[1], maxHp, STR_CONV_MODE_LEFT_ALIGN, 3);
 
-    curWidth = GetStringWidth(FONT_SHORT_NARROW, curText, 0);
-    maxWidth = GetStringWidth(FONT_SMALL_NARROW, maxText, 0);
+    curWidth = GetStringWidth(FONT_OUTLINED, curText, 0);
+    maxWidth = GetStringWidth(FONT_OUTLINED_NARROW, maxText, 0);
 
-    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_SHORT_NARROW, curText, PARTY_HP_BAR_TEXT_RIGHT - curWidth - maxWidth,
+    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_OUTLINED, curText, PARTY_HP_BAR_TEXT_RIGHT - curWidth - maxWidth,
                   PARTY_HP_BAR_TEXT_Y, 0, 0, TEXT_SKIP_DRAW, COLORID_PARTY_HP);
-    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_SMALL_NARROW, maxText, PARTY_HP_BAR_TEXT_RIGHT - maxWidth,
+    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_OUTLINED_NARROW, maxText, PARTY_HP_BAR_TEXT_RIGHT - maxWidth,
                   PARTY_HP_BAR_TEXT_Y, 0, 0, TEXT_SKIP_DRAW, COLORID_PARTY_HP);
 }
 
