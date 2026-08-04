@@ -15,3 +15,89 @@ script HaouliPokemonCenter_EventScript_Nurse{
 	release
 	end
 }
+
+script HaouliPokemonCenter_FatMan{
+	lock
+	faceplayer
+	msgbox("Any Trainer can have their Pok\emon
+	healed or use the PC here for free.")
+	waitmessage
+	release
+	end
+}
+
+script HaouliPokemonCenter_Boy{
+	lock
+	faceplayer
+	msgbox("You can have up to six Pok\emon on
+	your team when walking around.
+	
+	Catch any more than that, and you'll
+	have to send 'em to your PC boxes")
+	waitmessage
+	release
+	end
+}
+
+script HaouliPokemonCenter_LittleBoy{
+	lock
+	faceplayer
+	msgbox("You can buy and sell things at the
+	Pok\e Mart.
+	
+	I feel better with a Bag full of plenty
+	of Potions and Pok\e Balls.
+	
+	What about you?")
+	waitmessage
+	release
+	end
+}
+
+script HaouliPokemonCenter_Script_MartRight{
+	lock
+	faceplayer
+	msgbox("Welcome to the Pok\e Mart!
+	May I help you?")
+	waitmessage
+	pokemart(HaouliPokemonCenter_MartRight_Items)
+	msgbox("Please come again!")
+	release
+	end
+}
+
+script HaouliPokemonCenter_Script_MartLeft{
+	lock
+	faceplayer
+	gettime
+	buffernumberstring(STR_VAR_1, VAR_0x8000)
+	buffernumberstring(STR_VAR_2, VAR_0x8001)
+	msgbox("Welcome to the Pok\emon Center Cafe!
+	It's about {STR_VAR_1}:{STR_VAR_2} now in Alola.
+	
+	Here in our caf\e space, we provide a
+	moment of peace to our customers.
+	
+	What can I get started for you today?")
+	waitmessage
+	pokemart(HaouliPokemonCenter_MartLeft_Items)
+	msgbox("Please come visit us again soon!")
+	release
+	end
+}
+
+mart HaouliPokemonCenter_MartRight_Items{
+	ITEM_POKE_BALL
+	ITEM_POTION
+	ITEM_ANTIDOTE
+	ITEM_PARALYZE_HEAL
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
+	ITEM_ICE_HEAL
+	ITEM_REPEL
+}
+
+mart HaouliPokemonCenter_MartLeft_Items{
+	ITEM_LEMONADE
+	ITEM_MOOMOO_MILK
+}
