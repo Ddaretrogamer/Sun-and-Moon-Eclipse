@@ -2257,7 +2257,8 @@ static void RotomPhone_OverworldMenu_PrintAdventure(u8 taskId)
     {
     default:
     case RP_MESSAGE_ADVENTURE_TO_DO:
-        u8 location[16];
+        // Region map names can exceed 15 chars, so keep a larger local buffer. fixes crash when rotom phone is open.
+        u8 location[32];
         StringCopy(textBuffer, COMPOUND_STRING("What's there to do in "));
         GetMapName(location, GetCurrentRegionMapSectionId(), 0);
         StringAppend(textBuffer, location);
