@@ -413,6 +413,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lusamine;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherGruntM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherGruntF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hala;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ilima;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kiawe;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kukui;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioNormal;
@@ -683,6 +684,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_AETHER_GRUNT_M] =           &gObjectEventGraphicsInfo_AetherGruntM,
     [OBJ_EVENT_GFX_AETHER_GRUNT_F] =           &gObjectEventGraphicsInfo_AetherGruntF,
     [OBJ_EVENT_GFX_HALA] =                     &gObjectEventGraphicsInfo_Hala,
+    [OBJ_EVENT_GFX_ILIMA] =                    &gObjectEventGraphicsInfo_Ilima,
     [OBJ_EVENT_GFX_KIAWE] =                    &gObjectEventGraphicsInfo_Kiawe,
     [OBJ_EVENT_GFX_KUKUI] =                    &gObjectEventGraphicsInfo_Kukui,
     [OBJ_EVENT_GFX_ELIO_NORMAL] =              &gObjectEventGraphicsInfo_ElioNormal,

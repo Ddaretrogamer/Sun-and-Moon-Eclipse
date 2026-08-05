@@ -714,6 +714,10 @@ static const struct SpriteFrameImage sPicTable_Hala[] = {
     overworld_ascending_frames(gObjectEventPic_Hala, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Ilima[] = {
+    overworld_ascending_frames(gObjectEventPic_Ilima, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Kiawe[] = {
     overworld_ascending_frames(gObjectEventPic_Kiawe, 2, 4),
 };
