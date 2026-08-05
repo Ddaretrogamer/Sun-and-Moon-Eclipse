@@ -844,7 +844,7 @@ HauoliOutskirts_ExitLabEclipse_Text_14:
 HauoliOutskirts_ExitLabEclipse_Text_15:
 # 156 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Come on, {PLAYER}.\n"
-	.string "I'll show you to the Trainer's School.$"
+	.string "I'll show you to the Trainers' School.$"
 
 HauoliOutskirts_LillieOutsideLab_Text_0:
 # 204 "data/maps/HauoliOutskirts/scripts.pory"

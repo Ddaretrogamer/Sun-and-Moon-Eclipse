@@ -11,3 +11,24 @@ script TrainerSchoolSign{
 end    
 }
 
+script TrainersSchool_Intro{
+    lock
+    applymovement(trainerschool_lillie, moves(face_left))
+    speakername("Kukui")
+    applymovement(trainerschool_kukui, moves(walk_in_place_down*2))
+    msgbox("Hey there, {PLAYER}!
+    I must've passed you two somehow, yeah?
+    
+    But welcome to the Trainers' School,
+    the place to learn how to be a Pokémon
+    Trainer!")
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    playse(SE_PIN)
+    applymovement(trainerschool_teacher, moves(emote_exclamation_mark))
+    msgbox("Professor Kukui!
+    Is this the child you told me about?")
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    speakername("Kukui")
+    release
+    end
+}

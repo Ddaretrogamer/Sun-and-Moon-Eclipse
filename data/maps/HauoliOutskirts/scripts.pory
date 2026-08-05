@@ -154,7 +154,7 @@ script HauoliOutskirts_ExitLabEclipse{
         applymovement(LOCALID_PLAYER, moves(face_left))
         waitmovement(0)
         msgbox("Come on, {PLAYER}.
-        I'll show you to the Trainer's School.", MSGBOX_AUTOCLOSE)
+        I'll show you to the Trainers' School.", MSGBOX_AUTOCLOSE)
     }
     endcutscene
     fadescreenswapbuffers(FADE_TO_BLACK)
