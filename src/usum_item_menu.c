@@ -481,7 +481,7 @@ static void BagMenu_UpdateStatusIcons(void);
 static void BagMenu_UpdateStatusIconPos(u8 hoveredSlot);
 static void BagMenu_ApplyItemUseBlend(void);
 static void BagMenu_DrawPartyHPBar(s8 slot);
-static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth);
+static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth, u16 hp, u16 maxHp);
 static void Task_BagMenu_HPBarAnim(u8 taskId);
 static bool8 BagMenu_ShouldShowHPBar(void);
 static bool8 BagMenu_ShouldLoadPartyPanel(void);
@@ -1111,6 +1111,7 @@ enum {
     COLORID_MONEY,
     COLORID_SELL_PRICE,
     COLORID_NO_FLAVOR,
+    COLORID_PARTY_HP,
 };
 
 static const u8 sFontColorTable[][3] = {
@@ -1121,6 +1122,7 @@ static const u8 sFontColorTable[][3] = {
     [COLORID_MONEY]       = {0,  7,  2},    // 3
     [COLORID_SELL_PRICE]  = {0,  7,  8},    // 3
     [COLORID_NO_FLAVOR]   = {0,  5, 11},    // 1
+    [COLORID_PARTY_HP]    = {0,  1, 10},    // 4, shadow is the glyph outline; accent (backdrop) falls out as bg
 };
 
 static const struct WindowTemplate sDefaultBagWindows[] =
@@ -1213,10 +1215,10 @@ static const struct WindowTemplate sDefaultBagWindows[] =
 #if USUM_ITEM_MENU_IN_BAG_USE
     [WIN_PARTY_HP_BAR] = {
         .bg          = 1,
-        .tilemapLeft = 2,
-        .tilemapTop  = 4,
-        .width       = 5,
-        .height      = 1,
+        .tilemapLeft = 1,
+        .tilemapTop  = 3,
+        .width       = 6,
+        .height      = 2,
         .paletteNum  = 4,
         .baseBlock   = 677,
     },
@@ -1228,7 +1230,7 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .width = 3,
         .height = 4,
         .paletteNum = 4,
-        .baseBlock = 681,
+        .baseBlock = 689,
     },
     DUMMY_WIN_TEMPLATE,
 };
@@ -1552,8 +1554,8 @@ static void CB2_Bag(void)
 // RowOffset (bag opened from party menu) is added at the call sites that need it.
 #define PARTY_MON_ICON_X            26
 #define PARTY_MON_ICON_Y(slot)      (24 * (slot) + 24)
-#define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 18)
-#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 3)
+#define PARTY_STATUS_ICON_X         (PARTY_MON_ICON_X + 19)
+#define PARTY_STATUS_ICON_Y(slot)   (PARTY_MON_ICON_Y(slot) + 0)
 #define PARTY_HELD_ITEM_X           (PARTY_MON_ICON_X + 16)
 #define PARTY_HELD_ITEM_Y(slot)     (PARTY_MON_ICON_Y(slot) + 12)
 #define PARTY_ITEM_ICON_X           (PARTY_MON_ICON_X - 12)
@@ -1564,11 +1566,22 @@ static void CB2_Bag(void)
 #define PARTY_PANEL_START_ROW       2
 #define PARTY_PANEL_SLOT_WIDTH      8
 #define PARTY_PANEL_SLOT_HEIGHT     3
-#define PARTY_HP_BAR_Y_OFFSET       1   // pixel offset of the HP bar fill rows
-#define PARTY_HP_BAR_X_OFFSET       2   // 1px margin + 1px border left of the fill
-#define PARTY_HP_BAR_MAX_WIDTH      36  // fill width in pixels
-#define PARTY_HP_BAR_FILL_HEIGHT    3   // fill height in pixels, excluding the 1px borders
+
+#define PARTY_HP_BAR_Y_OFFSET       6   // pixel offset of the HP bar fill rows
+#define PARTY_HP_BAR_X_OFFSET       1   // 1px border left of the fill
+#define PARTY_HP_BAR_MAX_WIDTH      46  // fill width in pixels
+#define PARTY_HP_BAR_FILL_HEIGHT    7   // fill height in pixels, excluding the 1px borders
 #define PARTY_HP_BAR_BORDER_COLOR   10
+#define PARTY_HP_BAR_GREEN_COLOR    12
+#define PARTY_HP_BAR_YELLOW_COLOR   13
+#define PARTY_HP_BAR_RED_COLOR      14
+#define PARTY_HP_BAR_EMPTY_COLOR    15
+
+#define PARTY_HP_BAR_GREEN_WIDTH    (PARTY_HP_BAR_MAX_WIDTH * 50 / 100)
+#define PARTY_HP_BAR_YELLOW_WIDTH   (PARTY_HP_BAR_MAX_WIDTH * 20 / 100)
+
+#define PARTY_HP_BAR_TEXT_Y         3
+#define PARTY_HP_BAR_TEXT_RIGHT     (PARTY_HP_BAR_X_OFFSET + PARTY_HP_BAR_MAX_WIDTH)
 
 #define PARTY_SLOT_NORMAL_PAL           0
 #define PARTY_SLOT_FOCUS_PAL            5
@@ -5782,36 +5795,56 @@ static void BagMenu_MoveHPBarWindow(u8 slot)
         return;
     if (gBagMenu->hpBarWindowMapped)
         ClearWindowTilemap(WIN_PARTY_HP_BAR);
-    SetWindowAttribute(WIN_PARTY_HP_BAR, WINDOW_TILEMAP_TOP, 4 + slot * 3);
+    SetWindowAttribute(WIN_PARTY_HP_BAR, WINDOW_TILEMAP_TOP,
+                       PARTY_PANEL_START_ROW + BagMenu_PanelRowOffset() + slot * PARTY_PANEL_SLOT_HEIGHT + 1);
     PutWindowTilemap(WIN_PARTY_HP_BAR);
     gBagMenu->hpBarWindowMapped = TRUE;
     gBagMenu->prevHPBarSlot = (s8)slot;
 }
 
-// Draws the static 1px border and the fill rows inside it.
-// Layout across the 40px window: [1px empty][1px border][36px fill][1px border][1px empty]
 static void BagMenu_DrawPartyHPBarFill(u8 colorIdx, u8 filledWidth)
 {
+    FillWindowPixelBuffer(WIN_PARTY_HP_BAR, PIXEL_FILL(0));
     FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(PARTY_HP_BAR_BORDER_COLOR),
                         PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, PARTY_HP_BAR_FILL_HEIGHT + 2);
     if (filledWidth > 0)
         FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(colorIdx),
                             PARTY_HP_BAR_X_OFFSET, PARTY_HP_BAR_Y_OFFSET, filledWidth, PARTY_HP_BAR_FILL_HEIGHT);
     if (filledWidth < PARTY_HP_BAR_MAX_WIDTH)
-        FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(15),
+        FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(PARTY_HP_BAR_EMPTY_COLOR),
                             PARTY_HP_BAR_X_OFFSET + filledWidth, PARTY_HP_BAR_Y_OFFSET, PARTY_HP_BAR_MAX_WIDTH - filledWidth, PARTY_HP_BAR_FILL_HEIGHT);
 }
 
-static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth)
+static void BagMenu_PrintPartyHPValues(u16 hp, u16 maxHp)
+{
+    u8 curText[4];
+    u8 maxText[5];
+    u32 curWidth, maxWidth;
+
+    ConvertIntToDecimalStringN(curText, hp, STR_CONV_MODE_LEFT_ALIGN, 3);
+    maxText[0] = CHAR_SLASH;
+    ConvertIntToDecimalStringN(&maxText[1], maxHp, STR_CONV_MODE_LEFT_ALIGN, 3);
+
+    curWidth = GetStringWidth(FONT_OUTLINED, curText, 0);
+    maxWidth = GetStringWidth(FONT_OUTLINED_NARROW, maxText, 0);
+
+    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_OUTLINED, curText, PARTY_HP_BAR_TEXT_RIGHT - curWidth - maxWidth,
+                  PARTY_HP_BAR_TEXT_Y, 0, 0, TEXT_SKIP_DRAW, COLORID_PARTY_HP);
+    BagMenu_Print(WIN_PARTY_HP_BAR, FONT_OUTLINED_NARROW, maxText, PARTY_HP_BAR_TEXT_RIGHT - maxWidth,
+                  PARTY_HP_BAR_TEXT_Y, 0, 0, TEXT_SKIP_DRAW, COLORID_PARTY_HP);
+}
+
+static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth, u16 hp, u16 maxHp)
 {
     u8 colorIdx;
 
-    if (filledWidth > 18)     colorIdx = 12;    // green
-    else if (filledWidth > 7) colorIdx = 13;    // yellow
-    else                      colorIdx = 14;    // red
+    if (filledWidth > PARTY_HP_BAR_GREEN_WIDTH)       colorIdx = PARTY_HP_BAR_GREEN_COLOR;
+    else if (filledWidth > PARTY_HP_BAR_YELLOW_WIDTH) colorIdx = PARTY_HP_BAR_YELLOW_COLOR;
+    else                                              colorIdx = PARTY_HP_BAR_RED_COLOR;
 
     BagMenu_MoveHPBarWindow(slot);
     BagMenu_DrawPartyHPBarFill(colorIdx, filledWidth);
+    BagMenu_PrintPartyHPValues(hp, maxHp);
     CopyWindowToVram(WIN_PARTY_HP_BAR, COPYWIN_GFX);
     ScheduleBgCopyTilemapToVram(1);
 }
@@ -5822,13 +5855,18 @@ static void BagMenu_DrawPartyHPBarPixels(u8 slot, u8 filledWidth)
 static void Task_BagMenu_HPBarAnim(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+    struct Pokemon *mon = BagMenu_GetPanelMon((u8)tPartySlot);
+    u16 maxHp = GetMonData(mon, MON_DATA_MAX_HP);
     u8 curWidth    = (u8)tHPBarCurWidth;
     u8 targetWidth = (u8)tHPBarTargetWidth;
+    u16 shownHp;
 
     if (curWidth < targetWidth)
         curWidth++;
     tHPBarCurWidth = curWidth;
-    BagMenu_DrawPartyHPBarPixels((u8)tPartySlot, curWidth);
+    shownHp = (curWidth == targetWidth) ? GetMonData(mon, MON_DATA_HP)
+                                        : curWidth * maxHp / PARTY_HP_BAR_MAX_WIDTH;
+    BagMenu_DrawPartyHPBarPixels((u8)tPartySlot, curWidth, shownHp, maxHp);
 
     if (curWidth == targetWidth)
         DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, Task_BagMenu_PartyAfterItemUse);
@@ -5866,8 +5904,7 @@ static void BagMenu_DrawPartyHPBar(s8 slot)
 
         if (GetMonData(mon, MON_DATA_IS_EGG))
         {
-            FillWindowPixelRect(WIN_PARTY_HP_BAR, PIXEL_FILL(0),
-                                PARTY_HP_BAR_X_OFFSET - 1, PARTY_HP_BAR_Y_OFFSET - 1, PARTY_HP_BAR_MAX_WIDTH + 2, PARTY_HP_BAR_FILL_HEIGHT + 2);
+            FillWindowPixelBuffer(WIN_PARTY_HP_BAR, PIXEL_FILL(0));
         }
         else
         {
@@ -5879,13 +5916,14 @@ static void BagMenu_DrawPartyHPBar(s8 slot)
             switch (GetHPBarLevel(hp, maxHp))
             {
             case HP_BAR_FULL:
-            case HP_BAR_GREEN:  fillColorIdx = 12; break;
-            case HP_BAR_YELLOW: fillColorIdx = 13; break;
-            default:            fillColorIdx = 14; break;
+            case HP_BAR_GREEN:  fillColorIdx = PARTY_HP_BAR_GREEN_COLOR; break;
+            case HP_BAR_YELLOW: fillColorIdx = PARTY_HP_BAR_YELLOW_COLOR; break;
+            default:            fillColorIdx = PARTY_HP_BAR_RED_COLOR; break;
             }
 
             hpFraction = GetScaledHPFraction(hp, maxHp, PARTY_HP_BAR_MAX_WIDTH);
             BagMenu_DrawPartyHPBarFill(fillColorIdx, hpFraction);
+            BagMenu_PrintPartyHPValues(hp, maxHp);
         }
     }
 
@@ -6684,7 +6722,7 @@ static void BagMenu_UseMedicine(u8 taskId)
             u8 newFraction = GetScaledHPFraction(newHp, maxHp, PARTY_HP_BAR_MAX_WIDTH);
             if (newFraction > oldFraction)
             {
-                BagMenu_DrawPartyHPBarPixels(tPartySlot, oldFraction);
+                BagMenu_DrawPartyHPBarPixels(tPartySlot, oldFraction, hp, maxHp);
                 tHPBarCurWidth = oldFraction;
                 tHPBarTargetWidth = newFraction;
                 gTasks[taskId].func = Task_BagMenu_HPBarAnim;

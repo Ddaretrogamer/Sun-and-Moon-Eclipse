@@ -79,9 +79,8 @@ const struct HelpWindow gHelpWindowInfo[] =
     },
     [HELP_ROTOM_PHONE_GUIDE] =
     {
-        .header = COMPOUND_STRING("ROTOM PHONE GUIDE"),
-        .desc = COMPOUND_STRING("ABOUT THE ROTOM PHONE:\n"
-                                "The Rotom Phone is a device that allows you\n"
+        .header = COMPOUND_STRING("ABOUT THE ROTOM PHONE"),
+        .desc = COMPOUND_STRING("The Rotom Phone is a device that allows you\n"
                                 "to access various features, such as the\n"
                                 "Pokédex, map, and more.\n"
                                 "ROTOM REALITY:\n"

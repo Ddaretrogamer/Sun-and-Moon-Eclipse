@@ -1,4 +1,5 @@
-mapscripts Route1N_MapScripts{}
+mapscripts Route1N_MapScripts{
+}
 
 script TrainerSchoolSign{
     lock
@@ -9,3 +10,4 @@ script TrainerSchoolSign{
     release
 end    
 }
+

@@ -210,7 +210,7 @@ HauoliOutskirts_ExitLabEclipse_7:
 # 155 "data/maps/HauoliOutskirts/scripts.pory"
 	waitmovement 0
 # 156 "data/maps/HauoliOutskirts/scripts.pory"
-	msgbox HauoliOutskirts_ExitLabEclipse_Text_13, MSGBOX_AUTOCLOSE
+	msgbox HauoliOutskirts_ExitLabEclipse_Text_15, MSGBOX_AUTOCLOSE
 HauoliOutskirts_ExitLabEclipse_13:
 # 159 "data/maps/HauoliOutskirts/scripts.pory"
 	endcutscene
@@ -840,6 +840,11 @@ HauoliOutskirts_ExitLabEclipse_Text_14:
 # 151 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "Professor, that's not why she's\n"
 	.string "supposed to be doing it…$"
+
+HauoliOutskirts_ExitLabEclipse_Text_15:
+# 156 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Come on, {PLAYER}.\n"
+	.string "I'll show you to the Trainer's School.$"
 
 HauoliOutskirts_LillieOutsideLab_Text_0:
 # 204 "data/maps/HauoliOutskirts/scripts.pory"

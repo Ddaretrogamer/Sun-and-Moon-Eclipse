@@ -198,6 +198,7 @@
 #define CHAR_R_BUTTON_ROTOM_MENU 0x0D
 
 // CHAR_EXTRA_SYMBOL chars
+#define CHAR_EXTRA_SYMBOL_START 0x100 // bwBattleUI
 #define CHAR_UP_ARROW_2    0x00
 #define CHAR_DOWN_ARROW_2  0x01
 #define CHAR_LEFT_ARROW_2  0x02
@@ -208,6 +209,16 @@
 #define CHAR_ID            0x07
 #define CHAR_NO            0x08
 #define CHAR_UNDERSCORE    0x09
+// start bwBattleUI
+#define CHAR_BIG_MULT_X    0x17
+#define CHAR_STATUS_PSN    0x19
+#define CHAR_STATUS_PAR    0x1A
+#define CHAR_STATUS_SLP    0x1B
+#define CHAR_STATUS_FRZ    0x1C
+#define CHAR_STATUS_BRN    0x1D
+#define CHAR_STATUS_FBT    0x1E
+#define CHAR_EMOJI_HEART   0xE7
+// end bwBattleUI
 
 #define EXT_CTRL_CODE_COLOR                  0x01
 #define EXT_CTRL_CODE_HIGHLIGHT              0x02
