@@ -24,7 +24,7 @@ extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite);
 extern void SynchroniseSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprite);
 
-static void CreateOverlaySprite(void);
+static u8 CreateOverlaySprite(void);
 static void UpdateSurfMonOverlay(struct Sprite *sprite);
 extern void UpdateBobbingEffect(struct ObjectEvent *playerObj, struct Sprite *playerSprite, struct Sprite *sprite);
 
@@ -41,6 +41,30 @@ struct RideablePokemon
 #include "data/object_events/surfable/surfable_pokemon_templates.h"
 
 static EWRAM_DATA u16 sCurrentSurfMon = {0};
+
+static bool8 HasSurfMonOverlaySprite(u16 surfMon)
+{
+    return surfMon != 0xFFFF && gSurfablePokemonOverlaySprites[surfMon].images != NULL;
+}
+
+static u16 GetCurrentSurfPaletteTag(void)
+{
+    if (sCurrentSurfMon == 0xFFFF)
+        return TAG_NONE;
+
+    if (FlagGet(FLAG_SHINY_SURF))
+        return sSurfablePokemonShinyPalettes[sCurrentSurfMon].tag;
+
+    return sSurfablePokemonPalettes[sCurrentSurfMon].tag;
+}
+
+static void FreeCurrentSurfPalette(void)
+{
+    u16 paletteTag = GetCurrentSurfPaletteTag();
+
+    if (paletteTag != TAG_NONE)
+        FreeSpritePaletteByTag(paletteTag);
+}
 
 
 
@@ -120,12 +144,9 @@ u32 CreateSurfablePokemonSprite(void)
     sCurrentSurfMon = GetSurfablePokemonSprite();
     if (sCurrentSurfMon != 0xFFFF)
     {
-        LoadSurfOverworldPalette();
         spriteId = CreateSpriteAtEnd(&gSurfablePokemonOverworldSprites[sCurrentSurfMon], gFieldEffectArguments[0], gFieldEffectArguments[1], 0x96);
-        if (gSurfablePokemonOverlaySprites[sCurrentSurfMon].tileTag == 0xFFFF)
-        {
+        if (spriteId != MAX_SPRITES && HasSurfMonOverlaySprite(sCurrentSurfMon))
             CreateOverlaySprite();
-        }
     }
     else
     { // Create surf blob
@@ -143,6 +164,10 @@ u32 CreateSurfablePokemonSprite(void)
         sprite->data[7] = -1;
         SetSurfBlob_PlayerOffset(spriteId, FALSE, 0); // clear stale offset
     }
+    else if (sCurrentSurfMon != 0xFFFF)
+    {
+        FreeCurrentSurfPalette();
+    }
     FieldEffectActiveListRemove(FLDEFF_SURF_BLOB);
     if(IsCryPlaying())
         StopCry();
@@ -157,7 +182,7 @@ u32 CreateSurfablePokemonSprite(void)
     return spriteId;
 }
 
-static void CreateOverlaySprite(void)
+static u8 CreateOverlaySprite(void)
 {
     u8 overlaySprite;
     u8 subpriority;
@@ -175,9 +200,11 @@ static void CreateOverlaySprite(void)
         sprite->data[6] = -1;
         sprite->data[7] = -1;
         sprite->oam.priority = 2;
+        SetSurfBlob_BobState(overlaySprite, BOB_PLAYER_AND_MON);
+        SetSurfBlob_PlayerOffset(overlaySprite, FALSE, 0);
     }
-    SetSurfBlob_BobState(overlaySprite, BOB_PLAYER_AND_MON);
-    SetSurfBlob_PlayerOffset(overlaySprite, FALSE, 0);
+
+    return overlaySprite;
 }
 
 static void UpdateSurfMonOverlay(struct Sprite *sprite)
@@ -203,14 +230,16 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
     subpriority = gSprites[gPlayerAvatar.spriteId].subpriority - 1;
     sprite->subpriority = subpriority;
 
-if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
     if (linkedSprite->animNum < MOVEMENT_ACTION_DELAY_16)
     {
         sprite->x = linkedSprite->x;
         sprite->y = linkedSprite->y + 8;
     }
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
+    {
+        FreeCurrentSurfPalette();
         DestroySprite(sprite);
+    }
 }
 
 // Store the task data indices for clarity
@@ -249,7 +278,10 @@ static void UpdateSurfMonBase(struct Sprite *sprite)
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
+    {
+        FreeCurrentSurfPalette();
         DestroySprite(sprite);
+    }
 }
 
 void UpdateSurfTransformAnimation(u8 taskId)
@@ -276,8 +308,11 @@ void UpdateSurfTransformAnimation(u8 taskId)
         SetGpuReg(REG_OFFSET_MOSAIC, 0);
 
         u8 fieldEffectSpriteId = playerObj->fieldEffectSpriteId;
-        SetSurfBlob_BobState(fieldEffectSpriteId, BOB_PLAYER_AND_MON);
-        SetSurfBlob_PlayerOffset(fieldEffectSpriteId, FALSE, 0);
+        if (fieldEffectSpriteId != MAX_SPRITES)
+        {
+            SetSurfBlob_BobState(fieldEffectSpriteId, BOB_PLAYER_AND_MON);
+            SetSurfBlob_PlayerOffset(fieldEffectSpriteId, FALSE, 0);
+        }
 
         DestroyTask(taskId);
         return;
@@ -286,10 +321,8 @@ void UpdateSurfTransformAnimation(u8 taskId)
     SetGpuReg(REG_OFFSET_MOSAIC, (stretch << 12) | (stretch << 8));
     playerSprite->oam.mosaic = TRUE;
 
-    // THE SWAP (Frame 8)
     if (frames == 8)
     {
-        // A. DESTROY: Targets both potential callbacks
         for (i = 0; i < MAX_SPRITES; i++)
         {
             if (gSprites[i].inUse)
@@ -306,12 +339,10 @@ void UpdateSurfTransformAnimation(u8 taskId)
             }
         }
 
-        // B. PREP ARGS: Map coordinates
         gFieldEffectArguments[0] = playerObj->currentCoords.x;
         gFieldEffectArguments[1] = playerObj->currentCoords.y;
         gFieldEffectArguments[2] = gPlayerAvatar.spriteId; 
 
-        // C. CREATE: New sprite
         sCurrentSurfMon = GetSurfablePokemonSprite();
         u8 newSpriteId = CreateSurfablePokemonSprite();
 
@@ -322,7 +353,7 @@ void UpdateSurfTransformAnimation(u8 taskId)
         {
             struct Sprite *baseMon = &gSprites[newSpriteId];
             
-            // D. SYNC BASE: Use the correct callback and snap to player
+            // Use the correct callback and snap to player
             baseMon->callback = UpdateSurfMonBase;
             baseMon->x = playerSprite->x;
             baseMon->y = playerSprite->y + 8;
@@ -330,7 +361,6 @@ void UpdateSurfTransformAnimation(u8 taskId)
             baseMon->oam.mosaic = TRUE;
             baseMon->data[2] = gPlayerAvatar.spriteId; 
 
-            // E. SYNC OVERLAYS: Only apply Mosaic, don't change their callback/pos
             for (i = 0; i < MAX_SPRITES; i++)
             {
                 if (gSprites[i].inUse && gSprites[i].callback == UpdateSurfMonOverlay && &gSprites[i] != baseMon)
@@ -353,7 +383,6 @@ void SwapSurfMonRealTime(void)
     u8 newSlot = (oldSlot == SURF_MON_LAPRAS) ? SURF_MON_SHARPEDO : SURF_MON_LAPRAS;
     
     VarSet(VAR_SURF_MON_SLOT, newSlot);
-    RefreshSurfablePaletteFromFlag();
     PlaySE(SE_M_TELEPORT);
 
     BeginSurfTransformEffect(newSlot);
