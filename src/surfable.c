@@ -8,6 +8,7 @@
 #include "gpu_regs.h"
 #include "main.h"
 #include "party_menu.h"
+#include "script.h"
 #include "sound.h"
 #include "sprite.h"
 #include "surfable.h"
@@ -64,6 +65,31 @@ static void FreeCurrentSurfPalette(void)
 
     if (paletteTag != TAG_NONE)
         FreeSpritePaletteByTag(paletteTag);
+}
+
+static u8 FindActiveSurfOverlaySprite(void)
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i++)
+    {
+        if (gSprites[i].inUse && gSprites[i].callback == UpdateSurfMonOverlay)
+            return i;
+    }
+
+    return MAX_SPRITES;
+}
+
+static void ResetSurfBobSprite(u8 spriteId)
+{
+    if (spriteId == MAX_SPRITES)
+        return;
+
+    SetSurfBlob_BobState(spriteId, BOB_PLAYER_AND_MON);
+    SetSurfBlob_PlayerOffset(spriteId, FALSE, 0);
+    gSprites[spriteId].y2 = 0;
+    gSprites[spriteId].data[3] = -1;
+    gSprites[spriteId].data[4] = 0;
+    gSprites[spriteId].data[5] = 0;
 }
 
 
@@ -200,6 +226,7 @@ static u8 CreateOverlaySprite(void)
         sprite->data[6] = -1;
         sprite->data[7] = -1;
         sprite->oam.priority = 2;
+        sprite->oam.mosaic = FuncIsActiveTask(UpdateSurfTransformAnimation);
         SetSurfBlob_BobState(overlaySprite, BOB_PLAYER_AND_MON);
         SetSurfBlob_PlayerOffset(overlaySprite, FALSE, 0);
     }
@@ -248,6 +275,18 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
 
 void BeginSurfTransformEffect(u8 newSlot)
 {
+    struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+    u8 overlaySpriteId = FindActiveSurfOverlaySprite();
+
+    LockPlayerFieldControls();
+    gPlayerAvatar.preventStep = TRUE;
+    gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_CONTROLLABLE;
+
+    ObjectEventClearHeldMovementIfActive(playerObj);
+
+    if (overlaySpriteId != MAX_SPRITES)
+        gSprites[overlaySpriteId].invisible = TRUE;
+
     // Find the sprite ID for the surfing blob/mon
     // In the surf system, this is usually stored or can be found via field effect
     u8 taskId = CreateTask(UpdateSurfTransformAnimation, 0xFF);
@@ -308,11 +347,14 @@ void UpdateSurfTransformAnimation(u8 taskId)
         SetGpuReg(REG_OFFSET_MOSAIC, 0);
 
         u8 fieldEffectSpriteId = playerObj->fieldEffectSpriteId;
-        if (fieldEffectSpriteId != MAX_SPRITES)
-        {
-            SetSurfBlob_BobState(fieldEffectSpriteId, BOB_PLAYER_AND_MON);
-            SetSurfBlob_PlayerOffset(fieldEffectSpriteId, FALSE, 0);
-        }
+        u8 overlaySpriteId = FindActiveSurfOverlaySprite();
+
+        ResetSurfBobSprite(fieldEffectSpriteId);
+        ResetSurfBobSprite(overlaySpriteId);
+        playerSprite->y2 = 0;
+        gPlayerAvatar.preventStep = FALSE;
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_CONTROLLABLE;
+        UnlockPlayerFieldControls();
 
         DestroyTask(taskId);
         return;
@@ -341,7 +383,7 @@ void UpdateSurfTransformAnimation(u8 taskId)
 
         gFieldEffectArguments[0] = playerObj->currentCoords.x;
         gFieldEffectArguments[1] = playerObj->currentCoords.y;
-        gFieldEffectArguments[2] = gPlayerAvatar.spriteId; 
+        gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
 
         sCurrentSurfMon = GetSurfablePokemonSprite();
         u8 newSpriteId = CreateSurfablePokemonSprite();
@@ -353,13 +395,11 @@ void UpdateSurfTransformAnimation(u8 taskId)
         {
             struct Sprite *baseMon = &gSprites[newSpriteId];
             
-            // Use the correct callback and snap to player
-            baseMon->callback = UpdateSurfMonBase;
+            // Keep the original surf-blob callback so transformed surfing matches initial surf creation.
             baseMon->x = playerSprite->x;
             baseMon->y = playerSprite->y + 8;
             baseMon->coordOffsetEnabled = TRUE;
             baseMon->oam.mosaic = TRUE;
-            baseMon->data[2] = gPlayerAvatar.spriteId; 
 
             for (i = 0; i < MAX_SPRITES; i++)
             {
