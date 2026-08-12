@@ -68,6 +68,7 @@ static void FreeCurrentSurfPalette(void)
 }
 
 static u8 FindActiveSurfOverlaySprite(void)
+{
     u8 i;
 
     for (i = 0; i < MAX_SPRITES; i++)
