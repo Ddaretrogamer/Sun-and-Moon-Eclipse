@@ -2306,21 +2306,10 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
 
     ikiTownState = VarGet(VAR_IKITOWN_STATE);
     StringCopy(textBufferBottom, COMPOUND_STRING(""));
-
-    if (GetSafariZoneFlag())
+    if (ikiTownState == 19 || ikiTownState == 20 || ikiTownState == 21)
     {
-        StringCopy(textBufferTop, COMPOUND_STRING("Focus on the Safari hunt"));
-        StringCopy(textBufferBottom, COMPOUND_STRING("for now."));
-    }
-    else if (ikiTownState == 19)
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Head to the Trainer's School."));
+        StringCopy(textBufferTop, COMPOUND_STRING("Head to the Trainers' School."));
         StringCopy(textBufferBottom, COMPOUND_STRING("It's just west of your house!"));
-    }
-    else if (!FlagGet(FLAG_SYS_POKEDEX_GET))
-    {
-        StringCopy(textBufferTop, COMPOUND_STRING("Keep following Kukui."));
-        StringCopy(textBufferBottom, COMPOUND_STRING("You are still early in the journey."));
     }
     else if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
