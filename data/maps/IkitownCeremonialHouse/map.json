@@ -44,14 +44,14 @@
   "warp_events": [
     {
       "x": 31,
-      "y": 20,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_IKI_TOWN",
       "dest_warp_id": "3"
     },
     {
       "x": 32,
-      "y": 20,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_IKI_TOWN",
       "dest_warp_id": "2"

@@ -1981,7 +1981,7 @@ Ikitown_trigger_GiveHalaSparklingStone_21:
 # 1451 "data/maps/IkiTown/scripts.pory"
 	endcutscene
 # 1452 "data/maps/IkiTown/scripts.pory"
-	warp MAP_PLAYER_HOUSE, 8, 15
+	warp MAP_PLAYER_HOUSE, 8, 14
 # 1453 "data/maps/IkiTown/scripts.pory"
 	waitstate
 	return

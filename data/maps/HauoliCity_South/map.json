@@ -42,7 +42,7 @@
       "x": 42,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_HAUOLI_CITY_SOUTH",
+      "dest_map": "MAP_HAUOLI_POLICE_STATION",
       "dest_warp_id": "1"
     },
     {

@@ -32,14 +32,14 @@
   "warp_events": [
     {
       "x": 10,
-      "y": 13,
+      "y": 12,
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_CITY_DOCK",
       "dest_warp_id": "5"
     },
     {
       "x": 11,
-      "y": 13,
+      "y": 12,
       "elevation": 0,
       "dest_map": "MAP_HAUOLI_CITY_DOCK",
       "dest_warp_id": "6"

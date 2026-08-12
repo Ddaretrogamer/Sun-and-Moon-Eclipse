@@ -412,9 +412,9 @@ PlayerHouse_ShowMomPokemon::
 # 300 "data/maps/PlayerHouse/scripts.pory"
 	delay 30
 # 301 "data/maps/PlayerHouse/scripts.pory"
-	applymovement LOCALID_PLAYER, PlayerHouse_ShowMomPokemon_Movement_0
+	applymovement LOCALID_PLAYER, Playerhouse_WelcomeHomeAfterFestival_Movement_0
 # 302 "data/maps/PlayerHouse/scripts.pory"
-	applymovement playerhousestarter, Playerhouse_WelcomeHomeAfterFestival_Movement_0
+	applymovement playerhousestarter, PlayerHouse_ShowMomPokemon_Movement_0
 # 303 "data/maps/PlayerHouse/scripts.pory"
 	waitmovement 0
 # 304 "data/maps/PlayerHouse/scripts.pory"
@@ -821,11 +821,11 @@ PlayerHouse_Trigger_TryingToLeaveWithoutShoes2_Movement_0:
 	walk_down
 	step_end
 
-# 301 "data/maps/PlayerHouse/scripts.pory"
+# 302 "data/maps/PlayerHouse/scripts.pory"
 PlayerHouse_ShowMomPokemon_Movement_0:
-# 301 "data/maps/PlayerHouse/scripts.pory"
-	walk_up
-# 301 "data/maps/PlayerHouse/scripts.pory"
+# 302 "data/maps/PlayerHouse/scripts.pory"
+	delay_8
+# 302 "data/maps/PlayerHouse/scripts.pory"
 	walk_up
 	step_end
 

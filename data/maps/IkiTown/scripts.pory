@@ -1449,7 +1449,7 @@ script Ikitown_trigger_GiveHalaSparklingStone{
     clearflag(FLAG_HIDE_PLAYER_MOM3)
     removeitem(ITEM_SPARKLING_STONE, 1)
     endcutscene
-    warp(MAP_PLAYER_HOUSE, 8, 15)
+    warp(MAP_PLAYER_HOUSE, 8, 14)
     waitstate
 }
 

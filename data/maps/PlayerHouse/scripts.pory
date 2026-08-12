@@ -298,8 +298,8 @@ script PlayerHouse_ShowMomPokemon{
     lock
     startcutscene(CUTSCENE_PLAYERHOUSE_SHOW_MOM_POKEMON)
     delay(30)
-    applymovement(LOCALID_PLAYER, moves(walk_up*2))
-    applymovement(playerhousestarter, moves(walk_up))
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    applymovement(playerhousestarter, moves(delay_8, walk_up))
     waitmovement(0)
     delay(30)
     playse(SE_PIN)
