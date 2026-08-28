@@ -108,17 +108,17 @@ HauoliOutskirts_ExitLabEclipse::
 	openscreenshot 5, 0
 HauoliOutskirts_ExitLabEclipse_1:
 # 53 "data/maps/HauoliOutskirts/scripts.pory"
-	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE
-# 54 "data/maps/HauoliOutskirts/scripts.pory"
 	delay 30
-# 55 "data/maps/HauoliOutskirts/scripts.pory"
+# 54 "data/maps/HauoliOutskirts/scripts.pory"
 	setweather WEATHER_NONE
-# 56 "data/maps/HauoliOutskirts/scripts.pory"
+# 55 "data/maps/HauoliOutskirts/scripts.pory"
 	doweather
-# 57 "data/maps/HauoliOutskirts/scripts.pory"
+# 56 "data/maps/HauoliOutskirts/scripts.pory"
 	special WaitWeather
-# 58 "data/maps/HauoliOutskirts/scripts.pory"
+# 57 "data/maps/HauoliOutskirts/scripts.pory"
 	fadeinbgm 1
+# 58 "data/maps/HauoliOutskirts/scripts.pory"
+	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE
 # 59 "data/maps/HauoliOutskirts/scripts.pory"
 	delay 60
 # 60 "data/maps/HauoliOutskirts/scripts.pory"

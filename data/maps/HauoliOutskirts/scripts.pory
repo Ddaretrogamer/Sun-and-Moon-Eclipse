@@ -50,12 +50,12 @@ script HauoliOutskirts_ExitLabEclipse{
     else{
         openscreenshot(5, 0)
     }
-    startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     delay(30)
     setweather(WEATHER_NONE)
     doweather
     special(WaitWeather)
     fadeinbgm(1)
+    startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     delay(60)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playmoncry(SPECIES_COSMOG, 0)
