@@ -351,7 +351,6 @@ script AlolaLaboratory_FirstTimeIntro{
     openscreenshot(7, CONTINUE, WHITE, AlolaLaboratory_RotomPhoneIntro2)
     openscreenshot(8, END, WHITE, AlolaLaboratory_RotomPhoneIntro3)
     applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*3))
-    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     playse(SE_SWITCH)
     waitse
     playse(SE_SWITCH)
@@ -369,6 +368,7 @@ script AlolaLaboratory_FirstTimeIntro{
     showobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
     setobjectxy(lab_rotom, 14, 11)
     fadescreen(FADE_FROM_WHITE)
+    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     applymovement(lab_kukui, moves(face_left))
     waitmovement(0)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
@@ -407,6 +407,7 @@ script AlolaLaboratory_FirstTimeIntro{
     waitmoncry
     waitmessage
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    endcutscene
     fadescreen(FADE_TO_WHITE)
     playse(SE_SWITCH)
     waitse
@@ -418,6 +419,7 @@ script AlolaLaboratory_FirstTimeIntro{
     hideobjectat(lab_rotom, MAP_ALOLA_LABORATORY)
     setvar(VAR_ROTOM_PHONE_ENABLE, 2)
     fadescreen(FADE_FROM_WHITE)
+    startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     delay(30)
     applymovement(lab_kukui, moves(delay_16, walk_in_place_down*2))
     waitmovement(0)
