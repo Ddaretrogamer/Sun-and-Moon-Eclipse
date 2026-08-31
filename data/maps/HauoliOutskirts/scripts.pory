@@ -10,7 +10,7 @@ script HauoliOutskirts_ExitLabEclipse{
     applymovement(kukui_outside_lab, moves(walk_down*2))
     waitmovement(kukui_outside_lab)
     clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
+    // startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     playse(SE_PIN)
     applymovement(lillie_outside_lab, moves(face_up, emote_exclamation_mark))
     waitmovement(lillie_outside_lab)

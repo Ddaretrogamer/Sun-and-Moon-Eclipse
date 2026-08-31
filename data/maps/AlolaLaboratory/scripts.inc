@@ -417,7 +417,7 @@ AlolaLaboratory_FirstTimeIntro_5:
 # 350 "data/maps/AlolaLaboratory/scripts.pory"
 	openscreenshot 7, 2, 1, AlolaLaboratory_RotomPhoneIntro2
 # 351 "data/maps/AlolaLaboratory/scripts.pory"
-	openscreenshot 8, 0, 1, AlolaLaboratory_RotomPhoneIntro3
+	openscreenshot 8, 4, 1, AlolaLaboratory_RotomPhoneIntro3
 # 352 "data/maps/AlolaLaboratory/scripts.pory"
 	applymovement lab_kukui, AlolaLaboratory_FirstTimeIntro_Movement_10
 # 353 "data/maps/AlolaLaboratory/scripts.pory"

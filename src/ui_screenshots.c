@@ -5,6 +5,7 @@
 #include "data.h"
 #include "decompress.h"
 #include "event_data.h"
+#include "gba/isagbprint.h"
 #include "field_weather.h"
 #include "gpu_regs.h"
 #include "graphics.h"
@@ -244,6 +245,8 @@ static const u8 sScreenshotsWindowFontColors[][3] =
 
 void OpenScreenshotsFromScript(struct ScriptContext *ctx)
 {
+    DebugPrintf("SS open id=%u mode=%u active=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT), sScreenshotsDataPtr != NULL);
+
     if (ctx != NULL)
     {
         ctx->waitAfterCallNative = TRUE;
@@ -256,6 +259,7 @@ void OpenScreenshotsFromScript(struct ScriptContext *ctx)
 
     if (sScreenshotsDataPtr != NULL)
     {
+        DebugPrintf("SS queue id=%u mode=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT));
         sScreenshotsDataPtr->gfxLoadState = 0;
         sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
         sScreenshotsDataPtr->fadeOutMode = gSpecialVar_0x8005;
@@ -275,9 +279,12 @@ void Screenshots_Init(MainCallback callback)
 {
     if ((sScreenshotsDataPtr = AllocZeroed(sizeof(struct ScreenshotsResources))) == NULL)
     {
+        DebugPrintf("SS alloc failed");
         SetMainCallback2(callback);
         return;
     }
+
+    DebugPrintf("SS init id=%u mode=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT));
 
     sScreenshotsDataPtr->gfxLoadState = 0;
     sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
@@ -348,6 +355,7 @@ static bool8 Screenshots_DoGfxSetup(void)
         }
         else
         {
+            DebugPrintf("SS bg init failed");
             Screenshots_FadeAndBail();
             return TRUE;
         }
@@ -370,6 +378,7 @@ static bool8 Screenshots_DoGfxSetup(void)
         gMain.state++;
         break;
     default:
+        DebugPrintf("SS ready id=%u mode=%u", gSpecialVar_0x8003, sScreenshotsDataPtr->screenshotMode);
         SetVBlankCallback(Screenshots_VBlankCB);
         SetMainCallback2(Screenshots_MainCB);
         return TRUE;
@@ -381,7 +390,10 @@ static bool8 Screenshots_DoGfxSetup(void)
 #define try_free(ptr) ({        \
     void ** ptr__ = (void **)&(ptr);   \
     if (*ptr__ != NULL)                \
+    {                                  \
         Free(*ptr__);                  \
+        *ptr__ = NULL;                 \
+    }                                  \
 })
 
 static void Screenshots_FreeResources(void)
@@ -406,6 +418,7 @@ static void Task_ScreenshotsWaitFadeAndBail(u8 taskId)
 
 static void Screenshots_FadeAndBail(void)
 {
+    DebugPrintf("SS bail");
     BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
     CreateTask(Task_ScreenshotsWaitFadeAndBail, 0);
     SetVBlankCallback(Screenshots_VBlankCB);
@@ -428,8 +441,7 @@ static u16 Screenshots_GetFadeOutColor(void)
 {
     if (sScreenshotsDataPtr != NULL
      && sScreenshotsDataPtr->sequenceActive
-     && sScreenshotsDataPtr->screenshotMode != SCREENSHOT_MODE_SEQUENCE_CONTINUE
-     && sScreenshotsDataPtr->screenshotMode != SCREENSHOT_MODE_SEQUENCE_SETUP)
+     && sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_END)
         return RGB_BLACK;
 
     if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeOutMode == SCREENSHOT_FADE_WHITE)
@@ -481,6 +493,7 @@ static bool8 Screenshots_LoadGraphics(void)
     switch (sScreenshotsDataPtr->gfxLoadState)
     {
     case 0:
+        DebugPrintf("SS gfx tiles id=%u", gSpecialVar_0x8003);
         ResetTempTileDataBuffers();
         DecompressAndCopyTileDataToVram(1, sScreenshotData[gSpecialVar_0x8003].screenshotTiles, 0, SCREENSHOT_TILE_OFFSET, 0);
         sScreenshotsDataPtr->gfxLoadState++;
@@ -488,6 +501,7 @@ static bool8 Screenshots_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
+            DebugPrintf("SS gfx tilemap id=%u", gSpecialVar_0x8003);
             DecompressDataWithHeaderWram(sScreenshotData[gSpecialVar_0x8003].screenshotTilemap, sBg1TilemapBuffer);
             if (SCREENSHOT_TILE_OFFSET != 0)
                 AddValToTilemapBuffer(sBg1TilemapBuffer, SCREENSHOT_TILE_OFFSET, 32, 20, FALSE);
@@ -496,6 +510,7 @@ static bool8 Screenshots_LoadGraphics(void)
         }
         break;
     case 2:
+        DebugPrintf("SS gfx palette id=%u", gSpecialVar_0x8003);
         LoadPalette(sScreenshotData[gSpecialVar_0x8003].screenshotPalette, 0, PLTT_SIZE_8BPP);
         sScreenshotsDataPtr->gfxLoadState++;
         break;
@@ -568,13 +583,17 @@ static void PrintToWindow(void)
 static void Task_ScreenshotsWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active)
+    {
+        DebugPrintf("SS visible mode=%u", sScreenshotsDataPtr->screenshotMode);
         gTasks[taskId].func = Task_ScreenshotsMain;
+    }
 }
 
 static void Task_ScreenshotsTurnOff(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        DebugPrintf("SS return normal");
         SetMainCallback2(sScreenshotsDataPtr->savedCallback);
         Screenshots_FreeResources();
         DestroyTask(taskId);
@@ -597,6 +616,7 @@ static void Task_ScreenshotsMain(u8 taskId)
 
     if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON) || (!hasMessage && AUTOCLOSE_TIMER >= AUTOCLOSE_DURATION))
     {
+        DebugPrintf("SS close mode=%u timer=%d", sScreenshotsDataPtr->screenshotMode, AUTOCLOSE_TIMER);
         switch (sScreenshotsDataPtr->screenshotMode)
         {
         case SCREENSHOT_MODE_EXIT_TO_FIELD:
@@ -608,6 +628,7 @@ static void Task_ScreenshotsMain(u8 taskId)
             BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
             gTasks[taskId].func = Task_ScreenshotsFadeToNext;
             break;
+        case SCREENSHOT_MODE_SEQUENCE_END:
         default:
             BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
             gTasks[taskId].func = Task_ScreenshotsTurnOff;
@@ -623,6 +644,7 @@ static void Task_ScreenshotsFadeToFieldExit(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        DebugPrintf("SS return direct");
         BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeOutColor());
         *(vu16 *)PLTT = Screenshots_GetFadeOutColor();
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -637,6 +659,7 @@ static void Task_ScreenshotsFadeToNext(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        DebugPrintf("SS sequence next");
         sQueuedScreenshotReload = FALSE;
         ScriptContext_RunScript();
         if (sQueuedScreenshotReload)

@@ -348,7 +348,7 @@ script AlolaLaboratory_FirstTimeIntro{
     endcutscene
     openscreenshot(6, 3, 1, AlolaLaboratory_RotomPhoneIntro1)
     openscreenshot(7, 2, 1, AlolaLaboratory_RotomPhoneIntro2)
-    openscreenshot(8, 0, 1, AlolaLaboratory_RotomPhoneIntro3)
+    openscreenshot(8, 4, 1, AlolaLaboratory_RotomPhoneIntro3)
     applymovement(lab_kukui, moves(face_up, delay_16, walk_in_place_up*3))
     startcutscene(CUTSCENE_ALOLA_LABORATORY_FIRST_TIME_INTRO)
     playse(SE_SWITCH)
