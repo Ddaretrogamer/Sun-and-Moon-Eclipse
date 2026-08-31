@@ -210,6 +210,8 @@ HauoliOutskirts_ExitLabEclipse_7:
 # 156 "data/maps/HauoliOutskirts/scripts.pory"
 	msgbox HauoliOutskirts_ExitLabEclipse_Text_15, MSGBOX_AUTOCLOSE
 HauoliOutskirts_ExitLabEclipse_13:
+# 159 "data/maps/HauoliOutskirts/scripts.pory"
+	endcutscene
 # 160 "data/maps/HauoliOutskirts/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
 # 161 "data/maps/HauoliOutskirts/scripts.pory"

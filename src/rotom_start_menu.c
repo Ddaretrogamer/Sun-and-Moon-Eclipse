@@ -2507,6 +2507,7 @@ static void RotomPhone_OverworldMenu_ExitAndClearTilemap(void)
 {
     u32 i;
     u8 *buf = GetBgTilemapBuffer(0);
+    bool32 fromScript = sRotomPhone_StartMenuFromScript;
 
     RotomPhone_OverworldMenu_RemoveWindows();
 
@@ -2527,8 +2528,11 @@ static void RotomPhone_OverworldMenu_ExitAndClearTilemap(void)
     }
 
     ReleaseComfyAnims();
-    ScriptUnfreezeObjectEvents();  
-    UnlockPlayerFieldControls();
+    if (!fromScript)
+    {
+        ScriptUnfreezeObjectEvents();
+        UnlockPlayerFieldControls();
+    }
 }
 
 static void RotomPhone_StartMenu_DoCleanUpAndChangeCallback(MainCallback callback)
