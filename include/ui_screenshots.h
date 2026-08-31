@@ -2,6 +2,7 @@
 #define GUARD_UI_SCREENSHOTS
 
 #include "main.h"
+#include "constants/ui_screenshots.h"
 
 void Task_OpenScreenshots(u8 taskId);
 void Screenshots_Init(MainCallback callback);
@@ -20,21 +21,5 @@ enum Screenshots
     SCREENSHOT_ROTOM_PHONE_INTRO_2,
     SCREENSHOT_ROTOM_PHONE_INTRO_3,
 };
-
-enum ScreenshotFadeModes
-{
-    SCREENSHOT_FADE_BLACK,
-    SCREENSHOT_FADE_WHITE,
-};
-
-enum ScreenshotModes
-{
-    SCREENSHOT_MODE_SINGLE,
-    SCREENSHOT_MODE_EXIT_TO_FIELD,
-    SCREENSHOT_MODE_SEQUENCE_CONTINUE,
-    SCREENSHOT_MODE_SEQUENCE_SETUP,
-    SCREENSHOT_MODE_SEQUENCE_END,
-};
-
 
 #endif // GUARD_UI_MENU_H

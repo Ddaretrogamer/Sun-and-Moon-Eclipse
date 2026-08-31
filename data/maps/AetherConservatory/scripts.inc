@@ -195,42 +195,32 @@ AetherIntroSequence::
 # 112 "data/maps/AetherConservatory/scripts.pory"
 	special DoOrbEffect
 # 113 "data/maps/AetherConservatory/scripts.pory"
-	delay 120
+	waitstate
 # 114 "data/maps/AetherConservatory/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 115 "data/maps/AetherConservatory/scripts.pory"
-	waitstate
+	special OrbFadeToBlack
 # 116 "data/maps/AetherConservatory/scripts.pory"
-	special HideCutsceneCinematicBars
-# 117 "data/maps/AetherConservatory/scripts.pory"
 	fadenewbgm MUS_NONE
+# 117 "data/maps/AetherConservatory/scripts.pory"
+	delay 120
 # 118 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_0x8000, 0
-# 119 "data/maps/AetherConservatory/scripts.pory"
-	delay 90
-# 120 "data/maps/AetherConservatory/scripts.pory"
 	setflag FLAG_SHOW_LILLIE_INTRO
-# 121 "data/maps/AetherConservatory/scripts.pory"
+# 119 "data/maps/AetherConservatory/scripts.pory"
 	setflag FLAG_KUKUI_CATCHING_TUTORIAL1
-# 122 "data/maps/AetherConservatory/scripts.pory"
+# 120 "data/maps/AetherConservatory/scripts.pory"
 	setflag FLAG_KUKUI_CATCHING_TUTORIAL2
-# 123 "data/maps/AetherConservatory/scripts.pory"
+# 121 "data/maps/AetherConservatory/scripts.pory"
 	setflag FLAG_HIDE_ROUTE1_LILLIE
+# 122 "data/maps/AetherConservatory/scripts.pory"
+	openscreenshot 0, START, QUICK, SE_M_COSMIC_POWER
+# 123 "data/maps/AetherConservatory/scripts.pory"
+	openscreenshot 1, WARP, BLACK
 # 124 "data/maps/AetherConservatory/scripts.pory"
-	setvar VAR_RESULT, 1
-# 125 "data/maps/AetherConservatory/scripts.pory"
-	playse SE_M_COSMIC_POWER
-# 126 "data/maps/AetherConservatory/scripts.pory"
-	openscreenshot 0, 3
-# 127 "data/maps/AetherConservatory/scripts.pory"
-	openscreenshot 1, 1
-# 128 "data/maps/AetherConservatory/scripts.pory"
 	delay 30
-# 129 "data/maps/AetherConservatory/scripts.pory"
+# 125 "data/maps/AetherConservatory/scripts.pory"
 	warpsilent MAP_ROUTE1, 27, 19
-# 130 "data/maps/AetherConservatory/scripts.pory"
+# 126 "data/maps/AetherConservatory/scripts.pory"
 	waitstate
-# 131 "data/maps/AetherConservatory/scripts.pory"
+# 127 "data/maps/AetherConservatory/scripts.pory"
 	release
 	end
 

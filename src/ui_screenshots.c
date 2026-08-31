@@ -49,9 +49,11 @@ struct ScreenshotsResources
 {
     MainCallback savedCallback;
     u8 gfxLoadState;
+    u16 screenshotId;
     u8 fadeInMode;
     u8 fadeOutMode;
     u8 screenshotMode;
+    u16 soundId;
     bool8 textBoxShown;
     bool8 sequenceActive;
     const u8 *messageText;
@@ -59,6 +61,16 @@ struct ScreenshotsResources
     u16 nameplateSpriteId[2];
     u16 cursorIconSpriteId;
     u16 selectedSeaSectionId;
+};
+
+struct ScreenshotRequest
+{
+    u16 screenshotId;
+    u8 fadeInMode;
+    u8 fadeOutMode;
+    u8 screenshotMode;
+    u16 soundId;
+    const u8 *messageText;
 };
 
 enum WindowIds
@@ -72,16 +84,24 @@ static EWRAM_DATA u8 *sBg0TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 static EWRAM_DATA const u8 *sPendingMessageText = NULL;
+static EWRAM_DATA struct ScreenshotRequest sPendingScreenshot;
 static EWRAM_DATA bool8 sQueuedScreenshotReload = FALSE;
 
 //==========STATIC=DEFINES==========//
 static void Screenshots_RunSetup(void);
+static void Screenshots_FadeToOpenCB(void);
 static bool8 Screenshots_DoGfxSetup(void);
 static bool8 Screenshots_InitBgs(void);
 static void Screenshots_FadeAndBail(void);
 static bool8 Screenshots_LoadGraphics(void);
 static void Screenshots_InitWindows(void);
 static void Screenshots_UpdateWindowsForReload(void);
+static void Screenshots_BeginFadeIn(void);
+static void Screenshots_BeginFadeToOpen(void);
+static void Screenshots_BeginSequenceFade(u32 mode);
+static void Screenshots_PlaySound(void);
+static bool8 Screenshots_ShouldFadeIn(void);
+static u16 Screenshots_GetRequestedFadeInColor(void);
 static u16 Screenshots_GetFadeInColor(void);
 static u16 Screenshots_GetFadeOutColor(void);
 static u32 Screenshots_GetFadePaletteMask(void);
@@ -245,12 +265,25 @@ static const u8 sScreenshotsWindowFontColors[][3] =
 
 void OpenScreenshotsFromScript(struct ScriptContext *ctx)
 {
+    u16 soundId = 0;
+
     DebugPrintf("SS open id=%u mode=%u active=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT), sScreenshotsDataPtr != NULL);
 
     if (ctx != NULL)
     {
+        u32 content = ScriptReadWord(ctx);
+
         ctx->waitAfterCallNative = TRUE;
-        sPendingMessageText = (const u8 *)ScriptReadWord(ctx);
+        if (content >= 0x08000000)
+        {
+            sPendingMessageText = (const u8 *)content;
+            soundId = gSpecialVar_0x8006;
+        }
+        else
+        {
+            sPendingMessageText = NULL;
+            soundId = content != 0 ? content : gSpecialVar_0x8006;
+        }
     }
     else
     {
@@ -261,18 +294,26 @@ void OpenScreenshotsFromScript(struct ScriptContext *ctx)
     {
         DebugPrintf("SS queue id=%u mode=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT));
         sScreenshotsDataPtr->gfxLoadState = 0;
+        sScreenshotsDataPtr->screenshotId = gSpecialVar_0x8003;
         sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
         sScreenshotsDataPtr->fadeOutMode = gSpecialVar_0x8005;
         sScreenshotsDataPtr->screenshotMode = VarGet(VAR_RESULT);
-        if (sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP)
+        sScreenshotsDataPtr->soundId = soundId;
+        if (sScreenshotsDataPtr->screenshotMode == START)
             sScreenshotsDataPtr->sequenceActive = TRUE;
         sScreenshotsDataPtr->messageText = sPendingMessageText;
         sQueuedScreenshotReload = TRUE;
         return;
     }
 
-    CleanupOverworldWindowsAndTilemaps();
-    Screenshots_Init(CB2_ReturnToFieldContinueScript);
+    sPendingScreenshot.screenshotId = gSpecialVar_0x8003;
+    sPendingScreenshot.fadeInMode = gSpecialVar_0x8004;
+    sPendingScreenshot.fadeOutMode = gSpecialVar_0x8005;
+    sPendingScreenshot.screenshotMode = VarGet(VAR_RESULT);
+    sPendingScreenshot.soundId = soundId;
+    sPendingScreenshot.messageText = sPendingMessageText;
+    Screenshots_BeginFadeToOpen();
+    SetMainCallback2(Screenshots_FadeToOpenCB);
 }
 
 void Screenshots_Init(MainCallback callback)
@@ -284,17 +325,19 @@ void Screenshots_Init(MainCallback callback)
         return;
     }
 
-    DebugPrintf("SS init id=%u mode=%u", gSpecialVar_0x8003, VarGet(VAR_RESULT));
+    DebugPrintf("SS init id=%u mode=%u", sPendingScreenshot.screenshotId, sPendingScreenshot.screenshotMode);
 
     sScreenshotsDataPtr->gfxLoadState = 0;
-    sScreenshotsDataPtr->fadeInMode = gSpecialVar_0x8004;
-    sScreenshotsDataPtr->fadeOutMode = gSpecialVar_0x8005;
-    sScreenshotsDataPtr->screenshotMode = VarGet(VAR_RESULT);
+    sScreenshotsDataPtr->screenshotId = sPendingScreenshot.screenshotId;
+    sScreenshotsDataPtr->fadeInMode = sPendingScreenshot.fadeInMode;
+    sScreenshotsDataPtr->fadeOutMode = sPendingScreenshot.fadeOutMode;
+    sScreenshotsDataPtr->screenshotMode = sPendingScreenshot.screenshotMode;
+    sScreenshotsDataPtr->soundId = sPendingScreenshot.soundId;
     sScreenshotsDataPtr->textBoxShown = FALSE;
-    sScreenshotsDataPtr->sequenceActive = (sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP
-                                        || sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_CONTINUE);
+    sScreenshotsDataPtr->sequenceActive = (sScreenshotsDataPtr->screenshotMode == START
+                                        || sScreenshotsDataPtr->screenshotMode == CONTINUE);
     sScreenshotsDataPtr->savedCallback = callback;
-    sScreenshotsDataPtr->messageText = sPendingMessageText;
+    sScreenshotsDataPtr->messageText = sPendingScreenshot.messageText;
     sQueuedScreenshotReload = FALSE;
 
     SetMainCallback2(Screenshots_RunSetup);
@@ -307,6 +350,19 @@ static void Screenshots_RunSetup(void)
         if (Screenshots_DoGfxSetup() == TRUE)
             break;
     }
+}
+
+// Keep rendering the field fade without allowing its script context to advance.
+static void Screenshots_FadeToOpenCB(void)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        Screenshots_Init(CB2_ReturnToFieldContinueScript);
+        return;
+    }
+
+    UpdatePaletteFade();
 }
 
 static void Screenshots_MainCB(void)
@@ -342,6 +398,12 @@ static bool8 Screenshots_DoGfxSetup(void)
         ScanlineEffect_Stop();
         FreeAllSpritePalettes();
         ResetPaletteFade();
+        // OrbFadeToBlack leaves a hardware black fade active. Preserve black in
+        // the software palette before clearing those registers for this screen.
+        BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
         ResetSpriteData();
         ResetTasks();
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
@@ -369,16 +431,26 @@ static bool8 Screenshots_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
-        CreateTask(Task_ScreenshotsWaitFadeIn, 0);
-        BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeInColor());
-        gMain.state++;
+        Screenshots_PlaySound();
+        if (Screenshots_ShouldFadeIn())
+        {
+            CreateTask(Task_ScreenshotsWaitFadeIn, 0);
+            BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeInColor());
+            gMain.state++;
+        }
+        else
+        {
+            CreateTask(Task_ScreenshotsMain, 0);
+            gMain.state = 7;
+        }
         break;
     case 6:
-        BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 16, 0, Screenshots_GetFadeInColor());
+        Screenshots_BeginFadeIn();
         gMain.state++;
         break;
     default:
-        DebugPrintf("SS ready id=%u mode=%u", gSpecialVar_0x8003, sScreenshotsDataPtr->screenshotMode);
+        DebugPrintf("SS ready id=%u mode=%u", sScreenshotsDataPtr->screenshotId, sScreenshotsDataPtr->screenshotMode);
+        DebugPrintf("SS regs ready disp=%04X cnt=%04X y=%u", GetGpuReg(REG_OFFSET_DISPCNT), GetGpuReg(REG_OFFSET_BLDCNT), GetGpuReg(REG_OFFSET_BLDY));
         SetVBlankCallback(Screenshots_VBlankCB);
         SetMainCallback2(Screenshots_MainCB);
         return TRUE;
@@ -425,13 +497,106 @@ static void Screenshots_FadeAndBail(void)
     SetMainCallback2(Screenshots_MainCB);
 }
 
+static void Screenshots_BeginFadeIn(void)
+{
+    BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 16, 0, Screenshots_GetFadeInColor());
+
+    // BeginNormalPaletteFade advances immediately, so restore the first blend level
+    // and then advance one level per normal fade tick.
+    if (gPaletteFade.active && sScreenshotsDataPtr->fadeInMode != QUICK)
+    {
+        gPaletteFade.y = 15;
+        gPaletteFade.deltaY = 1;
+    }
+    else if (gPaletteFade.active)
+    {
+        gPaletteFade.deltaY = 4;
+    }
+}
+
+static void Screenshots_BeginFadeToOpen(void)
+{
+    u16 fadeColor = Screenshots_GetRequestedFadeInColor();
+
+    if (sPendingScreenshot.fadeInMode == NONE)
+        return;
+
+    // A preceding script fade may already own the fully black/white field.
+    // Restarting a time-of-day fade from level 0 would briefly restore its tint.
+    if (gPaletteFade.y == 16 && gPaletteFade.blendColor == fadeColor)
+        return;
+
+    if (MapHasNaturalLight(gMapHeader.mapType))
+    {
+        BeginTimeOfDayPaletteFade(PALETTES_ALL, 0, 0, 16,
+            &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight,
+            fadeColor);
+    }
+    else
+    {
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, fadeColor);
+    }
+
+}
+
+// Preserve a visible dialogue window on BG0; textless sequences use the
+// standard full-screen fade.
+static void Screenshots_BeginSequenceFade(u32 mode)
+{
+    u32 blendCnt = (GetGpuReg(REG_OFFSET_BLDCNT) & BLDCNT_TGT2_ALL) | BLDCNT_TGT1_BG1;
+
+    if (!sScreenshotsDataPtr->textBoxShown)
+    {
+        FadeScreenHardware(mode, 0);
+        return;
+    }
+
+    SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR | WININ_WIN1_CLR);
+    SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WIN01_CLR);
+
+    switch (mode)
+    {
+    case FADE_FROM_BLACK:
+        BeginHardwarePaletteFade(blendCnt | BLDCNT_EFFECT_DARKEN, 0, 16, 0, TRUE);
+        break;
+    case FADE_TO_BLACK:
+        BeginHardwarePaletteFade(blendCnt | BLDCNT_EFFECT_DARKEN, 0, 0, 16, FALSE);
+        break;
+    case FADE_FROM_WHITE:
+        BeginHardwarePaletteFade(blendCnt | BLDCNT_EFFECT_LIGHTEN, 0, 16, 0, TRUE);
+        break;
+    case FADE_TO_WHITE:
+        BeginHardwarePaletteFade(blendCnt | BLDCNT_EFFECT_LIGHTEN, 0, 0, 16, FALSE);
+        break;
+    }
+}
+
+static void Screenshots_PlaySound(void)
+{
+    if (sScreenshotsDataPtr->soundId != 0)
+        PlaySE(sScreenshotsDataPtr->soundId);
+}
+
+static bool8 Screenshots_ShouldFadeIn(void)
+{
+    return sScreenshotsDataPtr->fadeInMode != NONE;
+}
+
+static u16 Screenshots_GetRequestedFadeInColor(void)
+{
+    if (sPendingScreenshot.screenshotMode == START)
+        return RGB_BLACK;
+
+    return sPendingScreenshot.fadeInMode == WHITE ? RGB_WHITE : RGB_BLACK;
+}
+
 static u16 Screenshots_GetFadeInColor(void)
 {
     if (sScreenshotsDataPtr != NULL
-     && sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_SETUP)
+     && sScreenshotsDataPtr->screenshotMode == START)
         return RGB_BLACK;
 
-    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeInMode == SCREENSHOT_FADE_WHITE)
+    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeInMode == WHITE)
         return RGB_WHITE;
 
     return RGB_BLACK;
@@ -441,10 +606,10 @@ static u16 Screenshots_GetFadeOutColor(void)
 {
     if (sScreenshotsDataPtr != NULL
      && sScreenshotsDataPtr->sequenceActive
-     && sScreenshotsDataPtr->screenshotMode == SCREENSHOT_MODE_SEQUENCE_END)
+     && sScreenshotsDataPtr->screenshotMode == END)
         return RGB_BLACK;
 
-    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeOutMode == SCREENSHOT_FADE_WHITE)
+    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->fadeOutMode == WHITE)
         return RGB_WHITE;
 
     return RGB_BLACK;
@@ -452,7 +617,11 @@ static u16 Screenshots_GetFadeOutColor(void)
 
 static u32 Screenshots_GetFadePaletteMask(void)
 {
-    if (sScreenshotsDataPtr != NULL && sScreenshotsDataPtr->messageText != NULL)
+    // Keep the text window steady during normal and sequence transitions, but
+    // fade it out with the final screenshot before returning to the field.
+    if (sScreenshotsDataPtr != NULL
+     && sScreenshotsDataPtr->messageText != NULL
+     && sScreenshotsDataPtr->screenshotMode != END)
         return 0x7FFF;
 
     return 0xFFFF;
@@ -493,16 +662,16 @@ static bool8 Screenshots_LoadGraphics(void)
     switch (sScreenshotsDataPtr->gfxLoadState)
     {
     case 0:
-        DebugPrintf("SS gfx tiles id=%u", gSpecialVar_0x8003);
+        DebugPrintf("SS gfx tiles id=%u", sScreenshotsDataPtr->screenshotId);
         ResetTempTileDataBuffers();
-        DecompressAndCopyTileDataToVram(1, sScreenshotData[gSpecialVar_0x8003].screenshotTiles, 0, SCREENSHOT_TILE_OFFSET, 0);
+        DecompressAndCopyTileDataToVram(1, sScreenshotData[sScreenshotsDataPtr->screenshotId].screenshotTiles, 0, SCREENSHOT_TILE_OFFSET, 0);
         sScreenshotsDataPtr->gfxLoadState++;
         break;
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            DebugPrintf("SS gfx tilemap id=%u", gSpecialVar_0x8003);
-            DecompressDataWithHeaderWram(sScreenshotData[gSpecialVar_0x8003].screenshotTilemap, sBg1TilemapBuffer);
+            DebugPrintf("SS gfx tilemap id=%u", sScreenshotsDataPtr->screenshotId);
+            DecompressDataWithHeaderWram(sScreenshotData[sScreenshotsDataPtr->screenshotId].screenshotTilemap, sBg1TilemapBuffer);
             if (SCREENSHOT_TILE_OFFSET != 0)
                 AddValToTilemapBuffer(sBg1TilemapBuffer, SCREENSHOT_TILE_OFFSET, 32, 20, FALSE);
             ScheduleBgCopyTilemapToVram(1);
@@ -510,8 +679,12 @@ static bool8 Screenshots_LoadGraphics(void)
         }
         break;
     case 2:
-        DebugPrintf("SS gfx palette id=%u", gSpecialVar_0x8003);
-        LoadPalette(sScreenshotData[gSpecialVar_0x8003].screenshotPalette, 0, PLTT_SIZE_8BPP);
+        DebugPrintf("SS gfx palette id=%u", sScreenshotsDataPtr->screenshotId);
+        LoadPalette(sScreenshotData[sScreenshotsDataPtr->screenshotId].screenshotPalette, 0, PLTT_SIZE_8BPP);
+        // A screenshot palette spans all BG palette banks, including the live
+        // textbox bank. Restore it before this frame reaches VBlank.
+        if (sScreenshotsDataPtr->textBoxShown)
+            LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM), PLTT_SIZE_4BPP);
         sScreenshotsDataPtr->gfxLoadState++;
         break;
     default:
@@ -585,6 +758,7 @@ static void Task_ScreenshotsWaitFadeIn(u8 taskId)
     if (!gPaletteFade.active)
     {
         DebugPrintf("SS visible mode=%u", sScreenshotsDataPtr->screenshotMode);
+        DebugPrintf("SS regs visible disp=%04X cnt=%04X y=%u", GetGpuReg(REG_OFFSET_DISPCNT), GetGpuReg(REG_OFFSET_BLDCNT), GetGpuReg(REG_OFFSET_BLDY));
         gTasks[taskId].func = Task_ScreenshotsMain;
     }
 }
@@ -619,16 +793,17 @@ static void Task_ScreenshotsMain(u8 taskId)
         DebugPrintf("SS close mode=%u timer=%d", sScreenshotsDataPtr->screenshotMode, AUTOCLOSE_TIMER);
         switch (sScreenshotsDataPtr->screenshotMode)
         {
-        case SCREENSHOT_MODE_EXIT_TO_FIELD:
+        case WARP:
             BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
             gTasks[taskId].func = Task_ScreenshotsFadeToFieldExit;
             break;
-        case SCREENSHOT_MODE_SEQUENCE_CONTINUE:
-        case SCREENSHOT_MODE_SEQUENCE_SETUP:
-            BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
+        case CONTINUE:
+        case START:
+            gTasks[taskId].data[1] = (Screenshots_GetFadeOutColor() == RGB_WHITE);
+            Screenshots_BeginSequenceFade(gTasks[taskId].data[1] ? FADE_TO_WHITE : FADE_TO_BLACK);
             gTasks[taskId].func = Task_ScreenshotsFadeToNext;
             break;
-        case SCREENSHOT_MODE_SEQUENCE_END:
+        case END:
         default:
             BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 0, 16, Screenshots_GetFadeOutColor());
             gTasks[taskId].func = Task_ScreenshotsTurnOff;
@@ -679,8 +854,8 @@ static void Task_ScreenshotsReload(u8 taskId)
     {
         gTasks[taskId].data[0] = 0;
         Screenshots_UpdateWindowsForReload();
-        BlendPalettes(Screenshots_GetFadePaletteMask(), 16, Screenshots_GetFadeInColor());
-        BeginNormalPaletteFade(Screenshots_GetFadePaletteMask(), 0, 16, 0, Screenshots_GetFadeInColor());
+        Screenshots_PlaySound();
+        Screenshots_BeginSequenceFade(gTasks[taskId].data[1] ? FADE_FROM_WHITE : FADE_FROM_BLACK);
         gTasks[taskId].func = Task_ScreenshotsWaitFadeIn;
     }
 }

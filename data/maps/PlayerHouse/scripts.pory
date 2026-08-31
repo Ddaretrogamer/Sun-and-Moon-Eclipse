@@ -99,7 +99,7 @@ script Playerhouse_WelcomeHomeAfterFestival{
     fadescreen(FADE_TO_BLACK)
     delay(30)
     playfanfare(MUS_HEAL)
-    openscreenshot(3, 1)
+    openscreenshot(3, WARP, BLACK)
     waitfanfare
     setvar(VAR_IKITOWN_STATE, 16)
     clearflag(FLAG_HIDE_ROUTE1_LILLIE)
@@ -382,7 +382,7 @@ script PlayerHouse_ShowMomPokemon{
     fadescreen(FADE_TO_BLACK)
     delay(30)
     playfanfare(MUS_HEAL)
-    openscreenshot(3, 1)
+    openscreenshot(3, WARP, BLACK)
     waitfanfare
     endcutscene
     setvar(VAR_IKITOWN_STATE, 9)

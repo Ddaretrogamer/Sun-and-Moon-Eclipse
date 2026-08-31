@@ -158,7 +158,7 @@ Playerhouse_WelcomeHomeAfterFestival_1:
 # 101 "data/maps/PlayerHouse/scripts.pory"
 	playfanfare MUS_HEAL
 # 102 "data/maps/PlayerHouse/scripts.pory"
-	openscreenshot 3, 1
+	openscreenshot 3, WARP, BLACK
 # 103 "data/maps/PlayerHouse/scripts.pory"
 	waitfanfare
 # 104 "data/maps/PlayerHouse/scripts.pory"
@@ -519,7 +519,7 @@ PlayerHouse_ShowMomPokemon_21:
 # 384 "data/maps/PlayerHouse/scripts.pory"
 	playfanfare MUS_HEAL
 # 385 "data/maps/PlayerHouse/scripts.pory"
-	openscreenshot 3, 1
+	openscreenshot 3, WARP, BLACK
 # 386 "data/maps/PlayerHouse/scripts.pory"
 	waitfanfare
 # 387 "data/maps/PlayerHouse/scripts.pory"

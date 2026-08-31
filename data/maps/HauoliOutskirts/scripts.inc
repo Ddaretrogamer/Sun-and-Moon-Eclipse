@@ -32,6 +32,8 @@ HauoliOutskirts_ExitLabEclipse::
 	waitmovement kukui_outside_lab
 # 12 "data/maps/HauoliOutskirts/scripts.pory"
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
+# 13 "data/maps/HauoliOutskirts/scripts.pory"
+	startcutscene CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE
 # 14 "data/maps/HauoliOutskirts/scripts.pory"
 	playse SE_PIN
 # 15 "data/maps/HauoliOutskirts/scripts.pory"
@@ -103,7 +105,7 @@ HauoliOutskirts_ExitLabEclipse::
 	compare VAR_0x8000, TIME_EVENING
 	goto_if_eq HauoliOutskirts_ExitLabEclipse_2
 # 51 "data/maps/HauoliOutskirts/scripts.pory"
-	openscreenshot 5, 0
+	openscreenshot 5, BASIC, BLACK
 HauoliOutskirts_ExitLabEclipse_1:
 # 53 "data/maps/HauoliOutskirts/scripts.pory"
 	delay 30
@@ -236,7 +238,7 @@ HauoliOutskirts_ExitLabEclipse_13:
 
 HauoliOutskirts_ExitLabEclipse_2:
 # 48 "data/maps/HauoliOutskirts/scripts.pory"
-	openscreenshot 4, 0
+	openscreenshot 4, BASIC, BLACK
 	goto HauoliOutskirts_ExitLabEclipse_1
 
 HauoliOutskirts_ExitLabEclipse_8:

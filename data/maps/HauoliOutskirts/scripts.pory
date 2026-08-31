@@ -10,7 +10,7 @@ script HauoliOutskirts_ExitLabEclipse{
     applymovement(kukui_outside_lab, moves(walk_down*2))
     waitmovement(kukui_outside_lab)
     clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-    // startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
+    startcutscene(CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE)
     playse(SE_PIN)
     applymovement(lillie_outside_lab, moves(face_up, emote_exclamation_mark))
     waitmovement(lillie_outside_lab)
@@ -45,10 +45,10 @@ script HauoliOutskirts_ExitLabEclipse{
     endcutscene
     gettimeofday
     if((var(VAR_0x8000) == TIME_NIGHT) || (var(VAR_0x8000) == TIME_EVENING)){
-        openscreenshot(4, 0)
+        openscreenshot(4, BASIC, BLACK)
     }
     else{
-        openscreenshot(5, 0)
+        openscreenshot(5, BASIC, BLACK)
     }
     delay(30)
     setweather(WEATHER_NONE)
