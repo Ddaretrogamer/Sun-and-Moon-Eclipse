@@ -80,7 +80,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_TRAINERSCHOOL_TEACHER"
     }
   ],
   "warp_events": [
@@ -112,27 +112,27 @@
       "x": 18,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 19,
-      "y": 23,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "21",
+      "script": "TrainersSchool_Intro"
     },
     {
       "type": "trigger",
       "x": 20,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "21",
+      "script": "TrainersSchool_Intro"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "21",
+      "script": "TrainersSchool_Intro"
     }
   ],
   "bg_events": [
