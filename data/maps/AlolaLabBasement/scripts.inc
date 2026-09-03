@@ -60,6 +60,12 @@ AlolaLabBasement_KukuiComputer::
 	end
 
 
+AlolaLabBasement_FishTank::
+# 44 "data/maps/AlolaLabBasement/scripts.pory"
+	msgbox AlolaLabBasement_FishTank_Text_0, MSGBOX_SIGN
+	end
+
+
 AlolaLabBasement_Polywhirl_Text_0:
 # 7 "data/maps/AlolaLabBasement/scripts.pory"
 	.string "Goosh!$"
@@ -69,3 +75,8 @@ AlolaLabBasement_KukuiComputer_Text_0:
 	.string "It's Profesor Kukui's PC!\p"
 	.string "All the research data on Pokémon moves\n"
 	.string "is very nearly organized!$"
+
+AlolaLabBasement_FishTank_Text_0:
+# 44 "data/maps/AlolaLabBasement/scripts.pory"
+	.string "Inside the tank is the Sea Cucumber\n"
+	.string "Pokémon, Pyukumuku.$"

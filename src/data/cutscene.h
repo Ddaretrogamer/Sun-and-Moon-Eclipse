@@ -25,6 +25,7 @@ extern const u8 Lillie_WalktoLabSkip[];
 extern const u8 HauoliOutskirts_LillieOutsideLabSkip[];
 extern const u8 AlolaLaboratory_FirstTimeIntroSkip[];
 extern const u8 HauoliOutskirts_ExitLabEclipseSkip[];
+extern const u8 TrainersSchool_Intro_Skip[];
 
 const struct CutsceneSkip sCutsceneSkipScripts[] =
 {
@@ -105,6 +106,10 @@ const struct CutsceneSkip sCutsceneSkipScripts[] =
     [CUTSCENE_HAUOLI_OUTSKIRTS_EXIT_LAB_ECLIPSE] =
     {
         .scriptCutsceneSkipPtr = HauoliOutskirts_ExitLabEclipseSkip,
+    },
+    [CUTSCENE_TRAINER_SCHOOL_INTRO] =
+    {
+        .scriptCutsceneSkipPtr = TrainersSchool_Intro_Skip,
     },
 };
 

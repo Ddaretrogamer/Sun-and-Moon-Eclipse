@@ -432,3 +432,13 @@ script HauoliOustkirtsFishingSpot1{
     release
 end
 }
+
+script HauoliOutskirts_BlockLab_TrainerSchool{
+    lock
+    msgbox("Kukui probably doesn't want anyone
+    wandering into the lab without him.", MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(LOCALID_PLAYER)
+    release
+    end
+}

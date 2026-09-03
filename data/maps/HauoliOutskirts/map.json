@@ -171,7 +171,17 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_IKITOWN_STATE",
+      "var_value": "22",
+      "script": "HauoliOutskirts_BlockLab_TrainerSchool"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

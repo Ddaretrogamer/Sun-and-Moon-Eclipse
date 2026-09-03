@@ -39,3 +39,9 @@ script AlolaLabBasement_KukuiComputer{
     release
     end
 }
+
+script AlolaLabBasement_FishTank{
+    msgbox("Inside the tank is the Sea Cucumber
+    Pok\emon, Pyukumuku.", MSGBOX_SIGN)
+    end
+}

@@ -13,9 +13,21 @@ end
 
 script TrainersSchool_Intro{
     lock
+    getplayerxy(VAR_TEMP_3, VAR_TEMP_4)
+    if (var(VAR_TEMP_3) == 20 && var(VAR_TEMP_4) == 23){
+        applymovement(LOCALID_PLAYER, moves(walk_up, walk_left, face_up))
+        waitmovement(LOCALID_PLAYER)
+    }
+    elif (var(VAR_TEMP_3) == 18 && var(VAR_TEMP_4) == 23){
+        applymovement(LOCALID_PLAYER, moves(walk_up, walk_right, face_up))
+        waitmovement(LOCALID_PLAYER)
+    }
+    else{
+        applymovement(LOCALID_PLAYER, moves(walk_up))
+        waitmovement(LOCALID_PLAYER)
+    }
     setvar(VAR_IKITOWN_STATE, 22)
-    applymovement(LOCALID_PLAYER, moves(walk_up))
-    waitmovement(LOCALID_PLAYER)
+    startcutscene(CUTSCENE_TRAINER_SCHOOL_INTRO)
     applymovement(trainerschool_lillie, moves(face_left))
     waitmovement(trainerschool_lillie)
     applymovement(trainerschool_kukui, moves(walk_in_place_down*2))
@@ -25,14 +37,14 @@ script TrainersSchool_Intro{
     I must've passed you somehow, yeah?
     
     But welcome to the Trainers' School,
-    the place to learn how to be a Pokémon
-    Trainer!")
+    the place to learn how to be a
+    Pokémon Trainer!", MSGBOX_AUTOCLOSE)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     playse(SE_PIN)
     applymovement(trainerschool_teacher, moves(emote_exclamation_mark))
     waitmovement(trainerschool_teacher)
     msgbox("Professor Kukui!
-    Is this the child you told me about?")
+    Is this the child you told me about?", MSGBOX_AUTOCLOSE)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
     speakername("Kukui")
     msgbox("Yeah. {PLAYER}'s a tough one,too.
@@ -49,7 +61,8 @@ script TrainersSchool_Intro{
     Trainers at the school, {PLAYER}!
     
     The experience will surely help you
-    and your Pokemon grow stronger, yeah.
+    and your Pokemon grow stronger,
+    yeah.
     
     Actually\. Speaking of experience,
     why don't you take this.")
@@ -59,28 +72,32 @@ script TrainersSchool_Intro{
     speakername("Kukui")
     msgbox("If you keep that Exp. Share on, yeah,
     all the Pokémon on your team can get
-    Exp. Points from battle.")
+    Exp. Points from battle.", MSGBOX_AUTOCLOSE)
     setflag(FLAG_SUPPRESS_SPEAKER_NAME)
     applymovement(trainerschool_teacher, moves(walk_in_place_down*2))
+    waitmovement(trainerschool_teacher)
     msgbox("The Trainers who will take part in this
-    lesson may be in or outside the school.
+    lesson may be inside or outside the
+    school.
     
     You may also want to visit our
     classrooms.
     
     You'll learn things there that will
     help on your journey, I'd say.")
-    applymovement(trainerschool_kukui, moves(jump_in_place_down*2))
+    applymovement(trainerschool_teacher, moves(jump_in_place_down*2))
     playse(SE_LEDGE)
     waitse
     playse(SE_LEDGE)
     waitse
-    msgbox("All right. Let the lesson begin!")
+    msgbox("All right. Let the lesson begin!", MSGBOX_AUTOCLOSE)
     clearflag(FLAG_SUPPRESS_SPEAKER_NAME)
-    applymovement(trainerschool_teacher, moves(walk_up*5))
+    applymovement(trainerschool_teacher, moves(walk_up*4))
     waitmovement(trainerschool_teacher)
     removeobject(trainerschool_teacher)
     setflag(FLAG_HIDE_TRAINERSCHOOL_TEACHER)
+    applymovement(trainerschool_kukui, moves(walk_in_place_down*2))
+    waitmovement(trainerschool_kukui)
     speakername("Kukui")
     msgbox("She may not look all that tough, but
     that each trains her kids right!
@@ -97,9 +114,153 @@ script TrainersSchool_Intro{
     
     Wandering about in the tall grass to
     meet lots of different Pokémon'll
-    help with that!
-    Battle all the time, oh yeah!")
+    help with that!", MSGBOX_AUTOCLOSE)
+    endcutscene
+    applymovement(trainerschool_kukui, moves(jump_in_place_down*2))
+    playse(SE_LEDGE)
+    waitse
+    playse(SE_LEDGE)
+    waitse
+    msgbox("Battle all the time, oh yeah!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
 
+script TrainersSchool_Intro_Skip{
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    applymovement(trainerschool_lillie, moves(face_down))
+    waitmovement(trainerschool_lillie)
+    removeobject(trainerschool_teacher)
+    setflag(FLAG_HIDE_TRAINERSCHOOL_TEACHER)
+    special(StopAllObjectMovements)
+    special(CloseScriptMenus)
+    checkitem(ITEM_EXP_SHARE, 1)
+    if (var(VAR_RESULT) == FALSE){
+        additem(ITEM_EXP_SHARE, 1)
+    }
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Hiromi{
+    lock
+    playse(SE_PIN)
+    applymovement(trainerschool_lass1, moves(emote_exclamation_mark))
+    waitmovement(trainerschool_lass1)
+    waitse
+    trainerbattle_single(TRAINER_LASS_HIROMI, "If my previous Bonsly takes damage,\nI'll want to use a Potion on it!", "Don't worry-I'll heal any pain that was\ncaused by our defeat!")
+    msgbox("You can help your Pokémon win by using
+    items at the right time.
+    
+    They can do more than just healing
+    your Pokémon's HP too.
+    
+    You can even boost their stats and
+    things like that.", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_RockPaperScissors{
+    lock
+    speakername("Little Boy")
+    msgbox("Ready, and\.")
+    speakername("Little Girl")
+    msgbox("GRASS, FIRE, WATER!")
+    playse(SE_PIN)
+    applymovement(trainerschool_littleboy, moves(emote_exclamation_mark))
+    applymovement(trainerschool_littlegirl, moves(emote_exclamation_mark))
+    waitmovement(0)
+    waitse
+    speakername("Little Boy")
+    msgbox("Um\.
+    Which one wins again?")
+    applymovement(trainerschool_littleboy, moves(face_down))
+    applymovement(trainerschool_littlegirl, moves(face_down))
+    waitmovement(0)
+    random(2)
+    if (var(VAR_RESULT) == 0){
+        speakername("Little Girl")
+        msgbox("Which would win in a matchup between
+        Grass type and Water type?", MSGBOX_AUTOCLOSE)
+        dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Fire", "Water", "Grass")
+        if (var(VAR_RESULT) == 0){
+            speakername("Little Boy")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+        elif (var(VAR_RESULT) == 1){
+            speakername("Little Boy")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+        elif (var(VAR_RESULT) == 2){
+            applymovement(trainerschool_littlegirl, moves(jump_in_place_down*2))
+            playse(SE_LEDGE)
+            waitse
+            playse(SE_LEDGE)
+            waitse
+            speakername("Little Girl")
+            msgbox("Right, right! Yeah, that's it.
+            You must be a great Trainer!")
+        }
+    }
+    elif (var(VAR_RESULT) == 1){
+        speakername("Little Girl")
+        msgbox("Which would win in a matchup between
+        Fire type and Grass type?", MSGBOX_AUTOCLOSE)
+        dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Fire", "Water", "Grass")
+        if (var(VAR_RESULT) == 0){
+            applymovement(trainerschool_littlegirl, moves(jump_in_place_down*2))
+            playse(SE_LEDGE)
+            waitse
+            playse(SE_LEDGE)
+            waitse
+            speakername("Little Girl")
+            msgbox("Right, right! Yeah, that's it.
+            You must be a great Trainer!")
+        }
+        elif (var(VAR_RESULT) == 1){
+            speakername("Little Boy")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+        elif (var(VAR_RESULT) == 2){
+            speakername("Little Boy")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+    }
+    elif (var(VAR_RESULT) == 2){
+        speakername("Little Boy")
+        msgbox("Which would win in a matchup between
+        Water type and Fire type?", MSGBOX_AUTOCLOSE)
+        dynmultichoice(22,6,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Fire", "Water", "Grass")
+        if (var(VAR_RESULT) == 0){
+            speakername("Little Girl")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+        elif (var(VAR_RESULT) == 1){
+            applymovement(trainerschool_littlegirl, moves(jump_in_place_down*2))
+            playse(SE_LEDGE)
+            waitse
+            playse(SE_LEDGE)
+            waitse
+            speakername("Little Girl")
+            msgbox("Right, right! Yeah, that's it.
+            You must be a great Trainer!")
+        }
+        elif (var(VAR_RESULT) == 2){
+            speakername("Little Girl")
+            msgbox("You sure? I'm pretty sure it's not\.
+            Are you messing with us maybe?")
+        }
+    }
+    applymovement(trainerschool_littleboy, moves(face_left))
+    applymovement(trainerschool_littlegirl, moves(face_right))
     release
     end
 }

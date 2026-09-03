@@ -793,6 +793,12 @@ AlolaLaboratory_FirstTimeIntroSkip::
 	end
 
 
+AlolaLaboratory_FishTank::
+# 639 "data/maps/AlolaLaboratory/scripts.pory"
+	msgbox AlolaLaboratory_FishTank_Text_0, MSGBOX_SIGN
+	end
+
+
 # 42 "data/maps/AlolaLaboratory/scripts.pory"
 AlolaLaboratory_CloseRotomPhoneBackup_Movement_0:
 # 42 "data/maps/AlolaLaboratory/scripts.pory"
@@ -1074,15 +1080,15 @@ AlolaLaboratory_CloseRotomPhoneBackup_Text_16:
 
 AlolaLaboratory_Stufful_Text_0:
 # 201 "data/maps/AlolaLaboratory/scripts.pory"
-	.string "Ayoo!$"
+	.string "Fuff?$"
 
 AlolaLaboratory_Snubull_Text_0:
 # 211 "data/maps/AlolaLaboratory/scripts.pory"
-	.string "Wroo!$"
+	.string "Bull!$"
 
 AlolaLaboratory_Rockruff_Text_0:
 # 221 "data/maps/AlolaLaboratory/scripts.pory"
-	.string "Wroof!$"
+	.string "Roff!$"
 
 AlolaLaboratory_FirstTimeIntro_Text_0:
 # 271 "data/maps/AlolaLaboratory/scripts.pory"
@@ -1173,6 +1179,11 @@ AlolaLaboratory_FirstTimeIntro_Text_15:
 AlolaLaboratory_FirstTimeIntro_Text_16:
 # 427 "data/maps/AlolaLaboratory/scripts.pory"
 	.string "Uh, hey there! P-pleasure to meet you!\nI-I'm not nervouzzz or anything.$"
+
+AlolaLaboratory_FishTank_Text_0:
+# 639 "data/maps/AlolaLaboratory/scripts.pory"
+	.string "Inside the tank is the Sea Cucumber\n"
+	.string "Pokémon, Pyukumuku.$"
 
 AlolaLaboratory_RotomPhoneIntro1::
 # 589 "data/maps/AlolaLaboratory/scripts.pory"

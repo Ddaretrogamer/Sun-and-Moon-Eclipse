@@ -198,7 +198,7 @@ script AlolaLaboratory_Stufful{
     lock
     faceplayer
     playmoncry(SPECIES_STUFFUL, 0)
-    msgbox("Ayoo!")
+    msgbox("Fuff?")
     waitmessage
     release
     end
@@ -208,7 +208,7 @@ script AlolaLaboratory_Snubull{
     lock
     faceplayer
     playmoncry(SPECIES_SNUBBULL, 0)
-    msgbox("Wroo!")
+    msgbox("Bull!")
     waitmessage
     release
     end
@@ -218,7 +218,7 @@ script AlolaLaboratory_Rockruff{
     lock
     faceplayer
     playmoncry(SPECIES_ROCKRUFF, 0)
-    msgbox("Wroof!")
+    msgbox("Roff!")
     waitmessage
     release
     end
@@ -632,5 +632,11 @@ script AlolaLaboratory_FirstTimeIntroSkip{
     fadescreen(FADE_FROM_BLACK)
     helpwindow(HELP_ROTOM_PHONE_GUIDE)
     release
+    end
+}
+
+script AlolaLaboratory_FishTank{
+    msgbox("Inside the tank is the Sea Cucumber
+    Pok\emon, Pyukumuku.", MSGBOX_SIGN)
     end
 }

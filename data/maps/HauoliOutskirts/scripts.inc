@@ -629,6 +629,20 @@ HauoliOustkirtsFishingSpot1_8:
 	goto HauoliOustkirtsFishingSpot1_1
 
 
+HauoliOutskirts_BlockLab_TrainerSchool::
+# 437 "data/maps/HauoliOutskirts/scripts.pory"
+	lock
+# 438 "data/maps/HauoliOutskirts/scripts.pory"
+	msgbox HauoliOutskirts_BlockLab_TrainerSchool_Text_0, MSGBOX_AUTOCLOSE
+# 440 "data/maps/HauoliOutskirts/scripts.pory"
+	applymovement LOCALID_PLAYER, HauoliOutskirts_ExitLabEclipse_Movement_4
+# 441 "data/maps/HauoliOutskirts/scripts.pory"
+	waitmovement LOCALID_PLAYER
+# 442 "data/maps/HauoliOutskirts/scripts.pory"
+	release
+	end
+
+
 # 10 "data/maps/HauoliOutskirts/scripts.pory"
 HauoliOutskirts_ExitLabEclipse_Movement_0:
 # 10 "data/maps/HauoliOutskirts/scripts.pory"
@@ -988,3 +1002,8 @@ HauoliOustkirtsFishingSpot1_Text_1:
 HauoliOustkirtsFishingSpot1_Text_2:
 # 430 "data/maps/HauoliOutskirts/scripts.pory"
 	.string "You can't fish while riding a Sharpedo!$"
+
+HauoliOutskirts_BlockLab_TrainerSchool_Text_0:
+# 438 "data/maps/HauoliOutskirts/scripts.pory"
+	.string "Kukui probably doesn't want anyone\n"
+	.string "wandering into the lab without him.$"
