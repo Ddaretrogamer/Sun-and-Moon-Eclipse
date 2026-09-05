@@ -2228,11 +2228,20 @@ static void Task_WaitStopSurfing(u8 taskId)
 
     if (ObjectEventClearHeldMovementIfFinished(playerObjEvent))
     {
+        struct Sprite *surfSprite = &gSprites[playerObjEvent->fieldEffectSpriteId];
+        u32 paletteNum = surfSprite->oam.paletteNum;
+        // Only meaningful if the sprite actually used the tagged tile-sheet system;
+        // a stray 0 can belong to an unrelated sheet and must not be freed.
+        u16 tileStart = surfSprite->usingSheet ? surfSprite->sheetTileStart : 0;
+
         ObjectEventSetGraphicsId(playerObjEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
         ObjectEventSetHeldMovement(playerObjEvent, GetFaceDirectionMovementAction(playerObjEvent->facingDirection));
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
-        DestroySprite(&gSprites[playerObjEvent->fieldEffectSpriteId]);
+        DestroySprite(surfSprite);
+        FieldEffectFreePaletteIfUnused(paletteNum);
+        if (tileStart)
+            FieldEffectFreeTilesIfUnused(tileStart);
 #ifdef BUGFIX
         // If this is not defined but the player steps into grass from surfing, they will appear over the grass instead of in the grass.
         playerObjEvent->triggerGroundEffectsOnMove = TRUE;

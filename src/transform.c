@@ -238,8 +238,11 @@ static void ExecutePlayerTransformation(u16 species)
     {
         // Transforming into a Pokémon
         SetPlayerTransformFlags();
+        // InitPlayerAvatar (called by ResetPlayerAvatar) already creates the mount
+        // sprite since FLAG_PLAYER_IS_POKEMON is set above; avoid double alloc/free.
         ResetPlayerAvatar();
-        CreatePlayerMountSprite(species);
+        if (!PlayerHasMountSprite())
+            CreatePlayerMountSprite(species);
     }
     
     // CRITICAL: Re-lock after ResetPlayerAvatar
@@ -420,6 +423,10 @@ static void ResetPlayerAvatar(void)
     direction = GetPlayerFacingDirection();
 
     playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+    // InitPlayerAvatar below always creates a fresh warp arrow sprite;
+    // free the old one first or it leaks a sprite slot on every transform.
+    if (playerObj->warpArrowSpriteId < MAX_SPRITES)
+        DestroySprite(&gSprites[playerObj->warpArrowSpriteId]);
     RemoveObjectEvent(playerObj);
 
     ClearPlayerAvatarInfo();
@@ -669,7 +676,19 @@ void DestroyPlayerMountSprite(void)
     if (sPlayerMountSpriteId >= 0)
     {
         if (gSprites[sPlayerMountSpriteId].inUse)
-            DestroySprite(&gSprites[sPlayerMountSpriteId]);
+        {
+            struct Sprite *mountSpr = &gSprites[sPlayerMountSpriteId];
+            u32 paletteNum = mountSpr->oam.paletteNum;
+            // sheetTileStart is only meaningful when the sprite actually used the
+            // tagged tile-sheet system; a stray 0 here can belong to an unrelated
+            // sheet (e.g. tile index 0) and must not be freed out from under it.
+            u16 tileStart = (OW_GFX_COMPRESS && mountSpr->usingSheet) ? mountSpr->sheetTileStart : 0;
+
+            DestroySprite(mountSpr);
+            FieldEffectFreePaletteIfUnused(paletteNum);
+            if (tileStart)
+                FieldEffectFreeTilesIfUnused(tileStart);
+        }
         sPlayerMountSpriteId = -1;
     }
 }
