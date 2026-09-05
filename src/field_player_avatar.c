@@ -760,6 +760,11 @@ static u8 CheckMovementInputNotOnBike(enum Direction direction)
 
 static void PlayerNotOnBikeNotMoving(enum Direction direction, u16 heldKeys)
 {
+    // Transformed players use their walking frames as an idle animation.
+    // Re-facing the sprite here every frame would pause and reset that animation.
+    if (IsPlayerTransformed())
+        return;
+
     PlayerFaceDirection(GetPlayerFacingDirection());
 }
 

@@ -739,6 +739,23 @@ void PlayerAvatarHandleBob(void)
         return;
     }
 
+    if (playerObj->movementActionId == MOVEMENT_ACTION_NONE)
+    {
+        StartSpriteAnimIfDifferent(playerSprite, GetMoveDirectionAnimNum(playerObj->facingDirection));
+        playerSprite->animPaused = FALSE;
+
+        if (gPlayerAvatarBobState.frameCounter < STEP_FRAME_DURATION)
+            playerSprite->y2 = 0;
+        else
+            playerSprite->y2 = -1;
+
+        if (++gPlayerAvatarBobState.frameCounter >= STEP_FRAME_DURATION * 2)
+            gPlayerAvatarBobState.frameCounter = 0;
+
+        UpdateRiderGraphics();
+        return;
+    }
+
     // Check if player is actually in a walking movement action
     switch (playerObj->movementActionId)
     {

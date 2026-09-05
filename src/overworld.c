@@ -1839,6 +1839,9 @@ static void OverworldBasic(void)
 {
     ScriptContext_RunScript();
     RunTasks();
+    // Apply the transformed-player bob before sprite callbacks and OAM are
+    // built so the Pokemon and rider use the same offset in the same frame.
+    PlayerAvatarHandleBob();
     AnimateSprites();
     CameraUpdate();
     UpdateCameraPanning();
@@ -1863,7 +1866,6 @@ static void OverworldBasic(void)
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
-    PlayerAvatarHandleBob();
     if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM)
  && gSaveBlock2Ptr->pokemonAvatarSpecies != SPECIES_NONE
  && !PlayerHasMountSprite())
