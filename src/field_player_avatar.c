@@ -1396,7 +1396,7 @@ static void PlayerRunSlow(enum Direction direction)
 {
     u16 rideSpecies = VarGet(VAR_TRANSFORM_MON);
 
-    if (rideSpecies == SPECIES_TAUROS || rideSpecies == SPECIES_NOIVERN_ALOLA)
+    if (rideSpecies == SPECIES_TAUROS || rideSpecies == SPECIES_NOIVERN || rideSpecies == SPECIES_NOIVERN_ALOLA)
     {
         // Tauros and Noivern use custom speed
         PlayerSetAnimId(GetWalkFastMovementAction(direction), COPY_MOVE_WALK);
@@ -1444,7 +1444,7 @@ static void PlayerRun(enum Direction direction)
 {
     u16 rideSpecies = VarGet(VAR_TRANSFORM_MON);
 
-    if (rideSpecies == SPECIES_TAUROS || rideSpecies == SPECIES_NOIVERN_ALOLA)
+    if (rideSpecies == SPECIES_TAUROS || rideSpecies == SPECIES_NOIVERN || rideSpecies == SPECIES_NOIVERN_ALOLA)
     {
         // Tauros and Noivern use custom speed
         PlayerSetAnimId(GetWalkFastMovementAction(direction), COPY_MOVE_WALK);
