@@ -2088,10 +2088,27 @@ void ItemUseOnFieldCB_FlashTool(u8 taskId)
 }
 
 
+// Returns the party index of the first unfainted, non-egg Pokemon, or -1 if none exists
+static s8 GetFirstUnfaintedPartyMonIndex(void)
+{
+    s32 i;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (species == SPECIES_NONE || GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG, NULL))
+            continue;
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) == 0)
+            continue;
+        return i;
+    }
+    return -1;
+}
+
 void ItemUseOutOfBattle_RidePager(u8 taskId)
 {
     s16 x, y;
     u32 behavior;
+    s8 partyIndex;
     u16 species;
     bool8 isShiny;
 
@@ -2106,15 +2123,17 @@ void ItemUseOutOfBattle_RidePager(u8 taskId)
         return;
     }
     
-    // Get first party Pokemon species
-    species = GetMonData(&gPlayerParty[0], MON_DATA_SPECIES, NULL);
+    // Find the first unfainted, non-egg party Pokemon
+    partyIndex = GetFirstUnfaintedPartyMonIndex();
     
-    // Check if party is empty or first mon is an egg
-    if (species == SPECIES_NONE || GetMonData(&gPlayerParty[0], MON_DATA_IS_EGG, NULL))
+    // Check if no eligible party Pokemon was found
+    if (partyIndex < 0)
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
         return;
     }
+    
+    species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
     
     // Check if this species can be ridden
     if (!CanRideOnSpecies(species))
@@ -2127,7 +2146,7 @@ void ItemUseOutOfBattle_RidePager(u8 taskId)
     }
     
     // Check if the Pokemon is shiny and set the Ride Pager shiny flag
-    isShiny = GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY, NULL);
+    isShiny = GetMonData(&gPlayerParty[partyIndex], MON_DATA_IS_SHINY, NULL);
     if (isShiny)
         FlagSet(FLAG_RIDE_PAGER_SHINY);
     else
@@ -2153,6 +2172,7 @@ void ItemUseOutOfBattle_RidePager(u8 taskId)
 
 void ItemUseOnFieldCB_RidePager(u8 taskId)
 {
+    s8 partyIndex;
     u16 species;
     bool8 isShiny;
 
@@ -2177,9 +2197,10 @@ void ItemUseOnFieldCB_RidePager(u8 taskId)
         return;
     }
     
-    // Get first party Pokemon species and shiny status
-    species = GetMonData(&gPlayerParty[0], MON_DATA_SPECIES, NULL);
-    isShiny = GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY, NULL);
+    // Find the first unfainted, non-egg party Pokemon and get its species/shiny status
+    partyIndex = GetFirstUnfaintedPartyMonIndex();
+    species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
+    isShiny = GetMonData(&gPlayerParty[partyIndex], MON_DATA_IS_SHINY, NULL);
     
     // Set Ride Pager shiny flag based on Pokemon's shiny status
     if (isShiny)
