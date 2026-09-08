@@ -145,11 +145,6 @@ script TrainersSchool_Intro_Skip{
 }
 
 script TrainersSchool_BattleVs_Hiromi{
-    lock
-    playse(SE_PIN)
-    applymovement(trainerschool_lass1, moves(emote_exclamation_mark))
-    waitmovement(trainerschool_lass1)
-    waitse
     trainerbattle_single(TRAINER_LASS_HIROMI, "If my previous Bonsly takes damage,\nI'll want to use a Potion on it!", "Don't worry-I'll heal any pain that was\ncaused by our defeat!")
     msgbox("You can help your Pokémon win by using
     items at the right time.
@@ -261,6 +256,24 @@ script TrainersSchool_RockPaperScissors{
     }
     applymovement(trainerschool_littleboy, moves(face_left))
     applymovement(trainerschool_littlegirl, moves(face_right))
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Joey{
+    // lock
+    // playse(SE_PIN)
+    // applymovement(trainerschool_lass1, moves(emote_exclamation_mark))
+    // waitmovement(trainerschool_lass1)
+    // waitse
+    trainerbattle_single(TRAINER_YOUNGSTER_JOEY, "I'll show you my Grimer's best move!\nWith Poison Gas, it'll poison\leveryone that comes at us!",
+    "No! The Grimer I found in the tall grass\nnear the school was defeated?")
+    msgbox("Grass-type Pokémon are immune to
+    powder moves, like Poison Powder and
+    Sleep Powder.
+    
+    But you can still poison 'em with Poison
+    Gas!", MSGBOX_AUTOCLOSE)
     release
     end
 }

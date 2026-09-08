@@ -429,6 +429,16 @@ TrainersSchool_RockPaperScissors_22:
 	goto TrainersSchool_RockPaperScissors_1
 
 
+TrainersSchool_BattleVs_Joey::
+# 274 "data/maps/Route1N/scripts.pory"
+	trainerbattle_single TRAINER_YOUNGSTER_JOEY, TrainersSchool_BattleVs_Joey_Text_0, TrainersSchool_BattleVs_Joey_Text_1
+# 276 "data/maps/Route1N/scripts.pory"
+	msgbox TrainersSchool_BattleVs_Joey_Text_2, MSGBOX_AUTOCLOSE
+# 282 "data/maps/Route1N/scripts.pory"
+	release
+	end
+
+
 # 18 "data/maps/Route1N/scripts.pory"
 TrainersSchool_Intro_Movement_0:
 # 18 "data/maps/Route1N/scripts.pory"
@@ -663,3 +673,19 @@ TrainersSchool_RockPaperScissors_Text_12:
 # 238 "data/maps/Route1N/scripts.pory"
 	.string "Which would win in a matchup between\n"
 	.string "Water type and Fire type?$"
+
+TrainersSchool_BattleVs_Joey_Text_0:
+# 274 "data/maps/Route1N/scripts.pory"
+	.string "I'll show you my Grimer's best move!\nWith Poison Gas, it'll poison\leveryone that comes at us!$"
+
+TrainersSchool_BattleVs_Joey_Text_1:
+# 275 "data/maps/Route1N/scripts.pory"
+	.string "No! The Grimer I found in the tall grass\nnear the school was defeated?$"
+
+TrainersSchool_BattleVs_Joey_Text_2:
+# 276 "data/maps/Route1N/scripts.pory"
+	.string "Grass-type Pokémon are immune to\n"
+	.string "powder moves, like Poison Powder and\l"
+	.string "Sleep Powder.\p"
+	.string "But you can still poison 'em with Poison\n"
+	.string "Gas!$"

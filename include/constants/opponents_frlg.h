@@ -8,7 +8,7 @@
 #define TRAINER_YOUNGSTER_CALVIN                   2
 #define TRAINER_YOUNGSTER_JOSH                     3
 #define TRAINER_YOUNGSTER_TIMMY                    4
-#define TRAINER_YOUNGSTER_JOEY                     5
+#define TRAINER_YOUNGSTER_JOEY1                     5
 #define TRAINER_YOUNGSTER_DAN                      6
 #define TRAINER_YOUNGSTER_CHAD                     7
 #define TRAINER_YOUNGSTER_TYLER                    8

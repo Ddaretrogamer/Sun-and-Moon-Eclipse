@@ -24,7 +24,7 @@
 #define TRAINER_SWIMMER_NATASHA              17
 #define TRAINER_YOUNGSTER_KEVIN              18
 #define TRAINER_LASS_HIROMI                  19
-#define TRAINER_GRUNT_MUSEUM_1               20
+#define TRAINER_YOUNGSTER_JOEY               20
 #define TRAINER_GRUNT_MUSEUM_2               21
 #define TRAINER_GRUNT_SPACE_CENTER_1         22
 #define TRAINER_GRUNT_MT_PYRE_1              23

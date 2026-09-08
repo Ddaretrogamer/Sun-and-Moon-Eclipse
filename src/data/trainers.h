@@ -820,18 +820,18 @@
         },
     },
 #line 360
-    [DIFFICULTY_NORMAL][TRAINER_GRUNT_MUSEUM_1] =
+    [DIFFICULTY_NORMAL][TRAINER_YOUNGSTER_JOEY] =
     {
 #line 361
-        .trainerName = _("GRUNT"),
+        .trainerName = _("Joey"),
 #line 362
-        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
+        .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 363
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
+        .trainerPic = TRAINER_PIC_SCHOOL_KID_M,
 #line 364
         .gender = TRAINER_GENDER_MALE,
 #line 365
-        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 366
         .battleType = TRAINER_BATTLE_TYPE_SINGLES,
 #line 367
@@ -843,15 +843,20 @@
         {
             {
 #line 369
-            .species = SPECIES_CARVANHA,
-            .gender = TRAINER_MON_RANDOM_GENDER,
+            .species = SPECIES_GRIMER_ALOLA,
+#line 369
+            .gender = TRAINER_MON_MALE,
 #line 371
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 370
-            .lvl = 15,
+            .lvl = 7,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 371
+                MOVE_POISON_GAS,
+            },
             },
         },
     },
