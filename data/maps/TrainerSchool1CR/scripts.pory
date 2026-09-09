@@ -1,0 +1,100 @@
+mapscripts TrainerSchool1CR_MapScripts{}
+
+script TrainerSchool1CR_PPkid{
+    lock
+    faceplayer
+    msgbox("Pokemon moves have PP. Um.
+    Power Points.
+    
+    If the PP for a move runs out, your
+    Pokémon won't be able to use it
+    anymore.
+    
+    Not till you get it restored, I mean.
+    And you can just take it to a
+    Pokémon Center for that!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1CR_PokeballsKid{
+    lock
+    faceplayer
+    msgbox("Who do you think picks up the Poké Balls
+    you throw that don't catch a Pokémon?", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1CR_PetPokemonKid{
+    lock
+    faceplayer
+    msgbox("Petting my Pokémon makes me happy,
+    too!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1CR_ICanRead{
+    lock
+    faceplayer
+    msgbox("I can read! Here, watch.
+    
+    \qoMoves have types, just like Pok\emon\.
+    If you use a move that's the same
+    type as your Pokémon, it will get a
+    special boost in power!\qc", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1CR_TypeMatchupSign{
+    msgbox("There is writing on the blackboard.
+    It describes how types match up.
+    
+    Grass is weak to Fire.
+    Water is weak to Grass.
+    Fire is weak to Water.
+    
+    There are many more types, too, and
+    they have their own weaknesses,
+    just like these three.", MSGBOX_SIGN)
+}
+
+script TrainerSchool1CR_Teacher{
+    lock
+    faceplayer
+    msgbox("We occasionally ask Professor Kukui to
+    run a special class for our school.
+    
+    He's done a great deal of research into
+    Pok\emon moves, after all.", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1CR_BattleVs_Mia{
+    lock
+    goto_if_not_defeated(TRAINER_SCHOOLKID_MIA, TrainersSchool_BattleVS_Mia2)
+    msgbox("Metapod looks so cute munching down an
+    Oran Berry in the middle of battle!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_BattleVS_Mia2{
+    playse(SE_PIN)
+    applymovement(trainerschool_mia, moves(emote_exclamation_mark, face_player))
+    waitmovement(trainerschool_mia)
+    waitse
+    trainerbattle_single(TRAINER_SCHOOLKID_MIA, "Look at my Metapod!\nIt's got an Oran Berry!",
+    "Metapod\.here, have a Berry.")
+    msgbox("I'll give you some Oran Berries, too!
+    They're great to have your Pokémon
+    hold!", MSGBOX_AUTOCLOSE)
+    giveitem(ITEM_ORAN_BERRY, 3)
+    msgbox("Metapod looks so cute munching down an
+    Oran Berry in the middle of battle!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}

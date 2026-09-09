@@ -145,6 +145,25 @@ script TrainersSchool_Intro_Skip{
 }
 
 script TrainersSchool_BattleVs_Hiromi{
+    lock
+    goto_if_not_defeated(TRAINER_LASS_HIROMI, TrainersSchool_BattleVs_Hiromi2)
+    msgbox("You can help your Pokémon win by using
+    items at the right time.
+    
+    They can do more than just healing
+    your Pokémon's HP too.
+    
+    You can even boost their stats and
+    things like that.", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Hiromi2{
+    playse(SE_PIN)
+    applymovement(trainerschool_lass1, moves(emote_exclamation_mark))
+    waitmovement(trainerschool_lass1)
+    waitse
     trainerbattle_single(TRAINER_LASS_HIROMI, "If my previous Bonsly takes damage,\nI'll want to use a Potion on it!", "Don't worry-I'll heal any pain that was\ncaused by our defeat!")
     msgbox("You can help your Pokémon win by using
     items at the right time.
@@ -256,16 +275,29 @@ script TrainersSchool_RockPaperScissors{
     }
     applymovement(trainerschool_littleboy, moves(face_left))
     applymovement(trainerschool_littlegirl, moves(face_right))
+    waitmovement(0)
     release
     end
 }
 
 script TrainersSchool_BattleVs_Joey{
-    // lock
-    // playse(SE_PIN)
-    // applymovement(trainerschool_lass1, moves(emote_exclamation_mark))
-    // waitmovement(trainerschool_lass1)
-    // waitse
+    lock
+    goto_if_not_defeated(TRAINER_YOUNGSTER_JOEY, TrainersSchool_BattleVS_joey2)
+    msgbox("Grass-type Pokémon are immune to
+    powder moves, like Poison Powder and
+    Sleep Powder.
+    
+    But you can still poison 'em with Poison
+    Gas!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_BattleVS_joey2{
+    playse(SE_PIN)
+    applymovement(trainerschool_joey, moves(emote_exclamation_mark, face_player))
+    waitmovement(trainerschool_joey)
+    waitse
     trainerbattle_single(TRAINER_YOUNGSTER_JOEY, "I'll show you my Grimer's best move!\nWith Poison Gas, it'll poison\leveryone that comes at us!",
     "No! The Grimer I found in the tall grass\nnear the school was defeated?")
     msgbox("Grass-type Pokémon are immune to
@@ -274,6 +306,139 @@ script TrainersSchool_BattleVs_Joey{
     
     But you can still poison 'em with Poison
     Gas!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_Lillie{
+    lock
+    applymovement(trainerschool_lillie, moves(face_player))
+    specialvar(VAR_RESULT, IsPlayerPartyFullyHealed)
+        if(var(VAR_RESULT) == TRUE){
+            speakername("Lillie")
+            msgbox("You can tell me anytime that you want
+            your team's health restored.
+            
+            Seeing a Pok\emon in pain makes my own
+            heart seem to ache\.")
+            release
+            end
+        }
+        else
+        {
+            speakername("Lillie")
+            bufferleadmonspeciesname(STR_VAR_1)
+            msgbox("Let me take care of poor
+            {STR_VAR_1}, OK?")
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            playfanfare(MUS_HEAL)
+            special(HealPlayerParty)
+            waitfanfare
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+            speakername("Lillie")
+            msgbox("Please try not to push your Pokémon
+            too hard\.
+            Um\.I mean\.if you don't mind\.")
+        }
+    release
+    end
+}
+
+script TrainersSchool_Kukui{
+    lock
+    applymovement(trainerschool_kukui, moves(face_player))
+    speakername("Kukui")
+    msgbox("If you want a bit of advice from me,
+    here's something that might help.
+    
+    Once you've fought a species of
+    Pok\emon once, You can easily see
+    what types of moves will work best
+    on it in your next battle.
+    
+    Wandering about in the tall grass to
+    meet lots of different Pokémon'll
+    help with that!
+    
+    Battle all the time, oh yeah!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+
+script TrainersSchool_BattleVs_Joseph{
+    lock
+    faceplayer
+    goto_if_not_defeated(TRAINER_YOUNGSTER_JOEY, TrainersSchool_BattleVs_Joseph2)
+    goto_if_not_defeated(TRAINER_LASS_HIROMI, TrainersSchool_BattleVs_Joseph2)
+    goto_if_not_defeated(TRAINER_SCHOOLKID_MIA, TrainersSchool_BattleVs_Joseph2)
+    goto_if_defeated(TRAINER_SCHOOLKID_JOSEPH, TrainersSchool_BattleVs_Joseph3)
+    playse(SE_PIN)
+    applymovement(trainerschool_joseph, moves(emote_exclamation_mark, face_player))
+    waitmovement(trainerschool_joseph)
+    waitse
+    trainerbattle_single(TRAINER_SCHOOLKID_JOSEPH,"Looks like you beat everyone else, huh?\pDon't think you'll beat me the same way!\nEkan's Ability is gonna get you!","Even after your Attack is lowered\.\nAn indominable spirit indeed!", TrainersSchool_BattleVs_Joseph4)
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Joseph2{
+    msgbox("You wanna know why I'm standing here?
+    'Cause I'm the strongest, that's why!
+    
+    I won't even bother battling you
+    unless you can beat everyone else here!", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Joseph3{
+    msgbox("OK. First thing to know about TMs.
+    
+    Technical Machines teach new moves.
+    But if your Pok\emon cant learn the
+    move in a TM, then too bad.
+    
+    Second thing to know about TMs.
+    
+    You can use a TM as many times as you
+    want, on as many different Pok\emon as
+    you want.
+    
+    They don't wear out or get used up.
+    Pretty nice gift from me, huh?")
+    release
+    end
+}
+
+script TrainersSchool_BattleVs_Joseph4{
+    msgbox("Intimidate is an Ability that lowers
+    your opponent's Attack Stat.
+    
+    If you understand your Pok\emon's
+    Abilities, you can use the best
+    strategies in battle.
+    
+    But fine! Whatever!
+    
+    I can admit it when I'm beat.
+    I'll give you a reward even.
+    Take this Technical Machine!", MSGBOX_AUTOCLOSE)
+    giveitem(ITEM_TM01)
+    msgbox("OK. First thing to know about TMs.
+    
+    Technical Machines teach new moves.
+    But if your Pok\emon cant learn the
+    move in a TM, then too bad.
+    
+    Second thing to konw about TMs.
+    
+    You can use a TM as many times as you
+    want, on as many different Pok\emon as
+    you want.
+    
+    They don't wear out or get used up.
+    Pretty nice gift from me, huh?")
     release
     end
 }

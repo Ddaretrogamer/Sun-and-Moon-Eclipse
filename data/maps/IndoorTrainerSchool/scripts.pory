@@ -5,3 +5,61 @@ script TrainerSchool1FDoor{
     warp(MAP_TRAINER_SCHOOL1CR, 0)
     end
 }
+
+script TrainerSchool1F_GiveQuickClaw{
+    lock
+    faceplayer
+    if (flag(FLAG_RECEIVED_QUICK_CLAW))
+    {
+        msgbox("In Pok\emon battles, the Pok\emon with
+        the highest Speed stat acts first.
+        
+        But with a Quick Claw, your Pok\emon
+        should be able to attack first,
+        regardless of its Speed.
+
+        Or sometimes, anyway.
+        {PAUSE 30}It's better than nothing!", MSGBOX_AUTOCLOSE)
+    }
+    else
+    {
+        msgbox("Look at your Pok\emon\.
+        
+        Whether it has any claws or not now, it
+        would likely get a kick out of this one.", MSGBOX_AUTOCLOSE)
+        giveitem(ITEM_QUICK_CLAW)
+        msgbox("In Pok\emon battles, the Pok\emon with
+        the highest Speed stat acts first.
+        
+        But with a Quick Claw, your Pok\emon
+        should be able to attack first,
+        regardless of its Speed.
+
+        Or sometimes, anyway.
+        {PAUSE 30}It's better than nothing!", MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script TrainerSchool1F_LittleBoyAtTable{
+    lock
+    faceplayer
+    msgbox("Some items don't do anything unless you
+    give them to a Pokémon to hold.", MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script TrainerSchool1F_LittleBoyBlockingStairs{
+    lock
+    msgbox("Ohhh, you stinkin' Meowth!
+    
+    Why do you always love to park right
+    at the base of the stairs?!", MSGBOX_AUTOCLOSE)
+    playmoncry(SPECIES_MEOWTH, 0)
+    msgbox("Mrawrr!")
+    waitmoncry
+    release
+    end
+}

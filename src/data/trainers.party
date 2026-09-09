@@ -370,35 +370,34 @@ Grimer Alola(M)
 Level: 7
 - Poison Gas
 
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_SCHOOLKID_MIA ===
+Name: Mia
+Class: School Kid
+Pic: School Kid F
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 14
+Metapod (F) @ Oran Berry
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_SCHOOLKID_JOSEPH ===
+Name: Joseph
+Class: School Kid
+Pic: School Kid M
 Gender: Male
-Music: Magma
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Numel
-Level: 32
+Ekans (M)
+Level: 8
+Ability: Intimidate
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Wrap
+- Bite
 
 === TRAINER_GRUNT_MT_PYRE_1 ===
 Name: GRUNT

@@ -719,7 +719,7 @@
 #define FLAG_HIDE_ROUTE1_LILLIE  0x298 // hide lillie on route 1 for walk to lab
 #define FLAG_HIDE_LILLIE_HAUOLI_LAB  0x299 // hide Lillie outside Hauoli Lab
 #define FLAG_HIDE_TRAINERSCHOOL_TEACHER  0x29A // hide the trainer school teacher
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
+#define FLAG_HIDE_TRAINERSCHOOL_LILLIE_KUKUI 0x29B // hide lillie and kukui at the trainer
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
 #define FLAG_UNUSED_0x29D  0x29D // Unused Flag
 #define FLAG_UNUSED_0x29E  0x29E // Unused Flag

@@ -51,8 +51,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "TrainersSchool_Lillie",
+      "flag": "FLAG_HIDE_TRAINERSCHOOL_LILLIE_KUKUI"
     },
     {
       "local_id": "trainerschool_kukui",
@@ -65,8 +65,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "TrainersSchool_Kukui",
+      "flag": "FLAG_HIDE_TRAINERSCHOOL_LILLIE_KUKUI"
     },
     {
       "local_id": "trainerschool_teacher",
@@ -151,6 +151,7 @@
       "flag": "0"
     },
     {
+      "local_id": "trainerschool_joey",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
       "x": 3,
       "y": 21,
@@ -164,6 +165,7 @@
       "flag": "0"
     },
     {
+      "local_id": "trainerschool_joseph",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
       "x": 10,
       "y": 19,
@@ -173,7 +175,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "TrainersSchool_BattleVs_Joseph",
       "flag": "0"
     },
     {
@@ -188,6 +190,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_PARALYZE_HEAL",
       "script": "Common_EventScript_FindItem",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAUROS)",
+      "x": 1,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_TRAINERSCHOOL_LILLIE_KUKUI"
     }
   ],
   "warp_events": [
