@@ -412,6 +412,7 @@ script TrainersSchool_BattleVs_Joseph3{
 }
 
 script TrainersSchool_BattleVs_Joseph4{
+    setflag(FLAG_HIDE_TRAINERSCHOOL_BLOCKINGMEOWTH)
     msgbox("Intimidate is an Ability that lowers
     your opponent's Attack Stat.
     
@@ -431,14 +432,66 @@ script TrainersSchool_BattleVs_Joseph4{
     But if your Pok\emon cant learn the
     move in a TM, then too bad.
     
-    Second thing to konw about TMs.
+    Second thing to know about TMs.
     
     You can use a TM as many times as you
     want, on as many different Pok\emon as
     you want.
     
     They don't wear out or get used up.
-    Pretty nice gift from me, huh?")
+    Pretty nice gift from me, huh?", MSGBOX_AUTOCLOSE)
+    applymovement(trainerschool_lillie, moves(walk_faster_up*5, walk_left*8, walk_down*2 face_down))
+    waitmovement(0)
+    playse(SE_DING_DONG)
+    waitse
+    speakername("Lillie")
+    msgbox("Oh, that's the school bell", MSGBOX_AUTOCLOSE)
+    delay(30)
+    setflag(FLAG_SUPPRESS_SPEAKER_NAME)
+    msgbox("Attention all students\.
+    
+    Would {PLAYER} please come to the
+    office on 2F?
+    
+    {PLAYER} to the 2F office, please.")
+    clearflag(FLAG_SUPPRESS_SPEAKER_NAME)   
+    applymovement(trainerschool_lillie, moves(walk_in_place_down*2))
+    waitmovement(trainerschool_lillie)
+    speakername("Lillie")
+    msgbox("What terrible thing did you do to get
+    called to the office so soon?")
+    dynmultichoice(20 ,8,TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE, "Nothing!", "Well\.")
+    if (var(VAR_RESULT) == 0){
+        playse(SE_PIN)
+        applymovement(trainerschool_lillie, moves(emote_exclamation_mark))
+        waitmovement(trainerschool_lillie)
+        waitse
+        speakername("Lillie")
+        msgbox("That's what you say\.")
+    }
+    else
+    {
+        playse(SE_PIN)
+        applymovement(trainerschool_lillie, moves(emote_exclamation_mark))
+        waitmovement(trainerschool_lillie)
+        waitse
+        speakername("Lillie")
+        msgbox("So you did do something?!")
+    }
+    release
+    end
+}
+
+script TrainersSchool_BlockingTauros{
+    lock
+    applymovement(trainerschool_tauros, moves(face_player))
+    waitmovement
+    playmoncry(SPECIES_TAUROS, 0)
+    msgbox("Graah!", MSGBOX_AUTOCLOSE)
+    waitmoncry
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, lock_facing_direction, jump_right))
+    waitmovement(LOCALID_PLAYER)
     release
     end
 }

@@ -2311,6 +2311,11 @@ static void RotomPhone_OverworldMenu_PrintHint(u8 taskId)
         StringCopy(textBufferTop, COMPOUND_STRING("Head to the Trainers' School."));
         StringCopy(textBufferBottom, COMPOUND_STRING("It's just west of your house!"));
     }
+    if (ikiTownState == 22)
+    {
+        StringCopy(textBufferTop, COMPOUND_STRING("Defeat all the Trainers at the"));
+        StringCopy(textBufferBottom, COMPOUND_STRING("Trainers' School!"));
+    }
     else if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
         StringCopy(textBufferTop, COMPOUND_STRING("Anywhere sounds good now."));

@@ -289,7 +289,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_110_RARE_CANDY"
+      "flag": "FLAG_ITEM_TRAINER_SCHOOL_ANTIDOTE"
     },
     {
       "local_id": "LOCALID_CHALLENGE_BIKER",
